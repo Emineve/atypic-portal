@@ -1,8 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { createClient } from '@supabase/supabase-js';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://dfiqxbysbysurvfamilr.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmaXF4YnlzYnlzdXJ2ZmFtaWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4ODk0MTIsImV4cCI6MjEwOTQ2NTQxMn0.ZdDxtuXHdVqGt5rOVTxbK9aL6WH1vF1IqRVIorfey6I';
+
+const supabase = createClient(
+  supabaseUrl && supabaseUrl.startsWith('http') ? supabaseUrl : 'https://dfiqxbysbysurvfamilr.supabase.co',
+  supabaseAnonKey
+);
 
 interface Listing {
   id: string;
@@ -35,16 +43,21 @@ export default function ShowcaseApp() {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      let query = supabase.from('listings').select('*').eq('is_active', true);
+      try {
+        let query = supabase.from('listings').select('*').eq('is_active', true);
 
-      if (selectedCategory !== "Tous les biens") {
-        query = query.eq('atypic_category', selectedCategory);
+        if (selectedCategory !== "Tous les biens") {
+          query = query.eq('atypic_category', selectedCategory);
+        }
+        query = query.lte('price', maxPrice).order('price', { ascending: false });
+
+        const { data, error } = await query;
+        if (!error && data) setListings(data);
+      } catch (err) {
+        console.error("Erreur de chargement des biens :", err);
+      } finally {
+        setLoading(false);
       }
-      query = query.lte('price', maxPrice).order('price', { ascending: false });
-
-      const { data, error } = await query;
-      if (!error && data) setListings(data);
-      setLoading(false);
     }
     fetchData();
   }, [selectedCategory, maxPrice]);
