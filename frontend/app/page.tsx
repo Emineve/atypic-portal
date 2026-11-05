@@ -170,7 +170,7 @@ export default function ShowcaseApp() {
                     {item.atypic_category}
                   </div>
                   <div className="absolute bottom-3 left-3 bg-white/95 text-stone-900 text-[10px] uppercase tracking-widest px-2 py-0.5 font-mono shadow-sm">
-                    Mandat {item.source_agency}
+                    Annonce {item.source_agency}
                   </div>
                 </div>
 
