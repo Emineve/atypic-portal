@@ -206,7 +206,7 @@ export default function ShowcaseApp() {
                     </div>
 
                     <a
-                      href={item.source_url}
+                      href={`/go/${item.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-stone-900 text-white px-4 py-2.5 hover:bg-stone-800 transition"
