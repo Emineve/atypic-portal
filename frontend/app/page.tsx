@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
-import { getSupabase } from '@/lib/supabase';
+import { getSupabase } from '../lib/supabase';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
