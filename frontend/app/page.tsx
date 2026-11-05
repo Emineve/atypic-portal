@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js'; 
 import { ArrowUpRight, Sparkles } from 'lucide-react';
 
 // Initialisation autonome du client Supabase
