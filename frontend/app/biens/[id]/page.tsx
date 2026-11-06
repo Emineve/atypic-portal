@@ -7,6 +7,8 @@ import { slugify, cityHub } from '../../../lib/catalog';
 import ContactForm from './ContactForm';
 import MortgageEstimate from './MortgageEstimate';
 import ReportButton from './ReportButton';
+import Gallery from './Gallery';
+import StickyContact from './StickyContact';
 import Tracker from '../../Tracker';
 
 // Page rendue à la demande : toujours à jour avec la base
@@ -84,7 +86,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
   if (item.charges_yearly) facts.push(['Charges', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.charges_yearly)} €/an`]);
   if (item.city) facts.push(['Localisation', [item.city, item.postal_code].filter(Boolean).join(' ')]);
 
-  const gallery: string[] = Array.isArray(item.images) ? item.images.slice(1, 7) : [];
+  const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
+  const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 12);
   const related = await getRelated(item);
   const hubName = item.city ? cityHub(item.city) : null;
   const hubUrl = hubName ? `/ville/${slugify(hubName)}` : null;
@@ -117,7 +120,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans pb-20 lg:pb-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(breadcrumb) }} />
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
@@ -132,24 +135,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
       <main className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2">
-          <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.cover_image_url} alt={item.title} className="w-full h-full object-cover" />
-            <div className="absolute top-3 left-3 bg-stone-900/90 text-white text-[10px] uppercase tracking-widest px-2.5 py-1">
-              {item.atypic_category}
-            </div>
-          </div>
-
-          {gallery.length > 0 && (
-            <div className="mt-3 grid grid-cols-3 gap-3">
-              {gallery.map((src: string, idx: number) => (
-                <div key={idx} className="aspect-[4/3] bg-stone-100 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt={`${item.title} - photo ${idx + 2}`} className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-          )}
+          <Gallery images={allImages} title={item.title} category={item.atypic_category} />
 
           <div className="mt-8">
             <nav aria-label="Fil d'Ariane" className="mb-3 text-xs text-stone-400">
@@ -214,7 +200,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </div>
 
         <aside className="space-y-4">
-          <ContactForm listingId={item.id} agency={item.source_agency} />
+          <div id="contact" className="scroll-mt-20">
+            <ContactForm listingId={item.id} agency={item.source_agency} />
+          </div>
           <MortgageEstimate price={Number(item.price)} />
           <Tracker listingId={item.id} />
           <a
@@ -229,6 +217,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
           <ReportButton listingId={item.id} />
         </aside>
       </main>
+
+      <StickyContact price={price} />
 
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">
