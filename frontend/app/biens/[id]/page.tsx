@@ -23,10 +23,27 @@ async function getListing(id: string) {
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const item = await getListing(params.id);
-  if (!item) return { title: 'Bien introuvable · SINGULIER' };
+  if (!item) return { title: 'Bien introuvable · SINGULIER', robots: { index: false } };
+  const title = `${item.title} · ${item.city || 'France'}`;
+  const description = (item.short_description || '').slice(0, 160);
+  const url = `/biens/${item.id}`;
   return {
-    title: `${item.title} · SINGULIER`,
-    description: item.short_description,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'website',
+      url,
+      title,
+      description,
+      images: item.cover_image_url ? [{ url: item.cover_image_url }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: item.cover_image_url ? [item.cover_image_url] : [],
+    },
   };
 }
 
@@ -46,9 +63,24 @@ export default async function ListingPage({ params }: { params: { id: string } }
   if (item.city) facts.push(['Localisation', [item.city, item.postal_code].filter(Boolean).join(' ')]);
 
   const gallery: string[] = Array.isArray(item.images) ? item.images.slice(1, 7) : [];
-
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: item.title,
+    description: item.short_description,
+    image: Array.isArray(item.images) && item.images.length ? item.images.slice(0, 6) : [item.cover_image_url],
+    category: item.atypic_category,
+    offers: {
+      '@type': 'Offer',
+      price: item.price,
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      url: `https://atypic-portal.vercel.app/biens/${item.id}`,
+    },
+  };
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">SINGULIER</Link>
