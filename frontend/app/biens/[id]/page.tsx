@@ -2,9 +2,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
+import { SITE_URL } from '../../../lib/site';
+import { slugify, cityHub } from '../../../lib/catalog';
 import ContactForm from './ContactForm';
 import MortgageEstimate from './MortgageEstimate';
 import Tracker from '../../Tracker';
+
 // Page rendue à la demande : toujours à jour avec la base
 export const dynamic = 'force-dynamic';
 
@@ -19,6 +22,24 @@ async function getListing(id: string) {
     .eq('is_active', true)
     .maybeSingle();
   return data;
+}
+
+async function getRelated(item: { id: string; city: string | null }) {
+  if (!item.city) return [];
+  const hub = cityHub(item.city);
+  const { data } = await getSupabase()
+    .from('listings')
+    .select('id,title,price,city,surface_sqm,cover_image_url,curation_score')
+    .eq('is_active', true)
+    .neq('id', item.id)
+    .order('curation_score', { ascending: false, nullsFirst: false })
+    .limit(60);
+  return (data || []).filter((r) => r.city && cityHub(r.city) === hub).slice(0, 3);
+}
+
+// Empêche une valeur de la base de refermer la balise <script>
+function safeJson(o: unknown) {
+  return JSON.stringify(o).replace(/</g, '\\u003c');
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
@@ -63,6 +84,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
   if (item.city) facts.push(['Localisation', [item.city, item.postal_code].filter(Boolean).join(' ')]);
 
   const gallery: string[] = Array.isArray(item.images) ? item.images.slice(1, 7) : [];
+  const related = await getRelated(item);
+  const hubName = item.city ? cityHub(item.city) : null;
+  const hubUrl = hubName ? `/ville/${slugify(hubName)}` : null;
+  const fmt = (n: number) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -75,12 +101,24 @@ export default async function ListingPage({ params }: { params: { id: string } }
       price: item.price,
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
-      url: `https://atypic-portal.vercel.app/biens/${item.id}`,
+      url: `${SITE_URL}/biens/${item.id}`,
     },
   };
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE_URL}/` },
+      ...(hubName && hubUrl ? [{ '@type': 'ListItem', position: 2, name: hubName, item: `${SITE_URL}${hubUrl}` }] : []),
+      { '@type': 'ListItem', position: hubName ? 3 : 2, name: item.title },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(breadcrumb) }} />
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">SINGULIER</Link>
@@ -113,6 +151,15 @@ export default async function ListingPage({ params }: { params: { id: string } }
           )}
 
           <div className="mt-8">
+            <nav aria-label="Fil d'Ariane" className="mb-3 text-xs text-stone-400">
+              <Link href="/" className="hover:text-stone-900">Accueil</Link>
+              {hubName && hubUrl && (
+                <>
+                  {' › '}
+                  <Link href={hubUrl} className="hover:text-stone-900">{hubName}</Link>
+                </>
+              )}
+            </nav>
             <p className="text-xs uppercase tracking-wider text-stone-400">
               {item.city}{item.district ? ` · ${item.district}` : ''}
             </p>
@@ -167,8 +214,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
         <aside className="space-y-4">
           <ContactForm listingId={item.id} agency={item.source_agency} />
-                    <MortgageEstimate price={Number(item.price)} />
-                    <Tracker listingId={item.id} />
+          <MortgageEstimate price={Number(item.price)} />
+          <Tracker listingId={item.id} />
           <a
             href={`/go/${item.id}`}
             target="_blank"
@@ -180,6 +227,30 @@ export default async function ListingPage({ params }: { params: { id: string } }
           </a>
         </aside>
       </main>
+
+      {related.length > 0 && hubName && hubUrl && (
+        <section className="max-w-6xl mx-auto px-6 pb-16">
+          <h2 className="font-serif text-2xl text-stone-900">Autres lieux singuliers à {hubName}</h2>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {related.map((r) => (
+              <Link key={r.id} href={`/biens/${r.id}`} className="group block bg-white border border-stone-200 hover:shadow-lg transition">
+                <div className="aspect-[4/3] bg-stone-100 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={r.cover_image_url} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                </div>
+                <div className="p-4">
+                  <p className="text-[10px] uppercase tracking-widest text-stone-400">{r.city}{r.surface_sqm ? ` · ${r.surface_sqm} m²` : ''}</p>
+                  <p className="mt-1 font-serif text-stone-900 leading-snug">{r.title}</p>
+                  <p className="mt-2 font-serif text-lg text-stone-900">{fmt(Number(r.price))}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-6 text-sm">
+            <Link href={hubUrl} className="text-stone-700 underline underline-offset-4 hover:text-stone-900">Voir tous les biens à {hubName}</Link>
+          </p>
+        </section>
+      )}
     </div>
   );
 }
