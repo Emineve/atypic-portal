@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { LEGAL_READY, UPDATED } from '../lib/legal';
 
-export default function LegalPage({ title, children }: { title: string; children: React.ReactNode }) {
+export default function LegalPage({ title, children, hideBanner }: { title: string; children: React.ReactNode; hideBanner?: boolean }) {
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
@@ -15,7 +15,7 @@ export default function LegalPage({ title, children }: { title: string; children
         </div>
       </nav>
       <main className="max-w-3xl mx-auto px-6 py-12">
-        {!LEGAL_READY && (
+        {!LEGAL_READY && !hideBanner && (
           <p className="mb-8 border border-stone-300 bg-stone-50 text-xs text-stone-600 p-3 leading-relaxed">
             Version provisoire : certaines informations de l'éditeur seront complétées avant le lancement officiel du site.
           </p>
