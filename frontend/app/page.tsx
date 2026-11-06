@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { ArrowUpRight, Sparkles, Heart, Search } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
 import AlertBox from './AlertBox';
-
+import FooterLinks from './FooterLinks';
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
 const FAVORITES_KEY = 'singulier:favorites';
@@ -434,6 +434,7 @@ export default function ShowcaseApp() {
       </main>
 
       <footer className="border-t border-stone-200 bg-white">
+                <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
         <div className="max-w-3xl mx-auto px-6 py-12 text-center">
           <h2 className="font-serif text-2xl text-stone-900">La lettre SINGULIER</h2>
           <p className="mt-2 text-sm text-stone-500">Une sélection de lieux singuliers, de temps en temps.</p>
