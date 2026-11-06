@@ -15,6 +15,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   return {
     title: `${cat} à vendre · SINGULIER`,
     description: `Notre sélection de biens singuliers dans la catégorie « ${cat} », issus d'annonces d'agences.`,
+    alternates: { canonical: `/categorie/${params.slug}` },
   };
 }
 
