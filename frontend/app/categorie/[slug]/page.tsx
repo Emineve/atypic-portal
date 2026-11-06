@@ -16,6 +16,12 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
     title: `${cat} à vendre · SINGULIER`,
     description: `Notre sélection de biens singuliers dans la catégorie « ${cat} », issus d'annonces d'agences.`,
     alternates: { canonical: `/categorie/${params.slug}` },
+    openGraph: {
+      type: 'website',
+      url: `/categorie/${params.slug}`,
+      title: `${cat} à vendre`,
+      description: `Notre sélection de biens singuliers : ${cat.toLowerCase()}.`,
+    },
   };
 }
 
