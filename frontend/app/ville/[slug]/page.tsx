@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getSupabase } from '../../../lib/supabase';
-import { slugify } from '../../../lib/catalog';
+import { slugify, cityHub } from '../../../lib/catalog';
 import CollectionPage from '../../CollectionPage';
 
 export const dynamic = 'force-dynamic';
 
+// Page "hub" (ex. Paris = tous les arrondissements) ou page d'une ville / d'un arrondissement
 async function getCityListings(slug: string) {
   const { data } = await getSupabase()
     .from('listings')
@@ -12,16 +13,27 @@ async function getCityListings(slug: string) {
     .eq('is_active', true)
     .order('curation_score', { ascending: false, nullsFirst: false })
     .order('first_seen_at', { ascending: false });
-  const items = (data || []).filter((i) => i.city && slugify(i.city) === slug);
-  return { items, cityName: items[0]?.city as string | undefined };
+  const all = (data || []).filter((i) => i.city);
+
+  const hubItems = all.filter((i) => slugify(cityHub(i.city)) === slug);
+  if (hubItems.length > 0) {
+    return { items: hubItems, cityName: cityHub(hubItems[0].city), canonicalSlug: slug };
+  }
+  // Page d'un arrondissement : conservée, mais la page "Paris" fait référence
+  const exact = all.filter((i) => slugify(i.city) === slug);
+  if (exact.length > 0) {
+    return { items: exact, cityName: exact[0].city as string, canonicalSlug: slugify(cityHub(exact[0].city)) };
+  }
+  return { items: [], cityName: undefined, canonicalSlug: slug };
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { cityName } = await getCityListings(params.slug);
-  if (!cityName) return { title: 'Ville introuvable · SINGULIER' };
+  const { cityName, canonicalSlug } = await getCityListings(params.slug);
+  if (!cityName) return { title: 'Ville introuvable · SINGULIER', robots: { index: false } };
   return {
     title: `Biens atypiques à vendre à ${cityName} · SINGULIER`,
     description: `Lofts, ateliers, rooftops et biens de caractère à vendre à ${cityName}, sélectionnés parmi des annonces d'agences.`,
+    alternates: { canonical: `/ville/${canonicalSlug}` },
   };
 }
 
