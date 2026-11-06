@@ -219,6 +219,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               Voir tous ses biens
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
+          </div>
                     <div id="contact" className="scroll-mt-20">
             <ContactForm listingId={item.id} agency={item.source_agency} />
           </div>
