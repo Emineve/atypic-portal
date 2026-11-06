@@ -206,8 +206,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
 
           <div className="flex items-center gap-8 text-xs uppercase tracking-widest font-medium">
-                        <a href="/" className="hidden md:inline text-stone-900 border-b border-black pb-1">Collection</a>
-            <a href="/classement" className="hidden md:inline text-stone-500 hover:text-stone-900 transition">Nos règles</a>
             <button
               onClick={() => setOnlyFavs((v) => !v)}
               className={`inline-flex items-center gap-1.5 transition ${onlyFavs ? 'text-stone-900' : 'text-stone-500 hover:text-stone-900'}`}
