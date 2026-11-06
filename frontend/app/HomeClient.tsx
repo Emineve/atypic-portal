@@ -190,8 +190,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       <Tracker />
       {DEMO_MODE && (
         <div className="bg-stone-900 text-stone-100 text-center text-xs tracking-wide py-2 px-4">
-          Version de démonstration : annonces et photos issues de sites d'agences, présentées à titre d'exemple. Chaque fiche renvoie vers l'annonce d'origine.
-        </div>
+          <span className="sm:hidden">Version de démonstration · annonces à titre d'exemple</span>
+          <span className="hidden sm:inline">Version de démonstration : annonces et photos issues de sites d'agences, présentées à titre d'exemple. Chaque fiche renvoie vers l'annonce d'origine.</span>        </div>
       )}
 
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
@@ -206,9 +206,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
 
           <div className="flex items-center gap-8 text-xs uppercase tracking-widest font-medium">
-            <span className="hidden md:inline text-stone-900 border-b border-black pb-1 cursor-pointer">Collection</span>
-            <span className="hidden md:inline text-stone-400 hover:text-stone-900 transition cursor-pointer">Manifeste</span>
-            <span className="hidden md:inline text-stone-400 hover:text-stone-900 transition cursor-pointer">Pour les Agences</span>
+                        <a href="/" className="hidden md:inline text-stone-900 border-b border-black pb-1">Collection</a>
+            <a href="/classement" className="hidden md:inline text-stone-500 hover:text-stone-900 transition">Nos règles</a>
             <button
               onClick={() => setOnlyFavs((v) => !v)}
               className={`inline-flex items-center gap-1.5 transition ${onlyFavs ? 'text-stone-900' : 'text-stone-500 hover:text-stone-900'}`}
