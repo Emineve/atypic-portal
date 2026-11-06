@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import ContactForm from './ContactForm';
-
+import MortgageEstimate from './MortgageEstimate';
 // Page rendue à la demande : toujours à jour avec la base
 export const dynamic = 'force-dynamic';
 
@@ -134,6 +134,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
         <aside className="space-y-4">
           <ContactForm listingId={item.id} agency={item.source_agency} />
+                    <MortgageEstimate price={Number(item.price)} />
           <a
             href={`/go/${item.id}`}
             target="_blank"
