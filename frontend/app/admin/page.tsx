@@ -18,6 +18,19 @@ interface Lead {
   is_demo: boolean; listing_title: string | null; agency: string | null;
 }
 
+interface Report {
+  created_at: string; reason: string; message: string | null; email: string | null;
+  listing_title: string | null; agency: string | null; listing_id: string;
+}
+
+const REASONS: Record<string, string> = {
+  inexact: 'Information inexacte',
+  vendu: 'Bien vendu ou retiré',
+  photos: 'Problème de photos',
+  illicite: 'Contenu illicite',
+  autre: 'Autre',
+};
+
 const KEY = 'singulier:admin-token';
 
 function pct(a: number, b: number) {
@@ -30,6 +43,7 @@ export default function AdminPage() {
   const [days, setDays] = useState(30);
   const [stats, setStats] = useState<Stats | null>(null);
   const [leads, setLeads] = useState<Lead[]>([]);
+  const [reports, setReports] = useState<Report[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -51,8 +65,10 @@ export default function AdminPage() {
         const s = await sb.rpc('admin_stats', { p_token: token, p_days: days });
         if (s.error) throw new Error(s.error.message.includes('forbidden') ? 'Jeton invalide.' : s.error.message);
         const l = await sb.rpc('admin_leads', { p_token: token, p_limit: 200 });
+        const rp = await sb.rpc('admin_reports', { p_token: token, p_limit: 200 });
         if (cancelled) return;
         setStats(s.data as Stats);
+        setReports((rp.data as Report[]) || []);
         setLeads((l.data as Lead[]) || []);
         try { sessionStorage.setItem(KEY, token); } catch { /* ignoré */ }
       } catch (e) {
@@ -202,6 +218,35 @@ export default function AdminPage() {
                           <td className="p-3">{l.email}{l.phone ? <div className="text-xs text-stone-500">{l.phone}</div> : null}</td>
                           <td className="p-3 text-stone-600">{l.listing_title}<div className="text-xs text-stone-400">{l.agency}</div></td>
                           <td className="p-3 text-stone-600 max-w-sm">{l.message}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+
+            <section>
+              <h2 className="font-serif text-xl mb-3">Signalements</h2>
+              {reports.length === 0 ? (
+                <p className="text-sm text-stone-400">Aucun signalement pour le moment.</p>
+              ) : (
+                <div className="overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Motif</th><th className="p-3">Annonce</th><th className="p-3">Message</th><th className="p-3">Email</th></tr>
+                    </thead>
+                    <tbody>
+                      {reports.map((r, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">{REASONS[r.reason] || r.reason}</td>
+                          <td className="p-3 text-stone-600">
+                            <a href={`/biens/${r.listing_id}`} target="_blank" rel="noopener noreferrer" className="hover:underline">{r.listing_title}</a>
+                            <div className="text-xs text-stone-400">{r.agency}</div>
+                          </td>
+                          <td className="p-3 text-stone-600 max-w-sm">{r.message}</td>
+                          <td className="p-3 text-stone-500">{r.email}</td>
                         </tr>
                       ))}
                     </tbody>
