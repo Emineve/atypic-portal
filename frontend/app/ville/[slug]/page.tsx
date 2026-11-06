@@ -34,6 +34,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: `Biens atypiques à vendre à ${cityName} · SINGULIER`,
     description: `Lofts, ateliers, rooftops et biens de caractère à vendre à ${cityName}, sélectionnés parmi des annonces d'agences.`,
     alternates: { canonical: `/ville/${canonicalSlug}` },
+    openGraph: {
+      type: 'website',
+      url: `/ville/${canonicalSlug}`,
+      title: `Biens atypiques à vendre à ${cityName}`,
+      description: `Lofts, ateliers, rooftops et biens de caractère à vendre à ${cityName}.`,
+    },
   };
 }
 
