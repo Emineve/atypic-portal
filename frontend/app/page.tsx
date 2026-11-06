@@ -205,16 +205,11 @@ export default function ShowcaseApp() {
                       </span>
                     </div>
 
-                    <a
-                                               href={`/biens/${item.id}`}
-                         className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-stone-900 text-white px-4 py-2.5 hover:bg-stone-800 transition"
-                       >
-                         Voir le bien
-                      target="_blank"
-                      rel="noopener noreferrer"
+                                        <a
+                      href={`/biens/${item.id}`}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-stone-900 text-white px-4 py-2.5 hover:bg-stone-800 transition"
                     >
-                      Consulter le bien
+                      Voir le bien
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
                   </div>
