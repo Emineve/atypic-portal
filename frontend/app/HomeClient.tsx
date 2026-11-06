@@ -4,6 +4,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { ArrowUpRight, Sparkles, Heart, Search } from 'lucide-react';
 import AlertBox from './AlertBox';
 import FooterLinks from './FooterLinks';
+import Tracker from './Tracker';
+import { trackEvent } from '../lib/track';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
@@ -88,15 +90,15 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   }, []);
 
   function toggleFavorite(id: string) {
-    setFavorites((current) => {
-      const next = current.includes(id) ? current.filter((x) => x !== id) : [...current, id];
-      try {
-        localStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
-      } catch {
-        /* ignoré */
-      }
-      return next;
-    });
+    const adding = !favorites.includes(id);
+    const next = adding ? [...favorites, id] : favorites.filter((x) => x !== id);
+    setFavorites(next);
+    try {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
+    } catch {
+      /* ignoré */
+    }
+    if (adding) trackEvent('favorite', id);
   }
 
   function resetAll() {
@@ -159,6 +161,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+      <Tracker />
       {DEMO_MODE && (
         <div className="bg-stone-900 text-stone-100 text-center text-xs tracking-wide py-2 px-4">
           Version de démonstration : annonces et photos issues de sites d'agences, présentées à titre d'exemple. Chaque fiche renvoie vers l'annonce d'origine.
