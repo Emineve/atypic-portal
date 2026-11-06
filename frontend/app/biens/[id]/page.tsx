@@ -88,7 +88,13 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
   const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 12);
-  const related = await getRelated(item);
+    const related = await getRelated(item);
+  const { count: agencyTotal } = await getSupabase()
+    .from('listings')
+    .select('id', { count: 'exact', head: true })
+    .eq('is_active', true)
+    .eq('source_agency', item.source_agency);
+  const agencyCount = agencyTotal || 1;
   const hubName = item.city ? cityHub(item.city) : null;
   const hubUrl = hubName ? `/ville/${slugify(hubName)}` : null;
   const fmt = (n: number) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
@@ -200,7 +206,20 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </div>
 
         <aside className="space-y-4">
-          <div id="contact" className="scroll-mt-20">
+                    <div className="border border-stone-200 bg-white p-6">
+            <p className="text-[10px] uppercase tracking-widest text-stone-400">Proposé par</p>
+            <p className="mt-1 font-serif text-2xl text-stone-900">{item.source_agency}</p>
+            <p className="mt-1 text-xs text-stone-500">
+              {agencyCount} {agencyCount > 1 ? 'biens présentés' : 'bien présenté'} sur SINGULIER
+            </p>
+            <Link
+              href={`/agence/${slugify(item.source_agency)}`}
+              className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+            >
+              Voir tous ses biens
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </div> className="scroll-mt-20">
             <ContactForm listingId={item.id} agency={item.source_agency} />
           </div>
           <MortgageEstimate price={Number(item.price)} />
