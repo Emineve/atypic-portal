@@ -30,16 +30,14 @@ async function getCityListings(slug: string) {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { cityName, canonicalSlug } = await getCityListings(params.slug);
   if (!cityName) return { title: 'Ville introuvable · SINGULIER', robots: { index: false } };
+  const title = `Biens atypiques à vendre à ${cityName}`;
+  const description = `Lofts, ateliers, rooftops et biens de caractère à vendre à ${cityName}, sélectionnés parmi des annonces d'agences.`;
   return {
-    title: `Biens atypiques à vendre à ${cityName} · SINGULIER`,
-    description: `Lofts, ateliers, rooftops et biens de caractère à vendre à ${cityName}, sélectionnés parmi des annonces d'agences.`,
+    title: `${title} · SINGULIER`,
+    description,
     alternates: { canonical: `/ville/${canonicalSlug}` },
-    openGraph: {
-      type: 'website',
-      url: `/ville/${canonicalSlug}`,
-      title: `Biens atypiques à vendre à ${cityName}`,
-      description: `Lofts, ateliers, rooftops et biens de caractère à vendre à ${cityName}.`,
-    },
+    openGraph: { type: 'website', url: `/ville/${canonicalSlug}`, title, description, images: ['/opengraph-image'] },
+    twitter: { card: 'summary_large_image', title, description, images: ['/opengraph-image'] },
   };
 }
 
