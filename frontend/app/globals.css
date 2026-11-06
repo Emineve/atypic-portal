@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Styles globaux du site */
 body {
   background-color: #FDFBF7;
   color: #191919;
