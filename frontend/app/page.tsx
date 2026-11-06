@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { ArrowUpRight, Sparkles, Heart, Search } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
+import AlertBox from './AlertBox';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
@@ -47,7 +48,7 @@ const SORTS = [
 ];
 
 function normalize(s: string) {
-  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
 function isNew(date: string | null) {
@@ -64,6 +65,7 @@ export default function ShowcaseApp() {
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('selection');
   const [showFilters, setShowFilters] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [priceMin, setPriceMin] = useState('');
   const [priceMax, setPriceMax] = useState('');
   const [surfaceMin, setSurfaceMin] = useState('');
@@ -251,12 +253,31 @@ export default function ShowcaseApp() {
               Préciser ma recherche
             </button>
             <button
+              onClick={() => setShowAlert((v) => !v)}
+              className="text-xs uppercase tracking-wider px-4 py-2 border border-stone-300 text-stone-700 hover:border-stone-900 transition"
+              aria-expanded={showAlert}
+            >
+              Créer une alerte
+            </button>
+            <button
               onClick={resetAll}
               className="text-xs uppercase tracking-wider px-4 py-2 text-stone-500 hover:text-stone-900 transition"
             >
               Réinitialiser
             </button>
           </div>
+
+          {showAlert && (
+            <div className="border border-stone-200 bg-stone-50 p-4">
+              <p className="text-xs text-stone-600 mb-3">
+                Recevez par email les nouveaux biens correspondant à votre recherche actuelle (lieu, catégorie, filtres).
+              </p>
+              <AlertBox
+                kind="alert"
+                criteria={{ query, category: selectedCategory, priceMin, priceMax, surfaceMin, roomsMin }}
+              />
+            </div>
+          )}
 
           {showFilters && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -411,6 +432,16 @@ export default function ShowcaseApp() {
           </div>
         )}
       </main>
+
+      <footer className="border-t border-stone-200 bg-white">
+        <div className="max-w-3xl mx-auto px-6 py-12 text-center">
+          <h2 className="font-serif text-2xl text-stone-900">La lettre SINGULIER</h2>
+          <p className="mt-2 text-sm text-stone-500">Une sélection de lieux singuliers, de temps en temps.</p>
+          <div className="mt-6 text-left max-w-xl mx-auto">
+            <AlertBox kind="newsletter" />
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
