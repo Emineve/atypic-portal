@@ -36,10 +36,15 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
 
   const facts: [string, string][] = [];
+  if (item.property_type) facts.push(['Type', item.property_type]);
   if (item.surface_sqm) facts.push(['Surface', `${item.surface_sqm} m²`]);
   if (item.rooms) facts.push(['Pièces', String(item.rooms)]);
   if (item.bedrooms) facts.push(['Chambres', String(item.bedrooms)]);
+  if (item.floor !== null && item.floor !== undefined) facts.push(['Étage', String(item.floor)]);
+  if (item.charges_yearly) facts.push(['Charges', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.charges_yearly)} €/an`]);
   if (item.city) facts.push(['Localisation', [item.city, item.postal_code].filter(Boolean).join(' ')]);
+
+  const gallery: string[] = Array.isArray(item.images) ? item.images.slice(1, 7) : [];
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -63,12 +68,24 @@ export default async function ListingPage({ params }: { params: { id: string } }
             </div>
           </div>
 
+          {gallery.length > 0 && (
+            <div className="mt-3 grid grid-cols-3 gap-3">
+              {gallery.map((src: string, idx: number) => (
+                <div key={idx} className="aspect-[4/3] bg-stone-100 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt={`${item.title} - photo ${idx + 2}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="mt-8">
             <p className="text-xs uppercase tracking-wider text-stone-400">
               {item.city}{item.district ? ` · ${item.district}` : ''}
             </p>
             <h1 className="mt-2 font-serif text-3xl md:text-4xl leading-tight text-stone-900">{item.title}</h1>
             <p className="mt-4 font-serif text-3xl text-stone-900">{price}</p>
+            {item.fees_text && <p className="mt-1 text-xs text-stone-500">{item.fees_text}</p>}
 
             {facts.length > 0 && (
               <dl className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 border-y border-stone-200 py-5">
@@ -91,7 +108,27 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </div>
             )}
 
-            <p className="mt-8 text-xs text-stone-400">Annonce {item.source_agency}</p>
+            {item.features?.length > 0 && (
+              <div className="mt-6">
+                <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Caractéristiques</h2>
+                <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-stone-700">
+                  {item.features.map((f: string, idx: number) => (
+                    <li key={idx}>· {f}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {(item.dpe_class || item.ges_class) && (
+              <div className="mt-6 flex gap-6 text-sm text-stone-700">
+                {item.dpe_class && <span>Énergie (DPE) : <strong>{item.dpe_class}</strong></span>}
+                {item.ges_class && <span>Climat (GES) : <strong>{item.ges_class}</strong></span>}
+              </div>
+            )}
+
+            <p className="mt-8 text-xs text-stone-400">
+              Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}
+            </p>
           </div>
         </div>
 
