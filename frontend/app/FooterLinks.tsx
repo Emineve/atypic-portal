@@ -24,6 +24,8 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
       </div>
     </nav>
     <nav className="max-w-5xl mx-auto px-6 pt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-stone-500" aria-label="Informations légales">
+      <a href="/" className={link}>Collection</a>
+      <a href="/pro" className={link}>Pour les agences</a>
       <a href="/classement" className={link}>Nos règles de sélection</a>
       <a href="/mentions-legales" className={link}>Mentions légales</a>
       <a href="/confidentialite" className={link}>Confidentialité</a>
