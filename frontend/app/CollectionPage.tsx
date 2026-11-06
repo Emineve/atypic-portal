@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { SITE_URL } from '../lib/site';
 
 export interface CollectionItem {
   id: string;
@@ -22,8 +23,20 @@ export default function CollectionPage({
   intro: string;
   items: CollectionItem[];
 }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: title,
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${SITE_URL}/biens/${it.id}`,
+      name: it.title,
+    })),
+  };
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">SINGULIER</Link>
