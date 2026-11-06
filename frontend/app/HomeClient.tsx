@@ -226,7 +226,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           Sélection éditoriale · Lieux singuliers.
         </div>
         <h1 className="text-4xl md:text-6xl font-serif tracking-tight text-stone-900 max-w-4xl mx-auto leading-[1.15]">
-          Tous les biens atypiques de France, au même endroit.
+          Tous les biens atypiques, au même endroit.
         </h1>
         <p className="mt-5 text-stone-500 max-w-2xl mx-auto font-light text-base md:text-lg">
           Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : les annonces des agences les plus prestigieuses, rassemblées sur un seul site.
