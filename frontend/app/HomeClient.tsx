@@ -226,10 +226,10 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           Sélection éditoriale · Lieux singuliers.
         </div>
         <h1 className="text-4xl md:text-6xl font-serif tracking-tight text-stone-900 max-w-4xl mx-auto leading-[1.15]">
-          L'anthologie des lieux d'exception.
+          Tous les biens atypiques de France, au même endroit.
         </h1>
         <p className="mt-5 text-stone-500 max-w-2xl mx-auto font-light text-base md:text-lg">
-          Ateliers d'artistes sous verrière, lofts industriels, péniches et rooftops curatés parmi les plus beaux mandats du marché.
+          Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : les annonces des agences les plus prestigieuses, rassemblées sur un seul site.
         </p>
       </header>
 
@@ -282,7 +282,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             className="text-stone-500 hover:text-stone-900 transition"
             aria-expanded={showAlert}
           >
-            Créer une alerte
+            Être prévenu des nouveautés
           </button>
           {anythingActive && (
             <button type="button" onClick={resetAll} className="text-stone-500 hover:text-stone-900 transition">
@@ -294,8 +294,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         {showAlert && (
           <div className="max-w-3xl mx-auto mt-4 border border-stone-200 bg-white p-4">
             <p className="text-xs text-stone-600 mb-3">
-              Recevez par email les nouveaux biens correspondant à votre recherche actuelle (lieu, catégorie, filtres).
-            </p>
+Soyez le premier informé : recevez en avant-première les nouveaux biens atypiques mis en vente par les agences            </p>
             <AlertBox
               kind="alert"
               criteria={{ query, category: selectedCategory, priceMin, priceMax, surfaceMin, roomsMin }}
@@ -508,8 +507,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       <footer className="border-t border-stone-200 bg-white">
         <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
         <div className="max-w-3xl mx-auto px-6 py-12 text-center">
-          <h2 className="font-serif text-2xl text-stone-900">La lettre SINGULIER</h2>
-          <p className="mt-2 text-sm text-stone-500">Une sélection de lieux singuliers, de temps en temps.</p>
+          <h2 className="font-serif text-2xl text-stone-900">Soyez le premier informé</h2>
+          <p className="mt-2 text-sm text-stone-500">Recevez en avant-première les nouveaux biens atypiques mis en vente par les agences les plus prestigieuses.</p>
           <div className="mt-6 text-left max-w-xl mx-auto">
             <AlertBox kind="newsletter" />
           </div>
