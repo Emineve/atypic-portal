@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { ArrowUpRight, Sparkles, Heart, Search } from 'lucide-react';
+import { Sparkles, Heart, Search } from 'lucide-react';
 import AlertBox from './AlertBox';
 import FooterLinks from './FooterLinks';
 import Tracker from './Tracker';
@@ -326,83 +326,46 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               : 'Aucun lieu ne correspond à ces critères.'}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
             {visible.map((item) => {
               const fav = favorites.includes(item.id);
+              const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
               return (
-                <article
-                  key={item.id}
-                  className="group flex flex-col bg-white border border-stone-200 overflow-hidden hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
-                    <a href={`/biens/${item.id}`} aria-label={item.title}>
+                <article key={item.id} className="group relative">
+                  <a href={`/biens/${item.id}`} className="block" aria-label={item.title}>
+                    <div className="relative aspect-[5/4] w-full bg-stone-100 overflow-hidden">
                       <img
                         src={item.cover_image_url}
                         alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
-                    </a>
-                    <div className="absolute top-3 left-3 bg-stone-900/90 text-white text-[10px] uppercase tracking-widest px-2.5 py-1 backdrop-blur-sm">
-                      {item.atypic_category}
-                    </div>
-                    <button
-                      onClick={() => toggleFavorite(item.id)}
-                      aria-label={fav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
-                      aria-pressed={fav}
-                      className="absolute top-3 right-3 bg-white/95 p-2 shadow-sm hover:bg-white transition"
-                    >
-                      <Heart className={`w-4 h-4 ${fav ? 'fill-red-600 text-red-600' : 'text-stone-700'}`} />
-                    </button>
-                    <div className="absolute bottom-3 left-3 bg-white/95 text-stone-900 text-[10px] uppercase tracking-widest px-2 py-0.5 font-mono shadow-sm">
-                      Annonce {item.source_agency}
-                    </div>
-                    {isNew(item.first_seen_at) && (
-                      <div className="absolute bottom-3 right-3 bg-stone-900 text-white text-[10px] uppercase tracking-widest px-2 py-0.5">
-                        Nouveauté
+                      <div className="absolute top-3 left-3 bg-white/90 text-stone-900 text-[10px] uppercase tracking-widest px-2.5 py-1">
+                        {item.atypic_category}
                       </div>
-                    )}
-                  </div>
-
-                  <div className="p-6 flex flex-col flex-1 justify-between">
-                    <div>
-                      <div className="flex justify-between items-center text-xs text-stone-400 uppercase tracking-wider mb-2">
-                        <span>{item.city}</span>
-                        {item.surface_sqm && <span>{item.surface_sqm} m²</span>}
-                      </div>
-
-                      <h2 className="font-serif text-lg leading-snug text-stone-900 group-hover:text-stone-700 transition">
+                    </div>
+                    <div className="pt-4">
+                      <p className="text-[11px] uppercase tracking-widest text-stone-500">
+                        {item.city}
+                        {item.surface_sqm ? ` · ${item.surface_sqm} m²` : ''}
+                        {isNew(item.first_seen_at) ? ' · Nouveauté' : ''}
+                      </p>
+                      <h2 className="mt-1.5 font-serif text-xl leading-snug text-stone-900 line-clamp-2 group-hover:underline underline-offset-4 decoration-stone-300">
                         {item.title}
                       </h2>
-
-                      <p className="mt-3 text-xs text-stone-500 line-clamp-2 leading-relaxed">
-                        {item.short_description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-1.5 mt-4">
-                        {item.atypic_tags?.map((tag, idx) => (
-                          <span key={idx} className="bg-stone-50 border border-stone-200 text-stone-600 text-[10px] px-2 py-0.5">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                      <p className="mt-2 font-serif text-lg text-stone-900">{price}</p>
+                      <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}</p>
                     </div>
-
-                    <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
-                      <div>
-                        <span className="text-xl font-medium tracking-tight font-serif">
-                          {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price)}
-                        </span>
-                      </div>
-
-                      <a
-                        href={`/biens/${item.id}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-stone-900 text-white px-4 py-2.5 hover:bg-stone-800 transition"
-                      >
-                        Voir le bien
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  </div>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => toggleFavorite(item.id)}
+                    aria-label={fav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                    aria-pressed={fav}
+                    className="absolute top-3 right-3 z-10 h-11 w-11 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-sm transition"
+                  >
+                    <Heart className={`w-5 h-5 ${fav ? 'fill-red-600 text-red-600' : 'text-stone-700'}`} />
+                  </button>
                 </article>
               );
             })}
