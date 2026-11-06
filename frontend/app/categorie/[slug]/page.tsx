@@ -9,19 +9,24 @@ function findCategory(slug: string) {
   return CATEGORY_LIST.find((c) => slugify(c) === slug) || null;
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   const cat = findCategory(params.slug);
-  if (!cat) return { title: 'Catégorie introuvable · SINGULIER' };
+  if (!cat) return { title: 'Catégorie introuvable · SINGULIER', robots: { index: false } };
+  // Une catégorie vide n'est pas indexée (page sans contenu)
+  const { count } = await getSupabase()
+    .from('listings')
+    .select('id', { count: 'exact', head: true })
+    .eq('is_active', true)
+    .eq('atypic_category', cat);
+  const title = `${cat} à vendre`;
+  const description = `Notre sélection de biens singuliers dans la catégorie « ${cat} », issus d'annonces d'agences.`;
   return {
-    title: `${cat} à vendre · SINGULIER`,
-    description: `Notre sélection de biens singuliers dans la catégorie « ${cat} », issus d'annonces d'agences.`,
+    title: `${title} · SINGULIER`,
+    description,
     alternates: { canonical: `/categorie/${params.slug}` },
-    openGraph: {
-      type: 'website',
-      url: `/categorie/${params.slug}`,
-      title: `${cat} à vendre`,
-      description: `Notre sélection de biens singuliers : ${cat.toLowerCase()}.`,
-    },
+    robots: count ? undefined : { index: false, follow: true },
+    openGraph: { type: 'website', url: `/categorie/${params.slug}`, title, description, images: ['/opengraph-image'] },
+    twitter: { card: 'summary_large_image', title, description, images: ['/opengraph-image'] },
   };
 }
 
