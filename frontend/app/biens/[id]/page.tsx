@@ -6,6 +6,7 @@ import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
 import ContactForm from './ContactForm';
 import MortgageEstimate from './MortgageEstimate';
+import ReportButton from './ReportButton';
 import Tracker from '../../Tracker';
 
 // Page rendue à la demande : toujours à jour avec la base
@@ -225,6 +226,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             Voir l'annonce d'origine
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
+          <ReportButton listingId={item.id} />
         </aside>
       </main>
 
