@@ -15,6 +15,7 @@ export default async function sitemap() {
   const usedCategories = new Set(rows.map((r) => r.atypic_category));
   return [
     { url: `${SITE_URL}/` },
+    { url: `${SITE_URL}/classement` },
     ...CATEGORY_LIST.filter((c) => usedCategories.has(c)).map((c) => ({ url: `${SITE_URL}/categorie/${slugify(c)}` })),
     ...cities.map((c) => ({ url: `${SITE_URL}/ville/${slugify(c)}` })),
     ...rows.map((r) => ({ url: `${SITE_URL}/biens/${r.id}` })),
