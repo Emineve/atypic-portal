@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
-import { getSupabase } from '../lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
@@ -33,7 +33,6 @@ const CATEGORIES = [
 export default function ShowcaseApp() {
   const [listings, setListings] = useState<Listing[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("Tous les biens");
-  const [maxPrice, setMaxPrice] = useState<number>(3000000);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -49,7 +48,7 @@ export default function ShowcaseApp() {
         if (selectedCategory !== "Tous les biens") {
           query = query.eq('atypic_category', selectedCategory);
         }
-        query = query.lte('price', maxPrice).order('price', { ascending: false });
+        query = query.order('price', { ascending: false });
 
         const { data, error } = await query;
         if (error) {
@@ -65,7 +64,7 @@ export default function ShowcaseApp() {
       }
     }
     fetchData();
-  }, [selectedCategory, maxPrice]);
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -123,22 +122,6 @@ export default function ShowcaseApp() {
                 {cat}
               </button>
             ))}
-          </div>
-
-          <div className="flex items-center gap-4 w-full md:w-auto text-xs font-mono">
-            <span className="text-stone-400 uppercase">Budget Max :</span>
-            <input
-              type="range"
-              min="800000"
-              max="3500000"
-              step="100000"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-              className="accent-stone-900 cursor-pointer"
-            />
-            <span className="font-semibold text-stone-900">
-              {(maxPrice / 1000000).toFixed(1)} M€
-            </span>
           </div>
         </div>
       </section>
@@ -205,7 +188,7 @@ export default function ShowcaseApp() {
                       </span>
                     </div>
 
-                                        <a
+                    <a
                       href={`/biens/${item.id}`}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-stone-900 text-white px-4 py-2.5 hover:bg-stone-800 transition"
                     >
