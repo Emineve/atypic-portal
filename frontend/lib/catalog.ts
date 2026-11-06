@@ -9,9 +9,14 @@ export const CATEGORY_LIST = [
 export function slugify(s: string) {
   return s
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
     .replace(/&/g, ' ')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
+}
+
+// Regroupe les arrondissements parisiens ("Paris 12e") sous une même page "Paris"
+export function cityHub(city: string) {
+  return /^paris(\s|$)/i.test(city.trim()) ? 'Paris' : city;
 }
