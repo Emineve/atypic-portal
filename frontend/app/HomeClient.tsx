@@ -294,7 +294,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         {showAlert && (
           <div className="max-w-3xl mx-auto mt-4 border border-stone-200 bg-white p-4">
             <p className="text-xs text-stone-600 mb-3">
-Soyez le premier informé : recevez en avant-première les nouveaux biens atypiques mis en vente par les agences            </p>
+              Soyez le premier informé : recevez en avant-première les nouveaux biens atypiques mis en vente par les agences les plus prestigieuses, selon votre recherche actuelle.            
+            </p>
+            <p className="text-xs text-stone-600 mb-3">
             <AlertBox
               kind="alert"
               criteria={{ query, category: selectedCategory, priceMin, priceMax, surfaceMin, roomsMin }}
