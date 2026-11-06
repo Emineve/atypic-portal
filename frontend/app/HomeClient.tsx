@@ -198,7 +198,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-baseline gap-3">
             <span className="font-serif text-2xl font-bold tracking-widest uppercase">
-              SINGULIER
+                            Archi Singulier
             </span>
             <span className="hidden sm:inline text-[10px] tracking-widest text-stone-400 uppercase font-mono">
               Curateur Atypique · France
