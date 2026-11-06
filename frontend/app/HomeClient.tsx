@@ -223,7 +223,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       <header className="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-8 md:pb-12 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-100 border border-stone-200 text-stone-600 text-xs tracking-wider uppercase mb-6">
           <Sparkles className="w-3.5 h-3.5" />
-          Sélection Rigoureuse · Mandats Authentifiés
+          Sélection éditoriale · Lieux singuliers.
         </div>
         <h1 className="text-4xl md:text-6xl font-serif tracking-tight text-stone-900 max-w-4xl mx-auto leading-[1.15]">
           L'anthologie des lieux d'exception.
