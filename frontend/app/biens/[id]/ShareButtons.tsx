@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Share2, Link2, Check } from 'lucide-react';
 
-export default function ShareButtons({ url, title }: { url: string; title: string }) {
+export default function ShareButtons({ url, title, detail }: { url: string; title: string; detail?: string }) {
   const [copied, setCopied] = useState(false);
   const [hasNativeShare, setHasNativeShare] = useState(false);
 
@@ -11,7 +11,7 @@ export default function ShareButtons({ url, title }: { url: string; title: strin
     setHasNativeShare(typeof navigator.share === 'function');
   }, []);
 
-  const message = `${title} : ${url}`;
+  const message = `Regarde ce que je viens de trouver 👀\n${title}${detail ? `\n${detail}` : ''}\n${url}`;
   const whatsapp = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
   const copy = async () => {
@@ -26,7 +26,7 @@ export default function ShareButtons({ url, title }: { url: string; title: strin
 
   const nativeShare = async () => {
     try {
-      await navigator.share({ title, url });
+      await navigator.share({ title, text: detail ? `${title} · ${detail}` : title, url });
     } catch {
       /* partage annulé */
     }
