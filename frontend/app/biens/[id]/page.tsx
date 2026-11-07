@@ -51,6 +51,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   if (!item) return { title: 'Bien introuvable · SINGULIER', robots: { index: false } };
   const title = `${item.title} · ${item.city || 'France'}`;
   const description = (item.short_description || '').slice(0, 160);
+  // Titre des aperçus de partage (WhatsApp, SMS…) : titre, ville, surface, prix
+  const shareTitle = [
+    item.title,
+    item.city,
+    item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '',
+    item.price ? `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, ' ')} €` : '',
+  ].filter(Boolean).join(' - ');
   const url = `/biens/${item.id}`;
   return {
     title,
@@ -59,13 +66,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     openGraph: {
       type: 'website',
       url,
-      title,
+      title: shareTitle,
       description,
       images: item.cover_image_url ? [{ url: item.cover_image_url }] : [],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: shareTitle,
       description,
       images: item.cover_image_url ? [item.cover_image_url] : [],
     },
@@ -159,7 +166,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
             </p>
             <h1 className="mt-2 font-serif text-3xl md:text-4xl leading-tight text-stone-900">{item.title}</h1>
             <p className="mt-4 font-serif text-3xl text-stone-900">{price}</p>
-                        <ShareButtons url={`${SITE_URL}/biens/${item.id}`} title={item.title} />
+            <ShareButtons
+              url={`${SITE_URL}/biens/${item.id}`}
+              title={item.title}
+              detail={[item.city, item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', price].filter(Boolean).join(' · ')}
+            />
             {item.fees_text && <p className="mt-1 text-xs text-stone-500">{item.fees_text}</p>}
 
             {facts.length > 0 && (
