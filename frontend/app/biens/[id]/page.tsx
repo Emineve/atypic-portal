@@ -11,6 +11,7 @@ import Gallery from './Gallery';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
+import { DpeScale } from '../../DpeBadge';
 
 // Page rendue à la demande : toujours à jour avec la base
 export const dynamic = 'force-dynamic';
@@ -171,7 +172,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
               title={item.title}
               detail={[item.city, item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', price].filter(Boolean).join(' · ')}
             />
-            {item.fees_text && <p className="mt-1 text-xs text-stone-500">{item.fees_text}</p>}
 
             {facts.length > 0 && (
               <dl className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 border-y border-stone-200 py-5">
@@ -205,15 +205,17 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </div>
             )}
 
-            {(item.dpe_class || item.ges_class) && (
-              <div className="mt-6 flex gap-6 text-sm text-stone-700">
-                {item.dpe_class && <span>Énergie (DPE) : <strong>{item.dpe_class}</strong></span>}
-                {item.ges_class && <span>Climat (GES) : <strong>{item.ges_class}</strong></span>}
+            <div className="mt-6">
+              <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Performance énergétique</h2>
+              <div className="mt-3 flex flex-wrap gap-x-10 gap-y-4">
+                <DpeScale title="Énergie (DPE)" value={item.dpe_class} kind="dpe" />
+                <DpeScale title="Climat (GES)" value={item.ges_class} kind="ges" />
               </div>
-            )}
+            </div>
 
             <p className="mt-8 text-xs text-stone-400">
               Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}
+              {item.fees_text ? <span className="block mt-1">{item.fees_text}</span> : null}
             </p>
           </div>
         </div>
