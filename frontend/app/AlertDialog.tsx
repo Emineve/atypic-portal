@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Bell, X, Check } from 'lucide-react';
+import { Bell, X, Check, MapPin } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
 
 // Passer à true quand l'envoi d'emails sera en place (domaine + service d'envoi)
@@ -84,6 +84,7 @@ export default function AlertDialog({
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
 
   // À chaque ouverture : on repart des critères de la recherche en cours
   useEffect(() => {
@@ -99,6 +100,7 @@ export default function AlertDialog({
     setOutdoor(false);
     setCategory(initial?.category || '');
     setStatus('idle');
+    setGeo('idle');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
@@ -131,8 +133,41 @@ export default function AlertDialog({
   const typed = plain(locInput.trim());
   const quick = suggestions
     .filter((s) => !locations.some((l) => plain(l) === plain(s)))
-    .filter((s) => (typed ? plain(s).includes(typed) : true))
-    .slice(0, 8);
+    .filter((s) => typed !== '' && plain(s).includes(typed))
+    .slice(0, 6);
+
+  // « Autour de moi » : position du navigateur, convertie en ville par l'API adresse de l'État
+  function locate() {
+    if (typeof navigator === 'undefined' || !navigator.geolocation) {
+      setGeo('error');
+      return;
+    }
+    setGeo('loading');
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const res = await fetch(
+            `https://api-adresse.data.gouv.fr/reverse/?lon=${pos.coords.longitude}&lat=${pos.coords.latitude}`
+          );
+          const json = await res.json();
+          const p = json && json.features && json.features[0] ? json.features[0].properties : null;
+          if (!p || !p.city) throw new Error('introuvable');
+          const pc = String(p.postcode || '');
+          const arr = /^75(\d{3})$/.test(pc) ? Number(pc.slice(3)) : 0;
+          const loc = normalizeLocation(String(p.city).toLowerCase() === 'paris' && arr >= 1 && arr <= 20 ? `Paris ${arr}` : String(p.city));
+          if (!loc) throw new Error('introuvable');
+          setLocations((prev) =>
+            prev.length >= 10 || prev.some((l) => plain(l) === plain(loc)) ? prev : [...prev, loc]
+          );
+          setGeo('idle');
+        } catch {
+          setGeo('error');
+        }
+      },
+      (err) => setGeo(err && err.code === 1 ? 'denied' : 'error'),
+      { timeout: 10000, maximumAge: 600000 }
+    );
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -298,6 +333,21 @@ export default function AlertDialog({
                   Ajouter
                 </button>
               </div>
+              <button
+                type="button"
+                onClick={locate}
+                disabled={geo === 'loading'}
+                className="mt-2 inline-flex items-center gap-2 text-sm border border-stone-300 bg-white text-stone-800 px-4 h-11 hover:border-stone-900 transition disabled:opacity-50"
+              >
+                <MapPin className="w-4 h-4" />
+                {geo === 'loading' ? 'Localisation en cours…' : 'Autour de moi'}
+              </button>
+              {geo === 'denied' && (
+                <p className="mt-2 text-xs text-stone-500">Localisation refusée. Autorisez-la dans votre navigateur, ou saisissez une ville.</p>
+              )}
+              {geo === 'error' && (
+                <p className="mt-2 text-xs text-stone-500">Impossible de vous localiser. Saisissez une ville ou un arrondissement.</p>
+              )}
               {quick.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-2">
                   {quick.map((s) => (
