@@ -230,3 +230,346 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               className="inline-flex items-center gap-1.5 text-stone-900 hover:text-stone-600 transition"
             >
               <Bell className="w-4 h-4" />
+              <span className="hidden sm:inline">Créer une alerte</span>
+              <span className="sm:hidden">Alerte</span>
+            </button>
+            <button
+              onClick={() => setOnlyFavs((v) => !v)}
+              className={`inline-flex items-center gap-1.5 transition ${onlyFavs ? 'text-stone-900' : 'text-stone-500 hover:text-stone-900'}`}
+              aria-pressed={onlyFavs}
+            >
+              <Heart className={`w-4 h-4 ${onlyFavs ? 'fill-current' : ''}`} />
+              Mes favoris{favorites.length > 0 ? ` (${favorites.length})` : ''}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <header className="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-8 md:pb-12 text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-100 border border-stone-200 text-stone-600 text-xs tracking-wider uppercase mb-6">
+          <Sparkles className="w-3.5 h-3.5" />
+          Sélection éditoriale · Lieux singuliers.
+        </div>
+                <HeroTitle />
+        <p className="mt-5 text-stone-500 max-w-2xl mx-auto font-light text-base md:text-lg">
+          Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : les annonces des agences les plus prestigieuses, rassemblées sur un seul site.
+        </p>
+      </header>
+
+      <section className="max-w-7xl mx-auto px-6 pb-8">
+        <div className="max-w-3xl mx-auto flex gap-2">
+          <div className="relative flex-1">
+            <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Ville, arrondissement, mot-clé…"
+              className="w-full h-14 pl-12 pr-4 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
+              aria-label="Rechercher un lieu"
+            />
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowFilters(true)}
+            className="h-14 px-4 sm:px-5 border border-stone-300 bg-white text-xs uppercase tracking-wider inline-flex items-center gap-2 hover:border-stone-900 transition"
+            aria-haspopup="dialog"
+          >
+            <SlidersHorizontal className="w-4 h-4" />
+            <span>Filtres{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
+          </button>
+        </div>
+
+        <div className="mt-5 -mx-6 px-6 flex gap-2 overflow-x-auto md:flex-wrap md:justify-center md:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setSelectedCategory(cat)}
+              aria-pressed={selectedCategory === cat}
+              className={`shrink-0 whitespace-nowrap text-xs uppercase tracking-wider px-4 py-2.5 border transition ${
+                selectedCategory === cat
+                  ? 'bg-stone-900 text-white border-stone-900'
+                  : 'bg-white text-stone-600 border-stone-200 hover:border-stone-900'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {anythingActive && (
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              onClick={resetAll}
+              className="text-xs uppercase tracking-wider text-stone-500 hover:text-stone-900 transition"
+            >
+              Tout réinitialiser
+            </button>
+          </div>
+        )}
+
+        <div className="max-w-3xl mx-auto mt-6 border border-stone-200 bg-white p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+          <div className="flex items-start gap-4 flex-1">
+            <span className="shrink-0 h-11 w-11 rounded-full bg-stone-900 text-white flex items-center justify-center">
+              <Bell className="w-5 h-5" />
+            </span>
+            <div>
+              <p className="font-serif text-lg text-stone-900 leading-snug">
+                {selectedCategory !== 'Tous les biens'
+                  ? `Recevez chaque nouveauté « ${selectedCategory} » dès sa mise en ligne.`
+                  : "Le lieu de vos rêves n'est peut-être pas encore en ligne."}
+              </p>
+              <p className="mt-1 text-sm text-stone-500">
+                Dites-nous ce que vous cherchez : quartier, surface, budget. Dès qu'un bien correspond, vous êtes parmi les premiers prévenus.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => openAlert('banner')}
+            className="shrink-0 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
+          >
+            Créer mon alerte
+          </button>
+        </div>
+      </section>
+
+      {showFilters && (
+        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Filtres">
+          <div className="absolute inset-0 bg-stone-900/40" onClick={() => setShowFilters(false)} />
+          <div className="absolute right-0 top-0 h-full w-full md:max-w-md bg-white flex flex-col shadow-xl">
+            <div className="flex items-center justify-between px-6 h-16 border-b border-stone-200 shrink-0">
+              <h2 className="font-serif text-xl text-stone-900">Filtres</h2>
+              <button
+                type="button"
+                onClick={() => setShowFilters(false)}
+                aria-label="Fermer les filtres"
+                className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8">
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-stone-500">Budget (€)</p>
+                <div className="mt-2 grid grid-cols-2 gap-3">
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    min="0"
+                    step="50000"
+                    placeholder="Minimum"
+                    value={priceMin}
+                    onChange={(e) => setPriceMin(e.target.value)}
+                    className="h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
+                    aria-label="Prix minimum"
+                  />
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    min="0"
+                    step="50000"
+                    placeholder="Maximum"
+                    value={priceMax}
+                    onChange={(e) => setPriceMax(e.target.value)}
+                    className="h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
+                    aria-label="Prix maximum"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-stone-500">Surface minimum (m²)</p>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  min="0"
+                  step="10"
+                  placeholder="Indifférent"
+                  value={surfaceMin}
+                  onChange={(e) => setSurfaceMin(e.target.value)}
+                  className="mt-2 w-full h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
+                  aria-label="Surface minimum"
+                />
+              </div>
+
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-stone-500">Pièces</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {[
+                    ['', 'Indifférent'],
+                    ['1', '1+'],
+                    ['2', '2+'],
+                    ['3', '3+'],
+                    ['4', '4+'],
+                    ['5', '5+'],
+                  ].map(([value, label]) => (
+                    <button
+                      key={label}
+                      type="button"
+                      onClick={() => setRoomsMin(value)}
+                      aria-pressed={roomsMin === value}
+                      className={`h-11 px-4 text-xs uppercase tracking-wider border transition ${
+                        roomsMin === value
+                          ? 'bg-stone-900 text-white border-stone-900'
+                          : 'bg-white text-stone-700 border-stone-300 hover:border-stone-900'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-[10px] uppercase tracking-widest text-stone-500" htmlFor="f-sort">Trier par</label>
+                <select
+                  id="f-sort"
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="mt-2 w-full h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
+                >
+                  {SORTS.map((o) => (
+                    <option key={o.value} value={o.value}>{o.label}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="border-t border-stone-200 p-4 flex gap-3 shrink-0">
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="h-12 px-4 text-xs uppercase tracking-wider text-stone-600 hover:text-stone-900"
+              >
+                Effacer
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowFilters(false)}
+                className="flex-1 h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+              >
+                Voir {visible.length} {visible.length > 1 ? 'lieux' : 'lieu'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <main className="max-w-7xl mx-auto px-6 pb-24">
+        {!loading && !errorMessage && (
+          <div className="flex items-center justify-between mb-6">
+            <p className="font-serif text-lg text-stone-700">
+              {visible.length} {visible.length > 1 ? 'lieux singuliers' : 'lieu singulier'}
+            </p>
+            <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
+              Trier par
+              <select value={sort} onChange={(e) => setSort(e.target.value)} className={input}>
+                {SORTS.map((s) => (
+                  <option key={s.value} value={s.value}>{s.label}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+        )}
+
+        {loading ? (
+          <div className="text-center py-20 text-stone-400 font-serif">Chargement des lieux remarquables...</div>
+        ) : errorMessage ? (
+          <div className="text-center py-20 max-w-xl mx-auto">
+            <p className="font-serif text-stone-700">Impossible de charger les biens pour le moment.</p>
+            <p className="mt-3 text-xs text-stone-400 font-mono break-words">{errorMessage}</p>
+          </div>
+        ) : visible.length === 0 ? (
+          <div className="text-center py-20 text-stone-400 font-serif">
+            {onlyFavs && favorites.length === 0
+              ? "Vous n'avez pas encore de favori. Touchez le cœur d'une annonce pour l'ajouter."
+              : 'Aucun lieu ne correspond à ces critères.'}
+            {!(onlyFavs && favorites.length === 0) && (
+              <div className="mt-6">
+                <button
+                  type="button"
+                  onClick={() => openAlert('empty')}
+                  className="bg-stone-900 text-white font-sans text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
+                >
+                  Être prévenu quand un bien correspond
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+            {visible.map((item) => {
+              const fav = favorites.includes(item.id);
+              const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
+              return (
+                <article key={item.id} className="group relative">
+                  <a href={`/biens/${item.id}`} className="block" aria-label={item.title}>
+                    <div className="relative aspect-[5/4] w-full bg-stone-100 overflow-hidden">
+                      <img
+                        src={item.cover_image_url}
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute top-3 left-3 bg-white/90 text-stone-900 text-[10px] uppercase tracking-widest px-2.5 py-1">
+                        {item.atypic_category}
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <p className="text-[11px] uppercase tracking-widest text-stone-500">
+                        {item.city}
+                        {item.surface_sqm ? ` · ${item.surface_sqm} m²` : ''}
+                        {isNew(item.first_seen_at) ? ' · Nouveauté' : ''}
+                      </p>
+                      <h2 className="mt-1.5 font-serif text-xl leading-snug text-stone-900 line-clamp-2 group-hover:underline underline-offset-4 decoration-stone-300">
+                        {item.title}
+                      </h2>
+                      <p className="mt-2 font-serif text-lg text-stone-900">{price}</p>
+                      <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}</p>
+                    </div>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => toggleFavorite(item.id)}
+                    aria-label={fav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                    aria-pressed={fav}
+                    className="absolute top-3 right-3 z-10 h-11 w-11 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-sm transition"
+                  >
+                    <Heart className={`w-5 h-5 ${fav ? 'fill-red-600 text-red-600' : 'text-stone-700'}`} />
+                  </button>
+                </article>
+              );
+            })}
+          </div>
+        )}
+      </main>
+
+      <footer className="border-t border-stone-200 bg-white">
+        <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
+        <div className="max-w-3xl mx-auto px-6 py-12 text-center">
+          <h2 className="font-serif text-2xl text-stone-900">Soyez le premier informé</h2>
+          <p className="mt-2 text-sm text-stone-500">Recevez en avant-première les nouveaux biens atypiques mis en vente par les agences les plus prestigieuses.</p>
+          <div className="mt-6 text-left max-w-xl mx-auto">
+            <AlertBox kind="newsletter" />
+          </div>
+        </div>
+      </footer>
+
+      <AlertDialog
+        open={alertOpen}
+        onClose={() => setAlertOpen(false)}
+        source={alertSource}
+        suggestions={citySuggestions}
+        initial={{
+          category: selectedCategory !== 'Tous les biens' ? selectedCategory : '',
+          priceMax,
+          surfaceMin,
+        }}
+      />
+    </div>
+  );
+}
