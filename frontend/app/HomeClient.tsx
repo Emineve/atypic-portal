@@ -8,6 +8,8 @@ import FooterLinks from './FooterLinks';
 import Tracker from './Tracker';
 import HeroTitle from './HeroTitle';
 import { DpeChip } from './DpeBadge';
+import FilterPanel from './FilterPanel';
+import { Filters, EMPTY_FILTERS, passesFilters, countActive } from './filters';
 import { trackEvent } from '../lib/track';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
@@ -32,6 +34,8 @@ export interface Listing {
   curation_score: number | null;
   first_seen_at: string | null;
   dpe_class: string | null;
+  features: string[] | null;
+  bedrooms: number | null;
   ges_class: string | null;
   cover_image_url: string;
 }
@@ -68,16 +72,12 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   const loading = false;
   const errorMessage = null as string | null;
 
-  const [selectedCategory, setSelectedCategory] = useState("Tous les biens");
+  const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('selection');
   const [showFilters, setShowFilters] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertSource, setAlertSource] = useState('banner');
-  const [priceMin, setPriceMin] = useState('');
-  const [priceMax, setPriceMax] = useState('');
-  const [surfaceMin, setSurfaceMin] = useState('');
-  const [roomsMin, setRoomsMin] = useState('');
 
   const [favorites, setFavorites] = useState<string[]>([]);
   const [onlyFavs, setOnlyFavs] = useState(false);
@@ -123,13 +123,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   }
 
   function resetAll() {
-    setSelectedCategory("Tous les biens");
+    setFilters(EMPTY_FILTERS);
     setQuery('');
     setSort('selection');
-    setPriceMin('');
-    setPriceMax('');
-    setSurfaceMin('');
-    setRoomsMin('');
     setOnlyFavs(false);
   }
 
@@ -150,13 +146,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
   const visible = useMemo(() => {
     const q = normalize(query.trim());
-    const pMin = priceMin ? Number(priceMin) : null;
-    const pMax = priceMax ? Number(priceMax) : null;
-    const sMin = surfaceMin ? Number(surfaceMin) : null;
-    const rMin = roomsMin ? Number(roomsMin) : null;
 
     const filtered = listings.filter((item) => {
-      if (selectedCategory !== "Tous les biens" && item.atypic_category !== selectedCategory) return false;
+      if (!passesFilters(item, filters)) return false;
       if (onlyFavs && !favorites.includes(item.id)) return false;
       if (q) {
         const haystack = normalize(
@@ -166,11 +158,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         );
         if (!haystack.includes(q)) return false;
       }
-      const price = Number(item.price);
-      if (pMin !== null && price < pMin) return false;
-      if (pMax !== null && price > pMax) return false;
-      if (sMin !== null && (item.surface_sqm === null || Number(item.surface_sqm) < sMin)) return false;
-      if (rMin !== null && (item.rooms === null || Number(item.rooms) < rMin)) return false;
       return true;
     });
 
@@ -191,17 +178,14 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         }
       }
     });
-  }, [listings, selectedCategory, onlyFavs, favorites, query, priceMin, priceMax, surfaceMin, roomsMin, sort]);
+  }, [listings, filters, onlyFavs, favorites, query, sort]);
 
-  const activeFilters = [priceMin, priceMax, surfaceMin, roomsMin].filter(Boolean).length;
-  const anythingActive =
-    activeFilters > 0 || query.trim() !== '' || selectedCategory !== 'Tous les biens' || onlyFavs || sort !== 'selection';
+  const activeFilters = countActive(filters);
+  const selectedCategory = filters.types.length === 1 ? filters.types[0] : 'Tous les biens';
+  const anythingActive = activeFilters > 0 || query.trim() !== '' || onlyFavs || sort !== 'selection';
 
   function resetFilters() {
-    setPriceMin('');
-    setPriceMax('');
-    setSurfaceMin('');
-    setRoomsMin('');
+    setFilters(EMPTY_FILTERS);
   }
 
   const input = 'border border-stone-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-stone-900';
@@ -288,10 +272,10 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <button
               key={cat}
               type="button"
-              onClick={() => setSelectedCategory(cat)}
-              aria-pressed={selectedCategory === cat}
+              onClick={() => setFilters({ ...filters, types: cat === 'Tous les biens' ? [] : [cat] })}
+              aria-pressed={cat === 'Tous les biens' ? filters.types.length === 0 : filters.types.includes(cat)}
               className={`shrink-0 whitespace-nowrap text-xs uppercase tracking-wider px-4 py-2.5 border transition ${
-                selectedCategory === cat
+                (cat === 'Tous les biens' ? filters.types.length === 0 : filters.types.includes(cat))
                   ? 'bg-stone-900 text-white border-stone-900'
                   : 'bg-white text-stone-600 border-stone-200 hover:border-stone-900'
               }`}
@@ -355,79 +339,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8">
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-stone-500">Budget (€)</p>
-                <div className="mt-2 grid grid-cols-2 gap-3">
-                  <input
-                    type="number"
-                    inputMode="numeric"
-                    min="0"
-                    step="50000"
-                    placeholder="Minimum"
-                    value={priceMin}
-                    onChange={(e) => setPriceMin(e.target.value)}
-                    className="h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
-                    aria-label="Prix minimum"
-                  />
-                  <input
-                    type="number"
-                    inputMode="numeric"
-                    min="0"
-                    step="50000"
-                    placeholder="Maximum"
-                    value={priceMax}
-                    onChange={(e) => setPriceMax(e.target.value)}
-                    className="h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
-                    aria-label="Prix maximum"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-stone-500">Surface minimum (m²)</p>
-                <input
-                  type="number"
-                  inputMode="numeric"
-                  min="0"
-                  step="10"
-                  placeholder="Indifférent"
-                  value={surfaceMin}
-                  onChange={(e) => setSurfaceMin(e.target.value)}
-                  className="mt-2 w-full h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
-                  aria-label="Surface minimum"
-                />
-              </div>
-
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-stone-500">Pièces</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {[
-                    ['', 'Indifférent'],
-                    ['1', '1+'],
-                    ['2', '2+'],
-                    ['3', '3+'],
-                    ['4', '4+'],
-                    ['5', '5+'],
-                  ].map(([value, label]) => (
-                    <button
-                      key={label}
-                      type="button"
-                      onClick={() => setRoomsMin(value)}
-                      aria-pressed={roomsMin === value}
-                      className={`h-11 px-4 text-xs uppercase tracking-wider border transition ${
-                        roomsMin === value
-                          ? 'bg-stone-900 text-white border-stone-900'
-                          : 'bg-white text-stone-700 border-stone-300 hover:border-stone-900'
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
+            <div className="flex-1 overflow-y-auto">
+              <FilterPanel value={filters} onChange={setFilters} mode="search" padX="px-6" />
+              <div className="px-6 py-6">
                 <label className="text-[10px] uppercase tracking-widest text-stone-500" htmlFor="f-sort">Trier par</label>
                 <select
                   id="f-sort"
@@ -446,9 +360,19 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <button
                 type="button"
                 onClick={resetFilters}
-                className="h-12 px-4 text-xs uppercase tracking-wider text-stone-600 hover:text-stone-900"
+                className="h-12 px-3 text-xs uppercase tracking-wider text-stone-600 hover:text-stone-900"
               >
                 Effacer
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowFilters(false);
+                  openAlert('filters');
+                }}
+                className="h-12 px-4 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition inline-flex items-center gap-2"
+              >
+                <Bell className="w-4 h-4" /> Alerte
               </button>
               <button
                 type="button"
@@ -572,11 +496,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         onClose={() => setAlertOpen(false)}
         source={alertSource}
         suggestions={citySuggestions}
-        initial={{
-          category: selectedCategory !== 'Tous les biens' ? selectedCategory : '',
-          priceMax,
-          surfaceMin,
-        }}
+        initial={{ filters }}
       />
     </div>
   );
