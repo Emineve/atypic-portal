@@ -9,6 +9,7 @@ import MortgageEstimate from './MortgageEstimate';
 import ReportButton from './ReportButton';
 import Gallery from './Gallery';
 import StickyContact from './StickyContact';
+import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
 
 // Page rendue à la demande : toujours à jour avec la base
@@ -158,6 +159,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             </p>
             <h1 className="mt-2 font-serif text-3xl md:text-4xl leading-tight text-stone-900">{item.title}</h1>
             <p className="mt-4 font-serif text-3xl text-stone-900">{price}</p>
+                        <ShareButtons url={`${SITE_URL}/biens/${item.id}`} title={item.title} />
             {item.fees_text && <p className="mt-1 text-xs text-stone-500">{item.fees_text}</p>}
 
             {facts.length > 0 && (
