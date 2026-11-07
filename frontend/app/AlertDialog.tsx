@@ -13,15 +13,6 @@ export interface AlertInitial {
   surfaceMin?: string;
 }
 
-const BUDGETS: [number, string][] = [
-  [500000, '500 k€'],
-  [750000, '750 k€'],
-  [1000000, '1 M€'],
-  [1500000, '1,5 M€'],
-  [2000000, '2 M€'],
-  [3000000, '3 M€'],
-];
-
 const BEDROOMS: [number | null, string][] = [
   [null, 'Peu importe'],
   [1, '1+'],
@@ -420,22 +411,6 @@ export default function AlertDialog({
                 onChange={(e) => setBudgetMax(e.target.value)}
                 className={`${field} mt-2`}
               />
-              <div className="mt-2 flex flex-wrap gap-2">
-                {BUDGETS.map(([value, text]) => (
-                  <button
-                    key={value}
-                    type="button"
-                    onClick={() => setBudgetMax(String(value))}
-                    className={`text-xs px-3 py-1.5 border transition ${
-                      toNum(budgetMax) === value
-                        ? 'bg-stone-900 text-white border-stone-900'
-                        : 'bg-white text-stone-600 border-stone-300 hover:border-stone-900'
-                    }`}
-                  >
-                    {text}
-                  </button>
-                ))}
-              </div>
             </div>
 
             <div>
