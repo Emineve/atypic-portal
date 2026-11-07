@@ -7,6 +7,7 @@ import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
 import Tracker from './Tracker';
 import HeroTitle from './HeroTitle';
+import { DpeChip } from './DpeBadge';
 import { trackEvent } from '../lib/track';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
@@ -30,6 +31,8 @@ export interface Listing {
   atypic_tags: string[] | null;
   curation_score: number | null;
   first_seen_at: string | null;
+  dpe_class: string | null;
+  ges_class: string | null;
   cover_image_url: string;
 }
 
@@ -518,6 +521,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                       <div className="absolute top-3 left-3 bg-white/90 text-stone-900 text-[10px] uppercase tracking-widest px-2.5 py-1">
                         {item.atypic_category}
                       </div>
+                      {item.dpe_class && (
+                        <div className="absolute bottom-3 left-3">
+                          <DpeChip value={item.dpe_class} />
+                        </div>
+                      )}
                     </div>
                     <div className="pt-4">
                       <p className="text-[11px] uppercase tracking-widest text-stone-500">
