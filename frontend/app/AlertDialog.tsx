@@ -3,34 +3,19 @@
 import { useEffect, useState } from 'react';
 import { Bell, X, Check, MapPin } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
+import FilterPanel from './FilterPanel';
+import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
 
 // Passer à true quand l'envoi d'emails sera en place (domaine + service d'envoi)
 const ALERT_EMAILS_LIVE = false;
 
 export interface AlertInitial {
+  filters?: Filters;
+  // anciens champs, gardés pour rester compatible avec l'ancienne page d'accueil
   category?: string;
   priceMax?: string;
   surfaceMin?: string;
 }
-
-// Types de bien proposés (ceux qui existent dans la base aujourd'hui)
-const TYPES = ['Loft & Atelier', "Atelier d'artiste", 'Péniche', 'Rooftop & Vue', 'Biens de caractère'];
-
-// Critères : même liste pour « Indispensable » et « Petits plus »
-const FEATURES: [string, string][] = [
-  ['terrasse', 'Balcon / terrasse'],
-  ['jardin', 'Jardin / cour'],
-  ['piscine', 'Piscine'],
-  ['dernier-etage', 'Dernier étage'],
-  ['plain-pied', 'Plain-pied'],
-  ['vue', 'Vue dégagée'],
-  ['ascenseur', 'Ascenseur'],
-  ['gardien', 'Gardien'],
-  ['parking', 'Parking / garage'],
-  ['cave', 'Cave'],
-];
-
-const BEDROOMS = [1, 2, 3, 4, 5];
 
 interface Place {
   label: string; // ce qu'on affiche : « 92200 Neuilly-sur-Seine »
@@ -91,36 +76,6 @@ function Step({
   );
 }
 
-function Chip({
-  on,
-  disabled,
-  onClick,
-  children,
-}: {
-  on: boolean;
-  disabled?: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      aria-pressed={on}
-      disabled={disabled}
-      onClick={onClick}
-      className={`h-10 px-4 text-sm border transition ${
-        on
-          ? 'bg-stone-900 border-stone-900 text-white'
-          : disabled
-          ? 'bg-stone-50 border-stone-200 text-stone-300 cursor-not-allowed'
-          : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900 hover:text-stone-900'
-      }`}
-    >
-      {children}
-    </button>
-  );
-}
-
 export default function AlertDialog({
   open,
   onClose,
@@ -137,13 +92,7 @@ export default function AlertDialog({
   const [locations, setLocations] = useState<string[]>([]);
   const [locInput, setLocInput] = useState('');
   const [remote, setRemote] = useState<Place[]>([]);
-  const [types, setTypes] = useState<string[]>([]);
-  const [surfaceMin, setSurfaceMin] = useState('');
-  const [surfaceMax, setSurfaceMax] = useState('');
-  const [bedrooms, setBedrooms] = useState<number | null>(null);
-  const [budgetMax, setBudgetMax] = useState('');
-  const [must, setMust] = useState<string[]>([]);
-  const [nice, setNice] = useState<string[]>([]);
+  const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam
@@ -156,13 +105,16 @@ export default function AlertDialog({
     setLocations([]);
     setLocInput('');
     setRemote([]);
-    setTypes(initial?.category && TYPES.includes(initial.category) ? [initial.category] : []);
-    setSurfaceMin(initial?.surfaceMin || '');
-    setSurfaceMax('');
-    setBedrooms(null);
-    setBudgetMax(initial?.priceMax || '');
-    setMust([]);
-    setNice([]);
+    setFilters(
+      initial?.filters
+        ? { ...initial.filters, nice: [] }
+        : {
+            ...EMPTY_FILTERS,
+            types: initial?.category ? [initial.category] : [],
+            priceMax: initial?.priceMax || '',
+            surfaceMin: initial?.surfaceMin || '',
+          }
+    );
     setStatus('idle');
     setGeo('idle');
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -290,18 +242,6 @@ export default function AlertDialog({
     );
   }
 
-  function toggleType(t: string) {
-    setTypes((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
-  }
-
-  function toggleMust(k: string) {
-    setMust((prev) => (prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]));
-  }
-
-  function toggleNice(k: string) {
-    setNice((prev) => (prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k]));
-  }
-
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (website) {
@@ -317,21 +257,21 @@ export default function AlertDialog({
         p_email: email,
         p_query: null,
         p_category: null,
-        p_price_min: null,
-        p_price_max: toNum(budgetMax),
-        p_surface_min: toNum(surfaceMin),
+        p_price_min: toNum(filters.priceMin),
+        p_price_max: toNum(filters.priceMax),
+        p_surface_min: toNum(filters.surfaceMin),
         p_rooms_min: null,
         p_consent: consent,
         p_locations: finalLocations.length ? finalLocations : null,
-        p_surface_max: toNum(surfaceMax),
-        p_bedrooms_min: bedrooms,
+        p_surface_max: toNum(filters.surfaceMax),
+        p_bedrooms_min: filters.bedrooms,
         p_must_top_floor: false,
         p_must_view: false,
         p_must_outdoor: false,
         p_source: source,
-        p_categories: types.length ? types : null,
-        p_must: must.length ? must : null,
-        p_nice: nice.length ? nice : null,
+        p_categories: filters.types.length ? filters.types : null,
+        p_must: filters.must.length ? filters.must : null,
+        p_nice: filters.nice.length ? filters.nice : null,
       });
       setStatus(!error && data === true ? 'done' : 'error');
     } catch {
@@ -342,19 +282,22 @@ export default function AlertDialog({
   const field =
     'w-full border border-stone-300 bg-white px-4 h-12 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-900 focus:ring-1 focus:ring-stone-900 transition';
 
-  const label = (k: string) => (FEATURES.find((f) => f[0] === k) || [k, k])[1];
-
   const recap: string[] = [];
-  if (types.length) recap.push(types.join(' / '));
+  if (filters.types.length) recap.push(filters.types.join(' / '));
   if (locations.length) recap.push(locations.join(', '));
-  const sMin = toNum(surfaceMin);
-  const sMax = toNum(surfaceMax);
+  const sMin = toNum(filters.surfaceMin);
+  const sMax = toNum(filters.surfaceMax);
   if (sMin !== null && sMax !== null) recap.push(`${sMin} à ${sMax} m²`);
   else if (sMin !== null) recap.push(`à partir de ${sMin} m²`);
   else if (sMax !== null) recap.push(`jusqu'à ${sMax} m²`);
-  if (bedrooms) recap.push(bedrooms >= 5 ? '5+ chambres' : `${bedrooms}+ chambres`);
-  if (toNum(budgetMax) !== null) recap.push(`jusqu'à ${formatEuro(toNum(budgetMax) as number)}`);
-  must.forEach((k) => recap.push(label(k).toLowerCase()));
+  if (filters.bedrooms) recap.push(filters.bedrooms >= 5 ? '5+ chambres' : `${filters.bedrooms}+ chambres`);
+  const pMin = toNum(filters.priceMin);
+  const pMax = toNum(filters.priceMax);
+  if (pMin !== null && pMax !== null) recap.push(`${formatEuro(pMin)} à ${formatEuro(pMax)}`);
+  else if (pMin !== null) recap.push(`à partir de ${formatEuro(pMin)}`);
+  else if (pMax !== null) recap.push(`jusqu'à ${formatEuro(pMax)}`);
+  filters.must.forEach((k) => recap.push(featureLabel(k).toLowerCase()));
+  filters.nice.forEach((k) => recap.push(`+ ${featureLabel(k).toLowerCase()}`));
 
   const recapLine = recap.length ? recap.join(' · ') : 'Tous les nouveaux biens, partout en France';
 
@@ -485,116 +428,12 @@ export default function AlertDialog({
                   )}
                 </Step>
 
-                <Step n="2" title="Quel type de bien ?" hint="Plusieurs possibles. Aucun = tous.">
-                  <div className="flex flex-wrap gap-2">
-                    {TYPES.map((t) => (
-                      <Chip key={t} on={types.includes(t)} onClick={() => toggleType(t)}>
-                        {t}
-                      </Chip>
-                    ))}
-                  </div>
-                </Step>
+              </div>
 
-                <Step n="3" title="Quelle surface ?">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="relative">
-                      <input
-                        type="number"
-                        inputMode="numeric"
-                        min="0"
-                        placeholder="Minimum"
-                        aria-label="Surface minimum en mètres carrés"
-                        value={surfaceMin}
-                        onChange={(e) => setSurfaceMin(e.target.value)}
-                        className={`${field} pr-12`}
-                      />
-                      <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">m²</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        type="number"
-                        inputMode="numeric"
-                        min="0"
-                        placeholder="Maximum"
-                        aria-label="Surface maximum en mètres carrés"
-                        value={surfaceMax}
-                        onChange={(e) => setSurfaceMax(e.target.value)}
-                        className={`${field} pr-12`}
-                      />
-                      <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">m²</span>
-                    </div>
-                  </div>
-                </Step>
+              <FilterPanel value={filters} onChange={setFilters} mode="alert" padX="px-6 md:px-12" />
 
-                <Step n="4" title="Combien de chambres ?" hint="Minimum.">
-                  <div className="flex flex-wrap gap-2" role="group" aria-label="Nombre de chambres minimum">
-                    {BEDROOMS.map((n) => (
-                      <button
-                        key={n}
-                        type="button"
-                        aria-pressed={bedrooms === n}
-                        onClick={() => setBedrooms(bedrooms === n ? null : n)}
-                        className={`h-12 w-12 text-base border transition ${
-                          bedrooms === n
-                            ? 'bg-stone-900 border-stone-900 text-white'
-                            : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
-                        }`}
-                      >
-                        {n === 5 ? '5+' : n}
-                      </button>
-                    ))}
-                  </div>
-                </Step>
-
-                <Step n="5" title="Quel budget maximum ?">
-                  <div className="relative">
-                    <input
-                      id="alert-budget"
-                      type="number"
-                      inputMode="numeric"
-                      min="0"
-                      step="50000"
-                      placeholder="ex. 1 200 000"
-                      aria-label="Budget maximum en euros"
-                      value={budgetMax}
-                      onChange={(e) => setBudgetMax(e.target.value)}
-                      className={`${field} pr-12`}
-                    />
-                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">€</span>
-                  </div>
-                </Step>
-
-                <Step title="Indispensable" hint="Le bien doit l'avoir, sinon pas d'alerte.">
-                  <div className="flex flex-wrap gap-2">
-                    {FEATURES.map(([k, text]) => (
-                      <Chip
-                        key={k}
-                        on={must.includes(k)}
-                        disabled={nice.includes(k)}
-                        onClick={() => toggleMust(k)}
-                      >
-                        {text}
-                      </Chip>
-                    ))}
-                  </div>
-                </Step>
-
-                <Step title="Petits plus" hint="Un bonus si le bien les a, sans être éliminatoire.">
-                  <div className="flex flex-wrap gap-2">
-                    {FEATURES.map(([k, text]) => (
-                      <Chip
-                        key={k}
-                        on={nice.includes(k)}
-                        disabled={must.includes(k)}
-                        onClick={() => toggleNice(k)}
-                      >
-                        {text}
-                      </Chip>
-                    ))}
-                  </div>
-                </Step>
-
-                <div className="border-t border-stone-200 pt-9">
+              <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
+                <div>
                   <Step title="Où vous prévenir ?">
                     <input
                       id="alert-email"
