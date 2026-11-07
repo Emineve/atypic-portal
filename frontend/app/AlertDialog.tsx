@@ -99,4 +99,11 @@ export default function AlertDialog({
     setOutdoor(false);
     setCategory(initial?.category || '');
     setStatus('idle');
-    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
+  // Défilement bloqué derrière la fenêtre, Échap la ferme
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
