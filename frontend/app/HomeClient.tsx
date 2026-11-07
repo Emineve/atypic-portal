@@ -224,7 +224,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           Sélection éditoriale · Lieux singuliers.
         </div>
                 <HeroTitle />
-        </h1>
         <p className="mt-5 text-stone-500 max-w-2xl mx-auto font-light text-base md:text-lg">
           Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : les annonces des agences les plus prestigieuses, rassemblées sur un seul site.
         </p>
