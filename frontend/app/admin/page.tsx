@@ -23,6 +23,14 @@ interface Report {
   listing_title: string | null; agency: string | null; listing_id: string;
 }
 
+interface AlertRow {
+  created_at: string; kind: string; email: string; is_active: boolean; source: string | null;
+  query: string | null; category: string | null; locations: string[] | null;
+  price_min: number | null; price_max: number | null; surface_min: number | null; surface_max: number | null;
+  bedrooms_min: number | null; rooms_min: number | null;
+  must_top_floor: boolean; must_view: boolean; must_outdoor: boolean; matches: number;
+}
+
 interface AgencyReq {
   created_at: string; agency: string; name: string; email: string; phone: string | null; message: string | null;
 }
@@ -37,6 +45,49 @@ const REASONS: Record<string, string> = {
 
 const KEY = 'singulier:admin-token';
 
+function euro(n: number) {
+  return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
+}
+
+function criteria(a: AlertRow): string {
+  const parts: string[] = [];
+  if (a.locations && a.locations.length) parts.push(a.locations.join(', '));
+  if (a.category) parts.push(a.category);
+  if (a.query) parts.push(`« ${a.query} »`);
+  if (a.surface_min !== null && a.surface_max !== null) parts.push(`${a.surface_min} à ${a.surface_max} m²`);
+  else if (a.surface_min !== null) parts.push(`dès ${a.surface_min} m²`);
+  else if (a.surface_max !== null) parts.push(`jusqu'à ${a.surface_max} m²`);
+  if (a.bedrooms_min) parts.push(`${a.bedrooms_min}+ chambres`);
+  if (a.price_max !== null) parts.push(`max ${euro(a.price_max)}`);
+  if (a.must_top_floor) parts.push('dernier étage');
+  if (a.must_view) parts.push('vue dégagée');
+  if (a.must_outdoor) parts.push('extérieur');
+  return parts.length ? parts.join(' · ') : 'Tous les nouveaux biens';
+}
+
+// Protège contre les formules dans Excel (cellules commençant par = + - @)
+function csvCell(v: unknown): string {
+  let t = v === null || v === undefined ? '' : String(v);
+  if (/^[=+\-@]/.test(t)) t = "'" + t;
+  return '"' + t.replace(/"/g, '""') + '"';
+}
+
+function exportAlertsCsv(rows: AlertRow[]) {
+  const head = ['date', 'email', 'type', 'actif', 'lieux', 'categorie', 'surface_min', 'surface_max', 'chambres_min', 'budget_max', 'dernier_etage', 'vue_degagee', 'exterieur', 'biens_correspondants', 'origine'];
+  const lines = rows.map((a) => [
+    a.created_at, a.email, a.kind === 'alert' ? 'alerte' : 'lettre', a.is_active ? 'oui' : 'non',
+    (a.locations || []).join(' | '), a.category, a.surface_min, a.surface_max, a.bedrooms_min, a.price_max,
+    a.must_top_floor ? 'oui' : '', a.must_view ? 'oui' : '', a.must_outdoor ? 'oui' : '', a.matches, a.source,
+  ].map(csvCell).join(','));
+  const blob = new Blob(['\uFEFF' + [head.map(csvCell).join(','), ...lines].join('\n')], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `alertes-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function pct(a: number, b: number) {
   return b > 0 ? `${((a / b) * 100).toFixed(1)} %` : '–';
 }
@@ -49,6 +100,7 @@ export default function AdminPage() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [reports, setReports] = useState<Report[]>([]);
   const [agencyReqs, setAgencyReqs] = useState<AgencyReq[]>([]);
+  const [alertRows, setAlertRows] = useState<AlertRow[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -72,7 +124,9 @@ export default function AdminPage() {
         const l = await sb.rpc('admin_leads', { p_token: token, p_limit: 200 });
         const rp = await sb.rpc('admin_reports', { p_token: token, p_limit: 200 });
         const ar = await sb.rpc('admin_agency_requests', { p_token: token, p_limit: 200 });
+        const al = await sb.rpc('admin_alerts', { p_token: token, p_limit: 1000 });
         if (cancelled) return;
+        setAlertRows((al.data as AlertRow[]) || []);
         setAgencyReqs((ar.data as AgencyReq[]) || []);
         setStats(s.data as Stats);
         setReports((rp.data as Report[]) || []);
@@ -225,6 +279,47 @@ export default function AdminPage() {
                           <td className="p-3">{l.email}{l.phone ? <div className="text-xs text-stone-500">{l.phone}</div> : null}</td>
                           <td className="p-3 text-stone-600">{l.listing_title}<div className="text-xs text-stone-400">{l.agency}</div></td>
                           <td className="p-3 text-stone-600 max-w-sm">{l.message}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+
+            <section>
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="font-serif text-xl">Alertes acheteurs ({alertRows.filter((a) => a.kind === 'alert').length})</h2>
+                {alertRows.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => exportAlertsCsv(alertRows)}
+                    className="text-xs uppercase tracking-wider border border-stone-900 px-4 py-2 hover:bg-stone-900 hover:text-white transition"
+                  >
+                    Exporter en CSV
+                  </button>
+                )}
+              </div>
+              {alertRows.length === 0 ? (
+                <p className="text-sm text-stone-400">Aucune alerte pour le moment.</p>
+              ) : (
+                <div className="overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Email</th><th className="p-3">Recherche</th><th className="p-3">Biens correspondants</th><th className="p-3">Origine</th></tr>
+                    </thead>
+                    <tbody>
+                      {alertRows.map((a, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(a.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">
+                            {a.email}
+                            {a.kind !== 'alert' ? <span className="ml-2 text-[10px] uppercase text-stone-400">lettre</span> : null}
+                            {!a.is_active ? <span className="ml-2 text-[10px] uppercase text-red-700">désinscrit</span> : null}
+                          </td>
+                          <td className="p-3 text-stone-600 max-w-md">{a.kind === 'alert' ? criteria(a) : '–'}</td>
+                          <td className="p-3 text-stone-600">{a.kind === 'alert' ? a.matches : '–'}</td>
+                          <td className="p-3 text-stone-400">{a.source || '–'}</td>
                         </tr>
                       ))}
                     </tbody>
