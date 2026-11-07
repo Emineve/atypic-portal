@@ -29,6 +29,7 @@ interface AlertRow {
   price_min: number | null; price_max: number | null; surface_min: number | null; surface_max: number | null;
   bedrooms_min: number | null; rooms_min: number | null;
   must_top_floor: boolean; must_view: boolean; must_outdoor: boolean; matches: number;
+  categories: string[] | null; must_features: string[] | null; nice_features: string[] | null;
 }
 
 interface AgencyReq {
@@ -53,6 +54,7 @@ function criteria(a: AlertRow): string {
   const parts: string[] = [];
   if (a.locations && a.locations.length) parts.push(a.locations.join(', '));
   if (a.category) parts.push(a.category);
+  if (a.categories && a.categories.length) parts.push(a.categories.join(' / '));
   if (a.query) parts.push(`« ${a.query} »`);
   if (a.surface_min !== null && a.surface_max !== null) parts.push(`${a.surface_min} à ${a.surface_max} m²`);
   else if (a.surface_min !== null) parts.push(`dès ${a.surface_min} m²`);
@@ -62,6 +64,8 @@ function criteria(a: AlertRow): string {
   if (a.must_top_floor) parts.push('dernier étage');
   if (a.must_view) parts.push('vue dégagée');
   if (a.must_outdoor) parts.push('extérieur');
+  if (a.must_features && a.must_features.length) parts.push(`indispensable : ${a.must_features.join(', ')}`);
+  if (a.nice_features && a.nice_features.length) parts.push(`petits plus : ${a.nice_features.join(', ')}`);
   return parts.length ? parts.join(' · ') : 'Tous les nouveaux biens';
 }
 
@@ -73,11 +77,11 @@ function csvCell(v: unknown): string {
 }
 
 function exportAlertsCsv(rows: AlertRow[]) {
-  const head = ['date', 'email', 'type', 'actif', 'lieux', 'categorie', 'surface_min', 'surface_max', 'chambres_min', 'budget_max', 'dernier_etage', 'vue_degagee', 'exterieur', 'biens_correspondants', 'origine'];
+  const head = ['date', 'email', 'type', 'actif', 'lieux', 'categorie', 'surface_min', 'surface_max', 'chambres_min', 'budget_max', 'dernier_etage', 'vue_degagee', 'exterieur', 'indispensables', 'petits_plus', 'biens_correspondants', 'origine'];
   const lines = rows.map((a) => [
     a.created_at, a.email, a.kind === 'alert' ? 'alerte' : 'lettre', a.is_active ? 'oui' : 'non',
-    (a.locations || []).join(' | '), a.category, a.surface_min, a.surface_max, a.bedrooms_min, a.price_max,
-    a.must_top_floor ? 'oui' : '', a.must_view ? 'oui' : '', a.must_outdoor ? 'oui' : '', a.matches, a.source,
+    (a.locations || []).join(' | '), [a.category, ...(a.categories || [])].filter(Boolean).join(' | '), a.surface_min, a.surface_max, a.bedrooms_min, a.price_max,
+    a.must_top_floor ? 'oui' : '', a.must_view ? 'oui' : '', a.must_outdoor ? 'oui' : '', (a.must_features || []).join(' | '), (a.nice_features || []).join(' | '), a.matches, a.source,
   ].map(csvCell).join(','));
   const blob = new Blob(['\uFEFF' + [head.map(csvCell).join(','), ...lines].join('\n')], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
