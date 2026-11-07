@@ -87,7 +87,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   if (item.city) facts.push(['Localisation', [item.city, item.postal_code].filter(Boolean).join(' ')]);
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
-  const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 12);
+  const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 30);
     const related = await getRelated(item);
   const { count: agencyTotal } = await getSupabase()
     .from('listings')
