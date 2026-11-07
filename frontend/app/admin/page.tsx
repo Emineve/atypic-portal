@@ -23,6 +23,10 @@ interface Report {
   listing_title: string | null; agency: string | null; listing_id: string;
 }
 
+interface AgencyReq {
+  created_at: string; agency: string; name: string; email: string; phone: string | null; message: string | null;
+}
+
 const REASONS: Record<string, string> = {
   inexact: 'Information inexacte',
   vendu: 'Bien vendu ou retiré',
@@ -44,6 +48,7 @@ export default function AdminPage() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [leads, setLeads] = useState<Lead[]>([]);
   const [reports, setReports] = useState<Report[]>([]);
+  const [agencyReqs, setAgencyReqs] = useState<AgencyReq[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -66,7 +71,9 @@ export default function AdminPage() {
         if (s.error) throw new Error(s.error.message.includes('forbidden') ? 'Jeton invalide.' : s.error.message);
         const l = await sb.rpc('admin_leads', { p_token: token, p_limit: 200 });
         const rp = await sb.rpc('admin_reports', { p_token: token, p_limit: 200 });
+        const ar = await sb.rpc('admin_agency_requests', { p_token: token, p_limit: 200 });
         if (cancelled) return;
+        setAgencyReqs((ar.data as AgencyReq[]) || []);
         setStats(s.data as Stats);
         setReports((rp.data as Report[]) || []);
         setLeads((l.data as Lead[]) || []);
@@ -218,6 +225,31 @@ export default function AdminPage() {
                           <td className="p-3">{l.email}{l.phone ? <div className="text-xs text-stone-500">{l.phone}</div> : null}</td>
                           <td className="p-3 text-stone-600">{l.listing_title}<div className="text-xs text-stone-400">{l.agency}</div></td>
                           <td className="p-3 text-stone-600 max-w-sm">{l.message}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+
+            <section>
+              <h2 className="font-serif text-xl mb-3">Demandes d&apos;agences</h2>
+              {agencyReqs.length === 0 ? (
+                <p className="text-sm text-stone-400">Aucune demande pour le moment.</p>
+              ) : (
+                <div className="overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Agence</th><th className="p-3">Contact</th><th className="p-3">Message</th></tr>
+                    </thead>
+                    <tbody>
+                      {agencyReqs.map((r, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">{r.agency}</td>
+                          <td className="p-3">{r.name}<div className="text-xs text-stone-500">{r.email}{r.phone ? ` · ${r.phone}` : ''}</div></td>
+                          <td className="p-3 text-stone-600 max-w-sm">{r.message}</td>
                         </tr>
                       ))}
                     </tbody>
