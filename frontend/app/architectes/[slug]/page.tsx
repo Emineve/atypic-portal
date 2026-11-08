@@ -5,7 +5,16 @@ import { getSupabase } from '../../../lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
-type Project = { title: string; category?: string; place?: string; year?: string; image?: string | null };
+type Project = {
+  title: string;
+  category?: string;
+  place?: string;
+  year?: string;
+  surface?: string;
+  note?: string;
+  url?: string;
+  image?: string | null;
+};
 type Architect = {
   slug: string;
   name: string;
@@ -26,10 +35,9 @@ async function getArchitect(slug: string): Promise<Architect | null> {
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const a = await getArchitect(params.slug);
-  if (!a) return { title: 'Architecte introuvable · SINGULIER', robots: { index: false } };
-  const title = `${a.name} · Architecte`;
+  if (!a) return { title: 'Architecte introuvable · Archi Singulier', robots: { index: false } };
   return {
-    title: `${title} · SINGULIER`,
+    title: `${a.name} · Pas à vendre · Archi Singulier`,
     description: a.tagline || `Portrait de ${a.name}`,
     alternates: { canonical: `/architectes/${a.slug}` },
     robots: a.is_demo ? { index: false } : undefined,
@@ -40,17 +48,16 @@ export default async function ArchitectPage({ params }: { params: { slug: string
   const a = await getArchitect(params.slug);
   if (!a) notFound();
   const projects = Array.isArray(a.projects) ? a.projects : [];
-  const categories = Array.from(new Set(projects.map((p) => p.category).filter(Boolean))) as string[];
   const paragraphs = (a.bio || '').split(/\n\s*\n/).filter(Boolean);
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">SINGULIER</Link>
-          <Link href="/architectes" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Archi Singulier</Link>
+          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les architectes
+            Les biens à vendre
           </Link>
         </div>
       </nav>
@@ -62,7 +69,9 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       )}
 
       <header className="max-w-4xl mx-auto px-6 pt-14 pb-10 text-center">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">Architecte{a.city ? ` · ${a.city}` : ''}</p>
+        <p className="text-[10px] uppercase tracking-widest text-stone-400">
+          Pas à vendre · Architecte{a.city ? ` · ${a.city}` : ''}
+        </p>
         <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{a.name}</h1>
         {a.tagline && <p className="mt-4 text-stone-500 font-light text-lg">{a.tagline}</p>}
         {a.website && (
@@ -80,7 +89,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
 
       {paragraphs.length > 0 && (
         <section className="max-w-2xl mx-auto px-6 pb-14 space-y-5 text-stone-700 leading-relaxed">
-          <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Sa démarche</h2>
+          <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Son travail</h2>
           {paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -88,29 +97,55 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       )}
 
       {projects.length > 0 && (
-        <section className="max-w-6xl mx-auto px-6 pb-20">
-          <h2 className="font-serif text-2xl text-stone-900">Réalisations</h2>
-          {categories.length > 0 && <p className="mt-1 text-xs text-stone-400">{categories.join(' · ')}</p>}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
+        <section className="max-w-5xl mx-auto px-6 pb-16">
+          <h2 className="font-serif text-2xl text-stone-900">Ce qu&apos;un volume peut devenir</h2>
+          <div className="mt-10 space-y-16">
             {projects.map((p, i) => (
               <figure key={i}>
-                <div className="aspect-[4/3] bg-stone-200 overflow-hidden">
+                <div className="aspect-[16/10] bg-stone-200 overflow-hidden">
                   {p.image && (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover" loading={i === 0 ? 'eager' : 'lazy'} />
                   )}
                 </div>
-                <figcaption className="mt-3">
-                  <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                    {[p.category, p.place, p.year].filter(Boolean).join(' · ')}
-                  </p>
-                  <p className="mt-1 font-serif text-lg text-stone-900">{p.title}</p>
+                <figcaption className="mt-4 md:flex md:items-start md:justify-between md:gap-10">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-stone-400">
+                      {[p.category, p.place, p.surface, p.year].filter(Boolean).join(' · ')}
+                    </p>
+                    <p className="mt-1 font-serif text-2xl text-stone-900">{p.title}</p>
+                  </div>
+                  <div className="mt-2 md:mt-0 md:max-w-sm md:text-right">
+                    {p.note && <p className="text-sm text-stone-600">{p.note}</p>}
+                    {p.url && (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                      >
+                        Le projet en entier
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
                 </figcaption>
               </figure>
             ))}
           </div>
         </section>
       )}
+
+      <section className="max-w-2xl mx-auto px-6 pb-16 text-center">
+        <p className="font-serif text-xl text-stone-900">Ces intérieurs ne sont pas à vendre.</p>
+        <p className="mt-2 text-stone-500">Les lieux de la collection, eux, le sont.</p>
+        <Link
+          href="/"
+          className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+        >
+          Voir les biens à vendre
+        </Link>
+      </section>
 
       <p className="max-w-2xl mx-auto px-6 pb-16 text-center text-xs text-stone-400">
         Portrait éditorial, non sponsorisé. Textes et photographies : © {a.name}.
