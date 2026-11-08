@@ -211,6 +211,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
 
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium">
+                        <a href="/architectes/valerie-mazerat" className="text-stone-500 hover:text-stone-900 transition">
+              Pas à vendre
+            </a>
             <button
               type="button"
               onClick={() => openAlert('header')}
