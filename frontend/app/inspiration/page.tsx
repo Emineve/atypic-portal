@@ -128,7 +128,7 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
                   />
                 </div>
                 <p className="mt-2 text-sm text-stone-900 group-hover:underline underline-offset-4">
-                  {[t.kind, t.title, t.place].filter(Boolean).join(' · ')}
+                  {[t.title, t.place], t.place].filter(Boolean).join(' · ')}
                 </p>
                 <p className="text-[10px] uppercase tracking-widest text-stone-400">{t.architect}</p>
               </Link>
