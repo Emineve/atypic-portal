@@ -90,7 +90,6 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
 
       <section className="max-w-7xl mx-auto px-6 pb-8">
         <div className="flex items-center gap-2 overflow-x-auto pb-1 md:justify-center">
-          <span className="shrink-0 pr-2 text-[10px] uppercase tracking-widest text-stone-400">Type</span>
           <Link href={href('')} scroll={false} className={chip(!type)}>Tous</Link>
           {kinds.map((k) => (
             <Link key={k} href={href(k)} scroll={false} className={chip(type === k)}>
