@@ -291,7 +291,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                   : "Le lieu de vos rêves n'est peut-être pas encore en ligne."}
               </p>
               <p className="mt-1 text-sm text-stone-500">
-                Dites-nous ce que vous cherchez : quartier, surface, budget. Dès qu'un bien correspond, vous êtes parmi les premiers prévenus.
+                Dites-nous ce que vous cherchez. Dès qu'un bien correspond, vous êtes parmi les premiers prévenus.
               </p>
             </div>
           </div>
