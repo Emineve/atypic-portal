@@ -253,7 +253,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </aside>
       </main>
 
-      <StickyContact price={price} />
+            <StickyContact price={price} phone={item.contact_phone} listingId={item.id} />
 
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">
