@@ -2,12 +2,16 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
+import { slugify } from '../../../lib/catalog';
 
 export const dynamic = 'force-dynamic';
 
 type Project = {
   title: string;
   category?: string;
+  kind?: string;
+  sale?: string;
+  images?: string[];
   place?: string;
   year?: string;
   surface?: string;
@@ -37,7 +41,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const a = await getArchitect(params.slug);
   if (!a) return { title: 'Architecte introuvable · Archi Singulier', robots: { index: false } };
   return {
-    title: `${a.name} · Pas à vendre · Archi Singulier`,
+    title: `${a.name} · Inspiration · Archi Singulier`,
     description: a.tagline || `Portrait de ${a.name}`,
     alternates: { canonical: `/architectes/${a.slug}` },
     robots: a.is_demo ? { index: false } : undefined,
@@ -55,9 +59,9 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Archi Singulier</Link>
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
+          <Link href="/inspiration" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
-            Les biens à vendre
+            Inspiration
           </Link>
         </div>
       </nav>
@@ -70,7 +74,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
 
       <header className="max-w-4xl mx-auto px-6 pt-14 pb-10 text-center">
         <p className="text-[10px] uppercase tracking-widest text-stone-400">
-          Pas à vendre · Architecte{a.city ? ` · ${a.city}` : ''}
+          Inspiration · Architecte{a.city ? ` · ${a.city}` : ''}
         </p>
         <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{a.name}</h1>
         {a.tagline && <p className="mt-4 text-stone-500 font-light text-lg">{a.tagline}</p>}
@@ -111,7 +115,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
                 <figcaption className="mt-4 md:flex md:items-start md:justify-between md:gap-10">
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                      {[p.category, p.place, p.surface, p.year].filter(Boolean).join(' · ')}
+                      {[p.kind || p.category, p.place, p.surface, p.year].filter(Boolean).join(' · ')}
                     </p>
                     <p className="mt-1 font-serif text-2xl text-stone-900">{p.title}</p>
                   </div>
@@ -130,6 +134,25 @@ export default async function ArchitectPage({ params }: { params: { slug: string
                     )}
                   </div>
                 </figcaption>
+                {Array.isArray(p.images) && p.images.length > 0 && (
+                  <div className="mt-5 grid grid-cols-3 gap-3">
+                    {p.images.slice(0, 3).map((src) => (
+                      <div key={src} className="aspect-[4/5] bg-stone-200 overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={src} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {p.sale && (
+                  <Link
+                    href={`/categorie/${slugify(p.sale)}`}
+                    className="mt-4 inline-flex items-center gap-1 text-xs uppercase tracking-wider text-stone-500 hover:text-stone-900 transition"
+                  >
+                    Voir les biens « {p.sale} » à vendre
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                )}
               </figure>
             ))}
           </div>
@@ -148,7 +171,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       </section>
 
       <p className="max-w-2xl mx-auto px-6 pb-16 text-center text-xs text-stone-400">
-        Portrait éditorial, non sponsorisé. Textes et photographies : © {a.name}.
+        Portrait éditorial, non sponsorisé. Photographies : © {a.name} et ses photographes.
       </p>
     </div>
   );
