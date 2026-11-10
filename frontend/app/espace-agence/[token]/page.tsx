@@ -1,3 +1,4 @@
+import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getSupabase } from '../../../lib/supabase';
@@ -80,7 +81,7 @@ export default async function EspaceAgence({
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <div className="border-b border-stone-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Loftissime</Link>
+          <Logo />
           <span className="text-xs uppercase tracking-wider text-stone-500">Espace agence</span>
         </div>
       </div>

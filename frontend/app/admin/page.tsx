@@ -1,5 +1,6 @@
 'use client';
 
+import Logo from '../Logo';
 import { useEffect, useState } from 'react';
 import { getSupabase } from '../../lib/supabase';
 
@@ -184,7 +185,10 @@ export default function AdminPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <header className="border-b border-stone-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="font-serif text-xl font-bold tracking-widest uppercase">Loftissime · Admin</span>
+          <span className="flex items-baseline gap-2">
+            <Logo />
+            <span className="text-xs uppercase tracking-wider text-stone-500">Admin</span>
+          </span>
           <div className="flex items-center gap-3 text-xs uppercase tracking-wider">
             <select value={days} onChange={(e) => setDays(Number(e.target.value))} className={field}>
               <option value={7}>7 jours</option>

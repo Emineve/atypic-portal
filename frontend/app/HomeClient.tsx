@@ -1,5 +1,6 @@
 'use client';
 
+import Logo from './Logo';
 import { useState, useEffect, useMemo } from 'react';
 import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell } from 'lucide-react';
 import AlertBox from './AlertBox';
@@ -202,9 +203,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-baseline gap-3">
-            <span className="font-serif text-2xl font-bold tracking-widest uppercase">
-            Loftissime
-            </span>
+            <Logo />
           </div>
 
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium">

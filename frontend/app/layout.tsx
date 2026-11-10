@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import { SITE_URL, SITE_NAME } from '../lib/site';
+
+// Police du logo, chargée une fois pour tout le site
+const logoFont = Poppins({ subsets: ['latin'], weight: ['600'], variable: '--font-logo', display: 'swap' });
 
 const TITLE = 'Loftissime · Biens atypiques et singuliers à vendre en France';
 const DESCRIPTION =
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={logoFont.variable}>
       <body className="antialiased">{children}</body>
     </html>
   );

@@ -31,7 +31,6 @@ const TYPE_PATTERNS: [string, RegExp][] = [
   ["Atelier d'artiste", /\batelier\b/],
   ['Penthouse', /penthouse|rooftop|toit-terrasse/],
   ['Duplex / Triplex', /duplex|triplex|souplex/],
-  ['Haussmannien', /haussmann/],
   ['Hôtel particulier', /hôtel particulier/],
   ["Bien d'architecte", /architecte/],
   ['Maison & villa', /\bmaison\b|\bvilla\b/],
