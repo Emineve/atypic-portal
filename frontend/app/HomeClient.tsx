@@ -420,17 +420,16 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                       <div className="absolute top-3 left-3 bg-white/90 text-stone-900 text-[10px] uppercase tracking-widest px-2.5 py-1">
                         {item.atypic_category}
                       </div>
-                      {item.dpe_class && (
-                        <div className="absolute bottom-3 left-3">
-                          <DpeChip value={item.dpe_class} />
-                        </div>
-                      )}
+                     
                     </div>
                     <div className="pt-4">
-                      <p className="text-[11px] uppercase tracking-widest text-stone-500">
-                        {item.city}
-                        {item.surface_sqm ? ` · ${item.surface_sqm} m²` : ''}
-                        {isNew(item.first_seen_at) ? ' · Nouveauté' : ''}
+                                          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] uppercase tracking-widest text-stone-500">
+                        <span>
+                          {item.city}
+                          {item.surface_sqm ? ` · ${item.surface_sqm} m²` : ''}
+                        </span>
+                        {item.dpe_class && <DpeChip value={item.dpe_class} />}
+                        {isNew(item.first_seen_at) && <span>· Nouveauté</span>}
                       </p>
                       <h2 className="mt-1.5 font-serif text-xl leading-snug text-stone-900 line-clamp-2 group-hover:underline underline-offset-4 decoration-stone-300">
                         {item.title}
