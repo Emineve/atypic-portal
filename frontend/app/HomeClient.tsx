@@ -205,9 +205,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <span className="font-serif text-2xl font-bold tracking-widest uppercase">
             Demeures Singulières
             </span>
-            <span className="hidden sm:inline text-[10px] tracking-widest text-stone-400 uppercase font-mono">
-              Curateur Atypique · France
-            </span>
           </div>
 
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium">
