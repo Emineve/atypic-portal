@@ -211,9 +211,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
 
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium">
-                                    <a href="/architectes/valerie-mazerat" className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition">
+                                    <a href="/inspiration" className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition">
               <Sparkles className="w-4 h-4" />
-              Pas à vendre
+              Inspiration
             </a>
             <button
               type="button"
