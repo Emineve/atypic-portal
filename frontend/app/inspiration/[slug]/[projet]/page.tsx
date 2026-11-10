@@ -36,7 +36,7 @@ async function getProject(slug: string, projet: string): Promise<{ a: Architect;
 
 export async function generateMetadata({ params }: { params: { slug: string; projet: string } }) {
   const found = await getProject(params.slug, params.projet);
-  if (!found) return { title: 'Projet introuvable · Archi Singulier', robots: { index: false } };
+  if (!found) return { title: 'Projet introuvable · Demeures Singulières', robots: { index: false } };
   const { a, p } = found;
   return {
     title: `${p.title} · ${a.name} · Inspiration`,
@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Archi Singulier</Link>
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Demeures Singulières</Link>
           <Link href="/inspiration" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
             Inspiration
