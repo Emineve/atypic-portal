@@ -32,6 +32,12 @@ export function getSupabase(): SupabaseClient {
     );
   }
 
-  client = createClient(url, key);
+  // Toujours lire les données fraîches : sans cela, Next.js garde en mémoire
+  // les anciennes réponses de la base et les pages affichent des données périmées.
+  client = createClient(url, key, {
+    global: {
+      fetch: (input: RequestInfo | URL, init?: RequestInit) => fetch(input, { ...init, cache: 'no-store' }),
+    },
+  });
   return client;
 }
