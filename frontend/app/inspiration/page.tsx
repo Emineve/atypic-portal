@@ -6,7 +6,7 @@ import { slugify } from '../../lib/catalog';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Inspiration · Archi Singulier',
+  title: 'Inspiration · Demeures Singulières',
   description: 'Des intérieurs qui ne sont pas à vendre, signés par des architectes à la vision singulière.',
   alternates: { canonical: '/inspiration' },
 };
@@ -70,7 +70,7 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Archi Singulier</Link>
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Demeures Singulières</Link>
           <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
             Les biens à vendre
@@ -128,7 +128,7 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
                   />
                 </div>
                 <p className="mt-2 text-sm text-stone-900 group-hover:underline underline-offset-4">
-                  {[t.title, t.place], t.place].filter(Boolean).join(' · ')}
+                                    {[t.title, t.place].filter(Boolean).join(' · ')}
                 </p>
                 <p className="text-[10px] uppercase tracking-widest text-stone-400">{t.architect}</p>
               </Link>
