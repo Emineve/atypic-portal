@@ -236,7 +236,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       <header className="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-8 md:pb-12 text-center">
                 <HeroTitle />
         <p className="mt-5 text-stone-500 max-w-2xl mx-auto font-light text-base md:text-lg">
-          Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : les annonces des agences les plus prestigieuses, rassemblées sur un seul site.
+          Lofts, ateliers d'artistes, rooftops et biens de caractère : les annonces des agences les plus prestigieuses, rassemblées sur un seul site.
         </p>
       </header>
 
