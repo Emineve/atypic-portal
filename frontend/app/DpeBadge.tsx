@@ -17,13 +17,13 @@ export function DpeChip({ value }: { value: string | null | undefined }) {
   if (!c) return null;
   const i = LETTERS.indexOf(c);
   return (
-    <span
-      className="inline-flex items-stretch text-[10px] font-semibold uppercase tracking-wider shadow-sm"
+       <span
+      className="inline-flex items-stretch text-[9px] font-semibold uppercase tracking-wider leading-none"
       title={`Classe énergie (DPE) : ${c}`}
     >
-      <span className="bg-white/95 text-stone-800 px-1.5 py-1">DPE</span>
+      <span className="bg-white text-stone-600 px-1 py-[3px]">DPE</span>
       <span
-        className="px-2 py-1"
+        className="px-1.5 py-[3px]"
         style={{ backgroundColor: DPE_COLORS[i], color: DARK_TEXT[i] ? '#1c1917' : '#ffffff' }}
       >
         {c}
