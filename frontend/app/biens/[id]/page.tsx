@@ -236,7 +236,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             </Link>
           </div>
                     <div id="contact" className="scroll-mt-20">
-                  <StickyContact price={price} phone={item.contact_phone} listingId={item.id} />
+                              <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} />
           </div>
           <MortgageEstimate price={Number(item.price)} />
           <Tracker listingId={item.id} />
