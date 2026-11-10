@@ -266,25 +266,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <span>Filtres{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
           </button>
         </div>
-
-        <div className="mt-5 -mx-6 px-6 flex gap-2 overflow-x-auto md:flex-wrap md:justify-center md:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => setFilters({ ...filters, types: cat === 'Tous les biens' ? [] : [cat] })}
-              aria-pressed={cat === 'Tous les biens' ? filters.types.length === 0 : filters.types.includes(cat)}
-              className={`shrink-0 whitespace-nowrap text-xs uppercase tracking-wider px-4 py-2.5 border transition ${
-                (cat === 'Tous les biens' ? filters.types.length === 0 : filters.types.includes(cat))
-                  ? 'bg-stone-900 text-white border-stone-900'
-                  : 'bg-white text-stone-600 border-stone-200 hover:border-stone-900'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
+        
         {anythingActive && (
           <div className="mt-4 text-center">
             <button
