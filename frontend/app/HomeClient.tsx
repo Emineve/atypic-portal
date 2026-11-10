@@ -237,10 +237,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       </nav>
 
       <header className="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-8 md:pb-12 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-100 border border-stone-200 text-stone-600 text-xs tracking-wider uppercase mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          Sélection éditoriale · Lieux singuliers.
-        </div>
                 <HeroTitle />
         <p className="mt-5 text-stone-500 max-w-2xl mx-auto font-light text-base md:text-lg">
           Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : les annonces des agences les plus prestigieuses, rassemblées sur un seul site.
