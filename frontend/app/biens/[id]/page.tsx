@@ -231,7 +231,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               href={`/agence/${slugify(item.source_agency)}`}
               className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
             >
-              Voir tous ses biens
+              Voir tous les biens de l'agence
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
