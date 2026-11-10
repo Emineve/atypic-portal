@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { Phone } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 
+// Moments proposés pour le rappel
+const SLOTS = ['Dès que possible', 'Tôt le matin', 'En matinée', "À l'heure du déjeuner", "Dans l'après-midi", 'En début de soirée'];
+
 function sessionId() {
   try {
     return sessionStorage.getItem('singulier:sid');
@@ -27,6 +30,7 @@ export default function ContactForm({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
+  const [slot, setSlot] = useState(SLOTS[0]);
   const [message, setMessage] = useState('');
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
@@ -56,7 +60,7 @@ export default function ContactForm({
         p_name: name,
         p_email: email,
         p_phone: tel || null,
-        p_message: message || null,
+        p_message: `Rappel souhaité : ${slot}.${message.trim() ? ` Commentaire : ${message.trim()}` : ''}`,
         p_consent: consent,
       });
       setStatus(!error && data === true ? 'done' : 'error');
@@ -128,8 +132,28 @@ export default function ContactForm({
             <input id="c-email" type="email" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div>
-            <label className={label} htmlFor="c-msg">Quand vous joindre, votre projet (facultatif)</label>
-            <textarea id="c-msg" rows={3} className={field} maxLength={2000} value={message} onChange={(e) => setMessage(e.target.value)} />
+            <p className={label} id="c-slot">Quand vous rappeler ?</p>
+            <div className="flex flex-wrap gap-2" role="group" aria-labelledby="c-slot">
+              {SLOTS.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  aria-pressed={slot === s}
+                  onClick={() => setSlot(s)}
+                  className={`h-10 px-3 text-xs border transition ${
+                    slot === s
+                      ? 'bg-stone-900 border-stone-900 text-white'
+                      : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label className={label} htmlFor="c-msg">Commentaire (facultatif)</label>
+            <textarea id="c-msg" rows={3} className={field} maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
           </div>
 
           {/* Champ piège : invisible pour les humains */}
