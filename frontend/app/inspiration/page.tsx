@@ -48,28 +48,19 @@ function interleave(groups: Tile[][]): Tile[] {
   return out;
 }
 
-export default async function InspirationPage({ searchParams }: { searchParams: { archi?: string; lieu?: string } }) {
+export default async function InspirationPage({ searchParams }: { searchParams: { type?: string } }) {
   const { data } = await getSupabase().rpc('get_inspiration');
   const architects: Architect[] = (data as Architect[]) || [];
 
   const all = architects.map(tilesOf);
   const kinds = Array.from(new Set(all.flat().map((t) => t.kind).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'fr'));
 
-  const archi = architects.some((a) => a.slug === searchParams.archi) ? (searchParams.archi as string) : '';
-  const lieu = kinds.includes(searchParams.lieu || '') ? (searchParams.lieu as string) : '';
+  const type = kinds.includes(searchParams.type || '') ? (searchParams.type as string) : '';
 
-  const tiles = interleave(all).filter((t) => (!archi || t.slug === archi) && (!lieu || t.kind === lieu));
-  const sale = lieu ? tiles.find((t) => t.sale)?.sale || '' : '';
+  const tiles = interleave(all).filter((t) => !type || t.kind === type);
+  const sale = type ? tiles.find((t) => t.sale)?.sale || '' : '';
 
-  const href = (next: { archi?: string; lieu?: string }) => {
-    const q = new URLSearchParams();
-    const a = next.archi !== undefined ? next.archi : archi;
-    const l = next.lieu !== undefined ? next.lieu : lieu;
-    if (a) q.set('archi', a);
-    if (l) q.set('lieu', l);
-    const s = q.toString();
-    return s ? `/inspiration?${s}` : '/inspiration';
-  };
+  const href = (k: string) => (k ? `/inspiration?type=${encodeURIComponent(k)}` : '/inspiration');
   const chip = (active: boolean) =>
     `h-9 px-4 inline-flex items-center text-xs border transition whitespace-nowrap ${
       active ? 'bg-stone-900 border-stone-900 text-white' : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
@@ -97,21 +88,12 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
         </p>
       </header>
 
-      <section className="max-w-7xl mx-auto px-6 pb-8 space-y-3">
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
-          <span className="w-20 shrink-0 text-[10px] uppercase tracking-widest text-stone-400">Architecte</span>
-          <Link href={href({ archi: '' })} scroll={false} className={chip(!archi)}>Tous</Link>
-          {architects.map((a) => (
-            <Link key={a.slug} href={href({ archi: a.slug })} scroll={false} className={chip(archi === a.slug)}>
-              {a.name}
-            </Link>
-          ))}
-        </div>
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
-          <span className="w-20 shrink-0 text-[10px] uppercase tracking-widest text-stone-400">Lieu</span>
-          <Link href={href({ lieu: '' })} scroll={false} className={chip(!lieu)}>Tous</Link>
+      <section className="max-w-7xl mx-auto px-6 pb-8">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 md:justify-center">
+          <span className="shrink-0 pr-2 text-[10px] uppercase tracking-widest text-stone-400">Type</span>
+          <Link href={href('')} scroll={false} className={chip(!type)}>Tous</Link>
           {kinds.map((k) => (
-            <Link key={k} href={href({ lieu: k })} scroll={false} className={chip(lieu === k)}>
+            <Link key={k} href={href(k)} scroll={false} className={chip(type === k)}>
               {k}
             </Link>
           ))}
@@ -132,11 +114,11 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
 
       <main className="max-w-7xl mx-auto px-6 pb-16">
         {tiles.length === 0 ? (
-          <p className="text-center py-16 text-stone-400 font-serif">Aucune image pour ce choix.</p>
+          <p className="text-center py-16 text-stone-400 font-serif">Aucune image pour ce type.</p>
         ) : (
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
             {tiles.map((t, i) => (
-              <Link key={t.src} href={`/architectes/${t.slug}`} className="group mb-4 block break-inside-avoid">
+              <Link key={t.src} href={`/inspiration/${t.slug}/${slugify(t.title)}`} className="group mb-4 block break-inside-avoid">
                 <div className="bg-stone-200 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -147,8 +129,7 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
                   />
                 </div>
                 <p className="mt-2 text-sm text-stone-900 group-hover:underline underline-offset-4">
-                  {t.title}
-                  {t.place ? <span className="text-stone-500"> · {t.place}</span> : null}
+                  {[t.kind, t.title, t.place].filter(Boolean).join(' · ')}
                 </p>
                 <p className="text-[10px] uppercase tracking-widest text-stone-400">{t.architect}</p>
               </Link>
