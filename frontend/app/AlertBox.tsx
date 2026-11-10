@@ -94,7 +94,7 @@ export default function AlertBox({
         <input type="checkbox" className="mt-0.5" checked={consent} onChange={(e) => setConsent(e.target.checked)} required />
         {isAlert
           ? "J'accepte de recevoir par email les nouveaux biens correspondant à cette recherche. Désinscription possible à tout moment."
-          : "J'accepte de recevoir la lettre SINGULIER. Désinscription possible à tout moment."}
+          : "J'accepte de recevoir la lettre Loftissime. Désinscription possible à tout moment."}
       </label>
       {status === 'error' && (
         <p className="text-xs text-red-700">L'enregistrement a échoué. Vérifiez l'email et réessayez.</p>

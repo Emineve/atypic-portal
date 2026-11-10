@@ -1,13 +1,13 @@
 import LegalPage from '../LegalPage';
 
 export const metadata = {
-  title: 'Nos règles de sélection · SINGULIER',
+  title: 'Nos règles de sélection · Loftissime',
   description:
-    "Comment SINGULIER sélectionne et classe les biens atypiques : critères, indépendance, mises à jour et signalement d'erreurs.",
+    "Comment Loftissime sélectionne et classe les biens atypiques : critères, indépendance, mises à jour et signalement d'erreurs.",
   alternates: { canonical: '/classement' },
   openGraph: {
-    title: 'Nos règles de sélection · SINGULIER',
-    description: "Comment SINGULIER sélectionne et classe les biens atypiques.",
+    title: 'Nos règles de sélection · Loftissime',
+    description: "Comment Loftissime sélectionne et classe les biens atypiques.",
     images: ['/opengraph-image'],
   },
   twitter: { card: 'summary_large_image', images: ['/opengraph-image'] },
@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <LegalPage title="Nos règles de sélection" hideBanner>
       <p>
-        SINGULIER ne montre pas « tout ce qui se vend » : il présente des lieux qui sortent de l&apos;ordinaire. Voici comment
+        Loftissime ne montre pas « tout ce qui se vend » : il présente des lieux qui sortent de l&apos;ordinaire. Voici comment
         nous choisissons et comment nous classons.
       </p>
 

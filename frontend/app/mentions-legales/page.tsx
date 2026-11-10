@@ -2,7 +2,7 @@ import LegalPage from '../LegalPage';
 import { EDITOR, LEGAL_READY } from '../../lib/legal';
 
 export const metadata = {
-  title: 'Mentions légales · SINGULIER',
+  title: 'Mentions légales · Loftissime',
   alternates: { canonical: '/mentions-legales' },
   robots: LEGAL_READY ? undefined : { index: false, follow: true },
 };
@@ -27,8 +27,8 @@ export default function Page() {
 
       <h2>Nature du site</h2>
       <p>
-        SINGULIER présente une sélection de biens immobiliers atypiques issus d'annonces publiées par des agences immobilières.
-        SINGULIER n'est pas une agence immobilière et ne perçoit aucune commission sur les ventes. Chaque annonce renvoie vers
+        Loftissime présente une sélection de biens immobiliers atypiques issus d'annonces publiées par des agences immobilières.
+        Loftissime n'est pas une agence immobilière et ne perçoit aucune commission sur les ventes. Chaque annonce renvoie vers
         l'annonce d'origine de l'agence, seule responsable de son contenu, de ses prix et de la disponibilité du bien.
       </p>
 

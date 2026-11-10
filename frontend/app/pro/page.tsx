@@ -3,9 +3,9 @@ import { ArrowLeft, Eye, MousePointerClick, Sparkles } from 'lucide-react';
 import ProForm from './ProForm';
 
 export const metadata = {
-  title: 'Agences : présentez vos biens atypiques · SINGULIER',
+  title: 'Agences : présentez vos biens atypiques · Loftissime',
   description:
-    'SINGULIER réunit les biens atypiques haut de gamme. Présentez votre catalogue à des acheteurs qui cherchent précisément cela. Gratuit pendant le lancement.',
+    'Loftissime réunit les biens atypiques haut de gamme. Présentez votre catalogue à des acheteurs qui cherchent précisément cela. Gratuit pendant le lancement.',
   alternates: { canonical: '/pro' },
 };
 
@@ -41,14 +41,14 @@ const pillars = [
 
 const steps = [
   { n: '1', title: 'Vous nous écrivez', text: 'Présentez votre agence et le type de biens atypiques que vous représentez.' },
-  { n: '2', title: 'Nous choisissons ensemble', text: 'Nous sélectionnons les biens qui correspondent à l’univers SINGULIER.' },
+  { n: '2', title: 'Nous choisissons ensemble', text: 'Nous sélectionnons les biens qui correspondent à l’univers Loftissime.' },
   { n: '3', title: 'Vos biens sont publiés', text: 'Chaque fiche porte votre nom et renvoie vers votre annonce d’origine.' },
 ];
 
 const faq = [
   { q: 'Combien cela coûte-t-il ?', a: 'La participation est gratuite pendant la phase de lancement. Toute évolution des conditions vous sera communiquée à l’avance, sans engagement de votre part.' },
   { q: 'Comment vous transmettre mes annonces ?', a: 'Au démarrage, nous reprenons ensemble les biens que vous souhaitez présenter. Nous étudions ensuite la meilleure façon de les tenir à jour.' },
-  { q: 'Que devient mon annonce d’origine ?', a: 'Elle reste la référence pour le prix et la disponibilité. Chaque fiche SINGULIER renvoie vers votre annonce.' },
+  { q: 'Que devient mon annonce d’origine ?', a: 'Elle reste la référence pour le prix et la disponibilité. Chaque fiche Loftissime renvoie vers votre annonce.' },
   { q: 'Tous mes biens seront-ils publiés ?', a: 'Non, uniquement ceux qui répondent à nos règles de sélection. Elles sont détaillées sur la page « Nos règles de sélection ».' },
 ];
 
@@ -57,7 +57,7 @@ export default function ProPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">SINGULIER</Link>
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Loftissime</Link>
           <div className="flex items-center gap-5">
             <Link href="/" className="hidden sm:inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
               <ArrowLeft className="w-3.5 h-3.5" />
@@ -76,18 +76,18 @@ export default function ProPage() {
           Vos biens d&apos;exception, devant ceux qui cherchent l&apos;exception.
         </h1>
         <p className="mt-6 text-stone-500 font-light text-lg max-w-2xl mx-auto">
-          SINGULIER réunit les biens atypiques haut de gamme : lofts, ateliers d&apos;artistes, péniches, rooftops et biens de caractère. Présentez votre catalogue à une audience qui cherche précisément cela.
+          Loftissime réunit les biens atypiques haut de gamme : lofts, ateliers d&apos;artistes, péniches, rooftops et biens de caractère. Présentez votre catalogue à une audience qui cherche précisément cela.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="#rejoindre" className="h-12 px-8 inline-flex items-center bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition">
-            Rejoindre SINGULIER
+            Rejoindre Loftissime
           </a>
           <span className="text-sm text-stone-500">Gratuit pendant le lancement · sans engagement</span>
         </div>
       </header>
 
       <section className="max-w-6xl mx-auto px-6 pb-20">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Ce que SINGULIER vous apporte</h2>
+        <h2 className="font-serif text-3xl text-stone-900 text-center">Ce que Loftissime vous apporte</h2>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           {pillars.map((p) => (
             <div key={p.title} className="border border-stone-200 bg-white p-8">
@@ -135,7 +135,7 @@ export default function ProPage() {
       </section>
 
       <section id="rejoindre" className="max-w-2xl mx-auto px-6 pb-24 scroll-mt-20">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Rejoindre SINGULIER</h2>
+        <h2 className="font-serif text-3xl text-stone-900 text-center">Rejoindre Loftissime</h2>
         <p className="mt-3 text-center text-stone-500">Dites-nous qui vous êtes, nous revenons vers vous rapidement.</p>
         <div className="mt-8">
           <ProForm />

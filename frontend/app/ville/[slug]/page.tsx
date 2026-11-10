@@ -29,11 +29,11 @@ async function getCityListings(slug: string) {
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { cityName, canonicalSlug } = await getCityListings(params.slug);
-  if (!cityName) return { title: 'Ville introuvable · SINGULIER', robots: { index: false } };
+  if (!cityName) return { title: 'Ville introuvable · Loftissime', robots: { index: false } };
   const title = `Biens atypiques à vendre à ${cityName}`;
   const description = `Lofts, ateliers, rooftops et biens de caractère à vendre à ${cityName}, sélectionnés parmi des annonces d'agences.`;
   return {
-    title: `${title} · SINGULIER`,
+    title: `${title} · Loftissime`,
     description,
     alternates: { canonical: `/ville/${canonicalSlug}` },
     openGraph: { type: 'website', url: `/ville/${canonicalSlug}`, title, description, images: ['/opengraph-image'] },

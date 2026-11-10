@@ -5,7 +5,7 @@ import { getSupabase } from '../../../lib/supabase';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Espace agence · SINGULIER',
+  title: 'Espace agence · Loftissime',
   robots: { index: false, follow: false },
   referrer: 'no-referrer' as const,
 };
@@ -80,7 +80,7 @@ export default async function EspaceAgence({
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <div className="border-b border-stone-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">SINGULIER</Link>
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Loftissime</Link>
           <span className="text-xs uppercase tracking-wider text-stone-500">Espace agence</span>
         </div>
       </div>

@@ -49,7 +49,7 @@ function safeJson(o: unknown) {
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const item = await getListing(params.id);
-  if (!item) return { title: 'Bien introuvable · SINGULIER', robots: { index: false } };
+  if (!item) return { title: 'Bien introuvable · Loftissime', robots: { index: false } };
   const title = `${item.title} · ${item.city || 'France'}`;
   const description = (item.short_description || '').slice(0, 160);
   // Titre des aperçus de partage (WhatsApp, SMS…) : titre, ville, surface, prix
@@ -140,7 +140,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(breadcrumb) }} />
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">SINGULIER</Link>
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Loftissime</Link>
           <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
             Toute la collection
@@ -225,7 +225,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <p className="text-[10px] uppercase tracking-widest text-stone-400">Proposé par</p>
             <p className="mt-1 font-serif text-2xl text-stone-900">{item.source_agency}</p>
             <p className="mt-1 text-xs text-stone-500">
-              {agencyCount} {agencyCount > 1 ? 'biens présentés' : 'bien présenté'} sur SINGULIER
+              {agencyCount} {agencyCount > 1 ? 'biens présentés' : 'bien présenté'} sur Loftissime
             </p>
             <Link
               href={`/agence/${slugify(item.source_agency)}`}

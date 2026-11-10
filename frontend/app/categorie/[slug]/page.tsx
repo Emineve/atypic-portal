@@ -11,7 +11,7 @@ function findCategory(slug: string) {
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const cat = findCategory(params.slug);
-  if (!cat) return { title: 'Catégorie introuvable · SINGULIER', robots: { index: false } };
+  if (!cat) return { title: 'Catégorie introuvable · Loftissime', robots: { index: false } };
   // Une catégorie vide n'est pas indexée (page sans contenu)
   const { count } = await getSupabase()
     .from('listings')
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const title = `${cat} à vendre`;
   const description = `Notre sélection de biens singuliers dans la catégorie « ${cat} », issus d'annonces d'agences.`;
   return {
-    title: `${title} · SINGULIER`,
+    title: `${title} · Loftissime`,
     description,
     alternates: { canonical: `/categorie/${params.slug}` },
     robots: count ? undefined : { index: false, follow: true },

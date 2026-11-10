@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Administration · SINGULIER',
+  title: 'Administration · Loftissime',
   robots: { index: false, follow: false },
 };
 

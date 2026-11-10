@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SITE_URL, SITE_NAME } from '../lib/site';
 
-const TITLE = 'SINGULIER · Biens atypiques et singuliers à vendre en France';
+const TITLE = 'Loftissime · Biens atypiques et singuliers à vendre en France';
 const DESCRIPTION =
   "Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : une sélection de biens atypiques à vendre, issus d'annonces d'agences partout en France.";
 

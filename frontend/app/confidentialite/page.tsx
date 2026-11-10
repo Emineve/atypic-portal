@@ -2,7 +2,7 @@ import LegalPage from '../LegalPage';
 import { EDITOR, LEGAL_READY } from '../../lib/legal';
 
 export const metadata = {
-  title: 'Politique de confidentialité · SINGULIER',
+  title: 'Politique de confidentialité · Loftissime',
   alternates: { canonical: '/confidentialite' },
   robots: LEGAL_READY ? undefined : { index: false, follow: true },
 };
@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <LegalPage title="Politique de confidentialité">
       <p>
-        Cette page explique quelles données personnelles SINGULIER collecte, pourquoi, et comment exercer vos droits.
+        Cette page explique quelles données personnelles Loftissime collecte, pourquoi, et comment exercer vos droits.
         Responsable du traitement : {EDITOR.name} ({EDITOR.email}).
       </p>
 
@@ -35,7 +35,7 @@ export default function Page() {
 
       <h2>Stockage sur votre appareil</h2>
       <p>
-        SINGULIER ne dépose pas de cookie publicitaire. La liste de vos favoris est conservée sur votre appareil (stockage local du navigateur)
+        Loftissime ne dépose pas de cookie publicitaire. La liste de vos favoris est conservée sur votre appareil (stockage local du navigateur)
         et n'est pas envoyée à un compte. Vous pouvez l'effacer en vidant les données du site dans votre navigateur.
       </p>
 

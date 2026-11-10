@@ -39,9 +39,9 @@ async function getArchitect(slug: string): Promise<Architect | null> {
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const a = await getArchitect(params.slug);
-  if (!a) return { title: 'Architecte introuvable · Demeures Singulières', robots: { index: false } };
+  if (!a) return { title: 'Architecte introuvable · Loftissime', robots: { index: false } };
   return {
-    title: `${a.name} · Inspiration · Demeures Singulières`,
+    title: `${a.name} · Inspiration · Loftissime`,
     description: a.tagline || `Portrait de ${a.name}`,
     alternates: { canonical: `/architectes/${a.slug}` },
     robots: a.is_demo ? { index: false } : undefined,
@@ -58,7 +58,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Demeures Singulières</Link>
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Loftissime</Link>
           <Link href="/inspiration" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
             Inspiration
@@ -160,13 +160,12 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       )}
 
       <section className="max-w-2xl mx-auto px-6 pb-16 text-center">
-        <p className="font-serif text-xl text-stone-900">Ces intérieurs ne sont pas à vendre.</p>
-        <p className="mt-2 text-stone-500">Les lieux de la collection, eux, le sont.</p>
+        <p className="font-serif text-xl text-stone-900">Envie d&apos;un lieu à vous ?</p>
         <Link
           href="/"
           className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
         >
-          Voir les biens à vendre
+          Découvrez les biens à vendre
         </Link>
       </section>
 

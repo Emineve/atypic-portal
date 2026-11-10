@@ -81,7 +81,7 @@ export default function ProForm() {
         disabled={status === 'sending'}
         className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
       >
-        {status === 'sending' ? 'Envoi…' : 'Rejoindre SINGULIER'}
+        {status === 'sending' ? 'Envoi…' : 'Rejoindre Loftissime'}
       </button>
     </form>
   );

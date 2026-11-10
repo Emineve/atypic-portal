@@ -18,11 +18,11 @@ async function getAgencyListings(slug: string) {
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { agency } = await getAgencyListings(params.slug);
-  if (!agency) return { title: 'Agence introuvable · SINGULIER', robots: { index: false } };
+  if (!agency) return { title: 'Agence introuvable · Loftissime', robots: { index: false } };
   const title = `${agency} · biens atypiques à vendre`;
-  const description = `Les lieux singuliers proposés par ${agency} sur SINGULIER.`;
+  const description = `Les lieux singuliers proposés par ${agency} sur Loftissime.`;
   return {
-    title: `${title} · SINGULIER`,
+    title: `${title} · Loftissime`,
     description,
     alternates: { canonical: `/agence/${params.slug}` },
     openGraph: { type: 'website', url: `/agence/${params.slug}`, title, description, images: ['/opengraph-image'] },

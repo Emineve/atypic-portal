@@ -6,8 +6,8 @@ import { slugify } from '../../lib/catalog';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Inspiration · Demeures Singulières',
-  description: 'Des intérieurs qui ne sont pas à vendre, signés par des architectes à la vision singulière.',
+  title: 'Inspiration · Loftissime',
+  description: 'Des intérieurs signés par des architectes à la vision singulière, pour nourrir votre imagination.',
   alternates: { canonical: '/inspiration' },
 };
 
@@ -70,7 +70,7 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Demeures Singulières</Link>
+          <Link href="/" className="font-serif text-xl font-bold tracking-widest uppercase">Loftissime</Link>
           <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
             Les biens à vendre
@@ -81,10 +81,10 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
       <header className="max-w-3xl mx-auto px-6 pt-14 pb-10 text-center">
         <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
         <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">
-          Ces intérieurs ne sont pas à vendre.
+          De quoi nourrir votre imagination.
         </h1>
         <p className="mt-4 text-stone-500 font-light text-lg">
-          Ils montrent ce qu&apos;un lieu peut devenir entre les mains d&apos;architectes qui ont une vision bien à eux.
+          Des intérieurs signés par des architectes à la vision singulière, pour imaginer ce que votre futur lieu pourrait devenir.
         </p>
       </header>
 
@@ -157,13 +157,12 @@ export default async function InspirationPage({ searchParams }: { searchParams: 
       </section>
 
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
-        <p className="font-serif text-xl text-stone-900">Ces intérieurs ne sont pas à vendre.</p>
-        <p className="mt-2 text-stone-500">Les lieux de la collection, eux, le sont.</p>
+        <p className="font-serif text-xl text-stone-900">Envie d&apos;un lieu à vous ?</p>
         <Link
           href="/"
           className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
         >
-          Voir les biens à vendre
+          Découvrez les biens à vendre
         </Link>
         <p className="mt-10 text-xs text-stone-400">
           Sélection éditoriale, non sponsorisée. Photographies : © les architectes cités et leurs photographes.

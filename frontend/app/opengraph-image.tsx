@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'SINGULIER · Biens atypiques et singuliers à vendre en France';
+export const alt = 'Loftissime · Biens atypiques et singuliers à vendre en France';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -19,7 +19,7 @@ export default function Image() {
           color: '#191919',
         }}
       >
-        <div style={{ fontSize: 96, letterSpacing: 18, fontWeight: 700 }}>SINGULIER</div>
+        <div style={{ fontSize: 96, letterSpacing: 18, fontWeight: 700 }}>LOFTISSIME</div>
         <div style={{ marginTop: 28, fontSize: 34, color: '#57534e' }}>
           Biens atypiques et singuliers à vendre en France
         </div>

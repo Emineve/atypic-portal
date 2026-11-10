@@ -17,8 +17,8 @@ export default function FilterPanel({
   mode?: 'search' | 'alert'; // conservé pour compatibilité : le panneau est identique dans les deux cas
   padX?: string;
 }) {
-  // Ouvertes par défaut : type, surface, chambres, budget. À partir d'« Extérieur », tout est fermé.
-  const [openIds, setOpenIds] = useState<string[]>(() => ['types', 'surface', 'chambres', 'budget']);
+  // Ouvertes par défaut : surface, chambres, budget. Le type de bien et les critères suivants sont fermés.
+  const [openIds, setOpenIds] = useState<string[]>(() => ['surface', 'chambres', 'budget']);
 
   const set = (patch: Partial<Filters>) => onChange({ ...value, ...patch });
   const isOpen = (id: string) => openIds.includes(id);
@@ -46,65 +46,26 @@ export default function FilterPanel({
   return (
     <div>
       <Section
-        id="types"
-        title="Type de bien"
-        open={isOpen('types')}
-        onToggle={() => toggleOpen('types')}
-        active={value.types.length > 0}
-        onClear={() => set({ types: [] })}
-        padX={padX}
-      >
-        <div className="flex flex-wrap gap-2">
-          {TYPES.map((t) => (
-            <Chip
-              key={t}
-              state={value.types.includes(t) ? 'must' : 'off'}
-              onClick={() =>
-                set({ types: value.types.includes(t) ? value.types.filter((x) => x !== t) : [...value.types, t] })
-              }
-            >
-              {t}
-            </Chip>
-          ))}
-        </div>
-      </Section>
-
-      <Section
         id="surface"
-        title="Surface"
+        title="Surface min."
         open={isOpen('surface')}
         onToggle={() => toggleOpen('surface')}
-        active={value.surfaceMin !== '' || value.surfaceMax !== ''}
+        active={value.surfaceMin !== ''}
         onClear={() => set({ surfaceMin: '', surfaceMax: '' })}
         padX={padX}
       >
-        <div className="grid grid-cols-2 gap-3">
-          <div className="relative">
-            <input
-              type="number"
-              inputMode="numeric"
-              min="0"
-              placeholder="Minimum"
-              aria-label="Surface minimum en mètres carrés"
-              value={value.surfaceMin}
-              onChange={(e) => set({ surfaceMin: e.target.value })}
-              className={`${input} pr-12`}
-            />
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">m²</span>
-          </div>
-          <div className="relative">
-            <input
-              type="number"
-              inputMode="numeric"
-              min="0"
-              placeholder="Maximum"
-              aria-label="Surface maximum en mètres carrés"
-              value={value.surfaceMax}
-              onChange={(e) => set({ surfaceMax: e.target.value })}
-              className={`${input} pr-12`}
-            />
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">m²</span>
-          </div>
+        <div className="relative max-w-[12rem]">
+          <input
+            type="number"
+            inputMode="numeric"
+            min="0"
+            placeholder="Minimum"
+            aria-label="Surface minimum en mètres carrés"
+            value={value.surfaceMin}
+            onChange={(e) => set({ surfaceMin: e.target.value, surfaceMax: '' })}
+            className={`${input} pr-12`}
+          />
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">m²</span>
         </div>
       </Section>
 
@@ -175,6 +136,33 @@ export default function FilterPanel({
             />
             <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">€</span>
           </div>
+        </div>
+      </Section>
+
+      <Section
+        id="types"
+        title="Type de bien"
+        open={isOpen('types')}
+        onToggle={() => toggleOpen('types')}
+        active={value.types.length > 0}
+        onClear={() => set({ types: [] })}
+        padX={padX}
+      >
+        <div className="flex flex-wrap gap-2">
+          <Chip state={value.types.length === 0 ? 'must' : 'off'} onClick={() => set({ types: [] })}>
+            Tous
+          </Chip>
+          {TYPES.map((t) => (
+            <Chip
+              key={t}
+              state={value.types.includes(t) ? 'must' : 'off'}
+              onClick={() =>
+                set({ types: value.types.includes(t) ? value.types.filter((x) => x !== t) : [...value.types, t] })
+              }
+            >
+              {t}
+            </Chip>
+          ))}
         </div>
       </Section>
 
