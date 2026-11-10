@@ -206,29 +206,36 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <Logo />
           </div>
 
-          <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium">
-                                    <a href="/inspiration" className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition">
-              <Sparkles className="w-4 h-4" />
-              Inspiration
+                    <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium">
+            <a
+              href="/inspiration"
+              aria-label="Inspiration"
+              className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition"
+            >
+              <Sparkles className="w-5 h-5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Inspiration</span>
             </a>
             <button
               type="button"
               onClick={() => openAlert('header')}
+              aria-label="Créer une alerte"
               className="inline-flex items-center gap-1.5 text-stone-900 hover:text-stone-600 transition"
             >
-              <Bell className="w-4 h-4" />
+              <Bell className="w-5 h-5 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Créer une alerte</span>
-              <span className="sm:hidden">Alerte</span>
             </button>
             <button
               onClick={() => setOnlyFavs((v) => !v)}
+              aria-label="Mes favoris"
               className={`inline-flex items-center gap-1.5 transition ${onlyFavs ? 'text-stone-900' : 'text-stone-500 hover:text-stone-900'}`}
               aria-pressed={onlyFavs}
             >
-              <Heart className={`w-4 h-4 ${onlyFavs ? 'fill-current' : ''}`} />
-              Mes favoris{favorites.length > 0 ? ` (${favorites.length})` : ''}
+              <Heart className={`w-5 h-5 sm:w-4 sm:h-4 ${onlyFavs ? 'fill-current' : ''}`} />
+              <span className="hidden sm:inline">Mes favoris</span>
+              {favorites.length > 0 ? ` (${favorites.length})` : ''}
             </button>
           </div>
+
         </div>
       </nav>
 
