@@ -36,7 +36,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
       <a href="/" className={link}>Tous les biens</a>
       <a href="/qui-sommes-nous" className={link}>Qui sommes-nous</a>
       <a href="/pro" className={link}>Agences</a>
-           <a href="/charte" className={link}>Charte et questions fréquentes</a>
+            <a href="/charte" className={link}>Questions fréquentes</a>
       <a href="/mentions-legales" className={link}>Mentions légales</a>
       <a href="/confidentialite" className={link}>Confidentialité</a>
       <a href="/cgu" className={link}>Conditions d'utilisation</a>
