@@ -183,7 +183,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </dl>
             )}
 
-            <p className="mt-6 text-stone-700 leading-relaxed">{item.short_description}</p>
+                        <p className="mt-6 text-stone-700 leading-relaxed whitespace-pre-line">{item.short_description}</p>
 
             {item.atypic_tags?.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mt-6">
