@@ -12,7 +12,7 @@ export default function Page() {
       <h2>Comment un bien est référencé</h2>
       <p>
         Loftissime diffuse uniquement des biens atypiques à vendre, sélectionnés selon la{' '}
-        <a href="href="/charte">charte Loftissime</a>. Le prix d&apos;un bien n&apos;entre pas en compte dans la sélection.
+        <a href="/charte">charte Loftissime</a>. Le prix d&apos;un bien n&apos;entre pas en compte dans la sélection.
       </p>
 
       <h2>Comment les biens sont classés</h2>
