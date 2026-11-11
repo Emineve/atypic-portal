@@ -125,8 +125,8 @@ export default function ProPage() {
       <section className="max-w-3xl mx-auto px-6 py-16 text-center">
         <h2 className="font-serif text-3xl text-stone-900">Une question ?</h2>
         <p className="mt-3 text-stone-500">
-          La sélection des biens, le fonctionnement du site, le coût, la transmission de vos annonces : tout est dans la
-          charte.
+                   La sélection des biens, le fonctionnement du site, le coût, la transmission de vos annonces : tout est dans
+          nos questions fréquentes.
         </p>
         <p className="mt-5">
           <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Charte et questions fréquentes</Link>
