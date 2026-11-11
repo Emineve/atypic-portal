@@ -43,21 +43,25 @@ export default function AboutPage() {
           <h2 className={h2}>Pour ceux qui cherchent</h2>
           <p className={p}>
             Vous avez un projet et pas de temps à perdre. Loftissime vous donne en quelques minutes une vue d&apos;ensemble
-            des biens atypiques disponibles à l&apos;instant où vous cherchez, sans passer des heures à faire défiler les
-            sites généralistes ni à visiter un par un les sites d&apos;agences. Créez une alerte, et vous êtes parmi les
-            premiers prévenus dès qu&apos;un bien correspond à vos critères.
+            des biens atypiques disponibles au moment où vous cherchez. Le bénéfice : vous ne passez plus des heures à
+            éplucher les sites généralistes et les sites d&apos;agences. Et surtout, vous ne passez plus à côté de votre
+            futur lieu de vie idéal. Créez une alerte, et vous êtes parmi les premiers prévenus dès qu&apos;un bien
+            correspond à vos critères.
+          </p>
+          <p className="mt-3">
+            <Link href="/" className="text-sm text-stone-900 underline underline-offset-4">Voir toutes les annonces</Link>
           </p>
         </section>
 
         <section>
-          <h2 className={h2}>Pour ceux qui rêvent</h2>
+          <h2 className={h2}>Pour ceux qui aiment rêver</h2>
           <p className={p}>
             On peut aussi venir ici sans projet précis. Pour flâner, se projeter, nourrir son imagination. Des lieux
             transformés par des architectes, d&apos;autres aménagés avec goût et liberté par leurs propriétaires : Loftissime
             est un endroit où il fait bon regarder comment on peut habiter autrement.
           </p>
           <p className="mt-3">
-            <Link href="/inspiration" className="text-sm text-stone-900 underline underline-offset-4">Voir la rubrique Inspiration</Link>
+            <Link href="/" className="text-sm text-stone-900 underline underline-offset-4">Trouver mon lieu de vie idéal</Link>
           </p>
         </section>
 
@@ -70,7 +74,7 @@ export default function AboutPage() {
             chaque annonce renvoie vers l&apos;agence qui la commercialise.
           </p>
           <p className="mt-3">
-            <Link href="/pro" className="text-sm text-stone-900 underline underline-offset-4">Vous êtes une agence ? Notre fonctionnement</Link>
+            <Link href="/pro" className="text-sm text-stone-900 underline underline-offset-4">Diffuser mes annonces</Link>
           </p>
         </section>
 
@@ -82,15 +86,17 @@ export default function AboutPage() {
             que nous ne publions pas.
           </p>
           <p className="mt-3">
-            <Link href="href="/charte"" className="text-sm text-stone-900 underline underline-offset-4">Lire la charte Loftissime</Link>
+            <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Lire la charte Loftissime</Link>
           </p>
         </section>
 
         <section>
           <h2 className={h2}>Qui sommes-nous ?</h2>
           <p className={p}>
-            Des passionnés d&apos;architecture et de design, très attachés à l&apos;idée de singularité. Nous avons créé le
-            site que nous aurions aimé trouver.
+            Des passionnés d&apos;architecture et de design, convaincus qu&apos;un lieu singulier rend la vie plus belle. On
+            ne vit pas de la même façon sous une verrière d&apos;atelier, dans une ancienne imprimerie ou au dernier étage
+            avec le ciel pour voisin. Un lieu qui a du caractère en donne à ceux qui l&apos;habitent. Nous avons créé le
+            site que nous aimerions utiliser pour trouver notre futur lieu de vie idéal.
           </p>
         </section>
 
