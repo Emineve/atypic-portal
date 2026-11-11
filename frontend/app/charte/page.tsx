@@ -141,10 +141,7 @@ export default function ChartePage() {
         ))}
       </main>
 
-            {
-        q: 'Un particulier peut-il diffuser une annonce ?',
-        a: 'Non. La diffusion d’annonces est exclusivement réservée aux agences immobilières.',
-      },
+                <div className="h-16" />
     </div>
   );
 }
