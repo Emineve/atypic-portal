@@ -436,11 +436,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                           {item.surface_sqm ? ` · ${item.surface_sqm} m²` : ''}
                         </span>
                                                {isNew(item.first_seen_at) && <span>· Nouveauté</span>}
-                        {item.dpe_class && (
-                          <span className="ml-auto">
-                            <DpeChip value={item.dpe_class} />
-                          </span>
-                        )}
                       </p>
                       <h2 className="mt-1.5 font-serif text-xl leading-snug text-stone-900 line-clamp-2 group-hover:underline underline-offset-4 decoration-stone-300">
                         {item.title}
