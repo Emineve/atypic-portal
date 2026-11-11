@@ -65,7 +65,7 @@ export default function StickyContact({
           href="#contact"
           className="h-12 px-4 inline-flex items-center bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider"
         >
-          Être rappelé
+          Rappelez-moi
         </a>
       </div>
     </div>
