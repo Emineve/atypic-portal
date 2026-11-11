@@ -4,6 +4,15 @@
 
 /* Styles globaux du site */
 body {
-  background-color: #FDFBF7;
-  color: #191919;
+  background-color: #F8FAFC;
+  color: #0D0F11;
+}
+
+/* Ancien fond crème et ancien noir chaud, encore écrits dans les pages :
+   on les remplace ici par le blanc froid et le noir neutre. */
+.bg-\[\#FDFBF7\] {
+  background-color: #F8FAFC;
+}
+.text-\[\#191919\] {
+  color: #0D0F11;
 }
