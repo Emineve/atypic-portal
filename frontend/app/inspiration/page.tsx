@@ -166,4 +166,28 @@ export default async function InspirationPage() {
                     </div>
                     <p className="mt-4 text-[10px] uppercase tracking-widest text-stone-400">{a.city || 'Architecte'}</p>
                     <h3 className="mt-1 font-serif text-xl text-stone-900 group-hover:underline underline-offset-4">{a.name}</h3>
-                    {a.tagline
+                    {a.tagline && <p className="mt-2 text-sm text-stone-500">{a.tagline}</p>}
+                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900">
+                      Son portrait
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="max-w-2xl mx-auto px-6 py-16 text-center">
+        <p className="font-serif text-xl text-stone-900">Envie d&apos;un lieu à vous ?</p>
+        <Link
+          href="/"
+          className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+        >
+          Découvrez les biens à vendre
+        </Link>
+      </section>
+    </div>
+  );
+}
