@@ -71,7 +71,7 @@ export default function AboutPage() {
             Loftissime n&apos;est pas une agence immobilière. Nous ne vendons aucun bien et nous n&apos;intervenons dans
             aucune transaction. Notre position est neutre, et notre objectif tient en une ligne : faciliter la mise en
             relation entre les acheteurs et les négociateurs en charge des biens référencés. Chaque annonce renvoie
-            vers l&apos;agence qui la commercialise.
+                       vers l&apos;agence ou l&apos;agent qui la commercialise.
           </p>
           <p className="mt-3">
             <Link href="/pro" className="text-sm text-stone-900 underline underline-offset-4">Diffuser mes annonces</Link>
