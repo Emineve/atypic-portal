@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import Logo from '../Logo';
 
 export const metadata = {
-  'Questions fréquentes · Loftissime'
+    title: 'Questions fréquentes · Loftissime',
   description:
     'La charte Loftissime en questions et réponses : les biens diffusés, le fonctionnement du site, le classement des annonces et la diffusion pour les agences.',
   alternates: { canonical: '/charte' },
