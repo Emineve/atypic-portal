@@ -11,7 +11,7 @@ export default function ShareButtons({ url, title, detail }: { url: string; titl
     setHasNativeShare(typeof navigator.share === 'function');
   }, []);
 
-  const message = `Regarde ce que je viens de trouver 👀\n${title}${detail ? `\n${detail}` : ''}\n${url}`;
+    const message = `Regarde ce que je viens de trouver :\n${title}${detail ? `\n${detail}` : ''}\n${url}`;
   const whatsapp = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
   const copy = async () => {
