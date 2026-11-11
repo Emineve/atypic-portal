@@ -7,7 +7,7 @@ export default function HeroTitle() {
         <span className="italic text-stone-600">réunis sur un seul site</span>.
       </h1>
       <p className="mt-5 text-stone-500 max-w-2xl mx-auto font-light text-base md:text-lg">
-                Lofts, ateliers d&apos;artistes, rooftops, et bien d&apos;autres lieux singuliers.
+                Lofts, ateliers d&apos;artistes, rooftops, et bien d&apos;autres lieux singuliers à visiter.
       </p>
     </>
   );
