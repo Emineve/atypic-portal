@@ -49,6 +49,20 @@ const steps = [
   { n: '3', text: 'Gestion de tous vos contacts sur votre compte Loftissime Pro, et envoi direct des leads acquéreurs par email ou SMS.' },
 ];
 
+const weDo = [
+  'Référencer vos biens atypiques, selon la charte.',
+  'Afficher sur chaque annonce votre agence, le négociateur et son téléphone.',
+  'Mettre l’acheteur en contact direct avec le négociateur.',
+  'Renvoyer chaque annonce vers celle de votre site.',
+  'Retirer un bien dès qu’il est vendu.',
+];
+
+const weDont = [
+  'Aucun mandat, aucune transaction : nous ne sommes pas une agence.',
+  'Aucun contact direct avec les vendeurs ni les acheteurs.',
+  'Aucune adresse communiquée (nous ne la connaissons d’ailleurs pas).',
+];
+
 const faq: { q: string; a: string; points?: string[] }[] = [
   { q: 'Combien cela coûte-t-il ?', a: 'La participation est gratuite pendant la phase de lancement. Toute évolution des conditions vous sera communiquée à l’avance, sans engagement de votre part.' },
   {
@@ -80,10 +94,10 @@ export default function ProPage() {
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-24 pb-14 text-center">
         <p className="text-[10px] uppercase tracking-widest text-stone-400">Espace agences</p>
         <h1 className="mt-4 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.12]">
-                   Le premier hub d&apos;annonces immobilières atypiques.
+          Le premier hub d&apos;annonces immobilières atypiques.
         </h1>
         <p className="mt-6 text-stone-500 font-light text-lg max-w-2xl mx-auto">
-                  Lofts, ateliers d&apos;artistes, rooftops, et bien d&apos;autres lieux singuliers. Présentez vos biens à une audience qui cherche précisément cela.  
+          Lofts, ateliers d&apos;artistes, rooftops, et bien d&apos;autres lieux singuliers. Présentez vos biens à une audience qui cherche précisément cela.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="#rejoindre" className="h-12 px-8 inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition">
@@ -108,6 +122,31 @@ export default function ProPage() {
               </ul>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-6 pt-20">
+        <h2 className="font-serif text-3xl text-stone-900 text-center">Notre fonctionnement</h2>
+        <p className="mt-3 text-center text-stone-500 max-w-2xl mx-auto">
+          Une position neutre, un seul objectif : mettre en relation acheteurs et négociateurs.
+        </p>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="border border-stone-200 bg-white p-8">
+            <h3 className="font-serif text-xl text-stone-900">Ce que nous faisons</h3>
+            <ul className="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
+              {weDo.map((it) => (
+                <li key={it} className="flex gap-2"><span aria-hidden="true">·</span><span>{it}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="border border-stone-200 bg-white p-8">
+            <h3 className="font-serif text-xl text-stone-900">Ce que nous ne faisons pas</h3>
+            <ul className="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
+              {weDont.map((it) => (
+                <li key={it} className="flex gap-2"><span aria-hidden="true">·</span><span>{it}</span></li>
+              ))}
+            </ul>
+          </div>
         </div>
         <p className="mt-10 text-center">
           <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Lire la charte Loftissime</Link>
