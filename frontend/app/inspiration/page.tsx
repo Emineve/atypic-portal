@@ -62,7 +62,7 @@ export default async function InspirationPage() {
             <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
             <h1 className="mt-3 font-serif text-2xl md:text-3xl text-stone-900">De quoi nourrir votre imagination.</h1>
             <p className="mt-3 text-stone-500 font-light">
-              Loftissime met à la une un architecte à la vision singulière et quelques-unes de ses réalisations, pour
+                            Loftissime met à la une un(e) architecte à la vision singulière et quelques-unes de ses réalisations, pour
               imaginer ce que votre futur lieu pourrait devenir.
             </p>
             <div className="mt-10 mx-auto h-px w-16 bg-stone-300" />
