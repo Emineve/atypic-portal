@@ -58,7 +58,7 @@ export default function StickyContact({
             className="h-12 px-4 inline-flex items-center gap-2 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider"
           >
             <Phone className="w-4 h-4" />
-            Appeler
+                        Contacter l&apos;agent
           </a>
         )}
         <a
