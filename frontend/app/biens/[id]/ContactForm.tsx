@@ -76,7 +76,7 @@ export default function ContactForm({
     <div className="space-y-4">
       {phone && (
         <div className="border border-stone-200 bg-white p-6">
-          <p className="text-[10px] uppercase tracking-widest text-stone-400">Votre interlocuteur pour ce bien</p>
+                    <p className="text-[10px] uppercase tracking-widest text-stone-400">Votre contact pour ce bien</p>
           <p className="mt-1 font-serif text-xl text-stone-900">{contactName || agency}</p>
           {contactName && <p className="text-xs text-stone-500">{agency}</p>}
           {shown ? (
