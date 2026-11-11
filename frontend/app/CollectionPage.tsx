@@ -45,7 +45,7 @@ export default function CollectionPage({
           <Logo />
           <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
-            Toute la collection
+            Tous les biens 
           </Link>
         </div>
       </nav>
