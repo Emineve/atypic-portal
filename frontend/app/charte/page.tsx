@@ -132,7 +132,7 @@ export default function ChartePage() {
       </nav>
 
       <header className="max-w-3xl mx-auto px-6 pt-16 md:pt-20 pb-6 text-center">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">La charte Loftissime</p>
+                <p className="text-[10px] uppercase tracking-widest text-stone-400">Loftissime</p>
         <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">Questions fréquentes</h1>
         <p className="mt-5 text-stone-500 font-light">
           Tout ce qu&apos;il faut savoir sur les biens que nous diffusons, sur le fonctionnement du site et sur la diffusion
