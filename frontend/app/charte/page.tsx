@@ -72,6 +72,10 @@ const groups: Group[] = [
         q: 'D’où viennent les annonces ?',
         a: 'Toutes les annonces proviennent d’agences immobilières. Chacune indique l’agence d’origine et renvoie vers l’annonce publiée sur son site, seule à faire foi pour le prix et la disponibilité.',
       },
+            {
+        q: 'Un particulier peut-il diffuser une annonce ?',
+        a: 'Non. La diffusion d’annonces est exclusivement réservée aux agences immobilières.',
+      },
     ],
   },
   {
