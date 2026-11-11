@@ -223,6 +223,11 @@ export default function ProPage() {
               </div>
             ))}
           </div>
+                    <p className="mt-16 text-center text-[10px] uppercase tracking-widest text-stone-400">
+            Passerelles prévues avec les principaux logiciels
+          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logiciels.src} alt="Hektor, AC3, Ubiflow, Netty, Apimo" className="mx-auto mt-6 w-full max-w-xl" />
         </div>
       </section>
 
