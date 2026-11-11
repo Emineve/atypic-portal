@@ -98,7 +98,7 @@ export default function AboutPage() {
           <p className="mt-3">
             <Link href="/charte" className={cta}>
               <FileText className="w-4 h-4" />
-              Lire la charte Loftissime
+                            Voir les questions fréquentes
             </Link>
           </p>
         </section>
