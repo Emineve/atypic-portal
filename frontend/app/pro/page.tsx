@@ -2,7 +2,7 @@ import Logo from '../Logo';
 import Link from 'next/link';
 import { ArrowLeft, Eye, MousePointerClick, Sparkles } from 'lucide-react';
 import ProForm from './ProForm';
-
+import logiciels from './logiciels.png';
 export const metadata = {
   title: 'Agences : présentez vos biens atypiques · Loftissime',
   description:
