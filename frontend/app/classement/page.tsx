@@ -1,47 +1,27 @@
 import LegalPage from '../LegalPage';
 
 export const metadata = {
-  title: 'Nos règles de sélection · Loftissime',
-  description:
-    "Comment Loftissime sélectionne et classe les biens atypiques : critères, indépendance, mises à jour et signalement d'erreurs.",
+  title: 'Référencement et classement · Loftissime',
+  description: 'Comment les biens sont sélectionnés et classés sur Loftissime, et comment signaler une erreur.',
   alternates: { canonical: '/classement' },
-  openGraph: {
-    title: 'Nos règles de sélection · Loftissime',
-    description: "Comment Loftissime sélectionne et classe les biens atypiques.",
-    images: ['/opengraph-image'],
-  },
-  twitter: { card: 'summary_large_image', images: ['/opengraph-image'] },
 };
 
 export default function Page() {
   return (
-    <LegalPage title="Nos règles de sélection" hideBanner>
+    <LegalPage title="Référencement et classement" hideBanner>
+      <h2>Comment un bien est référencé</h2>
       <p>
-        Loftissime ne montre pas « tout ce qui se vend » : il présente des lieux qui sortent de l&apos;ordinaire. Voici comment
-        nous choisissons et comment nous classons.
+        Loftissime diffuse uniquement des biens atypiques à vendre, sélectionnés selon la{' '}
+        <a href="/pro#charte">charte Loftissime</a>. Le prix d&apos;un bien n&apos;entre pas en compte dans la sélection.
       </p>
 
-      <h2>Ce que nous cherchons</h2>
-      <ul>
-        <li>Des lieux au caractère marqué : lofts et ateliers, ateliers d&apos;artistes, péniches, rooftops, biens de caractère.</li>
-        <li>Une histoire, une architecture ou un volume qui ne se retrouvent pas dans un appartement standard.</li>
-        <li>Des annonces complètes : prix, surface, photographies de qualité et localisation claire.</li>
-      </ul>
-
-      <h2>Ce que nous écartons</h2>
-      <ul>
-        <li>Les biens ordinaires, même présentés avec des mots flatteurs.</li>
-        <li>Les annonces sans prix, sans photographie exploitable ou sans localisation précise.</li>
-        <li>Les annonces signalées comme vendues ou retirées par l&apos;agence.</li>
-      </ul>
-
-      <h2>Comment est établi le classement</h2>
+      <h2>Comment les biens sont classés</h2>
       <p>
         L&apos;ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l&apos;annonce.
         Vous pouvez à tout moment trier par prix, surface ou date de publication.
       </p>
 
-      <h2>Les sources</h2>
+      <h2>D&apos;où viennent les annonces</h2>
       <p>
         Les biens proviennent d&apos;annonces d&apos;agences. Chaque fiche indique l&apos;agence d&apos;origine et renvoie vers
         son annonce, seule à faire foi pour le prix et la disponibilité.
