@@ -175,7 +175,7 @@ export default function ContactForm({
             disabled={status === 'sending'}
             className="w-full bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-4 py-3 hover:bg-stone-800 transition disabled:opacity-50"
           >
-            {status === 'sending' ? 'Envoi…' : 'Demander à être rappelé'}
+            {status === 'sending' ? 'Envoi…' : 'Envoyer ma demande'}
           </button>
         </form>
       )}
