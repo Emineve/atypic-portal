@@ -118,7 +118,7 @@ export default function AboutPage() {
             href="/"
             className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
           >
-            Découvrez les biens à vendre
+            Tous les biens à vendre
           </Link>
         </div>
       </main>
