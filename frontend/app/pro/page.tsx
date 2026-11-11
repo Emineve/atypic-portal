@@ -80,7 +80,7 @@ export default function ProPage() {
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-24 pb-14 text-center">
         <p className="text-[10px] uppercase tracking-widest text-stone-400">Espace agences</p>
         <h1 className="mt-4 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.12]">
-          Vos biens d&apos;exception, devant ceux qui cherchent l&apos;exception.
+                   Le premier hub d&apos;annonces immobilières atypiques.
         </h1>
         <p className="mt-6 text-stone-500 font-light text-lg max-w-2xl mx-auto">
           Loftissime est le premier hub d&apos;annonces immobilières atypiques : lofts, ateliers d&apos;artistes, rooftops, et bien d&apos;autres lieux singuliers. Présentez vos biens à une audience qui cherche précisément cela.
