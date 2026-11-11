@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import Logo from '../Logo';
 
 export const metadata = {
-    title: 'Questions fréquentes · Loftissime',
+  title: 'Questions fréquentes · Loftissime',
   description:
-    'La charte Loftissime en questions et réponses : les biens diffusés, le fonctionnement du site, le classement des annonces et la diffusion pour les agences.',
+    'Questions fréquentes sur Loftissime : les biens diffusés, le fonctionnement du site et le classement des annonces.',
   alternates: { canonical: '/charte' },
 };
 
@@ -54,126 +54,4 @@ const groups: Group[] = [
       },
       {
         q: 'Comment contacter la personne en charge d’un bien ?',
-        a: 'Chaque annonce affiche l’agence, le négociateur et son téléphone. Vous pouvez l’appeler directement ou lui demander de vous rappeler au moment qui vous convient.',
-      },
-      {
-        q: 'Loftissime contacte-t-elle les vendeurs ou les acheteurs ?',
-        a: 'Non. Loftissime n’a aucun contact direct avec les vendeurs ni avec les acheteurs.',
-      },
-      {
-        q: 'Puis-je connaître l’adresse d’un bien ?',
-        a: 'Loftissime ne communique jamais l’adresse d’un bien, et ne la connaît d’ailleurs pas. Seul le secteur indiqué par l’agence apparaît sur le site. Pour en savoir plus, adressez-vous au négociateur en charge du bien.',
-      },
-      {
-        q: 'D’où viennent les annonces ?',
-        a: 'Les biens proviennent d’annonces d’agences. Chaque annonce indique l’agence d’origine et renvoie vers l’annonce de son site, seule à faire foi pour le prix et la disponibilité.',
-      },
-    ],
-  },
-  {
-    id: 'classement',
-    title: 'Référencement et classement',
-    items: [
-      {
-        q: 'Comment un bien est-il référencé ?',
-        a: 'Loftissime diffuse uniquement des biens atypiques à vendre, sélectionnés selon cette charte. Le prix d’un bien n’entre pas en compte dans la sélection.',
-      },
-      {
-        q: 'Comment les biens sont-ils classés ?',
-        a: 'L’ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l’annonce. Vous pouvez à tout moment trier par prix, surface ou date de publication.',
-      },
-      {
-        q: 'Que faire si une annonce comporte une erreur ou si le bien est vendu ?',
-        a: 'Chaque annonce comporte un lien « Signaler cette annonce ». Nous traitons les signalements pour corriger ou retirer une annonce.',
-      },
-    ],
-  },
-  {
-    id: 'agences',
-    title: 'Pour les agences',
-    items: [
-      {
-        q: 'Que fait Loftissime pour mon agence ?',
-        a: 'Loftissime référence vos biens atypiques selon la charte et met les acheteurs en contact direct avec vos négociateurs :',
-        points: [
-          'Chaque annonce affiche votre agence, le négociateur et son téléphone.',
-          'Chaque annonce renvoie vers celle de votre site.',
-          'Un bien est retiré dès qu’il est vendu.',
-        ],
-      },
-      {
-        q: 'Combien cela coûte-t-il ?',
-        a: 'La participation est gratuite pendant la phase de lancement. Toute évolution des conditions vous sera communiquée à l’avance, sans engagement de votre part.',
-      },
-      {
-        q: 'Comment vous transmettre mes annonces ?',
-        a: 'Automatiquement, via votre logiciel de diffusion ou par un lien XML.',
-        points: ['Passerelle en direct avec votre logiciel', 'Publication et mise à jour en temps réel', 'Support technique dédié'],
-      },
-      {
-        q: 'Comment diffuser mes annonces sur Loftissime ?',
-        a: 'Remplissez le formulaire de la page Agences : nous revenons vers vous rapidement.',
-      },
-    ],
-  },
-];
-
-export default function ChartePage() {
-  return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
-
-      <header className="max-w-3xl mx-auto px-6 pt-16 md:pt-20 pb-6 text-center">
-                <p className="text-[10px] uppercase tracking-widest text-stone-400">Loftissime</p>
-        <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">Questions fréquentes</h1>
-        <p className="mt-5 text-stone-500 font-light">
-          Tout ce qu&apos;il faut savoir sur les biens que nous diffusons, sur le fonctionnement du site et sur la diffusion
-          pour les agences.
-        </p>
-      </header>
-
-      <main className="max-w-3xl mx-auto px-6 pb-8">
-        {groups.map((g) => (
-          <section key={g.id} id={g.id} className="pt-12 scroll-mt-20">
-            <h2 className="font-serif text-2xl text-stone-900">{g.title}</h2>
-            <div className="mt-5 divide-y divide-stone-200 border-y border-stone-200">
-              {g.items.map((it) => (
-                <details key={it.q} className="group py-5">
-                  <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
-                    {it.q}
-                    <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
-                  </summary>
-                  <p className="mt-3 text-sm text-stone-600 leading-relaxed">{it.a}</p>
-                  {it.points && (
-                    <ul className="mt-3 space-y-2 text-sm text-stone-600 leading-relaxed">
-                      {it.points.map((pt) => (
-                        <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{pt}</span></li>
-                      ))}
-                    </ul>
-                  )}
-                </details>
-              ))}
-            </div>
-          </section>
-        ))}
-      </main>
-
-      <section className="max-w-2xl mx-auto px-6 py-16 text-center">
-        <Link
-          href="/pro"
-          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
-        >
-          Vous êtes une agence ? Diffusez vos annonces
-        </Link>
-      </section>
-    </div>
-  );
-}
+        a: 'Chaque annonce affiche l’agence, le négociateur et son téléphone. Vous pouvez l’appeler directement ou lui demander de vous rappeler au moment
