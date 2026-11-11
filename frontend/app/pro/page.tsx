@@ -49,29 +49,6 @@ const steps = [
   { n: '3', text: 'Gestion de tous vos contacts sur votre compte Loftissime Pro, et envoi direct des leads acquéreurs par email ou SMS.' },
 ];
 
-const weDo = [
-  'Référencer vos biens atypiques, selon la charte.',
-  'Afficher sur chaque annonce votre agence, le négociateur et son téléphone.',
-  'Mettre l’acheteur en contact direct avec le négociateur.',
-  'Renvoyer chaque annonce vers celle de votre site.',
-  'Retirer un bien dès qu’il est vendu.',
-];
-
-const weDont = [
-  'Aucun mandat, aucune transaction : nous ne sommes pas une agence.',
-  'Aucun contact direct avec les vendeurs ni les acheteurs.',
-  'Aucune adresse communiquée (nous ne la connaissons d’ailleurs pas).',
-];
-
-const faq: { q: string; a: string; points?: string[] }[] = [
-  { q: 'Combien cela coûte-t-il ?', a: 'La participation est gratuite pendant la phase de lancement. Toute évolution des conditions vous sera communiquée à l’avance, sans engagement de votre part.' },
-  {
-    q: 'Comment vous transmettre mes annonces ?',
-    a: 'Automatiquement, via votre logiciel de diffusion ou par un lien XML.',
-    points: ['Passerelle en direct avec votre logiciel', 'Publication et mise à jour en temps réel', 'Support technique dédié'],
-  },
-];
-
 export default function ProPage() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -125,34 +102,6 @@ export default function ProPage() {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 pt-20">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Notre fonctionnement</h2>
-        <p className="mt-3 text-center text-stone-500 max-w-2xl mx-auto">
-          Une position neutre, un seul objectif : mettre en relation acheteurs et négociateurs.
-        </p>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border border-stone-200 bg-white p-8">
-            <h3 className="font-serif text-xl text-stone-900">Ce que nous faisons</h3>
-            <ul className="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
-              {weDo.map((it) => (
-                <li key={it} className="flex gap-2"><span aria-hidden="true">·</span><span>{it}</span></li>
-              ))}
-            </ul>
-          </div>
-          <div className="border border-stone-200 bg-white p-8">
-            <h3 className="font-serif text-xl text-stone-900">Ce que nous ne faisons pas</h3>
-            <ul className="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
-              {weDont.map((it) => (
-                <li key={it} className="flex gap-2"><span aria-hidden="true">·</span><span>{it}</span></li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <p className="mt-10 text-center">
-          <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Lire la charte Loftissime</Link>
-        </p>
-      </section>
-
       <section className="mt-20 bg-white border-y border-stone-200">
         <div className="max-w-5xl mx-auto px-6 py-20">
           <h2 className="font-serif text-3xl text-stone-900 text-center">Comment ça marche ?</h2>
@@ -173,26 +122,15 @@ export default function ProPage() {
         </div>
       </section>
 
-      <section className="max-w-3xl mx-auto px-6 py-20">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Questions fréquentes</h2>
-        <div className="mt-10 divide-y divide-stone-200 border-y border-stone-200">
-          {faq.map((f) => (
-            <details key={f.q} className="group py-5">
-              <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
-                {f.q}
-                <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
-              </summary>
-              <p className="mt-3 text-sm text-stone-600 leading-relaxed">{f.a}</p>
-              {f.points && (
-                <ul className="mt-2 space-y-1 text-sm text-stone-600 leading-relaxed">
-                  {f.points.map((pt) => (
-                    <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{pt}</span></li>
-                  ))}
-                </ul>
-              )}
-            </details>
-          ))}
-        </div>
+      <section className="max-w-3xl mx-auto px-6 py-16 text-center">
+        <h2 className="font-serif text-3xl text-stone-900">Une question ?</h2>
+        <p className="mt-3 text-stone-500">
+          La sélection des biens, le fonctionnement du site, le coût, la transmission de vos annonces : tout est dans la
+          charte.
+        </p>
+        <p className="mt-5">
+          <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Charte et questions fréquentes</Link>
+        </p>
       </section>
 
       <section id="rejoindre" className="max-w-2xl mx-auto px-6 pb-24 scroll-mt-20">
@@ -201,9 +139,6 @@ export default function ProPage() {
         <div className="mt-8">
           <ProForm />
         </div>
-        <p className="mt-6 text-center text-xs text-stone-400">
-          <Link href="/classement" className="underline underline-offset-4 hover:text-stone-900">Référencement et classement</Link>
-        </p>
       </section>
     </div>
   );
