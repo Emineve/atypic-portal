@@ -1,4 +1,13 @@
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { CATEGORY_LIST, slugify, cityHub } from '../lib/catalog';
+
+// Réseaux sociaux : affichés sans lien pour l'instant (comptes à créer)
+const SOCIALS = [
+  { name: 'Facebook', icon: Facebook },
+  { name: 'Instagram', icon: Instagram },
+  { name: 'X', icon: Twitter },
+  { name: 'LinkedIn', icon: Linkedin },
+];
 
 export default function FooterLinks({ cities }: { cities: string[] }) {
   const hubs = Array.from(new Set(cities.filter(Boolean).map((c) => cityHub(c)))).sort();
@@ -25,14 +34,25 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
     </nav>
     <nav className="max-w-5xl mx-auto px-6 pt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-stone-500" aria-label="Informations légales">
       <a href="/" className={link}>Tous les biens</a>
-          <a href="/qui-sommes-nous" className={link}>Qui sommes-nous</a>
+      <a href="/qui-sommes-nous" className={link}>Qui sommes-nous</a>
       <a href="/pro" className={link}>Agences</a>
-            <a href="/charte" className={link}>La charte</a>
+      <a href="/charte" className={link}>La charte</a>
       <a href="/classement" className={link}>Référencement et classement</a>
       <a href="/mentions-legales" className={link}>Mentions légales</a>
       <a href="/confidentialite" className={link}>Confidentialité</a>
       <a href="/cgu" className={link}>Conditions d'utilisation</a>
     </nav>
+    <div className="max-w-5xl mx-auto px-6 pt-8 flex gap-3" aria-hidden="true">
+      {SOCIALS.map((s) => (
+        <span
+          key={s.name}
+          title={`${s.name} (bientôt)`}
+          className="h-10 w-10 rounded-full border border-stone-300 text-stone-600 flex items-center justify-center"
+        >
+          <s.icon className="w-4 h-4" />
+        </span>
+      ))}
+    </div>
     </>
   );
 }
