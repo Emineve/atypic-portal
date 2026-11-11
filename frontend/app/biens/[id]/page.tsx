@@ -70,13 +70,11 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       url,
       title: shareTitle,
       description,
-      images: item.cover_image_url ? [{ url: item.cover_image_url }] : [],
     },
     twitter: {
       card: 'summary_large_image',
       title: shareTitle,
       description,
-      images: item.cover_image_url ? [item.cover_image_url] : [],
     },
   };
 }
