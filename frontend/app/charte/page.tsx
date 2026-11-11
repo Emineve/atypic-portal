@@ -5,7 +5,7 @@ import Logo from '../Logo';
 export const metadata = {
   title: 'La charte Loftissime',
   description:
-    'La charte Loftissime : les biens atypiques que nous diffusons, et ceux que nous ne diffusons pas.',
+    'La charte Loftissime : les biens atypiques que nous diffusons, ceux que nous ne diffusons pas, et la façon dont ils sont référencés et classés.',
   alternates: { canonical: '/charte' },
 };
 
@@ -32,6 +32,25 @@ const notes = [
   { title: 'Ce que nous ne diffusons pas', text: 'Tous les logements qui n’entrent pas dans la charte des biens atypiques.' },
   { title: 'Des biens réellement à vendre', text: 'Tous les biens proposés sont en cours de commercialisation.' },
   { title: 'Notre engagement', text: 'La charte s’applique de la même façon à toutes les agences.' },
+];
+
+const ranking = [
+  {
+    title: 'Comment un bien est référencé',
+    text: 'Loftissime diffuse uniquement des biens atypiques à vendre, sélectionnés selon cette charte. Le prix d’un bien n’entre pas en compte dans la sélection.',
+  },
+  {
+    title: 'Comment les biens sont classés',
+    text: 'L’ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l’annonce. Vous pouvez à tout moment trier par prix, surface ou date de publication.',
+  },
+  {
+    title: 'D’où viennent les annonces',
+    text: 'Les biens proviennent d’annonces d’agences. Chaque annonce indique l’agence d’origine et renvoie vers l’annonce de son site, seule à faire foi pour le prix et la disponibilité.',
+  },
+  {
+    title: 'Une erreur, un bien vendu ?',
+    text: 'Chaque annonce comporte un lien « Signaler cette annonce ». Nous traitons les signalements pour corriger ou retirer une annonce.',
+  },
 ];
 
 export default function ChartePage() {
@@ -79,6 +98,18 @@ export default function ChartePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="classement" className="max-w-3xl mx-auto px-6 pt-16 scroll-mt-20">
+        <h2 className="font-serif text-3xl text-stone-900 text-center">Référencement et classement</h2>
+        <div className="mt-10 space-y-8">
+          {ranking.map((r) => (
+            <div key={r.title}>
+              <h3 className={h3}>{r.title}</h3>
+              <p className="mt-2 text-sm text-stone-600 leading-relaxed">{r.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
