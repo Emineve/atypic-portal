@@ -57,8 +57,8 @@ export default function AboutPage() {
           <h2 className={h2}>Pour ceux qui aiment rêver</h2>
           <p className={p}>
             On peut aussi venir ici sans projet précis. Pour flâner, se projeter, nourrir son imagination. Des lieux
-            transformés par des architectes, d&apos;autres aménagés avec goût et liberté par leurs propriétaires : Loftissime
-            est un endroit où il fait bon regarder comment on peut habiter autrement.
+                        transformés par des architectes, d&apos;autres aménagés avec goût et liberté par leurs propriétaires : autant de
+            façons d&apos;habiter autrement, à découvrir sur Loftissime.
           </p>
           <p className="mt-3">
             <Link href="/" className="text-sm text-stone-900 underline underline-offset-4">Trouver mon lieu de vie idéal</Link>
