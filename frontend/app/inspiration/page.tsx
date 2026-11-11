@@ -58,11 +58,21 @@ export default async function InspirationPage() {
         <p className="text-center py-24 text-stone-400 font-serif">Bientôt le premier architecte à la une.</p>
       ) : (
         <>
-          <header className="max-w-4xl mx-auto px-6 pt-14 pb-10 text-center">
-            <p className="text-[10px] uppercase tracking-widest text-stone-400">
-              Inspiration · L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
+                    <section className="max-w-2xl mx-auto px-6 pt-14 text-center">
+            <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
+            <h1 className="mt-3 font-serif text-2xl md:text-3xl text-stone-900">De quoi nourrir votre imagination.</h1>
+            <p className="mt-3 text-stone-500 font-light">
+              Loftissime met à la une un architecte à la vision singulière et quelques-unes de ses réalisations, pour
+              imaginer ce que votre futur lieu pourrait devenir.
             </p>
-            <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{featured.name}</h1>
+            <div className="mt-10 mx-auto h-px w-16 bg-stone-300" />
+          </section>
+
+          <header className="max-w-4xl mx-auto px-6 pt-10 pb-10 text-center">
+            <p className="text-[10px] uppercase tracking-widest text-stone-400">
+              L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
+            </p>
+            <h2 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{featured.name}</h2>
             {featured.tagline && <p className="mt-4 text-stone-500 font-light text-lg">{featured.tagline}</p>}
             {featured.website && (
               <a
