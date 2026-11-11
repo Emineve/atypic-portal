@@ -44,7 +44,7 @@ const weDo = [
 
 const weDont = [
   'Aucun mandat, aucune transaction : nous ne sommes pas une agence.',
-  'Aucun contact avec les vendeurs ni les acheteurs.',
+  'Aucun contact direct avec les vendeurs ni les acheteurs.',
   'Aucune adresse communiquée (nous ne la connaissons d’ailleurs pas).',
 ];
 
