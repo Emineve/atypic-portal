@@ -129,7 +129,7 @@ export default function ProPage() {
           nos questions fréquentes.
         </p>
         <p className="mt-5">
-          <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Charte et questions fréquentes</Link>
+                   <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Questions fréquentes</Link>
         </p>
       </section>
 
