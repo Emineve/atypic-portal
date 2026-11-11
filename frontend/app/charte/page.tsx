@@ -141,14 +141,10 @@ export default function ChartePage() {
         ))}
       </main>
 
-      <section className="max-w-2xl mx-auto px-6 py-16 text-center">
-        <Link
-          href="/pro"
-          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
-        >
-          Vous êtes une agence ? Diffusez vos annonces
-        </Link>
-      </section>
+            {
+        q: 'Un particulier peut-il diffuser une annonce ?',
+        a: 'Non. La diffusion d’annonces est exclusivement réservée aux agences immobilières.',
+      },
     </div>
   );
 }
