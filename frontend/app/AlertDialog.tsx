@@ -360,7 +360,7 @@ export default function AlertDialog({
                 </p>
               </div>
               <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
-                <Step n="1" title="Où ?" hint="Plusieurs possibles. Vide = toute la France.">
+                                <Step title="Où ?" hint="Plusieurs possibles. Vide = toute la France.">
                   {locations.length > 0 && (
                     <div className="mb-3 flex flex-wrap gap-2">
                       {locations.map((l) => (
