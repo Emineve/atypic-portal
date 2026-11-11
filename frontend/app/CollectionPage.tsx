@@ -54,7 +54,7 @@ export default function CollectionPage({
         <h1 className="text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{title}</h1>
         <p className="mt-4 text-stone-500 font-light">{intro}</p>
         <p className="mt-6 font-serif text-lg text-stone-700">
-          {items.length} {items.length > 1 ? 'lieux singuliers' : 'lieu singulier'}
+                    {items.length} {items.length > 1 ? 'lieux à découvrir' : 'lieu à découvrir'}
         </p>
       </header>
 
