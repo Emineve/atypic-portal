@@ -19,28 +19,28 @@ const groups: Group[] = [
     items: [
       {
         q: 'Quels biens sont diffusés sur Loftissime ?',
-        a: 'Uniquement des biens atypiques à vendre. Un bien entre dans la sélection s’il répond à l’un de ces trois critères :',
+        a: 'Uniquement des biens atypiques à vendre. Un bien entre dans la sélection s’il répond à au moins l’un de ces trois critères :',
         points: [
           'Une origine singulière. Le lieu a eu une autre vie avant d’être habité : loft, atelier d’artiste, ancienne usine, entrepôt, imprimerie, chapelle, presbytère, moulin, grange, chai, écurie, bergerie, péniche, maison troglodyte.',
-          'Une signature. Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque, ou lieu aménagé par un propriétaire avec une vraie personnalité.',
+          'Une signature. Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque, ou lieu aménagé par un propriétaire à la personnalité affirmée.',
           'Un caractère rare. Le lieu se distingue par son volume (grande hauteur sous plafond, verrière, duplex, triplex, souplex), par sa situation (dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau) ou par son histoire (hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a su garder son caractère).',
         ],
       },
       {
         q: 'Le prix est-il un critère ?',
-        a: 'Non. Le prix d’un bien n’entre pas en compte dans la sélection. Seul son caractère atypique compte.',
+        a: 'Non. Le prix n’est pas pris en compte dans la sélection. Seul le caractère atypique du bien compte.',
       },
       {
         q: 'Quels biens ne sont pas diffusés ?',
-        a: 'Tous les logements qui n’entrent pas dans la charte des biens atypiques.',
+        a: 'Tous les logements qui ne répondent à aucun de ces trois critères.',
       },
       {
         q: 'Les biens présentés sont-ils réellement à vendre ?',
-        a: 'Oui. Tous les biens proposés sont en cours de commercialisation. Un bien est retiré dès qu’il est vendu.',
+        a: 'Oui. Tous les biens présentés sont en cours de commercialisation. Une annonce est retirée dès que nous sommes informés que le bien n’est plus à vendre.',
       },
       {
-        q: 'La charte est-elle la même pour toutes les agences ?',
-        a: 'Oui. Elle s’applique de la même façon à toutes les agences. Un bien qui n’y répond pas n’est pas diffusé.',
+        q: 'Les critères sont-ils les mêmes pour toutes les agences ?',
+        a: 'Oui. Ils s’appliquent de la même façon à toutes les agences. Un bien qui n’y répond pas n’est pas diffusé.',
       },
     ],
   },
@@ -49,42 +49,46 @@ const groups: Group[] = [
     title: 'Le fonctionnement du site',
     items: [
       {
-        q: 'Loftissime est-elle une agence immobilière ?',
-        a: 'Non. Loftissime ne prend aucun mandat et n’intervient dans aucune transaction. Sa position est neutre et son seul objectif est de mettre en relation les acheteurs et les négociateurs en charge des biens.',
+        q: 'Loftissime est-il une agence immobilière ?',
+        a: 'Non. Loftissime ne prend aucun mandat et n’intervient dans aucune transaction. Sa position est neutre : son seul rôle est de mettre en relation les acheteurs et les professionnels en charge des biens.',
+      },
+      {
+        q: 'Le site est-il gratuit ?',
+        a: 'Oui. La consultation des annonces est gratuite et sans inscription.',
       },
       {
         q: 'Comment contacter la personne en charge d’un bien ?',
-        a: 'Chaque annonce affiche l’agence, le négociateur et son téléphone. Vous pouvez l’appeler directement ou lui demander de vous rappeler au moment qui vous convient.',
+        a: 'Chaque annonce affiche l’agence, le nom de votre contact et son téléphone. Vous pouvez l’appeler directement ou demander à être rappelé au moment qui vous convient.',
       },
       {
-        q: 'Loftissime contacte-t-elle les vendeurs ou les acheteurs ?',
-        a: 'Non. Loftissime n’a aucun contact direct avec les vendeurs ni avec les acheteurs.',
+        q: 'Loftissime contacte-t-il les vendeurs ou les acheteurs ?',
+        a: 'Non. Loftissime ne démarche ni les vendeurs ni les acheteurs. Vos demandes sont transmises au contact chargé de la commercialisation du bien, et vous ne recevez de notre part que les alertes que vous avez créées.',
       },
       {
         q: 'Puis-je connaître l’adresse d’un bien ?',
-                a: 'Non. Loftissime ne démarche ni les vendeurs ni les acheteurs. Vos demandes sont transmises au contact chargé de la commercialisation du bien, et vous ne recevez de notre part que les alertes que vous avez créées.',
+        a: 'Loftissime ne communique jamais l’adresse d’un bien, et ne la connaît d’ailleurs pas. Seul le secteur indiqué par l’agence apparaît sur le site. Pour en savoir plus, adressez-vous au contact chargé de la commercialisation du bien.',
       },
       {
         q: 'D’où viennent les annonces ?',
-                a: 'Loftissime ne communique jamais l’adresse d’un bien, et ne la connaît d’ailleurs pas. Seul le secteur indiqué par l’agence apparaît sur le site. Pour en savoir plus, adressez-vous au contact chargé de la commercialisation du bien.',
+        a: 'Toutes les annonces proviennent d’agences immobilières. Chacune indique l’agence d’origine et renvoie vers l’annonce publiée sur son site, seule à faire foi pour le prix et la disponibilité.',
       },
     ],
   },
   {
     id: 'classement',
-    title: 'Référencement et classement',
+    title: 'Le classement des annonces',
     items: [
       {
-        q: 'Comment un bien est-il référencé ?',
-        a: 'Loftissime diffuse uniquement des biens atypiques à vendre, sélectionnés selon cette charte. Le prix d’un bien n’entre pas en compte dans la sélection.',
+        q: 'Comment les biens sont-ils classés ?',
+        a: 'Par défaut, l’ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l’annonce. Vous pouvez à tout moment trier par prix, surface ou date de publication.',
       },
       {
-        q: 'Comment les biens sont-ils classés ?',
-        a: 'L’ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l’annonce. Vous pouvez à tout moment trier par prix, surface ou date de publication.',
+        q: 'Une agence peut-elle payer pour être mieux classée ?',
+        a: 'Non. À ce jour, aucune agence ne paie pour apparaître sur le site ni pour y être mieux classée.',
       },
       {
         q: 'Que faire si une annonce comporte une erreur ou si le bien est vendu ?',
-        a: 'Chaque annonce comporte un lien « Signaler cette annonce ». Nous traitons les signalements pour corriger ou retirer une annonce.',
+        a: 'Chaque annonce comporte un lien « Signaler cette annonce ». Nous traitons chaque signalement pour corriger ou retirer l’annonce.',
       },
     ],
   },
