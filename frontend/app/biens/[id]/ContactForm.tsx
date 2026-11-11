@@ -110,7 +110,7 @@ export default function ContactForm({
       ) : (
         <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-6 space-y-4">
           <div>
-            <h2 className="font-serif text-xl text-stone-900">Être rappelé</h2>
+            <h2 className="font-serif text-xl text-stone-900">Demander un rappel</h2>
             <p className="mt-1 text-sm text-stone-600">
               Laissez vos coordonnées : l&apos;agent en charge de la vente de ce bien vous recontacte.
             </p>
