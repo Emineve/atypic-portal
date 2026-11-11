@@ -288,7 +288,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <p className="font-serif text-lg text-stone-900 leading-snug">
                 {selectedCategory !== 'Tous les biens'
                   ? `Recevez chaque nouveauté « ${selectedCategory} » dès sa mise en ligne.`
-                  : "Le lieu de vos rêves n'est peut-être pas encore en ligne."}
+                  : "Trouver mon lieu de vie idéal"}
               </p>
               <p className="mt-1 text-sm text-stone-500">
                 Dites-nous ce que vous cherchez. Dès qu'un bien correspond, vous êtes parmi les premiers prévenus.
