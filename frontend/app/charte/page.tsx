@@ -5,7 +5,7 @@ import Logo from '../Logo';
 export const metadata = {
   title: 'La charte Loftissime',
   description:
-    'La charte Loftissime : les biens atypiques que nous diffusons, ceux que nous ne diffusons pas, et notre fonctionnement avec les agences.',
+    'La charte Loftissime : les biens atypiques que nous diffusons, et ceux que nous ne diffusons pas.',
   alternates: { canonical: '/charte' },
 };
 
@@ -32,20 +32,6 @@ const notes = [
   { title: 'Ce que nous ne diffusons pas', text: 'Tous les logements qui n’entrent pas dans la charte des biens atypiques.' },
   { title: 'Des biens réellement à vendre', text: 'Tous les biens proposés sont en cours de commercialisation.' },
   { title: 'Notre engagement', text: 'La charte s’applique de la même façon à toutes les agences.' },
-];
-
-const weDo = [
-  'Référencer vos biens atypiques, selon la charte.',
-  'Afficher sur chaque annonce votre agence, le négociateur et son téléphone.',
-  'Mettre l’acheteur en contact direct avec le négociateur.',
-  'Renvoyer chaque annonce vers celle de votre site.',
-  'Retirer un bien dès qu’il est vendu.',
-];
-
-const weDont = [
-  'Aucun mandat, aucune transaction : nous ne sommes pas une agence.',
-  'Aucun contact direct avec les vendeurs ni les acheteurs.',
-  'Aucune adresse communiquée (nous ne la connaissons d’ailleurs pas).',
 ];
 
 export default function ChartePage() {
@@ -96,37 +82,13 @@ export default function ChartePage() {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Notre fonctionnement</h2>
-        <p className="mt-3 text-center text-stone-500 max-w-2xl mx-auto">
-          Une position neutre, un seul objectif : mettre en relation acheteurs et négociateurs.
-        </p>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border border-stone-200 bg-white p-8">
-            <h3 className={h3}>Ce que nous faisons</h3>
-            <ul className="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
-              {weDo.map((it) => (
-                <li key={it} className="flex gap-2"><span aria-hidden="true">·</span><span>{it}</span></li>
-              ))}
-            </ul>
-          </div>
-          <div className="border border-stone-200 bg-white p-8">
-            <h3 className={h3}>Ce que nous ne faisons pas</h3>
-            <ul className="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
-              {weDont.map((it) => (
-                <li key={it} className="flex gap-2"><span aria-hidden="true">·</span><span>{it}</span></li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="mt-12 text-center">
-          <Link
-            href="/pro"
-            className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
-          >
-            Vous êtes une agence ? Diffusez vos annonces
-          </Link>
-        </div>
+      <section className="max-w-2xl mx-auto px-6 py-16 text-center">
+        <Link
+          href="/pro"
+          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+        >
+          Vous êtes une agence ? Diffusez vos annonces
+        </Link>
       </section>
     </div>
   );
