@@ -82,7 +82,7 @@ export default function AboutPage() {
             que nous ne publions pas.
           </p>
           <p className="mt-3">
-            <Link href="/pro#charte" className="text-sm text-stone-900 underline underline-offset-4">Lire la charte Loftissime</Link>
+            <Link href="href="/charte"" className="text-sm text-stone-900 underline underline-offset-4">Lire la charte Loftissime</Link>
           </p>
         </section>
 
