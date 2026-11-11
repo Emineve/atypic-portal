@@ -83,7 +83,7 @@ export default function ProPage() {
                    Le premier hub d&apos;annonces immobilières atypiques.
         </h1>
         <p className="mt-6 text-stone-500 font-light text-lg max-w-2xl mx-auto">
-          Loftissime est le premier hub d&apos;annonces immobilières atypiques : lofts, ateliers d&apos;artistes, rooftops, et bien d&apos;autres lieux singuliers. Présentez vos biens à une audience qui cherche précisément cela.
+                  Lofts, ateliers d&apos;artistes, rooftops, et bien d&apos;autres lieux singuliers. Présentez vos biens à une audience qui cherche précisément cela.  
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="#rejoindre" className="h-12 px-8 inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition">
