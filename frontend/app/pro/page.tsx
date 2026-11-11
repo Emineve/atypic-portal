@@ -26,7 +26,7 @@ const pillars = [
     title: 'Contacts directs',
     highlight: true,
     items: [
-      'Chaque fiche affiche votre agence en bonne place',
+      'Chaque annonce affiche votre agence en bonne place',
       'Un lien direct vers votre annonce d’origine',
       'Les acheteurs vous contactent, sans intermédiaire',
     ],
@@ -51,17 +51,16 @@ const steps = [
 
 const weDo = [
   'Nous référençons vos biens atypiques, sélectionnés selon la charte Loftissime.',
-  'Chaque fiche affiche le nom de votre agence, celui du négociateur en charge du bien et son numéro de téléphone.',
-  'Les acheteurs appellent directement le négociateur ou lui demandent d’être rappelés.',
-  'Chaque fiche renvoie vers votre annonce d’origine, qui reste la référence.',
+  'Chaque annonce affiche le nom de votre agence, celui du négociateur en charge du bien et son numéro de téléphone.',
+  'Les acheteurs contactent directement le négociateur ou lui demandent d’être rappelés.',
+  'Chaque annonce renvoie vers celle de votre site, qui reste la référence.',
   'Nous retirons un bien dès qu’il est vendu, ou sur simple demande de votre part.',
 ];
 
 const weDont = [
   'Nous ne sommes pas une agence : nous ne prenons aucun mandat et n’intervenons dans aucune transaction.',
-  'Nous ne nous interposons pas entre l’acheteur et votre négociateur.',
   'Nous ne contactons jamais les vendeurs ni les acheteurs.',
-  'Nous ne communiquons jamais l’adresse d’un bien, que nous ne connaissons d’ailleurs pas.',
+  'Nous ne communiquons jamais l’adresse d’un bien (que nous ne connaissons d’ailleurs pas).',
 ];
 
 const doors = [
@@ -73,12 +72,12 @@ const doors = [
   {
     n: '2',
     title: 'Une signature',
-    text: 'Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque, des années 30 aux années 70. La signature peut aussi être celle d’un propriétaire qui a aménagé son lieu avec une vraie personnalité.',
+    text: 'Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque. La signature peut aussi être celle d’un propriétaire qui a aménagé son lieu avec une vraie personnalité.',
   },
   {
     n: '3',
     title: 'Un caractère rare',
-    text: 'Le lieu se distingue par son volume (grande hauteur sous plafond, verrière, duplex, triplex, souplex), par sa situation (dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau) ou par son histoire (hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a gardé son caractère).',
+    text: 'Le lieu se distingue par son volume (grande hauteur sous plafond, verrière, duplex, triplex, souplex), par sa situation (dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau) ou par son histoire (hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a su garder son caractère).',
   },
 ];
 
@@ -103,7 +102,7 @@ export default function ProPage() {
               Le site
             </Link>
             <a href="#rejoindre" className="h-10 px-5 inline-flex items-center bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
-              Rejoindre
+              Diffuser mes annonces
             </a>
           </div>
         </div>
@@ -119,7 +118,7 @@ export default function ProPage() {
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="#rejoindre" className="h-12 px-8 inline-flex items-center bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition">
-            Rejoindre Loftissime
+            Diffuser mes annonces
           </a>
           <span className="text-sm text-stone-500">Gratuit pendant le lancement · sans engagement</span>
         </div>
@@ -223,7 +222,7 @@ export default function ProPage() {
               </div>
             ))}
           </div>
-                    <p className="mt-16 text-center text-[10px] uppercase tracking-widest text-stone-400">
+          <p className="mt-16 text-center text-[10px] uppercase tracking-widest text-stone-400">
             Passerelles prévues avec les principaux logiciels
           </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -254,7 +253,7 @@ export default function ProPage() {
       </section>
 
       <section id="rejoindre" className="max-w-2xl mx-auto px-6 pb-24 scroll-mt-20">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Rejoindre Loftissime</h2>
+        <h2 className="font-serif text-3xl text-stone-900 text-center">Diffuser mes annonces sur Loftissime</h2>
         <p className="mt-3 text-center text-stone-500">Dites-nous qui vous êtes, nous revenons vers vous rapidement.</p>
         <div className="mt-8">
           <ProForm />
