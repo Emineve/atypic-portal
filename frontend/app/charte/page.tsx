@@ -3,58 +3,122 @@ import { ArrowLeft } from 'lucide-react';
 import Logo from '../Logo';
 
 export const metadata = {
-  title: 'La charte Loftissime',
+  title: 'Charte et questions fréquentes · Loftissime',
   description:
-    'La charte Loftissime : les biens atypiques que nous diffusons, ceux que nous ne diffusons pas, et la façon dont ils sont référencés et classés.',
+    'La charte Loftissime en questions et réponses : les biens diffusés, le fonctionnement du site, le classement des annonces et la diffusion pour les agences.',
   alternates: { canonical: '/charte' },
 };
 
-const doors = [
-  {
-    n: '1',
-    title: 'Une origine singulière',
-    text: 'Le lieu a eu une autre vie avant d’être habité : loft, atelier d’artiste, ancienne usine, entrepôt, imprimerie, chapelle, presbytère, moulin, grange, chai, écurie, bergerie, péniche, maison troglodyte.',
-  },
-  {
-    n: '2',
-    title: 'Une signature',
-    text: 'Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque. La signature peut aussi être celle d’un propriétaire qui a aménagé son lieu avec une vraie personnalité.',
-  },
-  {
-    n: '3',
-    title: 'Un caractère rare',
-    text: 'Le lieu se distingue par son volume (grande hauteur sous plafond, verrière, duplex, triplex, souplex), par sa situation (dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau) ou par son histoire (hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a su garder son caractère).',
-  },
-];
+type Item = { q: string; a: string; points?: string[] };
+type Group = { id: string; title: string; items: Item[] };
 
-const notes = [
-  { title: 'Le prix n’est pas un critère', text: 'Seul le caractère atypique du bien compte.' },
-  { title: 'Ce que nous ne diffusons pas', text: 'Tous les logements qui n’entrent pas dans la charte des biens atypiques.' },
-  { title: 'Des biens réellement à vendre', text: 'Tous les biens proposés sont en cours de commercialisation.' },
-  { title: 'Notre engagement', text: 'La charte s’applique de la même façon à toutes les agences.' },
-];
-
-const ranking = [
+const groups: Group[] = [
   {
-    title: 'Comment un bien est référencé',
-    text: 'Loftissime diffuse uniquement des biens atypiques à vendre, sélectionnés selon cette charte. Le prix d’un bien n’entre pas en compte dans la sélection.',
+    id: 'selection',
+    title: 'La sélection des biens',
+    items: [
+      {
+        q: 'Quels biens sont diffusés sur Loftissime ?',
+        a: 'Uniquement des biens atypiques à vendre. Un bien entre dans la sélection s’il répond à l’un de ces trois critères :',
+        points: [
+          'Une origine singulière. Le lieu a eu une autre vie avant d’être habité : loft, atelier d’artiste, ancienne usine, entrepôt, imprimerie, chapelle, presbytère, moulin, grange, chai, écurie, bergerie, péniche, maison troglodyte.',
+          'Une signature. Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque, ou lieu aménagé par un propriétaire avec une vraie personnalité.',
+          'Un caractère rare. Le lieu se distingue par son volume (grande hauteur sous plafond, verrière, duplex, triplex, souplex), par sa situation (dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau) ou par son histoire (hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a su garder son caractère).',
+        ],
+      },
+      {
+        q: 'Le prix est-il un critère ?',
+        a: 'Non. Le prix d’un bien n’entre pas en compte dans la sélection. Seul son caractère atypique compte.',
+      },
+      {
+        q: 'Quels biens ne sont pas diffusés ?',
+        a: 'Tous les logements qui n’entrent pas dans la charte des biens atypiques.',
+      },
+      {
+        q: 'Les biens présentés sont-ils réellement à vendre ?',
+        a: 'Oui. Tous les biens proposés sont en cours de commercialisation. Un bien est retiré dès qu’il est vendu.',
+      },
+      {
+        q: 'La charte est-elle la même pour toutes les agences ?',
+        a: 'Oui. Elle s’applique de la même façon à toutes les agences. Un bien qui n’y répond pas n’est pas diffusé.',
+      },
+    ],
   },
   {
-    title: 'Comment les biens sont classés',
-    text: 'L’ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l’annonce. Vous pouvez à tout moment trier par prix, surface ou date de publication.',
+    id: 'fonctionnement',
+    title: 'Le fonctionnement du site',
+    items: [
+      {
+        q: 'Loftissime est-elle une agence immobilière ?',
+        a: 'Non. Loftissime ne prend aucun mandat et n’intervient dans aucune transaction. Sa position est neutre et son seul objectif est de mettre en relation les acheteurs et les négociateurs en charge des biens.',
+      },
+      {
+        q: 'Comment contacter la personne en charge d’un bien ?',
+        a: 'Chaque annonce affiche l’agence, le négociateur et son téléphone. Vous pouvez l’appeler directement ou lui demander de vous rappeler au moment qui vous convient.',
+      },
+      {
+        q: 'Loftissime contacte-t-elle les vendeurs ou les acheteurs ?',
+        a: 'Non. Loftissime n’a aucun contact direct avec les vendeurs ni avec les acheteurs.',
+      },
+      {
+        q: 'Puis-je connaître l’adresse d’un bien ?',
+        a: 'Loftissime ne communique jamais l’adresse d’un bien, et ne la connaît d’ailleurs pas. Seul le secteur indiqué par l’agence apparaît sur le site. Pour en savoir plus, adressez-vous au négociateur en charge du bien.',
+      },
+      {
+        q: 'D’où viennent les annonces ?',
+        a: 'Les biens proviennent d’annonces d’agences. Chaque annonce indique l’agence d’origine et renvoie vers l’annonce de son site, seule à faire foi pour le prix et la disponibilité.',
+      },
+    ],
   },
   {
-    title: 'D’où viennent les annonces',
-    text: 'Les biens proviennent d’annonces d’agences. Chaque annonce indique l’agence d’origine et renvoie vers l’annonce de son site, seule à faire foi pour le prix et la disponibilité.',
+    id: 'classement',
+    title: 'Référencement et classement',
+    items: [
+      {
+        q: 'Comment un bien est-il référencé ?',
+        a: 'Loftissime diffuse uniquement des biens atypiques à vendre, sélectionnés selon cette charte. Le prix d’un bien n’entre pas en compte dans la sélection.',
+      },
+      {
+        q: 'Comment les biens sont-ils classés ?',
+        a: 'L’ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l’annonce. Vous pouvez à tout moment trier par prix, surface ou date de publication.',
+      },
+      {
+        q: 'Que faire si une annonce comporte une erreur ou si le bien est vendu ?',
+        a: 'Chaque annonce comporte un lien « Signaler cette annonce ». Nous traitons les signalements pour corriger ou retirer une annonce.',
+      },
+    ],
   },
   {
-    title: 'Une erreur, un bien vendu ?',
-    text: 'Chaque annonce comporte un lien « Signaler cette annonce ». Nous traitons les signalements pour corriger ou retirer une annonce.',
+    id: 'agences',
+    title: 'Pour les agences',
+    items: [
+      {
+        q: 'Que fait Loftissime pour mon agence ?',
+        a: 'Loftissime référence vos biens atypiques selon la charte et met les acheteurs en contact direct avec vos négociateurs :',
+        points: [
+          'Chaque annonce affiche votre agence, le négociateur et son téléphone.',
+          'Chaque annonce renvoie vers celle de votre site.',
+          'Un bien est retiré dès qu’il est vendu.',
+        ],
+      },
+      {
+        q: 'Combien cela coûte-t-il ?',
+        a: 'La participation est gratuite pendant la phase de lancement. Toute évolution des conditions vous sera communiquée à l’avance, sans engagement de votre part.',
+      },
+      {
+        q: 'Comment vous transmettre mes annonces ?',
+        a: 'Automatiquement, via votre logiciel de diffusion ou par un lien XML.',
+        points: ['Passerelle en direct avec votre logiciel', 'Publication et mise à jour en temps réel', 'Support technique dédié'],
+      },
+      {
+        q: 'Comment diffuser mes annonces sur Loftissime ?',
+        a: 'Remplissez le formulaire de la page Agences : nous revenons vers vous rapidement.',
+      },
+    ],
   },
 ];
 
 export default function ChartePage() {
-  const h3 = 'font-serif text-xl text-stone-900';
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
@@ -67,51 +131,40 @@ export default function ChartePage() {
         </div>
       </nav>
 
-      <header className="max-w-3xl mx-auto px-6 pt-16 md:pt-20 pb-12 text-center">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">On diffuse, ou on ne diffuse pas</p>
-        <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">La charte Loftissime</h1>
+      <header className="max-w-3xl mx-auto px-6 pt-16 md:pt-20 pb-6 text-center">
+        <p className="text-[10px] uppercase tracking-widest text-stone-400">La charte Loftissime</p>
+        <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">Questions fréquentes</h1>
+        <p className="mt-5 text-stone-500 font-light">
+          Tout ce qu&apos;il faut savoir sur les biens que nous diffusons, sur le fonctionnement du site et sur la diffusion
+          pour les agences.
+        </p>
       </header>
 
-      <section className="max-w-3xl mx-auto px-6 pb-16">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Les biens que nous diffusons</h2>
-        <div className="mt-10 space-y-8">
-          {doors.map((d) => (
-            <div key={d.n} className="flex gap-5">
-              <div className="shrink-0 h-10 w-10 rounded-full border border-stone-900 flex items-center justify-center font-serif text-lg">{d.n}</div>
-              <div>
-                <h3 className={h3}>{d.title}</h3>
-                <p className="mt-2 text-sm text-stone-600 leading-relaxed">{d.text}</p>
-              </div>
+      <main className="max-w-3xl mx-auto px-6 pb-8">
+        {groups.map((g) => (
+          <section key={g.id} id={g.id} className="pt-12 scroll-mt-20">
+            <h2 className="font-serif text-2xl text-stone-900">{g.title}</h2>
+            <div className="mt-5 divide-y divide-stone-200 border-y border-stone-200">
+              {g.items.map((it) => (
+                <details key={it.q} className="group py-5">
+                  <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
+                    {it.q}
+                    <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
+                  </summary>
+                  <p className="mt-3 text-sm text-stone-600 leading-relaxed">{it.a}</p>
+                  {it.points && (
+                    <ul className="mt-3 space-y-2 text-sm text-stone-600 leading-relaxed">
+                      {it.points.map((pt) => (
+                        <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{pt}</span></li>
+                      ))}
+                    </ul>
+                  )}
+                </details>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-white border-y border-stone-200">
-        <div className="max-w-5xl mx-auto px-6 py-16">
-          <h2 className="font-serif text-3xl text-stone-900 text-center">À noter</h2>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-            {notes.map((n) => (
-              <div key={n.title}>
-                <h3 className={h3}>{n.title}</h3>
-                <p className="mt-2 text-sm text-stone-600 leading-relaxed">{n.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="classement" className="max-w-3xl mx-auto px-6 pt-16 scroll-mt-20">
-        <h2 className="font-serif text-3xl text-stone-900 text-center">Référencement et classement</h2>
-        <div className="mt-10 space-y-8">
-          {ranking.map((r) => (
-            <div key={r.title}>
-              <h3 className={h3}>{r.title}</h3>
-              <p className="mt-2 text-sm text-stone-600 leading-relaxed">{r.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+          </section>
+        ))}
+      </main>
 
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
         <Link
