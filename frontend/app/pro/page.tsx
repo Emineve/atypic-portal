@@ -85,9 +85,9 @@ export default function ProPage() {
               <ArrowLeft className="w-3.5 h-3.5" />
               Accueil
             </Link>
-            <a href="#rejoindre" className="h-10 px-5 inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
+                        <a href="#rejoindre" className="h-10 px-4 sm:px-5 inline-flex items-center gap-2 whitespace-nowrap bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
               <Megaphone className="w-4 h-4" />
-              Diffuser mes annonces
+              Diffuser<span className="hidden sm:inline">&nbsp;mes annonces</span>
             </a>
           </div>
         </div>
