@@ -111,6 +111,57 @@ function num(s: string): string {
   return s.replace(/[^\d,.-]/g, '').replace(',', '.');
 }
 
+// Lit une page d'annonce enregistrée (.html) et en extrait les données publiées au format schema.org
+function parseListingPage(html: string) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const decode = (s: unknown): string => {
+    if (s === null || s === undefined) return '';
+    const ta = document.createElement('textarea');
+    ta.innerHTML = String(s);
+    return ta.value.trim();
+  };
+  const meta = (name: string): string => {
+    const el = doc.querySelector(`meta[property="${name}"], meta[name="${name}"]`);
+    return el ? (el.getAttribute('content') || '').trim() : '';
+  };
+  const nodes: any[] = [];
+  doc.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
+    try {
+      const j = JSON.parse(s.textContent || '');
+      const list = Array.isArray(j) ? j : [j];
+      list.forEach((n: any) => {
+        if (!n || typeof n !== 'object') return;
+        nodes.push(n);
+        if (Array.isArray(n['@graph'])) n['@graph'].forEach((g: any) => nodes.push(g));
+      });
+    } catch { /* bloc illisible : ignoré */ }
+  });
+  const isListing = (n: any) => ([] as any[]).concat(n['@type'] || []).some((t: string) => /RealEstateListing|Product|Offer|Residence|Apartment|House/i.test(String(t)));
+  const node: any = nodes.find((n) => isListing(n) && n.description) || nodes.find((n) => n.offers && n.description) || {};
+  const main: any = node.mainEntity || node.itemOffered || {};
+  const offers: any = Array.isArray(node.offers) ? node.offers[0] || {} : node.offers || {};
+  const address: any = main.address || node.address || {};
+  const canonical = doc.querySelector('link[rel="canonical"]');
+  const images: string[] = [];
+  const addImage = (v: any) => {
+    const u = typeof v === 'string' ? v : v && typeof v === 'object' ? v.url || v.contentUrl : '';
+    if (typeof u === 'string' && /^https?:\/\//i.test(u) && !images.includes(u)) images.push(u);
+  };
+  ([] as any[]).concat(node.image || []).forEach(addImage);
+  addImage(meta('og:image'));
+  return {
+    title: decode(node.name) || decode(meta('og:title')),
+    description: decode(node.description) || decode(meta('og:description')) || decode(meta('description')),
+    source_url: String(node.url || offers.url || meta('og:url') || (canonical ? canonical.getAttribute('href') : '') || '').trim(),
+    price: str(offers.price),
+    surface_sqm: str(main.floorSize && typeof main.floorSize === 'object' ? main.floorSize.value : main.floorSize),
+    rooms: str(main.numberOfRooms),
+    postal_code: str(address.postalCode),
+    city: decode(address.addressLocality),
+    images,
+  };
+}
+
 export default function AdminAnnonces() {
   const [token, setToken] = useState<string | null>(null);
   const [rows, setRows] = useState<Listing[] | null>(null);
@@ -175,6 +226,38 @@ export default function AdminAnnonces() {
     setNotice('');
     setForm(f);
     if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async function importPage(file: File | undefined) {
+    if (!file || !form) return;
+    setError('');
+    setNotice('');
+    try {
+      const d = parseListingPage(await file.text());
+      if (!d.description && !d.title) {
+        setError('Aucune annonce reconnue dans ce fichier. Enregistrez la page de l’annonce au format « Page web, HTML uniquement ».');
+        return;
+      }
+      // Le descriptif est toujours repris tel quel ; les autres champs ne sont complétés que s'ils sont vides
+      setForm((f) => {
+        if (!f) return f;
+        return {
+          ...f,
+          short_description: d.description || f.short_description,
+          title: f.title || d.title,
+          source_url: f.source_url || d.source_url,
+          price: f.price || d.price,
+          surface_sqm: f.surface_sqm || d.surface_sqm,
+          rooms: f.rooms || d.rooms,
+          postal_code: f.postal_code || d.postal_code,
+          city: f.city || d.city,
+          images: f.images.trim() ? f.images : d.images.join('\n'),
+        };
+      });
+      setNotice('Page lue : le descriptif de l’annonce a été repris à l’identique. Vérifiez les champs, puis enregistrez.');
+    } catch {
+      setError('Lecture du fichier impossible.');
+    }
   }
 
   async function save() {
@@ -263,6 +346,19 @@ export default function AdminAnnonces() {
             <h2 className="font-serif text-lg">{form.id ? 'Modifier l’annonce' : 'Nouvelle annonce'}</h2>
             <p className="mt-1 text-xs text-stone-500">Les champs marqués d&apos;une étoile sont obligatoires.</p>
 
+            <div className="mt-4 border border-dashed border-stone-300 bg-stone-50 p-4">
+              <label className={label}>Reprendre une annonce à l&apos;identique depuis une page enregistrée (.html)</label>
+              <input
+                type="file"
+                accept=".html,.htm,text/html"
+                className="text-sm"
+                onChange={(e) => { importPage(e.target.files ? e.target.files[0] : undefined); e.target.value = ''; }}
+              />
+              <p className="mt-1 text-xs text-stone-500">
+                Le descriptif est repris tel quel. Les autres champs (titre, prix, surface, photos) ne sont complétés que s&apos;ils sont vides.
+              </p>
+            </div>
+
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <div className="md:col-span-2">
                 <label className={label}>Titre *</label>
@@ -282,10 +378,10 @@ export default function AdminAnnonces() {
                 <input className={input} placeholder="https://…" value={form.source_url} onChange={(e) => set('source_url', e.target.value)} />
               </div>
               <div className="md:col-span-2">
-                <label className={label}>Descriptif court</label>
+                <label className={label}>Descriptif</label>
                 <textarea
                   className="w-full border border-stone-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-stone-900"
-                  rows={3}
+                  rows={8}
                   value={form.short_description}
                   onChange={(e) => set('short_description', e.target.value)}
                 />
