@@ -14,6 +14,7 @@ const pillars = [
   {
     icon: Eye,
     title: 'Visibilité',
+    highlight: false,
     items: [
       'Un site entièrement dédié aux biens atypiques',
       'Une page agence qui rassemble tous vos biens',
@@ -23,6 +24,7 @@ const pillars = [
   {
     icon: MousePointerClick,
     title: 'Contacts directs',
+    highlight: true,
     items: [
       'Chaque fiche affiche votre agence en bonne place',
       'Un lien direct vers votre annonce d’origine',
@@ -32,18 +34,19 @@ const pillars = [
   {
     icon: Sparkles,
     title: 'Sélection exigeante',
+    highlight: false,
     items: [
-      'Seuls les biens au caractère marqué sont publiés',
-      'Une charte de sélection publique et transparente',
+      'Une charte de sélection précise et publique',
+      'Un bien répond à la charte, ou n’y répond pas',
       'Un cadre qui valorise vos mandats les plus rares',
     ],
   },
 ];
 
 const steps = [
-  { n: '1', title: 'Vous nous écrivez', text: 'Présentez votre agence et le type de biens atypiques que vous représentez.' },
-  { n: '2', title: 'Nous choisissons ensemble', text: 'Nous retenons les biens qui répondent à la charte Loftissime.' },
-  { n: '3', title: 'Vos biens sont publiés', text: 'Chaque fiche porte votre nom et renvoie vers votre annonce d’origine.' },
+  { n: '1', text: 'Création d’une passerelle avec votre logiciel de diffusion, ou dépôt d’annonce sur votre espace Pro.' },
+  { n: '2', text: 'Envoi de vos annonces par notification aux utilisateurs, en temps réel.' },
+  { n: '3', text: 'Gestion de tous vos contacts sur votre compte Loftissime Pro, et envoi direct des leads acquéreurs par email ou SMS.' },
 ];
 
 const weDo = [
@@ -57,7 +60,7 @@ const weDo = [
 const weDont = [
   'Nous ne sommes pas une agence : nous ne prenons aucun mandat et n’intervenons dans aucune transaction.',
   'Nous ne nous interposons pas entre l’acheteur et votre négociateur.',
-  'Nous ne contactons jamais vos vendeurs.',
+  'Nous ne contactons jamais les vendeurs ni les acheteurs.',
   'Nous ne communiquons jamais l’adresse d’un bien, que nous ne connaissons d’ailleurs pas.',
 ];
 
@@ -70,7 +73,7 @@ const doors = [
   {
     n: '2',
     title: 'Une signature',
-    text: 'Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte ou un architecte d’intérieur, construction marquante de son époque, des années 30 aux années 70. La signature peut aussi être celle d’un propriétaire qui a aménagé son lieu avec une vraie personnalité.',
+    text: 'Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque, des années 30 aux années 70. La signature peut aussi être celle d’un propriétaire qui a aménagé son lieu avec une vraie personnalité.',
   },
   {
     n: '3',
@@ -79,11 +82,13 @@ const doors = [
   },
 ];
 
-const faq = [
+const faq: { q: string; a: string; points?: string[] }[] = [
   { q: 'Combien cela coûte-t-il ?', a: 'La participation est gratuite pendant la phase de lancement. Toute évolution des conditions vous sera communiquée à l’avance, sans engagement de votre part.' },
-  { q: 'Comment vous transmettre mes annonces ?', a: 'Au démarrage, nous reprenons ensemble les biens que vous souhaitez présenter. Nous étudions ensuite la meilleure façon de les tenir à jour.' },
-  { q: 'Que devient mon annonce d’origine ?', a: 'Elle reste la référence pour le prix et la disponibilité. Chaque fiche Loftissime renvoie vers votre annonce.' },
-  { q: 'Tous mes biens seront-ils publiés ?', a: 'Non, uniquement ceux qui répondent à la charte Loftissime, détaillée sur cette page.' },
+  {
+    q: 'Comment vous transmettre mes annonces ?',
+    a: 'Automatiquement, via votre logiciel de diffusion ou par un lien XML.',
+    points: ['Passerelle en direct avec votre logiciel', 'Publication et mise à jour en temps réel', 'Support technique dédié'],
+  },
 ];
 
 export default function ProPage() {
@@ -124,10 +129,10 @@ export default function ProPage() {
         <h2 className="font-serif text-3xl text-stone-900 text-center">Ce que Loftissime vous apporte</h2>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           {pillars.map((p) => (
-            <div key={p.title} className="border border-stone-200 bg-white p-8">
-              <p.icon className="w-6 h-6 text-stone-900" />
-              <h3 className="mt-4 font-serif text-xl text-stone-900">{p.title}</h3>
-              <ul className="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
+            <div key={p.title} className={`border p-8 ${p.highlight ? 'border-stone-900 bg-stone-900' : 'border-stone-200 bg-white'}`}>
+              <p.icon className={`w-6 h-6 ${p.highlight ? 'text-white' : 'text-stone-900'}`} />
+              <h3 className={`mt-4 font-serif text-xl ${p.highlight ? 'text-white' : 'text-stone-900'}`}>{p.title}</h3>
+              <ul className={`mt-4 space-y-2 text-sm leading-relaxed ${p.highlight ? 'text-stone-200' : 'text-stone-600'}`}>
                 {p.items.map((it) => (
                   <li key={it} className="flex gap-2"><span aria-hidden="true">·</span><span>{it}</span></li>
                 ))}
@@ -166,10 +171,6 @@ export default function ProPage() {
         <div className="max-w-3xl mx-auto px-6 py-20">
           <p className="text-[10px] uppercase tracking-widest text-stone-400 text-center">On diffuse, ou on ne diffuse pas</p>
           <h2 className="mt-3 font-serif text-3xl text-stone-900 text-center">La charte Loftissime</h2>
-          <p className="mt-5 text-center text-stone-600 leading-relaxed">
-            Un bien est diffusé s&apos;il a quelque chose qu&apos;on ne trouve pas dans un logement standard. Trois portes
-            d&apos;entrée existent, et une seule suffit.
-          </p>
           <div className="mt-10 space-y-8">
             {doors.map((d) => (
               <div key={d.n} className="flex gap-5">
@@ -191,8 +192,13 @@ export default function ProPage() {
             <div>
               <h3 className="font-serif text-xl text-stone-900">Ce que nous ne diffusons pas</h3>
               <p className="mt-2 text-sm text-stone-600 leading-relaxed">
-                Tous les logements qui n&apos;entrent pas dans la charte des biens atypiques, ainsi que les biens vendus ou
-                retirés par l&apos;agence.
+                Tous les logements qui n&apos;entrent pas dans la charte des biens atypiques.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-serif text-xl text-stone-900">Des biens réellement à vendre</h3>
+              <p className="mt-2 text-sm text-stone-600 leading-relaxed">
+                Tous les biens proposés sont en cours de commercialisation.
               </p>
             </div>
             <div>
@@ -207,14 +213,13 @@ export default function ProPage() {
 
       <section className="bg-white border-b border-stone-200">
         <div className="max-w-5xl mx-auto px-6 py-20">
-          <h2 className="font-serif text-3xl text-stone-900 text-center">Comment ça marche</h2>
-          <p className="mt-3 text-center text-stone-500">Simple, et sans engagement.</p>
+          <h2 className="font-serif text-3xl text-stone-900 text-center">Comment ça marche ?</h2>
+          <p className="mt-3 text-center text-stone-500">Vous n&apos;avez rien à faire, nous nous occupons de tout.</p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10">
             {steps.map((s) => (
               <div key={s.n} className="text-center">
                 <div className="mx-auto h-12 w-12 rounded-full border border-stone-900 flex items-center justify-center font-serif text-xl">{s.n}</div>
-                <h3 className="mt-5 font-serif text-xl text-stone-900">{s.title}</h3>
-                <p className="mt-2 text-sm text-stone-600 leading-relaxed">{s.text}</p>
+                <p className="mt-5 text-sm text-stone-600 leading-relaxed">{s.text}</p>
               </div>
             ))}
           </div>
@@ -231,6 +236,13 @@ export default function ProPage() {
                 <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
               </summary>
               <p className="mt-3 text-sm text-stone-600 leading-relaxed">{f.a}</p>
+              {f.points && (
+                <ul className="mt-2 space-y-1 text-sm text-stone-600 leading-relaxed">
+                  {f.points.map((pt) => (
+                    <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{pt}</span></li>
+                  ))}
+                </ul>
+              )}
             </details>
           ))}
         </div>
