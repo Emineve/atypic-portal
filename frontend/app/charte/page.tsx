@@ -62,11 +62,11 @@ const groups: Group[] = [
       },
       {
         q: 'Puis-je connaître l’adresse d’un bien ?',
-        a: 'Loftissime ne communique jamais l’adresse d’un bien, et ne la connaît d’ailleurs pas. Seul le secteur indiqué par l’agence apparaît sur le site. Pour en savoir plus, adressez-vous au négociateur en charge du bien.',
+                a: 'Non. Loftissime ne démarche ni les vendeurs ni les acheteurs. Vos demandes sont transmises au contact chargé de la commercialisation du bien, et vous ne recevez de notre part que les alertes que vous avez créées.',
       },
       {
         q: 'D’où viennent les annonces ?',
-        a: 'Les biens proviennent d’annonces d’agences. Chaque annonce indique l’agence d’origine et renvoie vers l’annonce de son site, seule à faire foi pour le prix et la disponibilité.',
+                a: 'Loftissime ne communique jamais l’adresse d’un bien, et ne la connaît d’ailleurs pas. Seul le secteur indiqué par l’agence apparaît sur le site. Pour en savoir plus, adressez-vous au contact chargé de la commercialisation du bien.',
       },
     ],
   },
