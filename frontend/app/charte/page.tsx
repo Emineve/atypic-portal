@@ -9,38 +9,21 @@ export const metadata = {
   alternates: { canonical: '/charte' },
 };
 
-const doors: { n: string; title: string; intro: string; groups: { label?: string; text: string }[] }[] = [
+const doors = [
   {
     n: '1',
     title: 'Une origine singulière',
-    intro: 'Le lieu a eu une autre vie avant d’être habité.',
-    groups: [
-      {
-        text: 'Loft, atelier d’artiste, ancienne usine, entrepôt, imprimerie, chapelle, presbytère, moulin, grange, chai, écurie, bergerie, péniche, maison troglodyte.',
-      },
-    ],
+    text: 'Le lieu a eu une autre vie avant d’être habité : loft, atelier d’artiste, ancienne usine, entrepôt, imprimerie, chapelle, presbytère, moulin, grange, chai, écurie, bergerie, péniche, maison troglodyte.',
   },
   {
     n: '2',
     title: 'Une signature',
-    intro: 'Le lieu a été conçu ou transformé avec un parti pris fort.',
-    groups: [
-      { text: 'Maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque.' },
-      { text: 'Ou la signature d’un propriétaire qui a aménagé son lieu avec une vraie personnalité.' },
-    ],
+    text: 'Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque. La signature peut aussi être celle d’un propriétaire qui a aménagé son lieu avec une vraie personnalité.',
   },
   {
     n: '3',
     title: 'Un caractère rare',
-    intro: 'Le lieu se distingue par ce qu’il offre.',
-    groups: [
-      { label: 'Son volume', text: 'Grande hauteur sous plafond, verrière, duplex, triplex, souplex.' },
-      { label: 'Sa situation', text: 'Dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau.' },
-      {
-        label: 'Son histoire',
-        text: 'Hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a su garder son caractère.',
-      },
-    ],
+    text: 'Le lieu se distingue par son volume (grande hauteur sous plafond, verrière, duplex, triplex, souplex), par sa situation (dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau) ou par son histoire (hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a su garder son caractère).',
   },
 ];
 
@@ -84,21 +67,15 @@ export default function ChartePage() {
         <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">La charte Loftissime</h1>
       </header>
 
-      <section className="max-w-6xl mx-auto px-6 pb-16">
+      <section className="max-w-3xl mx-auto px-6 pb-16">
         <h2 className="font-serif text-3xl text-stone-900 text-center">Les biens que nous diffusons</h2>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-10 space-y-8">
           {doors.map((d) => (
-            <div key={d.n} className="border border-stone-200 bg-white p-8">
-              <div className="h-10 w-10 rounded-full border border-stone-900 flex items-center justify-center font-serif text-lg">{d.n}</div>
-              <h3 className={`mt-4 ${h3}`}>{d.title}</h3>
-              <p className="mt-2 text-sm text-stone-900 leading-relaxed">{d.intro}</p>
-              <div className="mt-4 space-y-3 text-sm text-stone-600 leading-relaxed">
-                {d.groups.map((g) => (
-                  <p key={g.text}>
-                    {g.label && <span className="block text-[10px] uppercase tracking-widest text-stone-400">{g.label}</span>}
-                    {g.text}
-                  </p>
-                ))}
+            <div key={d.n} className="flex gap-5">
+              <div className="shrink-0 h-10 w-10 rounded-full border border-stone-900 flex items-center justify-center font-serif text-lg">{d.n}</div>
+              <div>
+                <h3 className={h3}>{d.title}</h3>
+                <p className="mt-2 text-sm text-stone-600 leading-relaxed">{d.text}</p>
               </div>
             </div>
           ))}
