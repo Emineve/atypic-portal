@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Bell, FileText, Megaphone, Search } from 'lucide-react';
 import Logo from '../Logo';
 
 export const metadata = {
@@ -12,6 +12,7 @@ export const metadata = {
 export default function AboutPage() {
   const h2 = 'font-serif text-2xl text-stone-900';
   const p = 'mt-3 text-stone-600 leading-relaxed';
+  const cta = 'inline-flex items-center gap-2 text-sm text-stone-900 underline underline-offset-4';
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
@@ -49,7 +50,10 @@ export default function AboutPage() {
             correspond à vos critères.
           </p>
           <p className="mt-3">
-            <Link href="/" className="text-sm text-stone-900 underline underline-offset-4">Voir toutes les annonces</Link>
+            <Link href="/" className={cta}>
+              <Search className="w-4 h-4" />
+              Voir toutes les annonces
+            </Link>
           </p>
         </section>
 
@@ -57,11 +61,14 @@ export default function AboutPage() {
           <h2 className={h2}>Pour ceux qui aiment rêver</h2>
           <p className={p}>
             On peut aussi venir ici sans projet précis. Pour flâner, se projeter, nourrir son imagination. Des lieux
-                        transformés par des architectes, d&apos;autres aménagés avec goût et liberté par leurs propriétaires : autant de
+            transformés par des architectes, d&apos;autres aménagés avec goût et liberté par leurs propriétaires : autant de
             façons d&apos;habiter autrement, à découvrir sur Loftissime.
           </p>
           <p className="mt-3">
-            <Link href="/" className="text-sm text-stone-900 underline underline-offset-4">Trouver mon lieu de vie idéal</Link>
+            <Link href="/" className={cta}>
+              <Bell className="w-4 h-4" />
+              Trouver mon lieu de vie idéal
+            </Link>
           </p>
         </section>
 
@@ -71,10 +78,13 @@ export default function AboutPage() {
             Loftissime n&apos;est pas une agence immobilière. Nous ne vendons aucun bien et nous n&apos;intervenons dans
             aucune transaction. Notre position est neutre, et notre objectif tient en une ligne : faciliter la mise en
             relation entre les acheteurs et les négociateurs en charge des biens référencés. Chaque annonce renvoie
-                       vers l&apos;agence ou l&apos;agent qui la commercialise.
+            vers l&apos;agence ou l&apos;agent qui la commercialise.
           </p>
           <p className="mt-3">
-            <Link href="/pro" className="text-sm text-stone-900 underline underline-offset-4">Diffuser mes annonces</Link>
+            <Link href="/pro" className={cta}>
+              <Megaphone className="w-4 h-4" />
+              Diffuser mes annonces
+            </Link>
           </p>
         </section>
 
@@ -86,7 +96,10 @@ export default function AboutPage() {
             que nous ne publions pas.
           </p>
           <p className="mt-3">
-            <Link href="/charte" className="text-sm text-stone-900 underline underline-offset-4">Lire la charte Loftissime</Link>
+            <Link href="/charte" className={cta}>
+              <FileText className="w-4 h-4" />
+              Lire la charte Loftissime
+            </Link>
           </p>
         </section>
 
