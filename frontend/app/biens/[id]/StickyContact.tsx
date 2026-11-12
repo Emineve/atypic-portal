@@ -63,7 +63,7 @@ export default function StickyContact({
           <svg viewBox="0 0 24 24" className="w-4 h-4 flex-none" fill="currentColor" aria-hidden="true">
             <path d={WHATSAPP_ICON_PATH} />
           </svg>
-          <span>Contacter l&apos;agent sur WhatsApp</span>
+          WhatsApp
         </a>
       ) : phone ? (
         <a
