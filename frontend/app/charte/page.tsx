@@ -146,6 +146,7 @@ export default function ChartePage() {
       </main>
 
                 <div className="h-16" />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: groups.flatMap((g) => g.items.map((it) => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: [it.a, ...(it.points || [])].join(' ') } }))) }).replace(/</g, '\\u003c') }} />
     </div>
   );
 }
