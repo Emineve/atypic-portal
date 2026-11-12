@@ -148,7 +148,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
       </nav>
 
       <main className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 min-w-0">
           <Gallery images={allImages} title={item.title} category={item.atypic_category} />
 
           <div className="mt-8">
@@ -219,7 +219,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
           </div>
         </div>
 
-        <aside className="space-y-4">
+        <aside className="space-y-4 min-w-0">
                     <div className="border border-stone-200 bg-white p-6">
             <p className="text-[10px] uppercase tracking-widest text-stone-400">Proposé par</p>
             <p className="mt-1 font-serif text-2xl text-stone-900">{item.source_agency}</p>
@@ -252,7 +252,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </aside>
       </main>
 
-            <StickyContact price={price} phone={item.contact_phone} listingId={item.id} />
+            <StickyContact phone={item.contact_phone} listingId={item.id} />
 
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">

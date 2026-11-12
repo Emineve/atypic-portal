@@ -1,16 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Phone } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 
-// Barre fixe en bas d'écran sur mobile : prix, appel direct et demande de rappel.
+// Barre fixe en bas d'écran sur mobile : appel direct et contact de l'agent.
 export default function StickyContact({
-  price,
   phone,
   listingId,
 }: {
-  price: string;
   phone?: string | null;
   listingId?: string;
 }) {
@@ -44,30 +42,28 @@ export default function StickyContact({
       .then(() => undefined, () => undefined);
   }
 
+  const btn =
+    'flex-1 h-12 inline-flex items-center justify-center gap-2 rounded-full text-[13px] font-semibold uppercase tracking-wider whitespace-nowrap transition';
+
   return (
     <div
-      className={`lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-stone-200 px-4 py-3 flex items-center justify-between gap-3 transition-transform duration-300 ${hidden ? 'translate-y-full' : 'translate-y-0'}`}
+      className={`lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-stone-200 px-4 py-3 flex items-center gap-3 transition-transform duration-300 ${hidden ? 'translate-y-full' : 'translate-y-0'}`}
       style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
     >
-      <p className="font-serif text-lg text-stone-900 whitespace-nowrap">{price}</p>
-      <div className="flex items-center gap-2">
-        {phone && (
-          <a
-            href={`tel:${phone.replace(/[^+\d]/g, '')}`}
-            onClick={trackCall}
-            className="h-12 px-4 inline-flex items-center gap-2 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider"
-          >
-            <Phone className="w-4 h-4" />
-                        Contacter l&apos;agent
-          </a>
-        )}
+      {phone && (
         <a
-          href="#contact"
-          className="h-12 px-4 inline-flex items-center bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider"
+          href={`tel:${phone.replace(/[^+\d]/g, '')}`}
+          onClick={trackCall}
+          className={`${btn} border border-stone-900 text-stone-900 active:bg-stone-100`}
         >
-          Rappelez-moi
+          <Phone className="w-4 h-4" />
+          Appeler
         </a>
-      </div>
+      )}
+      <a href="#contact" className={`${btn} bg-stone-900 text-white active:bg-stone-700`}>
+        <Mail className="w-4 h-4" />
+        Contacter l&apos;agent
+      </a>
     </div>
   );
 }
