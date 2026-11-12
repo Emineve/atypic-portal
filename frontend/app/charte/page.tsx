@@ -84,7 +84,7 @@ const groups: Group[] = [
     items: [
       {
         q: 'Comment les biens sont-ils classés ?',
-        a: 'Par défaut, l’ordre « Sélection » repose sur notre appréciation du caractère du lieu et de la qualité de l’annonce. Vous pouvez à tout moment trier par prix, surface ou date de publication.',
+              a: 'Par défaut, quelques biens choisis par Loftissime apparaissent en tête de liste, suivis des annonces les plus récentes. Vous pouvez à tout moment trier par prix, surface ou date de publication.', 
       },
       {
         q: 'Une agence peut-elle payer pour être mieux classée ?',
