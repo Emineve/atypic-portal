@@ -17,7 +17,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
-  description: DESCRIPTION,
+  description: DESCRIPTION,  robots: { index: false, follow: false },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
