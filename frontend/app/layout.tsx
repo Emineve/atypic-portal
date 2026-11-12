@@ -10,14 +10,18 @@ const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: '
 // Police des titres
 const serifFont = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-serif', display: 'swap' });
 
-const TITLE = 'Loftissime · Biens atypiques et singuliers à vendre en France';
+// Texte repris par Google, par les assistants IA et par les aperçus de partage
+const TITLE = 'Loftissime · Lofts, ateliers et biens atypiques à vendre';
 const DESCRIPTION =
-  "Lofts, ateliers d'artistes, péniches, rooftops et biens de caractère : une sélection de biens atypiques à vendre, issus d'annonces d'agences partout en France.";
+  'Loftissime, le premier hub d’annonces immobilières atypiques : lofts, ateliers d’artistes, rooftops et maisons d’architecte à vendre, réunis sur un seul site.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
-  description: DESCRIPTION,  robots: { index: false, follow: false },
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  // Site en phase de test : à retirer le jour de l'ouverture publique pour être référencé
+  robots: { index: false, follow: false },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
@@ -32,10 +36,37 @@ export const metadata: Metadata = {
   },
 };
 
+// Carte d'identité du site, lisible par les moteurs de recherche et les assistants IA
+const siteLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organisation`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.svg`,
+      description: DESCRIPTION,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#site`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      inLanguage: 'fr-FR',
+      description: DESCRIPTION,
+      publisher: { '@id': `${SITE_URL}/#organisation` },
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${logoFont.variable} ${sansFont.variable} ${serifFont.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd).replace(/</g, '\\u003c') }} />
+        {children}
+      </body>
     </html>
   );
 }
