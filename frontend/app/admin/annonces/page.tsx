@@ -102,6 +102,12 @@ function toForm(l: Listing): Form {
   };
 }
 
+// Position en tête de liste (1 à 9), déduite de la note interne : 99 = position 1, 91 = position 9
+function positionOf(l: { curation_score: number | null }): number | null {
+  const s = Number(l.curation_score || 0);
+  return s >= 91 && s <= 99 ? 100 - s : null;
+}
+
 function euro(n: number) {
   return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
 }
@@ -209,12 +215,14 @@ export default function AdminAnnonces() {
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    return (rows || []).filter((r) => {
+    const list = (rows || []).filter((r) => {
       if (show === 'active' && !r.is_active) return false;
       if (show === 'hidden' && r.is_active) return false;
       if (!q) return true;
       return [r.title, r.source_agency, r.city, r.district || '', r.contact_name || ''].join(' ').toLowerCase().includes(q);
     });
+    // Les annonces placées en tête apparaissent d'abord, dans l'ordre de leur position
+    return [...list].sort((a, b) => (positionOf(a) ?? 99) - (positionOf(b) ?? 99));
   }, [rows, search, show]);
 
   function set<K extends keyof Form>(key: K, value: Form[K]) {
@@ -297,6 +305,22 @@ export default function AdminAnnonces() {
     }
     setNotice(form.id ? 'Annonce mise à jour.' : 'Annonce ajoutée.');
     setForm(null);
+    load(token);
+  }
+
+  async function setPosition(l: Listing, value: string) {
+    if (!token) return;
+    setError('');
+    setNotice('');
+    const { error: e } = await getSupabase().rpc('admin_set_listing_position', {
+      p_token: token,
+      p_id: l.id,
+      p_position: value ? Number(value) : null,
+    });
+    if (e) {
+      setError('Modification impossible : ' + e.message);
+      return;
+    }
     load(token);
   }
 
@@ -481,17 +505,10 @@ export default function AdminAnnonces() {
               )}
             </div>
 
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <div>
-                <label className={label}>Note de sélection (0 à 100, jamais affichée)</label>
-                <input className={input} inputMode="numeric" value={form.curation_score} onChange={(e) => set('curation_score', e.target.value)} />
-                <p className="mt-1 text-xs text-stone-500">Plus la note est haute, plus le bien remonte dans l&apos;ordre « Sélection ».</p>
-              </div>
-              <label className="flex items-center gap-3 text-sm md:mt-6">
-                <input type="checkbox" checked={form.is_active} onChange={(e) => set('is_active', e.target.checked)} className="h-4 w-4" />
-                Annonce visible sur le site
-              </label>
-            </div>
+            <label className="mt-4 flex items-center gap-3 text-sm">
+              <input type="checkbox" checked={form.is_active} onChange={(e) => set('is_active', e.target.checked)} className="h-4 w-4" />
+              Annonce visible sur le site
+            </label>
 
             <div className="mt-6 flex items-center gap-4">
               <button onClick={save} disabled={saving} className="h-11 px-6 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider disabled:opacity-40">
@@ -524,7 +541,11 @@ export default function AdminAnnonces() {
               </select>
             </div>
 
-            <div className="mt-4 overflow-x-auto border border-stone-200 bg-white">
+            <p className="mt-4 text-xs text-stone-500">
+              Colonne « Position » : choisissez les annonces affichées en premier sur le site (de 1 à 9). Les autres suivent, des plus récentes aux plus anciennes.
+            </p>
+
+            <div className="mt-3 overflow-x-auto border border-stone-200 bg-white">
               <table className="w-full min-w-[820px] text-sm">
                 <thead>
                   <tr className="bg-stone-100 text-left text-[11px] font-semibold uppercase tracking-wider text-stone-600">
@@ -532,7 +553,7 @@ export default function AdminAnnonces() {
                     <th className="px-3 py-3">Agence</th>
                     <th className="px-3 py-3 text-right">Prix</th>
                     <th className="px-3 py-3 text-right">Surface</th>
-                    <th className="px-3 py-3 text-right">Note</th>
+                    <th className="px-3 py-3">Position</th>
                     <th className="px-3 py-3">État</th>
                     <th className="px-4 py-3 text-right">Actions</th>
                   </tr>
@@ -559,7 +580,19 @@ export default function AdminAnnonces() {
                       <td className="px-3 py-3">{l.source_agency}</td>
                       <td className="px-3 py-3 text-right tabular-nums whitespace-nowrap">{euro(Number(l.price))}</td>
                       <td className="px-3 py-3 text-right tabular-nums whitespace-nowrap">{l.surface_sqm ? `${Math.round(Number(l.surface_sqm))} m²` : '–'}</td>
-                      <td className="px-3 py-3 text-right tabular-nums">{l.curation_score ?? 0}</td>
+                      <td className="px-3 py-3">
+                        <select
+                          aria-label="Position en tête de liste"
+                          className="h-9 border border-stone-300 bg-white px-2 text-sm text-stone-900"
+                          value={positionOf(l) ? String(positionOf(l)) : ''}
+                          onChange={(e) => setPosition(l, e.target.value)}
+                        >
+                          <option value="">–</option>
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+                            <option key={n} value={n}>{n}</option>
+                          ))}
+                        </select>
+                      </td>
                       <td className="px-3 py-3 whitespace-nowrap">{l.is_active ? 'Visible' : 'Masquée'}</td>
                       <td className="px-4 py-3 text-right whitespace-nowrap">
                         <button onClick={() => openForm(toForm(l))} className="h-9 px-3 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
