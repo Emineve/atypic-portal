@@ -372,7 +372,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         {!loading && !errorMessage && (
           <div className="flex items-center justify-between mb-6">
             <p className="font-serif text-lg text-stone-700">
-                            {visible.length} {visible.length > 1 ? 'lieux à découvrir' : 'lieu à découvrir'}
+                            {visible.length} {visible.length > 1 ? 'lieux atypiques' : 'lieu atypique'}
             </p>
             <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
               Trier par
