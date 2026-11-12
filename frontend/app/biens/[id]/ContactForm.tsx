@@ -23,6 +23,8 @@ export default function ContactForm({
   contactName,
   title,
   reference,
+  city,
+  price,
 }: {
   listingId: string;
   agency: string;
@@ -30,6 +32,8 @@ export default function ContactForm({
   contactName?: string | null;
   title?: string | null;
   reference?: string | null;
+  city?: string | null;
+  price?: number | null;
 }) {
   const [shown, setShown] = useState(false);
   const [name, setName] = useState('');
@@ -41,6 +45,33 @@ export default function ContactForm({
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [confirmOpen, setConfirmOpen] = useState(true); // fenêtre de confirmation après l'envoi
+  const [alertStatus, setAlertStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+
+  // Alerte proposée juste après la demande : même ville, budget jusqu'à 20 % au-dessus du bien consulté
+  const alertBudget = price && price > 0 ? Math.ceil((price * 1.2) / 50000) * 50000 : null;
+  const alertLabel = [
+    city || null,
+    alertBudget ? `jusqu'à ${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(alertBudget)} €` : null,
+  ]
+    .filter(Boolean)
+    .join(', ');
+
+  async function createAlert() {
+    setAlertStatus('sending');
+    try {
+      const { data, error } = await getSupabase().rpc('submit_alert', {
+        p_kind: 'alert',
+        p_email: email,
+        p_price_max: alertBudget,
+        p_consent: true, // le bouton « Créer mon alerte » vaut accord, le texte le précise
+        p_locations: city ? [city] : null,
+        p_source: 'apres-demande',
+      });
+      setAlertStatus(!error && data === true ? 'done' : 'error');
+    } catch {
+      setAlertStatus('error');
+    }
+  }
 
   // Lien WhatsApp vers le portable de l'agent, avec un message déjà rédigé
   const wa = whatsappLink({ phone, contactName, title, reference, listingId });
@@ -141,7 +172,7 @@ export default function ContactForm({
           {confirmOpen && (
             <div className="fixed inset-0 z-[80] flex items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Demande envoyée">
               <div className="absolute inset-0 bg-stone-900/60" onClick={() => setConfirmOpen(false)} />
-              <div className="relative w-full max-w-md bg-[#FDFBF7] shadow-2xl px-8 py-12 text-center">
+              <div className="relative w-full max-w-md max-h-full overflow-y-auto bg-[#FDFBF7] shadow-2xl px-8 py-10 text-center">
                 <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-white flex items-center justify-center">
                   <Check className="w-8 h-8" />
                 </span>
@@ -149,10 +180,39 @@ export default function ContactForm({
                 <p className="mt-4 text-stone-600 leading-relaxed">
                   Votre demande de rappel est bien enregistrée. On vous rappelle au sujet de ce bien, au moment que vous avez choisi.
                 </p>
+                {alertLabel && alertStatus !== 'done' && (
+                  <div className="mt-8 border border-stone-200 bg-white p-5 text-left">
+                    <p className="font-serif text-lg text-stone-900 leading-snug">Et les prochains biens comme celui-ci ?</p>
+                    <p className="mt-1 text-sm text-stone-600 leading-relaxed">
+                      Recevez par e-mail les nouveaux biens : {alertLabel}.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={createAlert}
+                      disabled={alertStatus === 'sending'}
+                      className="mt-4 w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+                    >
+                      {alertStatus === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
+                    </button>
+                    {alertStatus === 'error' && <p className="mt-2 text-xs text-red-700">L&apos;alerte n&apos;a pas pu être créée. Réessayez.</p>}
+                    <p className="mt-3 text-[11px] text-stone-500 leading-relaxed">
+                      En créant l&apos;alerte, vous acceptez de recevoir ces e-mails à l&apos;adresse {email}. Arrêt possible à tout moment.
+                    </p>
+                  </div>
+                )}
+                {alertStatus === 'done' && (
+                  <p className="mt-8 border border-stone-900 bg-white p-4 text-sm text-stone-900">
+                    Alerte créée. Vous serez prévenu(e) par e-mail dès qu&apos;un bien correspond.
+                  </p>
+                )}
                 <button
                   type="button"
                   onClick={() => setConfirmOpen(false)}
-                  className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition"
+                  className={
+                    alertLabel && alertStatus !== 'done'
+                      ? 'mt-5 text-xs font-semibold uppercase tracking-wider text-stone-600 underline underline-offset-4 hover:text-stone-900'
+                      : 'mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition'
+                  }
                 >
                   Poursuivre ma visite
                 </button>
