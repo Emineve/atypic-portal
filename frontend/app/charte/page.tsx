@@ -74,7 +74,7 @@ const groups: Group[] = [
       },
             {
         q: 'Un particulier peut-il diffuser une annonce ?',
-        a: 'Non. La diffusion d’annonces est exclusivement réservée aux agences immobilières.',
+        a: 'Non. La diffusion d’annonces est exclusivement réservée aux agences immobilières. Loftissime est intimement convaincu que la vente d’un bien atypique doit être accompagnée par l’expertise d’une agence.',
       },
     ],
   },
