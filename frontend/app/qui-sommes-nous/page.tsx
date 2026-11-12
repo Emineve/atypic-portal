@@ -67,7 +67,7 @@ export default function AboutPage() {
           <p className="mt-3">
             <Link href="/" className={cta}>
               <Bell className="w-4 h-4" />
-              Ne manquez pas le bien dont vous rêvez
+              Créer mon alerte
             </Link>
           </p>
         </section>
