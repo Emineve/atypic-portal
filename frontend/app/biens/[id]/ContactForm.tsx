@@ -202,7 +202,7 @@ export default function ContactForm({
                 )}
                 {alertStatus === 'done' && (
                   <p className="mt-8 border border-stone-900 bg-white p-4 text-sm text-stone-900">
-                    Alerte créée. Vous serez prévenu(e) par e-mail dès qu&apos;un bien correspond.
+                    Alerte créée. Vous serez prévenu(e) par e-mail dès qu&apos;un nouveau bien répond à vos attentes.
                   </p>
                 )}
                 <button
