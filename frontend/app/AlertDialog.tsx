@@ -349,7 +349,7 @@ export default function AlertDialog({
           </div>
         ) : (
           <form onSubmit={onSubmit} className="flex flex-col min-h-0 flex-1">
-            <div className="flex-1 overflow-y-auto">
+                        <div className="flex-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="bg-stone-900 text-white px-6 md:px-12 pt-8 pb-7 md:pt-10 md:pb-9">
                 <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-stone-300">
                   <Bell className="w-4 h-4" /> Mon alerte
