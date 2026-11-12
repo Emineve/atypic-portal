@@ -15,6 +15,7 @@ export const metadata = {
 
 type Project = {
   title: string;
+  url?: string;
   kind?: string;
   sale?: string;
   place?: string;
@@ -119,23 +120,32 @@ export default async function InspirationPage() {
                         )}
                       </div>
                     </Link>
-                    <figcaption className="mt-4 md:flex md:items-start md:justify-between md:gap-10">
+                    <figcaption className="mt-4 flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
                       <div>
                         <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                          {[p.kind, p.place, p.surface, p.year].filter(Boolean).join(' · ')}
+                          {[
+                            // le type n'est pas répété s'il figure déjà dans le titre (« Duplex Place des Vosges »)
+                            p.kind && !p.title.toLowerCase().includes(p.kind.toLowerCase()) ? p.kind : null,
+                            p.place,
+                            p.surface,
+                            p.year,
+                          ]
+                            .filter(Boolean)
+                            .join(' · ')}
                         </p>
                         <p className="mt-1 font-serif text-2xl text-stone-900">{p.title}</p>
                       </div>
-                      <div className="mt-2 md:mt-0 md:max-w-sm md:text-right">
-                        {p.note && <p className="text-sm text-stone-600">{p.note}</p>}
-                        <Link
-                          href={`/inspiration/${featured.slug}/${slugify(p.title)}`}
-                          className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                      {(p.url || featured.website) && (
+                        <a
+                          href={p.url || featured.website || undefined}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
                         >
                           Voir le projet
                           <ArrowUpRight className="w-3.5 h-3.5" />
-                        </Link>
-                      </div>
+                        </a>
+                      )}
                     </figcaption>
                     {Array.isArray(p.images) && p.images.length > 0 && (
                       <div className="mt-5 grid grid-cols-3 gap-3">
