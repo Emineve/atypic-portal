@@ -6,8 +6,8 @@ import { getSupabase } from '../lib/supabase';
 import FilterPanel from './FilterPanel';
 import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
 
-// Passer à true quand l'envoi d'emails sera en place (domaine + service d'envoi)
-const ALERT_EMAILS_LIVE = false;
+// L'envoi des e-mails d'alerte est en place (domaine validé, service d'envoi branché)
+const ALERT_EMAILS_LIVE = true;
 
 export interface AlertInitial {
   filters?: Filters;
@@ -95,6 +95,8 @@ export default function AlertDialog({
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
+  const [wantWhatsapp, setWantWhatsapp] = useState(false);
+  const [whatsapp, setWhatsapp] = useState('');
   const [website, setWebsite] = useState(''); // champ piège anti-spam
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
@@ -273,7 +275,16 @@ export default function AlertDialog({
         p_must: filters.must.length ? filters.must : null,
         p_nice: filters.nice.length ? filters.nice : null,
       });
-      setStatus(!error && data === true ? 'done' : 'error');
+      const ok = !error && data === true;
+      // Numéro WhatsApp facultatif : rattaché à l'alerte qui vient d'être créée
+      if (ok && wantWhatsapp && whatsapp.trim()) {
+        try {
+          await getSupabase().rpc('set_alert_whatsapp', { p_email: email, p_phone: whatsapp, p_consent: true });
+        } catch {
+          /* l'alerte par e-mail est enregistrée même si le numéro ne l'est pas */
+        }
+      }
+      setStatus(ok ? 'done' : 'error');
     } catch {
       setStatus('error');
     }
@@ -460,6 +471,43 @@ export default function AlertDialog({
                       />
                       J'accepte de recevoir par email les nouveaux biens correspondant à cette recherche. Désinscription possible à tout moment.
                     </label>
+
+                    <div className="mt-6 border border-stone-200 bg-white p-4">
+                      <label className="flex items-start gap-3 text-sm text-stone-800 leading-relaxed cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="mt-1 h-4 w-4 accent-stone-900"
+                          checked={wantWhatsapp}
+                          onChange={(e) => setWantWhatsapp(e.target.checked)}
+                        />
+                        <span>
+                          Recevoir aussi mes alertes sur WhatsApp
+                          <span className="block text-xs text-stone-500">
+                            Bientôt disponible : laissez votre numéro pour être parmi les premiers. En attendant, vos alertes arrivent par email.
+                          </span>
+                        </span>
+                      </label>
+                      {wantWhatsapp && (
+                        <>
+                          <input
+                            id="alert-whatsapp"
+                            type="tel"
+                            required
+                            minLength={9}
+                            maxLength={20}
+                            autoComplete="tel"
+                            aria-label="Votre numéro de portable"
+                            value={whatsapp}
+                            onChange={(e) => setWhatsapp(e.target.value)}
+                            placeholder="Votre numéro de portable"
+                            className={`${field} mt-3`}
+                          />
+                          <p className="mt-2 text-xs text-stone-500 leading-relaxed">
+                            En indiquant votre numéro, vous acceptez de recevoir vos alertes sur WhatsApp quand le service sera ouvert. Il ne sert à rien d&apos;autre.
+                          </p>
+                        </>
+                      )}
+                    </div>
                     {status === 'error' && (
                       <p className="mt-4 text-xs text-red-700">
                         L'enregistrement a échoué. Vérifiez l'email et réessayez (dix alertes actives au maximum par adresse).

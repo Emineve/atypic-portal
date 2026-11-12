@@ -25,7 +25,7 @@ interface Report {
 }
 
 interface AlertRow {
-  created_at: string; kind: string; email: string; is_active: boolean; source: string | null;
+  created_at: string; kind: string; email: string; whatsapp_phone?: string | null; is_active: boolean; source: string | null;
   query: string | null; category: string | null; locations: string[] | null;
   price_min: number | null; price_max: number | null; surface_min: number | null; surface_max: number | null;
   bedrooms_min: number | null; rooms_min: number | null;
@@ -82,9 +82,9 @@ function csvCell(v: unknown): string {
 }
 
 function exportAlertsCsv(rows: AlertRow[]) {
-  const head = ['date', 'email', 'type', 'actif', 'lieux', 'categorie', 'surface_min', 'surface_max', 'chambres_min', 'budget_max', 'dernier_etage', 'vue_degagee', 'exterieur', 'indispensables', 'petits_plus', 'biens_correspondants', 'origine'];
+  const head = ['date', 'email', 'whatsapp', 'type', 'actif', 'lieux', 'categorie', 'surface_min', 'surface_max', 'chambres_min', 'budget_max', 'dernier_etage', 'vue_degagee', 'exterieur', 'indispensables', 'petits_plus', 'biens_correspondants', 'origine'];
   const lines = rows.map((a) => [
-    a.created_at, a.email, a.kind === 'alert' ? 'alerte' : 'lettre', a.is_active ? 'oui' : 'non',
+    a.created_at, a.email, a.whatsapp_phone || '', a.kind === 'alert' ? 'alerte' : 'lettre', a.is_active ? 'oui' : 'non',
     (a.locations || []).join(' | '), [a.category, ...(a.categories || [])].filter(Boolean).join(' | '), a.surface_min, a.surface_max, a.bedrooms_min, a.price_max,
     a.must_top_floor ? 'oui' : '', a.must_view ? 'oui' : '', a.must_outdoor ? 'oui' : '', (a.must_features || []).join(' | '), (a.nice_features || []).join(' | '), a.matches, a.source,
   ].map(csvCell).join(','));
@@ -329,6 +329,7 @@ export default function AdminPage() {
                           <td className="p-3 whitespace-nowrap text-stone-500">{new Date(a.created_at).toLocaleString('fr-FR')}</td>
                           <td className="p-3">
                             {a.email}
+                            {a.whatsapp_phone ? <span className="block text-xs text-stone-500">WhatsApp : {a.whatsapp_phone}</span> : null}
                             {a.kind !== 'alert' ? <span className="ml-2 text-[10px] uppercase text-stone-400">lettre</span> : null}
                             {!a.is_active ? <span className="ml-2 text-[10px] uppercase text-red-700">désinscrit</span> : null}
                           </td>
