@@ -121,7 +121,7 @@ export default function ContactForm({
               <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
                 <path d={WHATSAPP_ICON_PATH} />
               </svg>
-              Contacter sur WhatsApp
+              Contacter l&apos;agent sur WhatsApp
             </a>
           )}
         </div>

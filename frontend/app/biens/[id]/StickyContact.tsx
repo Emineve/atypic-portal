@@ -50,7 +50,7 @@ export default function StickyContact({
   }
 
   const btn =
-    'min-w-0 h-12 px-2 inline-flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-wide whitespace-nowrap transition';
+    'flex-1 min-w-0 h-12 px-2 inline-flex items-center justify-center gap-2 text-[11px] leading-tight text-center font-semibold uppercase tracking-wide transition';
   const wa = listingId ? whatsappLink({ phone, contactName, title, reference, listingId }) : null;
 
   return (
@@ -59,23 +59,23 @@ export default function StickyContact({
       style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
     >
       {wa ? (
-        <a href={wa} target="_blank" rel="noopener noreferrer" onClick={trackCall} className={`${btn} flex-[1.5] ${WHATSAPP_BUTTON}`}>
+        <a href={wa} target="_blank" rel="noopener noreferrer" onClick={trackCall} className={`${btn} ${WHATSAPP_BUTTON}`}>
           <svg viewBox="0 0 24 24" className="w-4 h-4 flex-none" fill="currentColor" aria-hidden="true">
             <path d={WHATSAPP_ICON_PATH} />
           </svg>
-          Contacter sur WhatsApp
+          <span>Contacter l&apos;agent sur WhatsApp</span>
         </a>
       ) : phone ? (
         <a
           href={`tel:${phone.replace(/[^+\d]/g, '')}`}
           onClick={trackCall}
-          className={`${btn} flex-[1.5] bg-stone-900 text-white active:bg-stone-700`}
+          className={`${btn} bg-stone-900 text-white active:bg-stone-700`}
         >
           <Phone className="w-4 h-4 flex-none" />
           Appeler l&apos;agent
         </a>
       ) : null}
-      <a href="#contact" className={`${btn} flex-1 border border-stone-900 bg-white text-stone-900 active:bg-stone-100`}>
+      <a href="#contact" className={`${btn} border border-stone-900 bg-white text-stone-900 active:bg-stone-100`}>
         Être rappelé(e)
       </a>
     </div>
