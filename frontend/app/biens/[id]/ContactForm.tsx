@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone } from 'lucide-react';
+import { Phone, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 
 // Moments proposés pour le rappel
@@ -35,6 +35,7 @@ export default function ContactForm({
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [confirmOpen, setConfirmOpen] = useState(true); // fenêtre de confirmation après l'envoi
 
   // Afficher le numéro compte comme une prise de contact dans les statistiques de l'agence
   function reveal() {
@@ -101,12 +102,38 @@ export default function ContactForm({
       )}
 
       {status === 'done' ? (
-        <div className="border border-stone-200 bg-white p-6">
-          <p className="font-serif text-lg text-stone-900">Merci, votre demande de rappel est enregistrée.</p>
-          <p className="mt-2 text-xs text-stone-500 leading-relaxed">
-            Version de démonstration : votre demande n&apos;est pas transmise à {agency} pour le moment.
-          </p>
-        </div>
+        <>
+          <div className="border border-stone-900 bg-white p-6 flex items-start gap-3">
+            <span className="mt-0.5 h-7 w-7 flex-none rounded-full bg-stone-900 text-white flex items-center justify-center">
+              <Check className="w-4 h-4" />
+            </span>
+            <div>
+              <p className="font-serif text-lg text-stone-900">Votre demande de rappel est bien envoyée.</p>
+              <p className="mt-1 text-sm text-stone-600">On vous rappelle au sujet de ce bien.</p>
+            </div>
+          </div>
+          {confirmOpen && (
+            <div className="fixed inset-0 z-[80] flex items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Demande envoyée">
+              <div className="absolute inset-0 bg-stone-900/60" onClick={() => setConfirmOpen(false)} />
+              <div className="relative w-full max-w-md bg-[#FDFBF7] shadow-2xl px-8 py-12 text-center">
+                <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-white flex items-center justify-center">
+                  <Check className="w-8 h-8" />
+                </span>
+                <h2 className="mt-7 font-serif text-3xl text-stone-900 leading-tight">C&apos;est envoyé.</h2>
+                <p className="mt-4 text-stone-600 leading-relaxed">
+                  Votre demande de rappel est bien enregistrée. On vous rappelle au sujet de ce bien, au moment que vous avez choisi.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setConfirmOpen(false)}
+                  className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition"
+                >
+                  Poursuivre ma visite
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-6 space-y-4">
           <div>
