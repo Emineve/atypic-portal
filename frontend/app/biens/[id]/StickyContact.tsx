@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Phone, Mail } from 'lucide-react';
+import { Phone, PhoneIncoming } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 
-// Barre fixe en bas d'écran sur mobile : appel direct et contact de l'agent.
+// Barre fixe en bas d'écran sur mobile : appel direct et demande de rappel.
 export default function StickyContact({
   phone,
   listingId,
@@ -57,12 +57,12 @@ export default function StickyContact({
           className={`${btn} flex-1 border border-stone-900 text-stone-900 active:bg-stone-100`}
         >
           <Phone className="w-4 h-4 flex-none" />
-          Appeler
+          Appeler l&apos;agent
         </a>
       )}
-      <a href="#contact" className={`${btn} flex-[1.6] bg-stone-900 text-white active:bg-stone-700`}>
-        <Mail className="w-4 h-4 flex-none" />
-        Contacter l&apos;agent
+      <a href="#contact" className={`${btn} flex-1 bg-stone-900 text-white active:bg-stone-700`}>
+        <PhoneIncoming className="w-4 h-4 flex-none" />
+        Être rappelé(e)
       </a>
     </div>
   );
