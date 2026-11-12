@@ -33,6 +33,10 @@ interface AlertRow {
   categories: string[] | null; must_features: string[] | null; nice_features: string[] | null;
 }
 
+interface ArchiReq {
+  created_at: string; architect_name: string; architect_email: string | null; name: string; email: string; phone: string | null; message: string | null;
+}
+
 interface AgencyReq {
   created_at: string; agency: string; name: string; email: string; phone: string | null; message: string | null;
 }
@@ -105,6 +109,7 @@ export default function AdminPage() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [reports, setReports] = useState<Report[]>([]);
   const [agencyReqs, setAgencyReqs] = useState<AgencyReq[]>([]);
+  const [archiReqs, setArchiReqs] = useState<ArchiReq[]>([]);
   const [alertRows, setAlertRows] = useState<AlertRow[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -130,9 +135,11 @@ export default function AdminPage() {
         const rp = await sb.rpc('admin_reports', { p_token: token, p_limit: 200 });
         const ar = await sb.rpc('admin_agency_requests', { p_token: token, p_limit: 200 });
         const al = await sb.rpc('admin_alerts', { p_token: token, p_limit: 1000 });
+        const aq = await sb.rpc('admin_architect_requests', { p_token: token, p_limit: 200 });
         if (cancelled) return;
         setAlertRows((al.data as AlertRow[]) || []);
         setAgencyReqs((ar.data as AgencyReq[]) || []);
+        setArchiReqs((aq.data as ArchiReq[]) || []);
         setStats(s.data as Stats);
         setReports((rp.data as Report[]) || []);
         setLeads((l.data as Lead[]) || []);
@@ -353,6 +360,31 @@ export default function AdminPage() {
                           <td className="p-3">{r.agency}</td>
                           <td className="p-3">{r.name}<div className="text-xs text-stone-500">{r.email}{r.phone ? ` · ${r.phone}` : ''}</div></td>
                           <td className="p-3 text-stone-600 max-w-sm">{r.message}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+
+            <section>
+              <h2 className="font-serif text-xl mb-3">Messages pour les architectes</h2>
+              {archiReqs.length === 0 ? (
+                <p className="text-sm text-stone-400">Aucun message pour le moment.</p>
+              ) : (
+                <div className="overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Architecte</th><th className="p-3">Visiteur</th><th className="p-3">Message</th></tr>
+                    </thead>
+                    <tbody>
+                      {archiReqs.map((r, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">{r.architect_name}<div className="text-xs text-stone-500">{r.architect_email || 'adresse non renseignée'}</div></td>
+                          <td className="p-3">{r.name}<div className="text-xs text-stone-500">{r.email}{r.phone ? ` · ${r.phone}` : ''}</div></td>
+                          <td className="p-3 text-stone-600 max-w-sm whitespace-pre-line">{r.message}</td>
                         </tr>
                       ))}
                     </tbody>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import { slugify } from '../../lib/catalog';
+import ArchitectContact from './ArchitectContact';
 
 export const dynamic = 'force-dynamic';
 
@@ -74,17 +75,20 @@ export default async function InspirationPage() {
             </p>
             <h2 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{featured.name}</h2>
             {featured.tagline && <p className="mt-4 text-stone-500 font-light text-lg">{featured.tagline}</p>}
-            {featured.website && (
-              <a
-                href={featured.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
-              >
-                Son site
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            )}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+              {featured.website && (
+                <a
+                  href={featured.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                >
+                  Son site
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
+              <ArchitectContact slug={featured.slug} name={featured.name} />
+            </div>
           </header>
 
           {paragraphs.length > 0 && (

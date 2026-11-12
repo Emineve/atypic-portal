@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { slugify } from '../../../lib/catalog';
+import ArchitectContact from '../../inspiration/ArchitectContact';
 
 export const dynamic = 'force-dynamic';
 
@@ -79,17 +80,20 @@ export default async function ArchitectPage({ params }: { params: { slug: string
         </p>
         <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{a.name}</h1>
         {a.tagline && <p className="mt-4 text-stone-500 font-light text-lg">{a.tagline}</p>}
-        {a.website && (
-          <a
-            href={a.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
-          >
-            Son site
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-        )}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          {a.website && (
+            <a
+              href={a.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+            >
+              Son site
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          )}
+          <ArchitectContact slug={a.slug} name={a.name} />
+        </div>
       </header>
 
       {paragraphs.length > 0 && (
