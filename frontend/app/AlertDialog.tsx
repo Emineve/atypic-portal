@@ -356,7 +356,7 @@ export default function AlertDialog({
                 </span>
                 <h2 className="mt-3 md:mt-4 font-serif text-3xl md:text-4xl leading-[1.1]">Dites-nous ce que vous cherchez.</h2>
                 <p className="mt-3 text-sm md:text-base text-stone-300 max-w-md leading-relaxed">
-                  Quelques touches suffisent. On vous prévient dès qu'un lieu correspond, sans que vous ayez à revenir le chercher.
+                  On vous prévient par e-mail dès qu'un lieu correspond, sans que vous ayez à revenir le chercher.
                 </p>
               </div>
               <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">

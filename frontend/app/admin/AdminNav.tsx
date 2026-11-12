@@ -7,6 +7,7 @@ const ITEMS = [
   { href: '/admin', label: 'Tableau de bord' },
   { href: '/admin/annonces', label: 'Annonces' },
   { href: '/admin/agences', label: 'Agences' },
+  { href: '/admin/inspiration', label: 'Inspiration' },
 ];
 
 export default function AdminNav() {

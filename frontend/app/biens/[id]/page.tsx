@@ -61,6 +61,9 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     item.price ? `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, ' ')} €` : '',
   ].filter(Boolean).join(' - ');
   const url = `/biens/${item.id}`;
+  // Vignette de partage : la photo du bien, telle quelle. Une image légère est indispensable
+  // pour que WhatsApp affiche l'aperçu (il ignore les images trop lourdes).
+  const image = item.cover_image_url || `${SITE_URL}/opengraph-image`;
   return {
     title,
     description,
@@ -70,11 +73,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       url,
       title: shareTitle,
       description,
+      images: [{ url: image, alt: item.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: shareTitle,
       description,
+      images: [image],
     },
   };
 }
