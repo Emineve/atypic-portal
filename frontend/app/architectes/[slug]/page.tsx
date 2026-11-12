@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
-import { slugify } from '../../../lib/catalog';
 import ArchitectContact from '../../inspiration/ArchitectContact';
 import Gallery from '../../biens/[id]/Gallery';
 
@@ -144,15 +143,6 @@ export default async function ArchitectPage({ params }: { params: { slug: string
                     </a>
                   )}
                 </figcaption>
-                {p.sale && (
-                  <Link
-                    href={`/categorie/${slugify(p.sale)}`}
-                    className="mt-4 inline-flex items-center gap-1 text-xs uppercase tracking-wider text-stone-500 hover:text-stone-900 transition"
-                  >
-                    Voir les biens « {p.sale} » à vendre
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
-                )}
               </figure>
             ))}
           </div>
