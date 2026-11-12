@@ -120,7 +120,7 @@ export default async function InspirationPage() {
                         )}
                       </div>
                     </Link>
-                    <figcaption className="mt-4 flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
+                    <figcaption className="mt-4">
                       <div>
                         <p className="text-[10px] uppercase tracking-widest text-stone-400">
                           {[
@@ -140,7 +140,7 @@ export default async function InspirationPage() {
                           href={p.url || featured.website || undefined}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                          className="mt-3 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
                         >
                           Voir le projet
                           <ArrowUpRight className="w-3.5 h-3.5" />
