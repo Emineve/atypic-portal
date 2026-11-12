@@ -43,25 +43,25 @@ export default function StickyContact({
   }
 
   const btn =
-    'flex-1 h-12 inline-flex items-center justify-center gap-2 rounded-full text-[13px] font-semibold uppercase tracking-wider whitespace-nowrap transition';
+    'min-w-0 h-12 px-3 inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition';
 
   return (
     <div
-      className={`lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-stone-200 px-4 py-3 flex items-center gap-3 transition-transform duration-300 ${hidden ? 'translate-y-full' : 'translate-y-0'}`}
+      className={`lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-stone-200 px-4 py-3 flex items-center gap-2 transition-transform duration-300 ${hidden ? 'translate-y-full' : 'translate-y-0'}`}
       style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
     >
       {phone && (
         <a
           href={`tel:${phone.replace(/[^+\d]/g, '')}`}
           onClick={trackCall}
-          className={`${btn} border border-stone-900 text-stone-900 active:bg-stone-100`}
+          className={`${btn} flex-1 border border-stone-900 text-stone-900 active:bg-stone-100`}
         >
-          <Phone className="w-4 h-4" />
+          <Phone className="w-4 h-4 flex-none" />
           Appeler
         </a>
       )}
-      <a href="#contact" className={`${btn} bg-stone-900 text-white active:bg-stone-700`}>
-        <Mail className="w-4 h-4" />
+      <a href="#contact" className={`${btn} flex-[1.6] bg-stone-900 text-white active:bg-stone-700`}>
+        <Mail className="w-4 h-4 flex-none" />
         Contacter l&apos;agent
       </a>
     </div>
