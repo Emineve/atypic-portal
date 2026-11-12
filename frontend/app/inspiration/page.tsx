@@ -2,8 +2,8 @@ import Logo from '../Logo';
 import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
-import { slugify } from '../../lib/catalog';
 import ArchitectContact from './ArchitectContact';
+import Gallery from '../biens/[id]/Gallery';
 
 export const dynamic = 'force-dynamic';
 
@@ -105,21 +105,13 @@ export default async function InspirationPage() {
             <section className="max-w-5xl mx-auto px-6 pb-16">
               <h2 className="font-serif text-2xl text-stone-900">Ce qu&apos;un volume peut devenir</h2>
               <div className="mt-10 space-y-16">
-                {projects.map((p, i) => (
+                {projects.map((p) => (
                   <figure key={p.title}>
-                    <Link href={`/inspiration/${featured.slug}/${slugify(p.title)}`} className="group block">
-                      <div className="aspect-[16/10] bg-stone-200 overflow-hidden">
-                        {p.image && (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={p.image}
-                            alt={p.title}
-                            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
-                            loading={i === 0 ? 'eager' : 'lazy'}
-                          />
-                        )}
-                      </div>
-                    </Link>
+                    <Gallery
+                      images={[p.image, ...(Array.isArray(p.images) ? p.images : [])].filter(Boolean) as string[]}
+                      title={p.title}
+                      thumbs={false}
+                    />
                     <figcaption className="mt-4">
                       <div>
                         <p className="text-[10px] uppercase tracking-widest text-stone-400">
@@ -147,16 +139,6 @@ export default async function InspirationPage() {
                         </a>
                       )}
                     </figcaption>
-                    {Array.isArray(p.images) && p.images.length > 0 && (
-                      <div className="mt-5 grid grid-cols-3 gap-3">
-                        {p.images.slice(0, 3).map((src) => (
-                          <div key={src} className="aspect-[4/5] bg-stone-200 overflow-hidden">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={src} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </figure>
                 ))}
               </div>

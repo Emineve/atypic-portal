@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { slugify } from '../../../lib/catalog';
 import ArchitectContact from '../../inspiration/ArchitectContact';
+import Gallery from '../../biens/[id]/Gallery';
 
 export const dynamic = 'force-dynamic';
 
@@ -111,44 +112,38 @@ export default async function ArchitectPage({ params }: { params: { slug: string
           <div className="mt-10 space-y-16">
             {projects.map((p, i) => (
               <figure key={i}>
-                <div className="aspect-[16/10] bg-stone-200 overflow-hidden">
-                  {p.image && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover" loading={i === 0 ? 'eager' : 'lazy'} />
+                <Gallery
+                  images={[p.image, ...(Array.isArray(p.images) ? p.images : [])].filter(Boolean) as string[]}
+                  title={p.title}
+                  thumbs={false}
+                />
+                <figcaption className="mt-4">
+                  <p className="text-[10px] uppercase tracking-widest text-stone-400">
+                    {[
+                      // le type n'est pas répété s'il figure déjà dans le titre
+                      (p.kind || p.category) && !p.title.toLowerCase().includes(String(p.kind || p.category).toLowerCase())
+                        ? p.kind || p.category
+                        : null,
+                      p.place,
+                      p.surface,
+                      p.year,
+                    ]
+                      .filter(Boolean)
+                      .join(' · ')}
+                  </p>
+                  <p className="mt-1 font-serif text-2xl text-stone-900">{p.title}</p>
+                  {(p.url || a.website) && (
+                    <a
+                      href={p.url || a.website || undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                    >
+                      Voir le projet
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
                   )}
-                </div>
-                <figcaption className="mt-4 md:flex md:items-start md:justify-between md:gap-10">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                      {[p.kind || p.category, p.place, p.surface, p.year].filter(Boolean).join(' · ')}
-                    </p>
-                    <p className="mt-1 font-serif text-2xl text-stone-900">{p.title}</p>
-                  </div>
-                  <div className="mt-2 md:mt-0 md:max-w-sm md:text-right">
-                    {p.note && <p className="text-sm text-stone-600">{p.note}</p>}
-                    {p.url && (
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
-                      >
-                        Le projet en entier
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
-                    )}
-                  </div>
                 </figcaption>
-                {Array.isArray(p.images) && p.images.length > 0 && (
-                  <div className="mt-5 grid grid-cols-3 gap-3">
-                    {p.images.slice(0, 3).map((src) => (
-                      <div key={src} className="aspect-[4/5] bg-stone-200 overflow-hidden">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={src} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
-                      </div>
-                    ))}
-                  </div>
-                )}
                 {p.sale && (
                   <Link
                     href={`/categorie/${slugify(p.sale)}`}

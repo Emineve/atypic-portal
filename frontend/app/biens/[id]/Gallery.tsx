@@ -3,7 +3,17 @@
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function Gallery({ images, title, category }: { images: string[]; title: string; category?: string }) {
+export default function Gallery({
+  images,
+  title,
+  category,
+  thumbs = true,
+}: {
+  images: string[];
+  title: string;
+  category?: string;
+  thumbs?: boolean; // bande de miniatures sous la photo (grand écran)
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const total = images.length;
@@ -70,7 +80,7 @@ export default function Gallery({ images, title, category }: { images: string[];
         )}
       </div>
 
-      {total > 1 && (
+      {thumbs && total > 1 && (
         <div className="hidden md:flex gap-2 mt-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {images.map((src, i) => (
             <button
