@@ -51,7 +51,7 @@ const CATEGORIES = [
 ];
 
 const SORTS = [
-  { value: 'selection', label: 'Sélection' },
+    { value: 'selection', label: 'Par défaut' },
   { value: 'price_desc', label: 'Prix décroissant' },
   { value: 'price_asc', label: 'Prix croissant' },
   { value: 'recent', label: 'Date de publication' },
