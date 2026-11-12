@@ -256,7 +256,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">
-                   <h2 className="font-serif text-2xl text-stone-900">Autres lieux à découvrir à {hubName}</h2>
+                   <h2 className="font-serif text-2xl text-stone-900">Autres lieux atypiques à {hubName}</h2>
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {related.map((r) => (
               <Link key={r.id} href={`/biens/${r.id}`} className="group block bg-white border border-stone-200 hover:shadow-lg transition">
