@@ -11,6 +11,7 @@ const ALERT_EMAILS_LIVE = true;
 
 export interface AlertInitial {
   filters?: Filters;
+  location?: string; // lieu saisi dans la recherche, repris comme premier lieu de l'alerte
   // anciens champs, gardés pour rester compatible avec l'ancienne page d'accueil
   category?: string;
   priceMax?: string;
@@ -104,7 +105,7 @@ export default function AlertDialog({
   // À chaque ouverture : on repart des critères de la recherche en cours
   useEffect(() => {
     if (!open) return;
-    setLocations([]);
+    setLocations(initial?.location ? [normalizeLocation(initial.location)] : []);
     setLocInput('');
     setRemote([]);
     setFilters(

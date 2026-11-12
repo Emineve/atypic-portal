@@ -183,6 +183,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
   const activeFilters = countActive(filters);
   const selectedCategory = filters.types.length === 1 ? filters.types[0] : 'Tous les biens';
+  // Une vraie recherche est en cours (filtres ou lieu saisi) : on propose de l'enregistrer en alerte
+  const searchActive = activeFilters > 0 || query.trim() !== '';
   const anythingActive = activeFilters > 0 || query.trim() !== '' || onlyFavs || sort !== 'selection';
 
   function resetFilters() {
@@ -354,7 +356,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 }}
                 className="h-12 px-4 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition inline-flex items-center gap-2"
               >
-                <Bell className="w-4 h-4" /> Alerte
+                <Bell className="w-4 h-4" /> Enregistrer
               </button>
               <button
                 type="button"
@@ -371,9 +373,21 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       <main className="max-w-7xl mx-auto px-6 pb-24">
         {!loading && !errorMessage && (
           <div className="flex items-center justify-between mb-6">
-            <p className="font-serif text-lg text-stone-700">
-                            {visible.length} {visible.length > 1 ? 'lieux atypiques' : 'lieu atypique'}
-            </p>
+            <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+              <p className="font-serif text-lg text-stone-700">
+                {visible.length} {visible.length > 1 ? 'lieux atypiques' : 'lieu atypique'}
+              </p>
+              {searchActive && visible.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => openAlert('recherche')}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                >
+                  <Bell className="w-3.5 h-3.5" />
+                  Enregistrer cette recherche
+                </button>
+              )}
+            </div>
             <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
               Trier par
               <select value={sort} onChange={(e) => setSort(e.target.value)} className={input}>
@@ -396,7 +410,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <div className="text-center py-20 text-stone-400 font-serif">
             {onlyFavs && favorites.length === 0
               ? "Vous n'avez pas encore de favori. Touchez le cœur d'une annonce pour l'ajouter."
-              : 'Aucun lieu ne correspond à ces critères.'}
+              : 'Rien ne correspond encore à cette recherche.'}
             {!(onlyFavs && favorites.length === 0) && (
               <div className="mt-6">
                 <button
@@ -404,7 +418,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                   onClick={() => openAlert('empty')}
                   className="bg-stone-900 text-white font-sans text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
                 >
-                  Être prévenu quand un bien correspond
+                  Me prévenir quand un bien arrive
                 </button>
               </div>
             )}
@@ -476,7 +490,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         onClose={() => setAlertOpen(false)}
         source={alertSource}
         suggestions={citySuggestions}
-        initial={{ filters }}
+        initial={{ filters, location: query.trim() }}
       />
     </div>
   );
