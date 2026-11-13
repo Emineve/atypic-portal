@@ -90,7 +90,7 @@ export default function CollectionPage({
                     <span className="text-xl font-medium tracking-tight font-serif">
                       {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price)}
                     </span>
-                    <Link href={`/biens/${item.id}`} className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider bg-stone-900 text-white px-4 py-2.5 hover:bg-stone-800 transition">
+                    <Link href={`/biens/${item.id}`} className="inline-flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 hover:text-stone-600 transition">
                       Voir le bien
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </Link>
