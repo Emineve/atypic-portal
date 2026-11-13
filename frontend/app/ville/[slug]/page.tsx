@@ -49,6 +49,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
       title={`Biens atypiques à vendre à ${cityName}`}
       intro={`Une sélection de lieux singuliers à ${cityName}, issus d'annonces d'agences.`}
       items={items}
+      alert={{ location: cityName }}
     />
   );
 }

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { SITE_URL } from '../lib/site';
 import Tracker from './Tracker';
+import CollectionAlert from './CollectionAlert';
 
 export interface CollectionItem {
   id: string;
@@ -20,10 +21,12 @@ export default function CollectionPage({
   title,
   intro,
   items,
+  alert,
 }: {
   title: string;
   intro: string;
   items: CollectionItem[];
+  alert?: { category?: string; location?: string }; // réglages de l'alerte proposée sur la page
 }) {
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -60,8 +63,9 @@ export default function CollectionPage({
 
       <main className="max-w-7xl mx-auto px-6 pb-24">
         {items.length === 0 ? (
-          <p className="text-center py-16 text-stone-400 font-serif">Aucun bien pour le moment.</p>
+          <CollectionAlert empty category={alert?.category} location={alert?.location} />
         ) : (
+          <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((item) => (
               <article key={item.id} className="group flex flex-col bg-white border border-stone-200 overflow-hidden hover:shadow-lg transition-all duration-300">
@@ -95,6 +99,8 @@ export default function CollectionPage({
               </article>
             ))}
           </div>
+          {alert && <CollectionAlert empty={false} category={alert.category} location={alert.location} />}
+          </>
         )}
       </main>
     </div>

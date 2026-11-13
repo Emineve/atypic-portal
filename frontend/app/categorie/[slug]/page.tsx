@@ -47,6 +47,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
       title={`${cat} à vendre`}
       intro={`Notre sélection de biens singuliers : ${cat.toLowerCase()}.`}
       items={data || []}
+      alert={{ category: cat }}
     />
   );
 }
