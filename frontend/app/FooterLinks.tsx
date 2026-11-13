@@ -41,6 +41,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
       <a href="/confidentialite" className={link}>Confidentialité</a>
       <a href="/cgu" className={link}>Conditions d'utilisation</a>
     </nav>
+    <p className="max-w-5xl mx-auto px-6 pt-8 text-[10px] uppercase tracking-widest text-stone-400">Loftissime · Curateur de lieux atypiques</p>
     <div className="max-w-5xl mx-auto px-6 pt-8 flex gap-3" aria-hidden="true">
       {SOCIALS.map((s) => (
         <span

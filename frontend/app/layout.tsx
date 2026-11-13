@@ -13,7 +13,7 @@ const serifFont = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], 
 // Texte repris par Google, par les assistants IA et par les aperçus de partage
 const TITLE = 'Loftissime · Lofts, ateliers et biens atypiques à vendre';
 const DESCRIPTION =
-  'Loftissime, le premier hub d’annonces immobilières atypiques : lofts, ateliers d’artistes, rooftops et maisons d’architecte à vendre, réunis sur un seul site.';
+  'Loftissime, curateur de lieux atypiques et premier hub d’annonces immobilières atypiques : lofts, ateliers d’artistes, rooftops et maisons d’architecte à vendre.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
