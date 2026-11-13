@@ -79,11 +79,11 @@ export default function CollectionPage({
                   <div>
                     <div className="flex justify-between text-xs text-stone-400 uppercase tracking-wider mb-2">
                       <span>{item.city}</span>
-                      {item.surface_sqm && <span>{item.surface_sqm} m²</span>}
+                      {item.surface_sqm && <span>{Math.round(item.surface_sqm)} m²</span>}
                     </div>
                     <h2 className="font-serif text-lg leading-snug text-stone-900">{item.title}</h2>
                     {item.short_description && (
-                      <p className="mt-3 text-xs text-stone-500 line-clamp-2 leading-relaxed">{item.short_description}</p>
+                      <p className="mt-1 text-xs text-stone-500 line-clamp-2 leading-relaxed">{item.short_description}</p>
                     )}
                   </div>
                   <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
