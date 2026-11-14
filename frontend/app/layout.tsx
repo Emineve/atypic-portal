@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   applicationName: SITE_NAME,
+  // Nom proposé par l'iPhone quand on ajoute le site à l'écran d'accueil (ouverture dans Safari, comme avant)
+  appleWebApp: { title: SITE_NAME, capable: false },
   // Site en phase de test : à retirer le jour de l'ouverture publique pour être référencé
   robots: { index: false, follow: false },
   openGraph: {
