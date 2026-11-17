@@ -16,7 +16,8 @@ import { trackEvent } from '../lib/track';
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
 const FAVORITES_KEY = 'singulier:favorites';
-const NEW_DAYS = 14;
+// « Nouveauté » : uniquement les biens mis en ligne depuis moins de 24 heures
+const NEW_DAYS = 1;
 
 export interface Listing {
   id: string;
