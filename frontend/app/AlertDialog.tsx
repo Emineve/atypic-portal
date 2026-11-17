@@ -315,7 +315,7 @@ export default function AlertDialog({
   const recapLine = recap.length ? recap.join(' · ') : 'Tous les nouveaux biens, partout en France';
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6" role="dialog" aria-modal="true" aria-label="Créer mon avant-première">
+    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6" role="dialog" aria-modal="true" aria-label="Recevoir en avant-première">
       <div className="absolute inset-0 bg-stone-900/60" onClick={onClose} />
       <div className="relative w-full md:max-w-2xl max-h-[94vh] flex flex-col bg-[#FDFBF7] shadow-2xl overflow-hidden">
         <button
@@ -372,7 +372,7 @@ export default function AlertDialog({
             >
               <div className="bg-stone-900 text-white px-6 md:px-12 pt-8 pb-7 md:pt-10 md:pb-9">
                 <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-stone-300">
-                  <Bell className="w-4 h-4" /> Mon <em className="italic">avant-première</em>
+                  <Bell className="w-4 h-4" /> <em className="italic">Avant-première</em>
                 </span>
                 <h2 className="mt-3 md:mt-4 font-serif text-3xl md:text-4xl leading-[1.1]">Dites-nous ce que vous cherchez.</h2>
                 <p className="mt-3 text-sm md:text-base text-stone-300 max-w-md leading-relaxed">
@@ -539,7 +539,7 @@ export default function AlertDialog({
                 disabled={status === 'sending'}
                 className="mt-3 w-full h-12 md:h-14 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
               >
-                {status === 'sending' ? 'Enregistrement…' : <>Créer mon <em className="italic">avant-première</em></>}
+                {status === 'sending' ? 'Enregistrement…' : <>Recevoir en <em className="italic">avant-première</em></>}
               </button>
               <p className="mt-2 text-[11px] text-stone-400 text-center">Gratuit et sans engagement.</p>
             </div>

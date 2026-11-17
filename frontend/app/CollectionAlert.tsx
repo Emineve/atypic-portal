@@ -43,7 +43,7 @@ export default function CollectionAlert({
           onClick={() => setOpen(true)}
           className="shrink-0 h-12 px-7 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
         >
-          Créer mon <em className="italic">avant-première</em>
+          Recevoir en <em className="italic">avant-première</em>
         </button>
       </div>
       <AlertDialog

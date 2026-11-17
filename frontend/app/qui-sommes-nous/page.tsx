@@ -67,7 +67,7 @@ export default function AboutPage() {
           <p className="mt-3">
             <Link href="/" className={cta}>
               <Bell className="w-4 h-4" />
-              Créer mon <em className="italic">avant-première</em>
+              Recevoir en <em className="italic">avant-première</em>
             </Link>
           </p>
         </section>
