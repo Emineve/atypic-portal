@@ -4,7 +4,6 @@ import Logo from './Logo';
 import { useState, useEffect, useMemo, Fragment } from 'react';
 import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
-import AgencySearch from './AgencySearch';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
@@ -225,10 +224,18 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     return list;
   }, [listings]);
 
-  const agencyNames = useMemo(
-    () => Array.from(new Set(listings.map((l) => l.source_agency).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'fr')),
-    [listings]
-  );
+  // Agences du site et villes où elles ont des biens : pour transmettre une recherche depuis l'alerte
+  const alertAgencies = useMemo(() => {
+    const map = new Map<string, { name: string; cities: string[]; count: number }>();
+    listings.forEach((l) => {
+      if (!l.source_agency) return;
+      const a = map.get(l.source_agency) || { name: l.source_agency, cities: [], count: 0 };
+      a.count += 1;
+      if (l.city && !a.cities.includes(l.city)) a.cities.push(l.city);
+      map.set(l.source_agency, a);
+    });
+    return Array.from(map.values());
+  }, [listings]);
 
   const typed = normalize(query.trim());
   const placeMatches = useMemo(() => {
@@ -596,17 +603,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                   Enregistrer cette recherche
                 </button>
               )}
-              {!onlyFavs && agencyNames.length > 0 && (
-                <AgencySearch
-                  variant="link"
-                  agencies={agencyNames}
-                  initial={{
-                    location: places.map((p) => p.value).join(', ') || query.trim(),
-                    budget: filters.priceMax,
-                    surface: filters.surfaceMin,
-                  }}
-                />
-              )}
             </div>
             {!onlyFavs && (
             <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
@@ -806,6 +802,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         countMatches={countAlertMatches}
         onShowMatches={showAlertMatches}
         types={typeOptions}
+        agencies={alertAgencies}
       />
     </div>
   );

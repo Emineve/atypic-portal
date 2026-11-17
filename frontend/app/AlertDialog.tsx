@@ -9,6 +9,16 @@ import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
 // L'envoi des e-mails d'alerte est en place (domaine validé, service d'envoi branché)
 const ALERT_EMAILS_LIVE = true;
 
+// Agence présente sur le site, avec les villes où elle a des biens en ligne
+export interface AlertAgency {
+  name: string;
+  cities: string[];
+  count: number;
+}
+
+// Nombre maximum d'agences auxquelles une même recherche peut être transmise
+const MAX_AGENCIES = 5;
+
 export interface AlertInitial {
   filters?: Filters;
   location?: string; // lieu saisi dans la recherche, repris comme premier lieu de l'alerte
@@ -87,7 +97,10 @@ export default function AlertDialog({
   countMatches,
   onShowMatches,
   types,
+  agencies,
 }: {
+  // Accueil uniquement : agences auxquelles l'acheteur peut transmettre sa recherche
+  agencies?: AlertAgency[];
   open: boolean;
   onClose: () => void;
   source: string;
@@ -107,6 +120,11 @@ export default function AlertDialog({
   const [wantWhatsapp, setWantWhatsapp] = useState(false);
   const [whatsapp, setWhatsapp] = useState('');
   const [website, setWebsite] = useState(''); // champ piège anti-spam
+  const [share, setShare] = useState(false); // transmettre aussi la recherche à des agences
+  const [agencySel, setAgencySel] = useState<string[]>([]);
+  const [shareName, setShareName] = useState('');
+  const [sharePhone, setSharePhone] = useState('');
+  const [shared, setShared] = useState(0); // nombre d'agences qui ont bien reçu la recherche
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
   const [progress, setProgress] = useState(0); // avancement dans le formulaire, de 0 à 1
@@ -129,6 +147,9 @@ export default function AlertDialog({
     );
     setStatus('idle');
     setGeo('idle');
+    setShare(false);
+    setAgencySel([]);
+    setShared(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
@@ -255,6 +276,30 @@ export default function AlertDialog({
     );
   }
 
+  // Agences suggérées : d'abord celles qui ont des biens dans les lieux recherchés
+  const inZone = (a: AlertAgency) =>
+    locations.some((l) =>
+      a.cities.some((c) => plain(c) === plain(l) || (plain(l) === 'paris' && /^paris(\s|$)/i.test(c)))
+    );
+  const agencyList = (agencies || [])
+    .map((a) => ({ ...a, zone: inZone(a) }))
+    .sort((a, b) => Number(b.zone) - Number(a.zone) || b.count - a.count);
+
+  function toggleShare(on: boolean) {
+    setShare(on);
+    if (on && agencySel.length === 0) {
+      const zone = agencyList.filter((a) => a.zone);
+      setAgencySel((zone.length > 0 ? zone : agencyList).slice(0, MAX_AGENCIES).map((a) => a.name));
+      if (!sharePhone && whatsapp) setSharePhone(whatsapp);
+    }
+  }
+
+  function toggleAgency(name: string) {
+    setAgencySel((prev) =>
+      prev.includes(name) ? prev.filter((x) => x !== name) : prev.length >= MAX_AGENCIES ? prev : [...prev, name]
+    );
+  }
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (website) {
@@ -298,6 +343,28 @@ export default function AlertDialog({
         } catch {
           /* l'alerte par e-mail est enregistrée même si le numéro ne l'est pas */
         }
+      }
+      // Recherche transmise aux agences cochées (cinq au maximum)
+      if (ok && share && agencySel.length > 0) {
+        let sent = 0;
+        for (const a of agencySel.slice(0, MAX_AGENCIES)) {
+          try {
+            const res = await getSupabase().rpc('submit_agency_search', {
+              p_agency: a,
+              p_name: shareName,
+              p_email: email,
+              p_phone: sharePhone || null,
+              p_location: finalLocations.join(', ') || null,
+              p_budget_max: toNum(filters.priceMax),
+              p_surface_min: toNum(filters.surfaceMin),
+              p_message: `Recherche issue d’une alerte Loftissime : ${recapLine}.`,
+            });
+            if (!res.error && res.data === true) sent += 1;
+          } catch {
+            /* l'alerte est créée même si une agence n'a pas reçu la recherche */
+          }
+        }
+        setShared(sent);
       }
       setStatus(ok ? 'done' : 'error');
     } catch {
@@ -356,6 +423,11 @@ export default function AlertDialog({
             <p className="mt-4 text-stone-600 leading-relaxed max-w-md mx-auto">
               Dès qu'un lieu correspond à votre recherche, vous serez parmi les premiers à le savoir. En attendant, bonne exploration.
             </p>
+            {shared > 0 && (
+              <p className="mt-3 text-stone-600 leading-relaxed max-w-md mx-auto">
+                Votre recherche a aussi été transmise à {shared} {shared > 1 ? 'agences' : 'agence'}.
+              </p>
+            )}
             {recap.length > 0 && (
               <div className="mt-7 flex flex-wrap justify-center gap-2">
                 {recap.map((r) => (
@@ -540,6 +612,81 @@ export default function AlertDialog({
                         </>
                       )}
                     </div>
+                    {agencyList.length > 0 && (
+                      <div className="mt-4 border border-stone-200 bg-white p-4">
+                        <label className="flex items-start gap-3 text-sm text-stone-800 leading-relaxed cursor-pointer">
+                          <input
+                            type="checkbox"
+                            className="mt-1 h-4 w-4 accent-stone-900"
+                            checked={share}
+                            onChange={(e) => toggleShare(e.target.checked)}
+                          />
+                          <span>
+                            Transmettre aussi ma recherche aux agences
+                            <span className="block text-xs text-stone-500">
+                              Elles vous recontactent, y compris pour des biens qui ne sont pas encore en ligne. {MAX_AGENCIES} agences au maximum.
+                            </span>
+                          </span>
+                        </label>
+                        {share && (
+                          <>
+                            <ul className="mt-3 border border-stone-200 divide-y divide-stone-200 max-h-56 overflow-y-auto">
+                              {agencyList.map((a) => {
+                                const on = agencySel.includes(a.name);
+                                const full = !on && agencySel.length >= MAX_AGENCIES;
+                                return (
+                                  <li key={a.name}>
+                                    <button
+                                      type="button"
+                                      onClick={() => toggleAgency(a.name)}
+                                      aria-pressed={on}
+                                      disabled={full}
+                                      className="w-full min-h-[44px] flex items-center gap-3 px-3 py-2 text-left disabled:opacity-40"
+                                    >
+                                      <span className={`h-5 w-5 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-400'}`}>
+                                        {on && <Check className="w-3.5 h-3.5" />}
+                                      </span>
+                                      <span className="flex-1 text-sm text-stone-900">{a.name}</span>
+                                      {a.zone && <span className="flex-none text-[11px] text-stone-500">Dans votre secteur</span>}
+                                    </button>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                            <p className="mt-2 text-xs text-stone-500">
+                              {agencySel.length} / {MAX_AGENCIES} {agencySel.length > 1 ? 'agences choisies' : 'agence choisie'}
+                            </p>
+                            <input
+                              type="text"
+                              required
+                              minLength={2}
+                              maxLength={120}
+                              autoComplete="name"
+                              aria-label="Votre nom"
+                              value={shareName}
+                              onChange={(e) => setShareName(e.target.value)}
+                              placeholder="Nom"
+                              className={`${field} mt-3`}
+                            />
+                            <input
+                              type="tel"
+                              required
+                              minLength={9}
+                              maxLength={20}
+                              autoComplete="tel"
+                              aria-label="Votre téléphone"
+                              value={sharePhone}
+                              onChange={(e) => setSharePhone(e.target.value)}
+                              placeholder="Téléphone"
+                              className={`${field} mt-2`}
+                            />
+                            <p className="mt-2 text-xs text-stone-500 leading-relaxed">
+                              Votre nom, votre téléphone, votre email et votre recherche sont transmis uniquement aux agences cochées.
+                            </p>
+                          </>
+                        )}
+                      </div>
+                    )}
                     {status === 'error' && (
                       <p className="mt-4 text-xs text-red-700">
                         L'enregistrement a échoué. Vérifiez l'email et réessayez (dix alertes actives au maximum par adresse).
