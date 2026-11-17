@@ -13,7 +13,8 @@ async function getAgencyListings(slug: string) {
     .order('curation_score', { ascending: false, nullsFirst: false })
     .order('first_seen_at', { ascending: false });
   const items = (data || []).filter((i) => i.source_agency && slugify(i.source_agency) === slug);
-  return { items, agency: items[0]?.source_agency as string | undefined };
+  const agencies = Array.from(new Set((data || []).map((i) => i.source_agency as string).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'fr'));
+  return { items, agencies, agency: items[0]?.source_agency as string | undefined };
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function AgencyPage({ params }: { params: { slug: string } }) {
-  const { items, agency } = await getAgencyListings(params.slug);
+  const { items, agency, agencies } = await getAgencyListings(params.slug);
   if (!agency) notFound();
   return (
     <CollectionPage
@@ -39,6 +40,7 @@ export default async function AgencyPage({ params }: { params: { slug: string } 
       intro={`Les lieux singuliers proposés par ${agency}.`}
       items={items}
       hideAgency
+      agencies={agencies}
     />
   );
 }

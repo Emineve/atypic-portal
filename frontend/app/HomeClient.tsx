@@ -4,6 +4,7 @@ import Logo from './Logo';
 import { useState, useEffect, useMemo, Fragment } from 'react';
 import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
+import AgencySearch from './AgencySearch';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
@@ -222,6 +223,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       .forEach((d) => list.push(d));
     return list;
   }, [listings]);
+
+  const agencyNames = useMemo(
+    () => Array.from(new Set(listings.map((l) => l.source_agency).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'fr')),
+    [listings]
+  );
 
   const typed = normalize(query.trim());
   const placeMatches = useMemo(() => {
@@ -588,6 +594,17 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                   <Bell className="w-3.5 h-3.5 flex-none" />
                   Enregistrer cette recherche
                 </button>
+              )}
+              {!onlyFavs && agencyNames.length > 0 && (
+                <AgencySearch
+                  variant="link"
+                  agencies={agencyNames}
+                  initial={{
+                    location: places.map((p) => p.value).join(', ') || query.trim(),
+                    budget: filters.priceMax,
+                    surface: filters.surfaceMin,
+                  }}
+                />
               )}
             </div>
             {!onlyFavs && (
