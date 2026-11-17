@@ -5,9 +5,6 @@ import { Phone, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_BUTTON, WHATSAPP_ICON_PATH } from './whatsapp';
 
-// Moments proposés pour le rappel
-const SLOTS = ['Dès que possible', 'Tôt le matin', 'En matinée', "À l'heure du déjeuner", "Dans l'après-midi", 'En début de soirée'];
-
 function sessionId() {
   try {
     return sessionStorage.getItem('singulier:sid');
@@ -39,13 +36,10 @@ export default function ContactForm({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
-  const [slot, setSlot] = useState(SLOTS[0]);
-  // Message proposé par défaut, que le visiteur peut modifier
-  const [message, setMessage] = useState(
-    'Bonjour,\nJ’aimerais avoir plus de renseignements sur ce bien. Merci de me recontacter à cet effet.\nCordialement',
-  );
-  const [consent, setConsent] = useState(false);
-  const [wantPlan, setWantPlan] = useState(false); // le visiteur demande aussi le plan du bien
+  const [wantCall, setWantCall] = useState(true); // être rappelé : coché par défaut
+  const [wantPlan, setWantPlan] = useState(false); // recevoir le plan du bien
+  const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState('');
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [confirmOpen, setConfirmOpen] = useState(true); // fenêtre de confirmation après l'envoi
@@ -108,8 +102,15 @@ export default function ContactForm({
         p_name: name,
         p_email: email,
         p_phone: tel || null,
-        p_message: `Rappel souhaité : ${slot}.${wantPlan ? ' Plan du bien demandé.' : ''}${message.trim() ? ` Commentaire : ${message.trim()}` : ''}`,
-        p_consent: consent,
+        p_message: [
+          wantCall ? 'Souhaite être rappelé.' : null,
+          wantPlan ? 'Souhaite recevoir le plan du bien.' : null,
+          !wantCall && !wantPlan ? 'Demande d’information.' : null,
+          message.trim() ? `Message : ${message.trim()}` : null,
+        ]
+          .filter(Boolean)
+          .join(' '),
+        p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
       });
       setStatus(!error && data === true ? 'done' : 'error');
     } catch {
@@ -117,8 +118,7 @@ export default function ContactForm({
     }
   }
 
-  const field = 'w-full border border-stone-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-stone-900';
-  const label = 'block text-xs uppercase tracking-wider text-stone-500 mb-1';
+  const field = 'w-full h-11 border border-stone-300 bg-white px-3 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
   return (
     <div className="space-y-4">
@@ -169,8 +169,8 @@ export default function ContactForm({
               <Check className="w-4 h-4" />
             </span>
             <div>
-              <p className="font-serif text-lg text-stone-900">Votre demande de rappel est bien envoyée.</p>
-              <p className="mt-1 text-sm text-stone-600">On vous rappelle au sujet de ce bien.</p>
+              <p className="font-serif text-lg text-stone-900">Votre demande est bien envoyée.</p>
+              <p className="mt-1 text-sm text-stone-600">L&apos;agence en charge de ce bien vous recontacte.</p>
             </div>
           </div>
           {confirmOpen && (
@@ -182,7 +182,7 @@ export default function ContactForm({
                 </span>
                 <h2 className="mt-7 font-serif text-3xl text-stone-900 leading-tight">C&apos;est envoyé.</h2>
                 <p className="mt-4 text-stone-600 leading-relaxed">
-                  Votre demande de rappel est bien enregistrée. On vous rappelle au sujet de ce bien, au moment que vous avez choisi.
+                  Votre demande est bien enregistrée. L&apos;agence en charge de ce bien vous recontacte rapidement.
                 </p>
                 {alertLabel && alertStatus !== 'done' && (
                   <div className="mt-8 border border-stone-200 bg-white p-5 text-left">
@@ -225,67 +225,61 @@ export default function ContactForm({
           )}
         </>
       ) : (
-        <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-6 space-y-4">
-          <div>
-            <h2 className="font-serif text-xl text-stone-900">Demander un rappel</h2>
-            <p className="mt-1 text-sm text-stone-600">
-              Laissez vos coordonnées : l&apos;agent en charge de la vente de ce bien vous recontacte.
-            </p>
+        <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-6 space-y-3">
+          <h2 className="font-serif text-xl text-stone-900">Demande d&apos;information</h2>
+
+          <div className="grid grid-cols-2 gap-2" role="group" aria-label="Votre demande">
+            {(
+              [
+                ['Être rappelé', wantCall, setWantCall],
+                ['Recevoir le plan', wantPlan, setWantPlan],
+              ] as [string, boolean, (v: boolean) => void][]
+            ).map(([text, on, setOn]) => (
+              <button
+                key={text}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setOn(!on)}
+                className={`h-11 inline-flex items-center justify-center gap-2 border text-sm transition ${
+                  on ? 'bg-stone-900 border-stone-900 text-white' : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
+                }`}
+              >
+                <span className={`h-4 w-4 flex-none border flex items-center justify-center ${on ? 'border-white' : 'border-stone-400'}`}>
+                  {on && <Check className="w-3 h-3" />}
+                </span>
+                {text}
+              </button>
+            ))}
           </div>
-          <p className="text-xs text-stone-500 leading-relaxed bg-stone-50 border border-stone-200 p-3">
-            Version de démonstration : votre demande est enregistrée mais n&apos;est pas transmise à {agency}.
-          </p>
 
           <div>
-            <label className={label} htmlFor="c-name">Nom</label>
-            <input id="c-name" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
+            <label className="sr-only" htmlFor="c-name">Nom</label>
+            <input id="c-name" name="name" autoComplete="name" placeholder="Nom" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div>
-            <label className={label} htmlFor="c-phone">Téléphone</label>
-            <input id="c-phone" type="tel" className={field} required minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
+            <label className="sr-only" htmlFor="c-phone">Téléphone</label>
+            <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder={wantCall ? 'Téléphone' : 'Téléphone (facultatif)'} className={field} required={wantCall} minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
           </div>
           <div>
-            <label className={label} htmlFor="c-email">Email</label>
-            <input id="c-email" type="email" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label className="sr-only" htmlFor="c-email">E-mail</label>
+            <input id="c-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="E-mail" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
-          <div>
-            <p className={label} id="c-slot">Quand vous rappeler ?</p>
-            <div className="flex flex-wrap gap-2" role="group" aria-labelledby="c-slot">
-              {SLOTS.map((s) => (
-                <button
-                  key={s}
-                  type="button"
-                  aria-pressed={slot === s}
-                  onClick={() => setSlot(s)}
-                  className={`h-10 px-3 text-xs border transition ${
-                    slot === s
-                      ? 'bg-stone-900 border-stone-900 text-white'
-                      : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
-                  }`}
-                >
-                  {s}
-                </button>
-              ))}
+
+          {showMessage ? (
+            <div>
+              <label className="sr-only" htmlFor="c-msg">Message</label>
+              <textarea id="c-msg" rows={3} placeholder="Votre message" className="w-full border border-stone-300 bg-white px-3 py-2 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
             </div>
-          </div>
-          <label className="flex items-center gap-2 text-sm text-stone-800">
-            <input type="checkbox" id="c-plan" className="h-4 w-4" checked={wantPlan} onChange={(e) => setWantPlan(e.target.checked)} />
-            Je souhaite recevoir le plan du bien
-          </label>
-          <div>
-            <label className={label} htmlFor="c-msg">Commentaire (facultatif)</label>
-            <textarea id="c-msg" rows={5} className={field} maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
-          </div>
+          ) : (
+            <button type="button" onClick={() => setShowMessage(true)} className="text-xs text-stone-600 underline underline-offset-4 hover:text-stone-900">
+              Ajouter un message
+            </button>
+          )}
 
           {/* Champ piège : invisible pour les humains */}
           <div className="hidden" aria-hidden="true">
             <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
           </div>
-
-          <label className="flex items-start gap-2 text-xs text-stone-600 leading-relaxed">
-            <input type="checkbox" className="mt-0.5" checked={consent} onChange={(e) => setConsent(e.target.checked)} required />
-            J&apos;accepte que mes coordonnées soient enregistrées pour traiter ma demande.
-          </label>
 
           {status === 'error' && (
             <p className="text-xs text-red-700">L&apos;envoi a échoué. Vérifiez les champs et réessayez.</p>
@@ -294,10 +288,13 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="w-full bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-4 py-3 hover:bg-stone-800 transition disabled:opacity-50"
+            className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
           >
-            {status === 'sending' ? 'Envoi…' : 'Envoyer ma demande'}
+            {status === 'sending' ? 'Envoi…' : wantCall ? 'Être rappelé' : wantPlan ? 'Recevoir le plan' : 'Envoyer ma demande'}
           </button>
+          <p className="text-[11px] text-stone-500 leading-relaxed text-center">
+            Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.
+          </p>
         </form>
       )}
     </div>
