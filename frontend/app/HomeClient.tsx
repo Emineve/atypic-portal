@@ -2,7 +2,8 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin } from 'lucide-react';
+import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send } from 'lucide-react';
+import FavoritesContact from './FavoritesContact';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
@@ -106,6 +107,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
   const [favorites, setFavorites] = useState<string[]>([]);
   const [onlyFavs, setOnlyFavs] = useState(false);
+  const [favContactOpen, setFavContactOpen] = useState(false);
 
   // Favoris mémorisés dans le navigateur
   useEffect(() => {
@@ -576,6 +578,27 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
         )}
 
+        {onlyFavs && visible.length > 0 && (
+          <div className="mb-8 border border-stone-200 bg-white p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="flex-1">
+              <p className="font-serif text-lg text-stone-900 leading-snug">
+                Contactez les agences de vos favoris en une seule fois.
+              </p>
+              <p className="mt-1 text-sm text-stone-500">
+                Vos coordonnées une fois, et le contact de chaque bien vous rappelle.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setFavContactOpen(true)}
+              className="shrink-0 h-12 px-6 inline-flex items-center justify-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+            >
+              <Send className="w-4 h-4" />
+              Contacter pour {visible.length} {visible.length > 1 ? 'biens' : 'bien'}
+            </button>
+          </div>
+        )}
+
         {loading ? (
           <div className="text-center py-20 text-stone-400 font-serif">Chargement des lieux remarquables...</div>
         ) : errorMessage ? (
@@ -670,6 +693,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
         </div>
       </footer>
+
+      <FavoritesContact open={favContactOpen} onClose={() => setFavContactOpen(false)} items={visible} />
 
       <AlertDialog
         open={alertOpen}
