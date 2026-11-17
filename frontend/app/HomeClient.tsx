@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell } from 'lucide-react';
+import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin } from 'lucide-react';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
@@ -65,6 +65,26 @@ function normalize(s: string) {
   return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
+// Un lieu choisi dans les suggestions de la barre de recherche
+interface Place {
+  kind: 'city' | 'district';
+  value: string; // « Paris 16e », « Paris », « Auteuil Sud »
+  city: string; // ville de rattachement (pour un quartier)
+  sub: string; // précision affichée : codes postaux ou ville
+  count: number;
+  search: string; // texte dans lequel on cherche ce que tape le visiteur
+}
+
+function isParis(city: string) {
+  return /^paris(\s|$)/i.test(city.trim());
+}
+
+function matchesPlace(item: { city: string; district: string | null }, p: Place) {
+  if (p.kind === 'district') return item.district === p.value && item.city === p.city;
+  if (p.value === 'Paris') return isParis(item.city || '');
+  return item.city === p.value;
+}
+
 function isNew(date: string | null) {
   if (!date) return false;
   return Date.now() - new Date(date).getTime() < NEW_DAYS * 86400000;
@@ -77,6 +97,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [query, setQuery] = useState('');
+  const [places, setPlaces] = useState<Place[]>([]);
+  const [searchFocused, setSearchFocused] = useState(false);
   const [sort, setSort] = useState('selection');
   const [showFilters, setShowFilters] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
@@ -128,6 +150,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   function resetAll() {
     setFilters(EMPTY_FILTERS);
     setQuery('');
+    setPlaces([]);
     setSort('selection');
     setOnlyFavs(false);
   }
@@ -147,12 +170,75 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     return Array.from(set).sort();
   }, [listings]);
 
+  // Tous les lieux proposables : Paris, chaque ville ou arrondissement, chaque quartier
+  const allPlaces = useMemo(() => {
+    const cities = new Map<string, { count: number; cps: Set<string> }>();
+    const districts = new Map<string, Place>();
+    let paris = 0;
+    listings.forEach((l) => {
+      if (!l.city) return;
+      if (isParis(l.city)) paris += 1;
+      const c = cities.get(l.city) || { count: 0, cps: new Set<string>() };
+      c.count += 1;
+      if (l.postal_code) c.cps.add(l.postal_code);
+      cities.set(l.city, c);
+      if (l.district) {
+        const key = l.city + '|' + l.district;
+        const d = districts.get(key) || {
+          kind: 'district' as const,
+          value: l.district,
+          city: l.city,
+          sub: l.city,
+          count: 0,
+          search: normalize(l.district),
+        };
+        d.count += 1;
+        districts.set(key, d);
+      }
+    });
+    const list: Place[] = [];
+    if (paris > 0 && cities.size > 1) {
+      list.push({ kind: 'city', value: 'Paris', city: 'Paris', sub: 'Tous les arrondissements', count: paris, search: 'paris 75' });
+    }
+    Array.from(cities.entries())
+      .sort((a, b) => b[1].count - a[1].count)
+      .forEach(([city, c]) => {
+        const cps = Array.from(c.cps).sort();
+        list.push({ kind: 'city', value: city, city, sub: cps.join(' · '), count: c.count, search: normalize(city + ' ' + cps.join(' ')) });
+      });
+    Array.from(districts.values())
+      .sort((a, b) => b.count - a.count)
+      .forEach((d) => list.push(d));
+    return list;
+  }, [listings]);
+
+  const typed = normalize(query.trim());
+  const placeMatches = useMemo(() => {
+    if (!typed) return [];
+    return allPlaces
+      .filter((p) => p.search.includes(typed) && !places.some((x) => x.kind === p.kind && x.value === p.value && x.city === p.city))
+      .slice(0, 6);
+  }, [allPlaces, typed, places]);
+  const showSuggestions = searchFocused && typed !== '';
+
+  function addPlace(p: Place) {
+    setPlaces((prev) => [...prev, p]);
+    setQuery('');
+    setSearchFocused(false);
+    if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) document.activeElement.blur();
+  }
+
+  function removePlace(p: Place) {
+    setPlaces((prev) => prev.filter((x) => x !== p));
+  }
+
   const visible = useMemo(() => {
     const q = normalize(query.trim());
 
     const filtered = listings.filter((item) => {
       if (!passesFilters(item, filters)) return false;
       if (onlyFavs && !favorites.includes(item.id)) return false;
+      if (places.length > 0 && !places.some((p) => matchesPlace(item, p))) return false;
       if (q) {
         const haystack = normalize(
           [item.city, item.district, item.postal_code, item.title, item.atypic_category, ...(item.atypic_tags || [])]
@@ -181,13 +267,13 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         }
       }
     });
-  }, [listings, filters, onlyFavs, favorites, query, sort]);
+  }, [listings, filters, onlyFavs, favorites, query, places, sort]);
 
   const activeFilters = countActive(filters);
   const selectedCategory = filters.types.length === 1 ? filters.types[0] : 'Tous les biens';
   // Une vraie recherche est en cours (filtres ou lieu saisi) : on propose de l'enregistrer en alerte
-  const searchActive = activeFilters > 0 || query.trim() !== '';
-  const anythingActive = activeFilters > 0 || query.trim() !== '' || onlyFavs || sort !== 'selection';
+  const searchActive = activeFilters > 0 || query.trim() !== '' || places.length > 0;
+  const anythingActive = activeFilters > 0 || query.trim() !== '' || places.length > 0 || onlyFavs || sort !== 'selection';
 
   function resetFilters() {
     setFilters(EMPTY_FILTERS);
@@ -252,13 +338,77 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <div className="relative flex-1">
             <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
-              type="search"
+              type="text"
+              inputMode="search"
+              enterKeyHint="search"
+              autoComplete="off"
+              autoCorrect="off"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Ville, arrondissement, mot-clé…"
-              className="w-full h-14 pl-12 pr-4 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSearchFocused(true);
+              }}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  if (placeMatches.length > 0) addPlace(placeMatches[0]);
+                  else (e.target as HTMLInputElement).blur();
+                }
+                if (e.key === 'Escape') setSearchFocused(false);
+              }}
+              placeholder="Ville, code postal, quartier…"
+              className="w-full h-14 pl-12 pr-12 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
               aria-label="Rechercher un lieu"
+              role="combobox"
+              aria-expanded={showSuggestions}
+              aria-controls="suggestions-lieux"
+              aria-autocomplete="list"
             />
+            {query !== '' && (
+              <button
+                type="button"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => setQuery('')}
+                aria-label="Effacer la saisie"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-11 w-11 flex items-center justify-center text-stone-400 hover:text-stone-900"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+            {showSuggestions && (
+              <ul
+                id="suggestions-lieux"
+                role="listbox"
+                className="absolute left-0 right-0 top-full z-40 mt-1 border border-stone-300 bg-white shadow-lg text-left"
+              >
+                {placeMatches.map((p, i) => (
+                  <li key={p.kind + p.city + p.value} role="option" aria-selected={i === 0}>
+                    <button
+                      type="button"
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => addPlace(p)}
+                      className={`w-full min-h-[52px] px-4 py-2 flex items-center gap-3 text-left hover:bg-stone-100 ${i === 0 ? 'bg-stone-50' : ''}`}
+                    >
+                      <MapPin className="w-4 h-4 flex-none text-stone-400" />
+                      <span className="flex-1 min-w-0">
+                        <span className="block text-base text-stone-900 truncate">{p.value}</span>
+                        {p.sub && <span className="block text-xs text-stone-500 truncate">{p.sub}</span>}
+                      </span>
+                      <span className="flex-none text-xs text-stone-500">
+                        {p.count} {p.count > 1 ? 'biens' : 'bien'}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+                {placeMatches.length === 0 && (
+                  <li className="px-4 py-3 text-sm text-stone-500">
+                    Aucun lieu ne correspond. Les annonces contenant « {query.trim()} » sont affichées ci-dessous.
+                  </li>
+                )}
+              </ul>
+            )}
           </div>
           <button
             type="button"
@@ -270,7 +420,32 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <span>Filtres{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
           </button>
         </div>
-        
+
+        {places.length > 0 && (
+          <div className="max-w-3xl mx-auto mt-3 flex flex-wrap items-center gap-2" aria-live="polite">
+            {places.map((p) => (
+              <span
+                key={p.kind + p.city + p.value}
+                className="inline-flex items-center h-10 pl-3 bg-stone-900 text-white text-sm"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1.5" />
+                {p.value}
+                <button
+                  type="button"
+                  onClick={() => removePlace(p)}
+                  aria-label={`Retirer ${p.value}`}
+                  className="h-10 w-10 flex items-center justify-center text-stone-300 hover:text-white"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </span>
+            ))}
+            <span className="text-sm text-stone-600">
+              {visible.length} {visible.length > 1 ? 'biens' : 'bien'}
+            </span>
+          </div>
+        )}
+
         {anythingActive && (
           <div className="mt-4 text-center">
             <button
@@ -374,7 +549,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
       <main className="max-w-7xl mx-auto px-6 pb-24">
         {!loading && !errorMessage && (
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mb-6">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
               <p className="font-serif text-lg text-stone-700">
                 {visible.length} {visible.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
@@ -383,16 +558,16 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 <button
                   type="button"
                   onClick={() => openAlert('recherche')}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
                 >
-                  <Bell className="w-3.5 h-3.5" />
+                  <Bell className="w-3.5 h-3.5 flex-none" />
                   Enregistrer cette recherche
                 </button>
               )}
             </div>
             <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
-              Trier par
-              <select value={sort} onChange={(e) => setSort(e.target.value)} className={input}>
+              <span className="hidden sm:inline">Trier par</span>
+              <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Trier par" className={input}>
                 {SORTS.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
                 ))}
@@ -501,7 +676,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         onClose={() => setAlertOpen(false)}
         source={alertSource}
         suggestions={citySuggestions}
-        initial={{ filters, location: query.trim() }}
+        initial={{ filters, location: (places.find((p) => p.kind === 'city') || places[0])?.city || query.trim() }}
       />
     </div>
   );
