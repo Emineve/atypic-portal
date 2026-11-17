@@ -40,7 +40,10 @@ export default function ContactForm({
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
   const [slot, setSlot] = useState(SLOTS[0]);
-  const [message, setMessage] = useState('');
+  // Message proposé par défaut, que le visiteur peut modifier
+  const [message, setMessage] = useState(
+    'Bonjour,\nJ’aimerais avoir plus de renseignements sur ce bien. Merci de me recontacter à cet effet.\nCordialement',
+  );
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
@@ -266,7 +269,7 @@ export default function ContactForm({
           </div>
           <div>
             <label className={label} htmlFor="c-msg">Commentaire (facultatif)</label>
-            <textarea id="c-msg" rows={3} className={field} maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
+            <textarea id="c-msg" rows={5} className={field} maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
           </div>
 
           {/* Champ piège : invisible pour les humains */}
