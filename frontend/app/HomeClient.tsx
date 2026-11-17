@@ -311,11 +311,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <button
               type="button"
               onClick={() => openAlert('header')}
-              aria-label="Créer une alerte"
+              aria-label="Créer mon avant-première"
               className="inline-flex items-center gap-1.5 text-stone-900 hover:text-stone-600 transition"
             >
               <Bell className="w-5 h-5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Créer une alerte</span>
+              <span className="hidden sm:inline"><em className="italic">Avant-première</em></span>
             </button>
             <button
               onClick={() => setOnlyFavs((v) => !v)}
@@ -496,7 +496,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             onClick={() => openAlert('banner')}
             className="shrink-0 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
           >
-            Créer mon alerte
+            Créer mon <em className="italic">avant-première</em>
           </button>
         </div>
       </section>

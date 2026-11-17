@@ -196,7 +196,7 @@ export default function ContactForm({
                       disabled={alertStatus === 'sending'}
                       className="mt-4 w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
                     >
-                      {alertStatus === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
+                      {alertStatus === 'sending' ? 'Un instant…' : <>Créer mon <em className="italic">avant-première</em></>}
                     </button>
                     {alertStatus === 'error' && <p className="mt-2 text-xs text-red-700">L&apos;alerte n&apos;a pas pu être créée. Réessayez.</p>}
                     <p className="mt-3 text-[11px] text-stone-500 leading-relaxed">
