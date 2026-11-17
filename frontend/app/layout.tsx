@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Poppins, Inter, Newsreader } from 'next/font/google';
+import { Poppins, DM_Sans, Newsreader } from 'next/font/google';
 import './globals.css';
 import { SITE_URL, SITE_NAME } from '../lib/site';
 
 // Police du logo, chargée une fois pour tout le site
 const logoFont = Poppins({ subsets: ['latin'], weight: ['600'], variable: '--font-logo', display: 'swap' });
 // Police des textes et des libellés
-const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const sansFont = DM_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 // Police des titres
 const serifFont = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-serif', display: 'swap' });
 
