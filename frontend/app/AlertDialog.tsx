@@ -454,7 +454,7 @@ export default function AlertDialog({
 
               <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
                 <div>
-                  <Step title="Où vous prévenir ?">
+                  <Step title="Adresse mail">
                     <input
                       id="alert-email"
                       type="email"
