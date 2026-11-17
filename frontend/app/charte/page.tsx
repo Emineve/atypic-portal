@@ -19,20 +19,27 @@ const groups: Group[] = [
     items: [
       {
         q: 'Quels biens sont diffusés sur Loftissime ?',
-        a: 'Uniquement des biens atypiques à vendre. Un bien entre dans la sélection s’il répond à au moins l’un de ces trois critères :',
+        a: 'Uniquement des biens atypiques à vendre : ceux qui ont quelque chose que les autres n’ont pas. Un bien entre dans la sélection s’il présente au moins l’une de ces six caractéristiques :',
         points: [
-          'Une origine singulière. Le lieu a eu une autre vie avant d’être habité : loft, atelier d’artiste, ancienne usine, entrepôt, imprimerie, chapelle, presbytère, moulin, grange, chai, écurie, bergerie, péniche, maison troglodyte.',
-          'Une signature. Le lieu a été conçu ou transformé avec un parti pris fort : maison ou villa d’architecte, appartement repensé par un architecte, construction marquante de son époque, ou lieu aménagé par un propriétaire à la personnalité affirmée.',
-          'Un caractère rare. Le lieu se distingue par son volume (grande hauteur sous plafond, verrière, duplex, triplex, souplex), par sa situation (dernier étage, toit-terrasse, terrasse, vue dégagée, jardin en ville, bord de l’eau) ou par son histoire (hôtel particulier, château, manoir, maison de maître, bastide, mas, longère, chaumière, et tout bien ancien qui a su garder son caractère).',
+          'Une autre vie avant. Le lieu a servi à autre chose avant d’être habité : loft, atelier d’artiste, ancienne usine ou manufacture, entrepôt, imprimerie, garage, commerce, bureaux, école, chapelle, péniche.',
+          'Un volume. Grande hauteur sous plafond, double hauteur, mezzanine, verrière, plateau ouvert, duplex, triplex, souplex.',
+          'Un dehors en ville. Terrasse, toit-terrasse, jardin, cour privative, patio, jardin d’hiver.',
+          'Une situation rare. Dernier étage, vue dégagée, vue sur un monument ou sur les toits, bord de l’eau, maison en ville, voie privée ou cité d’artistes, fond de cour au calme.',
+          'Une signature. Maison ou appartement d’architecte, rénovation signée, immeuble remarquable de son époque (Art déco, années 30, moderniste).',
+          'Une histoire. Hôtel particulier, maison de maître, et tout bien ancien qui a gardé son caractère : verrière d’atelier, briques, poutres, structure métallique.',
         ],
       },
       {
+        q: 'Comment savoir si un bien a sa place sur Loftissime ?',
+        a: 'Un test simple : si l’on peut décrire le bien en commençant par autre chose que son nombre de pièces (« un ancien atelier sous verrière », « un dernier étage avec toit-terrasse »), il a sa place.',
+      },
+      {
         q: 'Le prix est-il un critère ?',
-        a: 'Non. Le prix n’est pas pris en compte dans la sélection. Seul le caractère atypique du bien compte.',
+        a: 'Non. Ni le prix, ni le standing, ni l’adresse ne sont pris en compte dans la sélection. Seul le caractère atypique du bien compte.',
       },
       {
         q: 'Quels biens ne sont pas diffusés ?',
-        a: 'Tous les logements qui ne répondent à aucun de ces trois critères.',
+        a: 'Tous les logements qui ne présentent aucune de ces six caractéristiques. Un appartement classique, même très beau ou très cher, n’a pas sa place sur Loftissime : un simple balcon, des prestations haut de gamme ou une adresse prestigieuse ne suffisent pas.',
       },
       {
         q: 'Les biens présentés sont-ils réellement à vendre ?',

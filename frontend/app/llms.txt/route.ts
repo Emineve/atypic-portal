@@ -27,7 +27,7 @@ export async function GET() {
     '- Loftissime n’est pas une agence immobilière : le site ne prend aucun mandat et n’intervient dans aucune transaction.',
     '- Toutes les annonces proviennent d’agences immobilières. Chaque fiche indique l’agence, le contact chargé de la commercialisation du bien et renvoie vers l’annonce d’origine.',
     '- La consultation est gratuite et sans inscription. Un visiteur peut créer une alerte pour être prévenu des nouveaux biens qui correspondent à sa recherche.',
-    '- Un bien est diffusé s’il répond à au moins un critère : une origine singulière (loft, atelier, ancienne usine, péniche…), une signature (maison ou appartement d’architecte) ou un caractère rare (volume, dernier étage, terrasse, vue, histoire). Le prix n’est pas un critère.',
+    '- Un bien est diffusé s’il présente au moins une caractéristique atypique : une autre vie avant (loft, atelier d’artiste, ancienne usine, commerce ou bureaux transformés, péniche…), un volume (hauteur sous plafond, verrière, duplex, triplex), un dehors en ville (terrasse, toit-terrasse, jardin, cour), une situation rare (dernier étage, vue dégagée, bord de l’eau, maison en ville), une signature (maison ou appartement d’architecte, immeuble remarquable) ou une histoire (hôtel particulier, maison de maître, bien ancien de caractère). Le prix, le standing et l’adresse ne sont pas des critères.',
     '- La diffusion d’annonces est réservée aux agences immobilières.',
     `- Le site présente actuellement ${rows.length} biens à vendre.`,
     '',

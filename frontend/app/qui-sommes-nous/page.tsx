@@ -91,9 +91,9 @@ export default function AboutPage() {
         <section>
           <h2 className={h2}>Notre sélection</h2>
           <p className={p}>
-            Pas de limite de prix. Une seule exigence : que le bien ait quelque chose de
-            singulier. Chaque annonce diffusée répond à la charte Loftissime, qui dit clairement ce que nous publions et ce
-            que nous ne publions pas.
+            Pas de limite de prix. Une seule exigence : que le bien ait quelque chose que les autres n&apos;ont pas. Une autre
+            vie avant, un volume, un dehors, une situation rare, une signature ou une histoire : nos questions fréquentes
+            disent clairement ce que nous publions et ce que nous ne publions pas.
           </p>
           <p className="mt-3">
             <Link href="/charte" className={cta}>

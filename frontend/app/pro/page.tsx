@@ -36,8 +36,8 @@ const pillars = [
     title: 'Sélection exigeante',
     highlight: false,
     items: [
-      'Une charte de sélection précise et publique',
-      'Un bien répond à la charte, ou n’y répond pas',
+      'Six caractéristiques précises',
+      'Un bien en présente au moins une, ou n’est pas diffusé',
       'Un cadre qui valorise vos mandats les plus rares',
     ],
   },
@@ -52,7 +52,7 @@ const steps = [
 const faq: { q: string; a: string; points?: string[] }[] = [
   {
     q: 'Que fait Loftissime pour mon agence ?',
-    a: 'Loftissime référence vos biens atypiques selon la charte et met les acheteurs en contact direct avec vos négociateurs :',
+    a: 'Loftissime référence vos biens atypiques selon des critères précis et met les acheteurs en contact direct avec vos négociateurs :',
     points: [
       'Chaque annonce affiche votre agence, le négociateur et son téléphone.',
       'Chaque annonce renvoie vers celle de votre site.',
