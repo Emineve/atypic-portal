@@ -703,6 +703,19 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             })}
           </div>
         )}
+
+        {!loading && !errorMessage && searchActive && !onlyFavs && visible.length > 0 && (
+          <p className="mt-16 pt-8 border-t border-stone-200 font-serif text-lg md:text-xl text-stone-600 leading-relaxed">
+            <button
+              type="button"
+              onClick={() => openAlert('recherche-bas')}
+              className="font-semibold text-stone-900 underline underline-offset-4 decoration-1 hover:text-stone-600 transition"
+            >
+              Enregistrer cette recherche
+            </button>{' '}
+            pour recevoir les nouveaux biens en <em className="italic">avant-première</em>.
+          </p>
+        )}
       </main>
 
       <footer className="border-t border-stone-200 bg-white">
