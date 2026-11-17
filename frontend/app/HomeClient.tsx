@@ -584,6 +584,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 </button>
               )}
             </div>
+            {!onlyFavs && (
             <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
               <span className="hidden sm:inline">Trier par</span>
               <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Trier par" className={input}>
@@ -592,6 +593,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 ))}
               </select>
             </label>
+            )}
           </div>
         )}
 
