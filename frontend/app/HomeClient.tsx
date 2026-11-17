@@ -12,7 +12,7 @@ import Tracker from './Tracker';
 import HeroTitle from './HeroTitle';
 import { DpeChip } from './DpeBadge';
 import FilterPanel from './FilterPanel';
-import { Filters, EMPTY_FILTERS, passesFilters, countActive } from './filters';
+import { Filters, EMPTY_FILTERS, passesFilters, countActive, availableTypes } from './filters';
 import { trackEvent } from '../lib/track';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
@@ -94,6 +94,7 @@ function isNew(date: string | null) {
 
 export default function HomeClient({ initialListings }: { initialListings: Listing[] }) {
   const listings = initialListings;
+  const typeOptions = useMemo(() => availableTypes(listings), [listings]);
   const loading = false;
   const errorMessage = null as string | null;
 
@@ -532,7 +533,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              <FilterPanel value={filters} onChange={setFilters} mode="search" padX="px-6" />
+              <FilterPanel value={filters} onChange={setFilters} mode="search" padX="px-6" types={typeOptions} />
               <div className="px-6 py-6">
                 <label className="text-[10px] uppercase tracking-widest text-stone-500" htmlFor="f-sort">Trier par</label>
                 <select
@@ -804,6 +805,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         initial={{ filters, location: (places.find((p) => p.kind === 'city') || places[0])?.city || query.trim() }}
         countMatches={countAlertMatches}
         onShowMatches={showAlertMatches}
+        types={typeOptions}
       />
     </div>
   );

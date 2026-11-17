@@ -11,12 +11,16 @@ export default function FilterPanel({
   value,
   onChange,
   padX = 'px-6',
+  types = TYPES,
 }: {
   value: Filters;
   onChange: (f: Filters) => void;
   mode?: 'search' | 'alert'; // conservé pour compatibilité : le panneau est identique dans les deux cas
   padX?: string;
+  types?: string[]; // types proposés (par défaut : tous) ; l'accueil ne passe que ceux qui ont des biens
 }) {
+  // Un type déjà coché reste affiché, même s'il n'a plus de bien, pour pouvoir le décocher
+  const shownTypes = TYPES.filter((t) => types.includes(t) || value.types.includes(t));
   // Ouvertes par défaut : surface, chambres, budget. Le type de bien et les critères suivants sont fermés.
   const [openIds, setOpenIds] = useState<string[]>(() => ['surface', 'chambres', 'budget']);
 
@@ -154,7 +158,7 @@ export default function FilterPanel({
           <Chip state={value.types.length === 0 ? 'must' : 'off'} onClick={() => set({ types: [] })}>
             Tous
           </Chip>
-          {TYPES.map((t) => (
+          {shownTypes.map((t) => (
             <Chip
               key={t}
               state={value.types.includes(t) ? 'must' : 'off'}
