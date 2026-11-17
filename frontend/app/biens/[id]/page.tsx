@@ -91,20 +91,19 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
 
   // Chiffres clés : libellé, valeur, icône
-  const facts: [string, string, typeof Ruler, string?][] = [];
+  const facts: [string, string, typeof Ruler][] = [];
   if (item.surface_sqm) facts.push(['Surface', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(Number(item.surface_sqm))} m²`, Ruler]);
   if (item.rooms) facts.push(['Pièces', String(item.rooms), LayoutGrid]);
   if (item.bedrooms) facts.push(['Chambres', String(item.bedrooms), BedDouble]);
   if (item.floor !== null && item.floor !== undefined) facts.push(['Étage', item.floor === 0 ? 'Rez-de-chaussée' : String(item.floor), Layers]);
   if (item.property_type) facts.push(['Type', item.property_type, Home]);
   if (item.charges_yearly) facts.push(['Charges', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.charges_yearly)} €/an`, Wallet]);
-  // Localisation : le niveau le plus précis de l'annonce (quartier) en premier, la ville en dessous.
+  // Localisation : uniquement le niveau le plus précis de l'annonce (le quartier s'il existe, sinon la ville).
   // Le code postal est omis quand la ville porte déjà l'arrondissement (« Paris 16e »).
   if (item.city || item.district) {
     const city: string = item.city || '';
     const cityLine = /\d+\s?(er|e|ème)$/i.test(city) ? city : [city, item.postal_code].filter(Boolean).join(' ');
-    if (item.district) facts.push(['Localisation', item.district, MapPin, cityLine || undefined]);
-    else facts.push(['Localisation', cityLine, MapPin]);
+    facts.push(['Localisation', item.district || cityLine, MapPin]);
   }
   const hasEnergy = Boolean(item.dpe_class || item.ges_class);
 
@@ -199,15 +198,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
             {facts.length > 0 && (
               <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-stone-200 py-6">
-                {facts.map(([label, value, Icon, sub]) => (
+                {facts.map(([label, value, Icon]) => (
                   <div key={label} className="flex items-start gap-3">
                     <Icon className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
                     <div className="min-w-0">
                       <dt className="text-[10px] uppercase tracking-widest text-stone-400">{label}</dt>
-                      <dd className="mt-0.5 font-serif text-xl leading-snug text-stone-900">
-                        {value}
-                        {sub && <span className="block mt-0.5 font-sans text-sm text-stone-500">{sub}</span>}
-                      </dd>
+                      <dd className="mt-0.5 font-serif text-xl leading-snug text-stone-900">{value}</dd>
                     </div>
                   </div>
                 ))}
