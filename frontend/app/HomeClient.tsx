@@ -376,7 +376,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <div className="flex items-center justify-between mb-6">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
               <p className="font-serif text-lg text-stone-700">
-                {visible.length} {visible.length > 1 ? 'lieux atypiques' : 'lieu atypique'}
+                {visible.length} {visible.length > 1 ? 'biens à découvrir' : 'bien à découvrir'}
               </p>
               {searchActive && visible.length > 0 && (
                 <button
