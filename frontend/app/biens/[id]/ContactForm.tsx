@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Phone, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_BUTTON, WHATSAPP_ICON_PATH } from './whatsapp';
@@ -45,20 +45,11 @@ export default function ContactForm({
     'Bonjour,\nJ’aimerais avoir plus de renseignements sur ce bien. Merci de me recontacter à cet effet.\nCordialement',
   );
   const [consent, setConsent] = useState(false);
+  const [wantPlan, setWantPlan] = useState(false); // le visiteur demande aussi le plan du bien
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [confirmOpen, setConfirmOpen] = useState(true); // fenêtre de confirmation après l'envoi
   const [alertStatus, setAlertStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
-
-  // Bouton « Demander le plan » de la fiche : le message est remplacé par une demande de plan
-  useEffect(() => {
-    function onPlan() {
-      setMessage('Bonjour,\nPourriez-vous m’envoyer le plan de ce bien ?\nMerci d’avance.\nCordialement');
-      window.setTimeout(() => document.getElementById('c-name')?.focus({ preventScroll: true }), 600);
-    }
-    window.addEventListener('loftissime:demande-plan', onPlan);
-    return () => window.removeEventListener('loftissime:demande-plan', onPlan);
-  }, []);
 
   // Alerte proposée juste après la demande : même ville, budget jusqu'à 20 % au-dessus du bien consulté
   const alertBudget = price && price > 0 ? Math.ceil((price * 1.2) / 50000) * 50000 : null;
@@ -117,7 +108,7 @@ export default function ContactForm({
         p_name: name,
         p_email: email,
         p_phone: tel || null,
-        p_message: `Rappel souhaité : ${slot}.${message.trim() ? ` Commentaire : ${message.trim()}` : ''}`,
+        p_message: `Rappel souhaité : ${slot}.${wantPlan ? ' Plan du bien demandé.' : ''}${message.trim() ? ` Commentaire : ${message.trim()}` : ''}`,
         p_consent: consent,
       });
       setStatus(!error && data === true ? 'done' : 'error');
@@ -277,6 +268,10 @@ export default function ContactForm({
               ))}
             </div>
           </div>
+          <label className="flex items-center gap-2 text-sm text-stone-800">
+            <input type="checkbox" id="c-plan" className="h-4 w-4" checked={wantPlan} onChange={(e) => setWantPlan(e.target.checked)} />
+            Je souhaite recevoir le plan du bien
+          </label>
           <div>
             <label className={label} htmlFor="c-msg">Commentaire (facultatif)</label>
             <textarea id="c-msg" rows={5} className={field} maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
