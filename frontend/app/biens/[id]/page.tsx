@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, Wallet } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -90,14 +90,16 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
   const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
 
-  const facts: [string, string][] = [];
-  if (item.property_type) facts.push(['Type', item.property_type]);
-  if (item.surface_sqm) facts.push(['Surface', `${item.surface_sqm} m²`]);
-  if (item.rooms) facts.push(['Pièces', String(item.rooms)]);
-  if (item.bedrooms) facts.push(['Chambres', String(item.bedrooms)]);
-  if (item.floor !== null && item.floor !== undefined) facts.push(['Étage', String(item.floor)]);
-  if (item.charges_yearly) facts.push(['Charges', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.charges_yearly)} €/an`]);
-  if (item.city) facts.push(['Localisation', [item.city, item.postal_code].filter(Boolean).join(' ')]);
+  // Chiffres clés : libellé, valeur, icône
+  const facts: [string, string, typeof Ruler][] = [];
+  if (item.surface_sqm) facts.push(['Surface', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(Number(item.surface_sqm))} m²`, Ruler]);
+  if (item.rooms) facts.push(['Pièces', String(item.rooms), LayoutGrid]);
+  if (item.bedrooms) facts.push(['Chambres', String(item.bedrooms), BedDouble]);
+  if (item.floor !== null && item.floor !== undefined) facts.push(['Étage', item.floor === 0 ? 'Rez-de-chaussée' : String(item.floor), Layers]);
+  if (item.property_type) facts.push(['Type', item.property_type, Home]);
+  if (item.charges_yearly) facts.push(['Charges', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.charges_yearly)} €/an`, Wallet]);
+  if (item.city) facts.push(['Localisation', [item.city, item.postal_code].filter(Boolean).join(' '), MapPin]);
+  const hasEnergy = Boolean(item.dpe_class || item.ges_class);
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
   const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 30);
@@ -170,33 +172,39 @@ export default async function ListingPage({ params }: { params: { id: string } }
               {item.city}{item.district ? ` · ${item.district}` : ''}
             </p>
             <h1 className="mt-2 font-serif text-3xl md:text-4xl leading-tight text-stone-900">{item.title}</h1>
-            <p className="mt-4 font-serif text-3xl text-stone-900">{price}</p>
-            <ShareButtons
-              url={`${SITE_URL}/biens/${item.id}`}
-              title={item.title}
-              detail={[item.city, item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', price].filter(Boolean).join(' · ')}
-            />
+
+            {item.atypic_tags?.length > 0 && (
+              <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
+                {item.atypic_tags.map((tag: string, idx: number) => (
+                  <li key={idx} className="bg-stone-900 text-white text-[11px] font-medium uppercase tracking-wider px-3 py-1.5">{tag}</li>
+                ))}
+              </ul>
+            )}
+
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+              <p className="font-serif text-3xl text-stone-900">{price}</p>
+              <ShareButtons
+                url={`${SITE_URL}/biens/${item.id}`}
+                title={item.title}
+                detail={[item.city, item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', price].filter(Boolean).join(' · ')}
+              />
+            </div>
 
             {facts.length > 0 && (
-              <dl className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 border-y border-stone-200 py-5">
-                {facts.map(([label, value]) => (
-                  <div key={label}>
-                    <dt className="text-[10px] uppercase tracking-widest text-stone-400">{label}</dt>
-                    <dd className="mt-1 text-sm text-stone-900">{value}</dd>
+              <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-stone-200 py-6">
+                {facts.map(([label, value, Icon]) => (
+                  <div key={label} className="flex items-start gap-3">
+                    <Icon className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                    <div className="min-w-0">
+                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">{label}</dt>
+                      <dd className="mt-0.5 font-serif text-xl leading-snug text-stone-900">{value}</dd>
+                    </div>
                   </div>
                 ))}
               </dl>
             )}
 
                         <p className="mt-6 text-stone-700 leading-relaxed whitespace-pre-line">{item.short_description}</p>
-
-            {item.atypic_tags?.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-6">
-                {item.atypic_tags.map((tag: string, idx: number) => (
-                  <span key={idx} className="bg-stone-50 border border-stone-200 text-stone-600 text-[11px] px-2.5 py-1">{tag}</span>
-                ))}
-              </div>
-            )}
 
             {item.features?.length > 0 && (
               <div className="mt-6">
@@ -209,13 +217,15 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </div>
             )}
 
-            <div className="mt-6">
-              <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Performance énergétique</h2>
-              <div className="mt-3 flex flex-wrap gap-x-10 gap-y-4">
-                <DpeScale title="Énergie (DPE)" value={item.dpe_class} kind="dpe" />
-                <DpeScale title="Climat (GES)" value={item.ges_class} kind="ges" />
+            {hasEnergy && (
+              <div className="mt-6">
+                <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Performance énergétique</h2>
+                <div className="mt-3 flex flex-wrap gap-x-10 gap-y-4">
+                  <DpeScale title="Énergie (DPE)" value={item.dpe_class} kind="dpe" />
+                  <DpeScale title="Climat (GES)" value={item.ges_class} kind="ges" />
+                </div>
               </div>
-            </div>
+            )}
 
             <p className="mt-8 text-xs text-stone-400">
               Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}
