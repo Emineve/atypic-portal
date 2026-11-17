@@ -77,12 +77,8 @@ export default function CollectionPage({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.cover_image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                   <span className="absolute top-3 left-3 bg-stone-900/90 text-white text-[10px] uppercase tracking-widest px-2.5 py-1">{item.atypic_category}</span>
-                  {hideAgency ? (
-                    item.source_id && (
-                      <span className="absolute bottom-3 left-3 bg-white/95 text-stone-900 text-[10px] uppercase tracking-widest px-2 py-0.5 font-mono">Réf. {item.source_id}</span>
-                    )
-                  ) : (
-                    <span className="absolute bottom-3 left-3 bg-white/95 text-stone-900 text-[10px] uppercase tracking-widest px-2 py-0.5 font-mono">Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}</span>
+                  {item.source_id && (
+                    <span className="absolute bottom-3 left-3 bg-white/95 text-stone-900 text-[10px] uppercase tracking-widest px-2 py-0.5 font-mono">Réf. {item.source_id}</span>
                   )}
                 </Link>
                 <div className="p-6 flex flex-col flex-1 justify-between">
@@ -105,7 +101,10 @@ export default function CollectionPage({
                       </ul>
                     )}
                   </div>
-                  <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
+                  {!hideAgency && (
+                    <p className="mt-4 text-[11px] text-stone-400">Annonce {item.source_agency}</p>
+                  )}
+                  <div className={`${hideAgency ? 'mt-6' : 'mt-3'} pt-4 border-t border-stone-100 flex items-center justify-between`}>
                     <span className="text-xl font-medium tracking-tight font-serif">
                       {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price)}
                     </span>
