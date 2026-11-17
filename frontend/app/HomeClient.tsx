@@ -681,7 +681,10 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                         </ul>
                       )}
                       <p className="mt-2.5 font-serif text-lg text-stone-900">{price}</p>
-                      <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}</p>
+                      <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}</p>
+                      {item.source_id && (
+                        <p className="mt-0.5 text-[11px] text-stone-400">Réf. {item.source_id}</p>
+                      )}
                     </div>
                   </a>
                   <button
