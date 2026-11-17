@@ -177,6 +177,8 @@ export default function AdminAnnonces() {
   const [saving, setSaving] = useState(false);
   const [search, setSearch] = useState('');
   const [show, setShow] = useState<'all' | 'active' | 'hidden'>('all');
+  const [selected, setSelected] = useState<string[]>([]); // annonces cochées pour une action groupée
+  const [bulkBusy, setBulkBusy] = useState(false);
 
   useEffect(() => {
     try {
@@ -332,6 +334,30 @@ export default function AdminAnnonces() {
       setError('Modification impossible : ' + e.message);
       return;
     }
+    load(token);
+  }
+
+  function toggleSelected(id: string) {
+    setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
+  }
+
+  // Affiche ou masque d'un coup toutes les annonces cochées
+  async function setActiveForSelection(active: boolean) {
+    if (!token || selected.length === 0) return;
+    setError('');
+    setNotice('');
+    setBulkBusy(true);
+    const results = await Promise.all(
+      selected.map((id) => getSupabase().rpc('admin_set_listing_active', { p_token: token, p_id: id, p_active: active })),
+    );
+    setBulkBusy(false);
+    const failed = results.filter((r) => r.error).length;
+    if (failed > 0) {
+      setError(`${failed} annonce(s) n’ont pas pu être modifiées.`);
+    } else {
+      setNotice(`${selected.length} annonce(s) ${active ? 'affichée(s) sur le site' : 'masquée(s)'}.`);
+    }
+    setSelected([]);
     load(token);
   }
 
@@ -545,10 +571,46 @@ export default function AdminAnnonces() {
               Colonne « Position » : choisissez les annonces affichées en premier sur le site (de 1 à 9). Les autres suivent, des plus récentes aux plus anciennes.
             </p>
 
+            <div className="mt-4 flex flex-wrap items-center gap-3 border border-stone-200 bg-white px-4 py-3">
+              <span className="text-sm text-stone-700">
+                {selected.length === 0 ? 'Cochez des annonces pour les afficher ou les masquer en une fois.' : `${selected.length} annonce(s) sélectionnée(s)`}
+              </span>
+              <button
+                type="button"
+                onClick={() => setActiveForSelection(true)}
+                disabled={selected.length === 0 || bulkBusy}
+                className="h-9 px-4 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider disabled:opacity-30"
+              >
+                Afficher
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveForSelection(false)}
+                disabled={selected.length === 0 || bulkBusy}
+                className="h-9 px-4 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider disabled:opacity-30"
+              >
+                Masquer
+              </button>
+              {selected.length > 0 && (
+                <button type="button" onClick={() => setSelected([])} className="text-xs underline underline-offset-4 text-stone-600">
+                  Tout décocher
+                </button>
+              )}
+            </div>
+
             <div className="mt-3 overflow-x-auto border border-stone-200 bg-white">
-              <table className="w-full min-w-[820px] text-sm">
+              <table className="w-full min-w-[860px] text-sm">
                 <thead>
                   <tr className="bg-stone-100 text-left text-[11px] font-semibold uppercase tracking-wider text-stone-600">
+                    <th className="pl-4 py-3 w-8">
+                      <input
+                        type="checkbox"
+                        aria-label="Tout sélectionner"
+                        className="h-4 w-4"
+                        checked={filtered.length > 0 && filtered.every((l) => selected.includes(l.id))}
+                        onChange={(e) => setSelected(e.target.checked ? filtered.map((l) => l.id) : [])}
+                      />
+                    </th>
                     <th className="px-4 py-3">Annonce</th>
                     <th className="px-3 py-3">Agence</th>
                     <th className="px-3 py-3 text-right">Prix</th>
@@ -561,6 +623,15 @@ export default function AdminAnnonces() {
                 <tbody>
                   {filtered.map((l) => (
                     <tr key={l.id} className={`border-t border-stone-200 align-middle ${l.is_active ? '' : 'bg-stone-50 text-stone-400'}`}>
+                      <td className="pl-4 py-3">
+                        <input
+                          type="checkbox"
+                          aria-label={`Sélectionner ${l.title}`}
+                          className="h-4 w-4"
+                          checked={selected.includes(l.id)}
+                          onChange={() => toggleSelected(l.id)}
+                        />
+                      </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-3">
                           <div className="h-12 w-16 flex-none bg-stone-200 overflow-hidden">
@@ -609,7 +680,7 @@ export default function AdminAnnonces() {
                   ))}
                   {filtered.length === 0 && (
                     <tr>
-                      <td colSpan={7} className="px-4 py-8 text-center text-stone-500">Aucune annonce ne correspond.</td>
+                      <td colSpan={8} className="px-4 py-8 text-center text-stone-500">Aucune annonce ne correspond.</td>
                     </tr>
                   )}
                 </tbody>
