@@ -156,18 +156,18 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
       <main className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 min-w-0">
+          <nav aria-label="Fil d'Ariane" className="mb-4 text-xs text-stone-400">
+            <Link href="/" className="hover:text-stone-900">Accueil</Link>
+            {hubName && hubUrl && (
+              <>
+                {' › '}
+                <Link href={hubUrl} className="hover:text-stone-900">{hubName}</Link>
+              </>
+            )}
+          </nav>
           <Gallery images={allImages} title={item.title} category={item.atypic_category} />
 
           <div className="mt-8">
-            <nav aria-label="Fil d'Ariane" className="mb-3 text-xs text-stone-400">
-              <Link href="/" className="hover:text-stone-900">Accueil</Link>
-              {hubName && hubUrl && (
-                <>
-                  {' › '}
-                  <Link href={hubUrl} className="hover:text-stone-900">{hubName}</Link>
-                </>
-              )}
-            </nav>
             <p className="text-xs uppercase tracking-wider text-stone-400">
               {item.city}{item.district ? ` · ${item.district}` : ''}
             </p>
