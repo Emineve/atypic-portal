@@ -139,7 +139,7 @@ export default function ContactForm({
             <button
               type="button"
               onClick={reveal}
-              className="mt-4 flex h-12 w-full items-center justify-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+              className="mt-4 flex h-12 w-full items-center justify-center gap-2 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition"
             >
               <Phone className="w-4 h-4" />
               Afficher le numéro
@@ -240,11 +240,11 @@ export default function ContactForm({
                 type="button"
                 aria-pressed={on}
                 onClick={() => setOn(!on)}
-                className={`h-11 inline-flex items-center justify-center gap-2 border text-sm transition ${
-                  on ? 'bg-stone-900 border-stone-900 text-white' : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
+                className={`h-11 inline-flex items-center justify-center gap-2 border bg-white text-sm transition hover:border-stone-900 ${
+                  on ? 'border-stone-900 text-stone-900' : 'border-stone-300 text-stone-700'
                 }`}
               >
-                <span className={`h-4 w-4 flex-none border flex items-center justify-center ${on ? 'border-white' : 'border-stone-400'}`}>
+                <span className={`h-4 w-4 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-400'}`}>
                   {on && <Check className="w-3 h-3" />}
                 </span>
                 {text}
