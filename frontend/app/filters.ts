@@ -27,19 +27,14 @@ export const EMPTY_FILTERS: Filters = {
 // Un bien peut correspondre à plusieurs types : on le reconnaît à ses mots (titre, description, étiquettes).
 // Mêmes règles que la base de données (fonction SQL type_match).
 const TYPE_PATTERNS: [string, RegExp][] = [
+  // Les types les plus fréquents de chacune des six familles de la sélection
   ['Loft', /\bloft/],
   ["Atelier d'artiste", /\batelier\b/],
-  ['Penthouse', /penthouse|rooftop|toit-terrasse/],
   ['Duplex / Triplex', /duplex|triplex|souplex/],
-  ['Hôtel particulier', /hôtel particulier/],
+  ['Dernier étage', /dernier(s)? (étage|niveau)|penthouse|rooftop|toit-terrasse/],
+  ['Maison en ville', /\bmaison\b|\bvilla\b|\bchalet\b/],
   ["Bien d'architecte", /architecte/],
-  ['Maison & villa', /\bmaison\b|\bvilla\b/],
-  ['Péniche', /péniche|\bbateau\b/],
-  [
-    'Lieu transformé',
-    /ancien(ne)? (atelier|studio|usine|entrepôt|imprimerie|fabrique|garage|école|chai|écurie|grange|chapelle|couvent)|chapelle|église|\busine\b|entrepôt|\bgrange\b|\bmoulin\b|réhabilit|reconver|transformé/,
-  ],
-  ['Bien de caractère', /château|manoir|demeure|bastide|\bmas\b|longère|maison de maître|de caractère/],
+  ['Hôtel particulier', /hôtel particulier/],
 ];
 
 export const TYPES = TYPE_PATTERNS.map(([label]) => label);
@@ -69,7 +64,7 @@ export const FEATURE_GROUPS: FeatureGroup[] = [
     title: 'Configuration',
     open: false,
     items: [
-      ['dernier-etage', 'Dernier étage'],
+      // « Dernier étage » est proposé dans les types de bien
       ['plain-pied', 'Plain-pied'],
       ['rdc', 'Rez-de-chaussée'],
     ],
@@ -108,6 +103,7 @@ export function featureLabel(key: string): string {
   for (const g of FEATURE_GROUPS) {
     for (const [k, label] of g.items) if (k === key) return label;
   }
+  if (key === 'dernier-etage') return 'Dernier étage'; // anciennes alertes
   return key;
 }
 
