@@ -490,9 +490,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 </button>
               </span>
             ))}
-            <span className="text-sm text-stone-600">
-              {visible.length} {visible.length > 1 ? 'biens' : 'bien'}
-            </span>
           </div>
         )}
 
