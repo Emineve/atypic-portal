@@ -281,6 +281,31 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     });
   }, [listings, filters, onlyFavs, favorites, query, places, sort]);
 
+  // Après la création d'une alerte : biens déjà en ligne qui y répondent (mêmes règles que la recherche)
+  function alertPlaces(locations: string[]): Place[] {
+    return locations
+      .map((loc) => allPlaces.find((p) => p.kind === 'city' && normalize(p.value) === normalize(loc)))
+      .filter((p): p is Place => Boolean(p));
+  }
+
+  function countAlertMatches(f: Filters, locations: string[]): number {
+    const wanted = alertPlaces(locations);
+    if (locations.length > 0 && wanted.length === 0) return 0;
+    return listings.filter(
+      (item) => passesFilters(item, f) && (wanted.length === 0 || wanted.some((p) => matchesPlace(item, p)))
+    ).length;
+  }
+
+  // Affiche ces biens : la recherche de l'accueil reprend les critères de l'alerte
+  function showAlertMatches(f: Filters, locations: string[]) {
+    setFilters({ ...f, nice: [] });
+    setPlaces(alertPlaces(locations));
+    setQuery('');
+    setOnlyFavs(false);
+    setShowFilters(false);
+    setTimeout(() => document.getElementById('resultats')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+
   const activeFilters = countActive(filters);
   // Une vraie recherche est en cours (filtres ou lieu saisi) : on propose de l'enregistrer en alerte
   const searchActive = activeFilters > 0 || query.trim() !== '' || places.length > 0;
@@ -550,7 +575,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         </div>
       )}
 
-      <main className="max-w-7xl mx-auto px-6 pb-24">
+      <main id="resultats" className="max-w-7xl mx-auto px-6 pb-24 scroll-mt-28">
         {!loading && !errorMessage && !onlyFavs && (
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mb-6">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
@@ -763,6 +788,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         source={alertSource}
         suggestions={citySuggestions}
         initial={{ filters, location: (places.find((p) => p.kind === 'city') || places[0])?.city || query.trim() }}
+        countMatches={countAlertMatches}
+        onShowMatches={showAlertMatches}
       />
     </div>
   );
