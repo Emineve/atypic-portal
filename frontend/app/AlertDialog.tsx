@@ -124,7 +124,7 @@ export default function AlertDialog({
   const [agencySel, setAgencySel] = useState<string[]>([]);
   const [shareName, setShareName] = useState('');
   const [sharePhone, setSharePhone] = useState('');
-  const [shared, setShared] = useState(0); // nombre d'agences qui ont bien reçu la recherche
+  const [shared, setShared] = useState<string[]>([]); // agences qui ont bien reçu la recherche
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
   const [progress, setProgress] = useState(0); // avancement dans le formulaire, de 0 à 1
@@ -149,7 +149,7 @@ export default function AlertDialog({
     setGeo('idle');
     setShare(false);
     setAgencySel([]);
-    setShared(0);
+    setShared([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
@@ -346,7 +346,7 @@ export default function AlertDialog({
       }
       // Recherche transmise aux agences cochées (cinq au maximum)
       if (ok && share && agencySel.length > 0) {
-        let sent = 0;
+        const sent: string[] = [];
         for (const a of agencySel.slice(0, MAX_AGENCIES)) {
           try {
             const res = await getSupabase().rpc('submit_agency_search', {
@@ -359,7 +359,7 @@ export default function AlertDialog({
               p_surface_min: toNum(filters.surfaceMin),
               p_message: `Recherche issue d’une alerte Loftissime : ${recapLine}.`,
             });
-            if (!res.error && res.data === true) sent += 1;
+            if (!res.error && res.data === true) sent.push(a);
           } catch {
             /* l'alerte est créée même si une agence n'a pas reçu la recherche */
           }
@@ -423,9 +423,13 @@ export default function AlertDialog({
             <p className="mt-4 text-stone-600 leading-relaxed max-w-md mx-auto">
               Dès qu'un lieu correspond à votre recherche, vous serez parmi les premiers à le savoir. En attendant, bonne exploration.
             </p>
-            {shared > 0 && (
+            {shared.length > 0 && (
               <p className="mt-3 text-stone-600 leading-relaxed max-w-md mx-auto">
-                Votre recherche a aussi été transmise à {shared} {shared > 1 ? 'agences' : 'agence'}.
+                Votre recherche a aussi été transmise à{' '}
+                <span className="text-stone-900">
+                  {shared.length > 1 ? `${shared.slice(0, -1).join(', ')} et ${shared[shared.length - 1]}` : shared[0]}
+                </span>
+                .
               </p>
             )}
             {recap.length > 0 && (
