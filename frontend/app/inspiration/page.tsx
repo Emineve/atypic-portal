@@ -112,27 +112,14 @@ export default async function InspirationPage() {
                       title={p.title}
                       thumbs={false}
                     />
-                    <figcaption className="mt-4">
-                      <div>
-                        <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                          {[
-                            // le type n'est pas répété s'il figure déjà dans le titre (« Duplex Place des Vosges »)
-                            p.kind && !p.title.toLowerCase().includes(p.kind.toLowerCase()) ? p.kind : null,
-                            p.place,
-                            p.surface,
-                            p.year,
-                          ]
-                            .filter(Boolean)
-                            .join(' · ')}
-                        </p>
-                        <p className="mt-1 font-serif text-2xl text-stone-900">{p.title}</p>
-                      </div>
+                    <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                      <p className="font-serif text-2xl text-stone-900">{p.title}</p>
                       {(p.url || featured.website) && (
                         <a
                           href={p.url || featured.website || undefined}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-3 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                          className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
                         >
                           Voir le projet
                           <ArrowUpRight className="w-3.5 h-3.5" />
