@@ -240,8 +240,8 @@ export default function ContactForm({
                 type="button"
                 aria-pressed={on}
                 onClick={() => setOn(!on)}
-                className={`h-11 inline-flex items-center justify-center gap-2 border bg-white text-sm transition hover:border-stone-900 ${
-                  on ? 'border-stone-900 text-stone-900' : 'border-stone-300 text-stone-700'
+                className={`h-11 inline-flex items-center justify-start gap-2 text-sm transition hover:text-stone-900 ${
+                  on ? 'text-stone-900' : 'text-stone-700'
                 }`}
               >
                 <span className={`h-4 w-4 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-400'}`}>
