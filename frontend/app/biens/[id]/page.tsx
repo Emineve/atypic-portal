@@ -176,7 +176,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             {item.atypic_tags?.length > 0 && (
               <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
                 {item.atypic_tags.map((tag: string, idx: number) => (
-                  <li key={idx} className="bg-stone-900 text-white text-[11px] font-medium uppercase tracking-wider px-3 py-1.5">{tag}</li>
+                  <li key={idx} className="rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] px-3.5 py-1.5">{tag}</li>
                 ))}
               </ul>
             )}
