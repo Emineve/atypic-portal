@@ -157,7 +157,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     setOnlyFavs(false);
   }
 
-  // Bouton flottant d'avant-première : n'apparaît qu'après un peu de défilement
+  // Bouton flottant d'alerte : n'apparaît qu'après un peu de défilement
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 500);
@@ -319,11 +319,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <button
               type="button"
               onClick={() => openAlert('header')}
-              aria-label="Recevoir en avant-première"
+              aria-label="Créer une alerte"
               className="inline-flex items-center gap-1.5 text-stone-900 hover:text-stone-600 transition"
             >
               <Bell className="w-5 h-5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline"><em className="italic">Avant-première</em></span>
+              <span className="hidden sm:inline">Créer une alerte</span>
             </button>
             <button
               onClick={() => setOnlyFavs((v) => !v)}
@@ -629,7 +629,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 onClick={() => openAlert('empty')}
                 className="mt-6 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
               >
-                Recevoir en <em className="italic">avant-première</em>
+                Créer mon alerte
               </button>
             </div>
           )
@@ -699,7 +699,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                       Ne passez pas à côté de votre prochain coup de cœur !
                     </span>
                     <span className="flex-none text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover/alert:text-stone-600">
-                      <em className="italic">Avant-première</em> →
+                      Créer mon alerte →
                     </span>
                   </button>
                 )}
@@ -732,7 +732,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-800 transition"
           >
             <Bell className="w-4 h-4" />
-            <span>Recevoir en <em className="italic">avant-première</em></span>
+            <span>Créer mon alerte</span>
           </button>
         </div>
       )}
