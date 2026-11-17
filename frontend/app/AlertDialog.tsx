@@ -30,7 +30,8 @@ function arrondissement(n: number): string {
 function normalizeLocation(raw: string): string {
   const s = raw.trim().replace(/\s+/g, ' ');
   if (!s) return '';
-  const paris = s.match(/^paris\s*0?(\d{1,2})\s*(?:e|er|ème|eme|è)?$/i);
+  // « Paris 16e Arrondissement » (API adresse) et « Paris 16e » sont le même lieu
+  const paris = s.match(/^paris\s*0?(\d{1,2})\s*(?:e|er|ème|eme|è)?(?:\s+arrondissement)?$/i);
   const bare = s.match(/^0?(\d{1,2})\s*(?:e|er|ème|eme)$/i);
   const m = paris || bare;
   if (m) {
@@ -83,12 +84,17 @@ export default function AlertDialog({
   source,
   suggestions,
   initial,
+  countMatches,
+  onShowMatches,
 }: {
   open: boolean;
   onClose: () => void;
   source: string;
   suggestions: string[];
   initial?: AlertInitial;
+  // Accueil uniquement : biens déjà en ligne qui répondent à l'alerte, et affichage de ces biens
+  countMatches?: (filters: Filters, locations: string[]) => number;
+  onShowMatches?: (filters: Filters, locations: string[]) => void;
 }) {
   const [locations, setLocations] = useState<string[]>([]);
   const [locInput, setLocInput] = useState('');
@@ -158,7 +164,8 @@ export default function AlertDialog({
             const p = f.properties || {};
             const city = String(p.city || p.name || '');
             const pc = String(p.postcode || '');
-            return city ? { label: `${pc ? pc + ' ' : ''}${city}`, value: city } : null;
+            const value = normalizeLocation(city);
+            return value ? { label: `${pc ? pc + ' ' : ''}${value}`, value } : null;
           })
           .filter(Boolean) as Place[];
         if (!cancelled) setRemote(found);
@@ -253,7 +260,11 @@ export default function AlertDialog({
       return;
     }
     // Un lieu saisi mais pas encore validé est pris en compte
-    const finalLocations = locInput.trim() ? [...locations, normalizeLocation(locInput)] : locations;
+    const pending = normalizeLocation(locInput);
+    const finalLocations =
+      pending && !locations.some((l) => plain(l) === plain(pending)) ? [...locations, pending] : locations;
+    setLocations(finalLocations);
+    setLocInput('');
     setStatus('sending');
     try {
       const { data, error } = await getSupabase().rpc('submit_alert', {
@@ -303,7 +314,7 @@ export default function AlertDialog({
   if (sMin !== null && sMax !== null) recap.push(`${sMin} à ${sMax} m²`);
   else if (sMin !== null) recap.push(`à partir de ${sMin} m²`);
   else if (sMax !== null) recap.push(`jusqu'à ${sMax} m²`);
-  if (filters.bedrooms) recap.push(filters.bedrooms >= 5 ? '5+ chambres' : `${filters.bedrooms}+ chambres`);
+  if (filters.bedrooms) recap.push(`${filters.bedrooms} ${filters.bedrooms > 1 ? 'chambres' : 'chambre'} et +`);
   const pMin = toNum(filters.priceMin);
   const pMax = toNum(filters.priceMax);
   if (pMin !== null && pMax !== null) recap.push(`${formatEuro(pMin)} à ${formatEuro(pMax)}`);
@@ -311,6 +322,9 @@ export default function AlertDialog({
   else if (pMax !== null) recap.push(`jusqu'à ${formatEuro(pMax)}`);
   filters.must.forEach((k) => recap.push(featureLabel(k).toLowerCase()));
   filters.nice.forEach((k) => recap.push(`+ ${featureLabel(k).toLowerCase()}`));
+
+  // Une fois l'alerte créée : combien de biens déjà en ligne y répondent ?
+  const matches = status === 'done' && countMatches && onShowMatches ? countMatches(filters, locations) : 0;
 
   const recapLine = recap.length ? recap.join(' · ') : 'Tous les nouveaux biens, partout en France';
 
@@ -354,10 +368,17 @@ export default function AlertDialog({
             )}
             <button
               type="button"
-              onClick={onClose}
+              onClick={() => {
+                if (matches > 0 && onShowMatches) onShowMatches(filters, locations);
+                onClose();
+              }}
               className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition"
             >
-              Voir les lieux
+              {matches > 1
+                ? `Voir les ${matches} lieux correspondants`
+                : matches === 1
+                ? 'Voir le lieu correspondant'
+                : "Poursuivre l'exploration"}
             </button>
           </div>
         ) : (

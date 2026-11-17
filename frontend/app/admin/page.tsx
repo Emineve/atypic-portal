@@ -64,7 +64,7 @@ function criteria(a: AlertRow): string {
   if (a.surface_min !== null && a.surface_max !== null) parts.push(`${a.surface_min} à ${a.surface_max} m²`);
   else if (a.surface_min !== null) parts.push(`dès ${a.surface_min} m²`);
   else if (a.surface_max !== null) parts.push(`jusqu'à ${a.surface_max} m²`);
-  if (a.bedrooms_min) parts.push(`${a.bedrooms_min}+ chambres`);
+  if (a.bedrooms_min) parts.push(`${a.bedrooms_min} ${a.bedrooms_min > 1 ? 'chambres' : 'chambre'} et +`);
   if (a.price_max !== null) parts.push(`max ${euro(a.price_max)}`);
   if (a.must_top_floor) parts.push('dernier étage');
   if (a.must_view) parts.push('vue dégagée');
