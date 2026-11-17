@@ -40,6 +40,10 @@ export default function FilterPanel({
     onChange({ ...value, must, nice });
   }
 
+  // Budget : affiche 3 000 000 pendant la saisie, mais ne garde que les chiffres dans le filtre
+  const groupThousands = (v: string) => v.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const digitsOnly = (v: string) => v.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
+
   const input =
     'w-full h-12 border border-stone-300 bg-white px-3 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
@@ -109,14 +113,13 @@ export default function FilterPanel({
         <div className="grid grid-cols-2 gap-3">
           <div className="relative">
             <input
-              type="number"
+              type="text"
               inputMode="numeric"
-              min="0"
-              step="50000"
+              autoComplete="off"
               placeholder="Minimum"
               aria-label="Budget minimum en euros"
-              value={value.priceMin}
-              onChange={(e) => set({ priceMin: e.target.value })}
+              value={groupThousands(value.priceMin)}
+              onChange={(e) => set({ priceMin: digitsOnly(e.target.value) })}
               className={`${input} pr-10`}
             />
             <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">€</span>
@@ -124,14 +127,13 @@ export default function FilterPanel({
           <div className="relative">
             <input
               id="alert-budget"
-              type="number"
+              type="text"
               inputMode="numeric"
-              min="0"
-              step="50000"
+              autoComplete="off"
               placeholder="Maximum"
               aria-label="Budget maximum en euros"
-              value={value.priceMax}
-              onChange={(e) => set({ priceMax: e.target.value })}
+              value={groupThousands(value.priceMax)}
+              onChange={(e) => set({ priceMax: digitsOnly(e.target.value) })}
               className={`${input} pr-10`}
             />
             <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">€</span>
