@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 async function getCityListings(slug: string) {
   const { data } = await getSupabase()
     .from('listings')
-    .select('id,title,short_description,price,surface_sqm,city,source_agency,atypic_category,cover_image_url,curation_score,first_seen_at')
+    .select('id,title,short_description,price,surface_sqm,city,source_agency,atypic_category,atypic_tags,cover_image_url,curation_score,first_seen_at')
     .eq('is_active', true)
     .order('curation_score', { ascending: false, nullsFirst: false })
     .order('first_seen_at', { ascending: false });

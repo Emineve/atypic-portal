@@ -455,7 +455,16 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                       <h2 className="mt-1.5 font-serif text-xl leading-snug text-stone-900 line-clamp-2 group-hover:underline underline-offset-4 decoration-stone-300">
                         {item.title}
                       </h2>
-                      <p className="mt-2 font-serif text-lg text-stone-900">{price}</p>
+                      {item.atypic_tags && item.atypic_tags.length > 0 && (
+                        <ul className="mt-2.5 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
+                          {item.atypic_tags.slice(0, 3).map((tag) => (
+                            <li key={tag} className="border border-stone-200 bg-white px-2 py-0.5 text-[11px] text-stone-600">
+                              {tag}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <p className="mt-2.5 font-serif text-lg text-stone-900">{price}</p>
                       <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}</p>
                     </div>
                   </a>

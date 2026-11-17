@@ -14,6 +14,7 @@ export interface CollectionItem {
   city: string;
   source_agency: string;
   atypic_category: string;
+  atypic_tags?: string[] | null;
   cover_image_url: string;
 }
 
@@ -84,6 +85,15 @@ export default function CollectionPage({
                     <h2 className="font-serif text-lg leading-snug text-stone-900">{item.title}</h2>
                     {item.short_description && (
                       <p className="mt-1 text-xs text-stone-500 line-clamp-2 leading-relaxed">{item.short_description}</p>
+                    )}
+                    {item.atypic_tags && item.atypic_tags.length > 0 && (
+                      <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
+                        {item.atypic_tags.slice(0, 3).map((tag) => (
+                          <li key={tag} className="border border-stone-200 px-2 py-0.5 text-[11px] text-stone-600">
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
                     )}
                   </div>
                   <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
