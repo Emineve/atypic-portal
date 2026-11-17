@@ -40,7 +40,6 @@ export default async function AgencyPage({ params }: { params: { slug: string } 
       intro={`Les lieux singuliers proposés par ${agency}.`}
       items={items}
       hideAgency
-      agencies={agencies}
     />
   );
 }

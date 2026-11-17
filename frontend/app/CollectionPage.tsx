@@ -26,9 +26,7 @@ export default function CollectionPage({
   items,
   alert,
   hideAgency = false,
-  agencies,
 }: {
-  agencies?: string[]; // page agence : toutes les agences du site, pour élargir l'envoi d'une recherche
   hideAgency?: boolean;
   title: string;
   intro: string;
@@ -66,7 +64,7 @@ export default function CollectionPage({
         <p className="mt-6 font-serif text-lg text-stone-700">
                     {items.length} {items.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
         </p>
-        {hideAgency && <AgencySearch agencies={agencies && agencies.length > 0 ? agencies : [title]} preselected={[title]} />}
+        {hideAgency && <AgencySearch agency={title} />}
       </header>
 
       <main className="max-w-7xl mx-auto px-6 pb-24">
