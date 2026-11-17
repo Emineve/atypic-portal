@@ -101,6 +101,7 @@ export default function AlertDialog({
   const [website, setWebsite] = useState(''); // champ piège anti-spam
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
+  const [progress, setProgress] = useState(0); // avancement dans le formulaire, de 0 à 1
 
   // À chaque ouverture : on repart des critères de la recherche en cours
   useEffect(() => {
@@ -361,7 +362,14 @@ export default function AlertDialog({
           </div>
         ) : (
           <form onSubmit={onSubmit} className="flex flex-col min-h-0 flex-1">
-                        <div className="flex-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                        <div
+              className="flex-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              onScroll={(e) => {
+                const el = e.currentTarget;
+                const max = el.scrollHeight - el.clientHeight;
+                setProgress(max > 0 ? Math.min(1, el.scrollTop / max) : 1);
+              }}
+            >
               <div className="bg-stone-900 text-white px-6 md:px-12 pt-8 pb-7 md:pt-10 md:pb-9">
                 <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-stone-300">
                   <Bell className="w-4 h-4" /> Mon alerte
@@ -519,7 +527,11 @@ export default function AlertDialog({
               </div>
             </div>
 
-            <div className="shrink-0 border-t border-stone-200 bg-white px-6 md:px-12 py-4">
+            {/* Barre de progression : avance à mesure que l'on parcourt le formulaire */}
+            <div className="shrink-0 h-1 bg-stone-200" role="progressbar" aria-label="Avancement du formulaire" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}>
+              <div className="h-full bg-stone-900 transition-[width] duration-200 ease-out" style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} />
+            </div>
+            <div className="shrink-0 bg-white px-6 md:px-12 py-4">
               <p className="hidden md:block text-[11px] uppercase tracking-widest text-stone-400">Votre alerte</p>
               <p className="md:mt-0.5 text-sm text-stone-800 truncate md:whitespace-normal md:line-clamp-2" title={recapLine}>{recapLine}</p>
               <button
