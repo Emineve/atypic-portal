@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Bell, X, Check, MapPin } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
 import FilterPanel from './FilterPanel';
-import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
+import { Filters, EMPTY_FILTERS, featureLabel, matchType, Matchable } from './filters';
 
 // L'envoi des e-mails d'alerte est en place (domaine validé, service d'envoi branché)
 const ALERT_EMAILS_LIVE = true;
@@ -52,6 +52,55 @@ function toNum(v: string): number | null {
 
 function formatEuro(n: number) {
   return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
+}
+
+// Agence qui a des biens proches de la recherche, dans la zone demandée
+interface AgencyHit {
+  agency: string;
+  count: number;
+}
+
+interface AgencyListing extends Matchable {
+  source_agency: string | null;
+  city: string | null;
+  postal_code: string | null;
+}
+
+// Le bien est-il dans l'un des lieux de l'alerte ? (mêmes règles que l'envoi des alertes)
+function inZone(l: AgencyListing, locs: string[]): boolean {
+  const city = (l.city || '').toLowerCase();
+  const hub = city.replace(/\s+\d+\s*(er|e|ème)$/, '');
+  return locs.some((raw) => {
+    const loc = raw.toLowerCase();
+    return loc === city || loc === hub || (/^\d{2,5}$/.test(loc) && (l.postal_code || '').startsWith(loc));
+  });
+}
+
+// Agences ayant des biens similaires dans la zone : même type si précisé,
+// budget et surface proches (marge de 25 % sur le budget, 20 % sur la surface).
+async function findSimilarAgencies(locs: string[], f: Filters): Promise<AgencyHit[]> {
+  if (!locs.length) return [];
+  const { data } = await getSupabase()
+    .from('listings')
+    .select('source_agency, city, postal_code, price, surface_sqm, bedrooms, title, short_description, atypic_category, atypic_tags, property_type, features')
+    .eq('is_active', true);
+  const pMin = toNum(f.priceMin);
+  const pMax = toNum(f.priceMax);
+  const sMin = toNum(f.surfaceMin);
+  const counts = new Map<string, number>();
+  ((data as AgencyListing[]) || []).forEach((l) => {
+    if (!l.source_agency || !inZone(l, locs)) return;
+    if (f.types.length && !f.types.some((t) => matchType(l, t))) return;
+    const price = Number(l.price);
+    if (pMax !== null && price > pMax * 1.25) return;
+    if (pMin !== null && price < pMin * 0.75) return;
+    if (sMin !== null && l.surface_sqm !== null && Number(l.surface_sqm) < sMin * 0.8) return;
+    counts.set(l.source_agency, (counts.get(l.source_agency) || 0) + 1);
+  });
+  return Array.from(counts.entries())
+    .map(([agency, count]) => ({ agency, count }))
+    .sort((a, b) => b.count - a.count || a.agency.localeCompare(b.agency))
+    .slice(0, 5);
 }
 
 function Step({
@@ -102,6 +151,11 @@ export default function AlertDialog({
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
   const [progress, setProgress] = useState(0); // avancement dans le formulaire, de 0 à 1
+  // Après la création : agences à qui l'acheteur peut transmettre sa recherche
+  const [agencies, setAgencies] = useState<AgencyHit[]>([]);
+  const [picked, setPicked] = useState<string[]>([]);
+  const [zone, setZone] = useState('');
+  const [share, setShare] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
 
   // À chaque ouverture : on repart des critères de la recherche en cours
   useEffect(() => {
@@ -121,6 +175,10 @@ export default function AlertDialog({
     );
     setStatus('idle');
     setGeo('idle');
+    setAgencies([]);
+    setPicked([]);
+    setZone('');
+    setShare('idle');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
@@ -287,8 +345,31 @@ export default function AlertDialog({
         }
       }
       setStatus(ok ? 'done' : 'error');
+      // Alerte créée : on cherche les agences qui ont des biens similaires dans la zone
+      if (ok && finalLocations.length) {
+        setZone(finalLocations.join(', '));
+        findSimilarAgencies(finalLocations, filters)
+          .then(setAgencies)
+          .catch(() => setAgencies([]));
+      }
     } catch {
       setStatus('error');
+    }
+  }
+
+  // L'acheteur transmet sa recherche aux agences qu'il a cochées
+  async function onShare() {
+    if (!picked.length) return;
+    setShare('sending');
+    try {
+      const { data, error } = await getSupabase().rpc('share_alert_with_agencies', {
+        p_email: email,
+        p_agencies: picked,
+        p_consent: true,
+      });
+      setShare(!error && Number(data) > 0 ? 'done' : 'error');
+    } catch {
+      setShare('error');
     }
   }
 
@@ -352,12 +433,65 @@ export default function AlertDialog({
             {!ALERT_EMAILS_LIVE && (
               <p className="mt-7 text-xs text-stone-400">Version de démonstration : aucun email n'est encore envoyé.</p>
             )}
+
+            {agencies.length > 0 && share !== 'done' && (
+              <div className="mt-10 border border-stone-200 bg-white p-5 md:p-7 text-left">
+                <h3 className="font-serif text-xl text-stone-900 leading-snug">Envoyer aussi votre recherche aux agences ?</h3>
+                <p className="mt-2 text-sm text-stone-600 leading-relaxed">
+                  {agencies.length > 1 ? 'Ces agences ont' : 'Cette agence a'} des biens proches de votre recherche à {zone}. Elles pourront vous proposer leurs biens, y compris ceux qui ne sont pas encore en ligne.
+                </p>
+                <ul className="mt-4 divide-y divide-stone-100 border-y border-stone-100">
+                  {agencies.map((a) => (
+                    <li key={a.agency}>
+                      <label className="flex items-center gap-3 py-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 shrink-0 accent-stone-900"
+                          checked={picked.includes(a.agency)}
+                          onChange={(e) =>
+                            setPicked(e.target.checked ? [...picked, a.agency] : picked.filter((x) => x !== a.agency))
+                          }
+                        />
+                        <span className="min-w-0 flex-1 text-sm text-stone-900">{a.agency}</span>
+                        <span className="shrink-0 text-xs text-stone-500">
+                          {a.count} bien{a.count > 1 ? 's' : ''} similaire{a.count > 1 ? 's' : ''}
+                        </span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={onShare}
+                  disabled={!picked.length || share === 'sending'}
+                  className="mt-5 w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-40"
+                >
+                  {share === 'sending' ? 'Envoi…' : 'Envoyer ma recherche'}
+                </button>
+                <p className="mt-3 text-[11px] text-stone-500 leading-relaxed">
+                  En envoyant, vous acceptez que Loftissime transmette votre recherche et votre adresse mail aux agences cochées, et à elles seules. Rien n'est transmis sans votre accord.
+                </p>
+                {share === 'error' && (
+                  <p className="mt-3 text-xs text-red-700">L'envoi a échoué. Réessayez dans un instant.</p>
+                )}
+              </div>
+            )}
+            {share === 'done' && (
+              <p className="mt-10 border border-stone-200 bg-white p-5 text-sm text-stone-800 leading-relaxed">
+                C'est transmis à {picked.length > 1 ? `${picked.length} agences` : picked[0]}. {picked.length > 1 ? 'Elles reviendront' : 'Elle reviendra'} vers vous par e-mail.
+              </p>
+            )}
+
             <button
               type="button"
               onClick={onClose}
-              className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition"
+              className={
+                agencies.length > 0 && share !== 'done'
+                  ? 'mt-7 text-sm text-stone-600 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 hover:text-stone-900 transition'
+                  : 'mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition'
+              }
             >
-              Voir les lieux
+              {agencies.length > 0 && share !== 'done' ? 'Non merci, voir les lieux' : 'Voir les lieux'}
             </button>
           </div>
         ) : (

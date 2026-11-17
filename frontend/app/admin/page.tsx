@@ -31,6 +31,7 @@ interface AlertRow {
   bedrooms_min: number | null; rooms_min: number | null;
   must_top_floor: boolean; must_view: boolean; must_outdoor: boolean; matches: number;
   categories: string[] | null; must_features: string[] | null; nice_features: string[] | null;
+  shared_agencies?: string[] | null; // agences à qui l'acheteur a accepté de transmettre sa recherche
 }
 
 interface ArchiReq {
@@ -82,11 +83,11 @@ function csvCell(v: unknown): string {
 }
 
 function exportAlertsCsv(rows: AlertRow[]) {
-  const head = ['date', 'email', 'whatsapp', 'type', 'actif', 'lieux', 'categorie', 'surface_min', 'surface_max', 'chambres_min', 'budget_max', 'dernier_etage', 'vue_degagee', 'exterieur', 'indispensables', 'petits_plus', 'biens_correspondants', 'origine'];
+  const head = ['date', 'email', 'whatsapp', 'type', 'actif', 'lieux', 'categorie', 'surface_min', 'surface_max', 'chambres_min', 'budget_max', 'dernier_etage', 'vue_degagee', 'exterieur', 'indispensables', 'petits_plus', 'biens_correspondants', 'origine', 'agences_choisies'];
   const lines = rows.map((a) => [
     a.created_at, a.email, a.whatsapp_phone || '', a.kind === 'alert' ? 'alerte' : 'lettre', a.is_active ? 'oui' : 'non',
     (a.locations || []).join(' | '), [a.category, ...(a.categories || [])].filter(Boolean).join(' | '), a.surface_min, a.surface_max, a.bedrooms_min, a.price_max,
-    a.must_top_floor ? 'oui' : '', a.must_view ? 'oui' : '', a.must_outdoor ? 'oui' : '', (a.must_features || []).join(' | '), (a.nice_features || []).join(' | '), a.matches, a.source,
+    a.must_top_floor ? 'oui' : '', a.must_view ? 'oui' : '', a.must_outdoor ? 'oui' : '', (a.must_features || []).join(' | '), (a.nice_features || []).join(' | '), a.matches, a.source, (a.shared_agencies || []).join(' | '),
   ].map(csvCell).join(','));
   const blob = new Blob(['\uFEFF' + [head.map(csvCell).join(','), ...lines].join('\n')], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
@@ -330,6 +331,7 @@ export default function AdminPage() {
                           <td className="p-3">
                             {a.email}
                             {a.whatsapp_phone ? <span className="block text-xs text-stone-500">WhatsApp : {a.whatsapp_phone}</span> : null}
+                            {a.shared_agencies && a.shared_agencies.length ? <span className="block text-xs text-stone-500">À transmettre à : {a.shared_agencies.join(', ')}</span> : null}
                             {a.kind !== 'alert' ? <span className="ml-2 text-[10px] uppercase text-stone-400">lettre</span> : null}
                             {!a.is_active ? <span className="ml-2 text-[10px] uppercase text-red-700">désinscrit</span> : null}
                           </td>
