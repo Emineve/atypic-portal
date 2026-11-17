@@ -90,7 +90,7 @@ export default function CollectionPage({
                     {item.atypic_tags && item.atypic_tags.length > 0 && (
                       <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
                         {item.atypic_tags.slice(0, 3).map((tag) => (
-                          <li key={tag} className="border border-stone-200 px-2 py-0.5 text-[11px] text-stone-600">
+                          <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-[11px] text-stone-800">
                             {tag}
                           </li>
                         ))}
