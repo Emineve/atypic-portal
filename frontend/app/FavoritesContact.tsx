@@ -114,7 +114,7 @@ export default function FavoritesContact({
             </span>
             <p className="mt-4 font-serif text-2xl text-stone-900">C&apos;est envoyé.</p>
             <p className="mt-2 text-sm text-stone-600">
-              Votre demande a été transmise pour {sent} {sent > 1 ? 'biens' : 'bien'}. Le contact de chaque bien revient vers vous directement.
+              Vos coordonnées ont été transmises. Le contact de chaque bien revient vers vous directement.
             </p>
             <button type="button" onClick={onClose} className="mt-6 h-12 px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition">
               Fermer
