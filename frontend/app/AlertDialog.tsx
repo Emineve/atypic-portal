@@ -312,7 +312,7 @@ export default function AlertDialog({
   filters.must.forEach((k) => recap.push(featureLabel(k).toLowerCase()));
   filters.nice.forEach((k) => recap.push(`+ ${featureLabel(k).toLowerCase()}`));
 
-  const recapLine = recap.length ? recap.join(' · ') : 'Tous les nouveaux biens, partout en France';
+  const recapLine = recap.length ? recap.join(' · ') : 'Tous les nouveaux biens atypiques, partout en France';
 
   return (
     <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6" role="dialog" aria-modal="true" aria-label="Créer une alerte">
