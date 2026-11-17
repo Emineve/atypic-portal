@@ -64,8 +64,12 @@ const groups: Group[] = [
         a: 'Oui. La consultation des annonces est gratuite et sans inscription.',
       },
       {
+        q: 'Les prix affichés comprennent-ils les honoraires d’agence ?',
+        a: 'Oui. Tous les prix sont affichés honoraires d’agence inclus (HAI) : c’est le prix total du bien, sans supplément. Selon l’agence et le mandat, ces honoraires sont à la charge du vendeur ou de l’acquéreur ; l’annonce de l’agence le précise, avec leur montant lorsqu’ils sont à la charge de l’acquéreur.',
+      },
+      {
         q: 'Comment contacter la personne en charge d’un bien ?',
-        a: 'Chaque annonce affiche l’agence, le nom de votre contact et son téléphone. Vous pouvez l’appeler directement ou demander à être rappelé au moment qui vous convient.',
+        a: 'Chaque annonce affiche l’agence, le nom de votre contact et son téléphone. Vous pouvez l’appeler directement ou demander à être rappelé.',
       },
       {
         q: 'Loftissime contacte-t-il les vendeurs ou les acheteurs ?',
