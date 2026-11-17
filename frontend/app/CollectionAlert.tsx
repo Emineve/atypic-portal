@@ -39,7 +39,7 @@ export default function CollectionAlert({
             >
               Enregistrer cette recherche
             </button>{' '}
-            pour recevoir les nouveaux biens en <em className="italic">avant-première</em>.
+            pour être prévenu(e) dès qu’un nouveau bien répond à vos attentes.
           </p>
         </div>
         {dialog}
