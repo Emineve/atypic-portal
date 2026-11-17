@@ -174,7 +174,7 @@ export default async function InspirationPage() {
           href="/"
           className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
         >
-          Découvrez les biens à vendre
+          Découvrez les biens à visiter
         </Link>
       </section>
     </div>

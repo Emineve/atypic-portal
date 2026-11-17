@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { SITE_URL } from '../lib/site';
 import Tracker from './Tracker';
 import CollectionAlert from './CollectionAlert';
+import AgencySearch from './AgencySearch';
 
 export interface CollectionItem {
   id: string;
@@ -63,6 +64,7 @@ export default function CollectionPage({
         <p className="mt-6 font-serif text-lg text-stone-700">
                     {items.length} {items.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
         </p>
+        {hideAgency && <AgencySearch agency={title} />}
       </header>
 
       <main className="max-w-7xl mx-auto px-6 pb-24">

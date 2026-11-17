@@ -118,7 +118,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
             href={p.sale ? `/categorie/${slugify(p.sale)}` : '/'}
             className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
           >
-            {p.sale ? `Découvrez les biens « ${p.sale} » à vendre` : 'Découvrez les biens à vendre'}
+            {p.sale ? `Découvrez les biens « ${p.sale} » à visiter` : 'Découvrez les biens à visiter'}
           </Link>
           <p className="mt-10 text-xs text-stone-400">
             Sélection éditoriale, non sponsorisée. Photographies : © {a.name} et ses photographes.
