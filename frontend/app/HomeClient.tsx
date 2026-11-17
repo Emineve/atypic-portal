@@ -551,7 +551,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       )}
 
       <main className="max-w-7xl mx-auto px-6 pb-24">
-        {!loading && !errorMessage && (
+        {!loading && !errorMessage && !onlyFavs && (
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mb-6">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
               <p className="font-serif text-lg text-stone-700">
