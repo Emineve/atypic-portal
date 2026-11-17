@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send } from 'lucide-react';
+import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
@@ -238,8 +238,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     const q = normalize(query.trim());
 
     const filtered = listings.filter((item) => {
+      // Page favoris : tous les favoris, quelle que soit la recherche en cours
+      if (onlyFavs) return favorites.includes(item.id);
       if (!passesFilters(item, filters)) return false;
-      if (onlyFavs && !favorites.includes(item.id)) return false;
       if (places.length > 0 && !places.some((p) => matchesPlace(item, p))) return false;
       if (q) {
         const haystack = normalize(
@@ -331,6 +332,20 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         </div>
       </nav>
 
+      {onlyFavs ? (
+        <header className="max-w-7xl mx-auto px-6 pt-8 md:pt-12 pb-6">
+          <button
+            type="button"
+            onClick={() => setOnlyFavs(false)}
+            className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-stone-500 hover:text-stone-900 transition"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Tous les biens
+          </button>
+          <h1 className="mt-4 font-serif text-3xl md:text-4xl text-stone-900">Mes favoris</h1>
+        </header>
+      ) : (
+      <>
       <header className="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-8 md:pb-12 text-center">
                 <HeroTitle />
       </header>
@@ -485,6 +500,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </button>
         </div>
       </section>
+      </>
+      )}
 
       {showFilters && (
         <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Filtres">
@@ -556,7 +573,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <p className="font-serif text-lg text-stone-700">
                 {visible.length} {visible.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
               </p>
-              {searchActive && visible.length > 0 && (
+              {searchActive && !onlyFavs && visible.length > 0 && (
                 <button
                   type="button"
                   onClick={() => openAlert('recherche')}
