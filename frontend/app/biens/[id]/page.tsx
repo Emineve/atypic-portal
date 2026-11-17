@@ -244,30 +244,22 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <div id="contact" className="scroll-mt-20">
                               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} />
           </div>
-                    <div className="border border-stone-200 bg-white p-6">
-            <p className="text-[10px] uppercase tracking-widest text-stone-400">Proposé par</p>
-            <p className="mt-1 font-serif text-2xl text-stone-900">{item.source_agency}</p>
-            <p className="mt-1 text-xs text-stone-500">
-              {agencyCount} {agencyCount > 1 ? 'biens présentés' : 'bien présenté'} sur Loftissime
-            </p>
-            <Link
-              href={`/agence/${slugify(item.source_agency)}`}
-              className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
-            >
-              Voir tous les biens de l'agence
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
           <Tracker listingId={item.id} />
-          <a
-            href={`/go/${item.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-1.5 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider px-4 py-3 hover:bg-stone-900 hover:text-white transition"
-          >
-            Voir l'annonce d'origine
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          <div className="px-1 pt-2 text-sm text-stone-600 leading-relaxed">
+            <p>
+              Proposé par <span className="text-stone-900">{item.source_agency}</span>
+              <span className="text-stone-400"> · {agencyCount} {agencyCount > 1 ? 'biens' : 'bien'} sur Loftissime</span>
+            </p>
+            <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+              <Link href={`/agence/${slugify(item.source_agency)}`} className="text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
+                Tous les biens de l&apos;agence
+              </Link>
+              <a href={`/go/${item.id}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
+                Annonce d&apos;origine
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </p>
+          </div>
           <ReportButton listingId={item.id} />
         </aside>
       </main>
