@@ -245,6 +245,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </div>
 
         <aside className="space-y-4 min-w-0">
+                    <div id="contact" className="scroll-mt-20">
+                              <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} />
+          </div>
                     <div className="border border-stone-200 bg-white p-6">
             <p className="text-[10px] uppercase tracking-widest text-stone-400">Proposé par</p>
             <p className="mt-1 font-serif text-2xl text-stone-900">{item.source_agency}</p>
@@ -258,9 +261,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
               Voir tous les biens de l'agence
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
-          </div>
-                    <div id="contact" className="scroll-mt-20">
-                              <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} />
           </div>
           <Tracker listingId={item.id} />
           <a
