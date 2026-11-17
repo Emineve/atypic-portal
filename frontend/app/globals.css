@@ -16,3 +16,13 @@ body {
 .text-\[\#191919\] {
   color: #0D0F11;
 }
+
+/* Sur téléphone, l'iPhone zoome toute la page dès qu'on touche un champ dont le texte
+   fait moins de 16 px, et ne revient pas en arrière. On fixe donc 16 px pour tous les champs. */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
