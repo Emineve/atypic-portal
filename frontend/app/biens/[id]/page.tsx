@@ -252,7 +252,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <div id="contact" className="scroll-mt-20">
                               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} />
           </div>
-          <MortgageEstimate price={Number(item.price)} />
           <Tracker listingId={item.id} />
           <a
             href={`/go/${item.id}`}
@@ -292,6 +291,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
           </p>
         </section>
       )}
+
+      <footer className="border-t border-stone-200 bg-white">
+        <div className="max-w-xl mx-auto px-6 pt-12 pb-28 lg:pb-12">
+          <MortgageEstimate price={Number(item.price)} />
+        </div>
+      </footer>
     </div>
   );
 }
