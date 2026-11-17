@@ -165,7 +165,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </>
             )}
           </nav>
-          <Gallery images={allImages} title={item.title} category={item.atypic_category} />
+          <Gallery images={allImages} title={item.title} category={item.atypic_category} favoriteId={item.id} />
 
           <div className="mt-8">
             <p className="text-xs uppercase tracking-wider text-stone-400">

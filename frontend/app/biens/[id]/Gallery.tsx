@@ -2,17 +2,20 @@
 
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import FavoriteButton from './FavoriteButton';
 
 export default function Gallery({
   images,
   title,
   category,
   thumbs = true,
+  favoriteId,
 }: {
   images: string[];
   title: string;
   category?: string;
   thumbs?: boolean; // bande de miniatures sous la photo (grand écran)
+  favoriteId?: string; // affiche le cœur « favori » sur la photo (fiche d'un bien)
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -64,6 +67,8 @@ export default function Gallery({
             {category}
           </div>
         )}
+
+        {favoriteId && <FavoriteButton listingId={favoriteId} />}
 
         {total > 1 && (
           <>
