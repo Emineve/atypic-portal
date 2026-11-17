@@ -11,6 +11,7 @@ import ReportButton from './ReportButton';
 import Gallery from './Gallery';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
+import PlanButton from './PlanButton';
 import Tracker from '../../Tracker';
 import { DpeScale } from '../../DpeBadge';
 
@@ -204,7 +205,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </dl>
             )}
 
-                        <p className="mt-6 text-stone-700 leading-relaxed whitespace-pre-line">{item.short_description}</p>
+            <div className="mt-6">
+              <PlanButton />
+            </div>
+
+            <p className="mt-6 text-stone-700 leading-relaxed whitespace-pre-line">{item.short_description}</p>
 
             {item.features?.length > 0 && (
               <div className="mt-6">

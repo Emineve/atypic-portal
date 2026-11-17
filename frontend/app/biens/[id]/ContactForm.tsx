@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Phone, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_BUTTON, WHATSAPP_ICON_PATH } from './whatsapp';
@@ -49,6 +49,16 @@ export default function ContactForm({
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [confirmOpen, setConfirmOpen] = useState(true); // fenêtre de confirmation après l'envoi
   const [alertStatus, setAlertStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+
+  // Bouton « Demander le plan » de la fiche : le message est remplacé par une demande de plan
+  useEffect(() => {
+    function onPlan() {
+      setMessage('Bonjour,\nPourriez-vous m’envoyer le plan de ce bien ?\nMerci d’avance.\nCordialement');
+      window.setTimeout(() => document.getElementById('c-name')?.focus({ preventScroll: true }), 600);
+    }
+    window.addEventListener('loftissime:demande-plan', onPlan);
+    return () => window.removeEventListener('loftissime:demande-plan', onPlan);
+  }, []);
 
   // Alerte proposée juste après la demande : même ville, budget jusqu'à 20 % au-dessus du bien consulté
   const alertBudget = price && price > 0 ? Math.ceil((price * 1.2) / 50000) * 50000 : null;
