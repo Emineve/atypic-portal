@@ -13,6 +13,7 @@ export interface CollectionItem {
   surface_sqm: number | null;
   city: string;
   source_agency: string;
+  source_id?: string | null;
   atypic_category: string;
   atypic_tags?: string[] | null;
   cover_image_url: string;
@@ -74,7 +75,7 @@ export default function CollectionPage({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.cover_image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                   <span className="absolute top-3 left-3 bg-stone-900/90 text-white text-[10px] uppercase tracking-widest px-2.5 py-1">{item.atypic_category}</span>
-                  <span className="absolute bottom-3 left-3 bg-white/95 text-stone-900 text-[10px] uppercase tracking-widest px-2 py-0.5 font-mono">Annonce {item.source_agency}</span>
+                  <span className="absolute bottom-3 left-3 bg-white/95 text-stone-900 text-[10px] uppercase tracking-widest px-2 py-0.5 font-mono">Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}</span>
                 </Link>
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>

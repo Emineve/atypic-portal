@@ -30,6 +30,7 @@ export interface Listing {
   district: string | null;
   postal_code: string | null;
   source_agency: string;
+  source_id?: string | null;
   source_url: string;
   atypic_category: string;
   atypic_tags: string[] | null;
@@ -465,7 +466,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                         </ul>
                       )}
                       <p className="mt-2.5 font-serif text-lg text-stone-900">{price}</p>
-                      <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}</p>
+                      <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}</p>
                     </div>
                   </a>
                   <button
