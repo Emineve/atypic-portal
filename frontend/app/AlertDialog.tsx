@@ -86,6 +86,7 @@ export default function AlertDialog({
   initial,
   countMatches,
   onShowMatches,
+  types,
 }: {
   open: boolean;
   onClose: () => void;
@@ -95,6 +96,7 @@ export default function AlertDialog({
   // Accueil uniquement : biens déjà en ligne qui répondent à l'alerte, et affichage de ces biens
   countMatches?: (filters: Filters, locations: string[]) => number;
   onShowMatches?: (filters: Filters, locations: string[]) => void;
+  types?: string[]; // types de bien proposés (accueil : ceux qui ont des biens en ligne)
 }) {
   const [locations, setLocations] = useState<string[]>([]);
   const [locInput, setLocInput] = useState('');
@@ -471,7 +473,7 @@ export default function AlertDialog({
 
               </div>
 
-              <FilterPanel value={filters} onChange={setFilters} mode="alert" padX="px-6 md:px-12" />
+              <FilterPanel value={filters} onChange={setFilters} mode="alert" padX="px-6 md:px-12" types={types} />
 
               <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
                 <div>

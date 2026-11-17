@@ -39,6 +39,11 @@ const TYPE_PATTERNS: [string, RegExp][] = [
 
 export const TYPES = TYPE_PATTERNS.map(([label]) => label);
 
+// Types à proposer : uniquement ceux qui ont au moins un bien en ligne (jamais de bouton qui mène à 0 bien).
+export function availableTypes(items: Matchable[]): string[] {
+  return TYPES.filter((t) => items.some((item) => matchType(item, t)));
+}
+
 export const BEDROOM_OPTIONS = [1, 2, 3, 4, 5];
 
 export interface FeatureGroup {
