@@ -1,7 +1,7 @@
 'use client';
 
 import Logo from './Logo';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Fragment } from 'react';
 import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import AlertBox from './AlertBox';
@@ -157,6 +157,15 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     setOnlyFavs(false);
   }
 
+  // Bouton flottant d'avant-première : n'apparaît qu'après un peu de défilement
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 500);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   function openAlert(source: string) {
     setAlertSource(source);
     setAlertOpen(true);
@@ -273,7 +282,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   }, [listings, filters, onlyFavs, favorites, query, places, sort]);
 
   const activeFilters = countActive(filters);
-  const selectedCategory = filters.types.length === 1 ? filters.types[0] : 'Tous les biens';
   // Une vraie recherche est en cours (filtres ou lieu saisi) : on propose de l'enregistrer en alerte
   const searchActive = activeFilters > 0 || query.trim() !== '' || places.length > 0;
   const anythingActive = activeFilters > 0 || query.trim() !== '' || places.length > 0 || onlyFavs || sort !== 'selection';
@@ -475,30 +483,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
         )}
 
-        <div className="max-w-3xl mx-auto mt-6 border border-stone-200 bg-white p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-          <div className="flex items-start gap-4 flex-1">
-            <span className="shrink-0 h-11 w-11 rounded-full bg-stone-900 text-white flex items-center justify-center">
-              <Bell className="w-5 h-5" />
-            </span>
-            <div>
-              <p className="font-serif text-lg text-stone-900 leading-snug">
-                {selectedCategory !== 'Tous les biens'
-                  ? `Recevez chaque nouveauté « ${selectedCategory} » dès sa mise en ligne.`
-                  : "Ne passez pas à côté de votre prochain coup de cœur !"}
-              </p>
-              <p className="mt-1 text-sm text-stone-500">
-                Dites-nous ce que vous cherchez. Dès qu'un nouveau bien répond à vos attentes, vous êtes parmi les premiers prévenus.
-              </p>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={() => openAlert('banner')}
-            className="shrink-0 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
-          >
-            Recevoir en <em className="italic">avant-première</em>
-          </button>
-        </div>
       </section>
       </>
       )}
@@ -624,29 +608,39 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <p className="mt-3 text-xs text-stone-400 font-mono break-words">{errorMessage}</p>
           </div>
         ) : visible.length === 0 ? (
-          <div className="text-center py-20 text-stone-400 font-serif">
-            {onlyFavs && favorites.length === 0
-              ? "Vous n'avez pas encore de favori. Touchez le cœur d'une annonce pour l'ajouter."
-              : 'Rien ne correspond encore à cette recherche.'}
-            {!(onlyFavs && favorites.length === 0) && (
-              <div className="mt-6">
-                <button
-                  type="button"
-                  onClick={() => openAlert('empty')}
-                  className="bg-stone-900 text-white font-sans text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
-                >
-                  Me prévenir quand un bien arrive
-                </button>
-              </div>
-            )}
-          </div>
+          onlyFavs && favorites.length === 0 ? (
+            <div className="text-center py-20 text-stone-400 font-serif">
+              Vous n'avez pas encore de favori. Touchez le cœur d'une annonce pour l'ajouter.
+            </div>
+          ) : (
+            <div className="max-w-xl mx-auto text-center py-16">
+              <p className="text-stone-400 font-serif">Rien ne correspond encore à cette recherche.</p>
+              <span className="mt-8 mx-auto h-11 w-11 rounded-full bg-stone-900 text-white flex items-center justify-center">
+                <Bell className="w-5 h-5" />
+              </span>
+              <p className="mt-4 font-serif text-xl text-stone-900 leading-snug">
+                Ne passez pas à côté de votre prochain coup de cœur !
+              </p>
+              <p className="mt-2 text-sm text-stone-500">
+                Dès qu'un nouveau bien répond à vos attentes, vous êtes parmi les premiers prévenus.
+              </p>
+              <button
+                type="button"
+                onClick={() => openAlert('empty')}
+                className="mt-6 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
+              >
+                Recevoir en <em className="italic">avant-première</em>
+              </button>
+            </div>
+          )
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-            {visible.map((item) => {
+            {visible.map((item, index) => {
               const fav = favorites.includes(item.id);
               const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
               return (
-                <article key={item.id} className="group relative">
+                <Fragment key={item.id}>
+                <article className="group relative">
                   <a href={`/biens/${item.id}`} className="block" aria-label={item.title}>
                     <div className="relative aspect-[5/4] w-full bg-stone-100 overflow-hidden">
                       <img
@@ -694,6 +688,22 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                     <Heart className={`w-5 h-5 ${fav ? 'fill-red-600 text-red-600' : 'text-stone-700'}`} />
                   </button>
                 </article>
+                {index === 5 && visible.length > 6 && !onlyFavs && (
+                  <button
+                    type="button"
+                    onClick={() => openAlert('liste')}
+                    className="col-span-full flex items-center gap-3 border-y border-stone-200 py-4 text-left group/alert"
+                  >
+                    <Bell className="w-4 h-4 flex-none text-stone-900" />
+                    <span className="flex-1 font-serif text-base leading-snug text-stone-900">
+                      Ne passez pas à côté de votre prochain coup de cœur !
+                    </span>
+                    <span className="flex-none text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover/alert:text-stone-600">
+                      <em className="italic">Avant-première</em> →
+                    </span>
+                  </button>
+                )}
+                </Fragment>
               );
             })}
           </div>
@@ -710,6 +720,22 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
         </div>
       </footer>
+
+      {scrolled && !onlyFavs && !showFilters && !alertOpen && !favContactOpen && !loading && !errorMessage && (
+        <div
+          className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
+          style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
+        >
+          <button
+            type="button"
+            onClick={() => openAlert('flottant')}
+            className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-800 transition"
+          >
+            <Bell className="w-4 h-4" />
+            <span>Recevoir en <em className="italic">avant-première</em></span>
+          </button>
+        </div>
+      )}
 
       <FavoritesContact open={favContactOpen} onClose={() => setFavContactOpen(false)} items={visible} />
 
