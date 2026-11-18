@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, Fragment } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check } from 'lucide-react';
+import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
@@ -106,6 +106,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   const [query, setQuery] = useState('');
   const [places, setPlaces] = useState<Place[]>([]);
   const [searchFocused, setSearchFocused] = useState(false);
+  const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error' | 'none'>('idle');
+  const [geoCity, setGeoCity] = useState('');
   const [sort, setSort] = useState('selection');
   const [showFilters, setShowFilters] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
@@ -257,6 +259,45 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     setQuery('');
     setSearchFocused(false);
     if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) document.activeElement.blur();
+  }
+
+  // « Autour de moi » : position du navigateur, convertie en ville par l'API adresse de l'État,
+  // puis sélection de la ville ou de l'arrondissement correspondant
+  function locateMe() {
+    if (typeof navigator === 'undefined' || !navigator.geolocation) {
+      setGeo('error');
+      return;
+    }
+    setGeo('loading');
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const res = await fetch(
+            `https://api-adresse.data.gouv.fr/reverse/?lon=${pos.coords.longitude}&lat=${pos.coords.latitude}`
+          );
+          const json = await res.json();
+          const props = json && json.features && json.features[0] ? json.features[0].properties : null;
+          if (!props || !props.city) throw new Error('introuvable');
+          const pc = String(props.postcode || '');
+          const city = String(props.city);
+          const cities = allPlaces.filter((p) => p.kind === 'city' && p.value !== 'Paris');
+          const found =
+            (pc ? cities.find((p) => p.search.split(' ').includes(pc)) : undefined) ||
+            cities.find((p) => normalize(p.value) === normalize(city));
+          if (!found) {
+            setGeoCity(/^75/.test(pc) ? `Paris ${Number(pc.slice(3))}e` : city);
+            setGeo('none');
+            return;
+          }
+          if (!places.includes(found)) addPlace(found);
+          setGeo('idle');
+        } catch {
+          setGeo('error');
+        }
+      },
+      (err) => setGeo(err && err.code === 1 ? 'denied' : 'error'),
+      { timeout: 10000, maximumAge: 600000 }
+    );
   }
 
   function removePlace(p: Place) {
@@ -495,6 +536,27 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <SlidersHorizontal className="w-4 h-4" />
             <span>Filtres{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
           </button>
+        </div>
+
+        <div className="max-w-3xl mx-auto mt-3 text-left" aria-live="polite">
+          <button
+            type="button"
+            onClick={locateMe}
+            disabled={geo === 'loading'}
+            className="inline-flex items-center gap-1.5 min-h-[32px] text-sm text-stone-700 underline underline-offset-4 decoration-stone-300 hover:text-stone-900 hover:decoration-stone-900 disabled:opacity-60"
+          >
+            <LocateFixed className="w-4 h-4 flex-none" />
+            {geo === 'loading' ? 'Localisation en cours…' : 'Autour de moi'}
+          </button>
+          {geo === 'denied' && (
+            <p className="mt-1 text-xs text-stone-500">La localisation est refusée sur cet appareil. Saisissez une ville ou un code postal.</p>
+          )}
+          {geo === 'error' && (
+            <p className="mt-1 text-xs text-stone-500">Impossible de vous localiser. Saisissez une ville ou un code postal.</p>
+          )}
+          {geo === 'none' && (
+            <p className="mt-1 text-xs text-stone-500">Aucun bien en ligne à {geoCity} pour le moment. Créez une alerte pour être prévenu(e).</p>
+          )}
         </div>
 
         {places.length > 0 && (
