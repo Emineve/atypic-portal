@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed } from 'lucide-react';
+import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed, ChevronDown } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
@@ -393,7 +393,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     setFilters(EMPTY_FILTERS);
   }
 
-  const input = 'border border-stone-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-stone-900';
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -676,7 +675,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
       <main id="resultats" className="max-w-7xl mx-auto px-6 pb-24 scroll-mt-28">
         {!loading && !errorMessage && !onlyFavs && (
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mb-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-6 pb-4 border-b border-stone-200">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
               <p className="font-serif text-lg text-stone-700">
                 {visible.length} {visible.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
@@ -699,9 +698,18 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               )}
             </div>
             {!onlyFavs && (
-            <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
-              <span className="hidden sm:inline">Trier par</span>
-              <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Trier par" className={input}>
+            <label className="relative ml-auto inline-flex items-baseline gap-1.5 text-sm text-stone-500 cursor-pointer">
+              <span>Trier&nbsp;:</span>
+              <span className="text-stone-900 underline decoration-stone-300 underline-offset-4">
+                {SORTS.find((s) => s.value === sort)?.label}
+              </span>
+              <ChevronDown className="w-3.5 h-3.5 flex-none self-center text-stone-500" aria-hidden="true" />
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+                aria-label="Trier par"
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer text-base appearance-none"
+              >
                 {SORTS.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
                 ))}
