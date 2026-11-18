@@ -448,7 +448,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </aside>
       </main>
 
-            <StickyContact phone={item.contact_phone} listingId={item.id} contactName={item.contact_name} title={item.title} reference={item.source_id} />
+            <StickyContact />
       <AlertNudge city={item.city} price={Number(item.price)} />
 
       {related.length > 0 && hubName && hubUrl && (
