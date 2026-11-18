@@ -6,7 +6,6 @@ import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
 import ContactForm from './ContactForm';
-import MortgageEstimate from './MortgageEstimate';
 import ReportButton from './ReportButton';
 import Gallery from './Gallery';
 import StickyContact from './StickyContact';
@@ -292,8 +291,10 @@ export default async function ListingPage({ params }: { params: { id: string } }
       )}
 
       <footer className="border-t border-stone-200 bg-white">
-        <div className="max-w-xl mx-auto px-6 pt-12 pb-28 lg:pb-12">
-          <MortgageEstimate price={Number(item.price)} />
+        <div className="max-w-xl mx-auto px-6 pt-8 pb-28 lg:pb-8 text-center">
+          <Link href={`/financement?prix=${Math.round(Number(item.price))}`} className="text-sm text-stone-700 underline underline-offset-4 decoration-stone-300 hover:text-stone-900 hover:decoration-stone-900">
+            Estimer ma mensualité pour ce bien
+          </Link>
         </div>
       </footer>
     </div>
