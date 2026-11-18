@@ -138,7 +138,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
   // Frais de notaire : estimation courante pour un bien ancien, environ 8 % du prix
   const NOTARY_RATE = 0.08;
   const priceNum = Number(item.price) || 0;
-  const notary = Math.round((priceNum * NOTARY_RATE) / 100) * 100;
+  // Chiffres arrondis au millier : c'est un ordre de grandeur, pas un décompte
+  const notary = Math.round((priceNum * NOTARY_RATE) / 1000) * 1000;
+  const projectTotal = Math.round((priceNum + notary) / 1000) * 1000;
   const hasCopro = Boolean(item.copro_lots || Number(item.charges_yearly) > 0 || item.copro_procedure);
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
@@ -284,8 +286,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
                         <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                       </div>
                       <div className="flex items-baseline justify-between gap-4 py-3 border-b border-stone-200">
-                        <dt className="text-stone-900">Montant estimé du projet</dt>
-                        <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">{eur0(priceNum + notary)}</dd>
+                        <dt className="text-stone-900">
+                          Montant estimé du projet
+                          <span className="block text-xs text-stone-400">Hors travaux de rénovation</span>
+                        </dt>
+                        <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
                       </div>
                     </dl>
                     <p className="mt-3 text-xs text-stone-400 leading-relaxed">
