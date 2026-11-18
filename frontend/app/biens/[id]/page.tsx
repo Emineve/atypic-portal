@@ -268,7 +268,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             {priceNum > 0 && (
               <section className="mt-10">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
-                <div className={`mt-5 grid gap-x-12 gap-y-8 ${hasCopro ? 'md:grid-cols-2' : ''}`}>
+                <div className="mt-5">
                   <div>
                     <dl className="border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
                       <div className="flex items-baseline justify-between gap-4 py-3">
@@ -300,41 +300,42 @@ export default async function ListingPage({ params }: { params: { id: string } }
                       Estimer ma mensualité
                     </Link>
                   </div>
-                  {hasCopro && (
-                    <div>
-                      <h3 className="text-[10px] uppercase tracking-widest text-stone-400">La copropriété</h3>
-                      <ul className="mt-3 space-y-4">
-                        {item.copro_lots ? (
-                          <li className="flex items-start gap-3">
-                            <Building2 className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                            <span>
-                              <span className="block text-sm text-stone-500">Nombre de lots</span>
-                              <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_lots}</span>
-                            </span>
-                          </li>
-                        ) : null}
-                        {Number(item.charges_yearly) > 0 ? (
-                          <li className="flex items-start gap-3">
-                            <Coins className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                            <span>
-                              <span className="block text-sm text-stone-500">Charges de copropriété</span>
-                              <span className="block font-serif text-lg leading-snug text-stone-900">{eur0(Number(item.charges_yearly))} par an</span>
-                            </span>
-                          </li>
-                        ) : null}
-                        {item.copro_procedure ? (
-                          <li className="flex items-start gap-3">
-                            <Gavel className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                            <span>
-                              <span className="block text-sm text-stone-500">Procédures</span>
-                              <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_procedure}</span>
-                            </span>
-                          </li>
-                        ) : null}
-                      </ul>
-                    </div>
-                  )}
                 </div>
+              </section>
+            )}
+
+            {hasCopro && (
+              <section className="mt-10">
+                <h2 className="font-serif text-2xl text-stone-900">La copropriété</h2>
+                <ul className="mt-5 grid gap-x-10 gap-y-5 sm:grid-cols-3 border-y border-stone-200 py-5">
+                  {item.copro_lots ? (
+                    <li className="flex items-start gap-3">
+                      <Building2 className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                      <span>
+                        <span className="block text-sm text-stone-500">Nombre de lots</span>
+                        <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_lots}</span>
+                      </span>
+                    </li>
+                  ) : null}
+                  {Number(item.charges_yearly) > 0 ? (
+                    <li className="flex items-start gap-3">
+                      <Coins className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                      <span>
+                        <span className="block text-sm text-stone-500">Charges de copropriété</span>
+                        <span className="block font-serif text-lg leading-snug text-stone-900">{eur0(Number(item.charges_yearly))} par an</span>
+                      </span>
+                    </li>
+                  ) : null}
+                  {item.copro_procedure ? (
+                    <li className="flex items-start gap-3">
+                      <Gavel className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                      <span>
+                        <span className="block text-sm text-stone-500">Procédures</span>
+                        <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_procedure}</span>
+                      </span>
+                    </li>
+                  ) : null}
+                </ul>
               </section>
             )}
 
