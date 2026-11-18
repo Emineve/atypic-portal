@@ -12,13 +12,19 @@ function num(v: string) {
   return Number.isFinite(n) ? n : 0;
 }
 
+// Montant saisi : chiffres seulement (9 au plus), regroupés par milliers pour rester lisibles (1 200 000)
+function group(v: string) {
+  const digits = v.replace(/\D/g, '').replace(/^0+(?=\d)/, '').slice(0, 9);
+  return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
 function pct(n: number) {
   return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 export default function Simulator() {
-  const [price, setPrice] = useState('800000');
-  const [down, setDown] = useState('160000');
+  const [price, setPrice] = useState('800 000');
+  const [down, setDown] = useState('160 000');
   const [years, setYears] = useState(20);
   const [rate, setRate] = useState(String(RATES.byYears[1].rate).replace('.', ','));
 
@@ -26,8 +32,8 @@ export default function Simulator() {
   useEffect(() => {
     const p = Number(new URLSearchParams(window.location.search).get('prix'));
     if (Number.isFinite(p) && p > 0) {
-      setPrice(String(Math.round(p)));
-      setDown(String(Math.round(p * 0.2)));
+      setPrice(group(String(Math.round(p))));
+      setDown(group(String(Math.round(p * 0.2))));
     }
   }, []);
 
@@ -52,11 +58,11 @@ export default function Simulator() {
       <div className="p-6 md:p-8 space-y-5">
         <label className={label}>
           Prix du bien (€)
-          <input inputMode="numeric" value={price} onChange={(e) => setPrice(e.target.value)} className={field} />
+          <input inputMode="numeric" value={price} onChange={(e) => setPrice(group(e.target.value))} className={field} />
         </label>
         <label className={label}>
           Apport (€)
-          <input inputMode="numeric" value={down} onChange={(e) => setDown(e.target.value)} className={field} />
+          <input inputMode="numeric" value={down} onChange={(e) => setDown(group(e.target.value))} className={field} />
         </label>
         <div>
           <span className={label}>Durée</span>
