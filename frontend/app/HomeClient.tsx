@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed, ChevronDown } from 'lucide-react';
+import { Sparkles, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed, ChevronDown } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
@@ -417,6 +417,14 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             >
               <Sparkles className="w-5 h-5 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Inspiration</span>
+            </a>
+            <a
+              href="/guide"
+              aria-label="Mode d'emploi"
+              className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition"
+            >
+              <BookOpen className="w-5 h-5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Mode d&apos;emploi</span>
             </a>
             <button
               type="button"

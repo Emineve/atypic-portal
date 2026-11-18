@@ -54,7 +54,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Le guide', item: `${SITE_URL}/guide` },
+      { '@type': 'ListItem', position: 2, name: 'Mode d’emploi', item: `${SITE_URL}/guide` },
       { '@type': 'ListItem', position: 3, name: a.title, item: url },
     ],
   };
@@ -69,7 +69,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           <Logo />
           <Link href="/guide" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
             <ArrowLeft className="w-3.5 h-3.5" />
-            Le guide
+            Mode d&apos;emploi
           </Link>
         </div>
       </nav>
@@ -78,7 +78,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-400">
           <Link href="/" className="hover:text-stone-900">Accueil</Link>
           {' › '}
-          <Link href="/guide" className="hover:text-stone-900">Le guide</Link>
+          <Link href="/guide" className="hover:text-stone-900">Mode d&apos;emploi</Link>
         </nav>
         <p className="mt-6 text-[10px] uppercase tracking-widest text-stone-400">{a.category}</p>
         <h1 className="mt-3 font-serif text-3xl md:text-5xl leading-[1.1] text-stone-900">{a.title}</h1>

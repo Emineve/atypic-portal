@@ -7,7 +7,7 @@ import { publishedArticles, formatGuideDate } from '../../lib/guide';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Le guide : tout savoir avant d’acheter un bien atypique · Loftissime',
+  title: 'Mode d’emploi : tout savoir avant d’acheter un bien atypique · Loftissime',
   description:
     'Souplex, loft, péniche, atelier d’artiste : les vérifications à faire avant d’acheter un bien atypique, et les conseils pour bien y vivre. Un nouvel article chaque semaine.',
   alternates: { canonical: '/guide' },
@@ -28,7 +28,7 @@ export default function GuideIndex() {
       </nav>
 
       <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-20 pb-10 text-center">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">Le guide</p>
+        <p className="text-[10px] uppercase tracking-widest text-stone-400">Mode d&apos;emploi</p>
         <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">
           Acheter un bien atypique, <span className="italic text-stone-600">en connaissance de cause</span>.
         </h1>
