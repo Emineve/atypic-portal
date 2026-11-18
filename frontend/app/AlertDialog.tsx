@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { X, Check, MapPin } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
+import { readVisitor, saveVisitor } from '../lib/visitor';
 import FilterPanel from './FilterPanel';
 import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
 
@@ -148,6 +149,10 @@ export default function AlertDialog({
     setStatus('idle');
     setGeo('idle');
     setShare(false);
+    const known = readVisitor();
+    if (known.email) setEmail((cur) => cur || known.email || '');
+    if (known.name) setShareName((cur) => cur || known.name || '');
+    if (known.phone) setSharePhone((cur) => cur || known.phone || '');
     setAgencySel([]);
     setShared([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -366,6 +371,7 @@ export default function AlertDialog({
         }
         setShared(sent);
       }
+      if (ok) saveVisitor({ email, name: shareName, phone: sharePhone || whatsapp, locations: finalLocations, budget: filters.priceMax });
       setStatus(ok ? 'done' : 'error');
     } catch {
       setStatus('error');

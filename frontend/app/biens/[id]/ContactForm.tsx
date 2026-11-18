@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { readVisitor, saveVisitor } from '../../../lib/visitor';
 import { Phone, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_BUTTON, WHATSAPP_ICON_PATH } from './whatsapp';
@@ -41,6 +42,13 @@ export default function ContactForm({
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState('');
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
+  // Coordonnées déjà saisies ailleurs sur le site : reprises d'office
+  useEffect(() => {
+    const v = readVisitor();
+    if (v.name) setName((cur) => cur || v.name || '');
+    if (v.email) setEmail((cur) => cur || v.email || '');
+    if (v.phone) setTel((cur) => cur || v.phone || '');
+  }, []);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [confirmOpen, setConfirmOpen] = useState(true); // fenêtre de confirmation après l'envoi
   const [alertStatus, setAlertStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
@@ -112,6 +120,7 @@ export default function ContactForm({
           .join(' '),
         p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
       });
+      if (!error && data === true) saveVisitor({ name, email, phone: tel });
       setStatus(!error && data === true ? 'done' : 'error');
     } catch {
       setStatus('error');

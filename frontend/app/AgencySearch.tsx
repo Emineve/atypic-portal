@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 import { X, Check, Send } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
+import { readVisitor, saveVisitor } from '../lib/visitor';
+import LocationPicker from './LocationPicker';
 
 // Page agence : l'acheteur partage ses critères de recherche avec cette agence, et elle seule
 export default function AgencySearch({ agency }: { agency: string }) {
   const [open, setOpen] = useState(false);
-  const [location, setLocation] = useState('');
+  const [locations, setLocations] = useState<string[]>([]);
   const [budget, setBudget] = useState('');
   const [name, setName] = useState('');
   const [tel, setTel] = useState('');
@@ -44,15 +46,29 @@ export default function AgencySearch({ agency }: { agency: string }) {
         p_name: name,
         p_email: email,
         p_phone: tel || null,
-        p_location: location || null,
+        p_location: locations.join(', ') || null,
         p_budget_max: toNum(budget),
         p_surface_min: null,
         p_message: null,
       });
-      setStatus(!error && data === true ? 'done' : 'error');
+      const ok = !error && data === true;
+      if (ok) saveVisitor({ name, email, phone: tel, locations, budget });
+      setStatus(ok ? 'done' : 'error');
     } catch {
       setStatus('error');
     }
+  }
+
+  // À l'ouverture : on reprend ce que le visiteur a déjà saisi ailleurs sur le site
+  function openDialog() {
+    const v = readVisitor();
+    if (locations.length === 0 && v.locations) setLocations(v.locations);
+    if (!budget && v.budget) setBudget(v.budget);
+    if (!name && v.name) setName(v.name);
+    if (!tel && v.phone) setTel(v.phone);
+    if (!email && v.email) setEmail(v.email);
+    setStatus('idle');
+    setOpen(true);
   }
 
   const label = `Partager mes critères de recherche avec ${agency}`;
@@ -62,7 +78,7 @@ export default function AgencySearch({ agency }: { agency: string }) {
     <>
       <button
         type="button"
-        onClick={() => { setStatus('idle'); setOpen(true); }}
+        onClick={openDialog}
         className="mt-6 inline-flex min-h-[48px] items-center justify-center gap-2 border border-stone-900 bg-white px-6 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:bg-stone-900 hover:text-white transition"
       >
         <Send className="w-4 h-4 flex-none" />
@@ -99,8 +115,7 @@ export default function AgencySearch({ agency }: { agency: string }) {
                   <p className="pb-2 text-sm text-stone-600">
                     {agency} vous recontacte dès qu&apos;un bien correspond à votre recherche.
                   </p>
-                  <label className="sr-only" htmlFor="as-loc">Secteur recherché</label>
-                  <input id="as-loc" required value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Secteur recherché" className={field} />
+                  <LocationPicker value={locations} onChange={setLocations} />
                   <label className="sr-only" htmlFor="as-budget">Budget maximum</label>
                   <input id="as-budget" inputMode="numeric" value={budget} onChange={(e) => setBudget(e.target.value)} placeholder="Budget maximum (€)" className={field} />
                   <label className="sr-only" htmlFor="as-name">Nom</label>

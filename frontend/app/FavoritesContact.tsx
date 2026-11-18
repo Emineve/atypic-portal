@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { X, Check } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
+import { readVisitor, saveVisitor } from '../lib/visitor';
 
 interface FavItem {
   id: string;
@@ -40,6 +41,10 @@ export default function FavoritesContact({
   useEffect(() => {
     if (!open) return;
     setSelected(items.slice(0, MAX_ITEMS).map((i) => i.id));
+    const v = readVisitor();
+    if (v.name) setName((cur) => cur || v.name || '');
+    if (v.email) setEmail((cur) => cur || v.email || '');
+    if (v.phone) setTel((cur) => cur || v.phone || '');
     setStatus('idle');
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -90,6 +95,7 @@ export default function FavoritesContact({
       }
     }
     setSent(ok);
+    if (ok > 0) saveVisitor({ name, email, phone: tel });
     setStatus(ok > 0 ? 'done' : 'error');
   }
 

@@ -4,6 +4,7 @@ import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
+import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
@@ -254,6 +255,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     });
     return Array.from(map.values());
   }, [listings]);
+
+  // Lieux et budget de la recherche en cours : mémorisés pour pré-remplir les formulaires du site
+  useEffect(() => {
+    saveVisitor({ locations: places.filter((p) => p.kind === 'city').map((p) => p.value), budget: filters.priceMax });
+  }, [places, filters.priceMax]);
 
   const typed = normalize(query.trim());
   const placeMatches = useMemo(() => {
