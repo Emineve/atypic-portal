@@ -7,7 +7,7 @@ import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
 import ContactForm from './ContactForm';
 import ReportButton from './ReportButton';
-import Gallery from './Gallery';
+import PhotoMosaic from './PhotoMosaic';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
@@ -159,24 +159,33 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </div>
       </nav>
 
+      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+        <nav aria-label="Fil d'Ariane" className="text-xs text-stone-400">
+          <Link href="/" className="hover:text-stone-900">Accueil</Link>
+          {hubName && hubUrl && (
+            <>
+              {' › '}
+              <Link href={hubUrl} className="hover:text-stone-900">{hubName}</Link>
+            </>
+          )}
+        </nav>
+        <ShareButtons
+          url={`${SITE_URL}/biens/${item.id}`}
+          title={item.title}
+          detail={[item.city, item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', price].filter(Boolean).join(' · ')}
+        />
+      </div>
+
+      <PhotoMosaic images={allImages} title={item.title} category={item.atypic_category} favoriteId={item.id} />
+
       <main className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 min-w-0">
-          <nav aria-label="Fil d'Ariane" className="mb-4 text-xs text-stone-400">
-            <Link href="/" className="hover:text-stone-900">Accueil</Link>
-            {hubName && hubUrl && (
-              <>
-                {' › '}
-                <Link href={hubUrl} className="hover:text-stone-900">{hubName}</Link>
-              </>
-            )}
-          </nav>
-          <Gallery images={allImages} title={item.title} category={item.atypic_category} favoriteId={item.id} />
-
-          <div className="mt-8">
-            <p className="text-xs uppercase tracking-wider text-stone-400">
-              {item.city}{item.district ? ` · ${item.district}` : ''}
+          <div>
+            <h1 className="font-serif text-3xl md:text-5xl leading-[1.1] text-stone-900">{item.title}</h1>
+            <p className="mt-4 flex items-center gap-2 font-serif text-lg text-stone-800">
+              <MapPin className="w-5 h-5 flex-none text-stone-500" strokeWidth={1.5} aria-hidden="true" />
+              {item.district ? `${item.district}, ` : ''}{item.city}
             </p>
-            <h1 className="mt-2 font-serif text-3xl md:text-4xl leading-tight text-stone-900">{item.title}</h1>
 
             {item.atypic_tags?.length > 0 && (
               <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
@@ -186,14 +195,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </ul>
             )}
 
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-              <p className="font-serif text-3xl text-stone-900">{price}</p>
-              <ShareButtons
-                url={`${SITE_URL}/biens/${item.id}`}
-                title={item.title}
-                detail={[item.city, item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', price].filter(Boolean).join(' · ')}
-              />
-            </div>
+            <p className="mt-5 font-serif text-3xl text-stone-900 lg:hidden">{price}</p>
 
             {facts.length > 0 && (
               <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-stone-200 py-6">
@@ -240,6 +242,15 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </div>
 
         <aside className="space-y-4 min-w-0">
+          <div className="hidden lg:block border border-stone-200 bg-white p-6">
+            <p className="font-serif text-4xl text-stone-900">{price}</p>
+            <Link
+              href={`/financement?prix=${Math.round(Number(item.price))}`}
+              className="mt-2 inline-block text-sm italic text-stone-500 underline underline-offset-4 decoration-stone-300 hover:text-stone-900"
+            >
+              Estimer ma mensualité
+            </Link>
+          </div>
                     <div id="contact" className="scroll-mt-20">
                               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} />
           </div>
