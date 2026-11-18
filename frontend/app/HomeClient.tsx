@@ -430,7 +430,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               type="button"
               onClick={() => openAlert('header')}
               aria-label="Créer une alerte"
-              className="inline-flex items-center gap-1.5 text-stone-900 hover:text-stone-600 transition"
+              className="inline-flex items-center gap-1.5 uppercase text-stone-900 hover:text-stone-600 transition"
             >
               <Bell className="w-5 h-5 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Créer une alerte</span>
@@ -438,7 +438,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <button
               onClick={() => setOnlyFavs((v) => !v)}
               aria-label="Mes favoris"
-              className={`inline-flex items-center gap-1.5 transition ${onlyFavs ? 'text-stone-900' : 'text-stone-500 hover:text-stone-900'}`}
+              className={`inline-flex items-center gap-1.5 uppercase transition ${onlyFavs ? 'text-stone-900' : 'text-stone-500 hover:text-stone-900'}`}
               aria-pressed={onlyFavs}
             >
               <Heart className={`w-5 h-5 sm:w-4 sm:h-4 ${onlyFavs ? 'fill-current' : ''}`} />
