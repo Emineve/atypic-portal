@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import ArchitectContact from './ArchitectContact';
-import Gallery from '../biens/[id]/Gallery';
+import PhotoMosaic from '../biens/[id]/PhotoMosaic';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +42,10 @@ export default async function InspirationPage() {
   const featured = architects[0] || null;
   const others = architects.slice(1);
   const projects = featured && Array.isArray(featured.projects) ? featured.projects : [];
+  // Toutes les photos des projets, présentées comme celles d'une annonce
+  const photos = Array.from(
+    new Set(projects.flatMap((p) => [p.image, ...(Array.isArray(p.images) ? p.images : [])]).filter(Boolean) as string[]),
+  );
   const paragraphs = ((featured && featured.bio) || '').split(/\n\s*\n/).filter(Boolean);
 
   return (
@@ -60,19 +64,22 @@ export default async function InspirationPage() {
         <p className="text-center py-24 text-stone-400 font-serif">Bientôt le premier architecte à la une.</p>
       ) : (
         <>
-                    <section className="max-w-2xl mx-auto px-6 pt-14 text-center">
-            <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
-            <h1 className="mt-3 font-serif text-2xl md:text-3xl text-stone-900">De quoi nourrir votre imagination.</h1>
-            <div className="mt-10 mx-auto h-px w-16 bg-stone-300" />
-          </section>
+          {photos.length > 0 && <PhotoMosaic images={photos} title={featured.name} />}
 
-          <header className="max-w-4xl mx-auto px-6 pt-10 pb-10 text-center">
+          <header className="max-w-3xl mx-auto px-6 pt-10 md:pt-12 pb-14">
             <p className="text-[10px] uppercase tracking-widest text-stone-400">
-              L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
+              Inspiration · L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
             </p>
-            <h2 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{featured.name}</h2>
-            {featured.tagline && <p className="mt-4 text-stone-500 font-light text-lg">{featured.tagline}</p>}
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            <h1 className="mt-3 text-4xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.1]">{featured.name}</h1>
+            {featured.tagline && <p className="mt-3 text-stone-500 font-light text-lg">{featured.tagline}</p>}
+            {paragraphs.length > 0 && (
+              <div className="mt-8 space-y-5 text-stone-700 leading-relaxed">
+                {paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            )}
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
               {featured.website && (
                 <a
                   href={featured.website}
@@ -86,50 +93,12 @@ export default async function InspirationPage() {
               )}
               <ArchitectContact slug={featured.slug} name={featured.name} />
             </div>
-          </header>
-
-          {paragraphs.length > 0 && (
-            <section className="max-w-2xl mx-auto px-6 pb-14 space-y-5 text-stone-700 leading-relaxed">
-              <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Son travail</h2>
-              {paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </section>
-          )}
-
-          {projects.length > 0 && (
-            <section className="max-w-5xl mx-auto px-6 pb-16">
-              <h2 className="font-serif text-2xl text-stone-900">Ce qu&apos;un volume peut devenir</h2>
-              <div className="mt-10 space-y-16">
-                {projects.map((p) => (
-                  <figure key={p.title}>
-                    <Gallery
-                      images={[p.image, ...(Array.isArray(p.images) ? p.images : [])].filter(Boolean) as string[]}
-                      title={p.title}
-                      thumbs={false}
-                    />
-                    <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                      <p className="font-serif text-2xl text-stone-900">{p.title}</p>
-                      {(p.url || featured.website) && (
-                        <a
-                          href={p.url || featured.website || undefined}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
-                        >
-                          Voir le projet
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </a>
-                      )}
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
+            {photos.length > 0 && (
               <p className="mt-10 text-xs text-stone-400">
                 Portrait éditorial, non sponsorisé. Photographies : © {featured.name} et ses photographes.
               </p>
-            </section>
-          )}
+            )}
+          </header>
         </>
       )}
 

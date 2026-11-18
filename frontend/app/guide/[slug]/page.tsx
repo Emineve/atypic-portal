@@ -92,7 +92,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </div>
       </header>
 
-      <article className="max-w-2xl mx-auto px-6 pt-10 md:pt-14 pb-20">
+      <article className="max-w-5xl mx-auto px-6 pt-10 md:pt-14 pb-20 [&>*]:max-w-3xl">
         <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{a.intro}</p>
 
         <section className="mt-8 bg-[#F4E7B5] p-6" aria-label="À retenir">
@@ -185,7 +185,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </section>
 
         {others.length > 0 && (
-          <section className="mt-12 border-t border-stone-200 pt-8 lg:-mx-24">
+          <section className="mt-12 border-t border-stone-200 pt-8">
             <h2 className="font-serif text-2xl text-stone-900">À lire aussi</h2>
             <ul className="mt-6 grid sm:grid-cols-3 gap-6">
               {others.map((o) => (
