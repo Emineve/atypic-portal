@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Bell, X, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
@@ -14,6 +14,9 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
   const [email, setEmail] = useState('');
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  // Une fois fermé (croix ou alerte créée), ni le défilement ni la minuterie ne doivent le rouvrir.
+  const dismissed = useRef(false);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const budget = price && price > 0 ? Math.ceil((price * 1.2) / 50000) * 50000 : null;
   const label = [
@@ -31,14 +34,18 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
     }
     const v = readVisitor();
     if (v.email) setEmail(v.email);
-    const timer = setTimeout(() => setVisible(true), 12000);
+    const show = () => {
+      if (!dismissed.current) setVisible(true);
+    };
+    const timer = setTimeout(show, 12000);
     const onScroll = () => {
-      if (window.scrollY > 900) setVisible(true);
+      if (window.scrollY > 900) show();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
+      if (hideTimer.current) clearTimeout(hideTimer.current);
     };
   }, []);
 
@@ -51,13 +58,23 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
   }
 
   function close() {
+    dismissed.current = true;
+    if (hideTimer.current) clearTimeout(hideTimer.current);
     remember();
     setVisible(false);
   }
 
+  // Message de confirmation : il s'efface tout seul au bout de quelques secondes.
+  function confirmThenHide() {
+    dismissed.current = true;
+    remember();
+    setStatus('done');
+    hideTimer.current = setTimeout(() => setVisible(false), 4000);
+  }
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (website) { setStatus('done'); return; }
+    if (website) { confirmThenHide(); return; }
     setStatus('sending');
     try {
       const { data, error } = await getSupabase().rpc('submit_alert', {
@@ -70,9 +87,7 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
       });
       if (!error && data === true) {
         saveVisitor({ email });
-        remember();
-        setStatus('done');
-        setTimeout(() => setVisible(false), 4000);
+        confirmThenHide();
       } else {
         setStatus('error');
       }
