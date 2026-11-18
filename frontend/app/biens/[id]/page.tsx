@@ -176,7 +176,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         />
       </div>
 
-      <PhotoMosaic images={allImages} title={item.title} category={item.atypic_category} favoriteId={item.id} />
+      <PhotoMosaic images={allImages} title={item.title} favoriteId={item.id} />
 
       <main className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 min-w-0">
