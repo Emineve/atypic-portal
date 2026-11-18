@@ -27,6 +27,8 @@ export default function AdminAgences() {
   const [error, setError] = useState('');
   const [copied, setCopied] = useState('');
   const [form, setForm] = useState({ source: '', name: '', email: '' });
+  // Honoraires : à la charge du vendeur ou de l'acquéreur, réglé une fois pour chaque agence
+  const [fees, setFees] = useState<{ source: string; fees_payer: string | null; listings: number }[]>([]);
 
   useEffect(() => {
     try {
@@ -45,7 +47,19 @@ export default function AdminAgences() {
       return;
     }
     setData(d as Data);
+    const { data: f } = await getSupabase().rpc('admin_agency_fees', { p_token: t });
+    setFees(Array.isArray(f) ? f : []);
   }, []);
+
+  async function setPayer(source: string, payer: string) {
+    if (!token) return;
+    setFees((list) => list.map((x) => (x.source === source ? { ...x, fees_payer: payer || null } : x)));
+    const { error: e } = await getSupabase().rpc('admin_set_agency_fees', { p_token: token, p_source: source, p_payer: payer });
+    if (e) {
+      setError('Le réglage des honoraires n’a pas pu être enregistré.');
+      load(token);
+    }
+  }
 
   useEffect(() => {
     if (token) load(token);
@@ -211,6 +225,30 @@ export default function AdminAgences() {
             >
               Enregistrer
             </button>
+
+            <h2 className="mt-12 font-serif text-lg">Honoraires par agence</h2>
+            <p className="mt-1 text-sm text-stone-600">
+              Indiquez pour chaque agence qui paie les honoraires. Ce réglage s&apos;affiche sur toutes ses annonces, sauf si une annonce porte sa propre mention. Il est enregistré dès que vous le changez.
+            </p>
+            <ul className="mt-4 border border-stone-200 bg-white divide-y divide-stone-200">
+              {fees.map((f) => (
+                <li key={f.source} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+                  <span className="text-sm">
+                    {f.source} <span className="text-stone-400">· {f.listings} {f.listings > 1 ? 'annonces' : 'annonce'}</span>
+                  </span>
+                  <select
+                    className="h-10 border border-stone-300 bg-white px-2 text-sm focus:outline-none focus:border-stone-900"
+                    value={f.fees_payer || ''}
+                    onChange={(e) => setPayer(f.source, e.target.value)}
+                    aria-label={`Honoraires de ${f.source}`}
+                  >
+                    <option value="">Non renseigné</option>
+                    <option value="vendeur">À la charge du vendeur</option>
+                    <option value="acquereur">À la charge de l&apos;acquéreur</option>
+                  </select>
+                </li>
+              ))}
+            </ul>
           </>
         )}
       </div>

@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Plus, Bath } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Check, Building2, Coins, Gavel } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -121,20 +121,25 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const monthly = [energyMid > 0, Number(item.charges_yearly) > 0, Number(item.property_tax) > 0].filter(Boolean).length > 1
     ? Math.round((energyMid + (Number(item.charges_yearly) || 0) + (Number(item.property_tax) || 0)) / 12 / 10) * 10
     : 0;
-  const row = 'flex items-center gap-4 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden';
-  // Réponses courtes des mentions obligatoires, lisibles sans ouvrir le détail
-  const feesShort = /acqu[ée]reur/i.test(item.fees_text || '')
-    ? 'À la charge de l’acquéreur'
+  // Honoraires : la phrase de l'annonce si elle le dit, sinon le réglage de l'agence (back-office)
+  const { data: agencyPayer } = await getSupabase().rpc('agency_fees_payer', { p_source: item.source_agency });
+  const feesPayer: 'vendeur' | 'acquereur' | null = /acqu[ée]reur/i.test(item.fees_text || '')
+    ? 'acquereur'
     : /vendeur/i.test(item.fees_text || '')
-      ? 'À la charge du vendeur'
-      : 'Inclus dans le prix affiché';
-  const coproShort = [
-    item.copro_lots ? `${item.copro_lots} lots` : '',
-    item.copro_procedure ? item.copro_procedure : '',
-    !item.copro_lots && !item.copro_procedure && Number(item.charges_yearly) > 0 ? `${eur0(Number(item.charges_yearly))} de charges par an` : '',
-  ]
-    .filter(Boolean)
-    .join(' · ');
+      ? 'vendeur'
+      : agencyPayer === 'vendeur' || agencyPayer === 'acquereur'
+        ? agencyPayer
+        : null;
+  const feesLabel = feesPayer === 'vendeur'
+    ? 'Honoraires à la charge du vendeur'
+    : feesPayer === 'acquereur'
+      ? 'Honoraires à la charge de l’acquéreur, inclus dans le prix'
+      : 'Honoraires d’agence inclus dans le prix';
+  // Frais de notaire : estimation courante pour un bien ancien, environ 8 % du prix
+  const NOTARY_RATE = 0.08;
+  const priceNum = Number(item.price) || 0;
+  const notary = Math.round((priceNum * NOTARY_RATE) / 100) * 100;
+  const hasCopro = Boolean(item.copro_lots || Number(item.charges_yearly) > 0 || item.copro_procedure);
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
   // Les plans ne figurent pas parmi les photos : ils se téléchargent à part, contre des coordonnées
@@ -258,6 +263,79 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </div>
             )}
 
+            {priceNum > 0 && (
+              <section className="mt-10">
+                <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
+                <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#F4E7B5] text-stone-900 text-sm pl-2 pr-4 py-1.5">
+                  <span className="h-5 w-5 flex-none rounded-full bg-stone-900 text-white flex items-center justify-center">
+                    <Check className="w-3 h-3" />
+                  </span>
+                  {feesLabel}
+                </p>
+                <div className={`mt-5 grid gap-x-12 gap-y-8 ${hasCopro ? 'md:grid-cols-2' : ''}`}>
+                  <div>
+                    <dl className="border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
+                      <div className="flex items-baseline justify-between gap-4 py-3">
+                        <dt>Prix du bien</dt>
+                        <dd className="font-serif text-lg text-stone-900">{eur0(priceNum)}</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-4 py-3">
+                        <dt>Frais de notaire estimés <span className="text-stone-400">(environ 8 %)</span></dt>
+                        <dd className="font-serif text-lg text-stone-900">{eur0(notary)}</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-4 py-3 border-b border-stone-200">
+                        <dt className="text-stone-900">Montant estimé du projet</dt>
+                        <dd className="font-serif text-2xl text-stone-900">{eur0(priceNum + notary)}</dd>
+                      </div>
+                    </dl>
+                    <p className="mt-3 text-xs text-stone-400 leading-relaxed">
+                      Estimation indicative pour un bien ancien. Le montant exact des frais est calculé par le notaire.
+                    </p>
+                    <Link
+                      href={`/financement?prix=${Math.round(priceNum)}`}
+                      className="mt-3 inline-block text-sm text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900"
+                    >
+                      Estimer ma mensualité
+                    </Link>
+                  </div>
+                  {hasCopro && (
+                    <div>
+                      <h3 className="text-[10px] uppercase tracking-widest text-stone-400">La copropriété</h3>
+                      <ul className="mt-3 space-y-4">
+                        {item.copro_lots ? (
+                          <li className="flex items-start gap-3">
+                            <Building2 className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                            <span>
+                              <span className="block text-sm text-stone-500">Nombre de lots</span>
+                              <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_lots}</span>
+                            </span>
+                          </li>
+                        ) : null}
+                        {Number(item.charges_yearly) > 0 ? (
+                          <li className="flex items-start gap-3">
+                            <Coins className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                            <span>
+                              <span className="block text-sm text-stone-500">Charges de copropriété</span>
+                              <span className="block font-serif text-lg leading-snug text-stone-900">{eur0(Number(item.charges_yearly))} par an</span>
+                            </span>
+                          </li>
+                        ) : null}
+                        {item.copro_procedure ? (
+                          <li className="flex items-start gap-3">
+                            <Gavel className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                            <span>
+                              <span className="block text-sm text-stone-500">Procédures</span>
+                              <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_procedure}</span>
+                            </span>
+                          </li>
+                        ) : null}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </section>
+            )}
+
             {budget.length > 0 && (
               <section className="mt-10">
                 <h2 className="font-serif text-2xl text-stone-900">Le budget au quotidien</h2>
@@ -289,60 +367,17 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </section>
             )}
 
-            <section className="mt-10">
-              <h2 className="font-serif text-2xl text-stone-900">L&apos;essentiel à savoir</h2>
-              <div className="mt-4 border-y border-stone-200 divide-y divide-stone-200">
-                <details className="group">
-                  <summary className={row}>
-                    <span className="flex-1 min-w-0">
-                      <span className="block text-sm text-stone-500">Honoraires d&apos;agence</span>
-                      <span className="block font-serif text-lg text-stone-900">{feesShort}</span>
-                    </span>
-                    <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
-                  </summary>
-                  <p className="pb-5 text-sm text-stone-600 leading-relaxed">
-                    {item.fees_text
-                      ? item.fees_text
-                      : 'Le prix affiché comprend les honoraires d’agence. Selon l’annonce, ils sont à la charge du vendeur ou à la charge de l’acquéreur : l’annonce de l’agence le précise.'}
-                  </p>
-                </details>
-                {coproShort && (
-                  <details className="group">
-                    <summary className={row}>
-                      <span className="flex-1 min-w-0">
-                        <span className="block text-sm text-stone-500">Copropriété</span>
-                        <span className="block font-serif text-lg text-stone-900">{coproShort}</span>
-                      </span>
-                      <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
-                    </summary>
-                    <ul className="pb-5 text-sm text-stone-600 leading-relaxed space-y-1">
-                      {item.copro_lots ? <li>Bien soumis au statut de la copropriété : {item.copro_lots} lots.</li> : null}
-                      {Number(item.charges_yearly) > 0 ? <li>Charges annuelles : {eur0(Number(item.charges_yearly))}.</li> : null}
-                      {item.copro_procedure ? <li>{item.copro_procedure}.</li> : null}
-                    </ul>
-                  </details>
-                )}
-                <details className="group">
-                  <summary className={row}>
-                    <span className="flex-1 min-w-0">
-                      <span className="block text-sm text-stone-500">Risques naturels et technologiques</span>
-                      <span className="block font-serif text-lg text-stone-900">À consulter sur Géorisques</span>
-                    </span>
-                    <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
-                  </summary>
-                  <p className="pb-5 text-sm text-stone-600 leading-relaxed">
-                    Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques :{' '}
-                    <a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" className="text-stone-900 underline underline-offset-4">
-                      www.georisques.gouv.fr
-                    </a>
-                    .
-                  </p>
-                </details>
-              </div>
-              <p className="mt-4 text-xs text-stone-400">
+            <p className="mt-10 text-xs text-stone-400 leading-relaxed">
+              {item.fees_text ? <span className="block">{item.fees_text}</span> : null}
+              Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques :{' '}
+              <a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-900">
+                www.georisques.gouv.fr
+              </a>
+              .
+              <span className="block mt-2">
                 Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}
-              </p>
-            </section>
+              </span>
+            </p>
           </div>
         </div>
 

@@ -285,6 +285,7 @@ export default function ContactForm({
         <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-6 space-y-3">
           <h2 className="font-serif text-xl text-stone-900">Demande d&apos;information</h2>
 
+          {!hasPlan && (
           <div className="grid grid-cols-2 gap-2" role="group" aria-label="Votre demande">
             {(
               [
@@ -308,6 +309,7 @@ export default function ContactForm({
               </button>
             ))}
           </div>
+          )}
 
           <div>
             <label className="sr-only" htmlFor="c-name">Nom</label>
