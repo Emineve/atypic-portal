@@ -185,6 +185,25 @@ export default async function ListingPage({ params }: { params: { id: string } }
     ],
   };
 
+  const agencyBlock = (
+          <div className="border-t border-stone-200 divide-y divide-stone-200 border-b">
+            <Link href={`/agence/${slugify(item.source_agency)}`} className="group flex items-center gap-4 py-4">
+              <span className="flex-1 min-w-0">
+                <span className="block text-[11px] uppercase tracking-widest text-stone-400">Proposé par</span>
+                <span className="block mt-1 font-serif text-lg text-stone-900 truncate">{item.source_agency}</span>
+                <span className="block text-sm text-stone-500">
+                  {agencyCount > 1 ? `Voir ses ${agencyCount} biens sur Loftissime` : 'Voir sa page sur Loftissime'}
+                </span>
+              </span>
+              <ChevronRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
+            </Link>
+            <a href={`/go/${item.id}`} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 py-4">
+              <span className="flex-1 text-sm text-stone-900">Voir l&apos;annonce sur le site de l&apos;agence</span>
+              <ArrowUpRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
+            </a>
+          </div>
+  );
+
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans pb-20 lg:pb-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(jsonLd) }} />
@@ -388,6 +407,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </section>
             )}
 
+            <div className="hidden lg:block mt-10 space-y-4">
+              {agencyBlock}
+              <ReportButton listingId={item.id} />
+            </div>
+
             <p className="mt-10 text-xs text-stone-400 leading-relaxed">
               {item.fees_text ? <span className="block">{item.fees_text}</span> : null}
               Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques :{' '}
@@ -402,7 +426,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
           </div>
         </div>
 
-        <aside className="space-y-4 min-w-0">
+        <aside className="min-w-0">
+          <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
           <div className="hidden lg:block border border-stone-200 bg-white p-6">
             <p className="font-serif text-4xl text-stone-900">{price}</p>
             <Link
@@ -417,23 +442,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
                               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
           </div>
           <Tracker listingId={item.id} />
-          <div className="border-t border-stone-200 divide-y divide-stone-200 border-b">
-            <Link href={`/agence/${slugify(item.source_agency)}`} className="group flex items-center gap-4 py-4">
-              <span className="flex-1 min-w-0">
-                <span className="block text-[11px] uppercase tracking-widest text-stone-400">Proposé par</span>
-                <span className="block mt-1 font-serif text-lg text-stone-900 truncate">{item.source_agency}</span>
-                <span className="block text-sm text-stone-500">
-                  {agencyCount > 1 ? `Voir ses ${agencyCount} biens sur Loftissime` : 'Voir sa page sur Loftissime'}
-                </span>
-              </span>
-              <ChevronRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
-            </Link>
-            <a href={`/go/${item.id}`} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 py-4">
-              <span className="flex-1 text-sm text-stone-900">Voir l&apos;annonce sur le site de l&apos;agence</span>
-              <ArrowUpRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
-            </a>
+          <div className="lg:hidden space-y-4">
+            {agencyBlock}
+            <ReportButton listingId={item.id} />
           </div>
-          <ReportButton listingId={item.id} />
+          </div>
         </aside>
       </main>
 

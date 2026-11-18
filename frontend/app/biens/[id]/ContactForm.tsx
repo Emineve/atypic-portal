@@ -151,6 +151,7 @@ export default function ContactForm({
   return (
     <div className="space-y-4">
       <div className="border border-stone-900 bg-white shadow-[0_10px_30px_rgba(13,15,17,0.10)]">
+        <p className="bg-[#F4E7B5] px-6 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-stone-900">Ce bien vous intéresse ?</p>
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
           <div className="min-w-0">
