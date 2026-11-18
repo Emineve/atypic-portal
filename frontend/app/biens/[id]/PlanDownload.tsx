@@ -60,14 +60,14 @@ export default function PlanDownload({
     try {
       const { data, error } = await getSupabase().rpc('submit_lead', {
         p_listing: listingId,
-        p_name: name,
+        p_name: name.trim().length >= 2 ? name : 'Nom non précisé',
         p_email: email,
         p_phone: tel || null,
         p_message: 'A téléchargé le plan du bien.',
         p_consent: true, // l'envoi vaut accord, la phrase sous le bouton le précise
       });
       if (!error && data === true) {
-        saveVisitor({ name, email, phone: tel });
+        saveVisitor({ email });
         try {
           sessionStorage.setItem(key, '1');
         } catch {
@@ -130,13 +130,9 @@ export default function PlanDownload({
             ) : (
               <form onSubmit={onSubmit} className="flex flex-col min-h-0">
                 <div className="flex-1 overflow-y-auto px-6 py-5 space-y-2">
-                  <p className="pb-2 text-sm text-stone-600">Dites-nous où vous joindre : le plan s&apos;affiche aussitôt.</p>
-                  <label className="sr-only" htmlFor="pl-name">Nom</label>
-                  <input id="pl-name" required minLength={2} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom" className={field} />
+                  <p className="pb-2 text-sm text-stone-600">Indiquez votre e-mail : le plan s&apos;affiche aussitôt.</p>
                   <label className="sr-only" htmlFor="pl-email">E-mail</label>
-                  <input id="pl-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" className={field} />
-                  <label className="sr-only" htmlFor="pl-tel">Téléphone (facultatif)</label>
-                  <input id="pl-tel" type="tel" autoComplete="tel" value={tel} onChange={(e) => setTel(e.target.value)} placeholder="Téléphone (facultatif)" className={field} />
+                  <input id="pl-email" type="email" required autoFocus autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" className={field} />
                   <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />
                   {status === 'error' && <p className="text-sm text-red-700">L&apos;envoi n&apos;a pas abouti. Vérifiez vos coordonnées et réessayez.</p>}
                 </div>
