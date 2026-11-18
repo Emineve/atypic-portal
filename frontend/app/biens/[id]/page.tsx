@@ -376,7 +376,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                         Soit par mois
                         <span className="block text-xs text-stone-400">Hors crédit</span>
                       </dt>
-                      <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">environ {eur0(monthly)}</dd>
+                      <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap"><span className="font-sans text-xl text-stone-500" aria-label="environ">≈</span> {eur0(monthly)}</dd>
                     </div>
                   )}
                 </dl>
