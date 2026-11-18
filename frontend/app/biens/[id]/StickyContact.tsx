@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Phone } from 'lucide-react';
+import { Phone, PhoneIncoming } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_BUTTON, WHATSAPP_ICON_PATH } from './whatsapp';
 
-// Barre fixe en bas d'écran sur mobile : WhatsApp (ou appel si le numéro n'est pas un portable) et demande de rappel.
+// Boutons flottants en bas d'écran sur mobile, dans le même esprit que « Créer mon alerte » sur l'accueil : WhatsApp (ou appel si le numéro n'est pas un portable) et demande de rappel.
 export default function StickyContact({
   phone,
   listingId,
@@ -50,13 +50,13 @@ export default function StickyContact({
   }
 
   const btn =
-    'flex-1 min-w-0 h-12 px-2 inline-flex items-center justify-center gap-2 text-[11px] leading-tight text-center font-semibold uppercase tracking-wide transition';
+    'pointer-events-auto h-12 px-5 inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-semibold uppercase tracking-wider shadow-lg transition';
   const wa = listingId ? whatsappLink({ phone, contactName, title, reference, listingId }) : null;
 
   return (
     <div
-      className={`lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-stone-200 px-4 py-3 flex items-center gap-2 transition-transform duration-300 ${hidden ? 'translate-y-full' : 'translate-y-0'}`}
-      style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
+      className={`lg:hidden fixed inset-x-0 z-40 flex items-center justify-center gap-2 px-4 pointer-events-none transition duration-300 ${hidden ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
+      style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
     >
       {wa ? (
         <a href={wa} target="_blank" rel="noopener noreferrer" onClick={trackCall} className={`${btn} ${WHATSAPP_BUTTON}`}>
@@ -69,13 +69,14 @@ export default function StickyContact({
         <a
           href={`tel:${phone.replace(/[^+\d]/g, '')}`}
           onClick={trackCall}
-          className={`${btn} bg-stone-900 text-white active:bg-stone-700`}
+          className={`${btn} bg-white text-stone-900 active:bg-stone-100`}
         >
           <Phone className="w-4 h-4 flex-none" />
-          Appeler l&apos;agent
+          Appeler
         </a>
       ) : null}
-      <a href="#contact" className={`${btn} border border-stone-900 bg-white text-stone-900 active:bg-stone-100`}>
+      <a href="#contact" className={`${btn} bg-stone-900 text-white active:bg-stone-700`}>
+        <PhoneIncoming className="w-4 h-4 flex-none" />
         Être rappelé(e)
       </a>
     </div>
