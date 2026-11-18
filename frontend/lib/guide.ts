@@ -10,7 +10,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: 'Avant d’acheter' | 'Financer et assurer' | 'Vivre et entretenir' | 'Estimer et revendre';
@@ -27,6 +27,161 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'questions-a-poser-visite-bien-atypique',
+    art: 'visite',
+    title: 'Visite d’un bien atypique : les bonnes questions à poser au négociateur',
+    description:
+      'Surface, travaux, verrière, copropriété, prix : les questions à poser au négociateur avant et pendant la visite d’un loft, d’un atelier ou d’un dernier étage, et ce que les réponses vous apprennent.',
+    category: 'Avant d’acheter',
+    published: '2026-11-18',
+    updated: '2026-11-18',
+    readMinutes: 9,
+    intro:
+      'Une verrière, six mètres sous plafond, une terrasse sur les toits : dans un bien atypique, le coup de cœur arrive en trente secondes. Le négociateur, lui, connaît le dossier. Il a vu les plans, lu les procès-verbaux, parlé au vendeur. Les bonnes questions font de lui votre meilleure source d’information. Encore faut-il savoir lesquelles poser, et à quel moment.',
+    takeaways: [
+      'Posez les questions éliminatoires au téléphone, avant de vous déplacer : surface réelle, charges, travaux, disponibilité.',
+      'Dans un bien atypique, trois sujets passent avant tout : ce qui est compté dans la surface, ce qui a été transformé et avec quelles autorisations, le confort été comme hiver.',
+      'Une bonne question appelle un document. « Les travaux ont-ils été autorisés ? » se termine par « Pouvez-vous m’envoyer le procès-verbal ? ».',
+      'Un négociateur qui répond « je ne sais pas, je me renseigne » est un bon signe. Demandez la réponse par écrit.',
+    ],
+    sections: [
+      {
+        title: 'Quelles questions poser avant même de visiter ?',
+        paragraphs: [
+          'Cinq minutes au téléphone suffisent. Vous saurez si le bien vaut le déplacement, et le négociateur saura qu’il a affaire à un acheteur sérieux.',
+        ],
+        list: [
+          'Quelle est la surface Carrez, et quelle est la surface au sol ? D’où vient l’écart ?',
+          'À quel étage, avec ou sans ascenseur, et quelle exposition ?',
+          'Quel est le montant des charges de copropriété et de la taxe foncière ?',
+          'Le bien est-il libre, et à quelle date ?',
+          'Y a-t-il des travaux à prévoir, dans le bien ou dans l’immeuble ?',
+        ],
+      },
+      {
+        title: 'Sur l’histoire du lieu : qu’était-il avant ?',
+        paragraphs: [
+          'C’est la question qui distingue un bien atypique d’un autre. Un loft a souvent été un atelier, une boutique, un entrepôt. La réponse commande toutes les suivantes.',
+        ],
+        list: [
+          'Qu’était ce lieu à l’origine, et quand a-t-il été transformé ?',
+          'Est-il officiellement un logement ? Le changement de destination a-t-il été autorisé par la mairie ?',
+          'Comment le lot est-il désigné dans le règlement de copropriété : appartement, atelier, local commercial ?',
+          'Qui a conçu la transformation : un architecte, le propriétaire lui-même ?',
+        ],
+      },
+      {
+        title: 'Sur la surface et les volumes : qu’est-ce qui est compté ?',
+        list: [
+          'La mezzanine est-elle comprise dans la surface Carrez ? Quelle est la hauteur sous plafond, dessus et dessous ?',
+          'Sous les pentes, quelle surface dépasse 1,80 m de hauteur ?',
+          'Le niveau bas ou le sous-sol est-il compté ? Est-il considéré comme une pièce habitable ?',
+          'La terrasse est-elle une partie privative ou un droit de jouissance ? Que dit le règlement sur son usage et son entretien ?',
+          'Qui a réalisé le mesurage, et à quelle date ?',
+        ],
+      },
+      {
+        title: 'Sur les travaux : qu’est-ce qui a été modifié ?',
+        paragraphs: [
+          'Dans un bien atypique, les plans ont presque toujours bougé. Ce n’est pas un problème si tout a été autorisé. Ça le devient si personne ne peut le prouver.',
+        ],
+        list: [
+          'Quels travaux le vendeur a-t-il réalisés, et en quelle année ?',
+          'Ont-ils touché un mur porteur, un plancher, la façade ou la toiture ?',
+          'L’assemblée générale les a-t-elle autorisés ? Peut-on voir le procès-verbal ?',
+          'Y a-t-il eu une déclaration préalable ou un permis de construire ?',
+          'Les entreprises étaient-elles assurées ? Les factures sont-elles disponibles ?',
+        ],
+      },
+      {
+        title: 'Sur le confort : comment vit-on ici, été comme hiver ?',
+        list: [
+          'La verrière et les baies sont-elles en simple ou en double vitrage ? Y a-t-il déjà eu des infiltrations ?',
+          'Quelle température fait-il l’été ? Y a-t-il des stores, une climatisation ?',
+          'Combien le vendeur paie-t-il de chauffage et d’électricité par an ? Peut-on voir les factures ?',
+          'Comment nettoie-t-on la verrière ou les grandes baies, et combien cela coûte-t-il ?',
+          'D’où vient le bruit : la rue, la cour, les voisins, un commerce en dessous ?',
+          'Au rez-de-chaussée ou en niveau bas : y a-t-il déjà eu de l’humidité ou un dégât des eaux ?',
+        ],
+      },
+      {
+        title: 'Sur l’immeuble : comment se porte la copropriété ?',
+        list: [
+          'Quels travaux ont été votés, et lesquels sont à l’étude ? Ravalement, toiture, ascenseur ?',
+          'Qui paiera les travaux déjà votés : le vendeur ou l’acheteur ?',
+          'Y a-t-il des impayés de charges ou une procédure en cours ?',
+          'Y a-t-il un fonds de travaux, et quel est son montant ?',
+          'Le règlement autorise-t-il ce que vous projetez : exercer une activité, louer, installer une climatisation, fermer une terrasse ?',
+          'Peut-on avoir les procès-verbaux des trois dernières assemblées générales ?',
+        ],
+      },
+      {
+        title: 'Sur la vente : où en est-on ?',
+        paragraphs: [
+          'Ces questions ne sont pas indiscrètes. Un négociateur les entend tous les jours, et ses réponses vous aident à faire une offre juste.',
+        ],
+        list: [
+          'Depuis quand le bien est-il en vente ? Le prix a-t-il déjà été revu ?',
+          'Pourquoi les propriétaires vendent-ils ? Ont-ils un calendrier à tenir ?',
+          'Y a-t-il eu des offres ? Pourquoi n’ont-elles pas abouti ?',
+          'Comment le prix a-t-il été fixé ? À quels biens vendus récemment peut-on le comparer ?',
+          'Qu’est-ce qui reste dans le bien : cuisine, luminaires, rangements sur mesure ?',
+          'Les honoraires sont-ils à la charge du vendeur ou de l’acquéreur ?',
+        ],
+      },
+      {
+        title: 'Et ce que le négociateur ne peut pas dire à votre place ?',
+        paragraphs: [
+          'Certaines réponses ne s’obtiennent qu’en regardant. Restez silencieux une minute en entrant, pour écouter. Éteignez les lumières, pour juger la lumière naturelle. Ouvrez les fenêtres, les robinets, le tableau électrique. Mesurez les hauteurs. Regardez l’escalier, la façade, le local à vélos.',
+          'Puis revenez. Une seconde visite, à une autre heure, accompagné d’un proche ou d’un artisan, et les documents en main : c’est là que l’on décide, pas avant.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Les questions à emporter le jour de la visite',
+      items: [
+        'Qu’était ce lieu avant, et est-il officiellement un logement ?',
+        'Surface Carrez et surface au sol : d’où vient l’écart ?',
+        'Mezzanine, pentes, niveau bas : qu’est-ce qui est compté ?',
+        'Terrasse : privative ou droit de jouissance ?',
+        'Quels travaux ont été faits, quand, avec quelles autorisations ?',
+        'Verrière et baies : vitrage, infiltrations, nettoyage ?',
+        'Températures été et hiver, factures d’énergie ?',
+        'Humidité ou dégât des eaux déjà constatés ?',
+        'Charges, taxe foncière, fonds de travaux ?',
+        'Travaux votés dans l’immeuble : lesquels, payés par qui ?',
+        'Impayés ou procédure en cours dans la copropriété ?',
+        'Depuis quand en vente, combien d’offres, pourquoi vendent-ils ?',
+        'Qu’est-ce qui reste dans le bien ?',
+        'Documents à recevoir : Carrez, diagnostics, procès-verbaux des trois dernières assemblées, règlement de copropriété.',
+        'Seconde visite possible à une autre heure ?',
+      ],
+    },
+    faq: [
+      {
+        q: 'Quelles questions poser en priorité lors de la visite d’un bien atypique ?',
+        a: 'Trois : ce qui est réellement compté dans la surface, quels travaux ont été faits et avec quelles autorisations, et comment le bien se comporte en été et en hiver.',
+      },
+      {
+        q: 'Peut-on demander pourquoi les propriétaires vendent ?',
+        a: 'Oui. C’est une question habituelle, et la réponse renseigne sur le calendrier du vendeur et sur sa marge de discussion.',
+      },
+      {
+        q: 'Quels documents demander au négociateur après la visite ?',
+        a: 'Le certificat de surface Carrez, les diagnostics dont le DPE, le détail des charges, la taxe foncière, les procès-verbaux des trois dernières assemblées générales et le règlement de copropriété.',
+      },
+      {
+        q: 'Combien de visites faut-il faire avant de faire une offre ?',
+        a: 'Au moins deux, à des heures différentes. La seconde se fait accompagné, avec les documents du bien en main.',
+      },
+    ],
+    sources: [
+      { label: 'Crédit Agricole e-immobilier, « Visite pour l’achat d’un appartement : notre check-list complète »', url: 'https://e-immobilier.credit-agricole.fr/conseils/1er-achat/visite-pour-lachat-dun-appartement-notre-check-list-complete' },
+      { label: 'SeLoger, « Visiter un appartement : ce qu’il faut vérifier avant d’acheter votre logement »', url: 'https://edito.seloger.com/conseils-d-experts/acheter/visiter-un-appartement-qu-faut-verifier-d-acheter-logement-article-28697.html' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
   {
     slug: 'acheter-un-souplex',
     art: 'souplex',

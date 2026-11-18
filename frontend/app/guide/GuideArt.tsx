@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite';
 
 const INK = '#1c1917';
 const SUN = '#F4E7B5';
@@ -216,7 +216,42 @@ function Mezzanine() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine };
+function Visite() {
+  const rows = [150, 205, 260, 315, 370];
+  return (
+    <>
+      <path d="M0 440 H1200" {...line} />
+      {/* porte entrouverte */}
+      <rect x={190} y={90} width={230} height={350} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M210 110 H400 V440 H210 Z" fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M210 110 L330 140 V440 H210 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <circle cx={312} cy={290} r={6} fill={INK} />
+      <path d="M330 440 L470 470 H330 Z" fill={PAPER} opacity={0.7} />
+      <Plant x={500} y={414} />
+      {/* liste */}
+      <g transform="rotate(4 760 260)">
+        <rect x={620} y={70} width={290} height={370} rx={6} fill={PAPER} stroke={INK} strokeWidth={3} />
+        <rect x={715} y={52} width={100} height={36} rx={6} fill={INK} />
+        {rows.map((y, i) => (
+          <g key={y}>
+            <rect x={650} y={y - 14} width={28} height={28} fill={i < 3 ? SUN : PAPER} stroke={INK} strokeWidth={2} />
+            {i < 3 && <path d={`M656 ${y} l7 8 l12 -16`} {...line} />}
+            <path d={`M700 ${y} H${i % 2 ? 840 : 880}`} {...thin} />
+          </g>
+        ))}
+      </g>
+      {/* clé */}
+      <g transform="rotate(-24 1030 330)">
+        <circle cx={1010} cy={330} r={30} fill={PAPER} stroke={INK} strokeWidth={3} />
+        <circle cx={1010} cy={330} r={10} fill={SUN} stroke={INK} strokeWidth={2} />
+        <path d="M1040 330 H1130 M1100 330 v22 M1122 330 v16" {...line} strokeWidth={5} />
+      </g>
+      <circle cx={1060} cy={110} r={34} fill={PAPER} stroke={INK} strokeWidth={3} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite };
 
 export default function GuideArt({ art, className = '' }: { art: GuideArtKey; className?: string }) {
   const Drawing = ART[art];
