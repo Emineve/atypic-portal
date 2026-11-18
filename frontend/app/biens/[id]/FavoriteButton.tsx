@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Heart } from 'lucide-react';
 import { trackEvent } from '../../../lib/track';
 
+const FAVORITE_ADDED_EVENT = 'loftissime:favori-ajoute'; // écouté par AlertInvite
+
 // Même clé que sur l'accueil : un favori ajouté ici se retrouve dans « Mes favoris »
 const FAVORITES_KEY = 'singulier:favorites';
 
@@ -32,7 +34,11 @@ export default function FavoriteButton({ listingId }: { listingId: string }) {
     } catch {
       /* stockage indisponible : le favori fonctionne le temps de la visite */
     }
-    if (adding) trackEvent('favorite', listingId);
+    if (adding) {
+      trackEvent('favorite', listingId);
+      // La fiche propose alors, en une ligne discrète, de recevoir les biens similaires
+      window.dispatchEvent(new Event(FAVORITE_ADDED_EVENT));
+    }
   }
 
   return (

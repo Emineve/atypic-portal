@@ -10,7 +10,7 @@ import ReportButton from './ReportButton';
 import PhotoMosaic from './PhotoMosaic';
 import Description from './Description';
 import PlanDownload from './PlanDownload';
-import AlertNudge from './AlertNudge';
+import { AlertLink, FavoriteAlertToast } from './AlertInvite';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
@@ -298,6 +298,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </div>
             )}
 
+            <AlertLink city={item.city} price={Number(item.price)} />
+
             {priceNum > 0 && (
               <section className="mt-10">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
@@ -449,7 +451,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
       </main>
 
             <StickyContact />
-      <AlertNudge city={item.city} price={Number(item.price)} />
+      <FavoriteAlertToast city={item.city} price={Number(item.price)} />
 
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">
