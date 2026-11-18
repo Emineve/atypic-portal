@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
 import { Phone, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
@@ -226,7 +227,7 @@ export default function ContactForm({
               <p className="mt-1 text-sm text-stone-600">L&apos;agence en charge de ce bien vous recontacte.</p>
             </div>
           </div>
-          {confirmOpen && (
+          {confirmOpen && createPortal(
             <div className="fixed inset-0 z-[80] flex items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Demande envoyée">
               <div className="absolute inset-0 bg-stone-900/60" onClick={() => setConfirmOpen(false)} />
               <div className="relative w-full max-w-md max-h-full overflow-y-auto bg-[#FDFBF7] shadow-2xl px-8 py-10 text-center">
@@ -299,7 +300,8 @@ export default function ContactForm({
                   Poursuivre ma visite
                 </button>
               </div>
-            </div>
+            </div>,
+            document.body
           )}
         </>
       ) : (

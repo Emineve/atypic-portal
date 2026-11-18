@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Download, X, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
@@ -97,7 +98,7 @@ export default function PlanDownload({
         Télécharger le plan
       </button>
 
-      {open && (
+      {open && createPortal(
         <div className="fixed inset-0 z-[80] flex items-end md:items-center justify-center" role="dialog" aria-modal="true" aria-label="Télécharger le plan">
           <div className="absolute inset-0 bg-stone-900/50" onClick={() => setOpen(false)} />
           <div className={`relative w-full ${unlocked ? 'md:max-w-3xl' : 'md:max-w-md'} max-h-[92vh] bg-white flex flex-col shadow-xl`}>
@@ -147,7 +148,8 @@ export default function PlanDownload({
               </form>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

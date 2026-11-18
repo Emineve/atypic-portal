@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel, Zap, Leaf } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel, Zap, Leaf, Calculator } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -433,8 +433,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <p className="font-serif text-4xl text-stone-900">{price}</p>
             <Link
               href={`/financement?prix=${Math.round(Number(item.price))}`}
-              className="mt-2 inline-block text-sm italic text-stone-500 underline underline-offset-4 decoration-stone-300 hover:text-stone-900"
+              className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-400 hover:decoration-stone-900"
             >
+              <Calculator className="w-4 h-4 flex-none" strokeWidth={1.5} />
               Estimer ma mensualité
             </Link>
           </div>

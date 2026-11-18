@@ -34,20 +34,42 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
     }
     const v = readVisitor();
     if (v.email) setEmail(v.email);
+    // Le visiteur est occupé (fenêtre ouverte, saisie en cours) : on ne l'interrompt pas, on réessaie plus tard
+    const busy = () => {
+      if (document.querySelector('[role="dialog"]')) return true;
+      const el = document.activeElement;
+      return !!el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName);
+    };
+    let wanted = false;
     const show = () => {
-      if (!dismissed.current) setVisible(true);
+      wanted = true;
+      if (!dismissed.current && !busy()) setVisible(true);
     };
     const timer = setTimeout(show, 12000);
+    const retry = setInterval(() => {
+      if (wanted && !dismissed.current && !busy()) setVisible(true);
+    }, 4000);
     const onScroll = () => {
       if (window.scrollY > 900) show();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       clearTimeout(timer);
+      clearInterval(retry);
       window.removeEventListener('scroll', onScroll);
       if (hideTimer.current) clearTimeout(hideTimer.current);
     };
   }, []);
+
+  // Une fenêtre s'ouvre alors que le bandeau est affiché : il s'efface le temps qu'elle soit refermée
+  const [covered, setCovered] = useState(false);
+  useEffect(() => {
+    if (!visible) return;
+    const check = () => setCovered(!!document.querySelector('[role="dialog"]'));
+    const obs = new MutationObserver(check);
+    obs.observe(document.body, { childList: true, subtree: true });
+    return () => obs.disconnect();
+  }, [visible]);
 
   function remember() {
     try {
@@ -96,7 +118,7 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
     }
   }
 
-  if (!visible) return null;
+  if (!visible || covered) return null;
 
   return (
     <div
