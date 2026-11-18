@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
-import { Phone, Check, Mail, ChevronDown } from 'lucide-react';
+import { Phone, Check } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
-import { whatsappLink, WHATSAPP_BUTTON, WHATSAPP_ICON_PATH } from './whatsapp';
+import { whatsappLink, WHATSAPP_ICON_PATH } from './whatsapp';
 
 function sessionId() {
   try {
@@ -40,7 +40,6 @@ export default function ContactForm({
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
   const [tab, setTab] = useState<'tel' | 'msg'>('tel'); // onglets « Téléphone » et « Contacter »
-  const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState(
     'Bonjour,\n\nJ’aimerais avoir plus de renseignements sur ce bien. Merci de me recontacter à cet effet.\n\nCordialement'
   );
@@ -147,75 +146,88 @@ export default function ContactForm({
     }
   }
 
+  const initials = (contactName || agency || '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w.charAt(0).toUpperCase())
+    .join('');
   const field = 'w-full h-11 border border-stone-300 bg-white px-3 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
   return (
     <div className="space-y-4">
       <div className="border border-stone-200 bg-white">
-        <div className="grid grid-cols-2" role="tablist" aria-label="Contacter l'agence">
-          {([
-            ['tel', 'Téléphone', Phone],
-            ['msg', 'Contacter', Mail],
-          ] as const).map(([key, label, Icon]) => (
-            <button
-              key={key}
-              type="button"
-              role="tab"
-              aria-selected={tab === key}
-              onClick={() => setTab(key)}
-              className={`h-14 inline-flex items-center justify-center gap-2 text-sm font-medium transition ${
-                tab === key ? 'bg-stone-900 text-white' : 'bg-stone-100 text-stone-600 hover:text-stone-900'
-              }`}
-            >
-              <Icon className="w-4 h-4" />
-              {label}
-            </button>
-          ))}
-        </div>
         <div className="p-6">
-          <p className="text-[10px] uppercase tracking-widest text-stone-400">Votre contact pour ce bien</p>
-          <p className="mt-1 font-serif text-xl text-stone-900">{contactName || agency}</p>
-          {contactName && <p className="text-xs text-stone-500">{agency}</p>}
-      {tab === 'tel' && phone && (
-        <div>
-          {shown ? (
-            <a
-              href={`tel:${phone.replace(/[^+\d]/g, '')}`}
-              className="mt-4 flex h-12 items-center justify-center gap-2 border border-stone-900 text-stone-900 text-base font-semibold tracking-wide hover:bg-stone-900 hover:text-white transition"
-            >
-              <Phone className="w-4 h-4" />
-              {phone}
-            </a>
-          ) : (
-            <button
-              type="button"
-              onClick={reveal}
-              className="mt-4 flex h-12 w-full items-center justify-center gap-2 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition"
-            >
-              <Phone className="w-4 h-4" />
-              Afficher le numéro
-            </button>
+          {/* Le contact, puis les deux moyens de le joindre tout de suite */}
+          <div className="flex items-center gap-3">
+            <span className="h-11 w-11 flex-none rounded-full bg-stone-900 text-white font-serif text-base flex items-center justify-center" aria-hidden="true">
+              {initials}
+            </span>
+            <div className="min-w-0">
+              <p className="font-serif text-lg leading-tight text-stone-900 truncate">{contactName || agency}</p>
+              <p className="text-xs text-stone-500 truncate">{contactName ? agency : 'Votre contact pour ce bien'}</p>
+            </div>
+          </div>
+          {phone && (
+            <div className={`mt-4 grid gap-2 ${wa ? 'grid-cols-2' : 'grid-cols-1'}`}>
+              {shown ? (
+                <a
+                  href={`tel:${phone.replace(/[^+\d]/g, '')}`}
+                  className="h-11 inline-flex items-center justify-center gap-2 border border-stone-900 text-stone-900 text-sm font-semibold whitespace-nowrap hover:bg-stone-900 hover:text-white transition"
+                >
+                  {phone}
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={reveal}
+                  className="h-11 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
+                >
+                  <Phone className="w-4 h-4" />
+                  Appeler
+                </button>
+              )}
+              {wa && (
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={trackContact}
+                  className="h-11 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
+                >
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#25D366]" fill="currentColor" aria-hidden="true">
+                    <path d={WHATSAPP_ICON_PATH} />
+                  </svg>
+                  WhatsApp
+                </a>
+              )}
+            </div>
           )}
-          {wa && (
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={trackContact}
-              className={`mt-3 flex h-12 items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider transition ${WHATSAPP_BUTTON}`}
-            >
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
-                <path d={WHATSAPP_ICON_PATH} />
-              </svg>
-              WhatsApp
-            </a>
-          )}
-        </div>
-      )}
+
+          {/* Deux onglets discrets pour le formulaire : être rappelé, ou écrire */}
+          <div className="mt-6 flex gap-6 border-b border-stone-200" role="tablist" aria-label="Votre demande">
+            {([
+              ['tel', 'Être rappelé(e)'],
+              ['msg', 'Écrire un message'],
+            ] as const).map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                role="tab"
+                aria-selected={tab === key}
+                onClick={() => setTab(key)}
+                className={`-mb-px pb-2.5 text-sm border-b-2 transition ${
+                  tab === key ? 'border-stone-900 text-stone-900 font-medium' : 'border-transparent text-stone-500 hover:text-stone-900'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
 
       {status === 'done' ? (
         <>
-          <div className="mt-5 border-t border-stone-200 pt-5 flex items-start gap-3">
+          <div className="mt-5 flex items-start gap-3">
             <span className="mt-0.5 h-7 w-7 flex-none rounded-full bg-stone-900 text-white flex items-center justify-center">
               <Check className="w-4 h-4" />
             </span>
@@ -301,32 +313,24 @@ export default function ContactForm({
           )}
         </>
       ) : (
-        <form onSubmit={onSubmit} className="mt-5 border-t border-stone-200 pt-5 space-y-3">
-          <h2 className="font-serif text-xl text-stone-900">
-            {tab === 'tel' ? 'Désirez-vous être rappelé(e) ?' : 'Demande d’information'}
-          </h2>
-
-          {tab === 'msg' &&
-            (showMessage ? (
-              <div>
-                <label className="sr-only" htmlFor="c-msg">Message</label>
-                <textarea id="c-msg" rows={6} className="w-full border border-stone-300 bg-white px-3 py-2 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
-              </div>
-            ) : (
-              <button type="button" onClick={() => setShowMessage(true)} className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-stone-900">
-                Personnaliser mon message
-                <ChevronDown className="w-4 h-4" />
-              </button>
-            ))}
+        <form onSubmit={onSubmit} className="mt-4 space-y-2.5">
+          {tab === 'msg' && (
+            <div>
+              <label className="sr-only" htmlFor="c-msg">Message</label>
+              <textarea id="c-msg" rows={5} className="w-full border border-stone-300 bg-white px-3 py-2 text-sm leading-relaxed placeholder:text-stone-400 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
+            </div>
+          )}
 
           <div>
             <label className="sr-only" htmlFor="c-name">Nom</label>
             <input id="c-name" name="name" autoComplete="name" placeholder="Nom" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
           </div>
-          <div>
-            <label className="sr-only" htmlFor="c-phone">Téléphone</label>
-            <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder={tab === 'tel' ? 'Téléphone' : 'Téléphone (facultatif)'} className={field} required={tab === 'tel'} minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
-          </div>
+          {tab === 'tel' && (
+            <div>
+              <label className="sr-only" htmlFor="c-phone">Téléphone</label>
+              <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="Téléphone" className={field} required minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
+            </div>
+          )}
           <div>
             <label className="sr-only" htmlFor="c-email">E-mail</label>
             <input id="c-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="E-mail" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -346,7 +350,7 @@ export default function ContactForm({
             disabled={status === 'sending'}
             className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
           >
-            {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer'}
+            {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer mon message'}
           </button>
           <p className="text-[11px] text-stone-500 leading-relaxed text-center">
             Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.
