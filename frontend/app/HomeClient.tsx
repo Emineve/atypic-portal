@@ -730,9 +730,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 className="w-full lg:w-auto min-h-[56px] px-7 py-3 inline-flex items-center justify-center gap-2 bg-[#F4E7B5] text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-white transition"
               >
                 <Send className="w-4 h-4 flex-none" />
-                {visible.length > 1 ? `Être rappelé(e) pour mes ${visible.length} favoris` : 'Être rappelé(e) pour ce bien'}
+                {visible.length > 1 ? `Me rappeler au sujet de ces ${visible.length} biens` : 'Me rappeler au sujet de ce bien'}
               </button>
-              <p className="mt-2 text-xs text-stone-400">Gratuit et sans engagement · 30 secondes</p>
             </div>
           </div>
         )}
@@ -903,7 +902,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-800 transition"
           >
             <Send className="w-4 h-4" />
-            <span>Être rappelé(e) pour mes favoris</span>
+            <span>{visible.length > 1 ? `Me rappeler au sujet de ces ${visible.length} biens` : 'Me rappeler au sujet de ce bien'}</span>
           </button>
         </div>
       )}
