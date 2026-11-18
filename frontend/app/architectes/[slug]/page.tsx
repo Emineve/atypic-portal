@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import ArchitectContact from '../../inspiration/ArchitectContact';
-import Gallery from '../../biens/[id]/Gallery';
+import PhotoMosaic from '../../biens/[id]/PhotoMosaic';
 
 export const dynamic = 'force-dynamic';
 
@@ -54,6 +54,10 @@ export default async function ArchitectPage({ params }: { params: { slug: string
   const a = await getArchitect(params.slug);
   if (!a) notFound();
   const projects = Array.isArray(a.projects) ? a.projects : [];
+  // Toutes les photos des projets, présentées comme celles d'une annonce
+  const photos = Array.from(
+    new Set(projects.flatMap((p) => [p.image, ...(Array.isArray(p.images) ? p.images : [])]).filter(Boolean) as string[]),
+  );
   const paragraphs = (a.bio || '').split(/\n\s*\n/).filter(Boolean);
 
   return (
@@ -74,13 +78,26 @@ export default async function ArchitectPage({ params }: { params: { slug: string
         </div>
       )}
 
-      <header className="max-w-4xl mx-auto px-6 pt-14 pb-10 text-center">
+      {photos.length > 0 && (
+        <div className="md:pt-6">
+          <PhotoMosaic images={photos} title={a.name} />
+        </div>
+      )}
+
+      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-12 pb-14 [&>*]:max-w-3xl">
         <p className="text-[10px] uppercase tracking-widest text-stone-400">
           Inspiration · Architecte{a.city ? ` · ${a.city}` : ''}
         </p>
-        <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{a.name}</h1>
-        {a.tagline && <p className="mt-4 text-stone-500 font-light text-lg">{a.tagline}</p>}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+        <h1 className="mt-3 text-4xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.1]">{a.name}</h1>
+        {a.tagline && <p className="mt-3 text-stone-500 font-light text-lg">{a.tagline}</p>}
+        {paragraphs.length > 0 && (
+          <div className="mt-8 space-y-5 text-stone-700 leading-relaxed">
+            {paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        )}
+        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
           {a.website && (
             <a
               href={a.website}
@@ -95,59 +112,6 @@ export default async function ArchitectPage({ params }: { params: { slug: string
           <ArchitectContact slug={a.slug} name={a.name} />
         </div>
       </header>
-
-      {paragraphs.length > 0 && (
-        <section className="max-w-2xl mx-auto px-6 pb-14 space-y-5 text-stone-700 leading-relaxed">
-          <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Son travail</h2>
-          {paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </section>
-      )}
-
-      {projects.length > 0 && (
-        <section className="max-w-5xl mx-auto px-6 pb-16">
-          <h2 className="font-serif text-2xl text-stone-900">Ce qu&apos;un volume peut devenir</h2>
-          <div className="mt-10 space-y-16">
-            {projects.map((p, i) => (
-              <figure key={i}>
-                <Gallery
-                  images={[p.image, ...(Array.isArray(p.images) ? p.images : [])].filter(Boolean) as string[]}
-                  title={p.title}
-                  thumbs={false}
-                />
-                <figcaption className="mt-4">
-                  <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                    {[
-                      // le type n'est pas répété s'il figure déjà dans le titre
-                      (p.kind || p.category) && !p.title.toLowerCase().includes(String(p.kind || p.category).toLowerCase())
-                        ? p.kind || p.category
-                        : null,
-                      p.place,
-                      p.surface,
-                      p.year,
-                    ]
-                      .filter(Boolean)
-                      .join(' · ')}
-                  </p>
-                  <p className="mt-1 font-serif text-2xl text-stone-900">{p.title}</p>
-                  {(p.url || a.website) && (
-                    <a
-                      href={p.url || a.website || undefined}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
-                    >
-                      Voir le projet
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-      )}
 
       <section className="max-w-2xl mx-auto px-6 pb-16 text-center">
         <p className="font-serif text-xl text-stone-900">Envie d&apos;un lieu à vous ?</p>
