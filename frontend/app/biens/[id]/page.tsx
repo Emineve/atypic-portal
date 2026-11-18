@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel, Zap, Leaf, Calculator } from 'lucide-react';
+import { ArrowLeft, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Zap, Leaf, Calculator } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -346,35 +346,31 @@ export default async function ListingPage({ params }: { params: { id: string } }
             {hasCopro && (
               <section className="mt-10">
                 <h2 className="font-serif text-2xl text-stone-900">La copropriété</h2>
-                <ul className="mt-5 grid gap-x-10 gap-y-5 sm:grid-cols-3 border-y border-stone-200 py-5">
+                {/* Même présentation que le prix et le budget : un intitulé à gauche, la valeur à droite */}
+                <dl className="mt-5 border-y border-stone-200 divide-y divide-stone-200 text-stone-700">
                   {item.copro_lots ? (
-                    <li className="flex items-start gap-3">
-                      <Building2 className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                      <span>
-                        <span className="block text-sm text-stone-500">Nombre de lots</span>
-                        <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_lots}</span>
-                      </span>
-                    </li>
+                    <div className="flex items-baseline justify-between gap-6 py-3.5">
+                      <dt>Nombre de lots</dt>
+                      <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{item.copro_lots}</dd>
+                    </div>
                   ) : null}
                   {Number(item.charges_yearly) > 0 ? (
-                    <li className="flex items-start gap-3">
-                      <Coins className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                      <span>
-                        <span className="block text-sm text-stone-500">Charges de copropriété</span>
-                        <span className="block font-serif text-lg leading-snug text-stone-900">{eur0(Number(item.charges_yearly))} par an</span>
-                      </span>
-                    </li>
+                    <div className="flex items-baseline justify-between gap-6 py-3.5">
+                      <dt>Charges</dt>
+                      <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
+                        {eur0(Number(item.charges_yearly))} <span className="font-sans text-sm text-stone-500">par an</span>
+                      </dd>
+                    </div>
                   ) : null}
                   {item.copro_procedure ? (
-                    <li className="flex items-start gap-3">
-                      <Gavel className="mt-0.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                      <span>
-                        <span className="block text-sm text-stone-500">Procédures</span>
-                        <span className="block font-serif text-lg leading-snug text-stone-900">{item.copro_procedure}</span>
-                      </span>
-                    </li>
+                    <div className="flex items-baseline justify-between gap-6 py-3.5">
+                      <dt>Procédures en cours</dt>
+                      <dd className="font-serif text-lg text-stone-900 text-right">
+                        {/^aucune/i.test(String(item.copro_procedure)) ? 'Aucune' : item.copro_procedure}
+                      </dd>
+                    </div>
                   ) : null}
-                </ul>
+                </dl>
               </section>
             )}
 
