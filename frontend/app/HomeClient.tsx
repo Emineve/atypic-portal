@@ -723,7 +723,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <div className="mb-8 bg-stone-900 text-white p-6 md:p-8 flex flex-col lg:flex-row lg:items-center gap-6">
             <div className="flex-1">
               <p className="font-serif text-2xl md:text-3xl leading-tight">
-                Et si votre prochain lieu de vie était ici ?
+                {visible.length > 1
+                  ? `Et si le bien de vos rêves se trouvait parmi vos ${visible.length} favoris ?`
+                  : 'Et si le bien de vos rêves, c’était celui-ci ?'}
               </p>
               <p className="mt-2 text-stone-300 leading-relaxed">
                 {visible.length > 1
