@@ -30,6 +30,9 @@ interface Listing {
   dpe_class: string | null;
   ges_class: string | null;
   charges_yearly: number | null;
+  energy_cost_min?: number | null;
+  energy_cost_max?: number | null;
+  energy_cost_ref?: string | null;
   contact_name: string | null;
   contact_phone: string | null;
 }
@@ -56,6 +59,9 @@ interface Form {
   dpe_class: string;
   ges_class: string;
   charges_yearly: string;
+  energy_cost_min: string;
+  energy_cost_max: string;
+  energy_cost_ref: string;
   contact_name: string;
   contact_phone: string;
   is_active: boolean;
@@ -64,7 +70,7 @@ interface Form {
 const EMPTY: Form = {
   id: null, title: '', source_agency: '', source_url: '', short_description: '', price: '', surface_sqm: '',
   rooms: '', bedrooms: '', city: '', postal_code: '', district: '', atypic_category: CATEGORY_LIST[0],
-  atypic_tags: '', curation_score: '0', images: '', floor: '', dpe_class: '', ges_class: '', charges_yearly: '',
+  atypic_tags: '', curation_score: '0', images: '', floor: '', dpe_class: '', ges_class: '', charges_yearly: '', energy_cost_min: '', energy_cost_max: '', energy_cost_ref: '',
   contact_name: '', contact_phone: '', is_active: true,
 };
 
@@ -96,6 +102,9 @@ function toForm(l: Listing): Form {
     dpe_class: l.dpe_class || '',
     ges_class: l.ges_class || '',
     charges_yearly: str(l.charges_yearly),
+    energy_cost_min: str(l.energy_cost_min ?? null),
+    energy_cost_max: str(l.energy_cost_max ?? null),
+    energy_cost_ref: l.energy_cost_ref || '',
     contact_name: l.contact_name || '',
     contact_phone: l.contact_phone || '',
     is_active: l.is_active,
@@ -295,6 +304,9 @@ export default function AdminAnnonces() {
       dpe_class: form.dpe_class,
       ges_class: form.ges_class,
       charges_yearly: num(form.charges_yearly),
+      energy_cost_min: num(form.energy_cost_min),
+      energy_cost_max: num(form.energy_cost_max),
+      energy_cost_ref: form.energy_cost_ref,
       contact_name: form.contact_name,
       contact_phone: form.contact_phone,
       is_active: form.is_active,
@@ -502,6 +514,18 @@ export default function AdminAnnonces() {
                     <option key={c} value={c}>{c || 'Non renseigné'}</option>
                   ))}
                 </select>
+              </div>
+              <div>
+                <label className={label}>Dépenses d&apos;énergie par an, minimum (€)</label>
+                <input className={input} inputMode="numeric" value={form.energy_cost_min} onChange={(e) => set('energy_cost_min', e.target.value)} />
+              </div>
+              <div>
+                <label className={label}>Dépenses d&apos;énergie par an, maximum (€)</label>
+                <input className={input} inputMode="numeric" value={form.energy_cost_max} onChange={(e) => set('energy_cost_max', e.target.value)} />
+              </div>
+              <div className="col-span-2">
+                <label className={label}>Années de référence des prix de l&apos;énergie (ex. 2021, 2022, 2023)</label>
+                <input className={input} value={form.energy_cost_ref} onChange={(e) => set('energy_cost_ref', e.target.value)} />
               </div>
               <div className="col-span-2">
                 <label className={label}>Nom du contact</label>

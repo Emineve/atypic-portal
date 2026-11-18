@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, Wallet, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, Wallet, ChevronRight, Zap } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -105,7 +105,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
     const cityLine = /\d+\s?(er|e|ème)$/i.test(city) ? city : [city, item.postal_code].filter(Boolean).join(' ');
     facts.push(['Localisation', item.district || cityLine, MapPin]);
   }
-  const hasEnergy = Boolean(item.dpe_class || item.ges_class);
+  // Dépenses d'énergie estimées par an (fourchette du diagnostic), mises en avant quand l'annonce les donne
+  const eMin = Number(item.energy_cost_min) || 0;
+  const eMax = Number(item.energy_cost_max) || 0;
+  const eur0 = (n: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
+  const energyCost = eMin > 0 && eMax > 0 && eMax !== eMin ? `${eur0(eMin)} à ${eur0(eMax)}` : eMin > 0 || eMax > 0 ? eur0(eMax || eMin) : '';
+  const hasEnergy = Boolean(item.dpe_class || item.ges_class || energyCost);
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
   const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 30);
@@ -228,7 +233,21 @@ export default async function ListingPage({ params }: { params: { id: string } }
             {hasEnergy && (
               <div className="mt-6">
                 <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Performance énergétique</h2>
-                <div className="mt-3 flex flex-wrap gap-x-10 gap-y-4">
+                {energyCost && (
+                  <div className="mt-3 border border-stone-200 bg-white p-5 flex items-start gap-4">
+                    <Zap className="mt-1 w-6 h-6 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest text-stone-400">Dépenses d&apos;énergie estimées</p>
+                      <p className="mt-1 font-serif text-3xl leading-tight text-stone-900">
+                        {energyCost} <span className="text-base text-stone-500">par an</span>
+                      </p>
+                      <p className="mt-2 text-xs text-stone-500 leading-relaxed">
+                        Montant moyen estimé pour un usage standard, abonnement compris{item.energy_cost_ref ? `, sur la base des prix de l’énergie des années ${item.energy_cost_ref}` : ''}.
+                      </p>
+                    </div>
+                  </div>
+                )}
+                <div className="mt-4 flex flex-wrap gap-x-10 gap-y-4">
                   <DpeScale title="Énergie (DPE)" value={item.dpe_class} kind="dpe" />
                   <DpeScale title="Climat (GES)" value={item.ges_class} kind="ges" />
                 </div>
