@@ -795,7 +795,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
               return (
                 <Fragment key={item.id}>
-                <article className="group relative flex flex-col bg-white border border-stone-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <article className="group relative flex flex-col border border-stone-300 overflow-hidden hover:shadow-lg transition-all duration-300">
                   <a href={`/biens/${item.id}`} className="flex flex-1 flex-col" aria-label={item.title}>
                     <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
                       <img
@@ -833,7 +833,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                       </div>
                       <div>
                         <p className="mt-4 text-[11px] text-stone-400">{item.source_agency}</p>
-                        <div className="mt-3 pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
+                        <div className="mt-3 pt-4 border-t border-stone-200 flex items-center justify-between gap-3">
                           <span className="text-xl font-medium tracking-tight font-serif">{price}</span>
                           <span className="inline-flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover:text-stone-600 transition">
                             Voir le bien
