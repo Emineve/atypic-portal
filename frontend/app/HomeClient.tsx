@@ -879,7 +879,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <button
             type="button"
             onClick={() => openAlert('flottant')}
-            className="pointer-events-auto inline-flex items-center gap-2 bg-white text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-100 transition"
+            className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-800 transition"
           >
             <Bell className="w-4 h-4" />
             <span>Créer mon alerte</span>
