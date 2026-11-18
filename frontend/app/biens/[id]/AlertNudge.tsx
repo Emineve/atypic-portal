@@ -89,7 +89,9 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
       role="region"
       aria-label="Créer une alerte"
     >
-      <div className="pointer-events-auto relative mx-auto max-w-2xl bg-stone-900 text-white shadow-2xl px-5 py-4 sm:px-6">
+      {/* Grand écran : calé sous la colonne de texte, pour ne jamais recouvrir la carte de contact */}
+      <div className="mx-auto max-w-6xl lg:px-2">
+      <div className="pointer-events-auto relative mx-auto lg:mx-0 max-w-2xl bg-stone-900 text-white shadow-2xl px-5 py-4 sm:px-6">
         <button type="button" onClick={close} aria-label="Fermer" className="absolute top-1 right-1 h-10 w-10 flex items-center justify-center text-stone-400 hover:text-white">
           <X className="w-4 h-4" />
         </button>
@@ -134,6 +136,7 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
             </p>
           </form>
         )}
+      </div>
       </div>
     </div>
   );
