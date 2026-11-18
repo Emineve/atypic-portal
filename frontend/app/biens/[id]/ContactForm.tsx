@@ -146,27 +146,16 @@ export default function ContactForm({
     }
   }
 
-  const initials = (contactName || agency || '')
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w.charAt(0).toUpperCase())
-    .join('');
   const field = 'w-full h-11 border border-stone-300 bg-white px-3 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
   return (
     <div className="space-y-4">
-      <div className="border border-stone-200 bg-white">
+      <div className="border border-stone-900 bg-white shadow-[0_10px_30px_rgba(13,15,17,0.10)]">
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
-          <div className="flex items-center gap-3">
-            <span className="h-11 w-11 flex-none rounded-full bg-stone-900 text-white font-serif text-base flex items-center justify-center" aria-hidden="true">
-              {initials}
-            </span>
-            <div className="min-w-0">
-              <p className="font-serif text-lg leading-tight text-stone-900 truncate">{contactName || agency}</p>
-              <p className="text-xs text-stone-500 truncate">{contactName ? agency : 'Votre contact pour ce bien'}</p>
-            </div>
+          <div className="min-w-0">
+            <p className="font-serif text-xl leading-tight text-stone-900 truncate">{contactName || agency}</p>
+            <p className="mt-0.5 text-xs text-stone-500 truncate">{contactName ? agency : 'Votre contact pour ce bien'}</p>
           </div>
           {phone && (
             <div className={`mt-4 grid gap-2 ${wa ? 'grid-cols-2' : 'grid-cols-1'}`}>
