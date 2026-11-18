@@ -62,6 +62,27 @@ export default function ContactForm({
     .filter(Boolean)
     .join(', ');
 
+  // Après la demande : partager sa recherche avec l'agence que l'on vient de contacter, et elle seule
+  const [shareStatus, setShareStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  async function shareCriteria() {
+    setShareStatus('sending');
+    try {
+      const { data, error } = await getSupabase().rpc('submit_agency_search', {
+        p_agency: agency,
+        p_name: name,
+        p_email: email,
+        p_phone: tel || null,
+        p_location: city || null,
+        p_budget_max: alertBudget,
+        p_surface_min: null,
+        p_message: `Recherche partagée après une demande sur le bien « ${title || ''} »${reference ? ` (réf. ${reference})` : ''}.`,
+      });
+      setShareStatus(!error && data === true ? 'done' : 'error');
+    } catch {
+      setShareStatus('error');
+    }
+  }
+
   async function createAlert() {
     setAlertStatus('sending');
     try {
@@ -212,6 +233,31 @@ export default function ContactForm({
                       En créant l&apos;alerte, vous acceptez de recevoir ces e-mails à l&apos;adresse {email}. Arrêt possible à tout moment.
                     </p>
                   </div>
+                )}
+                {alertLabel && shareStatus !== 'done' && (
+                  <div className="mt-4 border border-stone-200 bg-white p-5 text-left">
+                    <p className="font-serif text-lg text-stone-900 leading-snug">Partager ma recherche avec {agency} ?</p>
+                    <p className="mt-1 text-sm text-stone-600 leading-relaxed">
+                      L&apos;agence pourra vous proposer d&apos;autres biens, y compris avant leur mise en ligne : {alertLabel}.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={shareCriteria}
+                      disabled={shareStatus === 'sending'}
+                      className="mt-4 w-full h-12 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition disabled:opacity-50"
+                    >
+                      {shareStatus === 'sending' ? 'Un instant…' : 'Partager mes critères'}
+                    </button>
+                    {shareStatus === 'error' && <p className="mt-2 text-xs text-red-700">Le partage n&apos;a pas abouti. Réessayez.</p>}
+                    <p className="mt-3 text-[11px] text-stone-500 leading-relaxed">
+                      Vos critères et vos coordonnées sont transmis uniquement à {agency}.
+                    </p>
+                  </div>
+                )}
+                {shareStatus === 'done' && (
+                  <p className="mt-4 border border-stone-900 bg-white p-4 text-sm text-stone-900">
+                    Recherche partagée avec {agency}.
+                  </p>
                 )}
                 {alertStatus === 'done' && (
                   <p className="mt-8 border border-stone-900 bg-white p-4 text-sm text-stone-900">

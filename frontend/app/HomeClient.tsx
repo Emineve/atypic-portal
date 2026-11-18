@@ -243,19 +243,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
     return list;
   }, [listings]);
 
-  // Agences du site et villes où elles ont des biens : pour transmettre une recherche depuis l'alerte
-  const alertAgencies = useMemo(() => {
-    const map = new Map<string, { name: string; cities: string[]; count: number }>();
-    listings.forEach((l) => {
-      if (!l.source_agency) return;
-      const a = map.get(l.source_agency) || { name: l.source_agency, cities: [], count: 0 };
-      a.count += 1;
-      if (l.city && !a.cities.includes(l.city)) a.cities.push(l.city);
-      map.set(l.source_agency, a);
-    });
-    return Array.from(map.values());
-  }, [listings]);
-
   // Lieux et budget de la recherche en cours : mémorisés pour pré-remplir les formulaires du site
   useEffect(() => {
     saveVisitor({ locations: places.filter((p) => p.kind === 'city').map((p) => p.value), budget: filters.priceMax });
@@ -930,7 +917,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         countMatches={countAlertMatches}
         onShowMatches={showAlertMatches}
         types={typeOptions}
-        agencies={alertAgencies}
       />
     </div>
   );
