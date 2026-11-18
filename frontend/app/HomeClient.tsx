@@ -1,7 +1,7 @@
 'use client';
 
 import Logo from './Logo';
-import { useState, useEffect, useMemo, Fragment } from 'react';
+import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import AlertBox from './AlertBox';
@@ -116,6 +116,16 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   const [favorites, setFavorites] = useState<string[]>([]);
   const [onlyFavs, setOnlyFavs] = useState(false);
   const [favContactOpen, setFavContactOpen] = useState(false);
+  // Le bouton flottant « Créer mon alerte » s'efface quand le pied de page est à l'écran
+  const footerRef = useRef<HTMLElement>(null);
+  const [footerVisible, setFooterVisible] = useState(false);
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(([entry]) => setFooterVisible(entry.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   const [savedSearch, setSavedSearch] = useState<string | null>(null); // recherche déjà enregistrée en alerte
 
   // Favoris mémorisés dans le navigateur
@@ -844,18 +854,20 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         )}
       </main>
 
-      <footer className="border-t border-stone-200 bg-white">
-        <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
-        <div className="max-w-3xl mx-auto px-6 py-12 text-center">
-          <h2 className="font-serif text-2xl text-stone-900">Soyez le premier informé</h2>
-          <p className="mt-2 text-sm text-stone-500">Recevez en avant-première les nouveaux biens atypiques mis en vente par les agences les plus prestigieuses.</p>
-          <div className="mt-6 text-left max-w-xl mx-auto">
+      <footer ref={footerRef} className="border-t border-stone-200 bg-white">
+        <div className="border-b border-stone-200 bg-[#FDFBF7]">
+          <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-x-12 gap-y-5 md:items-center">
+            <div>
+              <h2 className="font-serif text-2xl text-stone-900">Soyez le premier informé</h2>
+              <p className="mt-2 text-sm text-stone-500 max-w-md">Recevez en avant-première les nouveaux biens atypiques mis en vente par les agences les plus prestigieuses.</p>
+            </div>
             <AlertBox kind="newsletter" />
           </div>
         </div>
+        <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
       </footer>
 
-      {scrolled && !onlyFavs && !showFilters && !alertOpen && !favContactOpen && !loading && !errorMessage && (
+      {scrolled && !footerVisible && !onlyFavs && !showFilters && !alertOpen && !favContactOpen && !loading && !errorMessage && (
         <div
           className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
           style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
