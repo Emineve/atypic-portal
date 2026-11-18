@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
-import { Phone, Check } from 'lucide-react';
+import { Phone, Check, Mail, ChevronDown } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_BUTTON, WHATSAPP_ICON_PATH } from './whatsapp';
 
@@ -39,10 +39,11 @@ export default function ContactForm({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
-  const wantCall = true; // la demande est toujours une demande de rappel
-  const [wantPlan, setWantPlan] = useState(false); // recevoir le plan du bien
+  const [tab, setTab] = useState<'tel' | 'msg'>('tel'); // onglets « Téléphone » et « Contacter »
   const [showMessage, setShowMessage] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(
+    'Bonjour,\n\nJ’aimerais avoir plus de renseignements sur ce bien. Merci de me recontacter à cet effet.\n\nCordialement'
+  );
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   // Coordonnées déjà saisies ailleurs sur le site : reprises d'office
   useEffect(() => {
@@ -133,14 +134,10 @@ export default function ContactForm({
         p_name: name,
         p_email: email,
         p_phone: tel || null,
-        p_message: [
-          wantCall ? 'Souhaite être rappelé.' : null,
-          wantPlan ? 'Souhaite recevoir le plan du bien.' : null,
-          !wantCall && !wantPlan ? 'Demande d’information.' : null,
-          message.trim() ? `Message : ${message.trim()}` : null,
-        ]
-          .filter(Boolean)
-          .join(' '),
+        p_message:
+          tab === 'tel'
+            ? 'Souhaite être rappelé.'
+            : ['Demande d’information.', message.trim() ? `Message : ${message.trim()}` : null].filter(Boolean).join(' '),
         p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
       });
       if (!error && data === true) saveVisitor({ name, email, phone: tel });
@@ -154,11 +151,33 @@ export default function ContactForm({
 
   return (
     <div className="space-y-4">
-      {phone && (
-        <div className="border border-stone-200 bg-white p-6">
-                    <p className="text-[10px] uppercase tracking-widest text-stone-400">Votre contact pour ce bien</p>
+      <div className="border border-stone-200 bg-white">
+        <div className="grid grid-cols-2" role="tablist" aria-label="Contacter l'agence">
+          {([
+            ['tel', 'Téléphone', Phone],
+            ['msg', 'Contacter', Mail],
+          ] as const).map(([key, label, Icon]) => (
+            <button
+              key={key}
+              type="button"
+              role="tab"
+              aria-selected={tab === key}
+              onClick={() => setTab(key)}
+              className={`h-14 inline-flex items-center justify-center gap-2 text-sm font-medium transition ${
+                tab === key ? 'bg-stone-900 text-white' : 'bg-stone-100 text-stone-600 hover:text-stone-900'
+              }`}
+            >
+              <Icon className="w-4 h-4" />
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="p-6">
+          <p className="text-[10px] uppercase tracking-widest text-stone-400">Votre contact pour ce bien</p>
           <p className="mt-1 font-serif text-xl text-stone-900">{contactName || agency}</p>
           {contactName && <p className="text-xs text-stone-500">{agency}</p>}
+      {tab === 'tel' && phone && (
+        <div>
           {shown ? (
             <a
               href={`tel:${phone.replace(/[^+\d]/g, '')}`}
@@ -196,7 +215,7 @@ export default function ContactForm({
 
       {status === 'done' ? (
         <>
-          <div className="border border-stone-900 bg-white p-6 flex items-start gap-3">
+          <div className="mt-5 border-t border-stone-200 pt-5 flex items-start gap-3">
             <span className="mt-0.5 h-7 w-7 flex-none rounded-full bg-stone-900 text-white flex items-center justify-center">
               <Check className="w-4 h-4" />
             </span>
@@ -282,8 +301,23 @@ export default function ContactForm({
           )}
         </>
       ) : (
-        <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-6 space-y-3">
-          <h2 className="font-serif text-xl text-stone-900">Demande d&apos;information</h2>
+        <form onSubmit={onSubmit} className="mt-5 border-t border-stone-200 pt-5 space-y-3">
+          <h2 className="font-serif text-xl text-stone-900">
+            {tab === 'tel' ? 'Désirez-vous être rappelé(e) ?' : 'Demande d’information'}
+          </h2>
+
+          {tab === 'msg' &&
+            (showMessage ? (
+              <div>
+                <label className="sr-only" htmlFor="c-msg">Message</label>
+                <textarea id="c-msg" rows={6} className="w-full border border-stone-300 bg-white px-3 py-2 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
+              </div>
+            ) : (
+              <button type="button" onClick={() => setShowMessage(true)} className="inline-flex items-center gap-1.5 text-sm text-stone-700 hover:text-stone-900">
+                Personnaliser mon message
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            ))}
 
           <div>
             <label className="sr-only" htmlFor="c-name">Nom</label>
@@ -291,31 +325,12 @@ export default function ContactForm({
           </div>
           <div>
             <label className="sr-only" htmlFor="c-phone">Téléphone</label>
-            <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="Téléphone" className={field} required minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
+            <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder={tab === 'tel' ? 'Téléphone' : 'Téléphone (facultatif)'} className={field} required={tab === 'tel'} minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
           </div>
           <div>
             <label className="sr-only" htmlFor="c-email">E-mail</label>
             <input id="c-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="E-mail" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
-
-          {showMessage ? (
-            <div>
-              <label className="sr-only" htmlFor="c-msg">Message</label>
-              <textarea id="c-msg" rows={3} placeholder="Votre message" className="w-full border border-stone-300 bg-white px-3 py-2 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
-            </div>
-          ) : (
-            <button type="button" onClick={() => setShowMessage(true)} className="text-xs text-stone-600 underline underline-offset-4 hover:text-stone-900">
-              Ajouter un message
-            </button>
-          )}
-
-          {/* Sans plan téléchargeable : l'acheteur peut le demander à l'agence, d'une simple coche */}
-          {!hasPlan && (
-            <label className="flex items-center gap-2 text-sm text-stone-700 cursor-pointer">
-              <input type="checkbox" className="h-4 w-4 accent-stone-900" checked={wantPlan} onChange={(e) => setWantPlan(e.target.checked)} />
-              Je souhaite aussi recevoir le plan
-            </label>
-          )}
 
           {/* Champ piège : invisible pour les humains */}
           <div className="hidden" aria-hidden="true">
@@ -331,13 +346,15 @@ export default function ContactForm({
             disabled={status === 'sending'}
             className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
           >
-            {status === 'sending' ? 'Envoi…' : 'Être rappelé'}
+            {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer'}
           </button>
           <p className="text-[11px] text-stone-500 leading-relaxed text-center">
             Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.
           </p>
         </form>
       )}
+        </div>
+      </div>
     </div>
   );
 }
