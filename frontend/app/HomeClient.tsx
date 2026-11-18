@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, Fragment } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft } from 'lucide-react';
+import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import AlertBox from './AlertBox';
 import AlertDialog from './AlertDialog';
@@ -86,6 +86,11 @@ function matchesPlace(item: { city: string; district: string | null }, p: Place)
   return item.city === p.value;
 }
 
+// Empreinte d'une recherche, pour reconnaître celle qui vient d'être enregistrée en alerte
+function searchSignature(f: Filters, places: Place[], query: string) {
+  return JSON.stringify([f, places.map((p) => p.kind + ':' + p.city + ':' + p.value), query.trim()]);
+}
+
 function isNew(date: string | null) {
   if (!date) return false;
   return Date.now() - new Date(date).getTime() < NEW_DAYS * 86400000;
@@ -109,6 +114,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   const [favorites, setFavorites] = useState<string[]>([]);
   const [onlyFavs, setOnlyFavs] = useState(false);
   const [favContactOpen, setFavContactOpen] = useState(false);
+  const [savedSearch, setSavedSearch] = useState<string | null>(null); // recherche déjà enregistrée en alerte
 
   // Favoris mémorisés dans le navigateur
   useEffect(() => {
@@ -312,15 +318,21 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
   // Affiche ces biens : la recherche de l'accueil reprend les critères de l'alerte
   function showAlertMatches(f: Filters, locations: string[]) {
-    setFilters({ ...f, nice: [] });
-    setPlaces(alertPlaces(locations));
+    const nextFilters = { ...f, nice: [] };
+    const nextPlaces = alertPlaces(locations);
+    setFilters(nextFilters);
+    setPlaces(nextPlaces);
     setQuery('');
+    // Ces résultats sont ceux de l'alerte qui vient d'être créée : inutile de proposer de l'enregistrer
+    setSavedSearch(searchSignature(nextFilters, nextPlaces, ''));
     setOnlyFavs(false);
     setShowFilters(false);
     setTimeout(() => document.getElementById('resultats')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   }
 
   const activeFilters = countActive(filters);
+  // La recherche affichée est-elle exactement celle de l'alerte qui vient d'être créée ?
+  const alreadySaved = savedSearch !== null && savedSearch === searchSignature(filters, places, query);
   // Une vraie recherche est en cours (filtres ou lieu saisi) : on propose de l'enregistrer en alerte
   const searchActive = activeFilters > 0 || query.trim() !== '' || places.length > 0;
   const anythingActive = activeFilters > 0 || query.trim() !== '' || places.length > 0 || onlyFavs || sort !== 'selection';
@@ -593,7 +605,13 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <p className="font-serif text-lg text-stone-700">
                 {visible.length} {visible.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
               </p>
-              {searchActive && !onlyFavs && visible.length > 0 && (
+              {searchActive && !onlyFavs && alreadySaved && (
+                <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-500">
+                  <Check className="w-3.5 h-3.5 flex-none" />
+                  Alerte enregistrée
+                </span>
+              )}
+              {searchActive && !onlyFavs && !alreadySaved && visible.length > 0 && (
                 <button
                   type="button"
                   onClick={() => openAlert('recherche')}
@@ -750,7 +768,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
         )}
 
-        {!loading && !errorMessage && searchActive && !onlyFavs && visible.length > 0 && (
+        {!loading && !errorMessage && searchActive && !onlyFavs && !alreadySaved && visible.length > 0 && (
           <p className="mt-16 pt-8 border-t border-stone-200 font-serif text-lg md:text-xl text-stone-600 leading-relaxed">
             <button
               type="button"
