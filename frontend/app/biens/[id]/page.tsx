@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel, Zap, Leaf } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -113,8 +113,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const energyCost = eMin > 0 && eMax > 0 && eMax !== eMin ? `${eur0(eMin)} à ${eur0(eMax)}` : eMin > 0 || eMax > 0 ? eur0(eMax || eMin) : '';
   // Budget annuel : énergie, charges, taxe foncière, et leur équivalent mensuel
   const budget: [string, string][] = [];
-  const hasClasses = Boolean(item.dpe_class || item.ges_class);
-  if (energyCost || hasClasses) budget.push(['Énergie', energyCost]);
+  if (energyCost) budget.push(['Énergie', energyCost]);
   if (Number(item.charges_yearly) > 0) budget.push(['Charges de copropriété', eur0(Number(item.charges_yearly))]);
   if (Number(item.property_tax) > 0) budget.push(['Taxe foncière', eur0(Number(item.property_tax))]);
   const energyMid = eMin > 0 && eMax > 0 ? (eMin + eMax) / 2 : eMax || eMin;
@@ -249,6 +248,24 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     </div>
                   </div>
                 ))}
+                {item.dpe_class && (
+                  <div className="flex items-start gap-3">
+                    <Zap className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                    <div className="min-w-0">
+                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">Énergie (DPE)</dt>
+                      <dd className="mt-1.5"><EnergyPill kind="dpe" value={item.dpe_class} bare /></dd>
+                    </div>
+                  </div>
+                )}
+                {item.ges_class && (
+                  <div className="flex items-start gap-3">
+                    <Leaf className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
+                    <div className="min-w-0">
+                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">Climat (GES)</dt>
+                      <dd className="mt-1.5"><EnergyPill kind="ges" value={item.ges_class} bare /></dd>
+                    </div>
+                  </div>
+                )}
               </dl>
             )}
 
@@ -345,15 +362,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 <dl className="mt-5 border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
                   {budget.map(([label, value]) => (
                     <div key={label} className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3.5">
-                      <dt className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                        {label}
-                        {label === 'Énergie' && hasClasses && (
-                          <span className="inline-flex items-center gap-3">
-                            <EnergyPill kind="dpe" value={item.dpe_class} />
-                            <EnergyPill kind="ges" value={item.ges_class} />
-                          </span>
-                        )}
-                      </dt>
+                      <dt>{label}</dt>
                       {value && (
                         <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
                           {value} <span className="font-sans text-sm text-stone-500">par an</span>

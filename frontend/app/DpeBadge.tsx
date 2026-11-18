@@ -80,12 +80,24 @@ export function DpeScale({
 }
 
 // Pastille compacte pour la fiche : « DPE » suivi de la lettre dans sa couleur
-export function EnergyPill({ kind, value }: { kind: 'dpe' | 'ges'; value: string | null | undefined }) {
+export function EnergyPill({ kind, value, bare = false }: { kind: 'dpe' | 'ges'; value: string | null | undefined; bare?: boolean }) {
   const c = cleanClass(value);
   if (!c) return null;
   const i = LETTERS.indexOf(c);
   const bg = kind === 'dpe' ? DPE_COLORS[i] : GES_COLORS[i];
   const dark = kind === 'dpe' ? DARK_TEXT[i] : i < 3;
+  // « bare » : la lettre seule dans son carré de couleur, sans le libellé devant
+  if (bare) {
+    return (
+      <span
+        className="h-7 w-7 inline-flex items-center justify-center text-sm font-sans font-semibold"
+        style={{ backgroundColor: bg, color: dark ? '#1c1917' : '#ffffff' }}
+        title={kind === 'dpe' ? `Classe énergie (DPE) : ${c}` : `Classe climat (GES) : ${c}`}
+      >
+        {c}
+      </span>
+    );
+  }
   return (
     <span
       className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500"
