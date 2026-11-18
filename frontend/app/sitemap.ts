@@ -1,6 +1,7 @@
 import { getSupabase } from '../lib/supabase';
 import { CATEGORY_LIST, slugify, cityHub } from '../lib/catalog';
 import { SITE_URL } from '../lib/site';
+import { publishedArticles } from '../lib/guide';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +21,8 @@ export default async function sitemap() {
     { url: `${SITE_URL}/pro` },
     { url: `${SITE_URL}/charte` },
     { url: `${SITE_URL}/financement` },
+    { url: `${SITE_URL}/guide` },
+    ...publishedArticles().map((a) => ({ url: `${SITE_URL}/guide/${a.slug}`, lastModified: new Date(a.updated) })),
     { url: `${SITE_URL}/inspiration` },
     ...CATEGORY_LIST.filter((c) => usedCategories.has(c)).map((c) => ({ url: `${SITE_URL}/categorie/${slugify(c)}` })),
     ...cities.map((c) => ({ url: `${SITE_URL}/ville/${slugify(c)}` })),

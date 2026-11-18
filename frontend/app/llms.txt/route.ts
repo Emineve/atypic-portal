@@ -1,4 +1,5 @@
 import { getSupabase } from '../../lib/supabase';
+import { publishedArticles } from '../../lib/guide';
 import { CATEGORY_LIST, slugify, cityHub } from '../../lib/catalog';
 import { SITE_URL } from '../../lib/site';
 
@@ -38,6 +39,11 @@ export async function GET() {
     `- [Questions fréquentes : sélection des biens, fonctionnement, classement](${SITE_URL}/charte)`,
     `- [Agences : diffuser ses annonces sur Loftissime](${SITE_URL}/pro)`,
     `- [Inspiration : un architecte à la une](${SITE_URL}/inspiration)`,
+    `- [Le guide : ce qu’il faut savoir avant d’acheter un bien atypique](${SITE_URL}/guide)`,
+    '',
+    '## Le guide de l’acheteur',
+    '',
+    ...publishedArticles().map((a) => `- [${a.title}](${SITE_URL}/guide/${a.slug}) : ${a.description}`),
     '',
     '## Biens par type',
     '',
