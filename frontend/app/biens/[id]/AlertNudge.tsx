@@ -1,0 +1,140 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { Bell, X, Check } from 'lucide-react';
+import { getSupabase } from '../../../lib/supabase';
+import { readVisitor, saveVisitor } from '../../../lib/visitor';
+
+const KEY = 'loftissime:alerte-fiche'; // bandeau fermé ou alerte créée : il ne revient plus pendant la visite
+
+// Bandeau discret en bas de la fiche : après quelques secondes de lecture, il propose une alerte
+// calée sur le bien regardé (même ville, budget jusqu'à 20 % au-dessus).
+export default function AlertNudge({ city, price }: { city?: string | null; price?: number | null }) {
+  const [visible, setVisible] = useState(false);
+  const [email, setEmail] = useState('');
+  const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+
+  const budget = price && price > 0 ? Math.ceil((price * 1.2) / 50000) * 50000 : null;
+  const label = [
+    city ? `à ${city}` : null,
+    budget ? `jusqu'à ${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(budget)} €` : null,
+  ]
+    .filter(Boolean)
+    .join(', ');
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(KEY) === '1') return;
+    } catch {
+      /* stockage indisponible : le bandeau s'affiche */
+    }
+    const v = readVisitor();
+    if (v.email) setEmail(v.email);
+    const timer = setTimeout(() => setVisible(true), 12000);
+    const onScroll = () => {
+      if (window.scrollY > 900) setVisible(true);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
+  function remember() {
+    try {
+      sessionStorage.setItem(KEY, '1');
+    } catch {
+      /* stockage indisponible */
+    }
+  }
+
+  function close() {
+    remember();
+    setVisible(false);
+  }
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (website) { setStatus('done'); return; }
+    setStatus('sending');
+    try {
+      const { data, error } = await getSupabase().rpc('submit_alert', {
+        p_kind: 'alert',
+        p_email: email,
+        p_price_max: budget,
+        p_consent: true, // le bouton « Créer mon alerte » vaut accord, la ligne dessous le précise
+        p_locations: city ? [city] : null,
+        p_source: 'fiche',
+      });
+      if (!error && data === true) {
+        saveVisitor({ email });
+        remember();
+        setStatus('done');
+        setTimeout(() => setVisible(false), 4000);
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  if (!visible) return null;
+
+  return (
+    <div
+      className="fixed inset-x-0 z-30 px-4 pointer-events-none bottom-[5.5rem] lg:bottom-5"
+      role="region"
+      aria-label="Créer une alerte"
+    >
+      <div className="pointer-events-auto relative mx-auto max-w-2xl bg-stone-900 text-white shadow-2xl px-5 py-4 sm:px-6">
+        <button type="button" onClick={close} aria-label="Fermer" className="absolute top-1 right-1 h-10 w-10 flex items-center justify-center text-stone-400 hover:text-white">
+          <X className="w-4 h-4" />
+        </button>
+        {status === 'done' ? (
+          <p className="flex items-center gap-3 pr-8">
+            <span className="h-7 w-7 flex-none rounded-full bg-[#F4E7B5] text-stone-900 flex items-center justify-center">
+              <Check className="w-4 h-4" />
+            </span>
+            Alerte créée. Vous serez prévenu(e) par e-mail des prochains biens.
+          </p>
+        ) : (
+          <form onSubmit={onSubmit}>
+            <p className="flex items-start gap-3 pr-8 font-serif text-lg leading-snug">
+              <Bell className="mt-1 w-4 h-4 flex-none" />
+              Ce bien vous plaît ? Soyez prévenu(e) des prochains.
+            </p>
+            {label && <p className="mt-1 pl-7 text-sm text-stone-300">Recevez par e-mail les nouveaux biens {label}.</p>}
+            <div className="mt-3 flex gap-2 sm:pl-7">
+              <label className="sr-only" htmlFor="an-email">E-mail</label>
+              <input
+                id="an-email"
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Votre e-mail"
+                className="min-w-0 flex-1 h-11 px-3 bg-white text-stone-900 text-base placeholder:text-stone-400 focus:outline-none"
+              />
+              <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="h-11 px-4 flex-none bg-[#F4E7B5] text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-white transition disabled:opacity-60"
+              >
+                {status === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
+              </button>
+            </div>
+            {status === 'error' && <p className="mt-2 sm:pl-7 text-xs text-red-300">L&apos;alerte n&apos;a pas pu être créée. Vérifiez votre e-mail et réessayez.</p>}
+            <p className="mt-2 sm:pl-7 text-[11px] text-stone-400">
+              En créant l&apos;alerte, vous acceptez de recevoir ces e-mails. Arrêt possible à tout moment.
+            </p>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}

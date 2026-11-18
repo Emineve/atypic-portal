@@ -10,6 +10,7 @@ import ReportButton from './ReportButton';
 import PhotoMosaic from './PhotoMosaic';
 import Description from './Description';
 import PlanDownload from './PlanDownload';
+import AlertNudge from './AlertNudge';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
@@ -451,6 +452,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
       </main>
 
             <StickyContact phone={item.contact_phone} listingId={item.id} contactName={item.contact_name} title={item.title} reference={item.source_id} />
+      <AlertNudge city={item.city} price={Number(item.price)} />
 
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">
