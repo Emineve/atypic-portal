@@ -677,7 +677,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 onClick={() => setShowFilters(false)}
                 className="w-full h-14 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
               >
-                Voir {visible.length} {visible.length > 1 ? 'lieux' : 'lieu'}
+                {visible.length > 1 ? `Voir les ${visible.length} biens` : visible.length === 1 ? 'Voir le bien' : 'Aucun bien ne correspond'}
               </button>
               <button
                 type="button"
