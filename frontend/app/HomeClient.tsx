@@ -420,11 +420,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             </a>
             <a
               href="/guide"
-              aria-label="Mode d'emploi"
+              aria-label="L'état des lieux"
               className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition"
             >
               <BookOpen className="w-5 h-5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Mode d&apos;emploi</span>
+              <span className="hidden sm:inline">État des lieux</span>
             </a>
             <button
               type="button"
