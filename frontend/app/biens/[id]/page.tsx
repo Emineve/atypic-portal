@@ -298,8 +298,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
             </div>
 
-            <AlertLink city={item.city} price={Number(item.price)} />
-
             {priceNum > 0 && (
               <section className="mt-10">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
@@ -454,8 +452,10 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <StickyContact />
       <FavoriteAlertToast city={item.city} price={Number(item.price)} />
 
+      {/* Fin de fiche : les autres biens du secteur, puis l'alerte pour ceux qui n'ont pas trouvé */}
+      <section className="max-w-6xl mx-auto px-6 pb-16">
       {related.length > 0 && hubName && hubUrl && (
-        <section className="max-w-6xl mx-auto px-6 pb-16">
+        <>
                    <h2 className="font-serif text-2xl text-stone-900">Autres biens à découvrir à {hubName}</h2>
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {related.map((r) => (
@@ -475,8 +475,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
           <p className="mt-6 text-sm">
             <Link href={hubUrl} className="text-stone-700 underline underline-offset-4 hover:text-stone-900">Voir tous les biens à {hubName}</Link>
           </p>
-        </section>
+        </>
       )}
+        <div className="lg:max-w-2xl">
+          <AlertLink city={item.city} price={Number(item.price)} />
+        </div>
+      </section>
 
     </div>
   );
