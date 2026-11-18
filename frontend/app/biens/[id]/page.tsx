@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Check, Building2, Coins, Gavel } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -131,10 +131,10 @@ export default async function ListingPage({ params }: { params: { id: string } }
         ? agencyPayer
         : null;
   const feesLabel = feesPayer === 'vendeur'
-    ? 'Honoraires à la charge du vendeur'
+    ? 'Honoraires d’agence inclus, à la charge du vendeur'
     : feesPayer === 'acquereur'
-      ? 'Honoraires à la charge de l’acquéreur, inclus dans le prix'
-      : 'Honoraires d’agence inclus dans le prix';
+      ? 'Honoraires d’agence inclus, à la charge de l’acquéreur'
+      : 'Honoraires d’agence inclus';
   // Frais de notaire : estimation courante pour un bien ancien, environ 8 % du prix
   const NOTARY_RATE = 0.08;
   const priceNum = Number(item.price) || 0;
@@ -268,19 +268,13 @@ export default async function ListingPage({ params }: { params: { id: string } }
             {priceNum > 0 && (
               <section className="mt-10">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
-                <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#F4E7B5] text-stone-900 text-sm pl-2 pr-4 py-1.5">
-                  <span className="h-5 w-5 flex-none rounded-full bg-stone-900 text-white flex items-center justify-center">
-                    <Check className="w-3 h-3" />
-                  </span>
-                  {feesLabel}
-                </p>
                 <div className={`mt-5 grid gap-x-12 gap-y-8 ${hasCopro ? 'md:grid-cols-2' : ''}`}>
                   <div>
                     <dl className="border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
                       <div className="flex items-baseline justify-between gap-4 py-3">
                         <dt>
                           Prix du bien
-                          <span className="block text-xs text-stone-400">Honoraires d&apos;agence inclus</span>
+                          <span className="block text-xs text-stone-400">{feesLabel}</span>
                         </dt>
                         <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
                       </div>
