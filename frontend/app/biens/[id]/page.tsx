@@ -277,15 +277,15 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <dl className="border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
                       <div className="flex items-baseline justify-between gap-4 py-3">
                         <dt>Prix du bien</dt>
-                        <dd className="font-serif text-lg text-stone-900">{eur0(priceNum)}</dd>
+                        <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
                       </div>
                       <div className="flex items-baseline justify-between gap-4 py-3">
-                        <dt>Frais de notaire estimés <span className="text-stone-400">(environ 8 %)</span></dt>
-                        <dd className="font-serif text-lg text-stone-900">{eur0(notary)}</dd>
+                        <dt>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></dt>
+                        <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                       </div>
                       <div className="flex items-baseline justify-between gap-4 py-3 border-b border-stone-200">
                         <dt className="text-stone-900">Montant estimé du projet</dt>
-                        <dd className="font-serif text-2xl text-stone-900">{eur0(priceNum + notary)}</dd>
+                        <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">{eur0(priceNum + notary)}</dd>
                       </div>
                     </dl>
                     <p className="mt-3 text-xs text-stone-400 leading-relaxed">
