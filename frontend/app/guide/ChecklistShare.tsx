@@ -1,0 +1,51 @@
+'use client';
+
+import { useState } from 'react';
+import { Check, Share } from 'lucide-react';
+
+// Envoie la liste des documents vers l'application Notes (ou toute autre appli) du visiteur.
+// Sur téléphone, le bouton ouvre le menu de partage du système, où figure Notes.
+// Sur un ordinateur qui n'a pas ce menu, la liste est copiée : il reste à la coller.
+export default function ChecklistShare({ title, items, url }: { title: string; items: string[]; url: string }) {
+  const [state, setState] = useState<'idle' | 'copied' | 'error'>('idle');
+  const text = `${title}\n\n${items.map((it) => `☐ ${it}`).join('\n')}\n\nSource : Loftissime, ${url}`;
+
+  async function send() {
+    try {
+      if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+        await navigator.share({ title, text });
+        return;
+      }
+      await navigator.clipboard.writeText(text);
+      setState('copied');
+    } catch (e) {
+      // Partage annulé par le visiteur : rien à signaler
+      if (e instanceof Error && e.name === 'AbortError') return;
+      try {
+        await navigator.clipboard.writeText(text);
+        setState('copied');
+      } catch {
+        setState('error');
+      }
+    }
+    setTimeout(() => setState('idle'), 6000);
+  }
+
+  return (
+    <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-stone-200 pt-5">
+      <button
+        type="button"
+        onClick={send}
+        className="inline-flex h-11 items-center gap-2 px-5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-700 transition"
+      >
+        {state === 'copied' ? <Check className="w-4 h-4" /> : <Share className="w-4 h-4" />}
+        Envoyer vers mes notes
+      </button>
+      <p className="text-sm text-stone-500" aria-live="polite">
+        {state === 'copied' && 'Liste copiée : il ne reste qu’à la coller dans vos notes.'}
+        {state === 'error' && 'Impossible de copier la liste depuis ce navigateur.'}
+        {state === 'idle' && 'Pour l’avoir sous la main le jour de la visite.'}
+      </p>
+    </div>
+  );
+}

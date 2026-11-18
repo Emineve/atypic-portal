@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, Check } from 'lucide-react';
 import Logo from '../../Logo';
 import GuideArt from '../GuideArt';
+import ChecklistShare from '../ChecklistShare';
 import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
 
@@ -133,6 +134,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
                 </li>
               ))}
             </ul>
+            <ChecklistShare title={`${a.checklist.title} (${a.title})`} items={a.checklist.items} url={url} />
           </section>
         )}
 
