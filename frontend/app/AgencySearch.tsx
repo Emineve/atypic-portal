@@ -31,6 +31,17 @@ export default function AgencySearch({ agency }: { agency: string }) {
     };
   }, [open]);
 
+  // Affichage des chiffres avec des espaces : 2 000 000 et 06 85 36 76 69 (la valeur gardée reste sans espace)
+  const digitsOnly = (v: string) => v.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
+  const groupThousands = (v: string) => v.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const phoneOnly = (v: string) => v.replace(/(?!^\+)\D/g, '');
+  const groupPhone = (v: string) => {
+    const pairs = (d: string) => (d.length % 2 ? d.replace(/^(\d)(?=\d)/, '$1 ') : d).replace(/(\d{2})(?=\d)/g, '$1 ').replace(/^(\d) (\d{2})/, '$1 $2');
+    if (v.startsWith('+33')) return ('+33 ' + pairs(v.slice(3))).trim();
+    if (v.startsWith('+')) return v;
+    return pairs(v);
+  };
+
   function toNum(v: string): number | null {
     const n = Number(v.replace(/[^\d]/g, ''));
     return v.trim() !== '' && Number.isFinite(n) && n > 0 ? n : null;
@@ -123,11 +134,11 @@ export default function AgencySearch({ agency }: { agency: string }) {
                   </p>
                   <LocationPicker value={locations} onChange={setLocations} />
                   <label className="sr-only" htmlFor="as-budget">Budget maximum</label>
-                  <input id="as-budget" inputMode="numeric" value={budget} onChange={(e) => setBudget(e.target.value)} placeholder="Budget maximum (€)" className={field} />
+                  <input id="as-budget" type="text" inputMode="numeric" autoComplete="off" value={groupThousands(digitsOnly(budget))} onChange={(e) => setBudget(digitsOnly(e.target.value))} placeholder="Budget maximum (€)" className={field} />
                   <label className="sr-only" htmlFor="as-name">Nom</label>
                   <input id="as-name" required minLength={2} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom" className={field} />
                   <label className="sr-only" htmlFor="as-tel">Téléphone</label>
-                  <input id="as-tel" type="tel" required autoComplete="tel" value={tel} onChange={(e) => setTel(e.target.value)} placeholder="Téléphone" className={field} />
+                  <input id="as-tel" type="tel" required autoComplete="tel" value={groupPhone(phoneOnly(tel))} onChange={(e) => setTel(phoneOnly(e.target.value))} placeholder="Téléphone" className={field} />
                   <label className="sr-only" htmlFor="as-email">E-mail</label>
                   <input id="as-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" className={field} />
                   <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />
