@@ -635,14 +635,23 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <div className="absolute right-0 top-0 h-full w-full md:max-w-md bg-white flex flex-col shadow-xl">
             <div className="flex items-center justify-between px-6 h-16 border-b border-stone-200 shrink-0">
               <h2 className="font-serif text-xl text-stone-900">Critères</h2>
-              <button
-                type="button"
-                onClick={() => setShowFilters(false)}
-                aria-label="Fermer les critères"
-                className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={resetFilters}
+                  className="h-11 px-2 text-sm text-stone-500 underline underline-offset-4 decoration-stone-300 hover:text-stone-900"
+                >
+                  Tout effacer
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowFilters(false)}
+                  aria-label="Fermer les critères"
+                  className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             <div className="flex-1 overflow-y-auto">
@@ -662,13 +671,13 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               </div>
             </div>
 
-            <div className="border-t border-stone-200 p-4 flex gap-3 shrink-0">
+            <div className="border-t border-stone-200 px-6 pt-4 shrink-0" style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}>
               <button
                 type="button"
-                onClick={resetFilters}
-                className="h-12 px-3 text-xs uppercase tracking-wider text-stone-600 hover:text-stone-900"
+                onClick={() => setShowFilters(false)}
+                className="w-full h-14 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
               >
-                Effacer
+                Voir {visible.length} {visible.length > 1 ? 'lieux' : 'lieu'}
               </button>
               <button
                 type="button"
@@ -676,16 +685,10 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                   setShowFilters(false);
                   openAlert('filters');
                 }}
-                className="h-12 px-4 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition inline-flex items-center gap-2"
+                className="mt-1 w-full h-11 inline-flex items-center justify-center gap-2 text-sm text-stone-700 hover:text-stone-900"
               >
-                <Bell className="w-4 h-4" /> Enregistrer
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowFilters(false)}
-                className="flex-1 h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
-              >
-                Voir {visible.length} {visible.length > 1 ? 'lieux' : 'lieu'}
+                <Bell className="w-4 h-4 flex-none" />
+                <span className="underline underline-offset-4 decoration-stone-300">Enregistrer cette recherche</span>
               </button>
             </div>
           </div>
