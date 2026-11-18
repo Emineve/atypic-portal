@@ -492,13 +492,25 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 if (e.key === 'Escape') setSearchFocused(false);
               }}
               placeholder="Ville, code postal, quartier…"
-              className="w-full h-14 pl-12 pr-12 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
+              className="w-full h-14 pl-12 pr-14 sm:pr-44 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
               aria-label="Rechercher un lieu"
               role="combobox"
               aria-expanded={showSuggestions}
               aria-controls="suggestions-lieux"
               aria-autocomplete="list"
             />
+            {query === '' && (
+              <button
+                type="button"
+                onClick={locateMe}
+                disabled={geo === 'loading'}
+                aria-label="Chercher autour de moi"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-11 px-3 inline-flex items-center gap-1.5 text-sm text-stone-600 hover:text-stone-900 disabled:opacity-60"
+              >
+                <LocateFixed className={`w-5 h-5 flex-none ${geo === 'loading' ? 'animate-pulse' : ''}`} />
+                <span className="hidden sm:inline">{geo === 'loading' ? 'Localisation…' : 'Autour de moi'}</span>
+              </button>
+            )}
             {query !== '' && (
               <button
                 type="button"
@@ -550,28 +562,19 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             aria-haspopup="dialog"
           >
             <SlidersHorizontal className="w-4 h-4" />
-            <span>Filtres{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
+            <span>Critères{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
           </button>
         </div>
 
-        <div className="max-w-3xl mx-auto mt-3 text-left" aria-live="polite">
-          <button
-            type="button"
-            onClick={locateMe}
-            disabled={geo === 'loading'}
-            className="inline-flex items-center gap-1.5 min-h-[32px] text-sm text-stone-700 underline underline-offset-4 decoration-stone-300 hover:text-stone-900 hover:decoration-stone-900 disabled:opacity-60"
-          >
-            <LocateFixed className="w-4 h-4 flex-none" />
-            {geo === 'loading' ? 'Localisation en cours…' : 'Autour de moi'}
-          </button>
+        <div className="max-w-3xl mx-auto text-left" aria-live="polite">
           {geo === 'denied' && (
-            <p className="mt-1 text-xs text-stone-500">La localisation est refusée sur cet appareil. Saisissez une ville ou un code postal.</p>
+            <p className="mt-2 text-xs text-stone-500">La localisation est refusée sur cet appareil. Saisissez une ville ou un code postal.</p>
           )}
           {geo === 'error' && (
-            <p className="mt-1 text-xs text-stone-500">Impossible de vous localiser. Saisissez une ville ou un code postal.</p>
+            <p className="mt-2 text-xs text-stone-500">Impossible de vous localiser. Saisissez une ville ou un code postal.</p>
           )}
           {geo === 'none' && (
-            <p className="mt-1 text-xs text-stone-500">Aucun bien en ligne à {geoCity} pour le moment. Créez une alerte pour être prévenu(e).</p>
+            <p className="mt-2 text-xs text-stone-500">Aucun bien en ligne à {geoCity} pour le moment. Créez une alerte pour être prévenu(e).</p>
           )}
         </div>
 
@@ -614,15 +617,15 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
       )}
 
       {showFilters && (
-        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Filtres">
+        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Critères">
           <div className="absolute inset-0 bg-stone-900/40" onClick={() => setShowFilters(false)} />
           <div className="absolute right-0 top-0 h-full w-full md:max-w-md bg-white flex flex-col shadow-xl">
             <div className="flex items-center justify-between px-6 h-16 border-b border-stone-200 shrink-0">
-              <h2 className="font-serif text-xl text-stone-900">Filtres</h2>
+              <h2 className="font-serif text-xl text-stone-900">Critères</h2>
               <button
                 type="button"
                 onClick={() => setShowFilters(false)}
-                aria-label="Fermer les filtres"
+                aria-label="Fermer les critères"
                 className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900"
               >
                 <X className="w-5 h-5" />
