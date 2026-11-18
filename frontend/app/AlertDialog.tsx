@@ -82,7 +82,7 @@ function Step({
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         {n && <span className="font-serif text-3xl leading-none text-stone-300">{n}</span>}
         <h3 className="font-serif text-xl text-stone-900">{title}</h3>
-        {hint && <span className="text-xs text-stone-400">{hint}</span>}
+        {hint && <span className="text-xs text-stone-500">{hint}</span>}
       </div>
       <div className="mt-4">{children}</div>
     </section>
@@ -379,7 +379,7 @@ export default function AlertDialog({
   }
 
   const field =
-    'w-full border border-stone-300 bg-white px-4 h-12 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-900 focus:ring-1 focus:ring-stone-900 transition';
+    'w-full border border-stone-300 bg-white px-4 h-12 text-base text-stone-900 placeholder:text-stone-500 focus:outline-none focus:border-stone-900 focus:ring-1 focus:ring-stone-900 transition';
 
   const recap: string[] = [];
   if (filters.types.length) recap.push(filters.types.join(' / '));
@@ -475,14 +475,15 @@ export default function AlertDialog({
                 setProgress(max > 0 ? Math.min(1, el.scrollTop / max) : 1);
               }}
             >
-              <div className="bg-stone-900 text-white px-6 md:px-12 pt-8 pb-7 md:pt-10 md:pb-9">
-                <h2 className="pr-10 font-serif text-3xl md:text-4xl leading-[1.1]">Dites-nous ce que vous cherchez.</h2>
-                <p className="mt-3 text-sm md:text-base text-stone-300 max-w-md leading-relaxed">
-                  On vous prévient par e-mail dès qu'un lieu correspond, sans que vous ayez à revenir le chercher.
+              <div className="bg-stone-900 text-white px-6 md:px-12 pt-6 pb-5 md:pt-10 md:pb-9">
+                <h2 className="pr-10 font-serif text-[1.7rem] md:text-4xl leading-[1.1]">Dites-nous ce que vous cherchez.</h2>
+                <p className="mt-2 md:mt-3 text-sm md:text-base text-stone-300 max-w-md leading-relaxed">
+                  On vous prévient par e-mail dès qu'un lieu correspond
+                  <span className="hidden md:inline">, sans que vous ayez à revenir le chercher</span>.
                 </p>
               </div>
-              <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
-                                <Step title="Où ?" hint="Plusieurs possibles. Vide = toute la France.">
+              <div className="px-6 md:px-12 pt-6 pb-8 md:py-10 space-y-10">
+                <Step title="Où ?" hint="Plusieurs possibles. Vide = toute la France.">
                   {locations.length > 0 && (
                     <div className="mb-3 flex flex-wrap gap-2">
                       {locations.map((l) => (
@@ -710,7 +711,7 @@ export default function AlertDialog({
             </div>
             <div className="shrink-0 bg-white px-6 md:px-12 py-4">
               <p className="hidden md:block text-[11px] uppercase tracking-widest text-stone-400">Votre alerte</p>
-              <p className="md:mt-0.5 text-sm text-stone-800 truncate md:whitespace-normal md:line-clamp-2" title={recapLine}>{recapLine}</p>
+              <p className="md:mt-0.5 text-sm text-stone-800 line-clamp-2" title={recapLine}>{recapLine}</p>
               <button
                 type="submit"
                 disabled={status === 'sending'}
@@ -718,7 +719,7 @@ export default function AlertDialog({
               >
                 {status === 'sending' ? 'Enregistrement…' : 'Créer mon alerte'}
               </button>
-              <p className="mt-2 text-[11px] text-stone-400 text-center">Gratuit et sans engagement.</p>
+              <p className="mt-2 text-xs text-stone-500 text-center">Gratuit et sans engagement.</p>
             </div>
           </form>
         )}

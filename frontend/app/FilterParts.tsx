@@ -61,7 +61,7 @@ export function Section({
           aria-controls={`fp-${id}`}
           className="flex-1 flex items-center gap-2 h-12 text-left text-[13px] font-semibold uppercase tracking-wider text-stone-800"
         >
-          <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform ${open ? '' : '-rotate-90'}`} />
+          <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform ${open ? 'rotate-180' : ''}`} />
           {title}
           {active && <span className="h-1.5 w-1.5 rounded-full bg-stone-900" aria-label="actif" />}
         </button>

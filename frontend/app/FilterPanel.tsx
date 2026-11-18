@@ -21,7 +21,7 @@ export default function FilterPanel({
 }) {
   // Un type déjà coché reste affiché, même s'il n'a plus de bien, pour pouvoir le décocher
   const shownTypes = TYPES.filter((t) => types.includes(t) || value.types.includes(t));
-  // Ouvertes par défaut : surface, chambres, budget. Le type de bien et les critères suivants sont fermés.
+  // Ouvertes par défaut : budget, surface, chambres. Le type de bien et les critères suivants sont fermés.
   const [openIds, setOpenIds] = useState<string[]>(() => ['surface', 'chambres', 'budget']);
 
   const set = (patch: Partial<Filters>) => onChange({ ...value, ...patch });
@@ -49,10 +49,50 @@ export default function FilterPanel({
   const digitsOnly = (v: string) => v.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
 
   const input =
-    'w-full h-12 border border-stone-300 bg-white px-3 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
+    'w-full h-12 border border-stone-300 bg-white px-3 text-base text-stone-900 placeholder:text-stone-500 focus:outline-none focus:border-stone-900';
 
   return (
     <div>
+      <Section
+        id="budget"
+        title="Budget"
+        open={isOpen('budget')}
+        onToggle={() => toggleOpen('budget')}
+        active={value.priceMin !== '' || value.priceMax !== ''}
+        onClear={() => set({ priceMin: '', priceMax: '' })}
+        padX={padX}
+      >
+        <div className="grid grid-cols-2 gap-3">
+          <div className="relative">
+            <input
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="Minimum"
+              aria-label="Budget minimum en euros"
+              value={groupThousands(value.priceMin)}
+              onChange={(e) => set({ priceMin: digitsOnly(e.target.value) })}
+              className={`${input} pr-10`}
+            />
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-500">€</span>
+          </div>
+          <div className="relative">
+            <input
+              id="alert-budget"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="Maximum"
+              aria-label="Budget maximum en euros"
+              value={groupThousands(value.priceMax)}
+              onChange={(e) => set({ priceMax: digitsOnly(e.target.value) })}
+              className={`${input} pr-10`}
+            />
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-500">€</span>
+          </div>
+        </div>
+      </Section>
+
       <Section
         id="surface"
         title="Surface min."
@@ -73,7 +113,7 @@ export default function FilterPanel({
             onChange={(e) => set({ surfaceMin: e.target.value, surfaceMax: '' })}
             className={`${input} pr-12`}
           />
-          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">m²</span>
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-500">m²</span>
         </div>
       </Section>
 
@@ -102,46 +142,6 @@ export default function FilterPanel({
               {n === 5 ? '5+' : n}
             </button>
           ))}
-        </div>
-      </Section>
-
-      <Section
-        id="budget"
-        title="Budget"
-        open={isOpen('budget')}
-        onToggle={() => toggleOpen('budget')}
-        active={value.priceMin !== '' || value.priceMax !== ''}
-        onClear={() => set({ priceMin: '', priceMax: '' })}
-        padX={padX}
-      >
-        <div className="grid grid-cols-2 gap-3">
-          <div className="relative">
-            <input
-              type="text"
-              inputMode="numeric"
-              autoComplete="off"
-              placeholder="Minimum"
-              aria-label="Budget minimum en euros"
-              value={groupThousands(value.priceMin)}
-              onChange={(e) => set({ priceMin: digitsOnly(e.target.value) })}
-              className={`${input} pr-10`}
-            />
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">€</span>
-          </div>
-          <div className="relative">
-            <input
-              id="alert-budget"
-              type="text"
-              inputMode="numeric"
-              autoComplete="off"
-              placeholder="Maximum"
-              aria-label="Budget maximum en euros"
-              value={groupThousands(value.priceMax)}
-              onChange={(e) => set({ priceMax: digitsOnly(e.target.value) })}
-              className={`${input} pr-10`}
-            />
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-stone-400">€</span>
-          </div>
         </div>
       </Section>
 
