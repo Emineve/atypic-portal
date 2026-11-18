@@ -64,9 +64,13 @@ export default async function InspirationPage() {
         <p className="text-center py-24 text-stone-400 font-serif">Bientôt le premier architecte à la une.</p>
       ) : (
         <>
-          {photos.length > 0 && <PhotoMosaic images={photos} title={featured.name} />}
+          {photos.length > 0 && (
+            <div className="md:pt-6">
+              <PhotoMosaic images={photos} title={featured.name} />
+            </div>
+          )}
 
-          <header className="max-w-3xl mx-auto px-6 pt-10 md:pt-12 pb-14">
+          <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-12 pb-14 [&>*]:max-w-3xl">
             <p className="text-[10px] uppercase tracking-widest text-stone-400">
               Inspiration · L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
             </p>
