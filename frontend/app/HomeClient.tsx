@@ -423,8 +423,12 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               aria-label="L'état des lieux"
               className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition"
             >
-              <BookOpen className="w-5 h-5 sm:w-4 sm:h-4" />
+              <span className="relative inline-flex">
+                <BookOpen className="w-5 h-5 sm:w-4 sm:h-4" />
+                <span className="sm:hidden absolute -top-1 -right-1 h-2 w-2 rounded-full bg-[#E9C84A] ring-2 ring-white" aria-hidden="true" />
+              </span>
               <span className="hidden sm:inline">État des lieux</span>
+              <span className="hidden sm:inline-block bg-[#F4E7B5] px-1.5 py-0.5 text-[9px] font-semibold tracking-wider text-stone-900">Nouveau</span>
             </a>
             <button
               type="button"
