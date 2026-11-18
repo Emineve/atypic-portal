@@ -673,7 +673,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         </div>
       )}
 
-      <main id="resultats" className="max-w-7xl mx-auto px-6 pb-24 scroll-mt-28">
+      <main id="resultats" className={`max-w-7xl mx-auto px-6 scroll-mt-28 ${onlyFavs ? 'pb-32' : 'pb-24'}`}>
         {!loading && !errorMessage && !onlyFavs && (
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-5">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
@@ -780,7 +780,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             </div>
           )
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 sm:gap-y-14">
             {visible.map((item, index) => {
               const fav = favorites.includes(item.id);
               const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
@@ -821,10 +821,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                         </ul>
                       )}
                       <p className="mt-2.5 font-serif text-lg text-stone-900">{price}</p>
-                      <p className="mt-1 text-[11px] text-stone-400">Annonce {item.source_agency}</p>
-                      {item.source_id && (
-                        <p className="mt-0.5 text-[11px] text-stone-400">Réf. {item.source_id}</p>
-                      )}
+                      <p className="mt-1 text-[11px] text-stone-400">{item.source_agency}</p>
                     </div>
                   </a>
                   <button
@@ -912,7 +909,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-800 transition"
           >
             <Send className="w-4 h-4" />
-            <span>{visible.length > 1 ? `Me rappeler au sujet de ces ${visible.length} biens` : 'Me rappeler au sujet de ce bien'}</span>
+            <span>{visible.length > 1 ? `Être rappelé(e) pour ces ${visible.length} biens` : 'Être rappelé(e) pour ce bien'}</span>
           </button>
         </div>
       )}
