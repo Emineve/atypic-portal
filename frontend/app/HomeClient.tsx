@@ -465,6 +465,13 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             Tous les biens
           </button>
           <h1 className="mt-4 font-serif text-3xl md:text-4xl text-stone-900">Mes favoris</h1>
+          {visible.length > 0 && (
+            <p className="mt-2 text-sm text-stone-500 leading-relaxed">
+              {visible.length > 1
+                ? `${visible.length} biens · Laissez vos coordonnées une seule fois, chaque agence vous rappelle.`
+                : '1 bien · Laissez vos coordonnées, l’agence vous rappelle.'}
+            </p>
+          )}
         </header>
       ) : (
       <>
@@ -728,33 +735,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
         )}
 
-        {onlyFavs && visible.length > 0 && (
-          <div className="mb-8 bg-white border border-stone-900 text-stone-900 p-6 md:p-8 flex flex-col lg:flex-row lg:items-center gap-6">
-            <div className="flex-1">
-              <p className="font-serif text-2xl md:text-3xl leading-tight">
-                {visible.length > 1
-                  ? `Et si le bien de vos rêves se trouvait parmi vos ${visible.length} favoris ?`
-                  : 'Et si le bien de vos rêves, c’était celui-ci ?'}
-              </p>
-              <p className="mt-2 text-stone-600 leading-relaxed">
-                {visible.length > 1
-                  ? 'Laissez vos coordonnées une seule fois : chaque agence vous rappelle pour programmer une visite.'
-                  : 'Laissez vos coordonnées : l’agence vous rappelle pour programmer une visite.'}
-              </p>
-            </div>
-            <div className="shrink-0 lg:text-center">
-              <button
-                type="button"
-                onClick={() => setFavContactOpen(true)}
-                className="w-full lg:w-auto min-h-[56px] px-7 py-3 inline-flex items-center justify-center gap-2 bg-[#F4E7B5] text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition"
-              >
-                <Send className="w-4 h-4 flex-none" />
-                {visible.length > 1 ? `Me rappeler au sujet de ces ${visible.length} biens` : 'Me rappeler au sujet de ce bien'}
-              </button>
-            </div>
-          </div>
-        )}
-
         {loading ? (
           <div className="text-center py-20 text-stone-400 font-serif">Chargement des lieux remarquables...</div>
         ) : errorMessage ? (
@@ -907,7 +887,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         </div>
       )}
 
-      {scrolled && onlyFavs && visible.length > 0 && !footerVisible && !favContactOpen && (
+      {onlyFavs && visible.length > 0 && !footerVisible && !favContactOpen && (
         <div
           className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
           style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
@@ -915,7 +895,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <button
             type="button"
             onClick={() => setFavContactOpen(true)}
-            className="pointer-events-auto inline-flex items-center gap-2 bg-white text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-100 transition"
+            className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F4E7B5] text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider px-5 h-14 shadow-lg hover:bg-stone-900 hover:text-white transition"
           >
             <Send className="w-4 h-4" />
             <span>{visible.length > 1 ? `Être rappelé(e) pour ces ${visible.length} biens` : 'Être rappelé(e) pour ce bien'}</span>
