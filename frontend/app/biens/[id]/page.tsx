@@ -9,6 +9,7 @@ import ContactForm from './ContactForm';
 import ReportButton from './ReportButton';
 import PhotoMosaic from './PhotoMosaic';
 import Description from './Description';
+import PlanDownload from './PlanDownload';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
@@ -136,7 +137,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
     .join(' · ');
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
-  const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 30);
+  // Les plans ne figurent pas parmi les photos : ils se téléchargent à part, contre des coordonnées
+  const plans: string[] = Array.isArray(item.plan_images) ? item.plan_images.filter(Boolean) : [];
+  const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean)))
+    .filter((u) => !plans.includes(u as string))
+    .slice(0, 30) as string[];
     const related = await getRelated(item);
   const { count: agencyTotal } = await getSupabase()
     .from('listings')
@@ -351,8 +356,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
               Estimer ma mensualité
             </Link>
           </div>
-                    <div id="contact" className="scroll-mt-20">
-                              <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} />
+                    <PlanDownload listingId={item.id} plans={plans} title={item.title} />
+          <div id="contact" className="scroll-mt-20">
+                              <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
           </div>
           <Tracker listingId={item.id} />
           <div className="border-t border-stone-200 divide-y divide-stone-200 border-b">

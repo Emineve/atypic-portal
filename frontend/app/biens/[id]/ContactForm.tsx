@@ -23,7 +23,9 @@ export default function ContactForm({
   reference,
   city,
   price,
+  hasPlan = false,
 }: {
+  hasPlan?: boolean; // le plan est téléchargeable à part : la case « Recevoir le plan » n'a plus lieu d'être
   listingId: string;
   agency: string;
   phone?: string | null;
@@ -289,7 +291,7 @@ export default function ContactForm({
                 ['Être rappelé', wantCall, setWantCall],
                 ['Recevoir le plan', wantPlan, setWantPlan],
               ] as [string, boolean, (v: boolean) => void][]
-            ).map(([text, on, setOn]) => (
+            ).filter(([text]) => !(hasPlan && text === 'Recevoir le plan')).map(([text, on, setOn]) => (
               <button
                 key={text}
                 type="button"

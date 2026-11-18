@@ -38,6 +38,7 @@ interface Listing {
   copro_procedure?: string | null;
   property_tax?: number | null;
   bathrooms?: number | null;
+  plan_images?: string[] | null;
   contact_name: string | null;
   contact_phone: string | null;
 }
@@ -72,6 +73,7 @@ interface Form {
   copro_procedure: string;
   property_tax: string;
   bathrooms: string;
+  plan_images: string;
   contact_name: string;
   contact_phone: string;
   is_active: boolean;
@@ -80,7 +82,7 @@ interface Form {
 const EMPTY: Form = {
   id: null, title: '', source_agency: '', source_url: '', short_description: '', price: '', surface_sqm: '',
   rooms: '', bedrooms: '', city: '', postal_code: '', district: '', atypic_category: CATEGORY_LIST[0],
-  atypic_tags: '', curation_score: '0', images: '', floor: '', dpe_class: '', ges_class: '', charges_yearly: '', energy_cost_min: '', energy_cost_max: '', energy_cost_ref: '', fees_text: '', copro_lots: '', copro_procedure: '', property_tax: '', bathrooms: '',
+  atypic_tags: '', curation_score: '0', images: '', floor: '', dpe_class: '', ges_class: '', charges_yearly: '', energy_cost_min: '', energy_cost_max: '', energy_cost_ref: '', fees_text: '', copro_lots: '', copro_procedure: '', property_tax: '', bathrooms: '', plan_images: '',
   contact_name: '', contact_phone: '', is_active: true,
 };
 
@@ -120,6 +122,7 @@ function toForm(l: Listing): Form {
     copro_procedure: l.copro_procedure || '',
     property_tax: str(l.property_tax ?? null),
     bathrooms: str(l.bathrooms ?? null),
+    plan_images: (l.plan_images || []).join('\n'),
     contact_name: l.contact_name || '',
     contact_phone: l.contact_phone || '',
     is_active: l.is_active,
@@ -386,6 +389,7 @@ export default function AdminAnnonces() {
       copro_procedure: form.copro_procedure,
       property_tax: num(form.property_tax),
       bathrooms: num(form.bathrooms),
+      plan_images: form.plan_images.split(/\s+/).map((t) => t.trim()).filter(Boolean),
       contact_name: form.contact_name,
       contact_phone: form.contact_phone,
       is_active: form.is_active,
@@ -634,6 +638,17 @@ export default function AdminAnnonces() {
                 <label className={label}>Téléphone du contact</label>
                 <input className={input} value={form.contact_phone} onChange={(e) => set('contact_phone', e.target.value)} />
               </div>
+            </div>
+
+            <div className="mt-4">
+              <label className={label}>Plans (une adresse par ligne) : retirés des photos, proposés en « Télécharger le plan »</label>
+              <textarea
+                className="w-full border border-stone-300 bg-white px-3 py-2 text-xs font-mono focus:outline-none focus:border-stone-900"
+                rows={2}
+                value={form.plan_images}
+                onChange={(e) => set('plan_images', e.target.value)}
+              />
+              <p className="mt-1 text-xs text-stone-500">Copiez ici l&apos;adresse de l&apos;image du plan depuis la liste des photos ci-dessous. Sans plan, le formulaire propose la case « Recevoir le plan ».</p>
             </div>
 
             <div className="mt-4">
