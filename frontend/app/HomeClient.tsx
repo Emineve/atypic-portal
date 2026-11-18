@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Sparkles, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed, ChevronDown } from 'lucide-react';
+import { Sparkles, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
@@ -769,48 +769,58 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             </div>
           )
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 sm:gap-y-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {visible.map((item, index) => {
               const fav = favorites.includes(item.id);
               const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
               return (
                 <Fragment key={item.id}>
-                <article className="group relative">
-                  <a href={`/biens/${item.id}`} className="block" aria-label={item.title}>
-                    <div className="relative aspect-[5/4] w-full bg-stone-100 overflow-hidden">
+                <article className="group relative flex flex-col bg-white border border-stone-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+                  <a href={`/biens/${item.id}`} className="flex flex-1 flex-col" aria-label={item.title}>
+                    <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
                       <img
                         src={item.cover_image_url}
                         alt={item.title}
                         loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute top-3 left-3 bg-white/90 text-stone-900 text-[10px] uppercase tracking-widest px-2.5 py-1">
+                      <div className="absolute top-3 left-3 bg-stone-900/90 text-white text-[10px] uppercase tracking-widest px-2.5 py-1">
                         {item.atypic_category}
                       </div>
-                     
                     </div>
-                    <div className="pt-4">
-                                          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] uppercase tracking-widest text-stone-500">
-                        <span>
-                          {item.city}
-                          {item.surface_sqm ? ` · ${item.surface_sqm} m²` : ''}
-                        </span>
-                                               {isNew(item.first_seen_at) && <span>· Nouveauté</span>}
-                      </p>
-                      <h2 className="mt-1.5 font-serif text-xl leading-snug text-stone-900 line-clamp-2 group-hover:underline underline-offset-4 decoration-stone-300">
-                        {item.title}
-                      </h2>
-                      {item.atypic_tags && item.atypic_tags.length > 0 && (
-                        <ul className="mt-2.5 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
-                          {item.atypic_tags.slice(0, 3).map((tag) => (
-                            <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-[11px] text-stone-800">
-                              {tag}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      <p className="mt-2.5 font-serif text-lg text-stone-900">{price}</p>
-                      <p className="mt-1 text-[11px] text-stone-400">{item.source_agency}</p>
+                    <div className="p-6 flex flex-1 flex-col justify-between">
+                      <div>
+                        <div className="flex justify-between gap-3 text-xs text-stone-400 uppercase tracking-wider mb-2">
+                          <span>
+                            {item.city}
+                            {isNew(item.first_seen_at) && <span className="text-stone-900"> · Nouveauté</span>}
+                          </span>
+                          {item.surface_sqm ? <span className="flex-none">{Math.round(item.surface_sqm)} m²</span> : null}
+                        </div>
+                        <h2 className="font-serif text-lg leading-snug text-stone-900 line-clamp-2">{item.title}</h2>
+                        {item.short_description && (
+                          <p className="mt-1 text-xs text-stone-500 line-clamp-2 leading-relaxed">{item.short_description}</p>
+                        )}
+                        {item.atypic_tags && item.atypic_tags.length > 0 && (
+                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
+                            {item.atypic_tags.slice(0, 3).map((tag) => (
+                              <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-[11px] text-stone-800">
+                                {tag}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                      <div>
+                        <p className="mt-4 text-[11px] text-stone-400">{item.source_agency}</p>
+                        <div className="mt-3 pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
+                          <span className="text-xl font-medium tracking-tight font-serif">{price}</span>
+                          <span className="inline-flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover:text-stone-600 transition">
+                            Voir le bien
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </a>
                   <button
