@@ -29,8 +29,6 @@ export default function FavoritesContact({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
-  const [wantCall, setWantCall] = useState(true);
-  const [wantPlan, setWantPlan] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [sent, setSent] = useState(0);
@@ -71,9 +69,7 @@ export default function FavoritesContact({
     if (selected.length === 0) return;
     setStatus('sending');
     const message = [
-      wantCall ? 'Souhaite être rappelé.' : null,
-      wantPlan ? 'Souhaite recevoir le plan du bien.' : null,
-      !wantCall && !wantPlan ? 'Demande d’information.' : null,
+      'Souhaite être rappelé pour programmer une visite.',
       selected.length > 1 ? `Demande groupée depuis ses favoris (${selected.length} biens).` : null,
     ]
       .filter(Boolean)
@@ -156,31 +152,11 @@ export default function FavoritesContact({
                 <p className="text-xs text-stone-500">Seuls vos {MAX_ITEMS} premiers favoris sont proposés pour un envoi groupé.</p>
               )}
 
-              <div className="grid grid-cols-2 gap-2">
-                {([
-                  ['Être rappelé', wantCall, setWantCall],
-                  ['Recevoir le plan', wantPlan, setWantPlan],
-                ] as const).map(([label, on, set]) => (
-                  <button
-                    key={label}
-                    type="button"
-                    onClick={() => set(!on)}
-                    aria-pressed={on}
-                    className={`h-11 inline-flex items-center justify-start gap-2 text-sm transition hover:text-stone-900 ${on ? 'text-stone-900' : 'text-stone-700'}`}
-                  >
-                    <span className={`h-4 w-4 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-400'}`}>
-                      {on && <Check className="w-3 h-3" />}
-                    </span>
-                    {label}
-                  </button>
-                ))}
-              </div>
-
               <div className="space-y-2">
                 <label className="sr-only" htmlFor="fc-name">Nom</label>
                 <input id="fc-name" required minLength={2} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom" className={field} />
                 <label className="sr-only" htmlFor="fc-tel">Téléphone</label>
-                <input id="fc-tel" type="tel" required={wantCall} autoComplete="tel" value={tel} onChange={(e) => setTel(e.target.value)} placeholder="Téléphone" className={field} />
+                <input id="fc-tel" type="tel" required autoComplete="tel" value={tel} onChange={(e) => setTel(e.target.value)} placeholder="Téléphone" className={field} />
                 <label className="sr-only" htmlFor="fc-email">E-mail</label>
                 <input id="fc-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" className={field} />
                 <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />
