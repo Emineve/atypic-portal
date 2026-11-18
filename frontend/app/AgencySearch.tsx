@@ -82,7 +82,7 @@ export default function AgencySearch({ agency }: { agency: string }) {
     setOpen(true);
   }
 
-  const label = `Partager mes critères de recherche avec ${agency}`;
+  const label = `Partager ma recherche avec ${agency}`;
   const field = 'w-full h-12 border border-stone-300 bg-white px-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
   return (
@@ -95,7 +95,7 @@ export default function AgencySearch({ agency }: { agency: string }) {
           className="inline-flex h-12 items-center justify-center gap-2.5 whitespace-nowrap border border-stone-900 bg-white px-7 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:bg-stone-900 hover:text-white transition"
         >
           <Send className="w-4 h-4 flex-none" />
-          Partager mes critères
+          Partager ma recherche
         </button>
         <p className="mt-3 max-w-xs text-[13px] leading-snug text-stone-500">
           {agency} vous recontacte dès qu&apos;un bien correspond à votre recherche.
@@ -146,7 +146,7 @@ export default function AgencySearch({ agency }: { agency: string }) {
                 </div>
                 <div className="border-t border-stone-200 p-4 shrink-0">
                   <button type="submit" disabled={status === 'sending'} className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50">
-                    {status === 'sending' ? 'Envoi en cours…' : 'Partager mes critères'}
+                    {status === 'sending' ? 'Envoi en cours…' : 'Partager ma recherche'}
                   </button>
                   <p className="mt-2 text-center text-[11px] text-stone-500">
                     Vos coordonnées sont transmises uniquement à {agency}.

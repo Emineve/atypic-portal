@@ -270,7 +270,7 @@ export default function ContactForm({
                       disabled={shareStatus === 'sending'}
                       className="mt-4 w-full h-12 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition disabled:opacity-50"
                     >
-                      {shareStatus === 'sending' ? 'Un instant…' : 'Partager mes critères'}
+                      {shareStatus === 'sending' ? 'Un instant…' : 'Partager ma recherche'}
                     </button>
                     {shareStatus === 'error' && <p className="mt-2 text-xs text-red-700">Le partage n&apos;a pas abouti. Réessayez.</p>}
                     <p className="mt-3 text-[11px] text-stone-500 leading-relaxed">
