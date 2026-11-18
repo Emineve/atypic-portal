@@ -7,7 +7,7 @@ import { readVisitor, saveVisitor } from '../../../lib/visitor';
 
 const KEY = 'loftissime:alerte-fiche'; // bandeau fermé ou alerte créée : il ne revient plus pendant la visite
 
-// Bandeau discret en bas de la fiche : après quelques secondes de lecture, il propose une alerte
+// Bandeau discret en bas de la fiche : après un vrai temps de lecture, il propose une alerte
 // calée sur le bien regardé (même ville, budget jusqu'à 20 % au-dessus).
 export default function AlertNudge({ city, price }: { city?: string | null; price?: number | null }) {
   const [visible, setVisible] = useState(false);
@@ -45,12 +45,20 @@ export default function AlertNudge({ city, price }: { city?: string | null; pric
       wanted = true;
       if (!dismissed.current && !busy()) setVisible(true);
     };
-    const timer = setTimeout(show, 12000);
+    // Pas d'interruption en début de lecture : le bandeau attend 45 s sur la fiche, ou que le visiteur
+    // ait parcouru l'essentiel de la page (60 %) après au moins 20 s.
+    const start = Date.now();
+    const readEnough = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      return max > 0 && window.scrollY / max > 0.6 && Date.now() - start > 20000;
+    };
+    const timer = setTimeout(show, 45000);
     const retry = setInterval(() => {
+      if (!wanted && readEnough()) wanted = true;
       if (wanted && !dismissed.current && !busy()) setVisible(true);
     }, 4000);
     const onScroll = () => {
-      if (window.scrollY > 900) show();
+      if (readEnough()) show();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
