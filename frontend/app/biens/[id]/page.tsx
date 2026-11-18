@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, Wallet, ChevronRight, Zap } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Plus, Bath } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -97,7 +97,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   if (item.bedrooms) facts.push(['Chambres', String(item.bedrooms), BedDouble]);
   if (item.floor !== null && item.floor !== undefined) facts.push(['Étage', item.floor === 0 ? 'Rez-de-chaussée' : String(item.floor), Layers]);
   if (item.property_type) facts.push(['Type', item.property_type, Home]);
-  if (item.charges_yearly) facts.push(['Charges', `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(item.charges_yearly)} €/an`, Wallet]);
+  if (item.bathrooms) facts.push([Number(item.bathrooms) > 1 ? 'Salles d’eau' : 'Salle d’eau', String(item.bathrooms), Bath]);
   // Localisation : uniquement le niveau le plus précis de l'annonce (le quartier s'il existe, sinon la ville).
   // Le code postal est omis quand la ville porte déjà l'arrondissement (« Paris 16e »).
   if (item.city || item.district) {
@@ -110,7 +110,29 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const eMax = Number(item.energy_cost_max) || 0;
   const eur0 = (n: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
   const energyCost = eMin > 0 && eMax > 0 && eMax !== eMin ? `${eur0(eMin)} à ${eur0(eMax)}` : eMin > 0 || eMax > 0 ? eur0(eMax || eMin) : '';
-  const hasEnergy = Boolean(item.dpe_class || item.ges_class || energyCost);
+  // Budget annuel : énergie, charges, taxe foncière, et leur équivalent mensuel
+  const budget: [string, string][] = [];
+  if (energyCost) budget.push(['Énergie', energyCost]);
+  if (Number(item.charges_yearly) > 0) budget.push(['Charges de copropriété', eur0(Number(item.charges_yearly))]);
+  if (Number(item.property_tax) > 0) budget.push(['Taxe foncière', eur0(Number(item.property_tax))]);
+  const energyMid = eMin > 0 && eMax > 0 ? (eMin + eMax) / 2 : eMax || eMin;
+  const monthly = budget.length > 1
+    ? Math.round((energyMid + (Number(item.charges_yearly) || 0) + (Number(item.property_tax) || 0)) / 12 / 10) * 10
+    : 0;
+  const row = 'flex items-center gap-4 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden';
+  // Réponses courtes des mentions obligatoires, lisibles sans ouvrir le détail
+  const feesShort = /acqu[ée]reur/i.test(item.fees_text || '')
+    ? 'À la charge de l’acquéreur'
+    : /vendeur/i.test(item.fees_text || '')
+      ? 'À la charge du vendeur'
+      : 'Inclus dans le prix affiché';
+  const coproShort = [
+    item.copro_lots ? `${item.copro_lots} lots` : '',
+    item.copro_procedure ? item.copro_procedure : '',
+    !item.copro_lots && !item.copro_procedure && Number(item.charges_yearly) > 0 ? `${eur0(Number(item.charges_yearly))} de charges par an` : '',
+  ]
+    .filter(Boolean)
+    .join(' · ');
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
   const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean))).slice(0, 30);
@@ -230,34 +252,102 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </div>
             )}
 
-            {hasEnergy && (
-              <div className="mt-6">
-                <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Performance énergétique</h2>
-                {energyCost && (
-                  <div className="mt-3 border border-stone-200 bg-white p-5 flex items-start gap-4">
-                    <Zap className="mt-1 w-6 h-6 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                    <div>
-                      <p className="text-[10px] uppercase tracking-widest text-stone-400">Dépenses d&apos;énergie estimées</p>
-                      <p className="mt-1 font-serif text-3xl leading-tight text-stone-900">
-                        {energyCost} <span className="text-base text-stone-500">par an</span>
-                      </p>
-                      <p className="mt-2 text-xs text-stone-500 leading-relaxed">
-                        Montant moyen estimé pour un usage standard, abonnement compris{item.energy_cost_ref ? `, sur la base des prix de l’énergie des années ${item.energy_cost_ref}` : ''}.
-                      </p>
+            {budget.length > 0 && (
+              <section className="mt-10">
+                <h2 className="font-serif text-2xl text-stone-900">Le budget au quotidien</h2>
+                <dl className={`mt-5 grid grid-cols-1 ${budget.length === 3 ? 'sm:grid-cols-3' : budget.length === 2 ? 'sm:grid-cols-2' : ''} border-y border-stone-200 divide-y sm:divide-y-0 sm:divide-x divide-stone-200`}>
+                  {budget.map(([label, value]) => (
+                    <div key={label} className="py-5 sm:px-6 sm:first:pl-0">
+                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">{label}</dt>
+                      <dd className="mt-1 font-serif text-2xl leading-tight text-stone-900">{value}</dd>
+                      <dd className="text-sm text-stone-500">par an</dd>
                     </div>
-                  </div>
+                  ))}
+                </dl>
+                {monthly > 0 && (
+                  <p className="mt-4 text-stone-700">
+                    Soit environ <span className="font-serif text-xl text-stone-900">{eur0(monthly)}</span> par mois, hors crédit.
+                  </p>
                 )}
-                <div className="mt-4 flex flex-wrap gap-x-10 gap-y-4">
-                  <DpeScale title="Énergie (DPE)" value={item.dpe_class} kind="dpe" />
-                  <DpeScale title="Climat (GES)" value={item.ges_class} kind="ges" />
-                </div>
-              </div>
+                {energyCost && (
+                  <p className="mt-2 text-xs text-stone-400 leading-relaxed">
+                    Énergie : montant moyen estimé pour un usage standard, abonnement compris{item.energy_cost_ref ? `, sur la base des prix des années ${item.energy_cost_ref}` : ''}.
+                  </p>
+                )}
+              </section>
             )}
 
-            <p className="mt-8 text-xs text-stone-400">
-              Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}
-              {item.fees_text ? <span className="block mt-1">{item.fees_text}</span> : null}
-            </p>
+            <section className="mt-10">
+              <h2 className="font-serif text-2xl text-stone-900">L&apos;essentiel à savoir</h2>
+              <div className="mt-4 border-y border-stone-200 divide-y divide-stone-200">
+                {(item.dpe_class || item.ges_class) && (
+                  <details className="group" open>
+                    <summary className={row}>
+                      <span className="flex-1 min-w-0">
+                        <span className="block text-sm text-stone-500">Performance énergétique</span>
+                        <span className="block font-serif text-lg text-stone-900">
+                          {[item.dpe_class ? `DPE ${item.dpe_class}` : '', item.ges_class ? `GES ${item.ges_class}` : ''].filter(Boolean).join(' · ')}
+                        </span>
+                      </span>
+                      <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
+                    </summary>
+                    <div className="pb-6 flex flex-wrap gap-x-10 gap-y-4">
+                      <DpeScale title="Énergie (DPE)" value={item.dpe_class} kind="dpe" />
+                      <DpeScale title="Climat (GES)" value={item.ges_class} kind="ges" />
+                    </div>
+                  </details>
+                )}
+                <details className="group">
+                  <summary className={row}>
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-sm text-stone-500">Honoraires d&apos;agence</span>
+                      <span className="block font-serif text-lg text-stone-900">{feesShort}</span>
+                    </span>
+                    <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
+                  </summary>
+                  <p className="pb-5 text-sm text-stone-600 leading-relaxed">
+                    {item.fees_text
+                      ? item.fees_text
+                      : 'Le prix affiché comprend les honoraires d’agence. Leur répartition entre vendeur et acquéreur est précisée sur l’annonce de l’agence.'}
+                  </p>
+                </details>
+                {coproShort && (
+                  <details className="group">
+                    <summary className={row}>
+                      <span className="flex-1 min-w-0">
+                        <span className="block text-sm text-stone-500">Copropriété</span>
+                        <span className="block font-serif text-lg text-stone-900">{coproShort}</span>
+                      </span>
+                      <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
+                    </summary>
+                    <ul className="pb-5 text-sm text-stone-600 leading-relaxed space-y-1">
+                      {item.copro_lots ? <li>Bien soumis au statut de la copropriété : {item.copro_lots} lots.</li> : null}
+                      {Number(item.charges_yearly) > 0 ? <li>Charges annuelles : {eur0(Number(item.charges_yearly))}.</li> : null}
+                      {item.copro_procedure ? <li>{item.copro_procedure}.</li> : null}
+                    </ul>
+                  </details>
+                )}
+                <details className="group">
+                  <summary className={row}>
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-sm text-stone-500">Risques naturels et technologiques</span>
+                      <span className="block font-serif text-lg text-stone-900">À consulter sur Géorisques</span>
+                    </span>
+                    <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
+                  </summary>
+                  <p className="pb-5 text-sm text-stone-600 leading-relaxed">
+                    Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques :{' '}
+                    <a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" className="text-stone-900 underline underline-offset-4">
+                      www.georisques.gouv.fr
+                    </a>
+                    .
+                  </p>
+                </details>
+              </div>
+              <p className="mt-4 text-xs text-stone-400">
+                Annonce {item.source_agency}{item.source_id ? ` · Réf. ${item.source_id}` : ''}
+              </p>
+            </section>
           </div>
         </div>
 

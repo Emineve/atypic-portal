@@ -33,6 +33,11 @@ interface Listing {
   energy_cost_min?: number | null;
   energy_cost_max?: number | null;
   energy_cost_ref?: string | null;
+  fees_text?: string | null;
+  copro_lots?: number | null;
+  copro_procedure?: string | null;
+  property_tax?: number | null;
+  bathrooms?: number | null;
   contact_name: string | null;
   contact_phone: string | null;
 }
@@ -62,6 +67,11 @@ interface Form {
   energy_cost_min: string;
   energy_cost_max: string;
   energy_cost_ref: string;
+  fees_text: string;
+  copro_lots: string;
+  copro_procedure: string;
+  property_tax: string;
+  bathrooms: string;
   contact_name: string;
   contact_phone: string;
   is_active: boolean;
@@ -70,7 +80,7 @@ interface Form {
 const EMPTY: Form = {
   id: null, title: '', source_agency: '', source_url: '', short_description: '', price: '', surface_sqm: '',
   rooms: '', bedrooms: '', city: '', postal_code: '', district: '', atypic_category: CATEGORY_LIST[0],
-  atypic_tags: '', curation_score: '0', images: '', floor: '', dpe_class: '', ges_class: '', charges_yearly: '', energy_cost_min: '', energy_cost_max: '', energy_cost_ref: '',
+  atypic_tags: '', curation_score: '0', images: '', floor: '', dpe_class: '', ges_class: '', charges_yearly: '', energy_cost_min: '', energy_cost_max: '', energy_cost_ref: '', fees_text: '', copro_lots: '', copro_procedure: '', property_tax: '', bathrooms: '',
   contact_name: '', contact_phone: '', is_active: true,
 };
 
@@ -105,6 +115,11 @@ function toForm(l: Listing): Form {
     energy_cost_min: str(l.energy_cost_min ?? null),
     energy_cost_max: str(l.energy_cost_max ?? null),
     energy_cost_ref: l.energy_cost_ref || '',
+    fees_text: l.fees_text || '',
+    copro_lots: str(l.copro_lots ?? null),
+    copro_procedure: l.copro_procedure || '',
+    property_tax: str(l.property_tax ?? null),
+    bathrooms: str(l.bathrooms ?? null),
     contact_name: l.contact_name || '',
     contact_phone: l.contact_phone || '',
     is_active: l.is_active,
@@ -164,7 +179,54 @@ function parseListingPage(html: string) {
   };
   ([] as any[]).concat(node.image || []).forEach(addImage);
   addImage(meta('og:image'));
+
+  // Mentions obligatoires, lues dans le texte de la page (formules légales, proches d'une agence à l'autre)
+  doc.querySelectorAll('script, style, noscript').forEach((el) => el.remove());
+  const text = (doc.body ? doc.body.textContent || '' : '').replace(/[\u00a0\u202f]/g, ' ').replace(/\s+/g, ' ');
+  const digits = (s: string | undefined) => (s || '').replace(/\D/g, '');
+  const energy = text.match(/d[ée]penses annuelles d.[ée]nergie[^€]{0,200}?entre\s*([\d ]+)\s*€\s*et\s*([\d ]+)\s*€/i);
+  const energyRef = text.match(/index[ée]es?\s+(?:aux|sur les)\s+ann[ée]es?\s+((?:\d{4}[,\s]*(?:et\s*)?)+)/i);
+  const feesRaw = text.match(/honoraires[^.;!?]{0,200}?charge\s+(?:du\s+|de\s+l.)?(?:vendeur|acqu[ée]reur)[^.;!?]{0,80}/i);
+  // On ne garde que la phrase : à partir du dernier « honoraires » qui précède « charge »
+  let fees = '';
+  if (feesRaw) {
+    const low = feesRaw[0].toLowerCase();
+    const start = low.lastIndexOf('honoraires', low.indexOf('charge'));
+    const before = feesRaw[0].slice(Math.max(0, start - 4), start).toLowerCase();
+    fees = feesRaw[0].slice(before === 'les ' ? start - 4 : start).trim();
+    fees = fees.charAt(0).toUpperCase() + fees.slice(1);
+  }
+  const tax = text.match(/taxe fonci[èe]re\s*:?\s*([\d ]{2,9})\s*€/i);
+  const baths = text.match(/(\d{1,2})\s*salles?\s+d.eau/i) || text.match(/(\d{1,2})\s*salles?\s+de\s+bains?/i);
+  const floorNo = text.match(/[ée]tage\s*:\s*(\d{1,2})\b/i);
+  const lots = text.match(/copropri[ée]t[ée][^.]{0,120}?(\d{1,4})\s*lots/i) || text.match(/(\d{1,4})\s*lots[^.]{0,60}copropri[ée]t[ée]/i);
+  const charges =
+    text.match(/charges\s+annuelles\s*:?\s*([\d ]{2,9})\s*€/i) || text.match(/charges?[^.€]{0,80}?([\d ]{2,9})\s*€\s*(?:\/|par)\s*an/i);
+  const procYesNo = text.match(/proc[ée]dures?\s+en\s+cours\s*:?\s*(oui|non)\b/i);
+  const procedure = procYesNo
+    ? (/non/i.test(procYesNo[1]) ? 'Aucune procédure en cours' : 'Procédure en cours')
+    : /(?:pas de|aucune|sans)\s+proc[ée]dure/i.test(text)
+      ? 'Aucune procédure en cours'
+      : /proc[ée]dures?\s+en\s+cours/i.test(text)
+        ? 'Procédure en cours'
+        : '';
+  const letter = (re: RegExp) => {
+    const m = text.match(re);
+    return m ? m[1].toUpperCase() : '';
+  };
   return {
+    energy_cost_min: energy ? digits(energy[1]) : '',
+    energy_cost_max: energy ? digits(energy[2]) : '',
+    energy_cost_ref: energyRef ? energyRef[1].replace(/\s*et\s*/g, ', ').replace(/[,\s]+$/, '').replace(/\s*,\s*/g, ', ') : '',
+    fees_text: fees.slice(0, 300),
+    property_tax: tax ? digits(tax[1]) : '',
+    bathrooms: baths ? baths[1] : '',
+    floor: floorNo ? floorNo[1] : '',
+    copro_lots: lots ? lots[1] : '',
+    charges_yearly: charges ? digits(charges[1]) : '',
+    copro_procedure: procedure,
+    dpe_class: letter(/\bDPE\s*(?:\(classe\)|classe)?\s*:?\s*([A-G])\b/),
+    ges_class: letter(/\bGES\s*(?:\(classe\)|classe)?\s*:?\s*([A-G])\b/),
     title: decode(node.name) || decode(meta('og:title')),
     description: decode(node.description) || decode(meta('og:description')) || decode(meta('description')),
     source_url: String(node.url || offers.url || meta('og:url') || (canonical ? canonical.getAttribute('href') : '') || '').trim(),
@@ -271,9 +333,21 @@ export default function AdminAnnonces() {
           postal_code: f.postal_code || d.postal_code,
           city: f.city || d.city,
           images: f.images.trim() ? f.images : d.images.join('\n'),
+          energy_cost_min: f.energy_cost_min || d.energy_cost_min,
+          energy_cost_max: f.energy_cost_max || d.energy_cost_max,
+          energy_cost_ref: f.energy_cost_ref || d.energy_cost_ref,
+          fees_text: f.fees_text || d.fees_text,
+          copro_lots: f.copro_lots || d.copro_lots,
+          charges_yearly: f.charges_yearly || d.charges_yearly,
+          copro_procedure: f.copro_procedure || d.copro_procedure,
+          property_tax: f.property_tax || d.property_tax,
+          bathrooms: f.bathrooms || d.bathrooms,
+          floor: f.floor || d.floor,
+          dpe_class: f.dpe_class || d.dpe_class,
+          ges_class: f.ges_class || d.ges_class,
         };
       });
-      setNotice('Page lue : le descriptif de l’annonce a été repris à l’identique. Vérifiez les champs, puis enregistrez.');
+      setNotice('Page lue : le descriptif a été repris à l’identique, et les mentions trouvées (énergie, honoraires, copropriété) ont complété les champs vides. Vérifiez-les, puis enregistrez.');
     } catch {
       setError('Lecture du fichier impossible.');
     }
@@ -307,6 +381,11 @@ export default function AdminAnnonces() {
       energy_cost_min: num(form.energy_cost_min),
       energy_cost_max: num(form.energy_cost_max),
       energy_cost_ref: form.energy_cost_ref,
+      fees_text: form.fees_text,
+      copro_lots: num(form.copro_lots),
+      copro_procedure: form.copro_procedure,
+      property_tax: num(form.property_tax),
+      bathrooms: num(form.bathrooms),
       contact_name: form.contact_name,
       contact_phone: form.contact_phone,
       is_active: form.is_active,
@@ -417,7 +496,7 @@ export default function AdminAnnonces() {
                 onChange={(e) => { importPage(e.target.files ? e.target.files[0] : undefined); e.target.value = ''; }}
               />
               <p className="mt-1 text-xs text-stone-500">
-                Le descriptif est repris tel quel. Les autres champs (titre, prix, surface, photos) ne sont complétés que s&apos;ils sont vides.
+                Le descriptif est repris tel quel. Les autres champs (titre, prix, surface, photos, énergie, honoraires, copropriété, taxe foncière) ne sont complétés que s&apos;ils sont vides. Sur une annonce déjà en ligne, ouvrez-la, choisissez sa page enregistrée, vérifiez, puis enregistrez.
               </p>
             </div>
 
@@ -526,6 +605,26 @@ export default function AdminAnnonces() {
               <div className="col-span-2">
                 <label className={label}>Années de référence des prix de l&apos;énergie (ex. 2021, 2022, 2023)</label>
                 <input className={input} value={form.energy_cost_ref} onChange={(e) => set('energy_cost_ref', e.target.value)} />
+              </div>
+              <div className="col-span-2">
+                <label className={label}>Honoraires (phrase de l&apos;annonce, ex. « Honoraires à la charge du vendeur »)</label>
+                <input className={input} value={form.fees_text} onChange={(e) => set('fees_text', e.target.value)} />
+              </div>
+              <div>
+                <label className={label}>Copropriété : nombre de lots</label>
+                <input className={input} inputMode="numeric" value={form.copro_lots} onChange={(e) => set('copro_lots', e.target.value)} />
+              </div>
+              <div>
+                <label className={label}>Copropriété : procédure (ex. « Aucune procédure en cours »)</label>
+                <input className={input} value={form.copro_procedure} onChange={(e) => set('copro_procedure', e.target.value)} />
+              </div>
+              <div>
+                <label className={label}>Taxe foncière par an (€)</label>
+                <input className={input} inputMode="numeric" value={form.property_tax} onChange={(e) => set('property_tax', e.target.value)} />
+              </div>
+              <div>
+                <label className={label}>Salles d&apos;eau / de bains</label>
+                <input className={input} inputMode="numeric" value={form.bathrooms} onChange={(e) => set('bathrooms', e.target.value)} />
               </div>
               <div className="col-span-2">
                 <label className={label}>Nom du contact</label>
