@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Check } from 'lucide-react';
 import Logo from '../../Logo';
 import GuideArt from '../GuideArt';
 import ChecklistShare from '../ChecklistShare';
+import ArticleShare from '../ArticleShare';
 import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
 
@@ -20,7 +21,16 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
     title: `${a.title} · Loftissime`,
     description: a.description,
     alternates: { canonical: `/guide/${a.slug}` },
-    openGraph: { title: a.title, description: a.description, type: 'article', publishedTime: a.published, modifiedTime: a.updated },
+    openGraph: {
+      title: a.title,
+      description: a.description,
+      type: 'article',
+      url: `/guide/${a.slug}`,
+      publishedTime: a.published,
+      modifiedTime: a.updated,
+      images: [{ url: `/guide/${a.slug}.png`, width: 1200, height: 630, alt: a.title }],
+    },
+    twitter: { card: 'summary_large_image', title: a.title, description: a.description, images: [`/guide/${a.slug}.png`] },
   };
 }
 
@@ -43,6 +53,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
     dateModified: a.updated,
     inLanguage: 'fr-FR',
     mainEntityOfPage: url,
+    image: `${SITE_URL}/guide/${a.slug}.png`,
     author: { '@type': 'Organization', name: 'Loftissime', url: SITE_URL },
     publisher: { '@type': 'Organization', name: 'Loftissime', url: SITE_URL },
   };
@@ -87,6 +98,9 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <p className="mt-5 text-sm text-stone-500">
           Mis à jour le <time dateTime={a.updated}>{formatGuideDate(a.updated)}</time> · {a.readMinutes} min de lecture
         </p>
+        <div className="mt-5">
+          <ArticleShare url={url} title={a.title} label={false} />
+        </div>
         <div className="mt-8 md:mt-10 md:max-w-3xl overflow-hidden border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
           <GuideArt art={a.art} className="block w-full aspect-[16/9] md:aspect-[12/5]" />
         </div>
@@ -164,6 +178,13 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
                 {a.listingsLink.label}
               </Link>
             )}
+          </div>
+        </section>
+
+        <section className="mt-12 border-t border-b border-stone-200 py-6">
+          <p className="font-serif text-xl text-stone-900">Cet article peut servir à quelqu&apos;un ?</p>
+          <div className="mt-4">
+            <ArticleShare url={url} title={a.title} />
           </div>
         </section>
 
