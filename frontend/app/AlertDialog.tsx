@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Bell, X, Check, MapPin } from 'lucide-react';
+import { X, Check, MapPin } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
 import FilterPanel from './FilterPanel';
 import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
@@ -470,10 +470,7 @@ export default function AlertDialog({
               }}
             >
               <div className="bg-stone-900 text-white px-6 md:px-12 pt-8 pb-7 md:pt-10 md:pb-9">
-                <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-stone-300">
-                  <Bell className="w-4 h-4" /> Mon alerte
-                </span>
-                <h2 className="mt-3 md:mt-4 font-serif text-3xl md:text-4xl leading-[1.1]">Dites-nous ce que vous cherchez.</h2>
+                <h2 className="pr-10 font-serif text-3xl md:text-4xl leading-[1.1]">Dites-nous ce que vous cherchez.</h2>
                 <p className="mt-3 text-sm md:text-base text-stone-300 max-w-md leading-relaxed">
                   On vous prévient par e-mail dès qu'un lieu correspond, sans que vous ayez à revenir le chercher.
                 </p>
