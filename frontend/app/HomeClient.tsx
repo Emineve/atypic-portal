@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, Check, LocateFixed } from 'lucide-react';
+import { Sparkles, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowRight, Check, LocateFixed } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
@@ -725,10 +725,10 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <p className="mt-2 text-stone-300 leading-relaxed">
                 Une seule demande suffit : laissez vos coordonnées une fois, et {visible.length > 1 ? 'l’agence de chaque bien vous rappelle' : 'l’agence vous rappelle'} pour organiser la visite.
               </p>
-              <ol className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-stone-300">
+              <ol className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-stone-300">
                 {['Vous choisissez les biens', 'Vous laissez vos coordonnées', 'Les agences vous rappellent'].map((step, i) => (
-                  <li key={step} className="inline-flex items-center gap-2">
-                    <span className="h-6 w-6 flex-none rounded-full bg-[#F4E7B5] text-stone-900 text-xs font-semibold flex items-center justify-center">{i + 1}</span>
+                  <li key={step} className="inline-flex items-center gap-3">
+                    {i > 0 && <ArrowRight className="w-4 h-4 flex-none text-[#F4E7B5]" aria-hidden="true" />}
                     {step}
                   </li>
                 ))}
