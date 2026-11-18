@@ -298,6 +298,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </div>
             )}
 
+            {/* Mobile : contact juste après la présentation, avant le prix et la copropriété */}
+            <div id="contact" className="lg:hidden mt-10 space-y-4 scroll-mt-20">
+              <PlanDownload listingId={item.id} plans={plans} title={item.title} />
+              <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
+            </div>
+
             <AlertLink city={item.city} price={Number(item.price)} />
 
             {priceNum > 0 && (
@@ -437,9 +443,10 @@ export default async function ListingPage({ params }: { params: { id: string } }
               Estimer ma mensualité
             </Link>
           </div>
-                    <PlanDownload listingId={item.id} plans={plans} title={item.title} />
-          <div id="contact" className="scroll-mt-20">
-                              <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
+          {/* Sur mobile, le contact est placé juste après la présentation (voir plus haut) */}
+          <div className="hidden lg:block space-y-4">
+            <PlanDownload listingId={item.id} plans={plans} title={item.title} />
+            <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
           </div>
           <Tracker listingId={item.id} />
           <div className="lg:hidden space-y-4">
