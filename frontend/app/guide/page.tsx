@@ -60,20 +60,22 @@ export default function GuideIndex() {
         )}
 
         {rest.length > 0 && (
-          <ul className="mt-12 md:mt-16 grid sm:grid-cols-2 gap-x-8 gap-y-12">
+          <ul className="mt-12 md:mt-16 grid sm:grid-cols-2 gap-8">
             {rest.map((a) => (
               <li key={a.slug}>
-                <Link href={`/guide/${a.slug}`} className="group block">
-                  <div className="overflow-hidden border border-stone-900">
+                <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                  <div className="overflow-hidden border-b border-stone-900">
                     <GuideArt art={a.art} className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
                   </div>
-                  <p className="mt-5 text-[10px] uppercase tracking-widest text-stone-400">
-                    {a.category} · {a.readMinutes} min de lecture
-                  </p>
-                  <h2 className="mt-2 font-serif text-2xl md:text-[28px] leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
-                    {a.title}
-                  </h2>
-                  <p className="mt-2 text-stone-600 leading-relaxed">{a.description}</p>
+                  <div className="p-6 md:p-7">
+                    <p className="text-[10px] uppercase tracking-widest text-stone-400">
+                      {a.category} · {a.readMinutes} min de lecture
+                    </p>
+                    <h2 className="mt-2 font-serif text-2xl md:text-[28px] leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
+                      {a.title}
+                    </h2>
+                    <p className="mt-2 text-stone-600 leading-relaxed">{a.description}</p>
+                  </div>
                 </Link>
               </li>
             ))}
