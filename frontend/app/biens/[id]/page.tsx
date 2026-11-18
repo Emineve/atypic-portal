@@ -100,13 +100,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   if (item.floor !== null && item.floor !== undefined) facts.push(['Étage', item.floor === 0 ? 'Rez-de-chaussée' : String(item.floor), Layers]);
   if (item.property_type) facts.push(['Type', item.property_type, Home]);
   if (item.bathrooms) facts.push([Number(item.bathrooms) > 1 ? 'Salles d’eau' : 'Salle d’eau', String(item.bathrooms), Bath]);
-  // Localisation : uniquement le niveau le plus précis de l'annonce (le quartier s'il existe, sinon la ville).
-  // Le code postal est omis quand la ville porte déjà l'arrondissement (« Paris 16e »).
-  if (item.city || item.district) {
-    const city: string = item.city || '';
-    const cityLine = /\d+\s?(er|e|ème)$/i.test(city) ? city : [city, item.postal_code].filter(Boolean).join(' ');
-    facts.push(['Localisation', item.district || cityLine, MapPin]);
-  }
+  // Pas de case « Localisation » : le quartier et la ville sont déjà affichés sous le titre.
   // Dépenses d'énergie estimées par an (fourchette du diagnostic), mises en avant quand l'annonce les donne
   const eMin = Number(item.energy_cost_min) || 0;
   const eMax = Number(item.energy_cost_max) || 0;
