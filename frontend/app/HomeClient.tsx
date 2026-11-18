@@ -905,7 +905,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <button
             type="button"
             onClick={() => setFavContactOpen(true)}
-            className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F4E7B5] text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider px-5 h-14 shadow-lg hover:bg-stone-900 hover:text-white transition"
+            className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-14 shadow-lg hover:bg-stone-800 transition"
           >
             <Send className="w-4 h-4" />
             <span>{visible.length > 1 ? `Être rappelé(e) pour ces ${visible.length} biens` : 'Être rappelé(e) pour ce bien'}</span>
