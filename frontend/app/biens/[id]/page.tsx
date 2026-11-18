@@ -303,7 +303,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   <p className="pb-5 text-sm text-stone-600 leading-relaxed">
                     {item.fees_text
                       ? item.fees_text
-                      : 'Le prix affiché comprend les honoraires d’agence. Leur répartition entre vendeur et acquéreur est précisée sur l’annonce de l’agence.'}
+                      : 'Le prix affiché comprend les honoraires d’agence. Selon l’annonce, ils sont à la charge du vendeur ou à la charge de l’acquéreur : l’annonce de l’agence le précise.'}
                   </p>
                 </details>
                 {coproShort && (
