@@ -76,14 +76,20 @@ export default function AgencySearch({ agency }: { agency: string }) {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={openDialog}
-        className="mt-6 inline-flex min-h-[48px] items-center justify-center gap-2 border border-stone-900 bg-white px-6 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:bg-stone-900 hover:text-white transition"
-      >
-        <Send className="w-4 h-4 flex-none" />
-        {label}
-      </button>
+      <div className="mt-7 flex flex-col items-center">
+        <button
+          type="button"
+          onClick={openDialog}
+          aria-label={label}
+          className="inline-flex h-12 items-center justify-center gap-2.5 whitespace-nowrap border border-stone-900 bg-white px-7 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:bg-stone-900 hover:text-white transition"
+        >
+          <Send className="w-4 h-4 flex-none" />
+          Partager mes critères
+        </button>
+        <p className="mt-3 max-w-xs text-[13px] leading-snug text-stone-500">
+          {agency} vous recontacte dès qu&apos;un bien correspond à votre recherche.
+        </p>
+      </div>
 
       {open && (
         <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center text-left" role="dialog" aria-modal="true" aria-label={label}>
