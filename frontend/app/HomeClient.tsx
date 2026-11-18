@@ -689,9 +689,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         {!loading && !errorMessage && !onlyFavs && (
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-5">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-              <p className="font-serif text-lg text-stone-700">
-                {visible.length} {visible.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
-              </p>
               {searchActive && !onlyFavs && alreadySaved && (
                 <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-500">
                   <Check className="w-3.5 h-3.5 flex-none" />
