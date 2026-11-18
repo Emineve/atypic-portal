@@ -246,6 +246,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
             )}
 
             <p className="mt-5 font-serif text-3xl text-stone-900 lg:hidden">{price}</p>
+            {plans.length > 0 && (
+              <div className="lg:hidden mt-1">
+                <PlanDownload listingId={item.id} plans={plans} title={item.title} variant="link" />
+              </div>
+            )}
 
             {facts.length > 0 && (
               <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-stone-200 py-6">
@@ -294,7 +299,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
             {/* Mobile : contact juste après la présentation, avant le prix et la copropriété */}
             <div id="contact" className="lg:hidden mt-10 space-y-4 scroll-mt-20">
-              <PlanDownload listingId={item.id} plans={plans} title={item.title} />
               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
             </div>
 
