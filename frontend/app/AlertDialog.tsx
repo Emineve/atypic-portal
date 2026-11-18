@@ -406,7 +406,7 @@ export default function AlertDialog({
   return (
     <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6" role="dialog" aria-modal="true" aria-label="Créer une alerte">
       <div className="absolute inset-0 bg-stone-900/60" onClick={onClose} />
-      <div className="relative w-full md:max-w-2xl max-h-[94vh] flex flex-col bg-[#FDFBF7] shadow-2xl overflow-hidden">
+      <div className="relative w-full h-[100dvh] md:h-auto md:max-w-2xl md:max-h-[94vh] flex flex-col bg-[#FDFBF7] shadow-2xl overflow-hidden">
         <button
           type="button"
           onClick={onClose}
