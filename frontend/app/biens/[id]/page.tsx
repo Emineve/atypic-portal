@@ -8,6 +8,7 @@ import { slugify, cityHub } from '../../../lib/catalog';
 import ContactForm from './ContactForm';
 import ReportButton from './ReportButton';
 import PhotoMosaic from './PhotoMosaic';
+import Description from './Description';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
@@ -211,7 +212,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </dl>
             )}
 
-            <p className="mt-6 text-stone-700 leading-relaxed whitespace-pre-line">{item.short_description}</p>
+            <Description text={item.short_description || ''} />
 
             {item.features?.length > 0 && (
               <div className="mt-6">
