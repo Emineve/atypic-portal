@@ -20,7 +20,8 @@ export default function ArticleShare({ url, title, label = true }: { url: string
   const u = encodeURIComponent(url);
   const links = {
     whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`,
-    sms: `sms:${smsSep}body=${encodeURIComponent(text)}`,
+    // Lien seul : Messages affiche alors la vignette de l'article dès la rédaction
+    sms: `sms:${smsSep}body=${u}`,
     mail: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`À lire sur Loftissime :\n\n${title}\n${url}`)}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${u}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`,
