@@ -130,7 +130,7 @@ export default function PlanDownload({
             ) : (
               <form onSubmit={onSubmit} className="flex flex-col min-h-0">
                 <div className="flex-1 overflow-y-auto px-6 py-5 space-y-2">
-                  <p className="pb-2 text-sm text-stone-600">Indiquez votre e-mail : le plan s&apos;affiche aussitôt.</p>
+                  <p className="pb-2 text-sm text-stone-600">Saisissez votre adresse e-mail pour consulter le plan.</p>
                   <label className="sr-only" htmlFor="pl-email">E-mail</label>
                   <input id="pl-email" type="email" required autoFocus autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" className={field} />
                   <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />
