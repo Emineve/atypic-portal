@@ -117,6 +117,14 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   const [favorites, setFavorites] = useState<string[]>([]);
   const [onlyFavs, setOnlyFavs] = useState(false);
   const [favContactOpen, setFavContactOpen] = useState(false);
+  // Lien « Créer mon alerte » venu d'une autre page (/?alerte=1) : la fenêtre d'alerte s'ouvre d'elle-même
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('alerte') === '1') {
+      setAlertOpen(true);
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // Le bouton flottant « Créer mon alerte » s'efface quand le pied de page est à l'écran
   const footerRef = useRef<HTMLElement>(null);
   const [footerVisible, setFooterVisible] = useState(false);

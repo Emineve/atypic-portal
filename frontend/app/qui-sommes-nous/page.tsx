@@ -50,9 +50,9 @@ export default function AboutPage() {
             correspond à vos critères.
           </p>
           <p className="mt-3">
-            <Link href="/" className={cta}>
-              <Search className="w-4 h-4" />
-              Voir toutes les annonces
+            <Link href="/?alerte=1" className={cta}>
+              <Bell className="w-4 h-4" />
+              Créer mon alerte
             </Link>
           </p>
         </section>
@@ -66,8 +66,8 @@ export default function AboutPage() {
           </p>
           <p className="mt-3">
             <Link href="/" className={cta}>
-              <Bell className="w-4 h-4" />
-              Créer mon alerte
+              <Search className="w-4 h-4" />
+              Voir toutes les annonces
             </Link>
           </p>
         </section>
