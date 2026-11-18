@@ -278,7 +278,10 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   <div>
                     <dl className="border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
                       <div className="flex items-baseline justify-between gap-4 py-3">
-                        <dt>Prix du bien</dt>
+                        <dt>
+                          Prix du bien
+                          <span className="block text-xs text-stone-400">Honoraires d&apos;agence inclus</span>
+                        </dt>
                         <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
                       </div>
                       <div className="flex items-baseline justify-between gap-4 py-3">
