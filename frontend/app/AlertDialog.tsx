@@ -461,6 +461,10 @@ export default function AlertDialog({
           </div>
         ) : (
           <form onSubmit={onSubmit} className="flex flex-col min-h-0 flex-1">
+            {/* Barre de progression, en haut : avance à mesure que l'on parcourt le formulaire */}
+            <div className="shrink-0 h-1 bg-stone-700" role="progressbar" aria-label="Avancement du formulaire" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}>
+              <div className="h-full bg-[#F4E7B5] transition-[width] duration-200 ease-out" style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} />
+            </div>
                         <div
               className="flex-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               onScroll={(e) => {
@@ -698,10 +702,6 @@ export default function AlertDialog({
               </div>
             </div>
 
-            {/* Barre de progression : avance à mesure que l'on parcourt le formulaire */}
-            <div className="shrink-0 h-1 bg-stone-200" role="progressbar" aria-label="Avancement du formulaire" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}>
-              <div className="h-full bg-stone-900 transition-[width] duration-200 ease-out" style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} />
-            </div>
             <div className="shrink-0 bg-white px-6 md:px-12 py-4">
               <p className="hidden md:block text-[11px] uppercase tracking-widest text-stone-400">Votre alerte</p>
               <p className="md:mt-0.5 text-sm text-stone-800 truncate md:whitespace-normal md:line-clamp-2" title={recapLine}>{recapLine}</p>
