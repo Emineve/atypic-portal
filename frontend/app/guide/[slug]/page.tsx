@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, Check } from 'lucide-react';
 import Logo from '../../Logo';
+import GuideArt from '../GuideArt';
 import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
 
@@ -74,19 +75,24 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </div>
       </nav>
 
-      <article className="max-w-2xl mx-auto px-6 pt-10 md:pt-14 pb-20">
+      <header className="max-w-5xl mx-auto px-6 pt-8 md:pt-12">
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-400">
           <Link href="/" className="hover:text-stone-900">Accueil</Link>
           {' › '}
           <Link href="/guide" className="hover:text-stone-900">L&apos;état des lieux</Link>
         </nav>
-        <p className="mt-6 text-[10px] uppercase tracking-widest text-stone-400">{a.category}</p>
-        <h1 className="mt-3 font-serif text-3xl md:text-5xl leading-[1.1] text-stone-900">{a.title}</h1>
-        <p className="mt-4 text-sm text-stone-500">
+        <p className="mt-8 text-[10px] uppercase tracking-widest text-stone-400">{a.category}</p>
+        <h1 className="mt-3 max-w-4xl font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-stone-900">{a.title}</h1>
+        <p className="mt-5 text-sm text-stone-500">
           Mis à jour le <time dateTime={a.updated}>{formatGuideDate(a.updated)}</time> · {a.readMinutes} min de lecture
         </p>
+        <div className="mt-8 md:mt-10 overflow-hidden border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
+          <GuideArt art={a.art} className="block w-full aspect-[16/9] md:aspect-[12/5]" />
+        </div>
+      </header>
 
-        <p className="mt-8 text-lg text-stone-700 leading-relaxed">{a.intro}</p>
+      <article className="max-w-2xl mx-auto px-6 pt-10 md:pt-14 pb-20">
+        <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{a.intro}</p>
 
         <section className="mt-8 bg-[#F4E7B5] p-6" aria-label="À retenir">
           <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-900">À retenir</h2>
@@ -177,13 +183,16 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </section>
 
         {others.length > 0 && (
-          <section className="mt-12 border-t border-stone-200 pt-8">
+          <section className="mt-12 border-t border-stone-200 pt-8 lg:-mx-24">
             <h2 className="font-serif text-2xl text-stone-900">À lire aussi</h2>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-6 grid sm:grid-cols-3 gap-6">
               {others.map((o) => (
                 <li key={o.slug}>
-                  <Link href={`/guide/${o.slug}`} className="text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
-                    {o.title}
+                  <Link href={`/guide/${o.slug}`} className="group block">
+                    <div className="overflow-hidden border border-stone-900">
+                      <GuideArt art={o.art} className="block w-full aspect-[12/7] group-hover:scale-[1.05] transition-transform duration-700" />
+                    </div>
+                    <p className="mt-3 font-serif text-lg leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">{o.title}</p>
                   </Link>
                 </li>
               ))}
