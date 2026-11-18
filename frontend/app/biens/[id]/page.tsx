@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel, Zap, Leaf, Calculator } from 'lucide-react';
+import { ArrowLeft, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Building2, Coins, Gavel, Zap, Leaf, Calculator } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -187,7 +187,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   };
 
   const agencyBlock = (
-          <div className="border-t border-stone-200 divide-y divide-stone-200 border-b">
+          <div className="border-t border-stone-200 border-b">
             <Link href={`/agence/${slugify(item.source_agency)}`} className="group flex items-center gap-4 py-4">
               <span className="flex-1 min-w-0">
                 <span className="block text-[11px] uppercase tracking-widest text-stone-400">Proposé par</span>
@@ -198,10 +198,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </span>
               <ChevronRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
             </Link>
-            <a href={`/go/${item.id}`} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 py-4">
-              <span className="flex-1 text-sm text-stone-900">Voir l&apos;annonce sur le site de l&apos;agence</span>
-              <ArrowUpRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
-            </a>
           </div>
   );
 
