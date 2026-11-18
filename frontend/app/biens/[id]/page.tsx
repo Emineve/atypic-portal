@@ -347,28 +347,37 @@ export default async function ListingPage({ params }: { params: { id: string } }
             {budget.length > 0 && (
               <section className="mt-10">
                 <h2 className="font-serif text-2xl text-stone-900">Le budget au quotidien</h2>
-                <dl className={`mt-5 grid grid-cols-1 ${budget.length === 3 ? 'sm:grid-cols-3' : budget.length === 2 ? 'sm:grid-cols-2' : ''} border-y border-stone-200 divide-y sm:divide-y-0 sm:divide-x divide-stone-200`}>
+                <dl className="mt-5 border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
                   {budget.map(([label, value]) => (
-                    <div key={label} className="py-5 sm:px-6 sm:first:pl-0">
-                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">{label}</dt>
-                      {value && <dd className="mt-1 font-serif text-2xl leading-tight text-stone-900">{value}</dd>}
-                      {value && <dd className="text-sm text-stone-500">par an</dd>}
-                      {label === 'Énergie' && hasClasses && (
-                        <dd className={`${value ? 'mt-3' : 'mt-2'} flex flex-wrap gap-x-4 gap-y-2`}>
-                          <EnergyPill kind="dpe" value={item.dpe_class} />
-                          <EnergyPill kind="ges" value={item.ges_class} />
+                    <div key={label} className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3.5">
+                      <dt className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                        {label}
+                        {label === 'Énergie' && hasClasses && (
+                          <span className="inline-flex items-center gap-3">
+                            <EnergyPill kind="dpe" value={item.dpe_class} />
+                            <EnergyPill kind="ges" value={item.ges_class} />
+                          </span>
+                        )}
+                      </dt>
+                      {value && (
+                        <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
+                          {value} <span className="font-sans text-sm text-stone-500">par an</span>
                         </dd>
                       )}
                     </div>
                   ))}
+                  {monthly > 0 && (
+                    <div className="flex items-baseline justify-between gap-6 py-4 border-b border-stone-200">
+                      <dt className="text-stone-900">
+                        Soit par mois
+                        <span className="block text-xs text-stone-400">Hors crédit</span>
+                      </dt>
+                      <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">environ {eur0(monthly)}</dd>
+                    </div>
+                  )}
                 </dl>
-                {monthly > 0 && (
-                  <p className="mt-4 text-stone-700">
-                    Soit environ <span className="font-serif text-xl text-stone-900">{eur0(monthly)}</span> par mois, hors crédit.
-                  </p>
-                )}
                 {energyCost && (
-                  <p className="mt-2 text-xs text-stone-400 leading-relaxed">
+                  <p className="mt-3 text-xs text-stone-400 leading-relaxed">
                     Énergie : montant moyen estimé pour un usage standard, abonnement compris{item.energy_cost_ref ? `, sur la base des prix des années ${item.energy_cost_ref}` : ''}.
                   </p>
                 )}
