@@ -729,14 +729,14 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         )}
 
         {onlyFavs && visible.length > 0 && (
-          <div className="mb-8 bg-stone-900 text-white p-6 md:p-8 flex flex-col lg:flex-row lg:items-center gap-6">
+          <div className="mb-8 bg-white border border-stone-900 text-stone-900 p-6 md:p-8 flex flex-col lg:flex-row lg:items-center gap-6">
             <div className="flex-1">
               <p className="font-serif text-2xl md:text-3xl leading-tight">
                 {visible.length > 1
                   ? `Et si le bien de vos rêves se trouvait parmi vos ${visible.length} favoris ?`
                   : 'Et si le bien de vos rêves, c’était celui-ci ?'}
               </p>
-              <p className="mt-2 text-stone-300 leading-relaxed">
+              <p className="mt-2 text-stone-600 leading-relaxed">
                 {visible.length > 1
                   ? 'Laissez vos coordonnées une seule fois : chaque agence vous rappelle pour programmer une visite.'
                   : 'Laissez vos coordonnées : l’agence vous rappelle pour programmer une visite.'}
@@ -746,7 +746,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <button
                 type="button"
                 onClick={() => setFavContactOpen(true)}
-                className="w-full lg:w-auto min-h-[56px] px-7 py-3 inline-flex items-center justify-center gap-2 bg-[#F4E7B5] text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-white transition"
+                className="w-full lg:w-auto min-h-[56px] px-7 py-3 inline-flex items-center justify-center gap-2 bg-[#F4E7B5] text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition"
               >
                 <Send className="w-4 h-4 flex-none" />
                 {visible.length > 1 ? `Me rappeler au sujet de ces ${visible.length} biens` : 'Me rappeler au sujet de ce bien'}
@@ -899,7 +899,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <button
             type="button"
             onClick={() => openAlert('flottant')}
-            className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-800 transition"
+            className="pointer-events-auto inline-flex items-center gap-2 bg-white text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-100 transition"
           >
             <Bell className="w-4 h-4" />
             <span>Créer mon alerte</span>
@@ -915,7 +915,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <button
             type="button"
             onClick={() => setFavContactOpen(true)}
-            className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-800 transition"
+            className="pointer-events-auto inline-flex items-center gap-2 bg-white text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider px-5 h-12 shadow-lg hover:bg-stone-100 transition"
           >
             <Send className="w-4 h-4" />
             <span>{visible.length > 1 ? `Être rappelé(e) pour ces ${visible.length} biens` : 'Être rappelé(e) pour ce bien'}</span>

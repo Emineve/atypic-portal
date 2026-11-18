@@ -164,17 +164,17 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           </dl>
         </section>
 
-        <section className="mt-12 bg-stone-900 text-white p-6 md:p-8">
+        <section className="mt-12 bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
           <h2 className="font-serif text-2xl leading-snug">Ne passez pas à côté de votre prochain coup de cœur.</h2>
-          <p className="mt-2 text-stone-300 leading-relaxed">
+          <p className="mt-2 text-stone-600 leading-relaxed">
             Loftissime réunit les biens atypiques des agences sur un seul site. Créez une alerte, et vous êtes parmi les premiers prévenus.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 bg-[#F4E7B5] text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-white transition">
+            <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 bg-[#F4E7B5] text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition">
               Créer mon alerte
             </Link>
             {a.listingsLink && (
-              <Link href={a.listingsLink.href} className="inline-flex h-12 items-center px-6 border border-stone-500 text-white text-xs font-semibold uppercase tracking-wider hover:border-white transition">
+              <Link href={a.listingsLink.href} className="inline-flex h-12 items-center px-6 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition">
                 {a.listingsLink.label}
               </Link>
             )}
