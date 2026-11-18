@@ -32,20 +32,19 @@ export default function ChecklistShare({ title, items, url }: { title: string; i
   }
 
   return (
-    <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-stone-200 pt-5">
+    <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
       <button
         type="button"
         onClick={send}
-        className="inline-flex h-11 items-center gap-2 px-5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-700 transition"
+        className="inline-flex items-center gap-1.5 text-sm text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
       >
         {state === 'copied' ? <Check className="w-4 h-4" /> : <Share className="w-4 h-4" />}
         Envoyer vers mes notes
       </button>
-      <p className="text-sm text-stone-500" aria-live="polite">
-        {state === 'copied' && 'Liste copiée : il ne reste qu’à la coller dans vos notes.'}
+      <span className="text-sm text-stone-500" aria-live="polite">
+        {state === 'copied' && 'Liste copiée : il ne reste qu’à la coller.'}
         {state === 'error' && 'Impossible de copier la liste depuis ce navigateur.'}
-        {state === 'idle' && 'Pour l’avoir sous la main le jour de la visite.'}
-      </p>
+      </span>
     </div>
   );
 }
