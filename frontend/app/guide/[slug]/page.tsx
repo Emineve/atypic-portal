@@ -87,7 +87,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <p className="mt-5 text-sm text-stone-500">
           Mis à jour le <time dateTime={a.updated}>{formatGuideDate(a.updated)}</time> · {a.readMinutes} min de lecture
         </p>
-        <div className="mt-8 md:mt-10 overflow-hidden border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
+        <div className="mt-8 md:mt-10 md:max-w-3xl overflow-hidden border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
           <GuideArt art={a.art} className="block w-full aspect-[16/9] md:aspect-[12/5]" />
         </div>
       </header>
