@@ -125,9 +125,11 @@ export default function FavoritesContact({
         ) : (
           <form onSubmit={onSubmit} className="flex flex-col min-h-0">
             <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
-              <p className="text-sm text-stone-600">
-                Une seule demande, envoyée au contact de chacun des biens cochés.
-              </p>
+              {list.length > 1 && (
+                <p className="text-sm text-stone-600">
+                  Une seule demande, envoyée au contact de chacun des biens cochés.
+                </p>
+              )}
               <ul className="border border-stone-200 divide-y divide-stone-200">
                 {list.map((i) => {
                   const on = selected.includes(i.id);
