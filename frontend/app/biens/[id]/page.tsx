@@ -1,7 +1,7 @@
 import Logo from '../../Logo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, Wallet } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, Wallet, ChevronRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -245,20 +245,21 @@ export default async function ListingPage({ params }: { params: { id: string } }
                               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} />
           </div>
           <Tracker listingId={item.id} />
-          <div className="px-1 pt-2 text-sm text-stone-600 leading-relaxed">
-            <p>
-              Proposé par <span className="text-stone-900">{item.source_agency}</span>
-              <span className="text-stone-400"> · {agencyCount} {agencyCount > 1 ? 'biens' : 'bien'} sur Loftissime</span>
-            </p>
-            <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
-              <Link href={`/agence/${slugify(item.source_agency)}`} className="text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
-                Tous les biens de l&apos;agence
-              </Link>
-              <a href={`/go/${item.id}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
-                Annonce d&apos;origine
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </p>
+          <div className="border-t border-stone-200 divide-y divide-stone-200 border-b">
+            <Link href={`/agence/${slugify(item.source_agency)}`} className="group flex items-center gap-4 py-4">
+              <span className="flex-1 min-w-0">
+                <span className="block text-[11px] uppercase tracking-widest text-stone-400">Proposé par</span>
+                <span className="block mt-1 font-serif text-lg text-stone-900 truncate">{item.source_agency}</span>
+                <span className="block text-sm text-stone-500">
+                  {agencyCount > 1 ? `Voir ses ${agencyCount} biens sur Loftissime` : 'Voir sa page sur Loftissime'}
+                </span>
+              </span>
+              <ChevronRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
+            </Link>
+            <a href={`/go/${item.id}`} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 py-4">
+              <span className="flex-1 text-sm text-stone-900">Voir l&apos;annonce sur le site de l&apos;agence</span>
+              <ArrowUpRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
+            </a>
           </div>
           <ReportButton listingId={item.id} />
         </aside>
