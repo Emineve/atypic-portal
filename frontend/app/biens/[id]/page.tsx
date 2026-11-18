@@ -12,7 +12,7 @@ import Description from './Description';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
-import { DpeScale } from '../../DpeBadge';
+import { EnergyPill } from '../../DpeBadge';
 
 // Page rendue à la demande : toujours à jour avec la base
 export const dynamic = 'force-dynamic';
@@ -112,11 +112,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const energyCost = eMin > 0 && eMax > 0 && eMax !== eMin ? `${eur0(eMin)} à ${eur0(eMax)}` : eMin > 0 || eMax > 0 ? eur0(eMax || eMin) : '';
   // Budget annuel : énergie, charges, taxe foncière, et leur équivalent mensuel
   const budget: [string, string][] = [];
-  if (energyCost) budget.push(['Énergie', energyCost]);
+  const hasClasses = Boolean(item.dpe_class || item.ges_class);
+  if (energyCost || hasClasses) budget.push(['Énergie', energyCost]);
   if (Number(item.charges_yearly) > 0) budget.push(['Charges de copropriété', eur0(Number(item.charges_yearly))]);
   if (Number(item.property_tax) > 0) budget.push(['Taxe foncière', eur0(Number(item.property_tax))]);
   const energyMid = eMin > 0 && eMax > 0 ? (eMin + eMax) / 2 : eMax || eMin;
-  const monthly = budget.length > 1
+  const monthly = [energyMid > 0, Number(item.charges_yearly) > 0, Number(item.property_tax) > 0].filter(Boolean).length > 1
     ? Math.round((energyMid + (Number(item.charges_yearly) || 0) + (Number(item.property_tax) || 0)) / 12 / 10) * 10
     : 0;
   const row = 'flex items-center gap-4 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden';
@@ -259,8 +260,14 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   {budget.map(([label, value]) => (
                     <div key={label} className="py-5 sm:px-6 sm:first:pl-0">
                       <dt className="text-[10px] uppercase tracking-widest text-stone-400">{label}</dt>
-                      <dd className="mt-1 font-serif text-2xl leading-tight text-stone-900">{value}</dd>
-                      <dd className="text-sm text-stone-500">par an</dd>
+                      {value && <dd className="mt-1 font-serif text-2xl leading-tight text-stone-900">{value}</dd>}
+                      {value && <dd className="text-sm text-stone-500">par an</dd>}
+                      {label === 'Énergie' && hasClasses && (
+                        <dd className={`${value ? 'mt-3' : 'mt-2'} flex flex-wrap gap-x-4 gap-y-2`}>
+                          <EnergyPill kind="dpe" value={item.dpe_class} />
+                          <EnergyPill kind="ges" value={item.ges_class} />
+                        </dd>
+                      )}
                     </div>
                   ))}
                 </dl>
@@ -280,23 +287,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <section className="mt-10">
               <h2 className="font-serif text-2xl text-stone-900">L&apos;essentiel à savoir</h2>
               <div className="mt-4 border-y border-stone-200 divide-y divide-stone-200">
-                {(item.dpe_class || item.ges_class) && (
-                  <details className="group" open>
-                    <summary className={row}>
-                      <span className="flex-1 min-w-0">
-                        <span className="block text-sm text-stone-500">Performance énergétique</span>
-                        <span className="block font-serif text-lg text-stone-900">
-                          {[item.dpe_class ? `DPE ${item.dpe_class}` : '', item.ges_class ? `GES ${item.ges_class}` : ''].filter(Boolean).join(' · ')}
-                        </span>
-                      </span>
-                      <Plus className="w-5 h-5 flex-none text-stone-400 transition-transform group-open:rotate-45" />
-                    </summary>
-                    <div className="pb-6 flex flex-wrap gap-x-10 gap-y-4">
-                      <DpeScale title="Énergie (DPE)" value={item.dpe_class} kind="dpe" />
-                      <DpeScale title="Climat (GES)" value={item.ges_class} kind="ges" />
-                    </div>
-                  </details>
-                )}
                 <details className="group">
                   <summary className={row}>
                     <span className="flex-1 min-w-0">
