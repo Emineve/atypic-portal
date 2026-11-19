@@ -16,8 +16,8 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 text-sm">
       <div className="col-span-2 md:col-span-1">
-        <p className="font-logo text-2xl font-semibold tracking-tight text-stone-900">loftissime.</p>
-        <p className="mt-2 text-stone-500">Curateur de lieux atypiques</p>
+        <p className="font-logo text-2xl font-semibold tracking-tight leading-none text-stone-900">loftissime.</p>
+        <p className="mt-1 text-[11px] leading-none text-stone-500">Curateur de biens atypiques</p>
         <div className="mt-5 flex gap-2" aria-hidden="true">
           {SOCIALS.map((s) => (
             <span

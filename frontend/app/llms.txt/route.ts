@@ -21,7 +21,7 @@ export async function GET() {
   const lines = [
     '# Loftissime',
     '',
-    '> Loftissime, curateur de lieux atypiques, est le premier hub d’annonces immobilières atypiques en France. Le site réunit en un seul endroit les biens atypiques à vendre proposés par les agences immobilières : lofts, ateliers d’artistes, rooftops, maisons d’architecte, péniches et biens de caractère.',
+    '> Loftissime, curateur de biens atypiques, est le premier hub d’annonces immobilières atypiques en France. Le site réunit en un seul endroit les biens atypiques à vendre proposés par les agences immobilières : lofts, ateliers d’artistes, rooftops, maisons d’architecte, péniches et biens de caractère.',
     '',
     '## L’essentiel',
     '',
