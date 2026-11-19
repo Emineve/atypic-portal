@@ -6,6 +6,7 @@ import { readVisitor, saveVisitor } from '../../../lib/visitor';
 import { Phone, Check, X, Bell, Send } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_ICON_PATH } from './whatsapp';
+import { formatPhone } from '../../../lib/phone';
 
 function sessionId() {
   try {
@@ -308,7 +309,7 @@ export default function ContactForm({
           {tab === 'tel' && (
             <div>
               <label className={fieldLabel} htmlFor="c-phone">Téléphone</label>
-              <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="06 12 34 56 78" className={field} required minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
+              <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="06 12 34 56 78" className={field} required minLength={6} maxLength={40} value={formatPhone(tel)} onChange={(e) => setTel(formatPhone(e.target.value))} />
             </div>
           )}
           <div>

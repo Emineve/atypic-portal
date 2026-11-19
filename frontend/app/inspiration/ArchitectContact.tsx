@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Check, Mail, X } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
+import { formatPhone } from '../../lib/phone';
 
 // Lien « Contacter [architecte] » : ouvre un formulaire simple, puis une fenêtre de confirmation.
 // L'adresse de l'architecte n'est jamais affichée : la demande passe par Loftissime.
@@ -98,7 +99,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
                 </div>
                 <div>
                   <label htmlFor="ac-phone" className={label}>Téléphone (facultatif)</label>
-                  <input id="ac-phone" type="tel" className={field} maxLength={40} autoComplete="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                  <input id="ac-phone" type="tel" className={field} maxLength={40} autoComplete="tel" value={formatPhone(phone)} onChange={(e) => setPhone(formatPhone(e.target.value))} />
                 </div>
                 <div>
                   <label htmlFor="ac-msg" className={label}>Votre message</label>

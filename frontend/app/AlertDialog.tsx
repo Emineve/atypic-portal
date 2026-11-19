@@ -6,6 +6,7 @@ import { getSupabase } from '../lib/supabase';
 import { readVisitor, saveVisitor } from '../lib/visitor';
 import FilterPanel from './FilterPanel';
 import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
+import { formatPhone } from '../lib/phone';
 
 // L'envoi des e-mails d'alerte est en place (domaine validé, service d'envoi branché)
 const ALERT_EMAILS_LIVE = true;
@@ -611,8 +612,8 @@ export default function AlertDialog({
                           maxLength={20}
                           autoComplete="tel"
                           aria-label="Votre téléphone"
-                          value={sharePhone}
-                          onChange={(e) => setSharePhone(e.target.value)}
+                          value={formatPhone(sharePhone)}
+                          onChange={(e) => setSharePhone(formatPhone(e.target.value))}
                           placeholder="Téléphone"
                           className={`${field} mb-2`}
                         />
@@ -675,8 +676,8 @@ export default function AlertDialog({
                             maxLength={20}
                             autoComplete="tel"
                             aria-label="Votre numéro de portable"
-                            value={whatsapp}
-                            onChange={(e) => setWhatsapp(e.target.value)}
+                            value={formatPhone(whatsapp)}
+                            onChange={(e) => setWhatsapp(formatPhone(e.target.value))}
                             placeholder="Votre numéro de portable"
                             className={`${field} mt-3`}
                           />
@@ -750,8 +751,8 @@ export default function AlertDialog({
                               maxLength={20}
                               autoComplete="tel"
                               aria-label="Votre téléphone"
-                              value={sharePhone}
-                              onChange={(e) => setSharePhone(e.target.value)}
+                              value={formatPhone(sharePhone)}
+                              onChange={(e) => setSharePhone(formatPhone(e.target.value))}
                               placeholder="Téléphone"
                               className={`${field} mt-2`}
                             />

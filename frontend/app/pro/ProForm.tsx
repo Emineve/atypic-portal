@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { getSupabase } from '../../lib/supabase';
+import { formatPhone } from '../../lib/phone';
 
 export default function ProForm() {
   const [agency, setAgency] = useState('');
@@ -57,7 +58,7 @@ export default function ProForm() {
         </div>
         <div>
           <label htmlFor="p-phone" className={label}>Téléphone (facultatif)</label>
-          <input id="p-phone" type="tel" className={field} maxLength={40} value={phone} onChange={(e) => setPhone(e.target.value)} />
+          <input id="p-phone" type="tel" className={field} maxLength={40} value={formatPhone(phone)} onChange={(e) => setPhone(formatPhone(e.target.value))} />
         </div>
       </div>
       <div>
