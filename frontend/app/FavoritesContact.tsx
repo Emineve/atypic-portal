@@ -102,15 +102,15 @@ export default function FavoritesContact({
     <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center" role="dialog" aria-modal="true" aria-label="Être rappelé(e) pour mes favoris">
       <div className="absolute inset-0 bg-stone-900/40" onClick={onClose} />
       <div className="relative w-full md:max-w-lg max-h-[92vh] bg-white flex flex-col shadow-xl">
-        <div className="flex items-center justify-between px-6 h-16 border-b border-stone-200 shrink-0">
-          <h2 className="font-serif text-xl text-stone-900">Être rappelé(e) pour ces biens</h2>
+        <div className={`flex items-center px-6 h-16 shrink-0 ${status === 'done' ? 'justify-end' : 'justify-between border-b border-stone-200'}`}>
+          {status !== 'done' && <h2 className="font-serif text-xl text-stone-900">Être rappelé(e) pour ces biens</h2>}
           <button type="button" onClick={onClose} aria-label="Fermer" className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {status === 'done' ? (
-          <div className="px-6 py-10 text-center">
+          <div className="px-6 pt-2 pb-12 text-center">
             <span className="mx-auto h-12 w-12 rounded-full bg-stone-900 text-white flex items-center justify-center">
               <Check className="w-6 h-6" />
             </span>
