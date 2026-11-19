@@ -122,6 +122,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Hagnéré Patrimoine, « Investissement immobilier off-market »', url: 'https://www.hagnere-patrimoine.fr/guides-patrimoine/investissement-immobilier/investissement-immobilier-off-market-2026' },
       { label: 'Boursorama, « Qu’est-ce que le off market ? »', url: 'https://www.boursorama.com/immobilier/actualites/qu-est-ce-que-le-off-market-d951ada7894cea4cb0fb6d4d12d1a162' },
       { label: 'Home Select, « Off-market immobilier à Paris »', url: 'https://homeselect.paris/chasseur-immobilier-paris/off-market/' },
+      { label: 'Groupe Estia, communiqué sur le off market dans l’immobilier haut de gamme (décembre 2024)', url: 'https://www.galivel.com/media/files/241210_cpmci_offmarket-1.pdf' },
       { label: 'MySweetImmo, « Vente off-market : comment se déroulent les transactions confidentielles ? »', url: 'https://www.mysweetimmo.com/2026/03/26/vente-off-market-comment-se-deroulent-les-transactions-confidentielles/' },
     ],
     listingsLink: { label: 'Créer mon alerte', href: '/?alerte=1' },
