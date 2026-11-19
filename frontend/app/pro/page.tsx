@@ -37,7 +37,7 @@ const PROMISES: { title: string; text: string; href?: string; link?: string; sof
   },
 ];
 
-// Les visiteurs que le site va chercher : un portrait de la cible, pas une mesure d'audience.
+// Qui sont les acheteurs du site : trois portraits, sans chiffres.
 const VISITORS: { title: string; text: string }[] = [
   {
     title: 'L’acheteur décidé',
@@ -45,7 +45,7 @@ const VISITORS: { title: string; text: string }[] = [
   },
   {
     title: 'Le rêveur',
-    text: 'Il n’achète pas encore. Il regarde, met en favori, se nourrit de la rubrique Inspiration. C’est l’acheteur de demain, et il connaîtra déjà votre agence.',
+    text: 'Il n’achète pas encore. Il regarde, met en favori, se nourrit de la rubrique Inspiration. C’est l’acheteur de demain, et il connaît déjà votre agence.',
   },
   {
     title: 'L’amoureux d’architecture',
@@ -116,10 +116,10 @@ export default function ProPage() {
 
         <section className="border-t border-stone-900 py-12 md:py-16">
           <h2 className={h2}>
-            Les acheteurs que nous allons chercher <span className="italic text-stone-500">pour vous.</span>
+            Qui sont les acheteurs <span className="italic text-stone-500">de Loftissime.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-            Des acheteurs qui veulent un bien qui leur ressemble, quel que soit leur budget. Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire.
+            Ils veulent un bien qui leur ressemble, quel que soit leur budget. Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire.
           </p>
           <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
             {VISITORS.map((v) => (
@@ -129,9 +129,6 @@ export default function ProPage() {
               </div>
             ))}
           </div>
-          <p className="mt-10 max-w-2xl text-base font-light leading-relaxed text-stone-600">
-            Nous allons les chercher là où ils sont : sur les réseaux sociaux, sur Google et auprès des assistants IA, avec nos rubriques État des lieux et Inspiration.
-          </p>
         </section>
 
         <section id="rejoindre" className="border-t border-stone-900 pt-12 md:pt-16 scroll-mt-20">
