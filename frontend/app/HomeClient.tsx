@@ -5,7 +5,6 @@ import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Lightbulb, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
-import AlertBox from './AlertBox';
 import AlertPhrase from './AlertPhrase';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
@@ -1054,9 +1053,17 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-x-12 gap-y-5 md:items-center">
             <div>
               <h2 className="font-serif text-2xl text-stone-900">Le bien que vous cherchez n&apos;est peut-être pas encore en ligne.</h2>
-              <p className="mt-2 text-sm text-stone-500 max-w-md">Laissez votre e-mail : vous recevrez les nouveaux biens atypiques dès leur arrivée sur le marché.</p>
+              <p className="mt-2 text-sm text-stone-500 max-w-md">Dites-nous ce que vous cherchez : nous vous écrivons dès qu&apos;un bien qui y correspond arrive sur le marché.</p>
             </div>
-            <AlertBox kind="newsletter" />
+            <div className="md:justify-self-end">
+              <button
+                type="button"
+                onClick={() => openAlert('pied')}
+                className="inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+              >
+                Créer mon alerte
+              </button>
+            </div>
           </div>
         </div>
         <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />

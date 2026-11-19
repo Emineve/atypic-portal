@@ -54,9 +54,11 @@ export default function CollectionPage({
         <p className="text-xs uppercase tracking-widest text-stone-500">{hideAgency ? 'Agence' : 'Biens atypiques'}</p>
         <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{title}</h1>
         <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{intro}</p>
-        <p className="mt-5 font-serif text-lg text-stone-700">
-                    {items.length} {items.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
-        </p>
+        {!hideAgency && (
+          <p className="mt-5 font-serif text-lg text-stone-700">
+            {items.length} {items.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
+          </p>
+        )}
         {hideAgency && <AgencySearch agency={title} />}
       </header>
 
