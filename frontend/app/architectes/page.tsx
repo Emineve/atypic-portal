@@ -1,6 +1,5 @@
-import Logo from '../Logo';
+import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 
 export const dynamic = 'force-dynamic';
@@ -19,15 +18,7 @@ export default async function ArchitectsPage() {
   const rows: Row[] = (data as Row[]) || [];
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <header className="max-w-4xl mx-auto px-6 pt-14 pb-10 text-center">
         <h1 className="text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">Architectes</h1>

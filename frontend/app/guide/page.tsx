@@ -1,6 +1,6 @@
+import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import Logo from '../Logo';
+import { ArrowUpRight } from 'lucide-react';
 import GuideArt from './GuideArt';
 import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/guide';
 
@@ -8,7 +8,7 @@ import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/gui
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'L’état des lieux : tout savoir avant d’acheter un bien atypique · Loftissime',
+  title: 'État des lieux : tout savoir avant d’acheter un bien atypique · Loftissime',
   description:
     'Souplex, loft, péniche, atelier d’artiste : les vérifications à faire avant d’acheter un bien atypique, et les conseils pour bien y vivre. Un nouvel article chaque semaine.',
   alternates: { canonical: '/guide' },
@@ -19,22 +19,14 @@ export default function GuideIndex() {
   const [first, ...rest] = articles;
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <p className="text-xs uppercase tracking-widest text-stone-500">État des lieux</p>
-        <h1 className="mt-4 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
+        <h1 className="max-w-4xl mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>
-        <p className="mt-6 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
+        <p className="mt-8 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
           Un souplex, un loft, une péniche ne s&apos;achètent pas comme un appartement classique. Chaque semaine, une question précise et les vérifications à faire avant de signer.
         </p>
       </header>

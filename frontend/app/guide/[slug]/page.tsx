@@ -1,7 +1,7 @@
+import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, Check } from 'lucide-react';
-import Logo from '../../Logo';
+import { ArrowUpRight, Check } from 'lucide-react';
 import GuideArt from '../GuideArt';
 import ChecklistShare from '../ChecklistShare';
 import ArticleShare from '../ArticleShare';
@@ -67,7 +67,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'L’état des lieux', item: `${SITE_URL}/guide` },
+      { '@type': 'ListItem', position: 2, name: 'État des lieux', item: `${SITE_URL}/guide` },
       { '@type': 'ListItem', position: 3, name: a.title, item: url },
     ],
   };
@@ -77,21 +77,13 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(crumbLd) }} />
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/guide" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            L&apos;état des lieux
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader backHref="/guide" backLabel="État des lieux" />
 
       <header className="max-w-5xl mx-auto px-6 pt-8 md:pt-12">
-        <nav aria-label="Fil d'Ariane" className="text-xs text-stone-400">
+        <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">
           <Link href="/" className="hover:text-stone-900">Accueil</Link>
           {' › '}
-          <Link href="/guide" className="hover:text-stone-900">L&apos;état des lieux</Link>
+          <Link href="/guide" className="hover:text-stone-900">État des lieux</Link>
         </nav>
         <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">{a.category}</p>
         <h1 className="mt-3 max-w-4xl font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-stone-900">{a.title}</h1>

@@ -14,7 +14,7 @@ export default function TeeShirt({ lines, dark = false, className = '' }: { line
       />
       <path d="M84 20 Q100 44 116 20" fill="none" stroke={dark ? '#57534e' : '#1c1917'} strokeWidth="1.5" />
       {lines.map((l, i) => (
-        <text key={l} x="100" y={top + i * 13} textAnchor="middle" className="font-serif" fontSize="10" fill={ink}>
+        <text key={l} x="100" y={top + i * 13} textAnchor="middle" className="font-serif" fontSize="9" fill={ink}>
           {l}
         </text>
       ))}

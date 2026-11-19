@@ -1,6 +1,6 @@
+import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import Logo from '../Logo';
+import { ArrowUpRight } from 'lucide-react';
 
 export const metadata = {
   title: 'Pourquoi Loftissime',
@@ -56,15 +56,7 @@ export default function ManifestoPage() {
     'inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
         <p className="text-xs uppercase tracking-widest text-stone-500">Pourquoi Loftissime</p>

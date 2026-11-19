@@ -1,6 +1,4 @@
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import Logo from '../Logo';
+import SiteHeader from '../SiteHeader';
 
 export const metadata = {
   title: 'Questions fréquentes · Loftissime',
@@ -112,20 +110,14 @@ const groups: Group[] = [
 export default function ChartePage() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
-      <header className="max-w-3xl mx-auto px-6 pt-16 md:pt-20 pb-6 text-center">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Loftissime</p>
-        <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">Questions fréquentes</h1>
-        <p className="mt-5 text-stone-500 font-light">
+      <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-6">
+        <p className="text-xs uppercase tracking-widest text-stone-500">Questions fréquentes</p>
+        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+          Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>
+        </h1>
+        <p className="mt-8 text-lg font-light leading-relaxed text-stone-600">
           Tout ce qu&apos;il faut savoir sur les biens que nous diffusons et sur le fonctionnement du site.
         </p>
       </header>

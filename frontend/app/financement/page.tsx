@@ -1,6 +1,6 @@
+import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { TrendingUp } from 'lucide-react';
-import Logo from '../Logo';
 import BackLink from './BackLink';
 import Simulator from './Simulator';
 import { RATES } from '../../lib/rates';
@@ -19,12 +19,7 @@ function pct(n: number) {
 export default function FinancementPage() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <BackLink />
-        </div>
-      </nav>
+      <SiteHeader back={<BackLink />} />
 
       <header className="max-w-4xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
         <p className="text-xs uppercase tracking-widest text-stone-500">Financement</p>

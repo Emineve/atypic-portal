@@ -12,7 +12,10 @@ export default function StickyContact() {
   useEffect(() => {
     const target = document.getElementById('contact');
     if (!target) return;
-    const update = () => setHidden(target.getBoundingClientRect().bottom > 0);
+    const update = () => {
+      const nearEnd = window.innerHeight + window.scrollY > document.documentElement.scrollHeight - 420;
+      setHidden(target.getBoundingClientRect().bottom > 0 || nearEnd);
+    };
     update();
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);

@@ -79,7 +79,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
         <button
           type="submit"
           disabled={status === 'sending'}
-          className={`h-11 px-4 flex-none text-xs font-semibold uppercase tracking-wider transition disabled:opacity-60 ${dark ? 'bg-[#F4E7B5] text-stone-900 hover:bg-white' : 'bg-stone-900 text-white hover:bg-stone-800'}`}
+          className={`h-11 px-4 flex-none rounded-[10px] text-xs font-semibold uppercase tracking-wider transition disabled:opacity-60 ${dark ? 'bg-[#F4E7B5] text-stone-900 hover:bg-white' : 'bg-stone-900 text-white hover:bg-stone-800'}`}
         >
           {status === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
         </button>

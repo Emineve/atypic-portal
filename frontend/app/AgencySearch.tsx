@@ -23,7 +23,7 @@ export default function AgencySearch({ agency }: { agency: string }) {
 
   return (
     <>
-      <div className="mt-7 flex flex-col items-center">
+      <div className="mt-7 flex flex-col items-start">
         <button
           type="button"
           onClick={openDialog}

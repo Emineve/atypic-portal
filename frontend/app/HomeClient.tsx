@@ -120,8 +120,14 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
   const [favContactOpen, setFavContactOpen] = useState(false);
   // Lien « Créer mon alerte » venu d'une autre page (/?alerte=1) : la fenêtre d'alerte s'ouvre d'elle-même
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get('alerte') === '1') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('alerte') === '1') {
       setAlertOpen(true);
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    // Lien « Mes favoris » du menu des autres pages (/?favoris=1)
+    if (params.get('favoris') === '1') {
+      setOnlyFavs(true);
       window.history.replaceState(null, '', window.location.pathname);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

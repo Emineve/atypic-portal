@@ -1,6 +1,6 @@
-import Logo from './Logo';
+import SiteHeader from './SiteHeader';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { SITE_URL } from '../lib/site';
 import Tracker from './Tracker';
 import CollectionAlert from './CollectionAlert';
@@ -48,20 +48,13 @@ export default function CollectionPage({
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
       <Tracker />
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens 
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
-      <header className="max-w-4xl mx-auto px-6 pt-14 pb-10 text-center">
-        <h1 className="text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{title}</h1>
-        <p className="mt-4 text-stone-500 font-light">{intro}</p>
-        <p className="mt-6 font-serif text-lg text-stone-700">
+      <header className="max-w-7xl mx-auto px-6 pt-14 md:pt-20 pb-10">
+        <p className="text-xs uppercase tracking-widest text-stone-500">{hideAgency ? 'Agence' : 'Biens atypiques'}</p>
+        <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{title}</h1>
+        <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{intro}</p>
+        <p className="mt-5 font-serif text-lg text-stone-700">
                     {items.length} {items.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
         </p>
         {hideAgency && <AgencySearch agency={title} />}

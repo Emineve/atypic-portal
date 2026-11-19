@@ -1,7 +1,7 @@
-import Logo from '../../Logo';
+import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import ArchitectContact from '../../inspiration/ArchitectContact';
 import PhotoMosaic from '../../biens/[id]/PhotoMosaic';
@@ -62,15 +62,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/inspiration" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Inspiration
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader backHref="/inspiration" backLabel="Inspiration" />
 
       {a.is_demo && (
         <div className="bg-stone-900 text-stone-100 text-center text-xs tracking-wide py-2 px-4">

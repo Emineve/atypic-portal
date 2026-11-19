@@ -1,7 +1,7 @@
-import Logo from '../../Logo';
+import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Zap, Leaf, Calculator } from 'lucide-react';
+import { BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Zap, Leaf, Calculator } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
@@ -216,15 +216,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans pb-20 lg:pb-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(breadcrumb) }} />
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">
@@ -496,7 +488,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                    <h2 className="font-serif text-2xl text-stone-900">Autres biens à découvrir à {hubName}</h2>
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {related.map((r) => (
-              <Link key={r.id} href={`/biens/${r.id}`} className="group block bg-white border border-stone-200 hover:shadow-lg transition">
+              <Link key={r.id} href={`/biens/${r.id}`} className="group block border border-stone-300 hover:shadow-lg transition">
                 <div className="aspect-[4/3] bg-stone-100 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={r.cover_image_url} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />

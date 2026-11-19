@@ -1,6 +1,6 @@
-import Logo from '../Logo';
+import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import ArchitectContact from './ArchitectContact';
 import PhotoMosaic from '../biens/[id]/PhotoMosaic';
@@ -50,15 +50,7 @@ export default async function InspirationPage() {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
       {!featured ? (
         <p className="text-center py-24 text-stone-400 font-serif">Bientôt le premier architecte à la une.</p>
@@ -66,10 +58,10 @@ export default async function InspirationPage() {
         <>
           <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">
             <p className="text-xs uppercase tracking-widest text-stone-500">Inspiration</p>
-            <p className="mt-4 max-w-4xl font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
+            <p className="max-w-4xl mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
               Des idées pour <span className="italic text-stone-500">habiter autrement.</span>
             </p>
-            <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+            <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
               Un architecte à la une, et ses réalisations pour nourrir votre projet.
             </p>
           </div>

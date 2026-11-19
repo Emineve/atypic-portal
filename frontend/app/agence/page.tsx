@@ -1,6 +1,6 @@
-import Logo from '../Logo';
+import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import { slugify } from '../../lib/catalog';
 
@@ -27,15 +27,7 @@ export default async function AgenciesPage() {
   const agencies = await getAgencies();
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
-          <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Tous les biens
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
         <p className="text-xs uppercase tracking-widest text-stone-500">Les agences</p>

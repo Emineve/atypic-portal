@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Logo from './Logo';
+import SiteHeader from './SiteHeader';
 
 export const metadata = { title: 'Page introuvable · Loftissime', robots: { index: false } };
 
@@ -8,11 +8,7 @@ export default function NotFound() {
   const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
   return (
     <div className="min-h-[70vh] bg-[#FDFBF7] text-[#191919] font-sans">
-      <nav className="border-b border-stone-200 bg-white/90">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center">
-          <Logo />
-        </div>
-      </nav>
+      <SiteHeader />
       <main className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-24">
         <p className="text-xs uppercase tracking-widest text-stone-500">Page introuvable</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
