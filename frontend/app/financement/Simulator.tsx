@@ -26,6 +26,8 @@ export default function Simulator() {
   const [price, setPrice] = useState('');
   const [down, setDown] = useState('');
   const [years, setYears] = useState(20);
+  // Assurance emprunteur : 0,25 % du capital par an, ordre de grandeur pour un emprunteur d'une quarantaine d'années
+  const [insurance, setInsurance] = useState('0,25');
   const [rate, setRate] = useState(String(RATES.byYears[1].rate).replace('.', ','));
 
   // Arrivée depuis la fiche d'un bien : le prix est repris, avec 20 % d'apport
@@ -48,9 +50,12 @@ export default function Simulator() {
   const r = num(rate) / 100 / 12;
   const monthly = principal <= 0 ? 0 : r === 0 ? principal / n : (principal * r) / (1 - Math.pow(1 + r, -n));
   const interest = Math.max(0, monthly * n - principal);
-  const income = monthly / 0.35;
+  const insMonthly = (principal * (num(insurance) / 100)) / 12;
+  const insTotal = insMonthly * n;
+  const monthlyAll = monthly + insMonthly;
+  const income = monthlyAll / 0.35;
 
-  const total = principal + interest || 1;
+  const total = principal + interest + insTotal || 1;
 
   const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
   const label = 'block text-xs uppercase tracking-widest text-stone-500';
@@ -86,6 +91,10 @@ export default function Simulator() {
           Taux, hors assurance (%)
           <input inputMode="decimal" value={rate} onChange={(e) => setRate(e.target.value)} className={field} />
         </label>
+        <label className={label}>
+          Assurance (% du capital par an)
+          <input inputMode="decimal" value={insurance} onChange={(e) => setInsurance(e.target.value)} className={field} />
+        </label>
       </div>
 
       <div className="mt-10 border-t border-stone-200 pt-8" aria-live="polite">
@@ -95,13 +104,14 @@ export default function Simulator() {
         ) : (
         <>
         <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="font-serif text-5xl md:text-6xl leading-none tracking-tight text-stone-900">{eur(monthly)}</span>
-          <span className="text-stone-500">par mois, hors assurance</span>
+          <span className="font-serif text-5xl md:text-6xl leading-none tracking-tight text-stone-900">{eur(monthlyAll)}</span>
+          <span className="text-stone-500">par mois, assurance comprise</span>
         </p>
 
         <div className="mt-6 flex h-3 w-full overflow-hidden" aria-hidden="true">
           <span className="bg-stone-900" style={{ width: `${(principal / total) * 100}%` }} />
-          <span className="bg-[#F4E7B5] border border-stone-900" style={{ width: `${(interest / total) * 100}%` }} />
+          <span className="bg-stone-400" style={{ width: `${(interest / total) * 100}%` }} />
+          <span className="bg-[#F4E7B5] border border-stone-900" style={{ width: `${(insTotal / total) * 100}%` }} />
         </div>
 
         <dl className="mt-2 divide-y divide-stone-200 border-b border-stone-200 text-stone-700">
@@ -114,10 +124,23 @@ export default function Simulator() {
           </div>
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
             <dt className="flex items-center gap-2.5">
-              <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
+              <span className="h-2.5 w-2.5 flex-none bg-stone-400" aria-hidden="true" />
               Intérêts sur {years} ans
             </dt>
             <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur(interest)}</dd>
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
+            <dt className="flex items-center gap-2.5">
+              <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
+              Assurance sur {years} ans
+            </dt>
+            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
+              {eur(insTotal)} <span className="font-sans text-sm text-stone-500">soit {eur(insMonthly)} par mois</span>
+            </dd>
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-4">
+            <dt className="pl-5 font-medium text-stone-900">Montant total à rembourser</dt>
+            <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
             <dt className="pl-5">Revenus mensuels conseillés</dt>
@@ -127,7 +150,7 @@ export default function Simulator() {
           </div>
         </dl>
         <p className="mt-5 text-xs text-stone-500 leading-relaxed">
-          Taux de {pct(num(rate))} % sur {years} ans. Revenus calculés pour un endettement de 35 %.
+          Taux de {pct(num(rate))} % sur {years} ans. Assurance estimée à {pct(num(insurance))} % du capital emprunté par an : elle va d&apos;environ 0,10 % à 25 ans à 0,47 % à 55 ans pour un non-fumeur (moyennes indicatives Meilleurtaux, 2026). Revenus calculés pour un endettement de 35 %, assurance comprise.
         </p>
         </>
         )}

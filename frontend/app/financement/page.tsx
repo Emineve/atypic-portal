@@ -69,7 +69,7 @@ export default function FinancementPage() {
         <section className="border-t border-stone-200 pt-10">
           <h2 className="font-serif text-2xl text-stone-900">À garder en tête</h2>
           <ul className="mt-4 space-y-3 text-stone-600 leading-relaxed">
-            <li>La mensualité affichée ne comprend ni l&apos;assurance emprunteur, ni les frais de notaire, ni les frais de dossier.</li>
+            <li>La mensualité affichée comprend une estimation de l&apos;assurance emprunteur, que vous pouvez ajuster. Elle ne comprend ni les frais de notaire, ni les frais de dossier.</li>
             <li>Les banques limitent en général l&apos;endettement à 35 % des revenus, assurance comprise, sur 25 ans au plus.</li>
             <li>Un apport d&apos;au moins 10 % du prix, pour couvrir les frais d&apos;acquisition, est le plus souvent attendu.</li>
           </ul>
