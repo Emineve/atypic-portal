@@ -37,6 +37,22 @@ const PROMISES: { title: string; text: string; href?: string; link?: string; sof
   },
 ];
 
+// Les visiteurs que le site va chercher : un portrait de la cible, pas une mesure d'audience.
+const VISITORS: { title: string; text: string }[] = [
+  {
+    title: 'L’acheteur décidé',
+    text: 'Il a un projet, un budget et peu de temps. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être rappelé dès qu’un lieu lui plaît.',
+  },
+  {
+    title: 'Le rêveur',
+    text: 'Il n’achète pas encore. Il regarde, met en favori, se nourrit de la rubrique Inspiration. C’est l’acheteur de demain, et il connaîtra déjà votre agence.',
+  },
+  {
+    title: 'L’amoureux des lieux',
+    text: 'Architecture, design, décoration : il sait ce qu’est une verrière d’atelier ou une belle hauteur sous plafond, et il ne visite pas par hasard.',
+  },
+];
+
 export default function ProPage() {
   const btn =
     'inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition';
@@ -97,6 +113,26 @@ export default function ProPage() {
             </li>
           ))}
         </ol>
+
+        <section className="border-t border-stone-900 py-12 md:py-16">
+          <h2 className={h2}>
+            Les acheteurs que nous allons chercher <span className="italic text-stone-500">pour vous.</span>
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+            Des acheteurs qui veulent un lieu qui leur ressemble, quel que soit leur budget. Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire.
+          </p>
+          <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
+            {VISITORS.map((v) => (
+              <div key={v.title} className="border-t border-stone-200 pt-5">
+                <h3 className="font-serif text-2xl text-stone-900">{v.title}</h3>
+                <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{v.text}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-10 max-w-2xl text-base font-light leading-relaxed text-stone-600">
+            Nous allons les chercher là où ils sont : sur les réseaux sociaux, sur Google et auprès des assistants IA, avec nos rubriques État des lieux et Inspiration.
+          </p>
+        </section>
 
         <section id="rejoindre" className="border-t border-stone-900 pt-12 md:pt-16 scroll-mt-20">
           <h2 className={h2}>
