@@ -121,19 +121,21 @@ export default function GuideIndex() {
         })}
         {articles.length === 0 && <p className="py-10 text-stone-500">Les premiers articles arrivent très bientôt.</p>}
 
-        <section data-alert-cta className="mt-16 md:mt-20 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
+        {/* La mention sur les articles vient juste après eux, avant l'invitation à l'alerte : l'une ne doit pas se lire comme la suite de l'autre */}
+        <p className="mt-10 text-sm text-stone-500 leading-relaxed max-w-3xl">
+          Ces articles donnent une information générale. Ils ne remplacent ni le conseil d&apos;un notaire, ni l&apos;avis d&apos;un professionnel du bâtiment sur un bien donné.
+        </p>
+
+        <section data-alert-cta className="mt-14 md:mt-20 border border-stone-900 bg-white p-6 md:p-10 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
           <div>
-            <h2 className="font-serif text-2xl md:text-3xl leading-snug">Les biens rares partent vite. Soyez le premier informé.</h2>
-            <p className="mt-2 text-stone-600 leading-relaxed">Créez une alerte : vous êtes prévenu dès qu&apos;un bien atypique correspond à votre recherche.</p>
+            <p className="text-xs uppercase tracking-widest text-stone-500">Votre recherche</p>
+            <h2 className="mt-2 font-serif text-2xl md:text-3xl leading-snug">Les biens rares partent vite. Soyez le premier informé.</h2>
+            <p className="mt-2 text-stone-600 leading-relaxed">Dites-nous quel bien vous cherchez : nous vous écrivons dès qu&apos;il arrive sur le marché.</p>
           </div>
           <Link href="/?alerte=1" className="mt-6 md:mt-0 inline-flex h-12 flex-none items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
             Créer mon alerte
           </Link>
         </section>
-
-        <p className="mt-10 text-sm text-stone-500 leading-relaxed max-w-3xl">
-          Ces articles donnent une information générale. Ils ne remplacent ni le conseil d&apos;un notaire, ni l&apos;avis d&apos;un professionnel du bâtiment sur un bien donné.
-        </p>
       </main>
     </div>
   );
