@@ -107,10 +107,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const eur0 = (n: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
   const energyCost = eMin > 0 && eMax > 0 && eMax !== eMin ? `${eur0(eMin)} à ${eur0(eMax)}` : eMin > 0 || eMax > 0 ? eur0(eMax || eMin) : '';
   // Budget annuel : énergie, charges, taxe foncière, et leur équivalent mensuel
-  const budget: [string, string][] = [];
-  if (energyCost) budget.push(['Énergie', energyCost]);
-  if (Number(item.charges_yearly) > 0) budget.push(['Charges de copropriété', eur0(Number(item.charges_yearly))]);
-  if (Number(item.property_tax) > 0) budget.push(['Taxe foncière', eur0(Number(item.property_tax))]);
   const energyMid = eMin > 0 && eMax > 0 ? (eMin + eMax) / 2 : eMax || eMin;
   const monthly = [energyMid > 0, Number(item.charges_yearly) > 0, Number(item.property_tax) > 0].filter(Boolean).length > 1
     ? Math.round((energyMid + (Number(item.charges_yearly) || 0) + (Number(item.property_tax) || 0)) / 12 / 10) * 10
@@ -135,6 +131,17 @@ export default async function ListingPage({ params }: { params: { id: string } }
   // Chiffres arrondis au millier : c'est un ordre de grandeur, pas un décompte
   const notary = Math.round((priceNum * NOTARY_RATE) / 1000) * 1000;
   const projectTotal = Math.round((priceNum + notary) / 1000) * 1000;
+  // Postes du budget annuel, du plus lourd au plus léger (pour la barre de répartition)
+  const costParts = [
+    { label: 'Charges de copropriété', amount: Number(item.charges_yearly) || 0, value: eur0(Number(item.charges_yearly) || 0) },
+    { label: 'Taxe foncière', amount: Number(item.property_tax) || 0, value: eur0(Number(item.property_tax) || 0) },
+    { label: 'Énergie', amount: energyMid || 0, value: energyCost },
+  ]
+    .filter((c) => c.amount > 0)
+    .sort((x, y) => y.amount - x.amount);
+  const costTotal = costParts.reduce((sum, c) => sum + c.amount, 0) || 1;
+  const COST_BAR = ['bg-stone-900', 'bg-stone-400', 'bg-[#F4E7B5] border border-stone-900'];
+  const COST_DOT = ['bg-stone-900', 'bg-stone-400', 'bg-[#F4E7B5] border border-stone-900'];
   const hasCopro = Boolean(item.copro_lots || Number(item.charges_yearly) > 0 || item.copro_procedure);
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
@@ -344,63 +351,64 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </section>
             )}
 
-            {hasCopro && (
-              <section className="mt-10">
-                <h2 className="font-serif text-2xl text-stone-900">La copropriété</h2>
-                {/* Même présentation que le prix et le budget : un intitulé à gauche, la valeur à droite */}
-                <dl className="mt-5 border-y border-stone-200 divide-y divide-stone-200 text-stone-700">
-                  {item.copro_lots ? (
-                    <div className="flex items-baseline justify-between gap-6 py-3.5">
-                      <dt>Nombre de lots</dt>
-                      <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{item.copro_lots}</dd>
-                    </div>
-                  ) : null}
-                  {Number(item.charges_yearly) > 0 ? (
-                    <div className="flex items-baseline justify-between gap-6 py-3.5">
-                      <dt>Charges</dt>
-                      <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
-                        {eur0(Number(item.charges_yearly))} <span className="font-sans text-sm text-stone-500">par an</span>
-                      </dd>
-                    </div>
-                  ) : null}
-                  {item.copro_procedure ? (
-                    <div className="flex items-baseline justify-between gap-6 py-3.5">
-                      <dt>Procédures en cours</dt>
-                      <dd className="font-serif text-lg text-stone-900 text-right">
-                        {/^aucune/i.test(String(item.copro_procedure)) ? 'Aucune' : item.copro_procedure}
-                      </dd>
-                    </div>
-                  ) : null}
-                </dl>
-              </section>
-            )}
+            {(costParts.length > 0 || hasCopro) && (
+              <section className="mt-10 border border-stone-300 bg-white p-6">
+                <h2 className="font-serif text-2xl text-stone-900">Vivre ici, au quotidien</h2>
 
-            {budget.length > 0 && (
-              <section className="mt-10">
-                <h2 className="font-serif text-2xl text-stone-900">Le budget au quotidien</h2>
-                <dl className="mt-5 border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
-                  {budget.map(([label, value]) => (
-                    <div key={label} className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3.5">
-                      <dt>{label}</dt>
-                      {value && (
+                {monthly > 0 && (
+                  <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="font-serif text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
+                      <span className="font-sans text-3xl text-stone-400" aria-label="environ">≈</span> {eur0(monthly)}
+                    </span>
+                    <span className="text-sm text-stone-500">par mois, hors crédit</span>
+                  </p>
+                )}
+
+                {/* Part de chaque poste dans le budget annuel */}
+                {costParts.length > 1 && (
+                  <div className="mt-5 flex h-2.5 w-full overflow-hidden" aria-hidden="true">
+                    {costParts.map((c, i) => (
+                      <span key={c.label} className={COST_BAR[i]} style={{ width: `${(c.amount / costTotal) * 100}%` }} />
+                    ))}
+                  </div>
+                )}
+
+                {costParts.length > 0 && (
+                  <dl className={`divide-y divide-stone-200 text-stone-700 ${costParts.length > 1 ? 'mt-2' : 'mt-4 border-t border-stone-200'}`}>
+                    {costParts.map((c, i) => (
+                      <div key={c.label} className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
+                        <dt className="flex items-center gap-2.5">
+                          {costParts.length > 1 && <span className={`h-2.5 w-2.5 flex-none ${COST_DOT[i]}`} aria-hidden="true" />}
+                          {c.label}
+                        </dt>
                         <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
-                          {value} <span className="font-sans text-sm text-stone-500">par an</span>
+                          {c.value} <span className="font-sans text-sm text-stone-500">par an</span>
                         </dd>
-                      )}
+                      </div>
+                    ))}
+                  </dl>
+                )}
+
+                {(item.copro_lots || item.copro_procedure) && (
+                  <div className={costParts.length > 0 ? 'mt-1 pt-5 border-t border-stone-200' : 'mt-4'}>
+                    <p className="text-[10px] uppercase tracking-widest text-stone-500">La copropriété</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {item.copro_lots ? (
+                        <span className="inline-flex items-center h-9 px-4 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
+                          {item.copro_lots} {Number(item.copro_lots) > 1 ? 'lots' : 'lot'}
+                        </span>
+                      ) : null}
+                      {item.copro_procedure ? (
+                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
+                          {/^aucune/i.test(String(item.copro_procedure)) ? 'Aucune procédure en cours' : item.copro_procedure}
+                        </span>
+                      ) : null}
                     </div>
-                  ))}
-                  {monthly > 0 && (
-                    <div className="flex items-baseline justify-between gap-6 py-4 border-b border-stone-200">
-                      <dt className="text-stone-900">
-                        Soit par mois
-                        <span className="block text-xs text-stone-400">Hors crédit</span>
-                      </dt>
-                      <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap"><span className="font-sans text-xl text-stone-500" aria-label="environ">≈</span> {eur0(monthly)}</dd>
-                    </div>
-                  )}
-                </dl>
+                  </div>
+                )}
+
                 {energyCost && (
-                  <p className="mt-3 text-xs text-stone-400 leading-relaxed">
+                  <p className="mt-5 text-xs text-stone-400 leading-relaxed">
                     Énergie : montant moyen estimé pour un usage standard, abonnement compris{item.energy_cost_ref ? `, sur la base des prix des années ${item.energy_cost_ref}` : ''}.
                   </p>
                 )}
