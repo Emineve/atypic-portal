@@ -146,14 +146,17 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
 
         <section className="mt-12">
           <h2 className="font-serif text-2xl text-stone-900">Questions fréquentes</h2>
-          <dl className="mt-4 border-t border-stone-200 divide-y divide-stone-200">
+          <div className="mt-4 border-y border-stone-200 divide-y divide-stone-200">
             {a.faq.map((f) => (
-              <div key={f.q} className="py-5">
-                <dt className="font-serif text-lg text-stone-900">{f.q}</dt>
-                <dd className="mt-2 text-stone-700 leading-relaxed">{f.a}</dd>
-              </div>
+              <details key={f.q} className="group py-5">
+                <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
+                  {f.q}
+                  <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
+                </summary>
+                <p className="mt-3 text-stone-700 leading-relaxed">{f.a}</p>
+              </details>
             ))}
-          </dl>
+          </div>
         </section>
 
         <section className="mt-12 bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
