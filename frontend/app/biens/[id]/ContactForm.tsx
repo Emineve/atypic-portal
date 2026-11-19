@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
-import { Phone, Check } from 'lucide-react';
+import { Phone, Check, X, Bell, Send } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_ICON_PATH } from './whatsapp';
 
@@ -232,75 +232,61 @@ export default function ContactForm({
           {confirmOpen && createPortal(
             <div className="fixed inset-0 z-[80] flex items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Demande envoyée">
               <div className="absolute inset-0 bg-stone-900/60" onClick={() => setConfirmOpen(false)} />
-              <div className="relative w-full max-w-md max-h-full overflow-y-auto bg-[#FDFBF7] shadow-2xl px-8 py-10 text-center">
-                <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-white flex items-center justify-center">
-                  <Check className="w-8 h-8" />
-                </span>
-                <h2 className="mt-7 font-serif text-3xl text-stone-900 leading-tight">C&apos;est envoyé.</h2>
-                <p className="mt-4 text-stone-600 leading-relaxed">
-                  Votre demande est bien enregistrée. L&apos;agence en charge de ce bien vous recontacte rapidement.
-                </p>
-                {alertLabel && alertStatus !== 'done' && (
-                  <div className="mt-8 border border-stone-200 bg-white p-5 text-left">
-                    <p className="font-serif text-lg text-stone-900 leading-snug">Et les prochains biens comme celui-ci ?</p>
-                    <p className="mt-1 text-sm text-stone-600 leading-relaxed">
-                      Recevez par e-mail les nouveaux biens : {alertLabel}.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={createAlert}
-                      disabled={alertStatus === 'sending'}
-                      className="mt-4 w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
-                    >
-                      {alertStatus === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
-                    </button>
-                    {alertStatus === 'error' && <p className="mt-2 text-xs text-red-700">L&apos;alerte n&apos;a pas pu être créée. Réessayez.</p>}
-                    <p className="mt-3 text-[11px] text-stone-500 leading-relaxed">
-                      En créant l&apos;alerte, vous acceptez de recevoir ces e-mails à l&apos;adresse {email}. Arrêt possible à tout moment.
-                    </p>
-                  </div>
-                )}
-                {alertLabel && shareStatus !== 'done' && (
-                  <div className="mt-4 border border-stone-200 bg-white p-5 text-left">
-                    <p className="font-serif text-lg text-stone-900 leading-snug">Partager ma recherche avec {agency} ?</p>
-                    <p className="mt-1 text-sm text-stone-600 leading-relaxed">
-                      L&apos;agence pourra vous proposer d&apos;autres biens, y compris avant leur mise en ligne : {alertLabel}.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={shareCriteria}
-                      disabled={shareStatus === 'sending'}
-                      className="mt-4 w-full h-12 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
-                    >
-                      {shareStatus === 'sending' ? 'Un instant…' : 'Partager ma recherche'}
-                    </button>
-                    {shareStatus === 'error' && <p className="mt-2 text-xs text-red-700">Le partage n&apos;a pas abouti. Réessayez.</p>}
-                    <p className="mt-3 text-[11px] text-stone-500 leading-relaxed">
-                      Vos critères et vos coordonnées sont transmis uniquement à {agency}.
-                    </p>
-                  </div>
-                )}
-                {shareStatus === 'done' && (
-                  <p className="mt-4 border border-stone-900 bg-white p-4 text-sm text-stone-900">
-                    Recherche partagée avec {agency}.
-                  </p>
-                )}
-                {alertStatus === 'done' && (
-                  <p className="mt-8 border border-stone-900 bg-white p-4 text-sm text-stone-900">
-                    Alerte créée. Vous serez prévenu(e) par e-mail dès qu&apos;un nouveau bien répond à vos attentes.
-                  </p>
-                )}
+              <div className="relative w-full max-w-sm max-h-full overflow-y-auto bg-white shadow-2xl px-7 pt-12 pb-7 text-center">
                 <button
                   type="button"
                   onClick={() => setConfirmOpen(false)}
-                  className={
-                    alertLabel && alertStatus !== 'done'
-                      ? 'mt-5 text-xs font-semibold uppercase tracking-wider text-stone-600 underline underline-offset-4 hover:text-stone-900'
-                      : 'mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition'
-                  }
+                  aria-label="Fermer"
+                  className="absolute top-2 right-2 h-11 w-11 flex items-center justify-center text-stone-500 hover:text-stone-900"
                 >
-                  Poursuivre ma visite
+                  <X className="w-5 h-5" />
                 </button>
+                <span className="mx-auto h-12 w-12 rounded-full bg-stone-900 text-white flex items-center justify-center">
+                  <Check className="w-6 h-6" />
+                </span>
+                <h2 className="mt-5 font-serif text-3xl text-stone-900 leading-tight">C&apos;est envoyé.</h2>
+                <p className="mt-2 text-stone-600">L&apos;agence vous recontacte rapidement.</p>
+
+                {alertLabel && (
+                  <div className="mt-8 text-left">
+                    <p className="text-xs uppercase tracking-widest text-stone-500">Et pour la suite</p>
+                    <p className="mt-1.5 font-serif text-lg leading-snug text-stone-900">Les prochains biens : {alertLabel}</p>
+                    <div className="mt-3 border-y border-stone-200 divide-y divide-stone-200">
+                      {alertStatus === 'done' ? (
+                        <p className="flex items-center gap-3 py-4 text-stone-600">
+                          <Check className="w-4 h-4 flex-none" />
+                          Alerte créée
+                        </p>
+                      ) : (
+                        <button type="button" onClick={createAlert} disabled={alertStatus === 'sending'} className="w-full flex items-center gap-3 py-4 text-left text-stone-900 disabled:opacity-60">
+                          <Bell className="w-4 h-4 flex-none text-stone-500" strokeWidth={1.5} />
+                          <span className="flex-1 underline underline-offset-4 decoration-stone-300">
+                            {alertStatus === 'sending' ? 'Un instant…' : 'Les recevoir par e-mail'}
+                          </span>
+                        </button>
+                      )}
+                      {shareStatus === 'done' ? (
+                        <p className="flex items-center gap-3 py-4 text-stone-600">
+                          <Check className="w-4 h-4 flex-none" />
+                          Recherche partagée avec {agency}
+                        </p>
+                      ) : (
+                        <button type="button" onClick={shareCriteria} disabled={shareStatus === 'sending'} className="w-full flex items-center gap-3 py-4 text-left text-stone-900 disabled:opacity-60">
+                          <Send className="w-4 h-4 flex-none text-stone-500" strokeWidth={1.5} />
+                          <span className="flex-1 underline underline-offset-4 decoration-stone-300">
+                            {shareStatus === 'sending' ? 'Un instant…' : `Partager ma recherche avec ${agency}`}
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                    {(alertStatus === 'error' || shareStatus === 'error') && (
+                      <p className="mt-2 text-xs text-red-700">Cela n&apos;a pas abouti. Réessayez.</p>
+                    )}
+                    <p className="mt-3 text-xs text-stone-500 leading-relaxed">
+                      Gratuit, arrêt possible à tout moment. Le partage transmet vos coordonnées à {agency} uniquement.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>,
             document.body
