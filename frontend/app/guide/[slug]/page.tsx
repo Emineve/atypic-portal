@@ -137,7 +137,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
 
         {videosForArticle(a.slug).length > 0 && (
           <section className="mt-10">
-            <h2 className="font-serif text-2xl leading-snug text-stone-900">La parole au spécialiste</h2>
+            <h2 className="font-serif text-2xl leading-snug text-stone-900">Contre-visite</h2>
             <div className="mt-4 space-y-4">
               {videosForArticle(a.slug).map((v) => (
                 <SpecialistVideoCard key={v.id} v={v} />

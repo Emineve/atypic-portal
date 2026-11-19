@@ -1,4 +1,4 @@
-// « La parole aux spécialistes » : de courtes vidéos, une question par vidéo, par des professionnels nommés.
+// « Contre-visite » : de courtes vidéos, une question par vidéo, par des professionnels nommés.
 // Rien ne s'affiche tant que cette liste est vide. On n'y ajoute une vidéo qu'avec l'accord écrit
 // du spécialiste, et la transcription reprend ses propres mots : on ne lui prête aucun propos.
 export interface SpecialistVideo {
