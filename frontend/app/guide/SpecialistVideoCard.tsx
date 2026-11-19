@@ -12,7 +12,11 @@ export default function SpecialistVideoCard({ v }: { v: SpecialistVideo }) {
   return (
     <article id={`video-${v.id}`} className="scroll-mt-24 rounded-[20px] border border-stone-200 bg-white p-5 md:p-7 sm:grid sm:grid-cols-[13rem_1fr] sm:gap-7">
       <div className="relative mx-auto aspect-[9/16] w-full max-w-[16rem] overflow-hidden rounded-[14px] bg-stone-900 sm:mx-0">
-        {playing ? (
+        {!v.youtubeId ? (
+          <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-stone-900">
+            <Play className="ml-0.5 h-6 w-6" fill="currentColor" strokeWidth={0} />
+          </span>
+        ) : playing ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}?autoplay=1&rel=0&playsinline=1`}
             title={v.question}

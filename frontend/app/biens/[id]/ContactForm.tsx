@@ -250,7 +250,7 @@ export default function ContactForm({
                   <Check className="w-6 h-6" />
                 </span>
                 <h2 className="mt-5 font-serif text-3xl text-stone-900 leading-tight">C&apos;est envoyé.</h2>
-                <p className="mt-2 text-stone-600">L&apos;agence vous recontacte rapidement.</p>
+                <p className="mt-2 text-stone-600">L&apos;agence vous recontacte dans les meilleurs délais.</p>
 
                 {alertLabel && (
                   <div className="mt-8 text-left">
@@ -288,7 +288,7 @@ export default function ContactForm({
                       <p className="mt-2 text-xs text-red-700">Cela n&apos;a pas abouti. Réessayez.</p>
                     )}
                     <p className="mt-3 text-xs text-stone-500 leading-relaxed">
-                      Gratuit, arrêt possible à tout moment. Le partage transmet vos coordonnées à {agency} uniquement.
+                      Le partage transmet vos coordonnées à {agency} uniquement.
                     </p>
                   </div>
                 )}
