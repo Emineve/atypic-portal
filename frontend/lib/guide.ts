@@ -39,6 +39,96 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'meuble-touristique-paris-regles',
+    art: 'annonce',
+    title: 'Louer en meublé touristique à Paris : ce qui est permis, ce qui ne l’est pas',
+    description:
+      'Compter sur la location de courte durée pour financer un achat à Paris est risqué. Résidence principale, 90 jours, numéro d’enregistrement, changement d’usage : les règles en 2026.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Un loft bien placé, un atelier avec terrasse : l’idée vient vite de le louer aux touristes quand on n’y est pas, ou d’acheter un pied-à-terre qui se paierait ainsi. À Paris, c’est l’un des régimes les plus stricts de France. Avant d’intégrer ces revenus dans votre plan de financement, voici ce que les règles permettent réellement.',
+    takeaways: [
+      'Votre résidence principale peut être louée en meublé touristique, dans la limite de 90 jours par an à Paris.',
+      'Tout meublé de tourisme doit être déclaré, et son numéro d’enregistrement figurer sur chaque annonce.',
+      'Un logement qui n’est pas votre résidence principale ne peut être loué aux touristes qu’avec une autorisation de changement d’usage, assortie d’une compensation. C’est en pratique très difficile à obtenir pour un particulier.',
+      'Les amendes vont jusqu’à 100 000 euros pour une location sans autorisation.',
+      'Le règlement de copropriété peut, en plus, interdire ce type de location.',
+    ],
+    sections: [
+      {
+        title: 'Peut-on louer sa résidence principale ?',
+        paragraphs: [
+          'Oui, sans autorisation de changement d’usage, mais avec deux conditions. La première : une déclaration préalable, qui donne un numéro d’enregistrement à afficher sur chaque annonce. Depuis le 20 mai 2026, cette déclaration passe par un téléservice national. La seconde : un plafond. À Paris, la Ville indique que la résidence principale peut être louée jusqu’à 90 jours par an au maximum.',
+          'La résidence principale, au sens de ces règles, est le logement que vous occupez au moins huit mois par an. Un pied-à-terre n’en est pas une.',
+        ],
+      },
+      {
+        title: 'Et un logement qui n’est pas la résidence principale ?',
+        paragraphs: [
+          'C’est un autre régime. Le louer à des touristes, même une seule nuit, suppose une autorisation de changement d’usage, parce que le logement cesse d’être de l’habitation. À Paris, cette autorisation est subordonnée à une compensation : il faut transformer en logement une surface équivalente qui ne l’était pas, ou en acheter le droit.',
+          'Autrement dit, acheter un appartement parisien pour le louer à la nuitée n’est pas un projet réaliste pour la plupart des particuliers. Le meublé de longue durée, lui, où le locataire fait du logement sa résidence principale, ne demande ni changement d’usage, ni compensation, ni numéro d’enregistrement.',
+        ],
+      },
+      {
+        title: 'Que risque-t-on ?',
+        paragraphs: [
+          'Les contrôles sont nombreux et les amendes élevées. D’après un guide professionnel publié en 2026, les sanctions sont les suivantes :',
+        ],
+        list: [
+          'Défaut d’enregistrement : jusqu’à 10 000 euros.',
+          'Fausse déclaration ou faux numéro : jusqu’à 20 000 euros.',
+          'Dépassement du plafond de 90 jours : jusqu’à 15 000 euros.',
+          'Location sans autorisation de changement d’usage : jusqu’à 100 000 euros.',
+        ],
+      },
+      {
+        title: 'La copropriété a-t-elle son mot à dire ?',
+        paragraphs: [
+          'Oui. Indépendamment des règles de la Ville, le règlement de copropriété peut réserver l’immeuble à l’habitation et rendre la location touristique incompatible avec sa destination. Les tribunaux ont longtemps jugé cette activité contraire aux clauses d’habitation bourgeoise ; la jurisprudence évolue, et le règlement de votre immeuble reste la référence.',
+          'Lisez-le avant d’acheter, et cherchez dans les procès-verbaux d’assemblée générale toute décision ou tout litige sur ce sujet.',
+        ],
+      },
+      {
+        title: 'Ce que cela change pour votre achat',
+        list: [
+          'Ne comptez pas de revenus de location touristique dans votre plan de financement, sauf pour quelques semaines par an dans votre résidence principale.',
+          'Si le vendeur met en avant une rentabilité « Airbnb », demandez le numéro d’enregistrement et, hors résidence principale, l’autorisation de changement d’usage.',
+          'Vérifiez le règlement de copropriété.',
+          'Ces règles changent souvent : consultez la page de la Ville de Paris au moment de votre achat.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Combien de jours par an peut-on louer sa résidence principale à Paris ?',
+        a: 'Jusqu’à 90 jours par an, après déclaration et avec un numéro d’enregistrement affiché sur l’annonce.',
+      },
+      {
+        q: 'Peut-on louer une résidence secondaire sur une plateforme à Paris ?',
+        a: 'Seulement avec une autorisation de changement d’usage assortie d’une compensation. Sans elle, l’amende peut atteindre 100 000 euros.',
+      },
+      {
+        q: 'Le numéro d’enregistrement est-il obligatoire ?',
+        a: 'Oui, pour tout meublé de tourisme, résidence principale comprise. Il doit figurer sur chaque annonce.',
+      },
+      {
+        q: 'La copropriété peut-elle interdire la location touristique ?',
+        a: 'Le règlement de copropriété peut la rendre incompatible avec la destination de l’immeuble. Vérifiez sa rédaction avant d’acheter.',
+      },
+    ],
+    sources: [
+      { label: 'Kohen Avocats, « Meublé de tourisme à Paris en 2026 : 90 jours, changement d’usage avec compensation et amendes »', url: 'https://kohenavocats.fr/2026/10/04/meuble-tourisme-paris-90-jours-changement-usage-compensation-amende-2026/' },
+      { label: 'Kohen Avocats, « Changement d’usage Airbnb à Paris : autorisation, compensation, amende et recours en 2026 »', url: 'https://kohenavocats.fr/2026/06/12/changement-usage-airbnb-paris-autorisation-compensation-amende-recours-2026/' },
+      { label: 'Home Select, « Réglementation des locations touristiques à Paris en 2026 »', url: 'https://homeselect.paris/blog/reglementation-locations-touristiques-paris-2026/' },
+      { label: 'Coolok, « Déclaration de meublé de tourisme : le numéro d’enregistrement pas à pas »', url: 'https://www.coolok.co/blog/declaration-meuble-de-tourisme' },
+      { label: 'Actu-Juridique, « Nature commerciale de l’activité d’Airbnb en copropriété »', url: 'https://www.actu-juridique.fr/civil/immobilier/nature-commerciale-de-lactivite-dairbnb-en-copropriete-un-revirement-de-jurisprudence/' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'travailler-chez-soi-usage-mixte',
     art: 'charges',
     title: 'Vivre et travailler au même endroit : ce que permet votre logement',
