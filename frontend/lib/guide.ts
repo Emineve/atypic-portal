@@ -372,8 +372,8 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       {
         title: 'Faut-il une autorisation de la mairie ?',
         paragraphs: [
-          'Dans les communes où le logement est rare, dont Paris, utiliser un logement pour une activité peut être un changement d’usage, soumis à autorisation. L’exercer chez soi n’en constitue pas automatiquement un.',
-          'La loi prévoit une tolérance pour un logement situé en étage : aucune autorisation n’est demandée si c’est votre résidence principale, si l’activité n’est exercée que par les occupants du logement, et si vous n’y recevez ni clientèle ni marchandises. Au rez-de-chaussée, les règles sont différentes et plus souples sur l’accueil. Dès que vous recevez du public en étage, renseignez-vous auprès de la mairie avant de vous installer.',
+          'Dans les communes classées en zone tendue, dont Paris, utiliser un logement pour une activité peut être un changement d’usage, soumis à autorisation. L’exercer chez soi n’en constitue pas automatiquement un. Ailleurs, aucune autorisation du maire n’est en principe nécessaire, sauf décision locale.',
+          'Service-Public détaille deux tolérances. En étage : aucune autorisation n’est demandée si l’activité s’exerce dans une partie de votre résidence principale, sans recevoir de clientèle ni de marchandises, et sans salarié. Au rez-de-chaussée : vous pouvez recevoir clients et marchandises, à condition que l’activité ne cause ni nuisance ni danger pour le voisinage et ne soit exercée que par les personnes qui habitent le logement. Dès que vous sortez de ces cas, interrogez la mairie avant de vous installer.',
         ],
       },
       {
