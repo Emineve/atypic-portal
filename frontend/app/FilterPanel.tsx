@@ -49,7 +49,7 @@ export default function FilterPanel({
   const digitsOnly = (v: string) => v.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
 
   const input =
-    'w-full h-12 border border-stone-300 bg-white px-3 text-base text-stone-900 placeholder:text-stone-500 focus:outline-none focus:border-stone-900';
+    'rounded-[10px] w-full h-12 border border-stone-300 bg-white px-3 text-base text-stone-900 placeholder:text-stone-500 focus:outline-none focus:border-stone-900';
 
   return (
     <div>

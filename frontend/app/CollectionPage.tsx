@@ -70,7 +70,7 @@ export default function CollectionPage({
           <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((item) => (
-              <article key={item.id} className="group flex flex-col bg-white border border-stone-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+              <article key={item.id} className="group flex flex-col rounded-[14px] bg-white border border-stone-200 overflow-hidden hover:shadow-lg transition-all duration-300">
                 <Link href={`/biens/${item.id}`} className="relative block aspect-[4/3] bg-stone-100 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.cover_image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />

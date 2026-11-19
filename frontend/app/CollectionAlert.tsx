@@ -50,7 +50,7 @@ export default function CollectionAlert({
     <>
       <div
         data-alert-cta
-        className="border border-stone-900 bg-white p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5 text-left mt-14"
+        className="rounded-[14px] border border-stone-900 bg-white p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5 text-left mt-14"
       >
         <p className="font-serif text-2xl md:text-3xl text-stone-900 leading-snug">
           <AlertPhrase />

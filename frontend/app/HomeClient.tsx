@@ -644,7 +644,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               }}
               id="recherche-lieu"
               placeholder="Ville, code postal, quartier…"
-              className="w-full h-14 pl-12 pr-14 sm:pr-44 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
+              className="w-full h-14 pl-12 pr-14 sm:pr-44 rounded-[10px] bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
               aria-label="Rechercher un lieu"
               role="combobox"
               aria-expanded={showSuggestions}
@@ -678,7 +678,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               <ul
                 id="suggestions-lieux"
                 role="listbox"
-                className="absolute left-0 right-0 top-full z-40 mt-1 border border-stone-300 bg-white shadow-lg text-left"
+                className="absolute left-0 right-0 top-full z-40 mt-1 rounded-[10px] overflow-hidden border border-stone-300 bg-white shadow-lg text-left"
               >
                 {placeMatches.map((p, i) => (
                   <li key={p.kind + p.city + p.value} role="option" aria-selected={i === 0}>
@@ -710,7 +710,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <button
             type="button"
             onClick={() => setShowFilters(true)}
-            className="h-14 px-4 sm:px-5 border border-stone-300 bg-white text-xs uppercase tracking-wider inline-flex items-center gap-2 hover:border-stone-900 transition"
+            className="h-14 px-4 sm:px-5 rounded-[10px] border border-stone-300 bg-white text-xs uppercase tracking-wider inline-flex items-center gap-2 hover:border-stone-900 transition"
             aria-haspopup="dialog"
           >
             <SlidersHorizontal className="w-4 h-4" />
@@ -752,7 +752,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           </div>
         )}
 
-        {anythingActive && (
+        {anythingActive && activeFilters + places.length + (query.trim() !== '' ? 1 : 0) > 1 && (
           <div className="mt-4 text-center">
             <button
               type="button"
@@ -845,11 +845,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     placeholder={places.length > 0 ? 'Ajouter un lieu' : 'Ville, code postal, quartier…'}
                     aria-label="Ajouter un lieu"
                     autoComplete="off"
-                    className="w-full h-12 pl-9 pr-3 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
+                    className="w-full h-12 pl-9 pr-3 rounded-[10px] bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
                   />
                 </div>
                 {panelTyped !== '' && (
-                  <ul className="mt-1 border border-stone-300 bg-white" role="listbox">
+                  <ul className="mt-1 rounded-[10px] overflow-hidden border border-stone-300 bg-white" role="listbox">
                     {panelMatches.map((p) => (
                       <li key={p.kind + p.city + p.value} role="option" aria-selected={false}>
                         <button
@@ -881,7 +881,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   id="f-sort"
                   value={sort}
                   onChange={(e) => setSort(e.target.value)}
-                  className="mt-2 w-full h-12 border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
+                  className="mt-2 w-full h-12 rounded-[10px] border border-stone-300 bg-white px-3 text-base focus:outline-none focus:border-stone-900"
                 >
                   {SORTS.map((o) => (
                     <option key={o.value} value={o.value}>{o.label}</option>
@@ -935,7 +935,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 </button>
               )}
             </div>
-            {!onlyFavs && (
+            {!onlyFavs && visible.length > 1 && (
             <label className="relative ml-auto inline-flex items-baseline gap-1.5 text-sm text-stone-500 cursor-pointer">
               <span>Trier&nbsp;:</span>
               <span className="text-stone-900 underline decoration-stone-300 underline-offset-4">
@@ -1004,7 +1004,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
               return (
                 <Fragment key={item.id}>
-                <article className="group relative flex flex-col border border-stone-300 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <article className="group relative flex flex-col rounded-[14px] border border-stone-300 overflow-hidden hover:shadow-lg transition-all duration-300">
                   <a href={`/biens/${item.id}`} className="flex flex-1 flex-col" aria-label={item.title}>
                     <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
                       <img

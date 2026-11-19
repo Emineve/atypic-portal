@@ -40,7 +40,7 @@ export default function ReportButton({ listingId }: { listingId: string }) {
     return <p className="text-xs text-stone-500 text-center">Merci, votre signalement est enregistré.</p>;
   }
 
-  const field = 'w-full border border-stone-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-stone-900';
+  const field = 'rounded-[10px] w-full border border-stone-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-stone-900';
 
   if (!open) {
     return (
@@ -55,7 +55,7 @@ export default function ReportButton({ listingId }: { listingId: string }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-4 space-y-3">
+    <form onSubmit={onSubmit} className="rounded-[14px] border border-stone-200 bg-white p-4 space-y-3">
       <h2 className="font-serif text-base text-stone-900">Signaler cette annonce</h2>
       <div>
         <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-reason">Motif</label>

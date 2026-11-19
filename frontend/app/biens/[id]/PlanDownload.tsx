@@ -87,7 +87,7 @@ export default function PlanDownload({
   }
 
   if (plans.length === 0) return null;
-  const field = 'w-full h-12 border border-stone-300 bg-white px-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
+  const field = 'rounded-[10px] w-full h-12 border border-stone-300 bg-white px-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
   return (
     <>
@@ -120,7 +120,7 @@ export default function PlanDownload({
                 {plans.map((src, i) => (
                   <div key={src}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={src} alt={`Plan ${i + 1} : ${title || 'bien'}`} className="w-full h-auto border border-stone-200" />
+                    <img src={src} alt={`Plan ${i + 1} : ${title || 'bien'}`} className="w-full h-auto rounded-[10px] border border-stone-200" />
                     <a
                       href={src}
                       target="_blank"

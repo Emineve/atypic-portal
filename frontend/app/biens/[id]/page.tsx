@@ -313,7 +313,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             </div>
 
             {priceNum > 0 && (
-              <section id="prix" className="mt-10 border border-stone-300 bg-white p-6 scroll-mt-24">
+              <section id="prix" className="mt-10 rounded-[14px] border border-stone-300 bg-white p-6 scroll-mt-24">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
 
                 <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -364,7 +364,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             )}
 
             {(costParts.length > 0 || hasCopro) && (
-              <section className={`${priceNum > 0 ? 'mt-4' : 'mt-10'} border border-stone-300 bg-white p-6`}>
+              <section className={`${priceNum > 0 ? 'mt-4' : 'mt-10'} rounded-[14px] border border-stone-300 bg-white p-6`}>
                 <h2 className="font-serif text-2xl text-stone-900">Vivre ici, au quotidien</h2>
 
                 {monthly > 0 && (
@@ -460,7 +460,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
         <aside className="min-w-0">
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
-          <div className="hidden lg:block border border-stone-200 bg-white p-6">
+          <div className="hidden lg:block rounded-[14px] border border-stone-200 bg-white p-6">
             <p className="font-serif text-5xl leading-none tracking-tight text-stone-900 whitespace-nowrap">
               {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum)}
               <span className="ml-2 text-3xl text-stone-400">€</span>

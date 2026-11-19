@@ -43,7 +43,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
     }
   }
 
-  const field = 'w-full border border-stone-300 bg-white px-3 py-3 text-base focus:outline-none focus:border-stone-900';
+  const field = 'rounded-[10px] w-full border border-stone-300 bg-white px-3 py-3 text-base focus:outline-none focus:border-stone-900';
   const label = 'block text-xs uppercase tracking-wider text-stone-500 mb-1';
 
   return (

@@ -387,7 +387,7 @@ export default function AlertDialog({
   }
 
   const field =
-    'w-full border border-stone-300 bg-white px-4 h-12 text-base text-stone-900 placeholder:text-stone-500 focus:outline-none focus:border-stone-900 focus:ring-1 focus:ring-stone-900 transition';
+    'rounded-[10px] w-full border border-stone-300 bg-white px-4 h-12 text-base text-stone-900 placeholder:text-stone-500 focus:outline-none focus:border-stone-900 focus:ring-1 focus:ring-stone-900 transition';
 
   const recap: string[] = [];
   if (filters.types.length) recap.push(filters.types.join(' / '));
@@ -465,7 +465,7 @@ export default function AlertDialog({
             {recap.length > 0 && (
               <div className="mt-7 flex flex-wrap justify-center gap-2">
                 {recap.map((r) => (
-                  <span key={r} className="text-xs border border-stone-300 bg-white text-stone-700 px-3 py-1.5">
+                  <span key={r} className="text-xs rounded-full border border-stone-300 bg-white text-stone-700 px-3 py-1.5">
                     {r}
                   </span>
                 ))}
@@ -551,7 +551,7 @@ export default function AlertDialog({
                       className={field}
                     />
                     {dropdown.length > 0 && (
-                      <ul className="absolute left-0 right-0 top-full z-10 border border-t-0 border-stone-300 bg-white shadow-lg">
+                      <ul className="absolute left-0 right-0 top-full z-10 rounded-b-[10px] overflow-hidden border border-t-0 border-stone-300 bg-white shadow-lg">
                         {dropdown.map((p) => (
                           <li key={p.label}>
                             <button
@@ -643,7 +643,7 @@ export default function AlertDialog({
                       En créant votre alerte, vous acceptez de recevoir par e-mail les nouveaux biens correspondant à cette recherche. Arrêt possible à tout moment.
                     </p>
 
-                    <div className="mt-6 border border-stone-200 bg-white p-4">
+                    <div className="mt-6 rounded-[14px] border border-stone-200 bg-white p-4">
                       <button type="button" aria-expanded={wantWhatsapp} onClick={() => setWantWhatsapp(!wantWhatsapp)} className="group flex w-full items-start justify-between gap-3 text-left text-sm text-stone-900 leading-relaxed">
                         <span>
                           <span className="font-medium underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900">Recevoir aussi mes alertes sur WhatsApp</span>
@@ -676,7 +676,7 @@ export default function AlertDialog({
                     </div>
                     </>)}
                     {!shareWith && agencyList.length > 0 && (
-                      <div className="mt-4 border border-stone-200 bg-white p-4">
+                      <div className="mt-4 rounded-[14px] border border-stone-200 bg-white p-4">
                         <button type="button" aria-expanded={share} onClick={() => toggleShare(!share)} className="group flex w-full items-start justify-between gap-3 text-left text-sm text-stone-900 leading-relaxed">
                           <span>
                             <span className="font-medium underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900">Transmettre aussi ma recherche aux agences</span>

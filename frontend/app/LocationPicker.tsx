@@ -148,10 +148,10 @@ export default function LocationPicker({
             if (e.key === 'Backspace' && input === '' && value.length > 0) onChange(value.slice(0, -1));
           }}
           placeholder={value.length > 0 ? 'Ajouter une localisation' : placeholder}
-          className="w-full h-12 border border-stone-300 bg-white pl-9 pr-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900"
+          className="w-full h-12 rounded-[10px] border border-stone-300 bg-white pl-9 pr-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900"
         />
         {open && (
-          <ul id="lieux-proposes" role="listbox" className="absolute left-0 right-0 top-full z-20 mt-1 border border-stone-300 bg-white shadow-lg">
+          <ul id="lieux-proposes" role="listbox" className="absolute left-0 right-0 top-full z-20 mt-1 rounded-[10px] overflow-hidden border border-stone-300 bg-white shadow-lg">
             {dropdown.map((p, i) => (
               <li key={p.value} role="option" aria-selected={i === 0}>
                 <button

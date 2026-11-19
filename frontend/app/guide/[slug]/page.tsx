@@ -99,7 +99,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <div className="mt-5">
           <ArticleShare url={url} title={a.title} label={false} />
         </div>
-        <div className="mt-8 md:mt-10 md:max-w-3xl overflow-hidden border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
+        <div className="mt-8 md:mt-10 md:max-w-3xl overflow-hidden rounded-[14px] border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
           <GuideArt art={a.art} className="block w-full aspect-[16/9] md:aspect-[12/5]" />
         </div>
       </header>
@@ -107,7 +107,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
       <article className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-20 [&>*]:max-w-3xl">
         <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{typo(a.intro)}</p>
 
-        <section className="mt-8 bg-[#F4E7B5] p-6" aria-label="À retenir">
+        <section className="mt-8 rounded-[14px] bg-[#F4E7B5] p-6" aria-label="À retenir">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-900">À retenir</h2>
           <ul className="mt-4 space-y-3">
             {a.takeaways.map((t) => (
@@ -147,7 +147,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         )}
 
         {a.checklist && (
-          <section className="mt-10 border border-stone-900 bg-white p-6">
+          <section className="mt-10 rounded-[14px] border border-stone-900 bg-white p-6">
             <h2 className="font-serif text-2xl leading-snug text-stone-900">{typo(a.checklist.title)}</h2>
             <ul className="mt-4 space-y-3">
               {a.checklist.items.map((it) => (
@@ -210,7 +210,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
               {others.map((o) => (
                 <li key={o.slug}>
                   <Link href={`/guide/${o.slug}`} className="group flex items-center gap-4 sm:block">
-                    <div className="w-28 flex-none overflow-hidden border border-stone-900 sm:w-auto">
+                    <div className="w-28 flex-none overflow-hidden rounded-[8px] border border-stone-900 sm:w-auto">
                       <GuideArt art={o.art} className="block w-full aspect-[12/7] group-hover:scale-[1.05] transition-transform duration-700" />
                     </div>
                     <p className="font-serif text-lg leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300 sm:mt-3">{typo(o.title)}</p>
@@ -221,7 +221,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           </section>
         )}
 
-        <section data-alert-cta className="mt-12 bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
+        <section data-alert-cta className="mt-12 rounded-[14px] bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
           <h2 className="font-serif text-2xl md:text-3xl leading-snug">Ne passez pas à côté de votre prochain coup de cœur.</h2>
           <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-4">
             <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">

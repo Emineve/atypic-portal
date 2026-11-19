@@ -1,3 +1,4 @@
+import Crumbs from '../../Crumbs';
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -62,7 +63,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <SiteHeader backHref="/inspiration" backLabel="Inspiration" />
+      <SiteHeader />
 
       {a.is_demo && (
         <div className="bg-stone-900 text-stone-100 text-center text-xs tracking-wide py-2 px-4">
@@ -77,10 +78,8 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       )}
 
       <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-12 pb-14 [&>*]:max-w-3xl">
-        <p className="text-xs uppercase tracking-widest text-stone-500">
-          Inspiration · Architecte{a.city ? ` · ${a.city}` : ''}
-        </p>
-        <h1 className="mt-3 text-4xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.1]">{a.name}</h1>
+        <Crumbs items={[{ label: 'Inspiration', href: '/inspiration' }, { label: 'Architectes', href: '/architectes' }, { label: a.city ? `${a.name} · ${a.city}` : a.name }]} />
+        <h1 className="mt-6 text-4xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.1]">{a.name}</h1>
         {a.tagline && <p className="mt-3 text-stone-500 font-light text-lg">{a.tagline}</p>}
         {paragraphs.length > 0 && (
           <div className="mt-8 space-y-5 text-stone-700 leading-relaxed">

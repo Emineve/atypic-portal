@@ -155,7 +155,7 @@ export default function ContactForm({
 
   return (
     <div className="space-y-4">
-      <div className="border border-stone-300 bg-white">
+      <div className="rounded-[14px] border border-stone-300 bg-white">
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
           <div className="min-w-0">

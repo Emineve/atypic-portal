@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
@@ -57,7 +58,7 @@ export default async function InspirationPage() {
       ) : (
         <>
           <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">
-            <p className="text-xs uppercase tracking-widest text-stone-500">Inspiration</p>
+            <Crumbs items={[{ label: 'Inspiration' }]} />
             <p className="max-w-4xl mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
               Des idées pour <span className="italic text-stone-500">habiter autrement.</span>
             </p>

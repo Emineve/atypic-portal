@@ -71,7 +71,7 @@ export default async function GuideIndex() {
         )}
 
         {first && (
-          <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+          <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 rounded-[14px] overflow-hidden bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
             <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F4E7B5] flex items-center">
               <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
@@ -117,7 +117,7 @@ export default async function GuideIndex() {
                 {items.map((a) => (
                   <li key={a.slug}>
                     <Link href={`/guide/${a.slug}`} className="flex items-center gap-4 py-4">
-                      <div className="w-24 flex-none overflow-hidden border border-stone-900">
+                      <div className="w-24 flex-none overflow-hidden rounded-[8px] border border-stone-900">
                         <GuideArt art={a.art} className="block w-full aspect-[12/7]" />
                       </div>
                       <div className="min-w-0">
@@ -132,7 +132,7 @@ export default async function GuideIndex() {
               <ul className="mt-8 hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {items.map((a) => (
                   <li key={a.slug}>
-                    <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                    <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col rounded-[14px] overflow-hidden bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
                       <div className="overflow-hidden border-b border-stone-900">
                         <GuideArt art={a.art} className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
                       </div>
@@ -157,7 +157,7 @@ export default async function GuideIndex() {
           Ces articles donnent une information générale. Ils ne remplacent ni le conseil d&apos;un notaire, ni l&apos;avis d&apos;un professionnel du bâtiment sur un bien donné.
         </p>
 
-        <section data-alert-cta className="mt-14 md:mt-20 border border-stone-900 bg-white p-6 md:p-10 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
+        <section data-alert-cta className="mt-14 md:mt-20 rounded-[14px] border border-stone-900 bg-white p-6 md:p-10 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
           <div>
             <h2 className="font-serif text-2xl md:text-3xl leading-snug">Les biens rares partent vite. Soyez le premier informé.</h2>
           </div>

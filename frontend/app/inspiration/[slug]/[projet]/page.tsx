@@ -1,3 +1,4 @@
+import Crumbs from '../../../Crumbs';
 import SiteHeader from '../../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -55,13 +56,11 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <SiteHeader backHref="/inspiration" backLabel="Inspiration" />
+      <SiteHeader />
 
-      <header className="max-w-3xl mx-auto px-6 pt-14 pb-10 text-center">
-        <p className="text-xs uppercase tracking-widest text-stone-500">
-          Inspiration{p.kind ? ` · ${p.kind}` : ''}
-        </p>
-        <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{p.title}</h1>
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14 [&>*]:max-w-3xl">
+        <Crumbs items={[{ label: 'Inspiration', href: '/inspiration' }, { label: a.name, href: `/architectes/${a.slug}` }, { label: p.kind || 'Projet' }]} />
+        <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{p.title}</h1>
         {facts && <p className="mt-4 text-stone-500 font-light text-lg">{facts}</p>}
         <p className="mt-3 text-sm text-stone-600">
           Un projet de{' '}
@@ -97,7 +96,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
         )}
         <Link
           href={`/architectes/${a.slug}`}
-          className="inline-flex h-12 items-center justify-center px-6 border border-stone-300 text-xs font-semibold uppercase tracking-wider text-stone-700 hover:border-stone-900 transition"
+          className="inline-flex h-12 items-center justify-center px-6 rounded-[10px] border border-stone-300 text-xs font-semibold uppercase tracking-wider text-stone-700 hover:border-stone-900 transition"
         >
           Le portrait de {a.name}
         </Link>

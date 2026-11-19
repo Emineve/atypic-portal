@@ -73,7 +73,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Votre e-mail"
-          className={`min-w-0 flex-1 h-11 px-3 bg-white text-stone-900 text-base placeholder:text-stone-400 focus:outline-none ${dark ? '' : 'border border-stone-300 focus:border-stone-900'}`}
+          className={`min-w-0 flex-1 h-11 px-3 rounded-[10px] bg-white text-stone-900 text-base placeholder:text-stone-400 focus:outline-none ${dark ? '' : 'border border-stone-300 focus:border-stone-900'}`}
         />
         <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />
         <button

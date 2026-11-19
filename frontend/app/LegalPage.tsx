@@ -10,7 +10,7 @@ export default function LegalPage({ title, children, hideBanner }: { title: stri
         <div className="max-w-3xl pt-12 md:pt-20 pb-24">
         <Crumbs items={[{ label: title }]} className="mb-8" />
         {!LEGAL_READY && !hideBanner && (
-          <p className="mb-8 border border-stone-300 bg-stone-50 text-xs text-stone-600 p-3 leading-relaxed">
+          <p className="mb-8 rounded-[10px] border border-stone-300 bg-stone-50 text-xs text-stone-600 p-3 leading-relaxed">
             Version provisoire : certaines informations de l'éditeur seront complétées avant le lancement officiel du site.
           </p>
         )}

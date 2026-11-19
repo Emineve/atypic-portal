@@ -97,7 +97,7 @@ export default function FavoritesContact({
   }
 
   const agencies = Array.from(new Set(list.filter((i) => selected.includes(i.id)).map((i) => i.source_agency)));
-  const field = 'w-full h-12 border border-stone-300 bg-white px-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
+  const field = 'rounded-[10px] w-full h-12 border border-stone-300 bg-white px-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
   return (
     <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center" role="dialog" aria-modal="true" aria-label="Être rappelé(e) pour mes favoris">
