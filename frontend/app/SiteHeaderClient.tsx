@@ -36,6 +36,20 @@ export default function SiteHeaderClient({
 }) {
   const [open, setOpen] = useState(false);
   const [favs, setFavs] = useState(0);
+  const [fab, setFab] = useState(false);
+
+  // « + Nouvelle alerte » : apparaît en bas de l'écran une fois la page entamée, s'efface à l'approche du pied de page
+  useEffect(() => {
+    if (!alert) return;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const left = document.documentElement.scrollHeight - y - window.innerHeight;
+      setFab(y > 500 && left > 500);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [alert]);
 
   useEffect(() => {
     try {
@@ -62,17 +76,6 @@ export default function SiteHeaderClient({
                 </Link>
               ) : null)}
             {children}
-            {alert && (
-              <a
-                href="/?alerte=1"
-                aria-label="Nouvelle alerte"
-                className="inline-flex h-10 items-center gap-1.5 pl-3 pr-4 rounded-full bg-stone-900 text-white text-sm font-medium whitespace-nowrap hover:bg-stone-800 transition"
-              >
-                <Plus className="w-4 h-4" strokeWidth={2} />
-                <span className="sm:hidden">Alerte</span>
-                <span className="hidden sm:inline">Nouvelle alerte</span>
-              </a>
-            )}
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -85,6 +88,15 @@ export default function SiteHeaderClient({
           </div>
         </div>
       </nav>
+
+      {alert && fab && !open && (
+        <div className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none" style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}>
+          <a href="/?alerte=1" className="pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-white text-sm font-medium shadow-lg hover:bg-stone-800 transition">
+            <Plus className="w-4 h-4" strokeWidth={2} />
+            Nouvelle alerte
+          </a>
+        </div>
+      )}
 
       {open && (
         <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Menu">

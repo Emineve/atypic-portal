@@ -216,7 +216,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans pb-20 lg:pb-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(breadcrumb) }} />
-      <SiteHeader />
+      <SiteHeader alert={false} />
 
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">

@@ -451,16 +451,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             </button>
             <button
               type="button"
-              onClick={() => openAlert('header')}
-              aria-label="Nouvelle alerte"
-              className="inline-flex h-10 items-center gap-1.5 pl-3 pr-4 rounded-full bg-stone-900 text-white text-sm font-medium whitespace-nowrap hover:bg-stone-800 transition"
-            >
-              <Plus className="w-4 h-4" strokeWidth={2} />
-              <span className="md:hidden">Alerte</span>
-              <span className="hidden md:inline">Nouvelle alerte</span>
-            </button>
-            <button
-              type="button"
               onClick={() => setMenuOpen(true)}
               aria-label="Ouvrir le menu"
               aria-expanded={menuOpen}
@@ -1071,6 +1061,18 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         </div>
         <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
       </footer>
+
+      {scrolled && !footerVisible && !onlyFavs && !showFilters && !alertOpen && !favContactOpen && !menuOpen && !loading && !errorMessage && (
+        <div
+          className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
+          style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
+        >
+          <button type="button" onClick={() => openAlert('flottant')} className="pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-white text-sm font-medium shadow-lg hover:bg-stone-800 transition">
+            <Plus className="w-4 h-4" strokeWidth={2} />
+            Nouvelle alerte
+          </button>
+        </div>
+      )}
 
       {onlyFavs && visible.length > 0 && !footerVisible && !favContactOpen && (
         <div
