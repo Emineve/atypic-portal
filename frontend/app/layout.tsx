@@ -14,7 +14,11 @@ const serifFont = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], 
 // Texte repris par Google, par les assistants IA et par les aperçus de partage
 const TITLE = 'Loftissime · Lofts, ateliers et biens atypiques à vendre';
 const DESCRIPTION =
-  'Loftissime, curateur de biens atypiques et premier hub d’annonces immobilières atypiques : lofts, ateliers d’artistes, rooftops et maisons d’architecte à vendre.';
+  'Loftissime, curateur de biens atypiques, vous accompagne dans la recherche du bien de vos rêves : lofts, ateliers d’artistes, rooftops et maisons d’architecte à vendre, réunis sur un seul site.';
+
+// Présentation plus complète, pour la carte d'identité lue par les moteurs et les assistants IA
+const ORG_DESCRIPTION =
+  'Loftissime, curateur de biens atypiques, est le premier hub d’annonces immobilières atypiques en France : lofts, ateliers d’artistes, rooftops, maisons d’architecte et biens de caractère à vendre, proposés par les agences immobilières et réunis sur un seul site. Loftissime accompagne l’acheteur dans la recherche du bien de ses rêves, de la première idée à la visite : recherche, alertes, guide de l’acheteur, simulation de financement et mise en relation avec l’agent chargé de la vente.';
 
 // Aperçu de partage (WhatsApp, SMS, réseaux) : la signature et la promesse du site
 const SHARE_TITLE = 'Loftissime · Curateur de biens atypiques';
@@ -54,7 +58,7 @@ const siteLd = {
       name: SITE_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/icon.svg`,
-      description: DESCRIPTION,
+      description: ORG_DESCRIPTION,
     },
     {
       '@type': 'WebSite',
@@ -62,7 +66,7 @@ const siteLd = {
       name: SITE_NAME,
       url: SITE_URL,
       inLanguage: 'fr-FR',
-      description: DESCRIPTION,
+      description: ORG_DESCRIPTION,
       publisher: { '@id': `${SITE_URL}/#organisation` },
     },
   ],
