@@ -5,6 +5,7 @@ import { X, Check, MapPin } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
 import { readVisitor, saveVisitor } from '../lib/visitor';
 import FilterPanel from './FilterPanel';
+import InstallEntry from './InstallEntry';
 import { Filters, EMPTY_FILTERS, featureLabel } from './filters';
 import { formatPhone } from '../lib/phone';
 
@@ -472,6 +473,7 @@ export default function AlertDialog({
                 ))}
               </div>
             )}
+            <InstallEntry variant="line" />
             {!ALERT_EMAILS_LIVE && (
               <p className="mt-7 text-xs text-stone-400">Version de démonstration : aucun email n'est encore envoyé.</p>
             )}

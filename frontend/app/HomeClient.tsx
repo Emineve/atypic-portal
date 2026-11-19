@@ -6,6 +6,7 @@ import { Menu, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
+import InstallEntry from './InstallEntry';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
 import Tracker from './Tracker';
@@ -545,6 +546,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   </span>
                 </a>
               ))}
+              <InstallEntry variant="menu" />
             </nav>
           </div>
         </div>

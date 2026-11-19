@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Bell, BookOpen, Calculator, Compass, Feather, Heart, Home, Info, Lightbulb, Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import InstallEntry from './InstallEntry';
 import ModeEmploiBack from './ModeEmploiBack';
 
 const FAVORITES_KEY = 'singulier:favorites';
@@ -132,6 +133,7 @@ export default function SiteHeaderClient({
                   </span>
                 </a>
               ))}
+              <InstallEntry variant="menu" />
             </nav>
           </div>
         </div>
