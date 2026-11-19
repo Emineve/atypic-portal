@@ -966,6 +966,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
+                      <div className="absolute inset-x-0 top-0 px-4 pt-3.5 pb-10 bg-gradient-to-b from-black/50 to-transparent text-white text-xs font-semibold uppercase tracking-widest [text-shadow:0_1px_2px_rgba(0,0,0,.6)]">
+                        {item.atypic_category}
+                      </div>
                     </div>
                     <div className="p-6 flex flex-1 flex-col justify-between">
                       <div>
@@ -980,12 +983,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                         {item.short_description && (
                           <p className="mt-1 text-xs text-stone-500 line-clamp-2 leading-relaxed">{item.short_description}</p>
                         )}
-                        {(item.atypic_category || (item.atypic_tags && item.atypic_tags.length > 0)) && (
-                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Catégorie et atouts du bien">
-                            {item.atypic_category && (
-                              <li className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-[11px] font-semibold text-stone-900">{item.atypic_category}</li>
-                            )}
-                            {(item.atypic_tags || []).filter((t) => t !== item.atypic_category).slice(0, 3).map((tag) => (
+                        {item.atypic_tags && item.atypic_tags.length > 0 && (
+                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
+                            {item.atypic_tags.slice(0, 3).map((tag) => (
                               <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-[11px] text-stone-800">
                                 {tag}
                               </li>

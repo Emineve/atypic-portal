@@ -255,12 +255,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
               {item.district ? `${item.district}, ` : ''}{item.city}
             </p>
 
-            {(item.atypic_category || item.atypic_tags?.length > 0) && (
-              <ul className="mt-4 flex flex-wrap gap-2" aria-label="Catégorie et atouts du bien">
-                {item.atypic_category && (
-                  <li className="rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] font-semibold px-3.5 py-1.5">{item.atypic_category}</li>
-                )}
-                {(item.atypic_tags || []).filter((t: string) => t !== item.atypic_category).map((tag: string, idx: number) => (
+            {item.atypic_tags?.length > 0 && (
+              <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
+                {item.atypic_tags.map((tag: string, idx: number) => (
                   <li key={idx} className="rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] px-3.5 py-1.5">{tag}</li>
                 ))}
               </ul>
