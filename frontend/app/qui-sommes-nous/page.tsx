@@ -16,13 +16,13 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
     text: 'On tombe amoureux d’une verrière, de quatre mètres sous plafond, d’une lumière à cinq heures du soir. C’est cela que nous montrons en premier.',
   },
   {
-    title: 'Votre lieu existe. Il n’est pas visible.',
+    title: 'Le bien que vous cherchez existe. Il n’est pas visible.',
     text: 'Un loft chez une agence, un atelier d’artiste chez une autre, un dernier étage noyé parmi dix mille annonces. Nous les réunissons au même endroit.',
     href: '/',
     link: 'Voir tous les biens',
   },
   {
-    title: 'Les lieux rares partent vite. Soyez le premier.',
+    title: 'Les biens rares partent vite. Soyez le premier.',
     text: 'Dites-nous ce que vous cherchez. Le jour où il arrive, vous le savez. Pas trois semaines après, quand il est vendu.',
     href: '/?alerte=1',
     link: 'Créer mon alerte',
@@ -98,7 +98,7 @@ export default function ManifestoPage() {
 
         <section className="border-t border-stone-900 pt-14 md:pt-24">
           <p className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
-            Un lieu qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
+            Un bien qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
             <span className="italic text-stone-500">Trouvons le vôtre.</span>
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">

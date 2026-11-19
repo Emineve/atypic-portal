@@ -41,14 +41,14 @@ const PROMISES: { title: string; text: string; href?: string; link?: string; sof
 const VISITORS: { title: string; text: string }[] = [
   {
     title: 'L’acheteur décidé',
-    text: 'Il a un projet, un budget et peu de temps. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être rappelé dès qu’un lieu lui plaît.',
+    text: 'Il a un projet, un budget et peu de temps. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être rappelé dès qu’un bien lui plaît.',
   },
   {
     title: 'Le rêveur',
     text: 'Il n’achète pas encore. Il regarde, met en favori, se nourrit de la rubrique Inspiration. C’est l’acheteur de demain, et il connaîtra déjà votre agence.',
   },
   {
-    title: 'L’amoureux des lieux',
+    title: 'L’amoureux d’architecture',
     text: 'Architecture, design, décoration : il sait ce qu’est une verrière d’atelier ou une belle hauteur sous plafond, et il ne visite pas par hasard.',
   },
 ];
@@ -79,7 +79,7 @@ export default function ProPage() {
           Vos biens atypiques méritent <span className="italic text-stone-500">des acheteurs qui les cherchent.</span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Lofts, ateliers d&apos;artistes, rooftops et bien d&apos;autres lieux singuliers : Loftissime est le premier hub d&apos;annonces immobilières atypiques.
+          Lofts, ateliers d&apos;artistes, rooftops et d&apos;autres biens singuliers : Loftissime est le premier hub d&apos;annonces immobilières atypiques.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <a href="#rejoindre" className={btn}>Diffuser mes annonces</a>
@@ -119,7 +119,7 @@ export default function ProPage() {
             Les acheteurs que nous allons chercher <span className="italic text-stone-500">pour vous.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-            Des acheteurs qui veulent un lieu qui leur ressemble, quel que soit leur budget. Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire.
+            Des acheteurs qui veulent un bien qui leur ressemble, quel que soit leur budget. Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire.
           </p>
           <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
             {VISITORS.map((v) => (

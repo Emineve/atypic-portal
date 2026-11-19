@@ -21,7 +21,7 @@ const groups: Group[] = [
         q: 'Quels biens sont diffusés sur Loftissime ?',
         a: 'Uniquement des biens atypiques à vendre : ceux qui ont quelque chose que les autres n’ont pas. Un bien entre dans la sélection s’il présente au moins l’une de ces six caractéristiques :',
         points: [
-          'Une autre vie avant. Le lieu a servi à autre chose avant d’être habité : loft, atelier d’artiste, ancienne usine ou manufacture, entrepôt, imprimerie, garage, commerce, bureaux, école, chapelle, péniche.',
+          'Une autre vie avant. Le bien a servi à autre chose avant d’être habité : loft, atelier d’artiste, ancienne usine ou manufacture, entrepôt, imprimerie, garage, commerce, bureaux, école, chapelle, péniche.',
           'Un volume. Grande hauteur sous plafond, double hauteur, mezzanine, verrière, plateau ouvert, duplex, triplex, souplex.',
           'Un dehors en ville. Terrasse, toit-terrasse, jardin, cour privative, patio, jardin d’hiver.',
           'Une situation rare. Dernier étage, vue dégagée, vue sur un monument ou sur les toits, bord de l’eau, maison en ville, voie privée ou cité d’artistes, fond de cour au calme.',

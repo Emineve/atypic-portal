@@ -60,12 +60,12 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
         ],
       },
       {
-        title: 'Sur l’histoire du lieu : qu’était-il avant ?',
+        title: 'Sur l’histoire du bien : qu’était-il avant ?',
         paragraphs: [
           'C’est la question qui distingue un bien atypique d’un autre. Un loft a souvent été un atelier, une boutique, un entrepôt. La réponse commande toutes les suivantes.',
         ],
         list: [
-          'Qu’était ce lieu à l’origine, et quand a-t-il été transformé ?',
+          'Qu’était ce bien à l’origine, et quand a-t-il été transformé ?',
           'Est-il officiellement un logement ? Le changement de destination a-t-il été autorisé par la mairie ?',
           'Comment le lot est-il désigné dans le règlement de copropriété : appartement, atelier, local commercial ?',
           'Qui a conçu la transformation : un architecte, le propriétaire lui-même ?',
@@ -141,7 +141,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     checklist: {
       title: 'Les questions à emporter le jour de la visite',
       items: [
-        'Qu’était ce lieu avant, et est-il officiellement un logement ?',
+        'Qu’était ce bien avant, et est-il officiellement un logement ?',
         'Surface Carrez et surface au sol : d’où vient l’écart ?',
         'Mezzanine, pentes, niveau bas : qu’est-ce qui est compté ?',
         'Terrasse : privative ou droit de jouissance ?',
@@ -302,7 +302,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     updated: '2026-11-18',
     readMinutes: 6,
     intro:
-      'Une ancienne imprimerie, une boutique sur cour, un atelier sous verrière : beaucoup de lofts ont eu une autre vie. C’est ce qui fait leur charme. C’est aussi ce qui impose une vérification simple avant d’acheter : le lieu est-il devenu un logement sur le papier, ou seulement dans les faits ?',
+      'Une ancienne imprimerie, une boutique sur cour, un atelier sous verrière : beaucoup de lofts ont eu une autre vie. C’est ce qui fait leur charme. C’est aussi ce qui impose une vérification simple avant d’acheter : le bien est-il devenu un logement sur le papier, ou seulement dans les faits ?',
     takeaways: [
       'Transformer un local commercial ou professionnel en logement est un changement de destination. Il exige une autorisation d’urbanisme : déclaration préalable, ou permis de construire si la façade ou la structure porteuse sont modifiées.',
       'En copropriété, le règlement fixe la destination de l’immeuble et des lots. Si le logement n’y est pas prévu, l’assemblée générale doit avoir donné son accord.',
@@ -313,7 +313,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       {
         title: 'Pourquoi la question se pose-t-elle ?',
         paragraphs: [
-          'Chaque bâtiment a une destination au sens du Code de l’urbanisme : habitation, commerce, bureau, artisanat. Habiter un lieu ne change pas sa destination. Seule une autorisation délivrée par la mairie le fait.',
+          'Chaque bâtiment a une destination au sens du Code de l’urbanisme : habitation, commerce, bureau, artisanat. Habiter un bien ne change pas sa destination. Seule une autorisation délivrée par la mairie le fait.',
           'Un loft peut donc être parfaitement aménagé, avec cuisine et salle de bains, et rester un local commercial pour la mairie, pour la copropriété et pour les impôts. L’annonce ne le dit pas toujours. Les documents, si.',
         ],
       },
