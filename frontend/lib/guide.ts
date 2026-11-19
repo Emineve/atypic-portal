@@ -39,6 +39,101 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'assurer-un-bien-atypique',
+    art: 'credit',
+    title: 'Assurer un bien atypique : ce qu’il faut déclarer',
+    description:
+      'Un séjour de 60 m², une mezzanine, une verrière, un atelier où l’on travaille : un loft ne se déclare pas comme un trois-pièces. Les points à ne pas oublier pour être bien couvert.',
+    category: 'Financement',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 4,
+    intro:
+      'L’assurance habitation se souscrit souvent en dix minutes, en cochant un nombre de pièces. Pour un logement classique, cela suffit. Pour un loft, un atelier ou un dernier étage sous verrière, ces dix minutes peuvent coûter cher : un contrat ne couvre que ce qui a été déclaré. Voici ce qu’un bien singulier oblige à dire à son assureur.',
+    takeaways: [
+      'En copropriété, chaque copropriétaire doit être assuré en responsabilité civile, qu’il occupe ou non son logement.',
+      'Un grand volume compte souvent pour plusieurs pièces : beaucoup d’assureurs comptent deux pièces au-delà de 30 m².',
+      'Une mezzanine s’ajoute à la surface de la pièce où elle se trouve. L’oublier, c’est risquer de ne pas être indemnisé.',
+      'Verrière, activité professionnelle, travaux : tout ce qui sort du logement standard se signale par écrit.',
+      'Une péniche ne s’assure pas avec un contrat d’habitation ordinaire.',
+    ],
+    sections: [
+      {
+        title: 'L’assurance est-elle obligatoire ?',
+        paragraphs: [
+          'En copropriété, oui pour la responsabilité civile : la loi impose à chaque copropriétaire de s’assurer contre les risques dont il doit répondre, qu’il soit occupant ou non occupant. L’immeuble est assuré de son côté par le syndic, pour les parties communes.',
+          'Pour une maison que l’on occupe soi-même, aucune obligation légale. Mais la banque l’exige pour prêter, et l’on voit mal qui s’en passerait.',
+        ],
+      },
+      {
+        title: 'Comment compter les pièces d’un loft ?',
+        paragraphs: [
+          'C’est le piège classique. Un loft, c’est une seule grande pièce : on est tenté de déclarer « une pièce ». Les assureurs ne comptent pas ainsi.',
+        ],
+        list: [
+          'Toute pièce d’au moins 9 m² compte, hors cuisine et salle de bains.',
+          'Une pièce de plus de 30 m² compte pour deux chez de nombreux assureurs, parfois davantage au-delà.',
+          'Les surfaces sous moins de 1,80 m de hauteur ne comptent pas.',
+          'Une mezzanine s’ajoute à la surface de la pièce dans laquelle elle se trouve.',
+        ],
+      },
+      {
+        title: 'Que se passe-t-il si la déclaration est inexacte ?',
+        paragraphs: [
+          'Un assureur le dit simplement : « oublier » des pièces peut vous empêcher d’être indemnisé en cas de sinistre. À l’inverse, en déclarer trop revient à payer trop cher. Les règles de calcul varient d’une compagnie à l’autre : demandez la vôtre par écrit, et décrivez le logement tel qu’il est.',
+        ],
+      },
+      {
+        title: 'Que faut-il signaler en plus ?',
+        list: [
+          'La verrière et les grandes surfaces vitrées : vérifiez la garantie bris de glace et son plafond.',
+          'Une activité professionnelle exercée sur place : le contrat d’habitation ne la couvre pas d’office, ni le matériel qui va avec.',
+          'Les annexes : cave, atelier séparé, terrasse aménagée.',
+          'Les travaux : une mezzanine créée, un mur ouvert ou une surface ajoutée modifient ce qui est assuré. Déclarez-les.',
+          'Les objets de valeur et les œuvres, fréquents dans ce type de lieu.',
+        ],
+      },
+      {
+        title: 'Et pour une péniche ?',
+        paragraphs: [
+          'Un bateau-logement relève de contrats spécifiques, distincts de l’assurance habitation classique, qui tiennent compte de la coque et de la navigation. Renseignez-vous avant l’achat : le gestionnaire de l’emplacement peut exiger une attestation.',
+        ],
+      },
+      {
+        title: 'Quand s’en occuper ?',
+        paragraphs: [
+          'Avant de signer chez le notaire : vous devenez responsable du bien le jour de l’acte. Demandez un devis dès que l’offre est acceptée, en décrivant précisément le logement, sa surface, ses pièces et ses annexes. Si un assureur hésite, mieux vaut le savoir pendant que vous pouvez encore comparer.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Combien de pièces déclarer pour un loft ?',
+        a: 'Cela dépend de l’assureur, mais un grand séjour compte en général pour plusieurs pièces : souvent deux au-delà de 30 m². Demandez la règle de calcul par écrit.',
+      },
+      {
+        q: 'Une mezzanine doit-elle être déclarée à l’assurance ?',
+        a: 'Oui. Sa surface s’ajoute à celle de la pièce où elle se trouve, pour la partie où la hauteur atteint 1,80 m.',
+      },
+      {
+        q: 'Un copropriétaire est-il obligé de s’assurer ?',
+        a: 'Oui, au moins en responsabilité civile, qu’il occupe son logement ou non.',
+      },
+      {
+        q: 'Mon assurance habitation couvre-t-elle mon activité professionnelle à domicile ?',
+        a: 'Pas automatiquement. Signalez l’activité à votre assureur et vérifiez que votre matériel et votre responsabilité professionnelle sont couverts.',
+      },
+    ],
+    sources: [
+      { label: 'La Banque Postale, « Tout savoir sur l’assurance copropriété »', url: 'https://www.labanquepostale.fr/particulier/accompagner/actualites-et-conseils/actus/assurance-copropriete.html' },
+      { label: 'Matmut, « Calculer le nombre de pièces pour son assurance habitation »', url: 'https://www.matmut.fr/assurance/habitation/conseils/calculer-nombre-pieces' },
+      { label: 'Leocare, « Comment calculer le nombre de pièces pour son assurance habitation ? »', url: 'https://leocare.eu/fr/blog/comment-calculer-nombre-de-pieces-maison-appartement/' },
+      { label: 'A comme Assure, « Nombre de pièces et assurance habitation »', url: 'https://www.acommeassure.com/?p=9912' },
+      { label: 'Magnolia, « Assurance habitation selon le type de logement »', url: 'https://www.magnolia.fr/assurance-habitation/logement' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'combien-de-temps-dure-une-recherche',
     art: 'marche',
     title: 'Combien de temps dure une recherche immobilière ?',
