@@ -22,7 +22,7 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
     link: 'Voir tous les biens',
   },
   {
-    title: 'Les biens rares partent vite. Soyez le premier.',
+    title: 'Les biens rares partent vite. Soyez le premier informé.',
     text: 'Dites-nous ce que vous cherchez. Le jour où il arrive, vous le savez. Pas trois semaines après, quand il est vendu.',
     href: '/?alerte=1',
     link: 'Créer mon alerte',

@@ -109,7 +109,7 @@ export default function GuideIndex() {
 
         <section className="mt-16 md:mt-20 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
           <div>
-            <h2 className="font-serif text-2xl md:text-3xl leading-snug">Le bon bien n&apos;attend pas.</h2>
+            <h2 className="font-serif text-2xl md:text-3xl leading-snug">Les biens rares partent vite. Soyez le premier informé.</h2>
             <p className="mt-2 text-stone-600 leading-relaxed">Créez une alerte : vous êtes prévenu dès qu&apos;un bien atypique correspond à votre recherche.</p>
           </div>
           <Link href="/?alerte=1" className="mt-6 md:mt-0 inline-flex h-12 flex-none items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
