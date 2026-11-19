@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce';
 
 const INK = '#1c1917';
 const SUN = '#F4E7B5';
@@ -395,7 +395,110 @@ function Marche() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche };
+function Negociation() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* table et deux chaises face à face */}
+      <path d="M430 330 H770 M470 330 V440 M730 330 V440" {...line} />
+      <path d="M300 440 V330 H370 M370 330 V440 M300 330 V250" {...line} />
+      <path d="M900 440 V330 H830 M830 330 V440 M900 330 V250" {...line} />
+      {/* étiquette de prix, barrée puis réécrite */}
+      <g transform="rotate(-8 600 190)">
+        <path d="M470 130 H690 L740 190 L690 250 H470 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+        <circle cx={700} cy={190} r={9} fill={SUN} stroke={INK} strokeWidth={2} />
+        <path d="M500 170 H640" {...line} />
+        <path d="M492 182 L648 158" {...thin} />
+        <rect x={500} y={200} width={110} height={26} fill={SHADE} stroke={INK} strokeWidth={2} />
+      </g>
+      {/* dossier sur la table */}
+      <rect x={520} y={304} width={160} height={26} fill={PAPER} stroke={INK} strokeWidth={2} />
+      <Plant x={1010} y={414} />
+    </>
+  );
+}
+
+function Ventes() {
+  const houses = [
+    { x: 190, w: 130, h: 190, sold: false },
+    { x: 330, w: 150, h: 260, sold: true },
+    { x: 490, w: 120, h: 170, sold: false },
+    { x: 620, w: 170, h: 300, sold: true },
+    { x: 800, w: 130, h: 210, sold: false },
+    { x: 940, w: 110, h: 150, sold: true },
+  ];
+  return (
+    <>
+      <path d="M140 440 H1080" {...line} />
+      {houses.map((b) => (
+        <g key={b.x}>
+          <rect x={b.x} y={440 - b.h} width={b.w} height={b.h} fill={b.sold ? SHADE : PAPER} stroke={INK} strokeWidth={3} />
+          {Array.from({ length: Math.floor((b.h - 50) / 60) }, (_, r) => (
+            <g key={r}>
+              <rect x={b.x + 20} y={440 - b.h + 24 + r * 60} width={30} height={34} fill={SUN} stroke={INK} strokeWidth={2} />
+              <rect x={b.x + b.w - 50} y={440 - b.h + 24 + r * 60} width={30} height={34} fill={SUN} stroke={INK} strokeWidth={2} />
+            </g>
+          ))}
+          {b.sold && (
+            <g>
+              <path d={`M${b.x + b.w / 2} ${440 - b.h - 18} c-34 -34 -30 -70 0 -70 c30 0 34 36 0 70 z`} fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+              <circle cx={b.x + b.w / 2} cy={440 - b.h - 66} r={8} fill={INK} />
+            </g>
+          )}
+        </g>
+      ))}
+    </>
+  );
+}
+
+function Offre() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* la lettre */}
+      <g transform="rotate(-4 520 260)">
+        <rect x={360} y={80} width={330} height={350} fill={PAPER} stroke={INK} strokeWidth={3} />
+        <path d="M400 135 H560" {...line} />
+        {[185, 220, 255, 290].map((y) => (
+          <path key={y} d={`M400 ${y} H650`} {...thin} />
+        ))}
+        <rect x={400} y={318} width={120} height={30} fill={SHADE} stroke={INK} strokeWidth={2} />
+        <path d="M540 390 c20 -26 34 10 52 -14 c14 -18 26 12 58 -6" {...thin} />
+      </g>
+      {/* le stylo */}
+      <g transform="rotate(38 800 300)">
+        <rect x={700} y={288} width={190} height={24} rx={4} fill={PAPER} stroke={INK} strokeWidth={3} />
+        <path d="M700 288 L664 300 L700 312 Z" fill={INK} stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+        <rect x={850} y={288} width={40} height={24} rx={4} fill={SHADE} stroke={INK} strokeWidth={2} />
+      </g>
+      {/* les clés */}
+      <circle cx={900} cy={404} r={20} fill={SUN} stroke={INK} strokeWidth={3} />
+      <path d="M920 404 H990 M966 404 V422 M984 404 V418" {...line} />
+    </>
+  );
+}
+
+function Annonce() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* l'annonce : une photo, un titre, des lignes */}
+      <rect x={300} y={70} width={420} height={370} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={330} y={100} width={360} height={170} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M330 270 L430 180 L500 236 L570 150 L690 270" {...thin} />
+      <circle cx={640} cy={140} r={16} fill={PAPER} stroke={INK} strokeWidth={2} />
+      <path d="M330 305 H560" {...line} />
+      <path d="M330 340 H660 M330 370 H620" {...thin} />
+      <rect x={330} y={392} width={110} height={26} fill={SHADE} stroke={INK} strokeWidth={2} />
+      {/* la loupe */}
+      <circle cx={790} cy={270} r={92} fill={PAPER} fillOpacity={0.6} stroke={INK} strokeWidth={6} />
+      <path d="M856 336 L940 420" stroke={INK} strokeWidth={14} strokeLinecap="round" fill="none" />
+      <path d="M740 250 H840 M740 285 H810" {...line} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce };
 
 // fit « meet » : le dessin entier reste visible (article à la une) ; « slice » : il remplit le cadre, quitte à être rogné
 export default function GuideArt({ art, className = '', fit = 'slice' }: { art: GuideArtKey; className?: string; fit?: 'slice' | 'meet' }) {

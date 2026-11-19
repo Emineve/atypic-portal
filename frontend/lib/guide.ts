@@ -21,7 +21,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -38,6 +38,447 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'negocier-le-prix-d-un-bien-atypique',
+    art: 'negociation',
+    title: 'Négocier un bien atypique : sur quoi s’appuyer quand rien ne lui ressemble',
+    description:
+      'Un loft ou un atelier d’artiste n’a pas de prix au mètre carré de référence. Les arguments qui pèsent vraiment dans une négociation, ceux qui ne pèsent rien, et le bon moment pour parler prix.',
+    category: 'Visite et négociation',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 7,
+    intro:
+      'Pour un trois-pièces classique, la négociation tient en une phrase : « le voisin s’est vendu moins cher ». Pour un atelier sous verrière ou un dernier étage avec terrasse, il n’y a pas de voisin. Le vendeur le sait, et il en joue. On négocie pourtant un bien atypique comme les autres, à condition de changer d’arguments : moins de moyennes, plus de faits.',
+    takeaways: [
+      'Le prix au mètre carré du quartier est un repère, pas un argument : un bien rare ne se compare pas à la moyenne.',
+      'Ce qui pèse : l’ancienneté de l’annonce, les baisses déjà consenties, les travaux chiffrés par un devis, les charges, le DPE, ce qui n’est pas compté dans la surface.',
+      'Ce qui ne pèse rien : « c’est cher », « j’ai vu moins cher ailleurs », un rabais demandé sans raison.',
+      'Un dossier de financement prêt vaut souvent plus qu’un argument : le vendeur choisit l’acheteur qui ira au bout.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi le prix au mètre carré ne suffit-il pas ?',
+        paragraphs: [
+          'Parce qu’il mélange tout. La moyenne d’un quartier additionne des rez-de-chaussée sur cour et des derniers étages, des biens refaits et des biens à reprendre. Un atelier d’artiste de cinq mètres sous plafond n’entre dans aucune de ces cases.',
+          'Un bien atypique se vend plus cher que la moyenne pour ce qu’il a de rare, et parfois moins cher pour ce qu’il a de compliqué : une surface officielle réduite par des sous-pentes, un DPE médiocre, une copropriété qui n’a pas tout autorisé. La négociation porte sur ce second volet, jamais sur le premier.',
+        ],
+      },
+      {
+        title: 'Quels faits pèsent vraiment ?',
+        paragraphs: ['Ceux que le vendeur ne peut pas contester, parce qu’ils sont écrits quelque part.'],
+        list: [
+          'La date de mise en vente. Un bien en ligne depuis plusieurs mois n’a pas trouvé preneur à ce prix : c’est le marché qui parle, pas vous.',
+          'Les baisses de prix déjà faites. Elles montrent que le vendeur a commencé à bouger, et dans quelles proportions.',
+          'Les ventes réelles autour du bien, publiées par l’administration. Elles donnent un plancher et un plafond, même imparfaits.',
+          'Les travaux à prévoir, chiffrés par un devis d’entreprise. Un devis se discute, une impression non.',
+          'Les travaux votés ou annoncés dans l’immeuble : ravalement, toiture, ascenseur. Ils figurent dans les procès-verbaux d’assemblée générale.',
+          'L’écart entre la surface au sol et la surface officielle. Une mezzanine ou des combles non comptés ne se paient pas au prix du reste.',
+          'Le DPE, surtout si le bien est classé F ou G et que vous pourriez vouloir le louer un jour.',
+        ],
+      },
+      {
+        title: 'Et ce qui fait le charme du bien, peut-on le négocier ?',
+        paragraphs: [
+          'Non, et il ne faut pas essayer. La verrière, la hauteur, la terrasse sont précisément ce que le vendeur fait payer. Les critiquer vous fait passer pour un acheteur qui n’aime pas le bien, donc qui n’achètera pas.',
+          'En revanche, vous pouvez négocier ce que ce charme coûte. Une verrière ancienne à simple vitrage, c’est un devis de remplacement. Une terrasse dont vous n’avez que la jouissance, c’est un droit moins solide qu’une propriété. Dites ce que vous aimez, puis chiffrez ce qui reste à faire.',
+        ],
+      },
+      {
+        title: 'À quel moment parler prix ?',
+        paragraphs: [
+          'Pas pendant la première visite. Vous n’avez pas encore les documents, et le négociateur n’a rien à transmettre au vendeur. Visitez, posez vos questions, demandez les pièces : procès-verbaux, diagnostics, relevé de charges, plans.',
+          'Revenez une seconde fois si le bien vous plaît, avec un artisan ou un architecte si des travaux sont en jeu. C’est après cette seconde visite, pièces en main, que votre prix aura une raison. Il se formule alors par écrit, dans une offre d’achat.',
+        ],
+      },
+      {
+        title: 'Quel rôle joue le négociateur de l’agence ?',
+        paragraphs: [
+          'Il travaille pour le vendeur, mais son intérêt est que la vente se fasse. Il connaît ce que vous ne savez pas : depuis quand le vendeur veut vendre, s’il a déjà refusé une offre, s’il a un autre achat en cours.',
+          'Demandez-le-lui simplement. Une offre argumentée, qu’il peut défendre devant son client ligne par ligne, a plus de chances d’aboutir qu’un chiffre lancé au téléphone.',
+        ],
+      },
+      {
+        title: 'Jusqu’où peut-on descendre ?',
+        paragraphs: [
+          'Il n’existe pas de pourcentage magique. Un bien juste, arrivé la semaine dernière, se vend au prix, parfois à plusieurs acheteurs à la fois. Un bien affiché trop haut depuis six mois se négocie nettement.',
+          'Fixez-vous deux chiffres avant de discuter : le prix que vous proposez, justifié poste par poste, et celui que vous ne dépasserez pas. Et gardez en tête qu’un bien rare ne revient pas toutes les semaines : perdre un coup de cœur pour une somme que vous auriez pu payer est aussi une mauvaise affaire.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de proposer un prix',
+      items: [
+        'La date de mise en vente et les baisses de prix déjà faites.',
+        'Deux ou trois ventes réelles récentes dans la rue ou le quartier.',
+        'La surface officielle, et ce qui n’y est pas compté.',
+        'Un devis pour les travaux que vous jugez nécessaires.',
+        'Les trois derniers procès-verbaux d’assemblée générale.',
+        'Le DPE complet et le montant des charges.',
+        'Une simulation de financement ou un accord de principe de votre banque.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on négocier un bien qui vient d’être mis en vente ?',
+        a: 'Oui, mais avec des faits : travaux chiffrés, surface, charges. Sans argument, un vendeur dont l’annonce a trois jours attendra l’acheteur suivant.',
+      },
+      {
+        q: 'Faut-il annoncer son budget au négociateur ?',
+        a: 'Indiquez que votre financement est prêt, pas votre plafond. Le montant que vous pouvez payer n’est pas un argument de prix.',
+      },
+      {
+        q: 'Une offre très basse fait-elle perdre le bien ?',
+        a: 'Elle peut. Un vendeur qui se sent mal considéré ne répond plus, même à une seconde offre. Mieux vaut un prix expliqué qu’un prix testé.',
+      },
+      {
+        q: 'Les honoraires d’agence se négocient-ils ?',
+        a: 'Ils figurent dans le mandat signé avec le vendeur. C’est le prix global que vous négociez : l’agence et le vendeur s’arrangent ensuite entre eux.',
+      },
+    ],
+    sources: [
+      { label: 'Explorateur des ventes immobilières (données DVF, Etalab)', url: 'https://app.dvf.etalab.gouv.fr/' },
+      { label: 'Justice.fr, « Offre d’achat d’un bien immobilier »', url: 'https://www.justice.fr/fiche/offre-achat-bien-immobilier' },
+    ],
+  },
+  {
+    slug: 'ventes-reelles-du-quartier-dvf',
+    art: 'ventes',
+    title: 'Combien se sont vendus les biens du quartier ? Lire les ventes réelles, et leurs limites',
+    description:
+      'L’administration publie le prix de toutes les ventes immobilières des cinq dernières années. Comment consulter cette base, ce qu’elle dit d’un bien atypique et ce qu’elle ne dit pas.',
+    category: 'Marché',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Le prix affiché sur une annonce est celui que le vendeur espère. Le prix payé, lui, est connu : chaque vente passe chez le notaire, et l’administration fiscale publie ces montants. Tout le monde peut les consulter, gratuitement, adresse par adresse. Encore faut-il savoir les lire, surtout quand le bien qui vous intéresse ne ressemble à aucun autre.',
+    takeaways: [
+      'La base « Demandes de valeurs foncières », ou DVF, recense les ventes des cinq dernières années, avec leur prix, leur date et leur adresse.',
+      'Elle est mise à jour deux fois par an, en avril et en octobre : les ventes les plus récentes n’y sont pas encore.',
+      'Elle ne dit rien de l’étage, de l’état, de la hauteur sous plafond ni de la terrasse. Pour un bien atypique, c’est l’essentiel qui manque.',
+      'Elle sert à situer un prix dans une fourchette, pas à fixer la valeur d’un loft.',
+    ],
+    sections: [
+      {
+        title: 'D’où viennent ces chiffres ?',
+        paragraphs: [
+          'Des actes de vente eux-mêmes. La base est produite par la Direction générale des finances publiques à partir des actes notariés et du cadastre, puis publiée en accès libre.',
+          'Elle couvre la France entière, à l’exception de l’Alsace, de la Moselle et de Mayotte, dont les ventes sont enregistrées autrement.',
+        ],
+      },
+      {
+        title: 'Comment la consulter ?',
+        paragraphs: [
+          'Le plus simple est l’explorateur en ligne mis à disposition par l’État : une carte, sur laquelle on choisit une commune, puis une parcelle. Chaque vente s’affiche avec sa date, son prix, le type de bien, sa surface et son nombre de pièces.',
+          'Le site des impôts propose aussi, depuis votre espace personnel, un service de recherche des transactions immobilières, avec des critères plus fins.',
+        ],
+      },
+      {
+        title: 'Que dit la base, exactement ?',
+        list: [
+          'La date de la vente et le prix net vendeur inscrit dans l’acte.',
+          'L’adresse et la parcelle.',
+          'Le type de local : maison, appartement, dépendance, local commercial ou industriel.',
+          'La surface bâtie et le nombre de pièces principales.',
+          'Pour une maison, la surface du terrain.',
+        ],
+      },
+      {
+        title: 'Que ne dit-elle pas ?',
+        paragraphs: ['Tout ce qui fait le prix d’un bien atypique.'],
+        list: [
+          'L’étage, l’exposition, la vue, la présence d’un ascenseur.',
+          'La hauteur sous plafond, la verrière, la mezzanine.',
+          'La terrasse, le balcon, le jardin d’un appartement.',
+          'L’état du bien au moment de la vente : refait à neuf ou à reprendre entièrement.',
+          'Le classement énergétique.',
+        ],
+      },
+      {
+        title: 'Quels pièges pour un bien atypique ?',
+        paragraphs: [
+          'Le premier tient au type de local. Un ancien atelier ou une ancienne boutique devenu logement peut encore figurer comme local commercial ou industriel. Si vous ne regardez que les appartements, vous ne le verrez pas.',
+          'Le deuxième tient aux ventes groupées. Quand un acte porte sur plusieurs lots, un appartement, une cave, un parking, parfois deux logements réunis, la base n’affiche qu’un prix global. Divisé par la surface d’un seul lot, il donne un prix au mètre carré absurde.',
+          'Le troisième tient à la surface. Celle de la base est la surface bâtie déclarée. Elle ne correspond pas toujours à la surface Carrez de l’annonce, encore moins quand il y a des sous-pentes ou une mezzanine.',
+        ],
+      },
+      {
+        title: 'Comment s’en servir intelligemment ?',
+        paragraphs: [
+          'Cherchez d’abord dans l’immeuble et dans la rue, sur deux ou trois ans. Regardez ensuite les ventes de biens de surface proche dans le quartier. Écartez les valeurs extrêmes : un prix très bas cache souvent une vente en famille, un bien occupé ou un lot en mauvais état.',
+          'Vous obtenez une fourchette, pas une valeur. Elle vous dit si le prix demandé est dans le haut, dans le bas ou très au-dessus de ce qui s’est payé autour. C’est un point de départ pour la discussion, à compléter par ce que la base ignore : l’état, la rareté, les travaux.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Votre recherche, pas à pas',
+      items: [
+        'Les ventes dans l’immeuble lui-même, sur cinq ans.',
+        'Les ventes dans la rue et les rues voisines, sur deux à trois ans.',
+        'Les biens de surface comparable, à plus ou moins un quart près.',
+        'Les locaux commerciaux ou industriels, si le bien est une ancienne activité.',
+        'Les ventes à plusieurs lots, à mettre de côté.',
+        'Le prix le plus bas et le plus haut, une fois les extrêmes écartés.',
+      ],
+    },
+    faq: [
+      {
+        q: 'La consultation est-elle payante ?',
+        a: 'Non. La base et l’explorateur en ligne sont gratuits et ouverts à tous, sans inscription.',
+      },
+      {
+        q: 'Pourquoi une vente récente n’apparaît-elle pas ?',
+        a: 'La base est mise à jour en avril et en octobre. Une vente signée il y a quelques mois peut ne pas y figurer encore.',
+      },
+      {
+        q: 'Le prix affiché comprend-il les frais de notaire ?',
+        a: 'Non. C’est le prix inscrit dans l’acte, hors frais d’acquisition.',
+      },
+      {
+        q: 'Peut-on savoir combien le vendeur a payé son bien ?',
+        a: 'Oui, s’il l’a acheté au cours des cinq dernières années : la vente figure à son adresse. Gardez en tête qu’il a pu faire des travaux depuis.',
+      },
+    ],
+    sources: [
+      { label: 'data.gouv.fr, « Demandes de valeurs foncières (DVF) »', url: 'https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/' },
+      { label: 'Explorateur des ventes immobilières (données DVF, Etalab)', url: 'https://app.dvf.etalab.gouv.fr/' },
+    ],
+  },
+  {
+    slug: 'offre-d-achat-ce-qui-vous-engage',
+    art: 'offre',
+    title: 'Offre d’achat : ce qui vous engage, ce qui vous protège',
+    description:
+      'Forme, contenu, durée de validité, conditions suspensives : comment rédiger une offre d’achat pour un bien atypique, ce qu’elle vous engage à faire et ce que le vendeur peut répondre.',
+    category: 'Visite et négociation',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Vous avez visité deux fois, vous avez les documents, vous avez votre prix. Reste à l’écrire. L’offre d’achat tient en une page, mais elle n’est pas un simple courrier : si le vendeur l’accepte, vous êtes engagé. Pour un bien atypique, où tant de choses restent à vérifier, les conditions que vous y inscrivez comptent autant que le chiffre.',
+    takeaways: [
+      'Une offre écrite et acceptée engage les deux parties : le vendeur doit vendre, et vous devez aller jusqu’à la promesse de vente.',
+      'Elle doit indiquer le bien, le prix proposé, sa date et sa durée de validité, en général une à deux semaines.',
+      'Aucune somme ne peut vous être demandée à ce stade : un versement rend l’offre nulle.',
+      'Votre droit de rétractation de dix jours ne commence qu’après la signature de la promesse ou du compromis.',
+    ],
+    sections: [
+      {
+        title: 'Une offre d’achat, qu’est-ce que c’est ?',
+        paragraphs: [
+          'Un écrit par lequel vous proposez d’acheter un bien précis à un prix précis. Il est adressé au vendeur ou à l’agence, par courrier recommandé ou par e-mail.',
+          'L’offre doit être ferme : vous vous engagez à acheter si le vendeur dit oui. Une formule comme « je serais intéressé autour de tel prix » n’est pas une offre, et n’oblige personne à vous répondre.',
+        ],
+      },
+      {
+        title: 'Que doit-elle contenir ?',
+        list: [
+          'La désignation du bien : adresse, étage, numéro de lot si vous le connaissez, surface.',
+          'Le prix que vous proposez, en précisant s’il comprend les honoraires d’agence.',
+          'La date de l’offre et sa durée de validité.',
+          'Votre mode de financement : apport, montant du prêt, ou achat sans prêt.',
+          'Les conditions auxquelles vous achetez.',
+        ],
+      },
+      {
+        title: 'Quelles conditions prévoir pour un bien atypique ?',
+        paragraphs: [
+          'La condition d’obtention du prêt est la plus connue. Pour un bien qui a été transformé, d’autres méritent d’être écrites dès l’offre, afin qu’elles soient reprises dans la promesse de vente.',
+        ],
+        list: [
+          'La remise des autorisations de travaux : accord de la copropriété, déclaration ou permis en mairie.',
+          'La confirmation que le bien est bien un logement, s’il s’agit d’un ancien local d’activité.',
+          'La confirmation de la surface Carrez par un mesurage récent.',
+          'La remise des procès-verbaux d’assemblée générale et du relevé de charges.',
+          'Le titre qui fonde l’usage de la terrasse ou du jardin : propriété ou droit de jouissance.',
+        ],
+      },
+      {
+        title: 'Combien de temps l’offre est-elle valable ?',
+        paragraphs: [
+          'Le temps que vous indiquez. Une à deux semaines est l’usage : assez pour que le vendeur réfléchisse, pas assez pour qu’il s’en serve afin de faire monter un autre acheteur.',
+          'Passé ce délai sans réponse, l’offre tombe d’elle-même. Si vous n’écrivez aucune durée, c’est un juge qui l’apprécierait en cas de litige : mieux vaut ne pas laisser ce point ouvert.',
+        ],
+      },
+      {
+        title: 'Que peut répondre le vendeur ?',
+        list: [
+          'Accepter, par écrit. Il est alors engagé à vous vendre à ce prix et doit cesser les visites.',
+          'Faire une contre-proposition. Votre offre initiale disparaît : libre à vous d’accepter le nouveau prix, d’en proposer un autre ou d’en rester là.',
+          'Ne pas répondre. À la fin du délai, vous êtes libre.',
+        ],
+      },
+      {
+        title: 'Peut-on revenir sur une offre ?',
+        paragraphs: [
+          'Tant que le vendeur ne l’a pas reçue, oui. Une fois qu’il l’a acceptée, vous êtes tenu de poursuivre jusqu’à l’avant-contrat.',
+          'C’est après la signature de la promesse ou du compromis de vente que la loi vous donne dix jours pour changer d’avis, sans avoir à vous justifier. Le vendeur, lui, n’a pas ce droit.',
+        ],
+      },
+      {
+        title: 'Faut-il offrir le prix affiché ?',
+        paragraphs: [
+          'Une offre au prix de l’annonce, sans condition inhabituelle, place le vendeur dans une situation où il lui est difficile de refuser, surtout si le bien est vendu par une agence mandatée à ce prix. Sur un bien rare et très demandé, c’est souvent ce qui fait la différence.',
+          'Une offre en dessous doit être expliquée : joignez-y vos raisons, en quelques lignes, devis et ventes comparables à l’appui.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Votre offre, relue avant envoi',
+      items: [
+        'Le bien est désigné sans ambiguïté.',
+        'Le prix est écrit en chiffres et en lettres, honoraires précisés.',
+        'La durée de validité est indiquée, avec une date et une heure de fin.',
+        'Le financement est décrit, et la condition de prêt mentionnée si vous empruntez.',
+        'Les conditions propres au bien sont listées.',
+        'Aucune somme n’est versée.',
+        'L’offre est datée, signée et envoyée par un moyen qui laisse une trace.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Une offre faite à l’oral engage-t-elle ?',
+        a: 'Elle est très difficile à prouver. Faites toujours une offre écrite, et demandez une acceptation écrite.',
+      },
+      {
+        q: 'L’agence peut-elle demander un chèque avec l’offre ?',
+        a: 'Non. La loi interdit tout versement à ce stade, et un versement rend l’offre nulle. Le dépôt de garantie se verse à la signature de la promesse de vente.',
+      },
+      {
+        q: 'Peut-on faire des offres sur plusieurs biens à la fois ?',
+        a: 'C’est risqué : si deux vendeurs acceptent, vous êtes engagé deux fois. Attendez la fin de validité d’une offre avant d’en faire une autre.',
+      },
+      {
+        q: 'Le vendeur peut-il accepter une offre plus élevée après avoir accepté la mienne ?',
+        a: 'Non. Une fois son acceptation donnée par écrit, il est engagé envers vous. En cas de refus, vous pouvez demander au juge l’exécution de la vente ou des dommages et intérêts.',
+      },
+    ],
+    sources: [
+      { label: 'Justice.fr, « Offre d’achat d’un bien immobilier »', url: 'https://www.justice.fr/fiche/offre-achat-bien-immobilier' },
+      {
+        label: 'Notaires de France, « La promesse de vente et le compromis de vente »',
+        url: 'https://www.notaires.fr/fr/immobilier-fiscalit%C3%A9/achat-et-vente-les-%C3%A9tapes/la-promesse-de-vente-et-le-compromis-de-vente',
+      },
+    ],
+  },
+  {
+    slug: 'lire-une-annonce-de-bien-atypique',
+    art: 'annonce',
+    title: 'Lire une annonce avant de visiter : ce que disent les mots, les photos et les chiffres',
+    description:
+      'Surface, étage, charges, DPE, photos au grand-angle, formules flatteuses : comment lire l’annonce d’un bien atypique, repérer ce qui manque et préparer ses questions avant la visite.',
+    category: 'Visite et négociation',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Une annonce est écrite pour donner envie, et celle d’un bien atypique y parvient sans effort : une verrière, une lumière, un volume. Elle contient aussi, pour qui sait lire, presque tout ce qu’il faut pour décider si la visite vaut le déplacement. Ce qui est écrit compte. Ce qui ne l’est pas compte davantage.',
+    takeaways: [
+      'Une annonce publiée par un professionnel doit indiquer le prix, qui paie les honoraires, le DPE et, en copropriété, le nombre de lots et le montant des charges.',
+      'Demandez toujours de quelle surface on parle : surface Carrez, surface au sol ou surface « ressentie ».',
+      'Une pièce absente des photos est une question à poser.',
+      'Les mots flatteurs ont un sens : « à rafraîchir », « potentiel », « esprit loft » se traduisent.',
+    ],
+    sections: [
+      {
+        title: 'Quels chiffres doivent figurer sur l’annonce ?',
+        paragraphs: ['Quand le bien est proposé par une agence, la réglementation impose un minimum d’informations. Leur absence est déjà un renseignement.'],
+        list: [
+          'Le prix, et la mention de qui paie les honoraires. S’ils sont à la charge de l’acheteur, leur pourcentage et le prix hors honoraires.',
+          'Les deux étiquettes du DPE et une estimation de la dépense annuelle d’énergie. Pour un bien classé F ou G, la mention « logement à consommation énergétique excessive ».',
+          'En copropriété : le nombre de lots de l’immeuble, le montant moyen des charges annuelles, et l’existence d’une procédure si la copropriété est en difficulté.',
+          'L’adresse du site public où consulter les risques auxquels le bien est exposé.',
+        ],
+      },
+      {
+        title: 'De quelle surface parle-t-on ?',
+        paragraphs: [
+          'C’est la première question pour un bien atypique. La surface Carrez ne compte que les parties d’au moins 1,80 mètre de hauteur. Une mezzanine basse, des combles, une sous-pente n’y entrent pas.',
+          'Certaines annonces affichent la surface au sol, d’autres les deux, d’autres encore une formule comme « 120 m² ressentis ». Seule la surface Carrez figure dans l’acte et sert à comparer les prix. Notez les deux chiffres, et l’origine de l’écart.',
+        ],
+      },
+      {
+        title: 'Que regarder sur les photos ?',
+        list: [
+          'Ce qui manque. Pas de photo de la salle de bains, de la cuisine ou de la chambre : demandez pourquoi.',
+          'Les fenêtres. Leur taille, leur nombre, ce qu’on voit au travers. Une pièce photographiée volets fermés ou rideaux tirés cache souvent un vis-à-vis.',
+          'L’heure de la prise de vue. Un séjour baigné de soleil ne dit pas son exposition : demandez-la.',
+          'Les plafonds et les angles des murs, où se lisent les traces d’humidité.',
+          'Le grand-angle. Il agrandit tout : fiez-vous au plan, pas à l’impression de profondeur.',
+          'Les radiateurs et les vitrages, qui renseignent sur le chauffage et l’isolation.',
+        ],
+      },
+      {
+        title: 'Que veulent dire les formules ?',
+        list: [
+          '« À rafraîchir » : peintures et sols à refaire, au minimum.',
+          '« Beau potentiel », « à personnaliser » : travaux importants à prévoir.',
+          '« Esprit loft », « style atelier » : un appartement aménagé dans ce goût, pas un ancien atelier.',
+          '« Souplex » : une partie du logement est en sous-sol. Demandez quelle surface y est comptée.',
+          '« Au calme sur cour » : pas de vue, et une lumière à vérifier.',
+          '« Dernier étage » sans autre précision : demandez s’il y a un ascenseur, et à quel étage il s’arrête.',
+          '« Terrasse » : demandez si elle est une propriété ou un droit de jouissance.',
+        ],
+      },
+      {
+        title: 'Le plan est-il fourni ?',
+        paragraphs: [
+          'Demandez-le s’il ne l’est pas. Dans un bien atypique, le plan montre ce que les photos escamotent : la forme réelle des pièces, les hauteurs, l’emplacement des fenêtres, la place de l’escalier, la part de la surface située sous une pente ou en sous-sol.',
+          'Un plan coté, avec les hauteurs sous plafond, vous évitera plus d’une visite inutile.',
+        ],
+      },
+      {
+        title: 'Que dit la vie de l’annonce ?',
+        paragraphs: [
+          'Sa date de mise en ligne et ses changements de prix. Un bien présent depuis longtemps, ou retiré puis republié, a une histoire : un prix trop haut, une vente qui a échoué, un défaut que les visiteurs ont vu.',
+          'Posez la question au négociateur, sans détour. La réponse vous servira pour la visite comme pour la négociation.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À noter avant d’appeler',
+      items: [
+        'La surface annoncée, et laquelle.',
+        'L’étage, l’ascenseur, l’exposition.',
+        'Le montant des charges et de la taxe foncière.',
+        'Les deux lettres du DPE.',
+        'Les pièces absentes des photos.',
+        'La date de mise en vente et les baisses de prix.',
+        'Le plan, à demander s’il manque.',
+      ],
+    },
+    faq: [
+      {
+        q: 'L’adresse exacte doit-elle figurer sur l’annonce ?',
+        a: 'Non. Le quartier ou l’arrondissement suffit. L’agence vous communique l’adresse avant la visite.',
+      },
+      {
+        q: 'Une annonce sans DPE est-elle régulière ?',
+        a: 'Le DPE doit figurer sur l’annonce d’un logement. S’il est indiqué « en cours », demandez la date prévue : c’est une information dont vous avez besoin avant de faire une offre.',
+      },
+      {
+        q: 'Peut-on se fier à la surface de l’annonce ?',
+        a: 'Elle est indicative. La surface qui engage le vendeur est celle de la promesse de vente, mesurée selon la loi Carrez pour un lot de copropriété.',
+      },
+      {
+        q: 'Pourquoi le même bien apparaît-il à des prix différents ?',
+        a: 'Il peut être confié à plusieurs agences, avec des honoraires différents, ou avoir changé de prix sans que toutes les annonces soient à jour. Demandez le prix en vigueur.',
+      },
+    ],
+    sources: [
+      {
+        label: 'UNIS, « Tableau récapitulatif des mentions obligatoires sur les annonces de vente » (février 2026)',
+        url: 'https://www.unis-immo.fr/app/uploads/2026/02/tableau-annonces-ventes-mentions-obligatoires-090226-2.pdf',
+      },
+      {
+        label: 'Institut national de la consommation, « Ventes immobilières : le contenu minimal des annonces publiées par un professionnel »',
+        url: 'https://www.inc-conso.fr/content/ventes-immobilieres-le-contenu-minimal-des-annonces-publiees-par-un-professionnel',
+      },
+      { label: 'FNAIM, « Décrypter une annonce immobilière »', url: 'https://www.fnaim.fr/3985-decrypter-une-annonce-immobiliere.htm' },
+      { label: 'FNAIM, « Loi Carrez : explications et mode de calcul »', url: 'https://www.fnaim.fr/4116-loi-carrez-explications-et-mode-de-calcul.htm' },
+    ],
+  },
   {
     slug: 'questions-a-poser-visite-bien-atypique',
     art: 'visite',
