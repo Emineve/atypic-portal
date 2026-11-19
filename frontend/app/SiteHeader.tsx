@@ -16,11 +16,11 @@ const LINKS = [
   { href: '/charte', label: 'Questions fréquentes', sub: '', Icon: Info },
 ];
 
-// En-tête commun aux pages intérieures : logo, lien de retour, et le même menu que sur l'accueil,
+// En-tête commun aux pages intérieures : logo (retour à l'accueil), lien de retour vers une rubrique s'il y en a un, et le même menu que sur l'accueil,
 // pour passer d'une rubrique à l'autre sans revenir à la liste des biens.
 export default function SiteHeader({
-  backHref = '/',
-  backLabel = 'Accueil',
+  backHref,
+  backLabel,
   back,
   children,
 }: {
@@ -48,12 +48,13 @@ export default function SiteHeader({
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
           <Logo />
           <div className="flex items-center gap-4 sm:gap-6">
-            {back ?? (
-              <Link href={backHref} className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition whitespace-nowrap">
-                {backHref === '/' ? <Home className="w-4 h-4" strokeWidth={1.5} /> : <ArrowLeft className="w-3.5 h-3.5" />}
-                {backLabel}
-              </Link>
-            )}
+            {back ??
+              (backHref && backLabel ? (
+                <Link href={backHref} className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition whitespace-nowrap">
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  {backLabel}
+                </Link>
+              ) : null)}
             {children}
             <button
               type="button"
