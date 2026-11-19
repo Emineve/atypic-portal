@@ -29,9 +29,9 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
   },
   {
     title: 'Un coup de cœur n’empêche pas d’y voir clair.',
-    text: 'Un souplex, une péniche, un ancien atelier ne s’achètent pas comme un appartement classique. Nous avons créé L’état des lieux pour répondre aux questions que personne ne vous pose avant de signer.',
+    text: 'Un souplex, une péniche, un ancien atelier ne s’achètent pas comme un appartement classique. Nous avons créé la rubrique État des lieux pour répondre aux questions que personne ne vous pose avant de signer.',
     href: '/guide',
-    link: 'Lire l’état des lieux',
+    link: 'Lire État des lieux',
   },
   {
     title: 'Il faut pouvoir imaginer avant de choisir.',

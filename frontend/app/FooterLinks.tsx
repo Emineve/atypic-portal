@@ -51,7 +51,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
         <ul className="mt-3 space-y-2">
           <li><a href="/qui-sommes-nous" className={link}>Manifeste</a></li>
           <li><a href="/inspiration" className={link}>Inspiration</a></li>
-          <li><a href="/guide" className={link}>L&apos;état des lieux</a></li>
+          <li><a href="/guide" className={link}>État des lieux</a></li>
           <li><a href="/financement" className={link}>Financement</a></li>
           <li><a href="/charte" className={link}>Questions fréquentes</a></li>
           <li><a href="/pro" className={link}>Espace agences</a></li>

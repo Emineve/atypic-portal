@@ -427,7 +427,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium text-stone-900">
             <a
               href="/guide"
-              aria-label="L'état des lieux"
+              aria-label="État des lieux"
               className="inline-flex items-center gap-1.5 hover:text-stone-500 transition"
             >
               <span className="relative inline-flex">
@@ -505,7 +505,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 {favorites.length > 0 && <span className="text-sm text-stone-500">{favorites.length}</span>}
               </button>
               {[
-                ['/guide', 'L’état des lieux', 'Ce qu’il faut savoir avant d’acheter'],
+                ['/guide', 'État des lieux', 'Ce qu’il faut savoir avant d’acheter'],
                 ['/inspiration', 'Inspiration', 'Un architecte à la une'],
                 ['/financement', 'Financement', 'Estimer ma mensualité'],
                 ['/qui-sommes-nous', 'Manifeste', 'Pourquoi Loftissime'],

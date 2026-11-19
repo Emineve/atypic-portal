@@ -30,7 +30,7 @@ export default function GuideIndex() {
       </nav>
 
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">L&apos;état des lieux</p>
+        <p className="text-[10px] uppercase tracking-widest text-stone-400">État des lieux</p>
         <h1 className="mt-4 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>
