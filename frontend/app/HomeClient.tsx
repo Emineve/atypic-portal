@@ -87,6 +87,56 @@ function matchesPlace(item: { city: string; district: string | null }, p: Place)
   return item.city === p.value;
 }
 
+// Toutes les communes de France, par l'API adresse de l'État : on peut chercher (et créer une alerte)
+// dans une ville où Loftissime n'a pas encore de bien.
+function useRemoteCities(input: string): Place[] {
+  const [found, setFound] = useState<Place[]>([]);
+  useEffect(() => {
+    const q = input.trim();
+    if (q.length < 2) {
+      setFound([]);
+      return;
+    }
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      try {
+        const res = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&type=municipality&autocomplete=1&limit=6`);
+        const json = await res.json();
+        const list: Place[] = [];
+        ((json && json.features) || []).forEach((f: { properties?: { city?: string; name?: string; postcode?: string } }) => {
+          const pr = f.properties || {};
+          let v = String(pr.city || pr.name || '').trim();
+          const arr = v.match(/^Paris\s+0?(\d{1,2})/i);
+          if (arr) v = Number(arr[1]) === 1 ? 'Paris 1er' : `Paris ${Number(arr[1])}e`;
+          if (!v || list.some((x) => x.value === v)) return;
+          const pc = String(pr.postcode || '');
+          list.push({ kind: 'city', value: v, city: v, sub: pc, count: 0, search: normalize(v + ' ' + pc) });
+        });
+        if (!cancelled) setFound(list);
+      } catch {
+        if (!cancelled) setFound([]);
+      }
+    }, 250);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [input]);
+  return found;
+}
+
+// Les lieux où Loftissime a des biens d'abord, puis les autres communes de France
+function mergePlaces(local: Place[], remote: Place[], chosen: Place[], max: number): Place[] {
+  const out = [...local];
+  remote.forEach((r) => {
+    const k = normalize(r.value);
+    if (out.some((p) => p.kind === 'city' && normalize(p.value) === k)) return;
+    if (chosen.some((p) => p.kind === 'city' && normalize(p.value) === k)) return;
+    out.push(r);
+  });
+  return out.slice(0, max);
+}
+
 // Empreinte d'une recherche, pour reconnaître celle qui vient d'être enregistrée en alerte
 function searchSignature(f: Filters, places: Place[], query: string) {
   return JSON.stringify([f, places.map((p) => p.kind + ':' + p.city + ':' + p.value), query.trim()]);
@@ -266,23 +316,23 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
   }, [places, filters.priceMax]);
 
   const typed = normalize(query.trim());
+  const remoteCities = useRemoteCities(query);
   const placeMatches = useMemo(() => {
     if (!typed) return [];
-    return allPlaces
-      .filter((p) => p.search.includes(typed) && !places.some((x) => x.kind === p.kind && x.value === p.value && x.city === p.city))
-      .slice(0, 6);
-  }, [allPlaces, typed, places]);
+    const local = allPlaces.filter((p) => p.search.includes(typed) && !places.some((x) => x.kind === p.kind && x.value === p.value && x.city === p.city));
+    return mergePlaces(local, remoteCities, places, 6);
+  }, [allPlaces, typed, places, remoteCities]);
   const showSuggestions = searchFocused && typed !== '';
 
   // Saisie d'un lieu directement dans le panneau Critères (mêmes suggestions que la barre de recherche)
   const [panelQuery, setPanelQuery] = useState('');
   const panelTyped = normalize(panelQuery.trim());
+  const panelRemote = useRemoteCities(panelQuery);
   const panelMatches = useMemo(() => {
     if (!panelTyped) return [];
-    return allPlaces
-      .filter((p) => p.search.includes(panelTyped) && !places.some((x) => x.kind === p.kind && x.value === p.value && x.city === p.city))
-      .slice(0, 5);
-  }, [allPlaces, panelTyped, places]);
+    const local = allPlaces.filter((p) => p.search.includes(panelTyped) && !places.some((x) => x.kind === p.kind && x.value === p.value && x.city === p.city));
+    return mergePlaces(local, panelRemote, places, 5);
+  }, [allPlaces, panelTyped, places, panelRemote]);
   function addPanelPlace(p: Place) {
     setPlaces((prev) => [...prev, p]);
     setPanelQuery('');
@@ -644,7 +694,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         {p.sub && <span className="block text-xs text-stone-500 truncate">{p.sub}</span>}
                       </span>
                       <span className="flex-none text-xs text-stone-500">
-                        {p.count} {p.count > 1 ? 'biens' : 'bien'}
+                        {p.count === 0 ? 'Pas encore de bien' : `${p.count} ${p.count > 1 ? 'biens' : 'bien'}`}
                       </span>
                     </button>
                   </li>
@@ -812,7 +862,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                             {p.sub && <span className="block text-xs text-stone-500 truncate">{p.sub}</span>}
                           </span>
                           <span className="flex-none text-xs text-stone-500">
-                            {p.count} {p.count > 1 ? 'biens' : 'bien'}
+                            {p.count === 0 ? 'Pas encore de bien' : `${p.count} ${p.count > 1 ? 'biens' : 'bien'}`}
                           </span>
                         </button>
                       </li>
