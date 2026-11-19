@@ -6,12 +6,18 @@ import { ArrowLeft } from 'lucide-react';
 export const MODE_EMPLOI_KEY = 'loftissime:mode-emploi';
 
 // Lien « ← Mode d'emploi » affiché dans l'en-tête quand on vient d'une étape du mode d'emploi :
-// on y retourne d'un clic, à l'étape où l'on s'était arrêté. Il disparaît une fois revenu.
+// on y retourne d'un clic, à l'étape où l'on s'était arrêté. Il ne s'affiche que sur la page ouverte depuis le mode
+// d'emploi : dès que l'on va ailleurs, il disparaît pour de bon.
 export function useFromModeEmploi(): boolean {
   const [show, setShow] = useState(false);
   useEffect(() => {
     try {
-      setShow(sessionStorage.getItem(MODE_EMPLOI_KEY) !== null && window.location.pathname !== '/mode-d-emploi');
+      const saved = sessionStorage.getItem(MODE_EMPLOI_KEY);
+      const path = window.location.pathname;
+      if (saved === null || path === '/mode-d-emploi') return setShow(false);
+      if (saved.split('|')[1] === path) return setShow(true);
+      sessionStorage.removeItem(MODE_EMPLOI_KEY);
+      setShow(false);
     } catch {
       setShow(false);
     }

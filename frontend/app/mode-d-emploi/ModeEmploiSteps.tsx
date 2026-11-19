@@ -63,16 +63,16 @@ export default function ModeEmploiSteps() {
   // Retour depuis une autre page : on reprend à l'étape quittée, et le lien de retour s'efface
   useEffect(() => {
     try {
-      const saved = Number(sessionStorage.getItem(MODE_EMPLOI_KEY));
+      const saved = Number((sessionStorage.getItem(MODE_EMPLOI_KEY) || '').split('|')[0] || NaN);
       if (Number.isInteger(saved) && saved > 0 && saved < STEPS.length) setStep(saved);
       sessionStorage.removeItem(MODE_EMPLOI_KEY);
     } catch {
       /* ignoré */
     }
   }, []);
-  const leave = (index: number) => {
+  const leave = (index: number, href: string) => {
     try {
-      sessionStorage.setItem(MODE_EMPLOI_KEY, String(index));
+      sessionStorage.setItem(MODE_EMPLOI_KEY, `${index}|${href.split(/[?#]/)[0]}`);
     } catch {
       /* ignoré */
     }
@@ -85,7 +85,7 @@ export default function ModeEmploiSteps() {
         <ArrowRight className="w-4 h-4" />
       </button>
     ) : (
-      <Link href={s.href} onClick={() => leave(STEPS.indexOf(s))} className={action}>
+      <Link href={s.href} onClick={() => leave(STEPS.indexOf(s), s.href)} className={action}>
         {s.link}
         <ArrowRight className="w-4 h-4" />
       </Link>
