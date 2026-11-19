@@ -21,7 +21,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -38,6 +38,720 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'acheter-atypique-est-ce-risque',
+    art: 'balance',
+    title: 'Acheter un bien atypique, est-ce plus risqué ?',
+    description:
+      'Statut du bien, surface, travaux, confort, revente : les cinq risques propres à un loft, un atelier ou un souplex, et la vérification qui écarte chacun d’eux avant de signer.',
+    category: 'Marché',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Un bien atypique fait peur à ceux qui ne le connaissent pas, et fait rêver ceux qui l’ont visité. Les deux ont raison. Il comporte des risques qu’un appartement classique n’a pas, mais ils sont connus, peu nombreux, et presque tous se vérifient sur pièces avant de signer. Ce qui est dangereux, ce n’est pas l’atypique : c’est l’atypique acheté sans poser de questions.',
+    takeaways: [
+      'Les risques d’un bien atypique tiennent à son histoire : ce qu’il était avant, et la façon dont il a été transformé.',
+      'Cinq points concentrent l’essentiel : le statut du bien, sa surface réelle, les autorisations de travaux, le confort, la revente.',
+      'Chacun se vérifie avec un document précis, à demander avant l’offre ou à inscrire comme condition dans la promesse.',
+      'Un vendeur et une agence qui fournissent ces pièces sans difficulté sont le meilleur signe.',
+    ],
+    sections: [
+      {
+        title: 'D’où viennent les risques ?',
+        paragraphs: [
+          'D’une seule chose : le bien n’a pas toujours été ce qu’il est. Un atelier, une boutique, un grenier, une cave, deux appartements réunis. À chaque transformation, quelqu’un devait demander des autorisations. Quand elles existent, le bien est aussi sûr qu’un autre. Quand elles manquent, c’est l’acheteur qui en hérite.',
+          'L’appartement classique, lui, n’a jamais changé de nature. C’est toute la différence.',
+        ],
+      },
+      {
+        title: 'Premier risque : le bien est-il vraiment un logement ?',
+        paragraphs: [
+          'Un loft peut être resté, sur le papier, un local commercial ou un atelier. Les conséquences sont concrètes : crédit immobilier plus difficile, fiscalité différente, revente compliquée.',
+          'La vérification tient en trois documents : l’autorisation d’urbanisme qui a acté le changement de destination, la désignation du lot dans le règlement de copropriété, et la nature du local retenue pour la taxe foncière.',
+        ],
+      },
+      {
+        title: 'Deuxième risque : quelle surface achetez-vous ?',
+        paragraphs: [
+          'Mezzanine, sous-pentes, niveau en sous-sol : dans un bien atypique, la surface au sol et la surface officielle peuvent différer de plusieurs dizaines de mètres carrés. Seule la surface Carrez, qui ne compte que les parties d’au moins 1,80 mètre de hauteur, figure dans l’acte.',
+          'Demandez le certificat de mesurage et faites-vous montrer, pièce par pièce, ce qui est compté.',
+        ],
+      },
+      {
+        title: 'Troisième risque : les travaux ont-ils été autorisés ?',
+        paragraphs: [
+          'Un escalier percé dans un plancher, un mur porteur ouvert, une verrière créée en toiture touchent aux parties communes ou à l’aspect de l’immeuble. Il fallait un vote de la copropriété, et souvent une autorisation de la mairie.',
+          'Demandez les procès-verbaux d’assemblée générale qui ont autorisé ces travaux, et la déclaration ou le permis correspondant. Sans eux, la copropriété peut exiger une remise en état, et c’est le propriétaire du moment qui répond.',
+        ],
+      },
+      {
+        title: 'Quatrième risque : y vit-on bien toute l’année ?',
+        paragraphs: [
+          'Un grand volume se chauffe plus difficilement, une verrière surchauffe en été, un niveau bas demande une ventilation sérieuse. Ce ne sont pas des défauts cachés : ce sont des caractéristiques, qui se regardent et se chiffrent.',
+          'Lisez le DPE en entier, demandez les factures d’énergie du vendeur, et revenez une seconde fois à une autre heure de la journée.',
+        ],
+      },
+      {
+        title: 'Cinquième risque : pourrez-vous revendre ?',
+        paragraphs: [
+          'Un bien singulier séduit moins d’acheteurs qu’un trois-pièces, mais ceux qu’il séduit le veulent vraiment. La revente est plus lente quand le bien est irrégulier, pas quand il est rare.',
+          'Autrement dit, les quatre premières vérifications protègent aussi la cinquième : un bien atypique en règle se revend, un bien atypique bancal se brade.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Les cinq pièces qui écartent les cinq risques',
+      items: [
+        'L’autorisation d’urbanisme du changement de destination, si le bien a eu une autre vie.',
+        'Le certificat de mesurage Carrez, détaillé par niveau.',
+        'Les procès-verbaux d’assemblée générale autorisant les travaux.',
+        'Le DPE complet et les factures d’énergie.',
+        'Le règlement de copropriété, pour la désignation exacte du lot.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Un bien atypique est-il plus difficile à financer ?',
+        a: 'Pas quand il est en règle. La banque regarde surtout si le bien est officiellement un logement et s’il se revendrait facilement. Un dossier complet lève la plupart des réticences.',
+      },
+      {
+        q: 'Faut-il renoncer si un document manque ?',
+        a: 'Pas forcément. Une situation peut souvent être régularisée, par un vote de la copropriété ou une autorisation d’urbanisme a posteriori. Faites-en une condition de la promesse de vente, et négociez le prix en conséquence.',
+      },
+      {
+        q: 'Qui peut m’aider à vérifier ?',
+        a: 'Le notaire pour les titres et les autorisations, un architecte pour l’état du bâti et la faisabilité de vos projets. Le négociateur de l’agence, lui, connaît le dossier : c’est à lui qu’il faut demander les pièces.',
+      },
+    ],
+    sources: [
+      { label: 'Notaires de France, « Comment transformer un local commercial en local d’habitation ? »', url: 'https://www.notaires.fr/fr/article/comment-transformer-un-local-commercial-en-local-dhabitation' },
+      { label: 'FNAIM, « Loi Carrez : explications et mode de calcul »', url: 'https://www.fnaim.fr/4116-loi-carrez-explications-et-mode-de-calcul.htm' },
+      { label: 'Service-Public.fr, « Diagnostic de performance énergétique (DPE) »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F16096' },
+    ],
+  },
+  {
+    slug: 'vue-degagee-est-elle-protegee',
+    art: 'vue',
+    title: 'Une vue dégagée est-elle acquise pour toujours ?',
+    description:
+      'Vue sur les toits, sur un monument, sur un jardin : ce que la loi protège, ce qu’elle ne protège pas, et les vérifications à faire avant de payer une vue qui peut disparaître.',
+    category: 'Visite et négociation',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Une vue se paie. Sur les toits, sur un dôme, sur les arbres d’un jardin voisin : c’est souvent elle qui décide de l’achat, et elle pèse lourd dans le prix. Or la vue est la seule chose que vous achetez sans en devenir propriétaire. Ce qui se trouve devant vos fenêtres appartient à d’autres. Avant de signer, il faut savoir ce qu’ils ont le droit d’en faire.',
+    takeaways: [
+      'En droit, personne n’a de droit acquis à conserver sa vue. Un voisin peut construire s’il respecte les règles d’urbanisme.',
+      'Ce qui vous protège vraiment, c’est le plan local d’urbanisme : hauteurs autorisées, espaces protégés, terrains constructibles.',
+      'Les distances du Code civil entre voisins, 1,90 mètre pour une vue droite et 0,60 mètre pour une vue oblique, protègent l’intimité, pas le paysage.',
+      'Une servitude écrite, qui interdit de bâtir ou limite la hauteur du terrain voisin, est la seule vraie garantie. Elle figure dans les titres.',
+    ],
+    sections: [
+      {
+        title: 'Peut-on perdre sa vue ?',
+        paragraphs: [
+          'Oui. Le propriétaire du terrain ou de l’immeuble d’en face est libre de construire, de surélever ou de planter, tant qu’il respecte les règles d’urbanisme. Les tribunaux le rappellent régulièrement : il n’existe pas, en principe, de droit à conserver une vue.',
+          'Dans des cas exceptionnels, une construction qui prive un logement de lumière ou d’ensoleillement de façon excessive peut être jugée comme un trouble anormal de voisinage, et ouvrir droit à une indemnité. C’est une réparation après coup, incertaine, pas une protection.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui protège une vue, alors ?',
+        paragraphs: ['Les règles qui empêchent de bâtir devant vous. Elles se lisent dans des documents publics, que chacun peut consulter en mairie ou en ligne.'],
+        list: [
+          'Le plan local d’urbanisme : la hauteur maximale autorisée sur les parcelles voisines, les espaces verts protégés, les zones non constructibles.',
+          'Les protections patrimoniales : aux abords d’un monument historique ou dans un site classé, les constructions sont très encadrées.',
+          'La nature de ce qui est en face : un jardin public, un fleuve, une voie ferrée ou une avenue large ne se construisent pas du jour au lendemain.',
+          'Une servitude inscrite dans les titres, qui interdit de construire ou de dépasser une certaine hauteur sur le terrain voisin.',
+        ],
+      },
+      {
+        title: 'Quels sont les signes d’une vue fragile ?',
+        list: [
+          'Un terrain nu, un parking ou un hangar bas en face : ce sont des terrains à bâtir en puissance.',
+          'Un immeuble voisin nettement plus bas que les autres : il peut être surélevé jusqu’à la hauteur autorisée.',
+          'Un panneau de permis de construire affiché dans la rue. Lisez-le : il indique la hauteur du projet.',
+          'Une parcelle récemment vendue à un promoteur. Le négociateur de l’agence le sait souvent.',
+        ],
+      },
+      {
+        title: 'Et les distances entre voisins ?',
+        paragraphs: [
+          'Le Code civil interdit d’ouvrir une fenêtre, un balcon ou une terrasse à moins de 1,90 mètre de la limite du terrain voisin lorsqu’on y voit droit devant soi, et à moins de 0,60 mètre lorsqu’on y voit de côté. Ces règles ne s’appliquent ni entre lots d’une même copropriété, ni aux ouvertures qui donnent sur la rue.',
+          'Elles protègent votre intimité contre un voisin qui ouvrirait une vue chez vous. Elles ne l’empêchent pas de construire un mur aveugle devant vos fenêtres.',
+          'Vérifiez aussi vos propres ouvertures : une fenêtre ou une terrasse créée trop près de la limite peut être contestée, sauf si elle existe depuis plus de trente ans.',
+        ],
+      },
+      {
+        title: 'Que demander avant d’acheter ?',
+        paragraphs: [
+          'Demandez au négociateur ce qu’il sait des parcelles voisines, puis vérifiez par vous-même. Le service d’urbanisme de la mairie vous dira si un permis a été déposé ou accordé à proximité, et quelle hauteur le plan local d’urbanisme autorise en face.',
+          'Si la vue justifie une part importante du prix, demandez à votre notaire de regarder les servitudes inscrites dans les titres, les vôtres et celles du voisin.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de payer une vue',
+      items: [
+        'Ce qui se trouve en face, et à qui cela appartient.',
+        'La hauteur maximale autorisée par le plan local d’urbanisme sur les parcelles voisines.',
+        'Les permis de construire déposés ou accordés dans la rue.',
+        'Les protections patrimoniales du secteur.',
+        'Les servitudes mentionnées dans le titre de propriété.',
+        'La conformité de vos propres fenêtres et terrasses aux distances légales.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Puis-je m’opposer à un permis de construire qui bouche ma vue ?',
+        a: 'Vous pouvez le contester s’il ne respecte pas les règles d’urbanisme, dans un délai de deux mois à compter de son affichage sur le terrain. La seule perte de vue ne suffit pas à le faire annuler.',
+      },
+      {
+        q: 'La vue est-elle mentionnée dans l’acte de vente ?',
+        a: 'Non. L’acte décrit le bien, pas ce que l’on voit depuis ses fenêtres. Une annonce qui vante une vue ne garantit pas qu’elle durera.',
+      },
+      {
+        q: 'Un arbre du voisin peut-il me cacher la vue ?',
+        a: 'Oui, s’il est planté à la distance légale de la limite du terrain. Les règles de plantation fixent des distances, pas une hauteur à ne pas dépasser au-delà de celles-ci.',
+      },
+    ],
+    sources: [
+      { label: 'PAP, « Fenêtres, portes, terrasses : respectez les distances »', url: 'https://www.pap.fr/patrimoine/voisinage/fenetres-portes-terrasses-respectez-les-distances/a1960' },
+      { label: 'Actu-Juridique, « Le droit de vue, une hypothèse juridiquement envisageable ? »', url: 'https://www.actu-juridique.fr/civil/immobilier/le-droit-de-vue-une-hypothese-juridiquement-envisageable/' },
+    ],
+    listingsLink: { label: 'Voir les rooftops et les biens avec vue', href: '/categorie/rooftop-vue' },
+  },
+  {
+    slug: 'hauteur-sous-plafond-les-seuils-a-connaitre',
+    art: 'hauteur',
+    title: 'Hauteur sous plafond : les seuils qui changent tout',
+    description:
+      '1,80 mètre pour la surface, 2,20 mètres pour louer : les hauteurs que la loi retient, ce qu’elles changent pour le prix, pour la location et pour vos projets de mezzanine.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Cinq mètres sous plafond dans le séjour, 1,70 mètre sous la mezzanine : dans un bien atypique, la hauteur change d’une pièce à l’autre. Ce n’est pas qu’une affaire de confort. Selon qu’elle passe au-dessus ou au-dessous de certains seuils, une partie du bien compte ou ne compte pas dans la surface, peut ou ne peut pas être louée. Deux chiffres suffisent à s’y retrouver.',
+    takeaways: [
+      'En dessous de 1,80 mètre de hauteur, une surface n’entre ni dans la surface Carrez, ni dans la surface habitable.',
+      'Pour être loué, un logement doit offrir au moins une pièce principale de 9 m² sous 2,20 mètres de plafond, ou d’un volume de 20 m³.',
+      'Une grande hauteur ne se compte pas en mètres carrés : elle se paie au prix du bien, pas au mètre.',
+      'Avant de créer une mezzanine, mesurez ce qui restera au-dessus et au-dessous.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi 1,80 mètre ?',
+        paragraphs: [
+          'C’est le seuil retenu pour mesurer un logement. La surface Carrez, obligatoire pour vendre un lot de copropriété, et la surface habitable, utilisée pour la location, ne comptent que les parties dont la hauteur atteint au moins 1,80 mètre.',
+          'Sous une pente de toit, sous un escalier, sur une mezzanine basse, les mètres existent mais ne figurent pas dans l’acte. Ils rendent service. Ils ne se paient pas au même prix.',
+        ],
+      },
+      {
+        title: 'Pourquoi 2,20 mètres ?',
+        paragraphs: [
+          'C’est le seuil de la décence, c’est-à-dire du droit de louer. Un logement mis en location doit comporter au moins une pièce principale d’une surface habitable de 9 m² avec une hauteur sous plafond de 2,20 mètres, ou bien d’un volume habitable de 20 m³.',
+          'La seconde option aide les biens sous les toits : une pièce un peu basse mais vaste peut atteindre 20 m³. Cette pièce doit aussi recevoir la lumière du jour et s’ouvrir à l’air libre.',
+          'Les règlements sanitaires départementaux ajoutent parfois leurs propres exigences. Si vous achetez pour louer, vérifiez celui de votre département.',
+        ],
+      },
+      {
+        title: 'Que vaut une grande hauteur ?',
+        paragraphs: [
+          'Elle ne s’ajoute pas à la surface : un séjour de 40 m² reste un séjour de 40 m², qu’il ait 2,50 ou 5 mètres sous plafond. C’est pourquoi le prix au mètre carré d’un bien très haut paraît élevé. Vous payez un volume, que la mesure ne sait pas dire.',
+          'Ce volume a un coût d’usage. Il faut le chauffer, et l’air chaud monte. Regardez le mode de chauffage et lisez le DPE avec attention.',
+        ],
+      },
+      {
+        title: 'Peut-on gagner de la surface en hauteur ?',
+        paragraphs: [
+          'C’est l’idée de la mezzanine. Pour qu’elle compte dans la surface, elle doit être fixe et laisser au moins 1,80 mètre au-dessus de son plancher. Pour que l’espace du dessous reste agréable, il en faut autant en dessous.',
+          'Faites le calcul avant d’acheter : avec l’épaisseur du plancher, il faut environ 3,80 à 4 mètres de hauteur totale pour deux niveaux où l’on tient debout. En dessous, la mezzanine sera un couchage ou un rangement, pas une pièce.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À mesurer pendant la visite',
+      items: [
+        'La hauteur sous plafond de chaque pièce, au point le plus bas.',
+        'Sous les pentes : la limite où la hauteur passe sous 1,80 mètre.',
+        'Sur et sous la mezzanine : les deux hauteurs.',
+        'La surface Carrez du certificat, comparée à la surface au sol.',
+        'Si vous comptez louer : la pièce principale atteint-elle 9 m² sous 2,20 mètres, ou 20 m³ ?',
+      ],
+    },
+    faq: [
+      {
+        q: 'Une pièce de moins de 1,80 mètre de haut peut-elle être une chambre ?',
+        a: 'Rien ne vous interdit d’y dormir chez vous. Mais elle ne compte pas dans la surface du logement et ne peut pas être présentée comme une pièce.',
+      },
+      {
+        q: 'Existe-t-il une hauteur minimale pour vendre ?',
+        a: 'Non. La vente est libre, à condition que la surface annoncée soit exacte. Les seuils de hauteur concernent la mesure du bien et sa mise en location.',
+      },
+      {
+        q: 'La hauteur sous plafond figure-t-elle dans l’annonce ?',
+        a: 'Rarement, sauf quand elle est remarquable. Demandez-la, pièce par pièce, et demandez un plan coté.',
+      },
+    ],
+    sources: [
+      { label: 'Caisse d’allocations familiales, « Les critères du logement décent »', url: 'https://www.caf.fr/sites/default/files/medias/101/OFFRE-DE-SERVICE/Logement/logement_decent_criteres.pdf' },
+      { label: 'FNAIM, « Loi Carrez : explications et mode de calcul »', url: 'https://www.fnaim.fr/4116-loi-carrez-explications-et-mode-de-calcul.htm' },
+    ],
+  },
+  {
+    slug: 'transformer-garage-entrepot-grange-en-logement',
+    art: 'garage',
+    title: 'Garage, entrepôt, grange : peut-on en faire un logement ?',
+    description:
+      'Changement de destination, déclaration préalable ou permis de construire, règlement de copropriété, raccordements : les étapes pour transformer un local en habitation, et ce qu’il faut vérifier avant d’acheter.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Un garage au fond d’une cour, un entrepôt aux poutres métalliques, une grange en pierre : le volume est là, il ne manque que la vie dedans. C’est ainsi que naissent beaucoup de lofts. Mais on ne décide pas seul qu’un local devient un logement. La commune a son mot à dire, la copropriété aussi, et la réponse doit être connue avant l’achat, pas après.',
+    takeaways: [
+      'Passer d’un local d’activité à un logement s’appelle un changement de destination. Il exige toujours une autorisation d’urbanisme.',
+      'Sans toucher à la structure ni à la façade, une déclaration préalable suffit. Dès qu’on y touche, il faut un permis de construire.',
+      'Le plan local d’urbanisme peut interdire l’habitation dans certaines zones. C’est la première chose à vérifier.',
+      'En copropriété, le règlement doit autoriser l’habitation dans le lot. Sinon, il faut l’accord des copropriétaires.',
+    ],
+    sections: [
+      {
+        title: 'Qu’est-ce qu’un changement de destination ?',
+        paragraphs: [
+          'Le droit de l’urbanisme range chaque bâtiment dans l’une de cinq destinations : habitation, commerce et activités de service, exploitation agricole et forestière, équipements d’intérêt collectif, autres activités des secteurs secondaire ou tertiaire. Ces cinq destinations se divisent en vingt-trois sous-destinations.',
+          'Un garage loué, un entrepôt, un atelier, une grange n’appartiennent pas à la destination « habitation ». Y créer un logement, c’est changer de destination, même sans aucun travail visible de l’extérieur.',
+        ],
+      },
+      {
+        title: 'Déclaration préalable ou permis de construire ?',
+        list: [
+          'Changement de destination sans modification de la structure porteuse ni de la façade : déclaration préalable.',
+          'Changement de destination avec modification de la structure porteuse ou de la façade, par exemple l’ouverture de fenêtres : permis de construire.',
+          'Au-delà de 150 m² de surface de plancher après travaux, le recours à un architecte est obligatoire pour déposer le permis.',
+        ],
+      },
+      {
+        title: 'La commune peut-elle refuser ?',
+        paragraphs: [
+          'Oui. Le plan local d’urbanisme fixe, zone par zone, les destinations autorisées. Il peut interdire de créer des logements dans une zone d’activités, protéger les commerces en rez-de-chaussée dans certaines rues, ou imposer des places de stationnement que le terrain ne permet pas de créer.',
+          'Pour une grange en zone agricole, la règle est plus stricte encore : le changement de destination n’est possible que si le bâtiment a été désigné pour cela dans le plan local d’urbanisme.',
+          'Demandez un certificat d’urbanisme avant de vous engager. Il vous dit par écrit ce qui est possible sur la parcelle.',
+        ],
+      },
+      {
+        title: 'Et en copropriété ?',
+        paragraphs: [
+          'Le règlement de copropriété décrit l’usage de chaque lot. Si le vôtre est désigné comme garage, remise ou local commercial, l’habiter suppose que le règlement ne l’interdise pas et que la transformation respecte la destination de l’immeuble.',
+          'Les travaux qui touchent les parties communes ou l’aspect extérieur, comme le percement d’une façade, doivent être votés en assemblée générale. Faites inscrire la question à l’ordre du jour avant d’acheter, ou faites de cet accord une condition de la promesse.',
+        ],
+      },
+      {
+        title: 'Quels coûts oublie-t-on ?',
+        list: [
+          'Les raccordements : eau, assainissement, électricité à la puissance d’un logement.',
+          'L’isolation et la ventilation : un local d’activité n’a été conçu ni pour l’une ni pour l’autre.',
+          'La taxe d’aménagement, qui peut être due lors du changement de destination.',
+          'Les diagnostics : amiante et plomb dans les locaux anciens, pollution des sols pour d’anciens ateliers.',
+          'La lumière : créer des ouvertures est souvent le poste le plus lourd, et le plus encadré.',
+        ],
+      },
+      {
+        title: 'Et si le bien est vendu déjà transformé ?',
+        paragraphs: [
+          'Demandez la preuve que la transformation a été autorisée : la déclaration préalable ou le permis, et l’attestation d’achèvement des travaux. Un local habité sans autorisation reste, pour l’administration, un local. Sa régularisation n’est jamais garantie.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant d’acheter un local à transformer',
+      items: [
+        'Le zonage du plan local d’urbanisme et les destinations autorisées.',
+        'Un certificat d’urbanisme opérationnel pour votre projet.',
+        'Le règlement de copropriété et la désignation du lot.',
+        'L’accord de principe de la copropriété pour les travaux en façade.',
+        'L’état des réseaux : eau, évacuations, électricité.',
+        'Les diagnostics amiante, plomb et, s’il y a lieu, pollution des sols.',
+        'Une condition suspensive d’obtention de l’autorisation d’urbanisme dans la promesse.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Puis-je habiter un local en attendant l’autorisation ?',
+        a: 'Non. Tant que le changement de destination n’est pas autorisé, le local n’est pas un logement. L’habiter vous expose à des sanctions et à un refus d’assurance.',
+      },
+      {
+        q: 'Combien de temps faut-il pour obtenir l’autorisation ?',
+        a: 'Le délai d’instruction de droit commun est d’un mois pour une déclaration préalable et de deux mois pour un permis de construire portant sur une maison, davantage dans les autres cas ou en secteur protégé.',
+      },
+      {
+        q: 'La transformation change-t-elle les impôts ?',
+        a: 'Oui. Le local est réévalué comme logement pour la taxe foncière. Déclarez le changement au service des impôts dans les quatre-vingt-dix jours qui suivent la fin des travaux.',
+      },
+    ],
+    sources: [
+      { label: 'Notaires de France, « La destination des bâtiments dans le droit de l’urbanisme »', url: 'https://www.notaires.fr/fr/immobilier-fiscalite/urbanisme/la-destination-des-batiments-dans-le-droit-de-lurbanisme' },
+      { label: 'Notaires de France, « Comment transformer un local commercial en local d’habitation ? »', url: 'https://www.notaires.fr/fr/article/comment-transformer-un-local-commercial-en-local-dhabitation' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'veranda-jardin-d-hiver-autorisations',
+    art: 'veranda',
+    title: 'Véranda, jardin d’hiver : ce qu’il faut vérifier, ce qu’il faut demander',
+    description:
+      'Autorisation d’urbanisme, accord de la copropriété, surface comptée, confort d’été : les vérifications à faire quand un bien possède une véranda, et les règles pour en créer une.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Une pièce de verre posée sur une terrasse ou ouverte sur un jardin : la véranda est souvent ce qui donne son charme à un rez-de-jardin ou à un dernier étage. C’est aussi l’une des constructions les plus souvent réalisées sans autorisation. Quand elle existe déjà, il faut s’assurer qu’elle a le droit d’être là. Quand vous comptez en créer une, il faut savoir à qui le demander.',
+    takeaways: [
+      'Une véranda est une extension : elle exige une autorisation d’urbanisme, et l’accord de la copropriété s’il y en a une.',
+      'Jusqu’à 20 m², une déclaration préalable suffit. Ce seuil passe à 40 m² en zone urbaine d’une commune dotée d’un plan local d’urbanisme. Au-delà, il faut un permis de construire.',
+      'Close et couverte, une véranda de plus de 1,80 mètre de hauteur compte dans la surface Carrez.',
+      'Sans autorisation, c’est l’acheteur qui hérite du problème.',
+    ],
+    sections: [
+      {
+        title: 'La véranda existante a-t-elle été autorisée ?',
+        paragraphs: ['Deux accords étaient nécessaires. Demandez les deux.'],
+        list: [
+          'L’autorisation d’urbanisme : la déclaration préalable ou le permis de construire, délivré par la mairie.',
+          'En copropriété, le procès-verbal de l’assemblée générale qui a autorisé la construction. Une véranda modifie l’aspect extérieur de l’immeuble et s’appuie souvent sur une partie commune.',
+          'Le titre qui vous donne l’usage de la terrasse ou du jardin sur lequel elle est posée : propriété ou droit de jouissance.',
+        ],
+      },
+      {
+        title: 'Que risque-t-on si elle ne l’a pas été ?',
+        paragraphs: [
+          'La copropriété peut demander sa démolition pendant plusieurs années après sa construction. La commune, de son côté, peut refuser toute nouvelle autorisation sur le bien tant que la situation n’est pas régularisée.',
+          'Une régularisation est parfois possible, par un vote de l’assemblée générale et une autorisation déposée après coup. Rien ne l’assure. Faites-en une condition de la promesse de vente.',
+        ],
+      },
+      {
+        title: 'Quelle autorisation pour en créer une ?',
+        list: [
+          'Jusqu’à 20 m² de surface de plancher ou d’emprise au sol : déclaration préalable.',
+          'En zone urbaine d’une commune couverte par un plan local d’urbanisme : déclaration préalable jusqu’à 40 m².',
+          'Au-delà de ces seuils : permis de construire. Il est aussi requis dès 20 m² si l’extension porte la surface totale du bâtiment à plus de 150 m², avec recours obligatoire à un architecte.',
+          'En secteur protégé, aux abords d’un monument historique par exemple, les règles sont plus strictes et l’avis de l’architecte des Bâtiments de France est requis.',
+        ],
+      },
+      {
+        title: 'Compte-t-elle dans la surface ?',
+        paragraphs: [
+          'Oui, si elle est close, couverte et d’une hauteur d’au moins 1,80 mètre : elle entre alors dans la surface Carrez. Une véranda non autorisée pose donc un double problème, puisque des mètres carrés vendus reposent sur une construction contestable.',
+          'Vérifiez que le certificat de mesurage précise si la véranda est comptée, et pour combien.',
+        ],
+      },
+      {
+        title: 'Y vit-on toute l’année ?',
+        paragraphs: [
+          'Une véranda ancienne, à simple vitrage et sans protection solaire, est froide en hiver et brûlante en été. Regardez le vitrage, la présence de stores ou de brise-soleil, les ouvertures qui permettent de ventiler, et le chauffage.',
+          'Regardez aussi les joints et les raccords avec la façade : c’est là que l’eau entre.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À demander pour une véranda existante',
+      items: [
+        'La déclaration préalable ou le permis de construire.',
+        'Le procès-verbal d’assemblée générale qui l’a autorisée.',
+        'Le certificat de mesurage, avec la surface de la véranda.',
+        'L’année de construction et les factures.',
+        'Le type de vitrage et les protections solaires.',
+        'Les traces d’infiltration au raccord avec le bâtiment.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Une pergola ou un store demandent-ils une autorisation ?',
+        a: 'Une pergola fixée au bâtiment modifie l’aspect extérieur : elle demande en général une déclaration préalable, et l’accord de la copropriété. Renseignez-vous en mairie avant de l’installer.',
+      },
+      {
+        q: 'Puis-je fermer mon balcon ou ma loggia ?',
+        a: 'C’est une modification de façade et une création de surface. Il faut l’accord de la copropriété et une autorisation d’urbanisme. Beaucoup de règlements l’interdisent pour préserver l’unité de l’immeuble.',
+      },
+      {
+        q: 'La véranda augmente-t-elle la taxe foncière ?',
+        a: 'Oui. Elle crée de la surface et doit être déclarée au service des impôts dans les quatre-vingt-dix jours qui suivent son achèvement.',
+      },
+    ],
+    sources: [
+      { label: 'Justice.fr, « Quelle autorisation d’urbanisme déposer pour construire une véranda ? »', url: 'https://www.justice.fr/fiche/autorisation-urbanisme-deposer-construire-veranda' },
+      { label: 'FNAIM, « Loi Carrez : explications et mode de calcul »', url: 'https://www.fnaim.fr/4116-loi-carrez-explications-et-mode-de-calcul.htm' },
+    ],
+  },
+  {
+    slug: 'voie-privee-villa-cite-d-artistes',
+    art: 'voieprivee',
+    title: 'Voie privée, villa, cité d’artistes : ce que l’on achète avec l’adresse',
+    description:
+      'Derrière une grille, une impasse pavée et des maisons d’artistes : à qui appartient la voie, qui l’entretient, quelles règles s’y appliquent, et les documents à demander avant d’acheter.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Une grille, une allée pavée, des glycines, pas une voiture : les voies privées, les villas et les cités d’artistes sont parmi les adresses les plus recherchées des grandes villes. Ce calme a une explication simple. La rue n’appartient pas à la commune, mais à ceux qui y habitent. En achetant la maison ou l’atelier, vous achetez aussi une part de la rue, avec ses charges et ses règles.',
+    takeaways: [
+      'Une voie privée appartient à ses riverains. Ce sont eux qui paient la chaussée, l’éclairage, les réseaux et le portail.',
+      'Elle est gérée le plus souvent par une copropriété ou par une association syndicale de propriétaires. L’adhésion est attachée au bien : on ne peut pas s’y soustraire.',
+      'Un cahier des charges ou un règlement fixe ce que l’on peut y faire : stationnement, travaux, clôtures, activités.',
+      'Les gros travaux de voirie sont rares et coûteux. Demandez s’il y en a de prévus.',
+    ],
+    sections: [
+      {
+        title: 'À qui appartient la voie ?',
+        paragraphs: [
+          'Aux propriétaires des biens qui la bordent. Selon les lieux, la voie est une partie commune d’une copropriété, la propriété d’une association syndicale qui réunit les riverains, ou un bien détenu en indivision.',
+          'Le titre de propriété du vendeur le précise. Il indique aussi la part qui revient au bien, et donc sa contribution aux charges.',
+        ],
+      },
+      {
+        title: 'Qui paie quoi ?',
+        list: [
+          'L’entretien courant : nettoyage, espaces plantés, éclairage, portail et interphone.',
+          'Les réseaux qui passent sous la voie : eau, assainissement, parfois jusqu’au raccordement à la rue publique.',
+          'La réfection de la chaussée et des pavés, peu fréquente mais lourde.',
+          'L’assurance de la voie, dont les riverains sont responsables en cas d’accident.',
+        ],
+      },
+      {
+        title: 'Quelles règles s’y appliquent ?',
+        paragraphs: [
+          'Celles que les propriétaires se sont données, parfois depuis plus d’un siècle. Le cahier des charges ou le règlement peut limiter la hauteur des constructions, imposer des matériaux, interdire certaines activités, réglementer le stationnement et l’accès des véhicules.',
+          'Ces règles s’ajoutent à celles de la commune. Elles protègent le caractère du lieu, et encadrent vos projets : une surélévation, une clôture ou un changement de fenêtres peut exiger l’accord des autres riverains.',
+        ],
+      },
+      {
+        title: 'Comment la voie est-elle gérée ?',
+        paragraphs: [
+          'Par un syndic si c’est une copropriété, par un président et un bureau élus si c’est une association de propriétaires. Dans les deux cas, une assemblée vote le budget et les travaux.',
+          'Dans une association syndicale, l’adhésion est attachée au bien et se transmet à chaque vente : l’acheteur devient membre de plein droit, avec les droits et les dettes qui vont avec. Lisez les statuts, ils fixent les règles de vote et de répartition des dépenses.',
+        ],
+      },
+      {
+        title: 'Et pour un atelier d’artiste ?',
+        paragraphs: [
+          'Dans une cité d’artistes, certains ateliers sont désignés comme locaux de travail et non comme logements. Vérifiez la désignation du lot et, si le bien est vendu comme habitation, l’autorisation qui a permis ce changement.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À demander avant d’acheter',
+      items: [
+        'Le statut de la voie : copropriété, association syndicale ou indivision.',
+        'Les statuts, le cahier des charges ou le règlement.',
+        'Les trois derniers procès-verbaux d’assemblée.',
+        'Le montant annuel des charges de voie, et la part du bien.',
+        'Les travaux votés ou envisagés : chaussée, réseaux, portail.',
+        'Les règles de stationnement et d’accès des véhicules.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Une voie privée est-elle fermée au public ?',
+        a: 'Ses propriétaires décident. Certaines sont closes par une grille, d’autres restent ouvertes au passage. Une voie ouverte à la circulation publique reste soumise au Code de la route.',
+      },
+      {
+        q: 'La commune peut-elle reprendre la voie ?',
+        a: 'Oui, à la demande des propriétaires ou de sa propre initiative, par une procédure de transfert dans le domaine public. La commune prend alors l’entretien à sa charge, et la voie devient une rue comme les autres.',
+      },
+      {
+        q: 'Puis-je refuser de payer les charges de la voie ?',
+        a: 'Non. Elles sont attachées au bien. Les impayés peuvent être réclamés au propriétaire en place, d’où l’intérêt de demander un état des sommes dues avant la vente.',
+      },
+    ],
+    sources: [
+      { label: 'Actu-Juridique, « Le syndicat de copropriétaires et l’association syndicale libre : deux régimes juridiques exclusifs l’un de l’autre »', url: 'https://www.actu-juridique.fr/civil/immobilier/copropriete/le-syndicat-de-coproprietaires-et-lassociation-syndicale-libre-deux-regimes-juridiques-exclusifs-lun-de-lautre/' },
+      { label: 'Notaires, « Le transfert des voies privées dans le domaine public communal »', url: 'https://www.9-nancy.notaires.fr/wp-content/uploads/2023/10/DP10-Le-transfert-des-voies-privees-dans-le-domaine-public-communal.pdf' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'etage-eleve-sans-ascenseur',
+    art: 'ascenseur',
+    title: 'Sixième sans ascenseur : peut-on en installer un, et qui paie ?',
+    description:
+      'Vote en assemblée générale, répartition des frais selon l’étage, faisabilité technique : ce qu’il faut savoir avant d’acheter un étage élevé sans ascenseur, et ce que cela change pour le prix.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Le dernier étage a la lumière, la vue et le calme. Il a parfois aussi cent vingt marches. Un étage élevé sans ascenseur se vend moins cher, et c’est souvent ce qui le rend accessible. La question qui suit est toujours la même : pourra-t-on un jour en installer un ? La réponse dépend de l’immeuble, des voisins, et d’un vote.',
+    takeaways: [
+      'L’installation d’un ascenseur se vote en assemblée générale, à la majorité des voix de tous les copropriétaires.',
+      'Si le projet recueille au moins un tiers des voix sans atteindre cette majorité, un second vote peut avoir lieu à la majorité simple.',
+      'Les frais se répartissent selon l’utilité de l’ascenseur pour chaque lot : plus l’étage est élevé, plus la part est lourde.',
+      'Avant le vote, il y a la technique : toutes les cages d’escalier ne peuvent pas accueillir une cabine.',
+    ],
+    sections: [
+      {
+        title: 'Est-ce techniquement possible ?',
+        paragraphs: ['C’est la première question, et elle élimine beaucoup de projets. Trois emplacements sont envisageables.'],
+        list: [
+          'Dans le vide de la cage d’escalier, s’il est assez large.',
+          'Dans la cour, contre la façade, avec une cabine extérieure. Il faut alors une autorisation d’urbanisme.',
+          'À la place d’une partie des paliers ou de locaux communs, plus rarement.',
+        ],
+      },
+      {
+        title: 'Comment se prend la décision ?',
+        paragraphs: [
+          'L’installation d’un ascenseur est une amélioration de l’immeuble. Elle se vote à la majorité absolue, c’est-à-dire la majorité des voix de tous les copropriétaires, présents ou non.',
+          'Si cette majorité n’est pas atteinte mais que le projet a réuni au moins un tiers des voix, l’assemblée peut procéder aussitôt à un second vote, à la majorité des seuls copropriétaires présents, représentés ou ayant voté par correspondance.',
+          'En pratique, le vote se joue entre les étages hauts, qui en ont besoin, et les étages bas, qui n’en veulent pas payer le prix.',
+        ],
+      },
+      {
+        title: 'Qui paie ?',
+        paragraphs: [
+          'La loi sur la copropriété répartit les dépenses d’un équipement commun selon l’utilité qu’il présente pour chaque lot. Pour un ascenseur, cette utilité croît avec l’étage : le propriétaire du sixième paie bien davantage que celui du premier, et le rez-de-chaussée est en général dispensé.',
+          'La même logique vaut ensuite pour l’entretien, l’électricité et les réparations, qui s’ajoutent aux charges chaque année.',
+          'Si vous achetez au dernier étage en comptant sur un ascenseur, c’est donc vous qui en supporterez la plus grande part.',
+        ],
+      },
+      {
+        title: 'Où en est le projet dans cet immeuble ?',
+        paragraphs: [
+          'Lisez les procès-verbaux des dernières assemblées générales. Vous y verrez si la question a déjà été posée, si une étude a été commandée, et comment les copropriétaires ont voté.',
+          'Un projet refusé deux fois ne passera pas parce que vous arrivez. Un projet à l’étude, avec un devis et une majorité qui se dessine, change la valeur du bien.',
+        ],
+      },
+      {
+        title: 'Comment en tenir compte dans le prix ?',
+        paragraphs: [
+          'L’absence d’ascenseur se traduit par une décote, d’autant plus forte que l’étage est élevé. Elle pèse aussi sur la revente : une partie des acheteurs, familles avec de jeunes enfants ou personnes âgées, écartera le bien.',
+          'Raisonnez avec ce qui existe, pas avec ce qui est espéré. Si l’ascenseur arrive un jour, vous aurez payé votre part, et le bien aura pris de la valeur. S’il n’arrive pas, vous aurez acheté au juste prix.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À regarder et à demander',
+      items: [
+        'La largeur du vide de la cage d’escalier.',
+        'La cour : y a-t-il la place d’une cabine extérieure ?',
+        'Les procès-verbaux des trois dernières assemblées générales.',
+        'Une étude ou un devis déjà réalisé.',
+        'La grille de répartition des charges prévue pour l’ascenseur.',
+        'L’état de l’escalier, que vous monterez tous les jours.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Puis-je financer seul l’ascenseur ?',
+        a: 'Des copropriétaires peuvent demander à l’assemblée l’autorisation de l’installer à leurs frais. Ceux qui n’ont pas participé pourront l’utiliser plus tard en payant leur part.',
+      },
+      {
+        q: 'Un monte-escalier est-il une solution ?',
+        a: 'Pour un escalier privatif, oui. Dans une cage d’escalier commune, il faut l’accord de la copropriété et une largeur suffisante pour ne pas gêner le passage.',
+      },
+      {
+        q: 'L’ascenseur fait-il baisser le DPE ou les charges ?',
+        a: 'Il n’a pas d’effet sur le DPE du logement. Il augmente en revanche les charges de copropriété, par son entretien et sa consommation.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public.fr, « Quelles sont les règles de vote en assemblée générale de copropriété ? »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F32066' },
+      { label: 'ANIL, « Les règles de majorité pour décider en assemblée générale de copropriété »', url: 'https://anil.org/majorite-decision-assemblee-generale-copropriete' },
+    ],
+    listingsLink: { label: 'Voir les derniers étages et rooftops', href: '/categorie/rooftop-vue' },
+  },
+  {
+    slug: 'visiter-avec-un-architecte',
+    art: 'expertise',
+    title: 'Visiter avec un architecte : quand, pourquoi, comment',
+    description:
+      'Mur porteur, humidité, faisabilité d’une mezzanine, budget de travaux : ce qu’un architecte voit en une heure dans un bien atypique, le bon moment pour le faire venir, et ce qu’il faut lui demander.',
+    category: 'Visite et négociation',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Dans un appartement classique, on voit à peu près ce que l’on achète. Dans un ancien atelier ou sous une charpente, l’essentiel est ailleurs : dans ce qui porte, dans ce qui peut s’ouvrir, dans ce que coûtera le projet que vous avez en tête. Un architecte lit ces choses en une heure. Sa visite coûte peu au regard du prix du bien, et elle peut vous éviter l’erreur comme vous confirmer le coup de cœur.',
+    takeaways: [
+      'Faites venir l’architecte à la seconde visite, avant l’offre : c’est là que son avis pèse sur votre décision et sur le prix.',
+      'Il répond à trois questions : le bâti est-il sain, votre projet est-il faisable, et pour quel ordre de grandeur de budget.',
+      'Son avis ne remplace ni les diagnostics obligatoires, ni le notaire. Il les complète.',
+      'Demandez un compte rendu écrit, même bref : il vous servira pour négocier.',
+    ],
+    sections: [
+      {
+        title: 'Que voit un architecte que vous ne voyez pas ?',
+        list: [
+          'La structure : ce qui porte, ce qui peut être ouvert, ce qui ne le peut pas.',
+          'Les désordres : fissures, traces d’humidité, affaissements, et leur gravité.',
+          'Les réseaux : où passent l’eau et les évacuations, donc où peuvent aller une cuisine ou une salle de bains.',
+          'La lumière et les hauteurs : ce qu’une mezzanine ou une cloison changerait vraiment.',
+          'Les règles : ce que la copropriété et la mairie devront autoriser.',
+        ],
+      },
+      {
+        title: 'À quel moment le faire venir ?',
+        paragraphs: [
+          'Pas à la première visite : elle sert à savoir si le bien vous plaît. À la seconde, quand vous envisagez sérieusement d’acheter et avant de faire une offre.',
+          'Prévenez le négociateur de l’agence. Un vendeur sûr de son bien accepte volontiers. Demandez à cette occasion les plans, le règlement de copropriété et les diagnostics, que l’architecte lira avant de venir.',
+        ],
+      },
+      {
+        title: 'Que lui demander, précisément ?',
+        paragraphs: ['Arrivez avec votre projet, même vague. Un architecte répond mieux à une question précise qu’à un « qu’en pensez-vous ? ».'],
+        list: [
+          'Puis-je ouvrir ce mur, créer cette mezzanine, déplacer la cuisine ?',
+          'Y a-t-il des travaux indispensables, que je le veuille ou non ?',
+          'Quel ordre de grandeur de budget, et quel délai ?',
+          'Quelles autorisations faudra-t-il obtenir, et de qui ?',
+        ],
+      },
+      {
+        title: 'Combien cela coûte-t-il ?',
+        paragraphs: [
+          'Une visite de conseil se facture en général au temps passé ou au forfait. Les honoraires sont libres : demandez un prix avant la visite, et précisez si vous attendez un avis oral ou un compte rendu écrit.',
+          'Si vous lui confiez ensuite les travaux, certains architectes déduisent cette première visite de leurs honoraires. Posez la question.',
+        ],
+      },
+      {
+        title: 'Que fait-on de son avis ?',
+        paragraphs: [
+          'Trois choses. D’abord décider : un projet infaisable change tout. Ensuite chiffrer : un budget de travaux crédible s’ajoute au prix pour savoir ce que le bien vous coûtera vraiment. Enfin négocier : des travaux indispensables, constatés par un professionnel, sont un argument que le vendeur ne peut pas balayer.',
+          'Son avis sert aussi à rédiger la promesse de vente, en y inscrivant les conditions qui protègent votre projet, comme l’obtention d’une autorisation de travaux.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À préparer pour sa visite',
+      items: [
+        'Les plans du bien, cotés si possible.',
+        'Le règlement de copropriété.',
+        'Les diagnostics : amiante, plomb, électricité, DPE.',
+        'Les derniers procès-verbaux d’assemblée générale.',
+        'Votre projet, en quelques lignes.',
+        'Un mètre et de quoi prendre des photos.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Un architecte est-il obligatoire pour les travaux ?',
+        a: 'Seulement quand un permis de construire porte la surface de plancher du bâtiment à plus de 150 m². En dessous, il reste utile dès que l’on touche à la structure ou aux parties communes.',
+      },
+      {
+        q: 'Peut-on faire venir un artisan à la place ?',
+        a: 'Pour chiffrer un poste précis, oui : une toiture, une verrière, une installation électrique. Pour juger de la faisabilité d’un projet d’ensemble, l’architecte est mieux placé.',
+      },
+      {
+        q: 'Où trouver un architecte ?',
+        a: 'L’Ordre des architectes tient un annuaire en ligne de ses membres. Cherchez quelqu’un qui a déjà travaillé sur des biens du même type que le vôtre.',
+      },
+    ],
+    sources: [{ label: 'Ordre des architectes, annuaire et conseils aux particuliers', url: 'https://www.architectes.org' }],
+  },
   {
     slug: 'hors-marche-off-market-mythe-et-realite',
     art: 'horsmarche',
