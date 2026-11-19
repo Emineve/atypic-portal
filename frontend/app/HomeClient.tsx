@@ -441,22 +441,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium text-stone-900">
             <ModeEmploiBack />
-            <a
-              href="/guide"
-              aria-label="État des lieux"
-              className={`${fromModeEmploi ? 'hidden sm:inline-flex' : 'inline-flex'} items-center gap-1.5 hover:text-stone-500 transition`}
-            >
-              <span className="relative inline-flex">
-                <BookOpen className="w-5 h-5 sm:w-4 sm:h-4" />
-                <span className="sm:hidden absolute -top-1 -right-1 h-2 w-2 rounded-full bg-[#E9C84A] ring-2 ring-white" aria-hidden="true" />
-              </span>
-              <span className="hidden sm:inline">État des lieux</span>
-              {newArticles > 0 && (
-                <span className="hidden sm:inline-block bg-[#F4E7B5] px-1.5 py-0.5 text-xs font-semibold tracking-wider text-stone-900">
-                  + {newArticles} {newArticles > 1 ? 'articles' : 'article'}
-                </span>
-              )}
-            </a>
             <button
               type="button"
               onClick={() => setOnlyFavs((v) => !v)}
@@ -552,7 +536,14 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 <a key={href} href={href} className="flex gap-3 py-4 border-b border-stone-200">
                   <Icon className="mt-1.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} />
                   <span>
-                    <span className="block font-serif text-2xl text-stone-900">{label}</span>
+                    <span className="block font-serif text-2xl text-stone-900">
+                      {label}
+                      {href === '/guide' && newArticles > 0 && (
+                        <span className="ml-3 inline-block align-middle bg-[#F4E7B5] px-1.5 py-0.5 font-sans text-xs font-semibold uppercase tracking-wider text-stone-900">
+                          + {newArticles} {newArticles > 1 ? 'articles' : 'article'}
+                        </span>
+                      )}
+                    </span>
                     {sub && <span className="mt-0.5 block text-sm text-stone-500">{sub}</span>}
                   </span>
                 </a>
