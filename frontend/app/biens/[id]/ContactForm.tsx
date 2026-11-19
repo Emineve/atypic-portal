@@ -147,24 +147,40 @@ export default function ContactForm({
     }
   }
 
-  const field = 'w-full h-11 border border-stone-300 bg-white px-3 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
+  const field = 'w-full h-10 border-0 border-b border-stone-300 bg-transparent px-0 text-base text-stone-900 placeholder:text-stone-300 rounded-none focus:outline-none focus:ring-0 focus:border-stone-900 transition-colors';
+  const fieldLabel = 'block text-[10px] uppercase tracking-widest text-stone-500';
+  // Une agence sans interlocuteur nommé : son nom n'est affiché qu'une fois
+  const person = contactName && contactName.trim().toLowerCase() !== agency.trim().toLowerCase() ? contactName.trim() : '';
+  const initials = (person || agency)
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w.charAt(0).toUpperCase())
+    .join('');
 
   return (
     <div className="space-y-4">
       <div className="border border-stone-900 bg-white shadow-[0_10px_30px_rgba(13,15,17,0.10)]">
-        <p className="bg-[#F4E7B5] px-6 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-stone-900">Ce bien vous intéresse ?</p>
+        <div className="bg-[#F4E7B5] px-6 py-4 border-b border-stone-900">
+          <p className="font-serif text-2xl leading-tight text-stone-900">Ce bien vous intéresse ?</p>
+        </div>
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
-          <div className="min-w-0">
-            <p className="font-serif text-xl leading-tight text-stone-900 truncate">{contactName || agency}</p>
-            <p className="mt-0.5 text-xs text-stone-500 truncate">{contactName ? agency : 'Votre contact pour ce bien'}</p>
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="h-12 w-12 flex-none bg-stone-900 text-white font-serif text-lg flex items-center justify-center" aria-hidden="true">
+              {initials}
+            </span>
+            <div className="min-w-0">
+              <p className="text-[10px] uppercase tracking-widest text-stone-500">{person ? agency : 'Votre contact pour ce bien'}</p>
+              <p className="mt-0.5 font-serif text-xl leading-tight text-stone-900 truncate">{person || agency}</p>
+            </div>
           </div>
           {phone && (
-            <div className={`mt-4 grid gap-2 ${wa ? 'grid-cols-2' : 'grid-cols-1'}`}>
+            <div className={`mt-5 grid gap-2 ${wa ? 'grid-cols-2' : 'grid-cols-1'}`}>
               {shown ? (
                 <a
                   href={`tel:${phone.replace(/[^+\d]/g, '')}`}
-                  className="h-11 inline-flex items-center justify-center gap-2 border border-stone-900 text-stone-900 text-sm font-semibold whitespace-nowrap hover:bg-stone-900 hover:text-white transition"
+                  className="h-12 inline-flex items-center justify-center gap-2 border border-stone-900 text-stone-900 text-sm font-semibold whitespace-nowrap hover:bg-stone-900 hover:text-white transition"
                 >
                   {phone}
                 </a>
@@ -172,7 +188,7 @@ export default function ContactForm({
                 <button
                   type="button"
                   onClick={reveal}
-                  className="h-11 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
+                  className="h-12 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
                 >
                   <Phone className="w-4 h-4" />
                   Appeler
@@ -184,7 +200,7 @@ export default function ContactForm({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={trackContact}
-                  className="h-11 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
+                  className="h-12 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
                 >
                   <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#25D366]" fill="currentColor" aria-hidden="true">
                     <path d={WHATSAPP_ICON_PATH} />
@@ -196,7 +212,7 @@ export default function ContactForm({
           )}
 
           {/* Deux onglets discrets pour le formulaire : être rappelé, ou écrire */}
-          <div className="mt-6 flex gap-6 border-b border-stone-200" role="tablist" aria-label="Votre demande">
+          <div className="mt-7 flex gap-6 border-b border-stone-200" role="tablist" aria-label="Votre demande">
             {([
               ['tel', 'Être rappelé(e)'],
               ['msg', 'Écrire un message'],
@@ -207,7 +223,7 @@ export default function ContactForm({
                 role="tab"
                 aria-selected={tab === key}
                 onClick={() => setTab(key)}
-                className={`-mb-px pb-2.5 text-sm border-b-2 transition ${
+                className={`-mb-px pb-3 text-[15px] border-b-2 transition ${
                   tab === key ? 'border-stone-900 text-stone-900 font-medium' : 'border-transparent text-stone-500 hover:text-stone-900'
                 }`}
               >
@@ -305,27 +321,27 @@ export default function ContactForm({
           )}
         </>
       ) : (
-        <form onSubmit={onSubmit} className="mt-4 space-y-2.5">
+        <form onSubmit={onSubmit} className="mt-6 space-y-5">
           {tab === 'msg' && (
             <div>
-              <label className="sr-only" htmlFor="c-msg">Message</label>
-              <textarea id="c-msg" rows={5} className="w-full border border-stone-300 bg-white px-3 py-2 text-sm leading-relaxed placeholder:text-stone-400 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
+              <label className={fieldLabel} htmlFor="c-msg">Votre message</label>
+              <textarea id="c-msg" rows={5} className="mt-2 w-full border border-stone-300 bg-white px-3 py-2.5 text-base leading-relaxed rounded-none placeholder:text-stone-300 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
             </div>
           )}
 
           <div>
-            <label className="sr-only" htmlFor="c-name">Nom</label>
-            <input id="c-name" name="name" autoComplete="name" placeholder="Nom" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
+            <label className={fieldLabel} htmlFor="c-name">Nom</label>
+            <input id="c-name" name="name" autoComplete="name" placeholder="Prénom et nom" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           {tab === 'tel' && (
             <div>
-              <label className="sr-only" htmlFor="c-phone">Téléphone</label>
-              <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="Téléphone" className={field} required minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
+              <label className={fieldLabel} htmlFor="c-phone">Téléphone</label>
+              <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="06 12 34 56 78" className={field} required minLength={6} maxLength={40} value={tel} onChange={(e) => setTel(e.target.value)} />
             </div>
           )}
           <div>
-            <label className="sr-only" htmlFor="c-email">E-mail</label>
-            <input id="c-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="E-mail" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label className={fieldLabel} htmlFor="c-email">E-mail</label>
+            <input id="c-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="vous@exemple.fr" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
 
           {/* Champ piège : invisible pour les humains */}
@@ -340,8 +356,9 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+            className="!mt-7 w-full h-14 inline-flex items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
           >
+            {status !== 'sending' && tab === 'tel' && <Phone className="w-4 h-4" />}
             {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer mon message'}
           </button>
           <p className="text-[11px] text-stone-500 leading-relaxed text-center">
