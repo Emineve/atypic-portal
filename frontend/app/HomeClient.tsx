@@ -611,7 +611,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             {places.map((p) => (
               <span
                 key={p.kind + p.city + p.value}
-                className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-800 text-[13px]"
+                className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-900 text-[13px] font-semibold"
               >
                 <MapPin className="w-3.5 h-3.5 mr-1.5 text-stone-400" />
                 {p.value}
@@ -679,7 +679,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 <p className="text-[10px] uppercase tracking-widest text-stone-500">Localisation</p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   {places.map((p) => (
-                    <span key={p.kind + p.city + p.value} className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-800 text-[13px]">
+                    <span key={p.kind + p.city + p.value} className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-900 text-[13px] font-semibold">
                       <MapPin className="w-3.5 h-3.5 mr-1.5 text-stone-400" />
                       {p.value}
                       <button
@@ -693,7 +693,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                     </span>
                   ))}
                   {query.trim() !== '' && (
-                    <span className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-800 text-[13px]">
+                    <span className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-900 text-[13px] font-semibold">
                       « {query.trim()} »
                       <button
                         type="button"
