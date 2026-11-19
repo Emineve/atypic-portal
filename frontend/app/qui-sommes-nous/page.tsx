@@ -62,40 +62,38 @@ export default function ManifestoPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
+      <header className="max-w-4xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <p className="text-xs uppercase tracking-widest text-stone-500">Pourquoi Loftissime</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
         </h1>
-        <p className="mt-10 md:mt-12 max-w-2xl text-xl font-light leading-relaxed text-stone-700">
+        <p className="mt-8 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
           Tous les biens atypiques à vendre, sur un seul site. Partout en France, toutes agences réunies, sans préférence. Et vous, accompagné jusqu&apos;à la visite, pour ne pas passer à côté du bien qui vous ressemble.
         </p>
       </header>
 
       <main className="max-w-4xl mx-auto px-6 pb-24">
-        <ol>
+        <ol className="space-y-4">
           {ARTICLES.map((a, i) => (
-            <li key={a.title} className="grid md:grid-cols-[5rem_1fr] gap-x-6 border-t border-stone-900 py-10 md:py-14">
-              <span className="font-serif text-xl text-stone-400 md:pt-2" aria-hidden="true">
+            <li key={a.title} className="rounded-[20px] border border-stone-200 bg-white p-6 md:p-9">
+              <span className="block font-sans text-xs font-semibold tracking-widest text-stone-400" aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <div>
-                <h2 className="mt-2 md:mt-0 font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900">{typo(a.title)}</h2>
-                <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(a.text)}</p>
-                {a.href && a.link && (
-                  <p className="mt-5">
-                    <Link href={a.href} className={link}>
-                      {typo(a.link)}
-                      <ArrowUpRight className="ml-1.5 inline-block w-4 h-4 align-[-3px]" />
-                    </Link>
-                  </p>
-                )}
-              </div>
+              <h2 className="mt-3 font-serif text-2xl md:text-4xl tracking-tight leading-[1.15] text-stone-900">{typo(a.title)}</h2>
+              <p className="mt-4 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">{typo(a.text)}</p>
+              {a.href && a.link && (
+                <p className="mt-5">
+                  <Link href={a.href} className={link}>
+                    {typo(a.link)}
+                    <ArrowUpRight className="ml-1.5 inline-block w-4 h-4 align-[-3px]" />
+                  </Link>
+                </p>
+              )}
             </li>
           ))}
         </ol>
 
-        <section className="border-t border-stone-900 pt-14 md:pt-24">
+        <section className="pt-14 md:pt-20">
           <p className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
             Un bien qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
             <span className="italic text-stone-500">Trouvons le vôtre.</span>
