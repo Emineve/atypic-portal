@@ -2,6 +2,17 @@
 // Un article n'apparaît sur le site qu'à partir de sa date de publication : on peut donc en écrire
 // plusieurs à l'avance, ils se mettent en ligne tout seuls, semaine après semaine.
 
+// Les rubriques d'État des lieux, dans l'ordre où elles s'affichent
+export const GUIDE_RUBRICS = [
+  { name: 'Marché', anchor: 'marche', intro: 'Les prix, les taux, les délais : où en est le marché.' },
+  { name: 'Visite et négociation', anchor: 'visite', intro: 'Les bonnes questions, au bon moment.' },
+  { name: 'Types de biens', anchor: 'types', intro: 'Souplex, loft, péniche, duplex : ce que chacun a de particulier.' },
+  { name: 'Surfaces et travaux', anchor: 'technique', intro: 'Ce qui est compté, ce qui a été transformé, ce que le bien consomme.' },
+  { name: 'Copropriété', anchor: 'copropriete', intro: 'Les règles de l’immeuble et ce qu’il coûte à vivre.' },
+  { name: 'Financement', anchor: 'financement', intro: 'Le crédit, l’assurance, le dossier.' },
+] as const;
+export type GuideRubric = (typeof GUIDE_RUBRICS)[number]['name'];
+
 export interface GuideSection {
   title: string; // intertitre, de préférence sous forme de question
   paragraphs?: string[];
@@ -10,10 +21,10 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
-  category: 'Avant d’acheter' | 'Financer et assurer' | 'Vivre et entretenir' | 'Estimer et revendre';
+  category: GuideRubric;
   published: string; // AAAA-MM-JJ : date de mise en ligne
   updated: string; // AAAA-MM-JJ : dernière vérification des informations
   readMinutes: number;
@@ -33,7 +44,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Visite d’un bien atypique : les bonnes questions à poser au négociateur',
     description:
       'Surface, travaux, verrière, copropriété, prix : les questions à poser au négociateur avant et pendant la visite d’un loft, d’un atelier ou d’un dernier étage, et ce que les réponses vous apprennent.',
-    category: 'Avant d’acheter',
+    category: 'Visite et négociation',
     published: '2026-11-18',
     updated: '2026-11-18',
     readMinutes: 9,
@@ -188,7 +199,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Acheter un souplex : ce qu’il faut vérifier avant de signer',
     description:
       'Souplex : habitabilité du sous-sol, surface Carrez, copropriété, urbanisme, humidité. Les vérifications à faire avant d’acheter, avec les textes à connaître.',
-    category: 'Avant d’acheter',
+    category: 'Types de biens',
     published: '2026-11-18',
     updated: '2026-11-18',
     readMinutes: 7,
@@ -297,7 +308,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Loft dans un ancien local commercial : est-ce bien un logement ?',
     description:
       'Ancienne boutique, atelier ou bureau devenu loft : changement de destination, copropriété, impôts. Ce qu’il faut vérifier avant d’acheter, document par document.',
-    category: 'Avant d’acheter',
+    category: 'Types de biens',
     published: '2026-11-18',
     updated: '2026-11-18',
     readMinutes: 6,
@@ -399,7 +410,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Travaux non déclarés : ce que risque vraiment l’acheteur',
     description:
       'Mur abattu, mezzanine, véranda ou pièce créée sans autorisation : ce que l’acheteur reprend à son compte, les délais à connaître et comment se protéger avant de signer.',
-    category: 'Avant d’acheter',
+    category: 'Surfaces et travaux',
     published: '2026-11-18',
     updated: '2026-11-18',
     readMinutes: 7,
@@ -488,7 +499,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Acheter une péniche : le bateau, l’emplacement et tout le reste',
     description:
       'Péniche-logement : un bien meuble, un emplacement à part, une coque à entretenir. Ce qu’il faut savoir et vérifier avant d’acheter un bateau pour y vivre.',
-    category: 'Avant d’acheter',
+    category: 'Types de biens',
     published: '2026-11-18',
     updated: '2026-11-18',
     readMinutes: 6,
@@ -595,7 +606,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Mezzanine, sous-pente, combles : quelle surface achetez-vous vraiment ?',
     description:
       'Surface Carrez, surface habitable, surface au sol : ce qui compte et ce qui ne compte pas dans un bien sous les toits ou à mezzanine, et vos recours en cas d’erreur.',
-    category: 'Avant d’acheter',
+    category: 'Surfaces et travaux',
     published: '2026-11-18',
     updated: '2026-11-18',
     readMinutes: 6,
@@ -689,12 +700,112 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
   },
   {
+    slug: 'marche-immobilier-novembre-2026',
+    art: 'marche',
+    title: 'Marché immobilier : ce que dit le baromètre de novembre 2026, et ce que cela change pour vous',
+    description:
+      'Première baisse des prix de l’année, taux de crédit en hausse, délais de vente qui s’allongent : la synthèse du baromètre Meilleurs Agents de novembre 2026, et ce qu’un acheteur de bien atypique peut en retenir.',
+    category: 'Marché',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Chaque mois, Meilleurs Agents publie un baromètre des prix immobiliers. Celui de novembre 2026, qui porte sur le mois d’octobre, marque un tournant discret : pour la première fois de l’année, les prix reculent au niveau national. Dans le même temps, les taux de crédit remontent. Voici ce qu’il faut en retenir, puis notre lecture pour qui cherche un bien atypique.',
+    takeaways: [
+      'Les prix ont baissé de 0,1 % en octobre en France : c’est la première baisse de l’année. Sur un an, ils restent stables.',
+      'Huit des onze plus grandes villes sont en baisse sur le mois. Toulouse, Lyon et Lille font exception.',
+      'Les taux des nouveaux crédits se situent autour de 3,7 à 3,8 % fin octobre, et jusqu’à 4 % dans certaines banques.',
+      'Les biens se vendent moins vite : 79 jours à Paris, dix de plus qu’il y a trois mois. Le rapport de force se déplace vers les acheteurs.',
+    ],
+    sections: [
+      {
+        title: 'Les prix baissent-ils ?',
+        paragraphs: [
+          'Très légèrement. L’indice national recule de 0,1 % sur le mois d’octobre. Le mouvement est le même à Paris, dans les dix plus grandes villes et dans les cinquante plus grandes : moins 0,1 % partout.',
+          'Les zones rurales résistent, avec une hausse de 0,1 % sur le mois et de 3,7 % sur un an. Mais leur élan ralentit.',
+          'Sur douze mois, les prix sont stables au niveau national. On ne parle donc pas d’une chute, mais d’un marché qui cesse de monter.',
+        ],
+      },
+      {
+        title: 'Quelles villes montent, quelles villes baissent ?',
+        paragraphs: [
+          'Sur le mois d’octobre, trois grandes villes progressent encore et huit reculent.',
+        ],
+        list: [
+          'En hausse : Toulouse (+0,6 %), Lyon (+0,2 %), Lille (+0,2 %).',
+          'En léger recul : Paris, Bordeaux et Strasbourg (−0,1 %), Marseille et Nantes (−0,2 %).',
+          'En baisse plus nette : Montpellier (−0,3 %), Nice (−0,5 %), Rennes (−0,8 %).',
+        ],
+      },
+      {
+        title: 'Où en sont les taux de crédit ?',
+        paragraphs: [
+          'Ils remontent. Le taux auquel l’État français emprunte à dix ans a dépassé 5 % en octobre, un niveau qu’il n’avait pas atteint depuis juillet 2002. Or c’est sur ce taux que les banques calent le coût de leurs crédits.',
+          'Fin octobre, les nouveaux crédits immobiliers se négocient autour de 3,7 à 3,8 %, certaines banques allant jusqu’à 4 %. Les banques françaises amortissent une partie de la hausse : les taux sont plus élevés en Belgique (4,3 %) et en Allemagne (4,4 %).',
+          'Conséquence directe : à mensualité égale, on emprunte moins.',
+        ],
+      },
+      {
+        title: 'Les biens se vendent-ils moins vite ?',
+        paragraphs: [
+          'Oui. À Paris, il faut désormais 79 jours pour vendre, soit dix de plus qu’il y a trois mois. À Toulouse, 86 jours, soit dix-huit de plus, alors même que les prix y montent encore.',
+          'Le baromètre en tire une conclusion nette : les acheteurs retrouvent de la marge pour négocier, surtout dans les villes où les prix reculent, et les vendeurs doivent ajuster leur prix s’ils ne veulent pas attendre.',
+        ],
+      },
+      {
+        title: 'Pourquoi ce retournement ?',
+        list: [
+          'Les taux : la hausse du coût de la dette française se répercute sur le crédit immobilier.',
+          'La confiance : le climat économique, social et politique pousse certains acheteurs à reporter leur projet.',
+          'Les finances publiques : l’effort budgétaire annoncé pour réduire le déficit inquiète les investisseurs, ce qui tire les taux vers le haut.',
+        ],
+      },
+      {
+        title: 'Et pour la suite ?',
+        paragraphs: [
+          'Le baromètre parle d’une phase d’ajustement qui pourrait durer plusieurs mois, sans trancher la question d’un nouveau cycle de baisse. Si les taux continuent de monter, la capacité d’achat se réduira encore et certains projets deviendront plus difficiles à financer.',
+        ],
+      },
+      {
+        title: 'Notre lecture pour un bien atypique',
+        paragraphs: [
+          'Le baromètre ne mesure pas les biens atypiques à part. Ce qui suit est notre lecture, pas une statistique.',
+          'Un loft, un atelier ou un dernier étage avec terrasse se compare mal aux autres biens : il y en a peu, et chacun est différent. Son prix dépend moins de la moyenne du quartier que du nombre d’acheteurs qui le cherchent à ce moment-là. Dans un marché plus lent, vous avez donc plus de temps pour visiter, revenir et vérifier.',
+          'C’est aussi le moment où les questions précises pèsent dans la discussion. Une surface qui n’est pas entièrement comptée, des travaux sans autorisation ou une étanchéité à refaire sont des arguments plus solides qu’une baisse de 0,1 % de l’indice.',
+          'Enfin, refaites vos comptes avec les taux du jour avant de faire une offre : quelques dixièmes de point changent une mensualité.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Les prix de l’immobilier baissent-ils en novembre 2026 ?',
+        a: 'Ils ont reculé de 0,1 % en octobre au niveau national selon Meilleurs Agents, première baisse de l’année. Sur un an, ils sont stables.',
+      },
+      {
+        q: 'Quel est le taux d’un crédit immobilier fin octobre 2026 ?',
+        a: 'Autour de 3,7 à 3,8 % pour les nouveaux crédits, et jusqu’à 4 % dans certaines banques, selon le même baromètre.',
+      },
+      {
+        q: 'Combien de temps faut-il pour vendre un bien à Paris ?',
+        a: '79 jours en moyenne, soit dix de plus qu’il y a trois mois.',
+      },
+      {
+        q: 'Est-ce le bon moment pour négocier ?',
+        a: 'Le rapport de force se déplace vers les acheteurs, surtout là où les prix reculent. La meilleure négociation reste celle qui s’appuie sur des faits propres au bien.',
+      },
+    ],
+    sources: [
+      { label: 'Meilleurs Agents, baromètre du 2 novembre 2026, « Entre baisse des prix et hausse des taux, un marché immobilier sous pression »', url: 'https://edito.meilleursagents.com/actualites/barometre-meilleurs-agents/entre-baisse-prix-hausse-taux-un-marche-immobilier-pression' },
+    ],
+    listingsLink: { label: 'Estimer ma mensualité', href: '/financement' },
+  },
+  {
     slug: 'terrasse-jardin-jouissance-privative',
     art: 'terrasse',
     title: 'Terrasse, toit-terrasse, jardin : en êtes-vous vraiment propriétaire ?',
     description:
       'Dans une copropriété, une terrasse ou un jardin « privatif » est souvent une partie commune dont vous avez seulement l’usage. Ce que cela change pour l’entretien, les travaux et le prix.',
-    category: 'Avant d’acheter',
+    category: 'Copropriété',
     published: '2026-11-19',
     updated: '2026-11-19',
     readMinutes: 6,
@@ -785,7 +896,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'DPE d’un loft, d’un atelier, d’un dernier étage : comment lire l’étiquette',
     description:
       'Validité, classes, calendrier des interdictions de louer, audit énergétique : ce que le DPE dit d’un bien atypique, ce qu’il ne dit pas, et ce qu’il change pour l’acheteur.',
-    category: 'Avant d’acheter',
+    category: 'Surfaces et travaux',
     published: '2026-11-19',
     updated: '2026-11-19',
     readMinutes: 6,
@@ -894,7 +1005,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Financer un bien atypique : ce que la banque regarde',
     description:
       'Taux d’endettement, durée, travaux, assurance : les règles du crédit immobilier en 2026 et les points que la banque examine de plus près quand le bien sort de l’ordinaire.',
-    category: 'Financer et assurer',
+    category: 'Financement',
     published: '2026-11-19',
     updated: '2026-11-19',
     readMinutes: 6,
@@ -995,7 +1106,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Duplex né de deux appartements réunis : ce qu’il faut vérifier',
     description:
       'Escalier percé dans le plancher, palier annexé, deux lots devenus un seul logement : les autorisations à demander au vendeur et les risques quand elles manquent.',
-    category: 'Avant d’acheter',
+    category: 'Types de biens',
     published: '2026-11-19',
     updated: '2026-11-19',
     readMinutes: 6,
@@ -1089,7 +1200,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     title: 'Charges de copropriété : comment les lire avant d’acheter',
     description:
       'Combien paie-t-on en moyenne, ce que les charges comprennent, pourquoi elles varient d’un immeuble à l’autre, et les documents à demander avant de s’engager.',
-    category: 'Avant d’acheter',
+    category: 'Copropriété',
     published: '2026-11-19',
     updated: '2026-11-19',
     readMinutes: 5,
@@ -1183,6 +1294,12 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
 export function publishedArticles(now: Date = new Date()): GuideArticle[] {
   const today = now.toISOString().slice(0, 10);
   return GUIDE_ARTICLES.filter((a) => a.published <= today).sort((a, b) => (a.published < b.published ? 1 : a.published > b.published ? -1 : 0));
+}
+
+// Nombre d'articles parus à la date de publication la plus récente (étiquette « + N articles » de l'en-tête)
+export function latestArticlesCount(now: Date = new Date()): number {
+  const list = publishedArticles(now);
+  return list.length === 0 ? 0 : list.filter((a) => a.published === list[0].published).length;
 }
 
 export function formatGuideDate(iso: string): string {

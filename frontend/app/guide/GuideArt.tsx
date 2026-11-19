@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche';
 
 const INK = '#1c1917';
 const SUN = '#F4E7B5';
@@ -377,7 +377,25 @@ function Charges() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges };
+function Marche() {
+  const bars = [150, 190, 220, 240, 250, 246, 236];
+  return (
+    <>
+      <path d="M200 430 H1000" {...line} />
+      <path d="M260 90 V430" {...thin} />
+      {bars.map((h, i) => (
+        <rect key={i} x={310 + i * 90} y={430 - h} width={56} height={h} fill={i >= 5 ? SHADE : PAPER} stroke={INK} strokeWidth={3} />
+      ))}
+      <path d={`M338 ${250} L428 ${212} L518 ${182} L608 ${162} L698 ${152} L788 ${158} L878 ${172}`} {...dash} />
+      {[250, 212, 182, 162, 152, 158, 172].map((y, i) => (
+        <circle key={i} cx={338 + i * 90} cy={y} r={7} fill={PAPER} stroke={INK} strokeWidth={2} />
+      ))}
+      <Plant x={1050} y={404} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche };
 
 export default function GuideArt({ art, className = '' }: { art: GuideArtKey; className?: string }) {
   const Drawing = ART[art];

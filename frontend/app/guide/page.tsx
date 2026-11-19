@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import Logo from '../Logo';
 import GuideArt from './GuideArt';
-import { publishedArticles, formatGuideDate } from '../../lib/guide';
+import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/guide';
 
 // La liste se recalcule toutes les heures : un article daté du jour apparaît sans nouvelle mise en ligne
 export const revalidate = 3600;
@@ -47,7 +47,7 @@ export default function GuideIndex() {
             </div>
             <div className="md:col-span-3 p-7 md:p-10 flex flex-col justify-center">
               <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                À la une · {first.readMinutes} min de lecture
+                À la une · {first.category} · {first.readMinutes} min de lecture
               </p>
               <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">{first.title}</h2>
               <p className="mt-4 text-stone-600 leading-relaxed">{first.description}</p>
@@ -60,27 +60,45 @@ export default function GuideIndex() {
         )}
 
         {rest.length > 0 && (
-          <ul className="mt-12 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {rest.map((a) => (
-              <li key={a.slug}>
-                <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
-                  <div className="overflow-hidden border-b border-stone-900">
-                    <GuideArt art={a.art} className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
-                  </div>
-                  <div className="p-6 md:p-7">
-                    <p className="text-[10px] uppercase tracking-widest text-stone-400">
-                      {a.category} · {a.readMinutes} min de lecture
-                    </p>
-                    <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
-                      {a.title}
-                    </h2>
-                    <p className="mt-2 text-stone-600 leading-relaxed">{a.description}</p>
-                  </div>
-                </Link>
-              </li>
+          <nav className="mt-12 md:mt-16 flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Rubriques">
+            {GUIDE_RUBRICS.filter((r) => rest.some((a) => a.category === r.name)).map((r) => (
+              <a key={r.anchor} href={`#${r.anchor}`} className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
+                {r.name}
+              </a>
             ))}
-          </ul>
+          </nav>
         )}
+
+        {GUIDE_RUBRICS.map((r) => {
+          const items = rest.filter((a) => a.category === r.name);
+          if (items.length === 0) return null;
+          return (
+            <section key={r.anchor} id={r.anchor} className="mt-12 md:mt-16 scroll-mt-24">
+              <div className="border-t border-stone-900 pt-6">
+                <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">{r.name}</h2>
+                <p className="mt-2 text-stone-600">{r.intro}</p>
+              </div>
+              <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {items.map((a) => (
+                  <li key={a.slug}>
+                    <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                      <div className="overflow-hidden border-b border-stone-900">
+                        <GuideArt art={a.art} className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
+                      </div>
+                      <div className="p-6 md:p-7">
+                        <p className="text-[10px] uppercase tracking-widest text-stone-400">{a.readMinutes} min de lecture</p>
+                        <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
+                          {a.title}
+                        </h3>
+                        <p className="mt-2 text-stone-600 leading-relaxed">{a.description}</p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
         {articles.length === 0 && <p className="py-10 text-stone-500">Les premiers articles arrivent très bientôt.</p>}
 
         <section className="mt-16 md:mt-20 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">

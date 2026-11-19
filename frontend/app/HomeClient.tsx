@@ -97,7 +97,7 @@ function isNew(date: string | null) {
   return Date.now() - new Date(date).getTime() < NEW_DAYS * 86400000;
 }
 
-export default function HomeClient({ initialListings }: { initialListings: Listing[] }) {
+export default function HomeClient({ initialListings, newArticles = 0 }: { initialListings: Listing[]; newArticles?: number }) {
   const listings = initialListings;
   const typeOptions = useMemo(() => availableTypes(listings), [listings]);
   const loading = false;
@@ -441,7 +441,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 <span className="sm:hidden absolute -top-1 -right-1 h-2 w-2 rounded-full bg-[#E9C84A] ring-2 ring-white" aria-hidden="true" />
               </span>
               <span className="hidden sm:inline">État des lieux</span>
-              <span className="hidden sm:inline-block bg-[#F4E7B5] px-1.5 py-0.5 text-[9px] font-semibold tracking-wider text-stone-900">Nouveau</span>
+              {newArticles > 0 && (
+                <span className="hidden sm:inline-block bg-[#F4E7B5] px-1.5 py-0.5 text-[9px] font-semibold tracking-wider text-stone-900">
+                  + {newArticles} {newArticles > 1 ? 'articles' : 'article'}
+                </span>
+              )}
             </a>
             <button
               type="button"

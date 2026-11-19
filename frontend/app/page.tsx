@@ -1,6 +1,7 @@
 import { getSupabase } from '../lib/supabase';
 import { SITE_URL } from '../lib/site';
 import HomeClient, { Listing } from './HomeClient';
+import { latestArticlesCount } from '../lib/guide';
 
 // Page rendue côté serveur : les annonces sont dans le HTML (lisible par Google)
 export const dynamic = 'force-dynamic';
@@ -35,7 +36,7 @@ export default async function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
-      <HomeClient initialListings={listings} />
+      <HomeClient initialListings={listings} newArticles={latestArticlesCount()} />
     </>
   );
 }
