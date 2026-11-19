@@ -62,11 +62,6 @@ export default function Gallery({
           ))}
         </div>
 
-        {category && (
-          <div className="absolute inset-x-0 top-0 px-4 pt-3.5 pb-10 bg-gradient-to-b from-black/50 to-transparent text-white text-xs font-semibold uppercase tracking-widest [text-shadow:0_1px_2px_rgba(0,0,0,.6)]">
-            {category}
-          </div>
-        )}
 
         {favoriteId && <FavoriteButton listingId={favoriteId} />}
 
