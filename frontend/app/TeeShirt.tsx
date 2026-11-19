@@ -9,12 +9,12 @@ export default function TeeShirt({
 }: {
   lines?: string[];
   logo?: boolean;
-  color?: string; // couleur du tissu, pour le modèle au logo
+  color?: string; // couleur du tissu : le texte est alors toujours noir
   dark?: boolean;
   className?: string;
 }) {
   const cloth = color || (dark ? '#1c1917' : '#ffffff');
-  const ink = dark ? '#ffffff' : '#1c1917';
+  const ink = dark && !color ? '#ffffff' : '#1c1917';
   const top = 100 - ((lines.length - 1) * 13) / 2;
   const label = logo ? 'Tee-shirt « loftisssssime. »' : `Tee-shirt « ${lines.join(' ')} »`;
   return (

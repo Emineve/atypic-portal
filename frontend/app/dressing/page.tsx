@@ -24,14 +24,15 @@ export default function DressingPage() {
 
       <main className="max-w-4xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-6 md:gap-8">
         <TeeCard
-          name="Le singulier"
-          lines={['Première personne', 'du singulier.']}
-          pitch="Blanc, phrase noire. Une leçon de grammaire, et une façon d’habiter."
+          logo
+          name="Le superlatif"
+          pitch="Le nom, sur une ligne, en noir. -issime : le plus haut degré, à étirer autant qu’on veut."
         />
         <TeeCard
-          logo
-          name="Le sssss"
-          pitch="Le nom, sur une ligne, en noir. En bleu, en rouge, en vert ou en blanc. À prononcer comme on le sent."
+          first="Blanc"
+          name="Le singulier"
+          lines={['Première personne', 'du singulier.']}
+          pitch="Une phrase noire, une leçon de grammaire, et une façon d’habiter."
         />
       </main>
     </div>
