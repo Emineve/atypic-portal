@@ -55,6 +55,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
           <li><a href="/guide" className={link}>État des lieux</a></li>
           <li><a href="/financement" className={link}>Financement</a></li>
           <li><a href="/charte" className={link}>Questions fréquentes</a></li>
+          <li><a href="/dressing" className={link}>Le dressing</a></li>
           <li><a href="/pro" className={link}>Espace agences</a></li>
         </ul>
       </nav>

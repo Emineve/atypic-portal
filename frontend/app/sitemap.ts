@@ -20,6 +20,7 @@ export default async function sitemap() {
     { url: `${SITE_URL}/qui-sommes-nous` },
     { url: `${SITE_URL}/mode-d-emploi` },
     { url: `${SITE_URL}/agence` },
+    { url: `${SITE_URL}/dressing` },
     { url: `${SITE_URL}/pro` },
     { url: `${SITE_URL}/charte` },
     { url: `${SITE_URL}/financement` },

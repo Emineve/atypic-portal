@@ -504,7 +504,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 }}
                 className="w-full flex items-center gap-3 py-4 border-b border-stone-200 text-left font-serif text-2xl text-stone-900"
               >
-                <Bell className="w-5 h-5 text-stone-400" strokeWidth={1.5} />
+                <Bell className="w-5 h-5 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
                 Créer mon alerte
               </button>
               <button
