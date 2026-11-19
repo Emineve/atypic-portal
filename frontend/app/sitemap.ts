@@ -18,6 +18,7 @@ export default async function sitemap() {
   return [
     { url: `${SITE_URL}/` },
     { url: `${SITE_URL}/qui-sommes-nous` },
+    { url: `${SITE_URL}/mode-d-emploi` },
     { url: `${SITE_URL}/pro` },
     { url: `${SITE_URL}/charte` },
     { url: `${SITE_URL}/financement` },

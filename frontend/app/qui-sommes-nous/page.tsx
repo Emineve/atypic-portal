@@ -51,38 +51,6 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
   },
 ];
 
-// Le mode d'emploi : les réflexes de l'acheteur qui ne veut pas laisser filer un bien.
-const TIPS: { title: string; text: string }[] = [
-  {
-    title: 'Cherchez large.',
-    text: 'Un atelier peut être un loft, une maison se cacher au fond d’une cour. Commencez par le lieu et le budget, affinez ensuite : trop de critères, et le bon bien ne s’affiche jamais.',
-  },
-  {
-    title: 'Créez votre alerte.',
-    text: 'C’est le geste le plus utile du site. Quelques secondes, et les nouveaux biens viennent à vous au lieu de vous attendre.',
-  },
-  {
-    title: 'Gardez vos coups de cœur.',
-    text: 'Le cœur sur chaque photo range le bien dans vos favoris. Vous les comparez à tête reposée, et vous demandez à être rappelé pour plusieurs biens d’un seul geste.',
-  },
-  {
-    title: 'Regardez ce que le bien coûte vraiment.',
-    text: 'Sur la fiche, « Le prix en détail » et « Vivre ici, au quotidien » réunissent ce que l’annonce indique : le prix, les frais, les charges. Mieux vaut le savoir avant la visite qu’après.',
-  },
-  {
-    title: 'Faites-vous rappeler sans attendre.',
-    text: 'Un lieu rare se visite dans les premiers jours. Un bien vous plaît ? Laissez votre numéro depuis sa fiche, l’agence vous rappelle.',
-  },
-  {
-    title: 'Confiez votre recherche à une agence.',
-    text: 'Une agence connaît parfois un bien avant qu’il soit en ligne. Depuis sa page, partagez vos critères avec elle : c’est vous qui décidez à qui vous les confiez.',
-  },
-  {
-    title: 'Préparez la visite.',
-    text: 'État des lieux vous donne les questions à poser devant un souplex, un loft ou une péniche. Envoyez la liste vers vos notes et gardez-la sous la main le jour J.',
-  },
-];
-
 export default function ManifestoPage() {
   const link =
     'inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
@@ -128,24 +96,6 @@ export default function ManifestoPage() {
           ))}
         </ol>
 
-        <section id="mode-d-emploi" className="border-t border-stone-900 pt-14 md:pt-24 pb-16 md:pb-24 scroll-mt-20">
-          <p className="text-xs uppercase tracking-widest text-stone-500">Mode d&apos;emploi</p>
-          <h2 className="mt-6 font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
-            Sept réflexes pour ne pas passer <span className="italic text-stone-500">à côté du vôtre.</span>
-          </h2>
-          <ol className="mt-12 grid md:grid-cols-2 gap-x-12">
-            {TIPS.map((t, i) => (
-              <li key={t.title} className="border-t border-stone-200 py-7">
-                <p className="font-serif text-2xl text-stone-900">
-                  <span className="mr-3 text-stone-400" aria-hidden="true">{i + 1}</span>
-                  {t.title}
-                </p>
-                <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{t.text}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
         <section className="border-t border-stone-900 pt-14 md:pt-24">
           <p className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
             Un lieu qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
@@ -160,6 +110,9 @@ export default function ManifestoPage() {
             </Link>
             <Link href="/?alerte=1" className={link}>
               Créer mon alerte
+            </Link>
+            <Link href="/mode-d-emploi" className={link}>
+              Lire le mode d&apos;emploi
             </Link>
           </div>
           <p className="mt-14 text-sm text-stone-500">
