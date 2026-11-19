@@ -230,7 +230,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
               Créer mon alerte
             </Link>
-            {a.listingsLink && (
+            {a.listingsLink && !a.listingsLink.href.includes('alerte') && (
               <Link href={a.listingsLink.href} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
                 {a.listingsLink.label}
               </Link>

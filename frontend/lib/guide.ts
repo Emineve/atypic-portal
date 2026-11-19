@@ -1669,7 +1669,6 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Groupe Estia, communiqué sur le off market dans l’immobilier haut de gamme (décembre 2024)', url: 'https://www.galivel.com/media/files/241210_cpmci_offmarket-1.pdf' },
       { label: 'MySweetImmo, « Vente off-market : comment se déroulent les transactions confidentielles ? »', url: 'https://www.mysweetimmo.com/2026/03/26/vente-off-market-comment-se-deroulent-les-transactions-confidentielles/' },
     ],
-    listingsLink: { label: 'Créer mon alerte', href: '/?alerte=1' },
   },
   {
     slug: 'conditions-suspensives-bien-atypique',
@@ -1954,7 +1953,6 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Home Select, « Recherche immobilière à Paris : combien de biens faut-il voir ? »', url: 'https://homeselect.paris/blog/recherche-immobiliere-combien-visites/' },
       { label: 'Helloprêt, « Acheter un appartement à Paris en 2026 »', url: 'https://www.hellopret.fr/achat-immobilier/acheter-appartement-paris-conseils/' },
     ],
-    listingsLink: { label: 'Créer mon alerte', href: '/?alerte=1' },
   },
   {
     slug: 'revendre-un-bien-atypique',
