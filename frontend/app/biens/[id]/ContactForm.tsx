@@ -346,6 +346,11 @@ export default function ContactForm({
           </button>
           <p className="text-[11px] text-stone-500 leading-relaxed text-center">
             Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.
+            {' '}
+            <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">
+              Vos données et vos droits
+            </a>
+            .
           </p>
         </form>
       )}
