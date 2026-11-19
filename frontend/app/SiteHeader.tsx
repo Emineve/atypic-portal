@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Bell, BookOpen, Calculator, Compass, Feather, Heart, Info, Lightbulb, Menu, X } from 'lucide-react';
+import { ArrowLeft, Bell, BookOpen, Calculator, Compass, Feather, Heart, Home, Info, Lightbulb, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 
 const FAVORITES_KEY = 'singulier:favorites';
@@ -20,7 +20,7 @@ const LINKS = [
 // pour passer d'une rubrique à l'autre sans revenir à la liste des biens.
 export default function SiteHeader({
   backHref = '/',
-  backLabel = 'Tous les biens',
+  backLabel = 'Accueil',
   back,
   children,
 }: {
@@ -50,7 +50,7 @@ export default function SiteHeader({
           <div className="flex items-center gap-4 sm:gap-6">
             {back ?? (
               <Link href={backHref} className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition whitespace-nowrap">
-                <ArrowLeft className="w-3.5 h-3.5" />
+                {backHref === '/' ? <Home className="w-4 h-4" strokeWidth={1.5} /> : <ArrowLeft className="w-3.5 h-3.5" />}
                 {backLabel}
               </Link>
             )}
@@ -96,8 +96,8 @@ export default function SiteHeader({
                 {favs > 0 && <span className="text-sm text-stone-500">{favs}</span>}
               </a>
               <a href="/" className="flex gap-3 py-4 border-b border-stone-200 font-serif text-2xl text-stone-900">
-                <ArrowLeft className="mt-1.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} />
-                Tous les biens
+                <Home className="mt-1.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} />
+                Accueil
               </a>
               {LINKS.map(({ href, label, sub, Icon }) => (
                 <a key={href} href={href} className="flex gap-3 py-4 border-b border-stone-200">
