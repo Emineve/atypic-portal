@@ -30,9 +30,9 @@ export default function ModeEmploiPage() {
         </h1>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-24 space-y-12 md:space-y-16">
+      <main className="max-w-3xl mx-auto px-6 pb-24">
         <ModeEmploiSteps />
-        <p className="text-sm text-stone-500">
+        <p className="mt-12 md:mt-16 text-sm text-stone-500">
           Envie de savoir pourquoi ce site existe ?{' '}
           <Link href="/qui-sommes-nous" className="underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
             Pourquoi Loftissime

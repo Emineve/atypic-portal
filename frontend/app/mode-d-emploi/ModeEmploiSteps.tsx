@@ -43,6 +43,7 @@ export default function ModeEmploiSteps() {
   const [alertOpen, setAlertOpen] = useState(false);
   return (
     <>
+      <div className="space-y-12 md:space-y-16">
       {STAGES.map((s, i) => (
         <section key={s.title}>
           <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">
@@ -68,6 +69,7 @@ export default function ModeEmploiSteps() {
           </ul>
         </section>
       ))}
+      </div>
       <AlertDialog open={alertOpen} onClose={() => setAlertOpen(false)} source="mode-emploi" suggestions={[]} />
     </>
   );
