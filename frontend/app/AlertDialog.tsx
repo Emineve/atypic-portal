@@ -412,9 +412,9 @@ export default function AlertDialog({
   const recapLine = recap.length ? recap.join(' · ') : 'Tous les nouveaux biens atypiques, partout en France';
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6" role="dialog" aria-modal="true" aria-label={shareWith ? `Partager ma recherche avec ${shareWith}` : 'Créer une alerte'}>
+    <div className="fixed inset-0 z-[70] flex" role="dialog" aria-modal="true" aria-label={shareWith ? `Partager ma recherche avec ${shareWith}` : 'Créer une alerte'}>
       <div className="absolute inset-0 bg-stone-900/60" onClick={onClose} />
-      <div className="relative w-full h-[100dvh] md:h-auto md:max-w-2xl md:max-h-[94vh] flex flex-col bg-[#FDFBF7] shadow-2xl overflow-hidden">
+      <div className="relative w-full h-[100dvh] flex flex-col bg-[#FDFBF7] overflow-hidden">
         <button
           type="button"
           onClick={onClose}
@@ -429,7 +429,7 @@ export default function AlertDialog({
         </button>
 
         {status === 'done' ? (
-          <div className="px-6 md:px-12 py-14 text-center overflow-y-auto">
+          <div className="flex-1 flex flex-col justify-center px-6 md:px-12 py-14 text-center overflow-y-auto">
             <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-white flex items-center justify-center">
               <Check className="w-8 h-8" />
             </span>
@@ -498,7 +498,7 @@ export default function AlertDialog({
                 setProgress(max > 0 ? Math.min(1, el.scrollTop / max) : 1);
               }}
             >
-              <div className="bg-stone-900 text-white px-6 md:px-12 pt-6 pb-5 md:pt-10 md:pb-9">
+              <div className="bg-stone-900 text-white px-6 md:px-[max(3rem,calc(50%_-_18rem))] pt-6 pb-5 md:pt-10 md:pb-9">
                 <h2 className="pr-10 font-serif text-[1.7rem] md:text-4xl leading-[1.1]">
                   {shareWith ? `Partagez votre recherche avec ${shareWith}.` : 'Dites-nous ce que vous cherchez.'}
                 </h2>
@@ -513,7 +513,7 @@ export default function AlertDialog({
                   )}
                 </p>
               </div>
-              <div className="px-6 md:px-12 pt-6 pb-8 md:py-10 space-y-10">
+              <div className="px-6 md:px-[max(3rem,calc(50%_-_18rem))] pt-6 pb-8 md:py-10 space-y-10">
                 <Step title="Où ?" hint="Plusieurs possibles. Vide = toute la France.">
                   {locations.length > 0 && (
                     <div className="mb-3 flex flex-wrap gap-2">
@@ -584,9 +584,9 @@ export default function AlertDialog({
 
               </div>
 
-              <FilterPanel value={filters} onChange={setFilters} mode="alert" padX="px-6 md:px-12" types={types} />
+              <FilterPanel value={filters} onChange={setFilters} mode="alert" padX="px-6 md:px-[max(3rem,calc(50%_-_18rem))]" types={types} />
 
-              <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
+              <div className="px-6 md:px-[max(3rem,calc(50%_-_18rem))] py-8 md:py-10 space-y-10">
                 <div>
                   <Step title={shareWith ? 'Vos coordonnées' : 'Adresse mail'}>
                     {shareWith && (
@@ -775,7 +775,7 @@ export default function AlertDialog({
             <div className="shrink-0 h-1 bg-stone-200" role="progressbar" aria-label="Avancement du formulaire" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}>
               <div className="h-full bg-stone-900 transition-[width] duration-200 ease-out" style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} />
             </div>
-            <div className="shrink-0 bg-white px-6 md:px-12 py-4">
+            <div className="shrink-0 bg-white px-6 md:px-[max(3rem,calc(50%_-_18rem))] py-4">
               <p className="hidden md:block text-[11px] uppercase tracking-widest text-stone-400">{shareWith ? 'Votre recherche' : 'Votre alerte'}</p>
               <p className="md:mt-0.5 text-sm text-stone-800 line-clamp-2" title={recapLine}>{recapLine}</p>
               <button
