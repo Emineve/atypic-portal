@@ -39,6 +39,94 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'hors-marche-off-market-mythe-et-realite',
+    art: 'annonce',
+    title: 'Hors marché : les meilleurs biens se vendent-ils vraiment sans annonce ?',
+    description:
+      'Le « off market » fait fantasmer tous les acheteurs. Ce que c’est, ce qu’il pèse réellement, pourquoi personne ne peut le mesurer, et comment accéder aux biens avant les autres.',
+    category: 'Marché',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 4,
+    intro:
+      'On vous l’a sûrement dit : les beaux biens ne passent jamais par les annonces, tout se joue en coulisses. C’est en partie vrai, et largement exagéré. Le hors marché existe, il est légal, et il pèse surtout dans le très haut de gamme. Pour le reste, la quasi-totalité des biens finissent en ligne. Ce qui compte n’est pas d’entrer dans un cercle fermé, c’est d’être prévenu le premier.',
+    takeaways: [
+      'Le hors marché, ou off market, désigne les ventes réalisées sans annonce publique. Il est parfaitement légal : la vente passe devant notaire comme les autres.',
+      'Aucune statistique officielle ne le mesure. Les chiffres qui circulent, de 5 % à 25 % selon les sources, sont des estimations de professionnels.',
+      'Il concerne surtout les biens d’exception, où le vendeur cherche la discrétion.',
+      'Pour un acheteur, la vraie avance se joue plus simplement : faire connaître sa recherche aux agences et être alerté dès la mise en ligne.',
+    ],
+    sections: [
+      {
+        title: 'Qu’est-ce que le hors marché ?',
+        paragraphs: [
+          'SeLoger le définit comme l’ensemble des transactions effectuées en dehors des canaux de diffusion classiques : pas d’annonce sur les portails, pas de vitrine. L’agent mandaté par le vendeur ne passe pas par une publicité large : il active son réseau et présente le bien à des acheteurs qu’il connaît déjà.',
+          'Ce n’est pas un marché parallèle. Les mêmes règles s’appliquent, et la vente est signée devant notaire.',
+        ],
+      },
+      {
+        title: 'Pourquoi un vendeur choisit-il de ne pas publier ?',
+        list: [
+          'La discrétion : une personnalité, un divorce, une succession, un dirigeant qui ne veut pas que l’on sache.',
+          'Le refus de voir des photos de son intérieur circuler.',
+          'L’envie de tester un prix sans « griller » le bien s’il ne se vend pas.',
+          'Parfois, simplement, parce que l’agence a déjà l’acheteur.',
+        ],
+      },
+      {
+        title: 'Que pèse-t-il vraiment ?',
+        paragraphs: [
+          'Personne ne le sait, et c’est logique : un bien jamais publié ne laisse aucune trace dans les bases d’annonces. Un cabinet de gestion de patrimoine le rappelle : ni la FNAIM, ni les notaires, ni l’INSEE ne mesurent la part du hors marché.',
+          'Les chiffres disponibles sont donc des estimations, et ils varient du simple au quintuple : 5 à 10 % du marché global pour SeLoger, plus de 10 % en 2023 d’après Boursorama, 15 à 25 % des transactions parisiennes selon un chasseur immobilier, et jusqu’à 60 % dans le haut de gamme d’après un groupe spécialisé. Notez que ceux qui avancent les chiffres les plus élevés sont souvent ceux qui vendent l’accès à ce marché.',
+        ],
+      },
+      {
+        title: 'Est-ce une bonne affaire pour l’acheteur ?',
+        paragraphs: [
+          'Pas forcément. L’avantage est réel : moins de concurrence, parfois un seul acheteur en lice. L’inconvénient l’est aussi : sans mise en concurrence, rien ne vous dit que le prix est le bon, et vous avez peu de points de comparaison. Un bien que personne d’autre n’a vu n’est pas, pour cette seule raison, un bien moins cher.',
+          'Les vérifications restent les mêmes : documents, copropriété, diagnostics. La confidentialité n’est pas une raison de les abréger.',
+        ],
+      },
+      {
+        title: 'Comment voir les biens avant les autres ?',
+        paragraphs: [
+          'Sans réseau particulier, trois moyens existent, et ils couvrent l’essentiel.',
+        ],
+        list: [
+          'Dire aux agences ce que vous cherchez. Un agent qui connaît votre recherche vous appelle avant de publier : c’est la forme la plus courante du hors marché.',
+          'Créer une alerte précise, pour être prévenu le jour de la mise en ligne. Dans les grandes villes, un bien au juste prix part en moins de quinze jours.',
+          'Être prêt : financement validé, critères clairs, disponibilité pour visiter dans les quarante-huit heures.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Qu’est-ce qu’un bien off market ?',
+        a: 'Un bien vendu sans annonce publique, présenté directement par un professionnel à des acheteurs de son réseau. La vente est légale et se signe devant notaire.',
+      },
+      {
+        q: 'Quelle part des ventes se fait hors marché ?',
+        a: 'Aucune statistique officielle n’existe. Les estimations de professionnels vont de 5 à 10 % du marché global à 15 à 25 % à Paris, et davantage dans le très haut de gamme.',
+      },
+      {
+        q: 'Un bien hors marché est-il moins cher ?',
+        a: 'Pas nécessairement. Il y a moins de concurrence entre acheteurs, mais aussi moins de repères pour juger le prix.',
+      },
+      {
+        q: 'Comment accéder aux biens avant leur mise en ligne ?',
+        a: 'En faisant connaître votre recherche aux agences, qui préviennent leurs acheteurs avant de publier, et en créant une alerte pour être informé dès la mise en ligne.',
+      },
+    ],
+    sources: [
+      { label: 'SeLoger, « Tout savoir sur le off market en immobilier »', url: 'https://edito.seloger.com/locaux-pros/points-marche/savoir-market-immobilier-article-19518.html' },
+      { label: 'Hagnéré Patrimoine, « Investissement immobilier off-market »', url: 'https://www.hagnere-patrimoine.fr/guides-patrimoine/investissement-immobilier/investissement-immobilier-off-market-2026' },
+      { label: 'Boursorama, « Qu’est-ce que le off market ? »', url: 'https://www.boursorama.com/immobilier/actualites/qu-est-ce-que-le-off-market-d951ada7894cea4cb0fb6d4d12d1a162' },
+      { label: 'Home Select, « Off-market immobilier à Paris »', url: 'https://homeselect.paris/chasseur-immobilier-paris/off-market/' },
+      { label: 'MySweetImmo, « Vente off-market : comment se déroulent les transactions confidentielles ? »', url: 'https://www.mysweetimmo.com/2026/03/26/vente-off-market-comment-se-deroulent-les-transactions-confidentielles/' },
+    ],
+    listingsLink: { label: 'Créer mon alerte', href: '/?alerte=1' },
+  },
+  {
     slug: 'conditions-suspensives-bien-atypique',
     art: 'offre',
     title: 'Conditions suspensives : celles qu’il faut prévoir pour un bien atypique',
