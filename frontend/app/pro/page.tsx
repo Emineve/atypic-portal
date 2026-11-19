@@ -68,7 +68,7 @@ export default function ProPage() {
       </SiteHeader>
 
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Espace agences</p>
+        <p className="text-xs uppercase tracking-widest text-stone-500">Espace pro</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Vos biens atypiques méritent <span className="italic text-stone-500">des acheteurs qui les cherchent.</span>
         </h1>
@@ -127,13 +127,7 @@ export default function ProPage() {
         </section>
 
         <section id="rejoindre" className="border-t border-stone-900 pt-12 md:pt-16 scroll-mt-20">
-          <h2 className={h2}>
-            Diffuser mes annonces <span className="italic text-stone-500">sur Loftissime.</span>
-          </h2>
-          <p className="mt-4 text-lg font-light text-stone-600">Dites-nous qui vous êtes, nous revenons vers vous rapidement.</p>
-          <div className="mt-8 max-w-2xl">
-            <ProForm />
-          </div>
+          <ProForm />
           <p className="mt-8">
             <Link href="/charte" className={link}>Toutes les questions fréquentes</Link>
           </p>

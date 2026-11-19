@@ -56,7 +56,10 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
           <li><a href="/financement" className={link}>Financement</a></li>
           <li><a href="/charte" className={link}>Questions fréquentes</a></li>
           <li><a href="/dressing" className={link}>Le dressing</a></li>
-          <li><a href="/pro" className={link}>Espace agences</a></li>
+        </ul>
+        <h2 className={`mt-8 ${title}`}>Professionnels</h2>
+        <ul className="mt-3 space-y-2">
+          <li><a href="/pro" className={link}>Espace pro</a></li>
         </ul>
       </nav>
       <nav className="col-span-2 md:col-span-4 border-t border-stone-200 pt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-stone-500" aria-label="Informations légales">

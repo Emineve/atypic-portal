@@ -2,7 +2,7 @@ import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
-import { slugify } from '../../lib/catalog';
+import { slugify, cityHub } from '../../lib/catalog';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,20 +12,26 @@ export const metadata = {
   alternates: { canonical: '/agence' },
 };
 
-// Toutes les agences qui ont au moins un bien en ligne, par ordre alphabétique. Le nombre de biens n'est pas affiché :
-// une agence qui n'a qu'un bien atypique ne doit pas paraître moins sérieuse qu'une autre.
-async function getAgencies() {
-  const { data } = await getSupabase().from('listings').select('source_agency').eq('is_active', true);
-  const counts = new Map<string, number>();
+// Les agences qui ont au moins un bien en ligne, rangées par ville où elles sont présentes (une agence peut figurer
+// dans plusieurs villes). Le nombre de biens n'est pas affiché : une agence qui n'a qu'un bien atypique ne doit pas
+// paraître moins sérieuse qu'une autre.
+async function getAgenciesByCity() {
+  const { data } = await getSupabase().from('listings').select('source_agency, city').eq('is_active', true);
+  const cities = new Map<string, Set<string>>();
   for (const r of data || []) {
     const name = (r.source_agency as string | null)?.trim();
-    if (name) counts.set(name, (counts.get(name) || 0) + 1);
+    const city = cityHub(((r.city as string | null) || '').trim());
+    if (!name || !city) continue;
+    if (!cities.has(city)) cities.set(city, new Set());
+    cities.get(city)!.add(name);
   }
-  return Array.from(counts.entries()).sort((a, b) => a[0].localeCompare(b[0], 'fr'));
+  return Array.from(cities.entries())
+    .map(([city, names]) => [city, Array.from(names).sort((a, b) => a.localeCompare(b, 'fr'))] as const)
+    .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'fr'));
 }
 
 export default async function AgenciesPage() {
-  const agencies = await getAgencies();
+  const cities = await getAgenciesByCity();
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
@@ -41,16 +47,30 @@ export default async function AgenciesPage() {
       </header>
 
       <main className="max-w-3xl mx-auto px-6 pb-24">
-        <ul className="divide-y divide-stone-200 border-y border-stone-200">
-          {agencies.map(([name]) => (
-            <li key={name}>
-              <Link href={`/agence/${slugify(name)}`} className="group flex items-center justify-between gap-4 py-4">
-                <span className="font-serif text-2xl text-stone-900">{name}</span>
-                <ArrowRight className="w-4 h-4 flex-none text-stone-400 group-hover:text-stone-900 transition" />
-              </Link>
-            </li>
+        {cities.length > 1 && (
+          <nav aria-label="Villes" className="mb-12 flex flex-wrap gap-x-6 gap-y-2">
+            {cities.map(([city]) => (
+              <a key={city} href={`#${slugify(city)}`} className="font-serif text-xl text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">{city}</a>
+            ))}
+          </nav>
+        )}
+        <div className="space-y-14">
+          {cities.map(([city, names]) => (
+            <section key={city} id={slugify(city)} className="scroll-mt-20">
+              <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">{city}</h2>
+              <ul className="mt-5 divide-y divide-stone-200 border-y border-stone-200">
+                {names.map((name) => (
+                  <li key={name}>
+                    <Link href={`/agence/${slugify(name)}`} className="group flex items-center justify-between gap-4 py-4">
+                      <span className="font-serif text-xl text-stone-900">{name}</span>
+                      <ArrowRight className="w-4 h-4 flex-none text-stone-400 group-hover:text-stone-900 transition" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
       </main>
     </div>
   );

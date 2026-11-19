@@ -33,11 +33,15 @@ export default function ProForm() {
     }
   }
 
+  const h2 = 'font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900';
+
   if (status === 'done') {
     return (
-      <div className="border border-stone-200 bg-white p-8 text-center">
-        <h3 className="font-serif text-2xl text-stone-900">Merci, votre demande est enregistrée.</h3>
-        <p className="mt-3 text-sm text-stone-600">Nous revenons vers vous très vite pour échanger sur votre catalogue.</p>
+      <div>
+        <h2 className={h2}>
+          Merci, <span className="italic text-stone-500">votre demande est enregistrée.</span>
+        </h2>
+        <p className="mt-4 text-lg font-light text-stone-600">Nous revenons vers vous très vite pour échanger sur votre catalogue.</p>
       </div>
     );
   }
@@ -46,7 +50,12 @@ export default function ProForm() {
   const label = 'block text-xs uppercase tracking-wider text-stone-500 mb-1';
 
   return (
-    <form onSubmit={onSubmit} className="rounded-[10px] border border-stone-200 bg-white p-6 md:p-8 space-y-4 text-left">
+    <>
+    <h2 className={h2}>
+      Diffuser mes annonces <span className="italic text-stone-500">sur Loftissime.</span>
+    </h2>
+    <p className="mt-4 text-lg font-light text-stone-600">Dites-nous qui vous êtes, nous revenons vers vous rapidement.</p>
+    <form onSubmit={onSubmit} className="mt-8 max-w-2xl rounded-[10px] border border-stone-200 bg-white p-6 md:p-8 space-y-4 text-left">
       <div>
         <label htmlFor="p-agency" className={label}>Agence</label>
         <input id="p-agency" className={field} required minLength={2} maxLength={160} value={agency} onChange={(e) => setAgency(e.target.value)} />
@@ -85,5 +94,6 @@ export default function ProForm() {
         {status === 'sending' ? 'Envoi…' : 'Envoyer'}
       </button>
     </form>
+    </>
   );
 }

@@ -111,9 +111,6 @@ export default function SiteHeader({
                   </span>
                 </a>
               ))}
-              <a href="/pro" className="mt-6 inline-block text-sm text-stone-500 underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
-                Espace agences
-              </a>
             </nav>
           </div>
         </div>
