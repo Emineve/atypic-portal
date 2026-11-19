@@ -8,6 +8,7 @@ import type { GuideHit } from '../../lib/guide-search';
 
 const EXAMPLES = [
   'Puis-je installer une clim sans autorisation ?',
+  'Peut-on faire du feu dans une cheminée à Paris ?',
   'La mezzanine compte-t-elle dans la surface ?',
   'La terrasse est-elle à moi ?',
   'Comment négocier le prix ?',

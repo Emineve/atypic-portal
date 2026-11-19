@@ -39,6 +39,125 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'cheminee-a-paris-peut-on-faire-du-feu',
+    art: 'charges',
+    title: 'Cheminée à Paris : a-t-on encore le droit de faire du feu ?',
+    description:
+      'Foyer ouvert, insert, feu d’agrément : ce qui est permis à Paris, ce que dit la copropriété, et les vérifications à faire avant d’acheter un bien « avec cheminée ».',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Une cheminée en marbre dans le salon, et l’on s’imagine déjà devant le feu. À Paris, entre ce que montre l’annonce et ce que l’on a le droit d’allumer, il y a trois filtres : la règle sur la qualité de l’air, le règlement de l’immeuble et l’état du conduit. Une cheminée peut être superbe et ne plus jamais servir. Mieux vaut le savoir avant de la compter dans le prix.',
+    takeaways: [
+      'À Paris, la cheminée à foyer ouvert ne peut pas servir à se chauffer. Seul un feu d’agrément ponctuel, pour le plaisir, peut être toléré, d’après la fiche officielle de Service-Public.',
+      'Un insert, un foyer fermé ou un poêle peuvent servir de chauffage, y compris en appoint.',
+      'Le règlement de copropriété peut interdire tout feu, même quand la règle générale le permet. C’est le premier document à lire.',
+      'Un conduit doit être ramoné au moins une fois par an par un professionnel, qui remet une attestation. Sans elle, l’assurance peut discuter l’indemnisation après un sinistre.',
+      'Dans une annonce, « cheminée » ne veut pas dire « cheminée qui fonctionne » : beaucoup de conduits parisiens sont condamnés ou hors d’usage.',
+    ],
+    sections: [
+      {
+        title: 'Que dit la règle à Paris ?',
+        paragraphs: [
+          'Paris et toute l’Île-de-France sont couverts par un plan de protection de l’atmosphère, qui encadre le chauffage au bois. La fiche de Service-Public, vérifiée en mai 2026, le résume ainsi : à Paris et dans de nombreuses communes de la région, l’utilisation des foyers ouverts est interdite, et seuls des feux d’agrément ponctuels peuvent être tolérés.',
+          'En clair : on ne chauffe pas son appartement avec une cheminée ouverte. Une flambée occasionnelle, pour le plaisir, reste tolérée. Cette tolérance peut être suspendue lors d’un épisode de pollution, quand la préfecture restreint les feux d’agrément et d’appoint.',
+          'Paris ne fait pas partie des communes qui, depuis le 1er novembre 2026, interdisent tout feu en foyer ouvert en permanence. Mais la règle a déjà changé plusieurs fois depuis 2014 : vérifiez-la auprès de la mairie ou de la préfecture au moment de votre achat.',
+        ],
+      },
+      {
+        title: 'Foyer ouvert, insert, poêle : quelle différence ?',
+        list: [
+          'Le foyer ouvert est la cheminée classique, où le bois brûle à l’air libre. Elle chauffe peu et pollue beaucoup : c’est elle que la règle vise.',
+          'L’insert ou le foyer fermé est une enceinte vitrée logée dans la cheminée existante. Le rendement est bien meilleur et les émissions plus faibles.',
+          'Le poêle, à bois ou à granulés, est un appareil indépendant raccordé à un conduit.',
+          'Les cheminées au bioéthanol, électriques ou à vapeur d’eau n’ont pas besoin de conduit et ne relèvent pas de ces règles. Elles décorent plus qu’elles ne chauffent.',
+        ],
+      },
+      {
+        title: 'La copropriété peut-elle l’interdire ?',
+        paragraphs: [
+          'Oui, et c’est fréquent dans les immeubles anciens. Le règlement de copropriété peut interdire l’usage des cheminées, pour limiter le risque d’incendie. Cette interdiction s’impose à vous même si la règle générale tolère le feu d’agrément. La lever suppose de modifier le règlement, ce qui est rarement obtenu.',
+          'Les conduits, eux, traversent l’immeuble : ils sont le plus souvent des parties communes, même quand ils ne desservent qu’un seul logement. Tuber un conduit, le rouvrir ou y raccorder un poêle sont donc des travaux à faire autoriser par l’assemblée générale.',
+        ],
+      },
+      {
+        title: 'Le conduit fonctionne-t-il encore ?',
+        paragraphs: [
+          'C’est la vraie question, et l’annonce n’y répond presque jamais. Dans beaucoup d’immeubles parisiens, les conduits ont été bouchés, dévoyés lors de travaux, utilisés pour une chaudière ou une ventilation, ou simplement jamais entretenus depuis des décennies.',
+          'Seul un professionnel peut dire si un conduit est utilisable : il vérifie qu’il est libre sur toute sa hauteur et étanche. Si ce n’est pas le cas, la remise en état passe en général par un tubage, à faire autoriser par la copropriété. Demandez un devis avant de vous engager, pas après.',
+        ],
+      },
+      {
+        title: 'Ramonage et assurance : quelles obligations ?',
+        paragraphs: [
+          'Le ramonage est obligatoire au moins une fois par an, et deux fois dans la majorité des départements, dont une pendant la période d’utilisation. Il doit être fait par un ramoneur qualifié, qui remet une attestation à conserver. L’absence de ramonage est punie d’une amende de 450 euros.',
+          'L’obligation pèse sur celui qui utilise la cheminée, propriétaire ou locataire. Le syndic se charge des conduits collectifs.',
+          'Après un sinistre, l’assureur demande cette attestation. Un feu allumé sans ramonage, ou malgré une interdiction de la copropriété, est une faute qui pèse sur l’indemnisation et sur votre responsabilité envers les voisins.',
+        ],
+      },
+      {
+        title: 'Que demander avant d’acheter un bien « avec cheminée » ?',
+        list: [
+          'La cheminée est-elle utilisée aujourd’hui, et quand a-t-elle servi pour la dernière fois ?',
+          'La dernière attestation de ramonage.',
+          'Ce que le règlement de copropriété dit des cheminées et des conduits.',
+          'Le conduit est-il propre au logement, ou partagé avec d’autres ?',
+          'A-t-il été tubé, bouché ou réutilisé pour un autre usage ?',
+          'Dans les procès-verbaux d’assemblée générale, toute discussion sur les conduits, un sinistre ou une interdiction des feux.',
+        ],
+      },
+      {
+        title: 'Et si elle ne peut plus servir ?',
+        paragraphs: [
+          'Une cheminée condamnée garde sa valeur décorative : un manteau en marbre ou en pierre structure une pièce et fait partie du caractère du bien. Elle ne justifie simplement pas le même prix qu’une cheminée en état de marche.',
+          'Pour retrouver une flamme, deux voies existent. Un insert ou un poêle, si le conduit peut être remis en état et si la copropriété l’autorise. Ou un appareil sans conduit, au bioéthanol ou électrique, qui se pose sans autorisation.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, côté cheminée',
+      items: [
+        'Je sais si la cheminée fonctionne, ou si elle est seulement décorative.',
+        'J’ai lu ce que le règlement de copropriété dit des feux et des conduits.',
+        'J’ai la dernière attestation de ramonage, ou je sais qu’il n’y en a pas.',
+        'Un professionnel a vérifié le conduit, ou j’ai un devis de remise en état.',
+        'Je n’ai pas payé pour une cheminée que je ne pourrai pas allumer.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on faire un feu de cheminée à Paris ?',
+        a: 'Dans une cheminée ouverte, uniquement un feu d’agrément ponctuel, pour le plaisir : il est toléré, mais la cheminée ne peut pas servir de chauffage. Encore faut-il que le règlement de copropriété ne l’interdise pas et que le conduit soit en état et ramoné.',
+      },
+      {
+        q: 'Un insert est-il autorisé à Paris ?',
+        a: 'Oui. Un insert, un foyer fermé ou un poêle peuvent servir de chauffage principal ou d’appoint. En copropriété, le raccordement au conduit doit être autorisé par l’assemblée générale.',
+      },
+      {
+        q: 'La copropriété peut-elle m’interdire d’utiliser ma cheminée ?',
+        a: 'Oui, si le règlement de copropriété le prévoit. Cette interdiction est valable et s’applique même à une cheminée située dans votre appartement.',
+      },
+      {
+        q: 'Combien de fois par an faut-il ramoner ?',
+        a: 'Au moins une fois par an, et deux fois dans la majorité des départements. Le ramoneur remet une attestation, à garder pour l’assurance.',
+      },
+      {
+        q: 'Une annonce indique « cheminée » : est-elle forcément utilisable ?',
+        a: 'Non. Le mot décrit un élément de décor. Demandez par écrit si elle fonctionne, et faites vérifier le conduit par un professionnel avant de vous engager.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public, « À quelles conditions peut-on faire un feu dans une cheminée ou un poêle chez soi ? »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F32437' },
+      { label: 'Jechange, « La liste des 657 communes où la cheminée ouverte est interdite cet hiver en France »', url: 'https://www.jechange.fr/energie/gaz/news/cheminee-foyer-ouvert-interdite-carte-657-communes' },
+      { label: 'Allianz, « Ramonage obligatoire des conduits de cheminée »', url: 'https://www.allianz.fr/assurance-particulier/habitation-biens/assurance-habitation/conseils-pratiques/ramonage-cheminee-obligatoire.html' },
+      { label: 'Tout sur mes finances, « Feux de cheminée : règlementation et interdictions à Paris et en Île-de-France »', url: 'https://www.toutsurmesfinances.com/immobilier/feu-de-cheminee-a-paris-reglementation-et-interdictions-en-ile-de-france.html' },
+      { label: 'Kohen Avocats, « Cheminée à foyer ouvert interdite à Paris et à Lille en 2026 »', url: 'https://kohenavocats.com/cheminee-foyer-ouvert-interdit-paris-lille-locataire-proprietaire-que-faire/' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'installer-une-climatisation-sans-autorisation',
     art: 'plans',
     title: 'Peut-on installer une climatisation sans autorisation ?',
