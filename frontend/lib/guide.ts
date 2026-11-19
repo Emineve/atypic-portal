@@ -39,6 +39,109 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'amiante-plomb-anciens-ateliers',
+    art: 'annonce',
+    title: 'Amiante et plomb : ce que cachent parfois les anciens ateliers',
+    description:
+      'Lofts, ateliers, anciennes usines : des bâtiments où l’amiante et le plomb sont fréquents. Quels diagnostics exiger, comment les lire, et que prévoir avant des travaux.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Les bâtiments d’activité du siècle dernier ont été construits avec les matériaux de leur époque : peintures au plomb, plaques de fibrociment, dalles de sol et isolants contenant de l’amiante. Transformés en logements, ils en gardent parfois des traces. Ce n’est pas une raison de renoncer. C’est une raison de lire deux diagnostics avec attention, surtout si vous comptez faire des travaux.',
+    takeaways: [
+      'Deux diagnostics sont obligatoires selon l’âge du bien : le constat de risque d’exposition au plomb pour un logement construit avant le 1er janvier 1949, et l’état d’amiante quand le permis de construire date d’avant le 1er juillet 1997.',
+      'Ces diagnostics décrivent ce qui est visible et accessible. Ils ne disent pas tout ce qu’un chantier pourra découvrir.',
+      'Avant de gros travaux, un repérage d’amiante spécifique est à prévoir : il peut changer le budget et le calendrier.',
+      'S’il manque un diagnostic obligatoire, l’acheteur peut demander en justice l’annulation de la vente ou une baisse du prix.',
+    ],
+    sections: [
+      {
+        title: 'Quels diagnostics le vendeur doit-il fournir ?',
+        paragraphs: [
+          'D’après Service-Public, le vendeur d’un logement doit remettre un dossier de diagnostics qui comprend notamment :',
+        ],
+        list: [
+          'Le constat de risque d’exposition au plomb, appelé Crep, si le logement a été construit avant le 1er janvier 1949.',
+          'L’état mentionnant la présence ou l’absence d’amiante, si le permis de construire a été délivré avant le 1er juillet 1997.',
+          'Le diagnostic de performance énergétique, dans tous les cas, et l’état de l’installation électrique si elle a plus de quinze ans.',
+        ],
+      },
+      {
+        title: 'Où trouve-t-on de l’amiante ?',
+        paragraphs: [
+          'L’amiante est interdit depuis 1997, mais il reste présent dans de nombreux bâtiments : flocages, faux plafonds, dalles de sol, toitures et plaques en fibrociment. Les anciens locaux d’activité en comptent plus souvent que les immeubles d’habitation, parce qu’il servait à isoler et à protéger du feu.',
+          'Un matériau amianté en bon état et que l’on ne touche pas ne libère pas de fibres. Le risque apparaît quand il se dégrade, ou quand on le perce, le ponce ou le dépose.',
+        ],
+      },
+      {
+        title: 'Et le plomb ?',
+        paragraphs: [
+          'Le plomb était largement utilisé dans les peintures avant 1949. Le Crep mesure sa concentration dans les revêtements et signale ceux qui sont dégradés. Là encore, une peinture ancienne recouverte et en bon état n’est pas un danger immédiat : le risque vient des écailles et des poussières, notamment pendant des travaux, et il concerne d’abord les jeunes enfants et les femmes enceintes.',
+        ],
+      },
+      {
+        title: 'Comment lire les diagnostics ?',
+        list: [
+          'La date : un état d’amiante établi avant 2013 doit être refait pour une vente. Un Crep qui a relevé du plomb au-delà du seuil n’est valable qu’un an.',
+          'Le périmètre : quelles pièces et quels éléments ont été examinés ? Les parties inaccessibles ne sont pas contrôlées.',
+          'Les conclusions : présence ou absence, état des matériaux, et recommandations éventuelles de surveillance ou de travaux.',
+          'En copropriété : demandez aussi au syndic le repérage d’amiante des parties communes.',
+        ],
+      },
+      {
+        title: 'Vous prévoyez des travaux : que change la présence d’amiante ?',
+        paragraphs: [
+          'Beaucoup. Le diagnostic de vente ne suffit pas pour un chantier : un repérage d’amiante avant travaux, plus poussé, est à faire réaliser. S’il révèle des matériaux amiantés là où vous comptez intervenir, leur retrait doit être confié à une entreprise spécialisée, avec un coût et un délai à part.',
+          'Pour un loft à refaire, intégrez donc ce repérage à votre budget dès l’offre, et faites-en si possible une condition de votre engagement. Mieux vaut le découvrir avant de signer qu’au premier coup de masse.',
+        ],
+      },
+      {
+        title: 'Et si un diagnostic manque ?',
+        paragraphs: [
+          'Les diagnostics obligatoires doivent être annexés à la promesse de vente. Si l’un d’eux manque, l’acheteur peut demander au juge l’annulation de la vente ou une diminution du prix. En pratique, le notaire vérifie le dossier : c’est une raison de plus de le lui transmettre tôt.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, côté amiante et plomb',
+      items: [
+        'J’ai l’année de construction et la date du permis.',
+        'J’ai l’état d’amiante et le Crep, et ils sont encore valables.',
+        'J’ai lu quelles zones n’ont pas pu être contrôlées.',
+        'J’ai demandé le repérage d’amiante des parties communes.',
+        'Travaux prévus : j’ai budgété un repérage avant travaux.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Le diagnostic amiante est-il obligatoire pour vendre un loft ?',
+        a: 'Oui si le permis de construire du bâtiment a été délivré avant le 1er juillet 1997. Le vendeur doit fournir un état mentionnant la présence ou l’absence d’amiante.',
+      },
+      {
+        q: 'Quand le diagnostic plomb est-il obligatoire ?',
+        a: 'Quand le logement a été construit avant le 1er janvier 1949. Il s’appelle constat de risque d’exposition au plomb, ou Crep.',
+      },
+      {
+        q: 'Peut-on vivre dans un logement qui contient de l’amiante ?',
+        a: 'Oui si les matériaux sont en bon état et ne sont pas touchés. Le risque naît de leur dégradation ou de travaux. Le diagnostic précise leur état et ce qu’il faut surveiller.',
+      },
+      {
+        q: 'Le diagnostic de vente suffit-il avant des travaux ?',
+        a: 'Non. Un repérage d’amiante avant travaux, plus complet, doit être réalisé sur les zones concernées par le chantier.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public, « Quels sont les diagnostics immobiliers à fournir en cas de vente d’un logement ? »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F10798' },
+      { label: 'Notaires de France, « Les diagnostics immobiliers : quelles obligations ? »', url: 'https://www.notaires.fr/fr/immobilier-fiscalite/diagnostics-environnement/le-diagnostic-immobilier-quand-comment-qui-paye' },
+      { label: 'Construires.fr, « Diagnostics immobiliers obligatoires : liste complète »', url: 'https://www.construires.fr/diagnostics-immobiliers-obligatoires/' },
+      { label: 'Orpi, « Diagnostics immobiliers : les obligations du vendeur »', url: 'https://www.orpi.com/patrimoineimmobilier/diagnostics-immobiliers-les-obligations-du-vendeur' },
+      { label: 'Crédit Agricole, « Le guide des diagnostics immobiliers »', url: 'https://m.e-immobilier.credit-agricole.fr/system/files/documents/Le%20guide%20des%20diagnostics%20immobiliers.pdf' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'chauffer-un-grand-volume',
     art: 'dpe',
     title: 'Chauffer un grand volume : pourquoi il fait froid en bas et chaud en haut',
