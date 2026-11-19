@@ -100,27 +100,14 @@ export default function ManifestoPage() {
             Un bien qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
             <span className="italic text-stone-500">Trouvons le vôtre.</span>
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="mt-10">
             <Link
-              href="/"
+              href="/?alerte=1"
               className="inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
             >
-              Voir tous les biens
-            </Link>
-            <Link href="/?alerte=1" className={link}>
               Créer mon alerte
             </Link>
-            <Link href="/mode-d-emploi" className={link}>
-              Lire le mode d&apos;emploi
-            </Link>
           </div>
-          <p className="mt-14 text-sm text-stone-500">
-            Vous êtes une agence ?{' '}
-            <Link href="/pro" className="underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
-              Diffusez vos biens sur Loftissime
-            </Link>
-            .
-          </p>
         </section>
       </main>
     </div>
