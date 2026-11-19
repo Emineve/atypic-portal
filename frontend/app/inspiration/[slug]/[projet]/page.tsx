@@ -97,7 +97,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center gap-1.5 px-6 border border-stone-900 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:bg-stone-900 hover:text-white transition"
+            className="inline-flex h-12 items-center justify-center gap-1.5 px-6 border border-stone-900 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:bg-stone-900 hover:text-white transition rounded-full"
           >
             Le projet chez l&apos;architecte
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -116,7 +116,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
           <p className="font-serif text-xl text-stone-900">Envie d&apos;un lieu à vous ?</p>
           <Link
             href={p.sale ? `/categorie/${slugify(p.sale)}` : '/'}
-            className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+            className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
           >
             {p.sale ? `Découvrez les biens « ${p.sale} » à visiter` : 'Découvrez les biens à visiter'}
           </Link>

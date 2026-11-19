@@ -118,7 +118,7 @@ export default function FavoritesContact({
             <p className="mt-2 text-sm text-stone-600">
               Vos coordonnées ont été transmises. Le contact de chaque bien revient vers vous directement.
             </p>
-            <button type="button" onClick={onClose} className="mt-6 h-12 px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition">
+            <button type="button" onClick={onClose} className="mt-6 h-12 px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full">
               Fermer
             </button>
           </div>
@@ -170,7 +170,7 @@ export default function FavoritesContact({
               <button
                 type="submit"
                 disabled={status === 'sending' || selected.length === 0}
-                className="w-full h-12 inline-flex items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+                className="w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
               >
                 {status !== 'sending' && <Send className="w-4 h-4" />}
                 {status === 'sending'

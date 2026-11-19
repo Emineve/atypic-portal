@@ -250,7 +250,7 @@ export default function ContactForm({
                       type="button"
                       onClick={createAlert}
                       disabled={alertStatus === 'sending'}
-                      className="mt-4 w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+                      className="mt-4 w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
                     >
                       {alertStatus === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
                     </button>
@@ -270,7 +270,7 @@ export default function ContactForm({
                       type="button"
                       onClick={shareCriteria}
                       disabled={shareStatus === 'sending'}
-                      className="mt-4 w-full h-12 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition disabled:opacity-50"
+                      className="mt-4 w-full h-12 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
                     >
                       {shareStatus === 'sending' ? 'Un instant…' : 'Partager ma recherche'}
                     </button>
@@ -342,7 +342,7 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="!mt-7 w-full h-14 inline-flex items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+            className="!mt-7 w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
           >
             {status !== 'sending' && tab === 'tel' && <Phone className="w-4 h-4" />}
             {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer mon message'}

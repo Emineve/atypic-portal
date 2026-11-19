@@ -479,7 +479,7 @@ export default function AlertDialog({
                 if (matches > 0 && onShowMatches) onShowMatches(filters, locations);
                 onClose();
               }}
-              className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition"
+              className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition rounded-full"
             >
               {matches > 1
                 ? `Voir les ${matches} biens correspondants`
@@ -781,7 +781,7 @@ export default function AlertDialog({
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="mt-3 w-full h-12 md:h-14 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+                className="mt-3 w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
               >
                 {status === 'sending' ? (shareWith ? 'Envoi…' : 'Enregistrement…') : shareWith ? 'Partager ma recherche' : 'Créer mon alerte'}
               </button>

@@ -28,7 +28,7 @@ export default function AgencySearch({ agency }: { agency: string }) {
           type="button"
           onClick={openDialog}
           aria-label={label}
-          className="inline-flex h-12 items-center justify-center gap-2.5 whitespace-nowrap bg-stone-900 px-7 text-xs font-semibold uppercase tracking-wider text-white hover:bg-stone-800 transition"
+          className="inline-flex h-12 items-center justify-center gap-2.5 whitespace-nowrap bg-stone-900 px-7 text-xs font-semibold uppercase tracking-wider text-white hover:bg-stone-800 transition rounded-full"
         >
           <Send className="w-4 h-4 flex-none" />
           Partager ma recherche

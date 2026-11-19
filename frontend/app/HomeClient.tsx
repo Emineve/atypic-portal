@@ -770,7 +770,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <button
                 type="button"
                 onClick={() => setShowFilters(false)}
-                className="w-full h-14 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+                className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
               >
                 {visible.length > 1 ? `Voir les ${visible.length} biens` : visible.length === 1 ? 'Voir le bien' : 'Aucun bien ne correspond'}
               </button>
@@ -859,7 +859,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <button
                 type="button"
                 onClick={() => openAlert('empty')}
-                className="mt-6 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition"
+                className="mt-6 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition rounded-full"
               >
                 Créer mon alerte
               </button>

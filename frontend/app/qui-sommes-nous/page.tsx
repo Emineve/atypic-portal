@@ -116,7 +116,7 @@ export default function AboutPage() {
         <div className="pt-4 text-center">
           <Link
             href="/"
-            className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+            className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
           >
             Tous les biens à vendre
           </Link>
