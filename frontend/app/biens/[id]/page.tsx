@@ -40,7 +40,7 @@ async function getRelated(item: { id: string; city: string | null }) {
     .select('id,title,price,city,surface_sqm,cover_image_url,curation_score')
     .eq('is_active', true)
     .neq('id', item.id)
-    .order('curation_score', { ascending: false, nullsFirst: false })
+    .order('first_seen_at', { ascending: false })
     .limit(60);
   return (data || []).filter((r) => r.city && cityHub(r.city) === hub).slice(0, 3);
 }

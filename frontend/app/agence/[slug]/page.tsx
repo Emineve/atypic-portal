@@ -10,7 +10,6 @@ async function getAgencyListings(slug: string) {
     .from('listings')
     .select('id,title,short_description,price,surface_sqm,city,source_agency,source_id,atypic_category,atypic_tags,cover_image_url,curation_score,first_seen_at')
     .eq('is_active', true)
-    .order('curation_score', { ascending: false, nullsFirst: false })
     .order('first_seen_at', { ascending: false });
   const items = (data || []).filter((i) => i.source_agency && slugify(i.source_agency) === slug);
   const agencies = Array.from(new Set((data || []).map((i) => i.source_agency as string).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'fr'));

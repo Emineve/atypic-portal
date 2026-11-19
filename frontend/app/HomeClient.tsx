@@ -56,10 +56,9 @@ const CATEGORIES = [
 ];
 
 const SORTS = [
-    { value: 'selection', label: 'Par défaut' },
+  { value: 'selection', label: 'Les plus récents' },
   { value: 'price_desc', label: 'Prix décroissant' },
   { value: 'price_asc', label: 'Prix croissant' },
-  { value: 'recent', label: 'Date de publication' },
   { value: 'surface_desc', label: 'Surface décroissante' },
   { value: 'surface_asc', label: 'Surface croissante' },
 ];
@@ -368,11 +367,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         case 'recent': return time(b.first_seen_at) - time(a.first_seen_at);
         case 'surface_desc': return num(b.surface_sqm) - num(a.surface_sqm);
         case 'surface_asc': return num(a.surface_sqm) - num(b.surface_sqm);
-        default: {
-          // Sélection : note interne (jamais affichée), puis les plus récents
-          const diff = num(b.curation_score) - num(a.curation_score);
-          return diff !== 0 ? diff : time(b.first_seen_at) - time(a.first_seen_at);
-        }
+        // Par défaut : du plus récent au plus ancien. Aucune annonce n'est mise en avant.
+        default: return time(b.first_seen_at) - time(a.first_seen_at);
       }
     });
   }, [listings, filters, onlyFavs, favorites, query, places, sort]);

@@ -11,7 +11,6 @@ async function getCityListings(slug: string) {
     .from('listings')
     .select('id,title,short_description,price,surface_sqm,city,source_agency,source_id,atypic_category,atypic_tags,cover_image_url,curation_score,first_seen_at')
     .eq('is_active', true)
-    .order('curation_score', { ascending: false, nullsFirst: false })
     .order('first_seen_at', { ascending: false });
   const all = (data || []).filter((i) => i.city);
 

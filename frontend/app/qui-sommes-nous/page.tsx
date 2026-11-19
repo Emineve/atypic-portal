@@ -50,8 +50,8 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
   {
     title: 'Nous ne vendons rien. Nous mettons en relation.',
     text: 'Loftissime n’est pas une agence. Vous parlez directement au professionnel qui connaît le bien. Vos coordonnées ne vont qu’à lui, et seulement quand vous le demandez.',
-    href: '/charte#fonctionnement',
-    link: 'Comment fonctionne le site',
+    href: '/charte#donnees',
+    link: 'Ce que deviennent vos coordonnées',
   },
 ];
 

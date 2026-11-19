@@ -47,6 +47,14 @@ const groups: Group[] = [
         q: 'Les critères sont-ils les mêmes pour toutes les agences ?',
         a: 'Oui. Ils s’appliquent de la même façon à toutes les agences. Un bien qui n’y répond pas n’est pas diffusé.',
       },
+      {
+        q: 'Loftissime donne-t-il son avis sur les biens ?',
+        a: 'Jamais. Nous ne notons pas les biens, nous ne les commentons pas et nous ne disons pas lequel est le meilleur. Un bien répond à nos critères ou n’y répond pas : c’est la seule décision que nous prenons. Le reste vous appartient.',
+      },
+      {
+        q: 'Loftissime peut-il refuser ou retirer une annonce ?',
+        a: 'Oui, dans deux cas seulement : si elle n’est pas conforme à la loi, ou si elle ne respecte pas nos critères de sélection. Ce refus peut intervenir avant la publication ou après, si nous constatons le problème plus tard. Il ne dépend jamais de l’agence qui propose le bien.',
+      },
     ],
   },
   {
@@ -71,7 +79,7 @@ const groups: Group[] = [
       },
       {
         q: 'Loftissime contacte-t-il les vendeurs ou les acheteurs ?',
-        a: 'Non. Loftissime ne démarche ni les vendeurs ni les acheteurs. Vos demandes sont transmises au contact chargé de la commercialisation du bien, et vous ne recevez de notre part que les alertes que vous avez créées.',
+        a: 'Non. Loftissime ne démarche ni les vendeurs ni les acheteurs. Vos demandes sont transmises au professionnel que vous avez choisi, et vous ne recevez de notre part que les alertes que vous avez créées.',
       },
       {
         q: 'Puis-je connaître l’adresse d’un bien ?',
@@ -92,16 +100,67 @@ const groups: Group[] = [
     title: 'Le classement des annonces',
     items: [
       {
-        q: 'Comment les biens sont-ils classés ?',
-              a: 'Par défaut, quelques biens choisis par Loftissime apparaissent en tête de liste, suivis des annonces les plus récentes. Vous pouvez à tout moment trier par prix, surface ou date de publication.', 
+        q: 'Dans quel ordre les biens apparaissent-ils ?',
+        a: 'Du plus récent au plus ancien : le dernier bien arrivé est le premier affiché. C’est le seul ordre que nous décidons.',
+      },
+      {
+        q: 'Puis-je classer les biens autrement ?',
+        a: 'Oui, comme bon vous semble : par prix ou par surface, et en filtrant par lieu, budget, type de bien ou caractéristiques. Le tri et les filtres donnent le même résultat pour tous les visiteurs.',
       },
       {
         q: 'Une agence peut-elle payer pour être mieux classée ?',
-        a: 'Non. À ce jour, aucune agence ne paie pour apparaître sur le site ni pour y être mieux classée.',
+        a: 'Non. Il n’existe sur Loftissime ni annonce sponsorisée, ni mise en avant, ni option pour faire remonter un bien dans la liste.',
+      },
+      {
+        q: 'Toutes les agences sont-elles traitées de la même façon ?',
+        a: 'Oui. Aucune annonce et aucune agence n’est favorisée. Les mêmes critères, le même classement et les mêmes règles s’appliquent à tous nos clients.',
       },
       {
         q: 'Que faire si une annonce comporte une erreur ou si le bien est vendu ?',
         a: 'Chaque annonce comporte un lien « Signaler cette annonce ». Nous traitons chaque signalement pour corriger ou retirer l’annonce.',
+      },
+    ],
+  },
+  {
+    id: 'donnees',
+    title: 'Vos coordonnées',
+    items: [
+      {
+        q: 'Mes coordonnées sont-elles partagées ou vendues ?',
+        a: 'Non. Nous ne vendons aucune donnée, et nous ne partageons vos coordonnées avec personne sans une demande de votre part. Elles ne partent que vers le professionnel que vous avez choisi de contacter.',
+      },
+      {
+        q: 'À qui mes coordonnées sont-elles transmises ?',
+        a: 'Uniquement au professionnel concerné par votre demande, et seulement quand vous envoyez cette demande :',
+        points: [
+          'Vous demandez à être rappelé au sujet d’un bien : à l’agence et au négociateur chargés de ce bien.',
+          'Vous demandez à être rappelé pour plusieurs biens mis en favoris : à l’agence de chacun de ces biens.',
+          'Vous confiez votre recherche à une agence : à cette agence, et à elle seule.',
+          'Vous demandez un courtier sur la page Financement : au courtier, avec le bien et la simulation concernés.',
+          'Vous écrivez à un architecte depuis Inspiration : à cet architecte.',
+          'Vous créez une alerte : à personne.',
+        ],
+      },
+      {
+        q: 'Que faites-vous de mon e-mail quand je crée une alerte ?',
+        a: 'Une seule chose : vous écrire dès qu’un bien qui correspond à votre recherche arrive sur le marché. Votre e-mail et vos critères restent chez Loftissime. Chaque message contient un lien pour arrêter l’alerte en un clic.',
+      },
+      {
+        q: 'Une agence peut-elle recevoir mon alerte ?',
+        a: 'Seulement si vous le décidez. Vous pouvez transmettre les critères de votre recherche aux agences de votre choix : c’est vous qui faites la démarche sur le site, agence par agence. Nous ne le faisons jamais à votre place.',
+      },
+      {
+        q: 'Combien de temps mes données sont-elles conservées ?',
+        a: 'Le temps nécessaire, selon les durées recommandées par la CNIL :',
+        points: [
+          'Votre alerte : jusqu’à ce que vous l’arrêtiez.',
+          'Vos demandes de contact : douze mois.',
+          'Les mesures de fréquentation du site, qui ne permettent pas de vous identifier : vingt-cinq mois au plus.',
+        ],
+      },
+      {
+        q: 'Comment faire supprimer mes données ?',
+        a: 'Sur simple demande, à tout moment, sans avoir à vous justifier. Pour une alerte, le lien présent dans chaque e-mail suffit. Pour le reste, écrivez-nous à l’adresse indiquée dans notre politique de confidentialité.',
       },
     ],
   },
@@ -118,7 +177,7 @@ export default function ChartePage() {
           Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>
         </h1>
         <p className="mt-10 md:mt-12 max-w-2xl text-xl font-light leading-relaxed text-stone-700">
-          Les biens que nous diffusons, la façon dont le site fonctionne, et l&apos;ordre dans lequel les annonces apparaissent.
+          Les biens que nous diffusons, la façon dont le site fonctionne, l&apos;ordre des annonces, et ce que deviennent vos coordonnées.
         </p>
       </header>
 

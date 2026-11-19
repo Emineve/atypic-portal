@@ -18,12 +18,28 @@ export default function Page() {
       <h2>Données collectées</h2>
       <ul>
         <li>
-          <strong>Demande de contact sur un bien</strong> : nom, email, téléphone (facultatif), message. Finalité : traiter votre demande.
-          Base légale : votre consentement.
+          <strong>Demande de rappel sur un bien, ou sur plusieurs biens mis en favoris</strong> : nom, email, téléphone, message. Finalité :
+          transmettre votre demande à l'agence chargée du bien. Base légale : votre consentement.
         </li>
         <li>
-          <strong>Alertes et lettre d'information</strong> : email et, pour une alerte, les critères de votre recherche.
-          Finalité : vous envoyer les biens correspondants ou la lettre. Base légale : votre consentement, retirable à tout moment.
+          <strong>Recherche confiée à une agence</strong> : nom, email, téléphone, critères de votre recherche. Finalité : transmettre votre
+          recherche à l'agence que vous avez choisie. Base légale : votre consentement.
+        </li>
+        <li>
+          <strong>Alerte</strong> : email, critères de votre recherche et, si vous le demandez, numéro WhatsApp. Finalité : vous écrire dès
+          qu'un bien correspondant arrive sur le marché. Base légale : votre consentement, retirable à tout moment.
+        </li>
+        <li>
+          <strong>Demande de courtier</strong> : nom, téléphone, email (facultatif), bien et simulation concernés. Finalité : vous mettre en
+          relation avec un courtier en crédit. Base légale : votre consentement.
+        </li>
+        <li>
+          <strong>Message à un architecte</strong> : nom, email, téléphone (facultatif), message. Finalité : transmettre votre message à cet
+          architecte. Base légale : votre consentement.
+        </li>
+        <li>
+          <strong>Question posée dans État des lieux</strong> : le texte de votre question et, si vous souhaitez être prévenu de la réponse,
+          votre email. Base légale : votre consentement.
         </li>
         <li>
           <strong>Mesure d'audience</strong> : pages consultées, site d'origine du visiteur, favoris ajoutés, clics vers l'annonce
@@ -41,15 +57,16 @@ export default function Page() {
 
       <h2>Destinataires</h2>
       <p>
-        Vos données sont traitées par nos prestataires techniques (hébergement Vercel, base de données Supabase). Dans la version actuelle
-        du site, les demandes de contact sont enregistrées mais ne sont pas transmises aux agences ; lorsque cette transmission sera activée,
-        cette page sera mise à jour et vous en serez informé avant d'envoyer votre demande.
+        Loftissime ne vend aucune donnée et ne partage vos coordonnées avec personne sans une demande de votre part. Elles ne sont
+        transmises qu'au professionnel concerné par votre demande : l'agence chargée du bien, l'agence à laquelle vous confiez votre
+        recherche, le courtier, ou l'architecte auquel vous écrivez. Les données d'une alerte ne sont transmises à personne.
       </p>
+      <p>Vos données sont par ailleurs traitées par nos prestataires techniques (hébergement Vercel, base de données Supabase, envoi des emails Resend).</p>
 
       <h2>Durées de conservation</h2>
       <ul>
-        <li>Demandes de contact : 12 mois.</li>
-        <li>Alertes et lettre : jusqu'à votre désinscription.</li>
+        <li>Alertes : jusqu'à ce que vous arrêtiez l'alerte.</li>
+        <li>Demandes de rappel, recherches confiées, demandes de courtier, messages aux architectes, questions : 12 mois.</li>
         <li>Mesure d'audience : 25 mois maximum.</li>
       </ul>
 

@@ -39,7 +39,6 @@ export default async function CategoryPage({ params }: { params: { slug: string 
     .select('id,title,short_description,price,surface_sqm,city,source_agency,source_id,atypic_category,atypic_tags,cover_image_url,curation_score,first_seen_at')
     .eq('is_active', true)
     .eq('atypic_category', cat)
-    .order('curation_score', { ascending: false, nullsFirst: false })
     .order('first_seen_at', { ascending: false });
 
   return (
