@@ -42,6 +42,10 @@ export default function Page() {
           votre email. Base légale : votre consentement.
         </li>
         <li>
+          <strong>Tee-shirt demandé dans le dressing</strong> : email, modèle, couleur et taille. Finalité : vous prévenir quand il est
+          en stock. Base légale : votre consentement.
+        </li>
+        <li>
           <strong>Mesure d'audience</strong> : pages consultées, site d'origine du visiteur, favoris ajoutés, clics vers l'annonce
           d'origine, associés à un identifiant aléatoire propre à l'onglet de navigation. Cet identifiant n'est pas un cookie, ne permet pas
           de vous identifier et disparaît à la fermeture de l'onglet. Finalité : mesurer la fréquentation des annonces et en rendre compte

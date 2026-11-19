@@ -47,6 +47,10 @@ interface GuideLog {
   questions: { created_at: string; question: string; email: string }[];
 }
 
+interface TeeReq {
+  created_at: string; email: string; model: string; color: string | null; size: string | null;
+}
+
 interface AgencyReq {
   created_at: string; agency: string; name: string; email: string; phone: string | null; message: string | null;
 }
@@ -121,6 +125,7 @@ export default function AdminPage() {
   const [agencyReqs, setAgencyReqs] = useState<AgencyReq[]>([]);
   const [archiReqs, setArchiReqs] = useState<ArchiReq[]>([]);
   const [finReqs, setFinReqs] = useState<FinReq[]>([]);
+  const [teeReqs, setTeeReqs] = useState<TeeReq[]>([]);
   const [guideLog, setGuideLog] = useState<GuideLog>({ searches: [], questions: [] });
   const [alertRows, setAlertRows] = useState<AlertRow[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -150,8 +155,10 @@ export default function AdminPage() {
         const aq = await sb.rpc('admin_architect_requests', { p_token: token, p_limit: 200 });
         const fr = await sb.rpc('admin_financing_requests', { p_token: token, p_limit: 200 });
         const gl = await sb.rpc('admin_guide_searches', { p_token: token, p_limit: 300 });
+        const tr = await sb.rpc('admin_tee_requests', { p_token: token, p_limit: 300 });
         if (cancelled) return;
         setFinReqs((fr.data as FinReq[]) || []);
+        setTeeReqs((tr.data as TeeReq[]) || []);
         setGuideLog((gl.data as GuideLog) || { searches: [], questions: [] });
         setAlertRows((al.data as AlertRow[]) || []);
         setAgencyReqs((ar.data as AgencyReq[]) || []);
@@ -424,6 +431,32 @@ export default function AdminPage() {
                           <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
                           <td className="p-3">{r.query}</td>
                           <td className="p-3">{r.results === 0 ? <span className="bg-[#F4E7B5] px-1.5 py-0.5 text-xs font-semibold">Sans réponse</span> : r.results}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+
+            <section>
+              <h2 className="font-serif text-xl mb-3">Tee-shirts demandés</h2>
+              {teeReqs.length === 0 ? (
+                <p className="text-sm text-stone-400">Aucune demande pour le moment.</p>
+              ) : (
+                <div className="overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Modèle</th><th className="p-3">Couleur</th><th className="p-3">Taille</th><th className="p-3">À prévenir</th></tr>
+                    </thead>
+                    <tbody>
+                      {teeReqs.map((r, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">{r.model}</td>
+                          <td className="p-3">{r.color}</td>
+                          <td className="p-3">{r.size}</td>
+                          <td className="p-3 text-stone-600">{r.email}</td>
                         </tr>
                       ))}
                     </tbody>

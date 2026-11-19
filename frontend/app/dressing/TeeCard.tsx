@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import TeeShirt from '../TeeShirt';
+import { getSupabase } from '../../lib/supabase';
 
 const SIZES = ['S', 'M', 'L', 'XL'];
 
@@ -18,6 +19,25 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu' }: { name: 
   const [color, setColor] = useState(COLORS.find((c) => c.name === first) || COLORS[0]);
   const [size, setSize] = useState('M');
   const [asked, setAsked] = useState(false);
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+
+  async function send(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const { data, error } = await getSupabase().rpc('submit_tee_request', {
+        p_email: email,
+        p_model: name,
+        p_color: color.name,
+        p_size: size,
+        p_consent: true, // l'envoi vaut accord, la phrase sous le bouton le précise
+      });
+      setStatus(!error && data === true ? 'done' : 'error');
+    } catch {
+      setStatus('error');
+    }
+  }
   return (
     <article className="border border-stone-300 bg-white">
       <div className="flex items-center justify-center bg-[#F4E7B5] py-8">
@@ -58,10 +78,41 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu' }: { name: 
           ))}
         </div>
 
-        {asked ? (
+        {status === 'done' ? (
           <p className="mt-7 text-base leading-relaxed text-stone-700" role="status">
-            Bien vu, la taille {size} vous irait très bien. Seul détail : il n&apos;est pas encore en vente. Nous y travaillons.
+            C&apos;est noté : {name}, {color.name.toLowerCase()}, taille {size}. Nous vous écrivons dès qu&apos;il est en stock.
           </p>
+        ) : asked ? (
+          <form onSubmit={send} className="mt-7">
+            <p className="text-base leading-relaxed text-stone-700">
+              Bien vu, la taille {size} vous irait très bien. Il n&apos;est pas encore en stock : laissez votre e-mail, nous vous prévenons dès qu&apos;il arrive.
+            </p>
+            <label className="mt-5 block text-xs uppercase tracking-widest text-stone-500">
+              Votre e-mail
+              <input
+                required
+                type="email"
+                autoComplete="email"
+                maxLength={200}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoFocus
+                className="mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-xl normal-case tracking-normal text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-0"
+              />
+            </label>
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-[10px] bg-stone-900 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-stone-800 disabled:opacity-60 sm:w-auto sm:min-w-[16rem] sm:px-10"
+            >
+              {status === 'sending' ? 'Envoi…' : 'Me prévenir'}
+            </button>
+            {status === 'error' && <p className="mt-3 text-sm text-red-700">L&apos;envoi n&apos;a pas fonctionné. Vérifiez votre e-mail et réessayez.</p>}
+            <p className="mt-3 text-xs leading-relaxed text-stone-500">
+              En envoyant, vous acceptez que Loftissime vous écrive au sujet de ce tee-shirt.{' '}
+              <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">Confidentialité</a>
+            </p>
+          </form>
         ) : (
           <button
             type="button"
