@@ -6,7 +6,7 @@ import { ArrowLeft, X } from 'lucide-react';
 
 const KEY = 'loftissime:mode-emploi';
 
-// Après un clic depuis le mode d'emploi, un bouton flottant permet d'y revenir d'un geste.
+// Après un clic depuis le mode d'emploi, une ligne discrète en haut de page permet d'y revenir.
 // Il reste le temps de la visite, et se ferme avec la croix.
 export default function ModeEmploiReturn() {
   const pathname = usePathname();
@@ -27,10 +27,10 @@ export default function ModeEmploiReturn() {
 
   if (!show) return null;
   return (
-    <div className="fixed left-4 top-[4.75rem] z-40 flex items-center rounded-full bg-stone-900 text-white shadow-lg">
-      <a href="/mode-d-emploi" className="inline-flex h-10 items-center gap-2 pl-4 pr-2 text-xs font-semibold uppercase tracking-wider">
+    <div className="flex items-center justify-center gap-3 border-b border-stone-200 bg-stone-100 px-4 py-2 text-sm text-stone-700">
+      <a href="/mode-d-emploi" className="inline-flex items-center gap-1.5 underline underline-offset-4 decoration-stone-400 hover:text-stone-900">
         <ArrowLeft className="h-3.5 w-3.5" />
-        Mode d&apos;emploi
+        Revenir au mode d&apos;emploi
       </a>
       <button
         type="button"
@@ -41,7 +41,7 @@ export default function ModeEmploiReturn() {
           } catch {}
           setShow(false);
         }}
-        className="flex h-10 w-9 items-center justify-center text-stone-400 hover:text-white"
+        className="text-stone-400 hover:text-stone-900"
       >
         <X className="h-3.5 w-3.5" />
       </button>

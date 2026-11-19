@@ -68,8 +68,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${logoFont.variable} ${sansFont.variable} ${serifFont.variable}`}>
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd).replace(/</g, '\\u003c') }} />
-        {children}
         <ModeEmploiReturn />
+        {children}
       </body>
     </html>
   );

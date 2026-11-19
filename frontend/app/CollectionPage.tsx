@@ -78,7 +78,7 @@ export default function CollectionPage({
                 <Link href={`/biens/${item.id}`} className="relative block aspect-[4/3] bg-stone-100 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.cover_image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-                  <span className="absolute top-3.5 left-4 text-white text-xs font-semibold uppercase tracking-widest [text-shadow:0_1px_2px_rgba(0,0,0,.75),0_0_14px_rgba(0,0,0,.6)]">{item.atypic_category}</span>
+                  <span className="absolute inset-x-0 top-0 px-4 pt-3.5 pb-10 bg-gradient-to-b from-black/50 to-transparent text-white text-xs font-semibold uppercase tracking-widest [text-shadow:0_1px_2px_rgba(0,0,0,.6)]">{item.atypic_category}</span>
                 </Link>
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>
