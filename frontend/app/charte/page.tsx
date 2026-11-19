@@ -9,7 +9,7 @@ export const metadata = {
   alternates: { canonical: '/charte' },
 };
 
-type Item = { q: string; a: string; points?: string[] };
+type Item = { q: string; a: string; points?: string[]; table?: { head: [string, string, string]; rows: [string, string, string][] } };
 type Group = { id: string; title: string; items: Item[] };
 
 const groups: Group[] = [
@@ -133,15 +133,20 @@ const groups: Group[] = [
       },
       {
         q: 'À qui mes coordonnées sont-elles transmises ?',
-        a: 'Uniquement au professionnel concerné par votre demande, et seulement quand vous envoyez cette demande :',
-        points: [
-          'Vous demandez à être rappelé au sujet d’un bien : à l’agence et au négociateur chargés de ce bien.',
-          'Vous demandez à être rappelé pour plusieurs biens mis en favoris : à l’agence de chacun de ces biens.',
-          'Vous confiez votre recherche à une agence : à cette agence, et à elle seule.',
-          'Vous demandez un courtier sur la page Financement : au courtier, avec le bien et la simulation concernés.',
-          'Vous écrivez à un architecte depuis Inspiration : à cet architecte.',
-          'Vous créez une alerte : à personne.',
-        ],
+        a: 'Uniquement au professionnel concerné par votre demande, et seulement quand vous envoyez cette demande.',
+        table: {
+          head: ['Vous…', 'Vos coordonnées vont à', 'Pour'],
+          rows: [
+            ['demandez à être rappelé au sujet d’un bien', 'L’agence et le négociateur chargés de ce bien', 'Vous rappeler au sujet de ce bien'],
+            ['demandez à être rappelé pour plusieurs favoris', 'L’agence de chacun de ces biens', 'Vous rappeler au sujet de ces biens'],
+            ['confiez votre recherche à une agence', 'Cette agence, et elle seule', 'Vous proposer les biens qui correspondent'],
+            ['demandez un courtier', 'Le courtier, avec le bien et la simulation', 'Étudier votre financement et vous rappeler'],
+            ['écrivez à un architecte depuis Inspiration', 'Cet architecte', 'Répondre à votre message'],
+            ['créez une alerte', 'Personne', 'Vous envoyer les nouveaux biens qui correspondent'],
+            ['posez une question dans État des lieux', 'Personne', 'Vous prévenir quand la réponse paraît'],
+            ['demandez un tee-shirt', 'Personne', 'Vous prévenir quand il est en stock'],
+          ],
+        },
       },
       {
         q: 'Que faites-vous de mon e-mail quand je crée une alerte ?',
@@ -204,6 +209,42 @@ export default function ChartePage() {
                         <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
                       </summary>
                       <p className="mt-3 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(it.a)}</p>
+                      {it.table && (
+                        <>
+                          {/* Téléphone : une fiche par cas. Écran large : un vrai tableau. */}
+                          <ul className="mt-4 space-y-3 sm:hidden">
+                            {it.table.rows.map((r) => (
+                              <li key={r[0]} className="rounded-[14px] border border-stone-200 bg-white p-4">
+                                <p className="font-serif text-lg leading-snug text-stone-900">{typo(`Vous ${r[0]}`)}</p>
+                                <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[1]}</p>
+                                <p className="mt-0.5 text-stone-900">{typo(r[1])}</p>
+                                <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[2]}</p>
+                                <p className="mt-0.5 text-stone-600">{typo(r[2])}</p>
+                              </li>
+                            ))}
+                          </ul>
+                          <div className="mt-5 hidden sm:block overflow-hidden rounded-[14px] border border-stone-200 bg-white">
+                            <table className="w-full text-left text-[15px] leading-snug">
+                              <thead>
+                                <tr className="text-[10px] uppercase tracking-widest text-stone-500">
+                                  {it.table.head.map((h) => (
+                                    <th key={h} className="px-5 py-3 font-normal">{h}</th>
+                                  ))}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {it.table.rows.map((r) => (
+                                  <tr key={r[0]} className="border-t border-stone-200 align-top">
+                                    <td className="px-5 py-3.5 text-stone-900">{typo(r[0])}</td>
+                                    <td className="px-5 py-3.5 font-medium text-stone-900">{typo(r[1])}</td>
+                                    <td className="px-5 py-3.5 text-stone-600">{typo(r[2])}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </>
+                      )}
                       {it.points && (
                         <ul className="mt-3 max-w-2xl space-y-2 text-lg font-light leading-relaxed text-stone-600">
                           {it.points.map((pt) => (
@@ -221,7 +262,7 @@ export default function ChartePage() {
       </main>
 
                 <div className="h-16" />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: groups.flatMap((g) => g.items.map((it) => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: [it.a, ...(it.points || [])].join(' ') } }))) }).replace(/</g, '\\u003c') }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: groups.flatMap((g) => g.items.map((it) => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: [it.a, ...(it.points || []), ...(it.table ? it.table.rows.map((r) => `Vous ${r[0]} : ${r[1]}. ${r[2]}.`) : [])].join(' ') } }))) }).replace(/</g, '\\u003c') }} />
     </div>
   );
 }
