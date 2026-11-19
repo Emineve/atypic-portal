@@ -611,15 +611,15 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             {places.map((p) => (
               <span
                 key={p.kind + p.city + p.value}
-                className="inline-flex items-center h-10 pl-3 bg-stone-900 text-white text-sm"
+                className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-800 text-[13px]"
               >
-                <MapPin className="w-3.5 h-3.5 mr-1.5" />
+                <MapPin className="w-3.5 h-3.5 mr-1.5 text-stone-400" />
                 {p.value}
                 <button
                   type="button"
                   onClick={() => removePlace(p)}
                   aria-label={`Retirer ${p.value}`}
-                  className="h-10 w-10 flex items-center justify-center text-stone-300 hover:text-white"
+                  className="h-8 w-8 flex items-center justify-center rounded-full text-stone-400 hover:text-stone-900"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -679,27 +679,27 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 <p className="text-[10px] uppercase tracking-widest text-stone-500">Localisation</p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   {places.map((p) => (
-                    <span key={p.kind + p.city + p.value} className="inline-flex items-center h-10 pl-3 bg-stone-900 text-white text-sm">
-                      <MapPin className="w-3.5 h-3.5 mr-1.5" />
+                    <span key={p.kind + p.city + p.value} className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-800 text-[13px]">
+                      <MapPin className="w-3.5 h-3.5 mr-1.5 text-stone-400" />
                       {p.value}
                       <button
                         type="button"
                         onClick={() => removePlace(p)}
                         aria-label={`Retirer ${p.value}`}
-                        className="h-10 w-10 flex items-center justify-center text-stone-300 hover:text-white"
+                        className="h-8 w-8 flex items-center justify-center rounded-full text-stone-400 hover:text-stone-900"
                       >
                         <X className="w-4 h-4" />
                       </button>
                     </span>
                   ))}
                   {query.trim() !== '' && (
-                    <span className="inline-flex items-center h-10 pl-3 border border-stone-900 text-stone-900 text-sm">
+                    <span className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-800 text-[13px]">
                       « {query.trim()} »
                       <button
                         type="button"
                         onClick={() => setQuery('')}
                         aria-label="Retirer ce mot de la recherche"
-                        className="h-10 w-10 flex items-center justify-center text-stone-500 hover:text-stone-900"
+                        className="h-8 w-8 flex items-center justify-center rounded-full text-stone-400 hover:text-stone-900"
                       >
                         <X className="w-4 h-4" />
                       </button>
