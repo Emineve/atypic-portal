@@ -450,13 +450,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
           <div className="hidden lg:block border border-stone-200 bg-white p-6">
             <p className="font-serif text-4xl text-stone-900">{price}</p>
-            <Link
-              href={`/financement?prix=${Math.round(Number(item.price))}`}
-              className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-400 hover:decoration-stone-900"
-            >
-              <Calculator className="w-4 h-4 flex-none" strokeWidth={1.5} />
-              Estimer ma mensualité
-            </Link>
           </div>
           {/* Sur mobile, le contact est placé juste après la présentation (voir plus haut) */}
           <div className="hidden lg:block space-y-4">
