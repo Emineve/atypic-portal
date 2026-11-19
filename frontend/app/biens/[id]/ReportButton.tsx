@@ -58,7 +58,7 @@ export default function ReportButton({ listingId }: { listingId: string }) {
     <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-4 space-y-3">
       <h2 className="font-serif text-base text-stone-900">Signaler cette annonce</h2>
       <div>
-        <label className="block text-[10px] uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-reason">Motif</label>
+        <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-reason">Motif</label>
         <select id="r-reason" className={field} value={reason} onChange={(e) => setReason(e.target.value)}>
           {REASONS.map(([v, l]) => (
             <option key={v} value={v}>{l}</option>
@@ -66,11 +66,11 @@ export default function ReportButton({ listingId }: { listingId: string }) {
         </select>
       </div>
       <div>
-        <label className="block text-[10px] uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-msg">Précisions (facultatif)</label>
+        <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-msg">Précisions (facultatif)</label>
         <textarea id="r-msg" rows={3} maxLength={1000} className={field} value={message} onChange={(e) => setMessage(e.target.value)} />
       </div>
       <div>
-        <label className="block text-[10px] uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-email">Votre email (facultatif)</label>
+        <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-email">Votre email (facultatif)</label>
         <input id="r-email" type="email" maxLength={200} className={field} value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="hidden" aria-hidden="true">

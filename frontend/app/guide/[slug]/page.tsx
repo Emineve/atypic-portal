@@ -93,7 +93,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           {' › '}
           <Link href="/guide" className="hover:text-stone-900">L&apos;état des lieux</Link>
         </nav>
-        <p className="mt-8 text-[10px] uppercase tracking-widest text-stone-400">{a.category}</p>
+        <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">{a.category}</p>
         <h1 className="mt-3 max-w-4xl font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-stone-900">{a.title}</h1>
         <p className="mt-5 text-sm text-stone-500">
           Mis à jour le <time dateTime={a.updated}>{formatGuideDate(a.updated)}</time> · {a.readMinutes} min de lecture
@@ -110,7 +110,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{a.intro}</p>
 
         <section className="mt-8 bg-[#F4E7B5] p-6" aria-label="À retenir">
-          <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-900">À retenir</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-900">À retenir</h2>
           <ul className="mt-4 space-y-3">
             {a.takeaways.map((t) => (
               <li key={t} className="flex items-start gap-3 text-stone-900 leading-relaxed">
@@ -189,7 +189,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </section>
 
         <section className="mt-12">
-          <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Sources</h2>
+          <h2 className="text-xs uppercase tracking-widest text-stone-500">Sources</h2>
           <ul className="mt-3 space-y-2 text-sm">
             {a.sources.map((s) => (
               <li key={s.url}>

@@ -5,15 +5,21 @@ import { PhoneIncoming } from 'lucide-react';
 
 // Bouton flottant en bas d'écran sur mobile, dans le même esprit que « Créer mon alerte » sur l'accueil : demande de rappel uniquement.
 export default function StickyContact() {
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
-  // On masque le bouton quand le formulaire est déjà à l'écran
+  // Le bouton n'apparaît qu'une fois le formulaire de contact dépassé : en haut de fiche il cacherait le prix,
+  // et à côté du formulaire il ferait doublon.
   useEffect(() => {
     const target = document.getElementById('contact');
-    if (!target || typeof IntersectionObserver === 'undefined') return;
-    const obs = new IntersectionObserver(([e]) => setHidden(e.isIntersecting), { threshold: 0.2 });
-    obs.observe(target);
-    return () => obs.disconnect();
+    if (!target) return;
+    const update = () => setHidden(target.getBoundingClientRect().bottom > 0);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
   }, []);
 
   return (

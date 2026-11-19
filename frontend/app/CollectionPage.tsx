@@ -93,7 +93,7 @@ export default function CollectionPage({
                     {item.atypic_tags && item.atypic_tags.length > 0 && (
                       <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
                         {item.atypic_tags.slice(0, 3).map((tag) => (
-                          <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-[11px] text-stone-800">
+                          <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">
                             {tag}
                           </li>
                         ))}
@@ -101,7 +101,7 @@ export default function CollectionPage({
                     )}
                   </div>
                   {(!hideAgency || item.source_id) && (
-                    <p className="mt-4 text-[11px] text-stone-400">
+                    <p className="mt-4 text-xs text-stone-400">
                       {[hideAgency ? null : `Annonce ${item.source_agency}`, item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
                     </p>
                   )}

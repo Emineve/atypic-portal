@@ -119,7 +119,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
                 >
                   {status === 'sending' ? 'Envoi…' : 'Envoyer'}
                 </button>
-                <p className="text-center text-[11px] text-stone-500">
+                <p className="text-center text-xs text-stone-500">
                   <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">
                     Vos données et vos droits
                   </a>

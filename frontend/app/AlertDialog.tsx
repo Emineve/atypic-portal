@@ -722,7 +722,7 @@ export default function AlertDialog({
                                         {on && <Check className="w-3.5 h-3.5" />}
                                       </span>
                                       <span className="flex-1 text-sm text-stone-900">{a.name}</span>
-                                      {a.zone && <span className="flex-none text-[11px] text-stone-500">Dans votre secteur</span>}
+                                      {a.zone && <span className="flex-none text-xs text-stone-500">Dans votre secteur</span>}
                                     </button>
                                   </li>
                                 );
@@ -777,7 +777,7 @@ export default function AlertDialog({
               <div className="h-full bg-stone-900 transition-[width] duration-200 ease-out" style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} />
             </div>
             <div className="shrink-0 bg-white px-6 md:px-12 py-4">
-              <p className="hidden md:block text-[11px] uppercase tracking-widest text-stone-400">{shareWith ? 'Votre recherche' : 'Votre alerte'}</p>
+              <p className="hidden md:block text-xs uppercase tracking-widest text-stone-500">{shareWith ? 'Votre recherche' : 'Votre alerte'}</p>
               <p className="md:mt-0.5 text-sm text-stone-800 line-clamp-2" title={recapLine}>{recapLine}</p>
               <button
                 type="submit"

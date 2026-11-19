@@ -148,7 +148,7 @@ export default function ContactForm({
   }
 
   const field = 'w-full h-10 border-0 border-b border-stone-300 bg-transparent px-0 text-base text-stone-900 placeholder:text-stone-300 rounded-none focus:outline-none focus:ring-0 focus:border-stone-900 transition-colors';
-  const fieldLabel = 'block text-[10px] uppercase tracking-widest text-stone-500';
+  const fieldLabel = 'block text-xs uppercase tracking-widest text-stone-500';
   // Une agence sans interlocuteur nommé : son nom n'est affiché qu'une fois
   const person = contactName && contactName.trim().toLowerCase() !== agency.trim().toLowerCase() ? contactName.trim() : '';
 
@@ -158,7 +158,7 @@ export default function ContactForm({
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
           <div className="min-w-0">
-            <p className="text-xs uppercase tracking-widest text-stone-400">{person ? agency : 'Votre contact pour ce bien'}</p>
+            <p className="text-xs uppercase tracking-widest text-stone-500">{person ? agency : 'Votre contact pour ce bien'}</p>
             <p className="mt-1.5 font-serif text-2xl leading-tight text-stone-900 truncate">{person || agency}</p>
           </div>
           {phone && (
@@ -333,7 +333,7 @@ export default function ContactForm({
             {status !== 'sending' && tab === 'tel' && <Phone className="w-4 h-4" />}
             {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer mon message'}
           </button>
-          <p className="text-[11px] text-stone-500 leading-relaxed text-center">
+          <p className="text-xs text-stone-500 leading-relaxed text-center">
             Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.
             {' '}
             <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">

@@ -442,7 +442,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               </span>
               <span className="hidden sm:inline">État des lieux</span>
               {newArticles > 0 && (
-                <span className="hidden sm:inline-block bg-[#F4E7B5] px-1.5 py-0.5 text-[9px] font-semibold tracking-wider text-stone-900">
+                <span className="hidden sm:inline-block bg-[#F4E7B5] px-1.5 py-0.5 text-xs font-semibold tracking-wider text-stone-900">
                   + {newArticles} {newArticles > 1 ? 'articles' : 'article'}
                 </span>
               )}
@@ -754,7 +754,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             <div className="flex-1 overflow-y-auto">
               {/* Rappel de la recherche en cours : lieux choisis et mot saisi */}
               <div className="px-6 py-5 border-b border-stone-200">
-                <p className="text-[10px] uppercase tracking-widest text-stone-500">Localisation</p>
+                <p className="text-xs uppercase tracking-widest text-stone-500">Localisation</p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   {places.map((p) => (
                     <span key={p.kind + p.city + p.value} className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-900 text-[13px] font-semibold">
@@ -830,7 +830,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               </div>
               <FilterPanel value={filters} onChange={setFilters} mode="search" padX="px-6" types={typeOptions} />
               <div className="px-6 py-6">
-                <label className="text-[10px] uppercase tracking-widest text-stone-500" htmlFor="f-sort">Trier par</label>
+                <label className="text-xs uppercase tracking-widest text-stone-500" htmlFor="f-sort">Trier par</label>
                 <select
                   id="f-sort"
                   value={sort}
@@ -990,7 +990,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         {item.atypic_tags && item.atypic_tags.length > 0 && (
                           <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
                             {item.atypic_tags.slice(0, 3).map((tag) => (
-                              <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-[11px] text-stone-800">
+                              <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">
                                 {tag}
                               </li>
                             ))}
@@ -998,7 +998,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         )}
                       </div>
                       <div>
-                        <p className="mt-4 text-[11px] text-stone-400">{item.source_agency}</p>
+                        <p className="mt-4 text-xs text-stone-400">{item.source_agency}</p>
                         <div className="mt-3 pt-4 border-t border-stone-200 flex items-center justify-between gap-3">
                           <span className="text-xl font-medium tracking-tight font-serif">{price}</span>
                           <span className="inline-flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover:text-stone-600 transition">

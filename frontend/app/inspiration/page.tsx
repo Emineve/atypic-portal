@@ -65,7 +65,7 @@ export default async function InspirationPage() {
       ) : (
         <>
           <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">
-            <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
+            <p className="text-xs uppercase tracking-widest text-stone-500">Inspiration</p>
             <p className="mt-4 max-w-4xl font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
               Des idées pour <span className="italic text-stone-500">habiter autrement.</span>
             </p>
@@ -80,7 +80,7 @@ export default async function InspirationPage() {
           )}
 
           <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-12 pb-14 [&>*]:max-w-3xl">
-            <p className="text-[10px] uppercase tracking-widest text-stone-400">
+            <p className="text-xs uppercase tracking-widest text-stone-500">
               L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
             </p>
             <h1 className="mt-3 text-4xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.1]">{featured.name}</h1>
@@ -135,7 +135,7 @@ export default async function InspirationPage() {
                         />
                       )}
                     </div>
-                    <p className="mt-4 text-[10px] uppercase tracking-widest text-stone-400">{a.city || 'Architecte'}</p>
+                    <p className="mt-4 text-xs uppercase tracking-widest text-stone-500">{a.city || 'Architecte'}</p>
                     <h3 className="mt-1 font-serif text-xl text-stone-900 group-hover:underline underline-offset-4">{a.name}</h3>
                     {a.tagline && <p className="mt-2 text-sm text-stone-500">{a.tagline}</p>}
                     <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900">

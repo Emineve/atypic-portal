@@ -83,7 +83,7 @@ export default function PhotoMosaic({
         <button
           type="button"
           onClick={() => setViewer(0)}
-          className="absolute bottom-3 right-3 inline-flex items-center gap-2 whitespace-nowrap bg-white text-stone-900 text-[11px] font-semibold uppercase tracking-wider px-3 h-9 shadow hover:bg-stone-100 transition"
+          className="absolute bottom-3 right-3 inline-flex items-center gap-2 whitespace-nowrap bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider px-3 h-9 shadow hover:bg-stone-100 transition"
         >
           <LayoutGrid className="w-4 h-4 flex-none" />
           Voir les {total} photos

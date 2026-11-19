@@ -48,7 +48,7 @@ export default async function ArchitectsPage() {
                     <img src={a.portrait_url} alt={a.name} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" />
                   )}
                 </div>
-                <p className="mt-4 text-[10px] uppercase tracking-widest text-stone-400">{a.city}{a.is_demo ? ' · Exemple fictif' : ''}</p>
+                <p className="mt-4 text-xs uppercase tracking-widest text-stone-500">{a.city}{a.is_demo ? ' · Exemple fictif' : ''}</p>
                 <h2 className="mt-1 font-serif text-xl text-stone-900">{a.name}</h2>
                 {a.tagline && <p className="mt-1 text-sm text-stone-500 line-clamp-2">{a.tagline}</p>}
               </Link>

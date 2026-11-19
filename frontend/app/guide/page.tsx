@@ -30,7 +30,7 @@ export default function GuideIndex() {
       </nav>
 
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">État des lieux</p>
+        <p className="text-xs uppercase tracking-widest text-stone-500">État des lieux</p>
         <h1 className="mt-4 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>
@@ -46,7 +46,7 @@ export default function GuideIndex() {
             <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-2">
               {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
                 <li key={r.anchor}>
-                  <a href={`#${r.anchor}`} className="group inline-flex items-baseline gap-2 font-serif text-lg md:text-xl text-stone-900">
+                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group inline-flex items-baseline gap-2 font-serif text-lg md:text-xl text-stone-900">
                     <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
                     <span className="font-sans text-sm text-stone-500">{articles.filter((a) => a.category === r.name).length}</span>
                   </a>
@@ -57,12 +57,12 @@ export default function GuideIndex() {
         )}
 
         {first && (
-          <Link href={`/guide/${first.slug}`} className="group grid md:grid-cols-2 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+          <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
             <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F4E7B5] flex items-center">
               <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
             <div className="p-7 md:p-10 flex flex-col justify-center">
-              <p className="text-[10px] uppercase tracking-widest text-stone-400">
+              <p className="text-xs uppercase tracking-widest text-stone-500">
                 À la une · {first.category} · {first.readMinutes} min de lecture
               </p>
               <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">{first.title}</h2>
@@ -76,7 +76,7 @@ export default function GuideIndex() {
         )}
 
         {GUIDE_RUBRICS.map((r) => {
-          const items = articles.filter((a) => a.category === r.name);
+          const items = rest.filter((a) => a.category === r.name);
           if (items.length === 0) return null;
           return (
             <section key={r.anchor} id={r.anchor} className="mt-12 md:mt-16 scroll-mt-24">
@@ -92,7 +92,7 @@ export default function GuideIndex() {
                         <GuideArt art={a.art} className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
                       </div>
                       <div className="p-6 md:p-7">
-                        <p className="text-[10px] uppercase tracking-widest text-stone-400">{a.readMinutes} min de lecture</p>
+                        <p className="text-xs uppercase tracking-widest text-stone-500">{a.readMinutes} min de lecture</p>
                         <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
                           {a.title}
                         </h3>

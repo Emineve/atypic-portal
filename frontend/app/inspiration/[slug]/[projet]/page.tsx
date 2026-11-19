@@ -66,7 +66,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
       </nav>
 
       <header className="max-w-3xl mx-auto px-6 pt-14 pb-10 text-center">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">
+        <p className="text-xs uppercase tracking-widest text-stone-500">
           Inspiration{p.kind ? ` · ${p.kind}` : ''}
         </p>
         <h1 className="mt-3 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">{p.title}</h1>

@@ -85,7 +85,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       )}
 
       <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-12 pb-14 [&>*]:max-w-3xl">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">
+        <p className="text-xs uppercase tracking-widest text-stone-500">
           Inspiration · Architecte{a.city ? ` · ${a.city}` : ''}
         </p>
         <h1 className="mt-3 text-4xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.1]">{a.name}</h1>

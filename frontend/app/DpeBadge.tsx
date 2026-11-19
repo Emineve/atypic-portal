@@ -18,7 +18,7 @@ export function DpeChip({ value }: { value: string | null | undefined }) {
   const i = LETTERS.indexOf(c);
   return (
        <span
-      className="inline-flex items-stretch text-[9px] font-semibold uppercase tracking-wider leading-none"
+      className="inline-flex items-stretch text-xs font-semibold uppercase tracking-wider leading-none"
       title={`Classe énergie (DPE) : ${c}`}
     >
       <span className="bg-white text-stone-600 px-1 py-[3px]">DPE</span>
@@ -47,7 +47,7 @@ export function DpeScale({
   const dark = kind === 'dpe' ? DARK_TEXT : [true, true, true, false, false, false, false];
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-stone-400">{title}</p>
+      <p className="text-xs uppercase tracking-widest text-stone-500">{title}</p>
       {c ? (
         <div className="mt-2 flex items-end gap-1" role="img" aria-label={`${title} : classe ${c}`}>
           {LETTERS.map((l, i) => {

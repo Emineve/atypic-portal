@@ -201,7 +201,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
           <div className="border-t border-stone-200 border-b">
             <Link href={`/agence/${slugify(item.source_agency)}`} className="group flex items-center gap-4 py-4">
               <span className="flex-1 min-w-0">
-                <span className="block text-[11px] uppercase tracking-widest text-stone-400">Proposé par</span>
+                <span className="block text-xs uppercase tracking-widest text-stone-500">Proposé par</span>
                 <span className="block mt-1 font-serif text-lg text-stone-900 truncate">{item.source_agency}</span>
                 <span className="block text-sm text-stone-500">
                   {agencyCount > 1 ? `Voir ses ${agencyCount} biens sur Loftissime` : 'Voir sa page sur Loftissime'}
@@ -227,7 +227,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
       </nav>
 
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
-        <nav aria-label="Fil d'Ariane" className="text-xs text-stone-400">
+        <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">
           <Link href="/" className="hover:text-stone-900">Accueil</Link>
           {hubName && hubUrl && (
             <>
@@ -276,7 +276,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   <div key={label} className="flex items-start gap-3">
                     <Icon className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
                     <div className="min-w-0">
-                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">{label}</dt>
+                      <dt className="text-xs uppercase tracking-widest text-stone-500">{label}</dt>
                       <dd className="mt-0.5 font-serif text-xl leading-snug text-stone-900">{value}</dd>
                     </div>
                   </div>
@@ -285,7 +285,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   <div className="flex items-start gap-3">
                     <Zap className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
                     <div className="min-w-0">
-                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">Énergie (DPE)</dt>
+                      <dt className="text-xs uppercase tracking-widest text-stone-500">Énergie (DPE)</dt>
                       <dd className="mt-1.5"><EnergyPill kind="dpe" value={item.dpe_class} bare /></dd>
                     </div>
                   </div>
@@ -294,7 +294,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   <div className="flex items-start gap-3">
                     <Leaf className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
                     <div className="min-w-0">
-                      <dt className="text-[10px] uppercase tracking-widest text-stone-400">Climat (GES)</dt>
+                      <dt className="text-xs uppercase tracking-widest text-stone-500">Climat (GES)</dt>
                       <dd className="mt-1.5"><EnergyPill kind="ges" value={item.ges_class} bare /></dd>
                     </div>
                   </div>
@@ -306,7 +306,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
             {item.features?.length > 0 && (
               <div className="mt-6">
-                <h2 className="text-[10px] uppercase tracking-widest text-stone-400">Caractéristiques</h2>
+                <h2 className="text-xs uppercase tracking-widest text-stone-500">Caractéristiques</h2>
                 <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-stone-700">
                   {item.features.map((f: string, idx: number) => (
                     <li key={idx}>· {f}</li>
@@ -341,7 +341,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                       <span className="mt-1.5 h-2.5 w-2.5 flex-none bg-stone-900" aria-hidden="true" />
                       <span>
                         Prix du bien
-                        <span className="block text-xs text-stone-400">{feesLabel}</span>
+                        <span className="block text-sm text-stone-500">{feesLabel}</span>
                       </span>
                     </dt>
                     <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
@@ -365,7 +365,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   </Link>
                 </div>
 
-                <p className="mt-5 text-xs text-stone-400 leading-relaxed">
+                <p className="mt-5 text-sm text-stone-600 leading-relaxed">
                   Estimation indicative pour un bien ancien. Le montant exact des frais est calculé par le notaire.
                 </p>
               </section>
@@ -412,7 +412,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
                 {(item.copro_lots || item.copro_procedure || chargesLevel) && (
                   <div className={costParts.length > 0 ? 'mt-1 pt-5 border-t border-stone-200' : 'mt-4'}>
-                    <p className="text-[10px] uppercase tracking-widest text-stone-500">La copropriété</p>
+                    <p className="text-xs uppercase tracking-widest text-stone-500">La copropriété</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {item.copro_lots ? (
                         <span className="inline-flex items-center h-9 px-4 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
@@ -440,7 +440,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   </p>
                 )}
                 {energyCost && (
-                  <p className={`${chargesLevel ? 'mt-2' : 'mt-5'} text-xs text-stone-400 leading-relaxed`}>
+                  <p className={`${chargesLevel ? 'mt-2' : 'mt-5'} text-sm text-stone-600 leading-relaxed`}>
                     Énergie : montant moyen estimé pour un usage standard, abonnement compris{item.energy_cost_ref ? `, sur la base des prix des années ${item.energy_cost_ref}` : ''}.
                   </p>
                 )}
@@ -452,7 +452,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               <ReportButton listingId={item.id} />
             </div>
 
-            <p className="mt-10 text-xs text-stone-400 leading-relaxed">
+            <p className="mt-10 text-sm text-stone-600 leading-relaxed">
               {item.fees_text ? <span className="block">{item.fees_text}</span> : null}
               Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques :{' '}
               <a href="https://www.georisques.gouv.fr" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-900">
@@ -502,7 +502,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   <img src={r.cover_image_url} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="p-4">
-                  <p className="text-[10px] uppercase tracking-widest text-stone-400">{r.city}{r.surface_sqm ? ` · ${r.surface_sqm} m²` : ''}</p>
+                  <p className="text-xs uppercase tracking-widest text-stone-500">{r.city}{r.surface_sqm ? ` · ${r.surface_sqm} m²` : ''}</p>
                   <p className="mt-1 font-serif text-stone-900 leading-snug">{r.title}</p>
                   <p className="mt-2 font-serif text-lg text-stone-900">{fmt(Number(r.price))}</p>
                 </div>

@@ -87,7 +87,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
       {status === 'error' && (
         <p className={`mt-2 text-xs ${dark ? 'text-red-300' : 'text-red-700'}`}>L&apos;alerte n&apos;a pas pu être créée. Vérifiez votre e-mail et réessayez.</p>
       )}
-      <p className={`mt-2 text-[11px] ${dark ? 'text-stone-400' : 'text-stone-500'}`}>
+      <p className={`mt-2 text-xs ${dark ? 'text-stone-400' : 'text-stone-500'}`}>
         En créant l&apos;alerte, vous acceptez de recevoir ces e-mails. Arrêt possible à tout moment.
       </p>
     </form>

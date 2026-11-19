@@ -68,11 +68,11 @@ export default function ProPage() {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Logo />
           <div className="flex items-center gap-6">
-            <Link href="/" className="hidden sm:inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
+            <Link href="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition">
               <ArrowLeft className="w-3.5 h-3.5" />
               Tous les biens
             </Link>
-            <a href="#rejoindre" className={link}>Diffuser mes annonces</a>
+            <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
           </div>
         </div>
       </nav>

@@ -147,7 +147,7 @@ export default function PlanDownload({
                   <button type="submit" disabled={status === 'sending'} className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-[10px]">
                     {status === 'sending' ? 'Un instant…' : 'Voir le plan'}
                   </button>
-                  <p className="mt-2 text-center text-[11px] text-stone-500">
+                  <p className="mt-2 text-center text-xs text-stone-500">
                     Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.
                     {' '}
                     <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">

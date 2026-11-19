@@ -12,12 +12,12 @@ const SOCIALS = [
 export default function FooterLinks({ cities }: { cities: string[] }) {
   const hubs = Array.from(new Set(cities.filter(Boolean).map((c) => cityHub(c)))).sort();
   const link = 'text-stone-700 hover:text-stone-900 underline-offset-4 hover:underline';
-  const title = 'text-[10px] uppercase tracking-widest text-stone-400';
+  const title = 'text-xs uppercase tracking-widest text-stone-500';
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 text-sm">
       <div className="col-span-2 md:col-span-1">
         <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-2xl font-semibold tracking-tight leading-none text-stone-900">loftissime.</a>
-        <p className="mt-1 text-[11px] leading-none text-stone-500">Curateur de biens atypiques</p>
+        <p className="mt-1 text-xs leading-none text-stone-500">Curateur de biens atypiques</p>
         <div className="mt-5 flex gap-2" aria-hidden="true">
           {SOCIALS.map((s) => (
             <span
