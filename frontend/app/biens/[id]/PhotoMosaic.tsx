@@ -64,7 +64,7 @@ export default function PhotoMosaic({
             <img src={images[0]} alt={`${title} - photo 1`} className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
           </button>
           {category && (
-            <div className="absolute top-3 left-3 bg-stone-900/90 text-white text-[10px] uppercase tracking-widest px-2.5 py-1 pointer-events-none">
+            <div className="absolute top-3.5 left-4 text-white text-xs font-semibold uppercase tracking-widest [text-shadow:0_1px_2px_rgba(0,0,0,.75),0_0_14px_rgba(0,0,0,.6)] pointer-events-none">
               {category}
             </div>
           )}
