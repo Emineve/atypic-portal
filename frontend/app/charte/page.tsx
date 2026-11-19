@@ -49,7 +49,7 @@ const groups: Group[] = [
       },
       {
         q: 'Loftissime donne-t-il son avis sur les biens ?',
-        a: 'Jamais. Nous ne notons pas les biens, nous ne les commentons pas et nous ne disons pas lequel est le meilleur. Un bien répond à nos critères ou n’y répond pas : c’est la seule décision que nous prenons. Le reste vous appartient.',
+        a: 'Jamais. Nous ne notons pas les biens et nous ne disons pas lequel est le meilleur. En revanche, nous vous donnons des éléments de comparaison pour vous faire votre propre idée : le prix au mètre carré, le niveau des charges par rapport à la moyenne, le coût de l’énergie, la mensualité correspondante. Ce sont des repères chiffrés, les mêmes pour tous les biens. Le jugement vous appartient.',
       },
       {
         q: 'Loftissime peut-il refuser ou retirer une annonce ?',
