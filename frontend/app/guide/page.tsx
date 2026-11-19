@@ -40,6 +40,22 @@ export default function GuideIndex() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
+        {rest.length > 0 && (
+          <nav className="mb-10 md:mb-14 border-y border-stone-900 py-4 md:py-5" aria-label="Rubriques">
+            <p className="text-xs uppercase tracking-widest text-stone-500">Les rubriques</p>
+            <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-2">
+              {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
+                <li key={r.anchor}>
+                  <a href={`#${r.anchor}`} className="group inline-flex items-baseline gap-2 font-serif text-lg md:text-xl text-stone-900">
+                    <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
+                    <span className="font-sans text-sm text-stone-500">{articles.filter((a) => a.category === r.name).length}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+
         {first && (
           <Link href={`/guide/${first.slug}`} className="group grid md:grid-cols-2 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
             <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F4E7B5] flex items-center">
@@ -57,22 +73,6 @@ export default function GuideIndex() {
               </span>
             </div>
           </Link>
-        )}
-
-        {rest.length > 0 && (
-          <nav className="mt-14 md:mt-20 border-y border-stone-900 py-5 md:py-6" aria-label="Rubriques">
-            <p className="text-xs uppercase tracking-widest text-stone-500">Les rubriques</p>
-            <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
-              {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
-                <li key={r.anchor}>
-                  <a href={`#${r.anchor}`} className="group inline-flex items-baseline gap-2 font-serif text-xl md:text-2xl text-stone-900">
-                    <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
-                    <span className="font-sans text-sm text-stone-500">{articles.filter((a) => a.category === r.name).length}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
         )}
 
         {GUIDE_RUBRICS.map((r) => {
