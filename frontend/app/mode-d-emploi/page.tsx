@@ -1,6 +1,7 @@
 import Logo from '../Logo';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import ModeEmploiSteps from './ModeEmploiSteps';
 
 export const metadata = {
   title: 'Mode d’emploi · Loftissime',
@@ -8,35 +9,6 @@ export const metadata = {
     'Du premier clic à la visite : comment chercher, repérer et visiter un bien atypique sans passer à côté du vôtre.',
   alternates: { canonical: '/mode-d-emploi' },
 };
-
-// Trois moments de la recherche ; chaque ligne est une action, pas un conseil à lire.
-const STAGES: { title: string; steps: [string, string][] }[] = [
-  {
-    title: 'Je cherche',
-    steps: [
-      ['Lancer ma recherche, large d’abord', '/'],
-      ['Créer mon alerte', '/?alerte=1'],
-      ['Confier ma recherche à plusieurs agences', '/agence'],
-    ],
-  },
-  {
-    title: 'J’ai repéré un bien',
-    steps: [
-      ['Le garder dans mes favoris', '/'],
-      ['Me faire rappeler par l’agence', '/'],
-      ['Estimer ma mensualité', '/financement'],
-    ],
-  },
-  {
-    title: 'Je visite',
-    steps: [
-      ['Lire les questions à poser', '/guide/questions-a-poser-visite-bien-atypique'],
-      ['Savoir ce que j’achète : souplex, loft, péniche', '/guide'],
-      ['Repérer les travaux non déclarés', '/guide/travaux-non-declares'],
-      ['Imaginer ce que je pourrais en faire', '/inspiration'],
-    ],
-  },
-];
 
 export default function ModeEmploiPage() {
   return (
@@ -59,24 +31,7 @@ export default function ModeEmploiPage() {
       </header>
 
       <main className="max-w-3xl mx-auto px-6 pb-24 space-y-12 md:space-y-16">
-        {STAGES.map((s, i) => (
-          <section key={s.title}>
-            <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">
-              <span className="mr-3 text-stone-400" aria-hidden="true">{i + 1}</span>
-              {s.title}
-            </h2>
-            <ul className="mt-5 divide-y divide-stone-200 border-t border-stone-200">
-              {s.steps.map(([label, href]) => (
-                <li key={label}>
-                  <Link href={href} className="group flex items-center justify-between gap-4 py-4 text-lg text-stone-900">
-                    <span className="underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900 transition">{label}</span>
-                    <ArrowRight className="w-4 h-4 flex-none text-stone-400 group-hover:text-stone-900 transition" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+        <ModeEmploiSteps />
         <p className="text-sm text-stone-500">
           Envie de savoir pourquoi ce site existe ?{' '}
           <Link href="/qui-sommes-nous" className="underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
