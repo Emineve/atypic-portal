@@ -16,6 +16,11 @@ const TITLE = 'Loftissime · Lofts, ateliers et biens atypiques à vendre';
 const DESCRIPTION =
   'Loftissime, curateur de biens atypiques et premier hub d’annonces immobilières atypiques : lofts, ateliers d’artistes, rooftops et maisons d’architecte à vendre.';
 
+// Aperçu de partage (WhatsApp, SMS, réseaux) : la signature et la promesse du site
+const SHARE_TITLE = 'Loftissime · Curateur de biens atypiques';
+const SHARE_DESCRIPTION =
+  'Tous les biens atypiques des meilleures agences, réunis sur un seul site : lofts, ateliers d’artistes, rooftops, derniers étages.';
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
@@ -29,13 +34,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     siteName: SITE_NAME,
-    title: TITLE,
-    description: DESCRIPTION,
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
   },
 };
 

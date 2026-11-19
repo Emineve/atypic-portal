@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: `${title} · Loftissime`,
     description,
     alternates: { canonical: `/ville/${canonicalSlug}` },
-    openGraph: { type: 'website', url: `/ville/${canonicalSlug}`, title, description, images: ['/opengraph-image'] },
-    twitter: { card: 'summary_large_image', title, description, images: ['/opengraph-image'] },
+    openGraph: { type: 'website', url: `/ville/${canonicalSlug}`, title, description, images: ['/opengraph-image.png'] },
+    twitter: { card: 'summary_large_image', title, description, images: ['/opengraph-image.png'] },
   };
 }
 

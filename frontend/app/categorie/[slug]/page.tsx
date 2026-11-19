@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description,
     alternates: { canonical: `/categorie/${params.slug}` },
     robots: count ? undefined : { index: false, follow: true },
-    openGraph: { type: 'website', url: `/categorie/${params.slug}`, title, description, images: ['/opengraph-image'] },
-    twitter: { card: 'summary_large_image', title, description, images: ['/opengraph-image'] },
+    openGraph: { type: 'website', url: `/categorie/${params.slug}`, title, description, images: ['/opengraph-image.png'] },
+    twitter: { card: 'summary_large_image', title, description, images: ['/opengraph-image.png'] },
   };
 }
 

@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   const url = `/biens/${item.id}`;
   // Vignette de partage : la photo du bien, telle quelle. Une image légère est indispensable
   // pour que WhatsApp affiche l'aperçu (il ignore les images trop lourdes).
-  const image = item.cover_image_url || `${SITE_URL}/opengraph-image`;
+  const image = item.cover_image_url || `${SITE_URL}/opengraph-image.png`;
   return {
     title,
     description,
