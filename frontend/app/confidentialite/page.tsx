@@ -12,7 +12,8 @@ export default function Page() {
     <LegalPage title="Politique de confidentialité">
       <p>
         Cette page explique quelles données personnelles Loftissime collecte, pourquoi, et comment exercer vos droits.
-        Responsable du traitement : {EDITOR.name} ({EDITOR.email}).
+        Responsable du traitement : {EDITOR.name}, {EDITOR.address}. Pour toute question sur vos données : {EDITOR.privacyEmail}.
+        Loftissime se consulte sans compte : aucune donnée personnelle n'est demandée pour parcourir les annonces.
       </p>
 
       <h2>Données collectées</h2>
@@ -42,6 +43,11 @@ export default function Page() {
           votre email. Base légale : votre consentement.
         </li>
         <li>
+          <strong>Demande d'une agence pour diffuser ses annonces</strong> : nom de l'agence, nom de la personne, email, téléphone,
+          message. Finalité : répondre à la demande et gérer la relation avec l'agence. Base légale : mesures précontractuelles prises à
+          la demande de l'agence, puis exécution du contrat.
+        </li>
+        <li>
           <strong>Mesure d'audience</strong> : pages consultées, site d'origine du visiteur, favoris ajoutés, clics vers l'annonce
           d'origine, associés à un identifiant aléatoire propre à l'onglet de navigation. Cet identifiant n'est pas un cookie, ne permet pas
           de vous identifier et disparaît à la fermeture de l'onglet. Finalité : mesurer la fréquentation des annonces et en rendre compte
@@ -51,9 +57,16 @@ export default function Page() {
 
       <h2>Stockage sur votre appareil</h2>
       <p>
-        Loftissime ne dépose pas de cookie publicitaire. La liste de vos favoris est conservée sur votre appareil (stockage local du navigateur)
-        et n'est pas envoyée à un compte. Vous pouvez l'effacer en vidant les données du site dans votre navigateur.
+        Loftissime ne dépose aucun cookie publicitaire ni traceur tiers. Pour fonctionner sans compte, le site conserve quelques
+        informations dans le stockage de votre navigateur, sur votre appareil uniquement :
       </p>
+      <ul>
+        <li>la liste de vos favoris ;</li>
+        <li>les coordonnées et critères que vous avez déjà saisis (nom, email, téléphone, lieux, budget), pour ne pas vous les redemander d'un formulaire à l'autre ;</li>
+        <li>le fait qu'une alerte a déjà été créée, pour ne pas vous la reproposer ;</li>
+        <li>un identifiant aléatoire de visite, effacé à la fermeture de l'onglet, utilisé pour la mesure d'audience.</li>
+      </ul>
+      <p>Vous pouvez tout effacer à tout moment en supprimant les données du site dans les réglages de votre navigateur.</p>
 
       <h2>Destinataires</h2>
       <p>
@@ -61,20 +74,43 @@ export default function Page() {
         transmises qu'au professionnel concerné par votre demande : l'agence chargée du bien, l'agence à laquelle vous confiez votre
         recherche, le courtier, ou l'architecte auquel vous écrivez. Les données d'une alerte ne sont transmises à personne.
       </p>
-      <p>Vos données sont par ailleurs traitées par nos prestataires techniques (hébergement Vercel, base de données Supabase, envoi des emails Resend).</p>
+      <h2>Prestataires techniques et lieu d'hébergement</h2>
+      <ul>
+        <li>Supabase (base de données) : données hébergées en Irlande, dans l'Union européenne.</li>
+        <li>Vercel (hébergement du site) et Resend (envoi des emails) : sociétés établies aux États-Unis.</li>
+      </ul>
+      <p>
+        Ces prestataires n'agissent que sur instruction de Loftissime. Lorsque des données sont traitées hors de l'Union européenne, le
+        transfert est encadré par les garanties prévues par le RGPD (clauses contractuelles types de la Commission européenne ou
+        mécanisme équivalent).
+      </p>
 
       <h2>Durées de conservation</h2>
       <ul>
         <li>Alertes : jusqu'à ce que vous arrêtiez l'alerte.</li>
         <li>Demandes de rappel, recherches confiées, demandes de courtier, messages aux architectes, questions : 12 mois.</li>
+        <li>Échanges avec les agences : pendant la durée de la relation, puis 3 ans.</li>
         <li>Mesure d'audience : 25 mois maximum.</li>
       </ul>
 
       <h2>Vos droits</h2>
       <p>
         Vous pouvez demander l'accès à vos données, leur rectification, leur effacement, la limitation ou l'opposition au traitement, ainsi que
-        leur portabilité, en écrivant à {EDITOR.email}. Vous pouvez aussi introduire une réclamation auprès de la CNIL (cnil.fr).
+        leur portabilité, et retirer à tout moment un consentement donné, en écrivant à {EDITOR.privacyEmail}. Une réponse vous est
+        apportée dans un délai d'un mois. Vous pouvez aussi introduire une réclamation auprès de la CNIL (cnil.fr).
       </p>
+
+      <h2>Sécurité</h2>
+      <p>
+        Les échanges avec le site sont chiffrés. L'accès aux données est limité aux personnes qui en ont besoin pour traiter votre
+        demande, et aux professionnels que vous avez choisi de contacter.
+      </p>
+
+      <h2>Mineurs</h2>
+      <p>Les services qui supposent de laisser ses coordonnées sont réservés aux personnes majeures.</p>
+
+      <h2>Évolution de cette politique</h2>
+      <p>Cette page est mise à jour quand le site ou la réglementation évoluent. La date de la dernière mise à jour figure en haut de page.</p>
     </LegalPage>
   );
 }

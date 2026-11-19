@@ -67,6 +67,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
         <a href="/mentions-legales" className={link}>Mentions légales</a>
         <a href="/confidentialite" className={link}>Confidentialité</a>
         <a href="/cgu" className={link}>Conditions d&apos;utilisation</a>
+        <a href="/cgv" className={link}>Conditions de diffusion</a>
       </nav>
     </div>
   );
