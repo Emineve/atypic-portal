@@ -151,12 +151,6 @@ export default function ContactForm({
   const fieldLabel = 'block text-[10px] uppercase tracking-widest text-stone-500';
   // Une agence sans interlocuteur nommé : son nom n'est affiché qu'une fois
   const person = contactName && contactName.trim().toLowerCase() !== agency.trim().toLowerCase() ? contactName.trim() : '';
-  const initials = (person || agency)
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w.charAt(0).toUpperCase())
-    .join('');
 
   return (
     <div className="space-y-4">
@@ -166,14 +160,9 @@ export default function ContactForm({
         </div>
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
-          <div className="flex items-center gap-4 min-w-0">
-            <span className="h-12 w-12 flex-none bg-stone-900 text-white font-serif text-lg flex items-center justify-center" aria-hidden="true">
-              {initials}
-            </span>
-            <div className="min-w-0">
-              <p className="text-[10px] uppercase tracking-widest text-stone-500">{person ? agency : 'Votre contact pour ce bien'}</p>
-              <p className="mt-0.5 font-serif text-xl leading-tight text-stone-900 truncate">{person || agency}</p>
-            </div>
+          <div className="min-w-0">
+            <p className="text-[10px] uppercase tracking-widest text-stone-500">{person ? agency : 'Votre contact pour ce bien'}</p>
+            <p className="mt-0.5 font-serif text-xl leading-tight text-stone-900 truncate">{person || agency}</p>
           </div>
           {phone && (
             <div className={`mt-5 grid gap-2 ${wa ? 'grid-cols-2' : 'grid-cols-1'}`}>
