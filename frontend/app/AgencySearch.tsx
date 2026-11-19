@@ -27,13 +27,15 @@ export default function AgencySearch({ agency }: { agency: string }) {
         <button
           type="button"
           onClick={openDialog}
-          className="inline-flex min-h-[3rem] max-w-full items-center justify-center gap-2.5 border border-stone-900 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-wider leading-snug text-stone-900 hover:bg-stone-900 hover:text-white transition"
+          className="group inline-flex max-w-full items-start gap-2.5 text-left font-serif text-xl md:text-2xl leading-snug text-stone-900"
         >
-          <Send className="w-4 h-4 flex-none" />
-          <span>{label}</span>
+          <Send className="mt-1.5 w-4 h-4 flex-none text-stone-500 group-hover:text-stone-900 transition-colors" strokeWidth={1.5} />
+          <span className="underline underline-offset-[6px] decoration-1 decoration-stone-400 group-hover:decoration-stone-900 transition-colors">
+            {label}
+          </span>
         </button>
-        <p className="mt-3 max-w-xs text-[13px] leading-snug text-stone-500">
-          Décrivez ce que vous cherchez : {agency} vous recontacte dès qu&apos;un bien correspond, y compris avant sa mise en ligne.
+        <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone-500">
+          Décrivez ce que vous cherchez : l&apos;agence vous recontacte dès qu&apos;un bien correspond, y compris avant sa mise en ligne.
         </p>
       </div>
 
