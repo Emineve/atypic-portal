@@ -39,6 +39,90 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'revendre-un-bien-atypique',
+    art: 'ventes',
+    title: 'Un bien atypique se revend-il bien ?',
+    description:
+      'Moins d’acheteurs, mais plus motivés : la revente d’un bien singulier ne suit pas les règles habituelles. Ce qui la facilite, ce qui la freine, et comment y penser dès l’achat.',
+    category: 'Marché',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'C’est la question que l’on se pose une fois le coup de cœur passé : et le jour où je voudrai vendre ? Un bien atypique plaît beaucoup à peu de gens. Selon les cas, cela joue pour vous ou contre vous. La bonne nouvelle : une grande partie de la réponse se décide au moment de l’achat, et tient à des choses que vous pouvez vérifier.',
+    takeaways: [
+      'Un bien atypique s’adresse à moins d’acheteurs qu’un bien classique, mais à des acheteurs qui le cherchent précisément. Il peut se vendre plus cher, ou attendre plus longtemps.',
+      'Son prix est plus difficile à fixer, faute de biens comparables. C’est vrai pour vous à l’achat, et ce le sera pour votre acheteur.',
+      'Ce qui se revend bien : une singularité que l’on peut nommer, un dossier en règle, et les qualités que tout le monde cherche, comme la lumière ou un extérieur.',
+      'Ce qui se revend mal : une irrégularité jamais réglée, un défaut que l’on a pris pour du caractère, un aménagement trop personnel.',
+    ],
+    sections: [
+      {
+        title: 'Moins d’acheteurs, est-ce un problème ?',
+        paragraphs: [
+          'Pas forcément. Un courtier le résume ainsi : un bien atypique peut valoir 30 % de plus qu’un bien standard comparable pour un acheteur passionné, ou 30 % de moins si la revente prend des mois faute d’acheteur correspondant. Ces chiffres sont une image, pas une statistique, mais l’idée est juste : l’écart possible est plus grand dans les deux sens.',
+          'Les motivations des acheteurs vont dans le même sens. Dans la dernière étude détaillée du réseau Espaces Atypiques, le premier motif d’achat était le coup de cœur pour le bien, à égalité avec le besoin d’espace. Un acheteur qui a un coup de cœur négocie moins. Encore faut-il qu’il passe.',
+        ],
+      },
+      {
+        title: 'Pourquoi le prix est-il si difficile à fixer ?',
+        paragraphs: [
+          'Parce qu’il manque des points de comparaison. Un trois-pièces se compare aux trois-pièces vendus dans la rue. Un atelier avec verrière n’a pas d’équivalent à cinq cents mètres. Les professionnels retiennent donc un faisceau de critères : emplacement, état, surface, qualité de l’architecture, potentiel, coût des travaux, performance énergétique et rareté.',
+          'Conséquence pratique : méfiez-vous d’un prix au mètre carré appliqué mécaniquement, à l’achat comme à la revente. Notre article sur la négociation d’un bien atypique détaille sur quoi s’appuyer.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui facilite la revente ?',
+        list: [
+          'Une singularité claire : une verrière, une terrasse, une hauteur, une signature. Ce que l’on sait nommer, on sait le vendre.',
+          'Un dossier complet : autorisations d’urbanisme, votes de la copropriété, plans, diagnostics, factures. C’est ce que demandera le notaire de votre acheteur.',
+          'Les qualités universelles : lumière, calme, extérieur, emplacement. Elles élargissent le nombre d’acheteurs.',
+          'Un bien financable : destination d’habitation établie, surface officielle cohérente.',
+          'Une histoire : qui a construit, transformé, habité. Elle fait partie de ce que l’on achète.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui la freine ?',
+        list: [
+          'Une irrégularité : travaux non déclarés, local qui n’est pas officiellement un logement, terrasse sans droit clair.',
+          'Un défaut structurel présenté comme du caractère : pas de lumière, humidité, bruit, plan impossible à meubler.',
+          'Un diagnostic de performance énergétique très défavorable.',
+          'Des aménagements trop personnels, qui obligent l’acheteur à tout refaire.',
+          'Des charges ou des travaux de copropriété lourds à venir.',
+        ],
+      },
+      {
+        title: 'Comment y penser dès l’achat ?',
+        paragraphs: [
+          'Posez-vous la question que se posera votre futur acheteur : qu’est-ce qui manque au dossier ? Tout ce que vous obtenez du vendeur aujourd’hui, vous n’aurez pas à le reconstituer dans dix ans. Et tout ce que vous régularisez pendant que vous êtes propriétaire prend de la valeur.',
+          'Gardez enfin une trace de vos propres travaux : autorisations, factures, attestations d’assurance des entreprises. C’est le premier document que l’on vous demandera.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Un bien atypique est-il plus difficile à revendre ?',
+        a: 'Il s’adresse à moins d’acheteurs, donc la vente peut être plus longue. Mais ces acheteurs le cherchent précisément et négocient souvent moins. Un bien en règle, lumineux et bien situé se revend bien.',
+      },
+      {
+        q: 'Un bien atypique prend-il plus de valeur qu’un bien classique ?',
+        a: 'Rien ne permet de l’affirmer en général. Sa rareté le protège quand elle correspond à ce que les acheteurs recherchent, comme un extérieur ou un volume. Elle ne compense pas un défaut ou une irrégularité.',
+      },
+      {
+        q: 'Comment estimer un bien atypique ?',
+        a: 'En croisant plusieurs critères plutôt qu’un simple prix au mètre carré : emplacement, état, surface, architecture, rareté, travaux, performance énergétique. Faute de biens comparables, l’avis d’un professionnel habitué à ce type de biens est utile.',
+      },
+    ],
+    sources: [
+      { label: 'Bourse des crédits, « Bien immobilier atypique : les vérifications avant d’acheter »', url: 'https://www.boursedescredits.com/guide-immobilier-atypique-verifications-acheter-6182.php' },
+      { label: 'SeLoger, « Acheter un bien atypique : mode d’emploi »', url: 'https://edito.seloger.com/conseils-d-experts/acheter/acheter-un-bien-atypique-mode-d-emploi-article-16977.html' },
+      { label: 'Optimhome, « Vendre un bien atypique : loft, moulin, corps de ferme »', url: 'https://www.optimhome.com/fr/blog/vendre-un-bien-atypique-loft-moulin-corps-de-ferme-etc' },
+      { label: 'Laforêt, « Comment estimer un bien atypique ? »', url: 'https://www.laforet.com/blog/vente/comment-estimer-un-bien-atypique' },
+      { label: 'PAP, « Logements atypiques : qui les achète ? » (étude Espaces Atypiques, ventes 2017)', url: 'https://www.pap.fr/actualites/logements-atypiques-qui-les-achetent/a20331' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'qu-est-ce-qu-un-bien-atypique',
     art: 'marche',
     title: 'Qu’est-ce qu’un bien atypique, et qui en achète ?',
