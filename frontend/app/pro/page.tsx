@@ -60,7 +60,7 @@ export default function ProPage() {
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
         <p className="text-xs uppercase tracking-widest text-stone-500">Espace agences</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
-          Vos biens atypiques, devant ceux <span className="italic text-stone-500">qui ne cherchent que cela.</span>
+          Vos biens atypiques méritent <span className="italic text-stone-500">des acheteurs qui les cherchent.</span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
           Lofts, ateliers d&apos;artistes, rooftops et bien d&apos;autres lieux singuliers : Loftissime est le premier hub d&apos;annonces immobilières atypiques.
