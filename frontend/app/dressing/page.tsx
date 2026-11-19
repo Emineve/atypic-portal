@@ -24,15 +24,15 @@ export default function DressingPage() {
 
       <main className="max-w-4xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-6 md:gap-8">
         <TeeCard
-          logo
           name="Le superlatif"
+          words={['loftisssssime.']}
           pitch="Le nom, sur une ligne, en noir. -issime : le plus haut degré, à étirer autant qu’on veut."
         />
         <TeeCard
           first="Blanc"
           name="Le singulier"
-          lines={['Première personne', 'du singulier.']}
-          pitch="Une phrase noire, une leçon de grammaire, et une façon d’habiter."
+          words={['singulièrement', 'vôtre.']}
+          pitch="Deux mots, en noir. Une formule de politesse, et une façon d’habiter."
         />
       </main>
     </div>

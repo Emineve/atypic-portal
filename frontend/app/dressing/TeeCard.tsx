@@ -14,14 +14,14 @@ const COLORS = [
   { name: 'Blanc', value: '#ffffff' },
 ];
 
-export default function TeeCard({ name, lines = [], logo = false, pitch, first = 'Bleu' }: { name: string; lines?: string[]; logo?: boolean; pitch: string; first?: string }) {
+export default function TeeCard({ name, words, pitch, first = 'Bleu' }: { name: string; words: string[]; pitch: string; first?: string }) {
   const [color, setColor] = useState(COLORS.find((c) => c.name === first) || COLORS[0]);
   const [size, setSize] = useState('M');
   const [asked, setAsked] = useState(false);
   return (
     <article className="border border-stone-300 bg-white">
       <div className="flex items-center justify-center bg-[#F4E7B5] py-8">
-        <TeeShirt lines={lines} logo={logo} color={color.value} className="h-64 w-64 md:h-72 md:w-72" />
+        <TeeShirt words={words} color={color.value} className="h-64 w-64 md:h-72 md:w-72" />
       </div>
       <div className="p-6 md:p-8">
         <p className="text-xs uppercase tracking-widest text-stone-500">Tee-shirt · Bientôt disponible</p>
