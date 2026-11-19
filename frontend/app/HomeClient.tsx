@@ -459,6 +459,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               className="inline-flex h-10 items-center gap-2 px-3 sm:px-4 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-stone-800 transition"
             >
               <Bell className="w-4 h-4 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
+              <span className="md:hidden">Alerte</span>
               <span className="hidden md:inline">Créer mon alerte</span>
             </button>
             <button
@@ -1073,22 +1074,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         </div>
         <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
       </footer>
-
-      {scrolled && !footerVisible && !onlyFavs && !showFilters && !alertOpen && !favContactOpen && !loading && !errorMessage && (
-        <div
-          className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
-          style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
-        >
-          <button
-            type="button"
-            onClick={() => openAlert('flottant')}
-            className="pointer-events-auto inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 h-12 rounded-full shadow-lg hover:bg-stone-800 transition"
-          >
-            <Bell className="w-4 h-4" />
-            <span>Créer mon alerte</span>
-          </button>
-        </div>
-      )}
 
       {onlyFavs && visible.length > 0 && !footerVisible && !favContactOpen && (
         <div
