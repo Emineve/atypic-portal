@@ -1,42 +1,57 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import Logo from '../Logo';
-import GuideArt from '../guide/GuideArt';
 
 export const metadata = {
-  title: 'Qui sommes-nous · Loftissime',
+  title: 'Manifeste · Loftissime',
   description:
-    'Loftissime réunit sur un seul site les biens qui ne ressemblent à aucun autre : lofts, ateliers d’artistes, derniers étages, maisons d’architecte, toutes agences confondues.',
+    'Pour ceux qui ne veulent pas habiter comme tout le monde : pourquoi Loftissime réunit les biens atypiques à vendre et accompagne ceux qui les cherchent.',
   alternates: { canonical: '/qui-sommes-nous' },
 };
 
-const PROMISES = [
+// Le manifeste : une conviction par article, quelques lignes pour la tenir, parfois un lien pour agir.
+const ARTICLES: { title: string; text: string; href?: string; link?: string }[] = [
   {
-    n: '01',
-    title: 'Tout voir au même endroit',
-    text: 'Les biens atypiques sont éparpillés : un loft chez une agence, un atelier chez une autre, un dernier étage perdu sur un site généraliste. Loftissime les réunit, toutes agences confondues. Vous ne passez plus vos soirées d’un site à l’autre.',
+    title: 'Un lieu n’est pas un nombre de pièces.',
+    text: 'Personne ne tombe amoureux d’un « trois-pièces, 72 m², deuxième étage ». On tombe amoureux d’une verrière, d’une hauteur sous plafond, d’une lumière à cinq heures du soir. C’est cela que nous montrons.',
+  },
+  {
+    title: 'Le lieu que vous cherchez existe.',
+    text: 'Il est seulement mal rangé. Un loft chez une agence, un atelier d’artiste chez une autre, un dernier étage perdu au milieu d’un site généraliste. Nous les réunissons au même endroit, toutes agences confondues.',
     href: '/',
     link: 'Voir tous les biens',
   },
   {
-    n: '02',
-    title: 'Être prévenu avant les autres',
-    text: 'Un bien rare ne reste pas longtemps en ligne. Dites-nous ce que vous cherchez : vous recevez un e-mail dès qu’un nouveau bien correspond. Vous n’avez plus à revenir vérifier.',
+    title: 'Les lieux rares n’attendent pas.',
+    text: 'Alors nous veillons à votre place. Dites-nous ce que vous cherchez : vous êtes prévenu le jour où il arrive, pas trois semaines après.',
     href: '/?alerte=1',
     link: 'Créer mon alerte',
   },
   {
-    n: '03',
-    title: 'Acheter en connaissance de cause',
-    text: 'Un souplex, un loft ou une péniche ne s’achètent pas comme un appartement classique. Les fiches détaillent le coût réel du projet, frais de notaire compris, et nos articles expliquent ce qu’il faut vérifier avant de signer.',
+    title: 'Un coup de cœur n’empêche pas d’y voir clair.',
+    text: 'Un souplex, une péniche, un ancien atelier ne s’achètent pas comme un appartement classique. Nous avons créé L’état des lieux pour répondre aux questions que personne ne vous pose avant de signer.',
     href: '/guide',
     link: 'Lire l’état des lieux',
   },
+  {
+    title: 'Il faut pouvoir imaginer avant de choisir.',
+    text: 'Un grand volume brut intimide autant qu’il attire. Nous avons créé Inspiration pour montrer ce que des architectes en font, et vous donner des idées pour le vôtre. Sans projet, on peut aussi venir simplement rêver.',
+    href: '/inspiration',
+    link: 'Découvrir Inspiration',
+  },
+  {
+    title: 'Une seule exigence : la singularité.',
+    text: 'Ni limite de prix, ni surface minimale. Un bien entre ici s’il a quelque chose que les autres n’ont pas : une autre vie avant, un volume, un dehors, une situation rare, une signature, une histoire.',
+    href: '/charte',
+    link: 'Ce que nous publions, et ce que nous ne publions pas',
+  },
+  {
+    title: 'Nous ne vendons rien.',
+    text: 'Loftissime n’est pas une agence. Chaque annonce vous met en relation avec le professionnel qui connaît le bien. Vos coordonnées ne vont qu’à lui, et seulement quand vous le demandez.',
+  },
 ];
 
-const CRITERIA = ['Une autre vie avant', 'Un volume', 'Un dehors', 'Une situation rare', 'Une signature', 'Une histoire'];
-
-export default function AboutPage() {
+export default function ManifestoPage() {
   const link =
     'inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
   return (
@@ -51,164 +66,42 @@ export default function AboutPage() {
         </div>
       </nav>
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">Qui sommes-nous</p>
-        <h1 className="mt-4 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-          Le lieu qui ne ressemble à aucun autre <span className="italic text-stone-500">existe. Trouvons-le.</span>
+      <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
+        <p className="text-xs uppercase tracking-widest text-stone-500">Manifeste</p>
+        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+          Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
         </h1>
-        <p className="mt-6 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
-          Une ancienne imprimerie devenue loft. Un atelier d&apos;artiste sous sa verrière. Un dernier étage avec le ciel pour
-          voisin. Loftissime réunit sur un seul site les biens atypiques à vendre, pour que vous ne passiez pas à côté du vôtre.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <Link
-            href="/"
-            className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
-          >
-            Voir tous les biens
-          </Link>
-          <Link href="/?alerte=1" className={link}>
-            Créer mon alerte
-          </Link>
-        </div>
       </header>
 
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="overflow-hidden border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
-          <GuideArt art="loft" className="block w-full aspect-[16/9] md:aspect-[12/4]" />
-        </div>
-      </div>
+      <main className="max-w-4xl mx-auto px-6 pb-24">
+        <ol>
+          {ARTICLES.map((a, i) => (
+            <li key={a.title} className="grid md:grid-cols-[5rem_1fr] gap-x-6 border-t border-stone-900 py-10 md:py-14">
+              <span className="font-serif text-xl text-stone-400 md:pt-2" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h2 className="mt-2 md:mt-0 font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900">{a.title}</h2>
+                <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{a.text}</p>
+                {a.href && a.link && (
+                  <p className="mt-5">
+                    <Link href={a.href} className={link}>
+                      {a.link}
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
 
-      <main className="max-w-6xl mx-auto px-6 pb-20">
-        <section className="mt-16 md:mt-24">
-          <h2 className="max-w-3xl font-serif text-3xl md:text-4xl leading-tight text-stone-900">Ce que Loftissime change pour vous</h2>
-          <ol className="mt-8 grid gap-4 md:grid-cols-3">
-            {PROMISES.map((p) => (
-              <li key={p.n} className="flex flex-col border border-stone-300 bg-white p-6 md:p-7">
-                <span className="font-serif text-4xl leading-none text-stone-300">{p.n}</span>
-                <h3 className="mt-5 font-serif text-2xl leading-snug text-stone-900">{p.title}</h3>
-                <p className="mt-3 flex-1 text-stone-600 leading-relaxed">{p.text}</p>
-                <p className="mt-5">
-                  <Link href={p.href} className={link}>
-                    {p.link}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="mt-16 md:mt-24">
-          <h2 className="max-w-3xl font-serif text-3xl md:text-4xl leading-tight text-stone-900">
-            Trouver l&apos;annonce ne suffit pas. <span className="italic text-stone-500">Nous vous accompagnons.</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
-            Un bien atypique pose des questions qu&apos;un appartement classique ne pose pas. Nous avons créé deux rubriques
-            pour y répondre : l&apos;une pour décider, l&apos;autre pour se projeter.
+        <section className="border-t border-stone-900 pt-14 md:pt-24">
+          <p className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
+            Un lieu qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
+            <span className="italic text-stone-500">Trouvons le vôtre.</span>
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <Link href="/guide" className="group flex flex-col border border-stone-300 bg-white">
-              <div className="overflow-hidden border-b border-stone-300">
-                <GuideArt art="visite" className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
-              </div>
-              <div className="flex flex-1 flex-col p-6 md:p-7">
-                <p className="text-[10px] uppercase tracking-widest text-stone-500">Pour décider</p>
-                <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900">L&apos;état des lieux</h3>
-                <p className="mt-3 flex-1 text-stone-600 leading-relaxed">
-                  Un souplex est-il vraiment habitable ? Une mezzanine compte-t-elle dans la surface ? Quelles questions poser
-                  pendant la visite ? Chaque semaine, un article répond à une question précise, sources à l&apos;appui, pour que
-                  vous sachiez exactement ce que vous achetez.
-                </p>
-                <p className="mt-5">
-                  <span className={link}>
-                    Lire les articles
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </p>
-              </div>
-            </Link>
-            <Link href="/inspiration" className="group flex flex-col border border-stone-300 bg-white">
-              <div className="overflow-hidden border-b border-stone-300">
-                <GuideArt art="mezzanine" className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
-              </div>
-              <div className="flex flex-1 flex-col p-6 md:p-7">
-                <p className="text-[10px] uppercase tracking-widest text-stone-500">Pour se projeter</p>
-                <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900">Inspiration</h3>
-                <p className="mt-3 flex-1 text-stone-600 leading-relaxed">
-                  Un grand volume brut peut intimider. Pour vous aider à imaginer ce qu&apos;il peut devenir, nous présentons des
-                  architectes et leurs réalisations : des lieux atypiques transformés, à regarder comme autant d&apos;idées pour
-                  le vôtre. Et si vous n&apos;avez pas de projet, venez simplement rêver.
-                </p>
-                <p className="mt-5">
-                  <span className={link}>
-                    Découvrir l&apos;architecte à la une
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </p>
-              </div>
-            </Link>
-          </div>
-        </section>
-
-        <section className="mt-16 md:mt-24 border-y border-stone-900 py-12 md:py-16">
-          <p className="max-w-4xl font-serif text-3xl md:text-5xl tracking-tight leading-[1.12] text-stone-900">
-            On ne vit pas de la même façon sous une verrière d&apos;atelier.{' '}
-            <span className="italic text-stone-500">Un lieu qui a du caractère en donne à ceux qui l&apos;habitent.</span>
-          </p>
-          <p className="mt-6 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
-            Nous sommes des passionnés d&apos;architecture et de design, convaincus qu&apos;un lieu singulier rend la vie plus
-            belle. Loftissime est le site que nous aurions aimé avoir pour chercher le nôtre.
-          </p>
-        </section>
-
-        <section className="mt-16 md:mt-24 grid gap-x-16 gap-y-8 md:grid-cols-2">
-          <div>
-            <h2 className="font-serif text-3xl md:text-4xl leading-tight text-stone-900">Une seule exigence : la singularité</h2>
-          </div>
-          <div>
-            <p className="text-stone-600 text-lg font-light leading-relaxed">
-              Pas de limite de prix, ni de surface. Pour entrer sur Loftissime, un bien doit avoir quelque chose que les autres
-              n&apos;ont pas.
-            </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {CRITERIA.map((c) => (
-                <li key={c} className="inline-flex items-center h-9 px-4 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
-                  {c}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6">
-              <Link href="/charte" className={link}>
-                Ce que nous publions, et ce que nous ne publions pas
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-16 md:mt-24">
-          <div className="border border-stone-300 bg-white p-6 md:p-8">
-            <h2 className="font-serif text-2xl leading-snug text-stone-900">Loftissime n&apos;est pas une agence.</h2>
-            <p className="mt-3 max-w-3xl text-stone-600 leading-relaxed">
-              Nous ne vendons aucun bien et n&apos;intervenons dans aucune transaction. Chaque annonce vous met en relation
-              avec l&apos;agence ou le négociateur qui connaît le bien. Vos coordonnées ne sont transmises qu&apos;à lui, et
-              seulement quand vous le demandez.
-            </p>
-            <p className="mt-5">
-              <Link href="/pro" className={link}>
-                Vous êtes une agence ? Diffusez vos biens
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-16 md:mt-24 text-center">
-          <h2 className="mx-auto max-w-2xl font-serif text-3xl md:text-4xl leading-tight text-stone-900">
-            Votre prochain lieu de vie est peut-être déjà en ligne.
-          </h2>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
               href="/"
               className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
@@ -219,6 +112,13 @@ export default function AboutPage() {
               Créer mon alerte
             </Link>
           </div>
+          <p className="mt-14 text-sm text-stone-500">
+            Vous êtes une agence ?{' '}
+            <Link href="/pro" className="underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
+              Diffusez vos biens sur Loftissime
+            </Link>
+            .
+          </p>
         </section>
       </main>
     </div>

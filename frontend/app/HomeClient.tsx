@@ -508,7 +508,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 ['/guide', 'L’état des lieux', 'Ce qu’il faut savoir avant d’acheter'],
                 ['/inspiration', 'Inspiration', 'Un architecte à la une'],
                 ['/financement', 'Financement', 'Estimer ma mensualité'],
-                ['/qui-sommes-nous', 'Qui sommes-nous', ''],
+                ['/qui-sommes-nous', 'Manifeste', 'Pourquoi Loftissime'],
                 ['/charte', 'Questions fréquentes', ''],
               ].map(([href, label, sub]) => (
                 <a key={href} href={href} className="block py-4 border-b border-stone-200">
