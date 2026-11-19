@@ -39,6 +39,109 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'travailler-chez-soi-usage-mixte',
+    art: 'charges',
+    title: 'Vivre et travailler au même endroit : ce que permet votre logement',
+    description:
+      'Atelier, cabinet, studio photo chez soi : le loft s’y prête. Règlement de copropriété, clause d’habitation bourgeoise, changement d’usage : ce qu’il faut vérifier avant d’acheter.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Un grand volume, une belle lumière, une entrée indépendante : beaucoup d’acheteurs de lofts et d’ateliers veulent y travailler autant qu’y vivre. Architecte, photographe, thérapeute, artisan d’art. La loi le permet largement. Mais deux textes peuvent s’y opposer : le règlement de votre copropriété, et dans les grandes villes les règles sur l’usage des logements.',
+    takeaways: [
+      'On peut exercer une activité chez soi dès lors que ni le règlement de copropriété, ni le bail, ni la loi ne s’y opposent.',
+      'Tout se joue dans une clause du règlement : « habitation bourgeoise » simple, qui tolère les professions libérales, ou « exclusivement bourgeoise », qui interdit toute activité.',
+      'Dans les grandes villes, travailler chez soi peut constituer un changement d’usage soumis à autorisation. Une tolérance existe en étage quand on ne reçoit ni clients ni marchandises.',
+      'Recevoir du public, employer du monde ou poser une plaque change la donne : demandez l’accord de la copropriété avant.',
+    ],
+    sections: [
+      {
+        title: 'A-t-on le droit de travailler chez soi ?',
+        paragraphs: [
+          'Oui, en principe. Service-Public le rappelle : il faut vérifier que le règlement de copropriété, ou le bail si l’on est locataire, autorise l’exercice d’une activité professionnelle. Travailler seul sur un ordinateur, sans visite ni nuisance, ne pose en pratique aucune difficulté.',
+          'La question devient sérieuse dès que l’activité se voit : des clients qui montent, des livraisons, du bruit, une plaque sur la porte.',
+        ],
+      },
+      {
+        title: 'Que dit le règlement de copropriété ?',
+        paragraphs: [
+          'Cherchez la clause qui fixe la destination de l’immeuble. Deux formules reviennent.',
+        ],
+        list: [
+          'La clause d’habitation bourgeoise simple : elle interdit les activités commerciales mais permet l’exercice d’une profession libérale.',
+          'La clause d’habitation exclusivement bourgeoise : elle interdit toute activité professionnelle, quelle qu’elle soit. Il est possible de demander sa modification, mais c’est un vote difficile à obtenir.',
+          'L’immeuble à usage mixte : le règlement admet habitation, bureaux ou ateliers. C’est le cas de nombreux anciens bâtiments d’activité, et c’est un vrai atout si vous comptez y travailler.',
+        ],
+      },
+      {
+        title: 'Faut-il une autorisation de la mairie ?',
+        paragraphs: [
+          'Dans les communes où le logement est rare, dont Paris, utiliser un logement pour une activité peut être un changement d’usage, soumis à autorisation. L’exercer chez soi n’en constitue pas automatiquement un.',
+          'La loi prévoit une tolérance pour un logement situé en étage : aucune autorisation n’est demandée si c’est votre résidence principale, si l’activité n’est exercée que par les occupants du logement, et si vous n’y recevez ni clientèle ni marchandises. Au rez-de-chaussée, les règles sont différentes et plus souples sur l’accueil. Dès que vous recevez du public en étage, renseignez-vous auprès de la mairie avant de vous installer.',
+        ],
+      },
+      {
+        title: 'Et pour une plaque, des clients, un salarié ?',
+        list: [
+          'La plaque professionnelle : attendez l’autorisation de la copropriété avant de la poser à l’entrée de l’immeuble.',
+          'L’accueil de clients : vérifiez le règlement, et l’assurance. Votre contrat d’habitation ne couvre pas forcément une activité.',
+          'Un salarié ou un associé sur place : la tolérance prévue pour le travail à domicile ne s’applique plus.',
+          'Le bruit et les allées et venues : même autorisée, une activité qui gêne les voisins peut être contestée.',
+        ],
+      },
+      {
+        title: 'Ce que cela change pour un achat',
+        paragraphs: [
+          'Si travailler sur place fait partie de votre projet, traitez-le comme un critère d’achat, pas comme un détail à régler ensuite. Un lot désigné « atelier » ou « local professionnel » dans un immeuble mixte vous donnera plus de liberté qu’un bel appartement dans un immeuble strictement bourgeois. À l’inverse, vérifiez qu’un local vendu comme lieu de vie et de travail est bien, aussi, un logement.',
+        ],
+        list: [
+          'Demandez le règlement de copropriété avant l’offre, et lisez la clause de destination.',
+          'Posez la question par écrit à l’agence : l’activité envisagée est-elle déjà exercée dans l’immeuble ?',
+          'Interrogez la mairie si vous comptez recevoir du public.',
+          'Prévenez votre assureur et votre banque de l’usage prévu.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, si vous comptez y travailler',
+      items: [
+        'J’ai lu la clause de destination du règlement de copropriété.',
+        'Je sais si mon activité est libérale, commerciale ou artisanale.',
+        'Je sais si je recevrai des clients ou des marchandises.',
+        'J’ai interrogé la mairie sur le changement d’usage si nécessaire.',
+        'Mon assurance couvre l’activité.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on exercer une profession libérale dans son appartement ?',
+        a: 'Oui si le règlement de copropriété ne l’interdit pas. Une clause d’habitation bourgeoise simple le permet ; une clause d’habitation exclusivement bourgeoise l’interdit.',
+      },
+      {
+        q: 'Qu’est-ce qu’une clause d’habitation bourgeoise ?',
+        a: 'Une clause du règlement de copropriété qui réserve l’immeuble à l’habitation. Dans sa version simple, elle tolère les professions libérales. Dans sa version exclusive, elle interdit toute activité professionnelle.',
+      },
+      {
+        q: 'Faut-il une autorisation pour recevoir des clients chez soi ?',
+        a: 'Dans les grandes villes, recevoir de la clientèle dans un logement en étage peut constituer un changement d’usage soumis à autorisation de la mairie. Vérifiez aussi le règlement de copropriété.',
+      },
+      {
+        q: 'Peut-on domicilier son entreprise chez soi ?',
+        a: 'La domiciliation, c’est-à-dire l’adresse du siège, est une question distincte de l’exercice de l’activité. Elle est en général plus largement admise, mais le règlement de copropriété ou le bail peuvent l’encadrer.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public, « Exercice d’une activité professionnelle à domicile »', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F39670' },
+      { label: 'Justice.fr, « Peut-on transformer un logement en local professionnel ? »', url: 'https://www.justice.fr/fiche/on-transformer-logement-local-professionnel' },
+      { label: 'Congrès des notaires, « Le télétravail dans son logement »', url: 'https://www.rapport-congresdesnotaires.fr/2023-rapport-du-119e-congres/le-teletravail-dans-son-logement' },
+      { label: 'Propulse by CA, « Activité professionnelle à domicile : conditions pour exercer »', url: 'https://propulsebyca.fr/local-commercial/activite-domicile/conditions' },
+      { label: 'SeLoger, « Qu’est-ce que la clause d’habitation bourgeoise dans une copropriété ? »', url: 'https://edito.seloger.com/conseils-d-experts/copropriete/location-qu-est-ce-que-la-clause-d-habitation-bourgeoise-dans-une-copropriete-article-5032.html' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'amiante-plomb-anciens-ateliers',
     art: 'annonce',
     title: 'Amiante et plomb : ce que cachent parfois les anciens ateliers',
