@@ -126,9 +126,11 @@ export default function SiteHeaderClient({
               <a href="/?favoris=1" className="flex items-center justify-between gap-3 py-4 border-b border-stone-200">
                 <span className="flex items-center gap-3 font-serif text-2xl text-stone-900">
                   <Heart className={`w-5 h-5 ${favs > 0 ? 'fill-red-600 text-red-600' : 'text-stone-400'}`} strokeWidth={1.5} />
-                  Mes favoris
+                  <span>
+                    Mes favoris
+                    {favs > 0 && <span className="text-stone-500"> ({favs})</span>}
+                  </span>
                 </span>
-                {favs > 0 && <span className="text-sm text-stone-500">{favs}</span>}
               </a>
               {LINKS.map(({ href, label, sub, Icon }) => (
                 <a key={href} href={href} className="flex gap-3 py-4 border-b border-stone-200">

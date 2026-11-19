@@ -508,9 +508,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               >
                 <span className="flex items-center gap-3 font-serif text-2xl text-stone-900">
                   <Heart className={`w-5 h-5 ${favorites.length > 0 ? 'fill-red-600 text-red-600' : 'text-stone-400'}`} strokeWidth={1.5} />
-                  Mes favoris
+                  <span>
+                    Mes favoris
+                    {favorites.length > 0 && <span className="text-stone-500"> ({favorites.length})</span>}
+                  </span>
                 </span>
-                {favorites.length > 0 && <span className="text-sm text-stone-500">{favorites.length}</span>}
               </button>
               {[
                 { href: '/guide', label: 'État des lieux', sub: 'Ce qu’il faut savoir avant d’acheter', Icon: BookOpen },
