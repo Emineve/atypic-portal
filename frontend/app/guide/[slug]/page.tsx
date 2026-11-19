@@ -157,7 +157,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
                 </li>
               ))}
             </ul>
-            <ChecklistShare title={`${a.checklist.title} (${a.title})`} items={a.checklist.items} url={url} />
+            <ChecklistShare title={a.checklist.title} items={a.checklist.items} url={url} />
           </section>
         )}
 

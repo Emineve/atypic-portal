@@ -8,12 +8,14 @@ import { Check, Share } from 'lucide-react';
 // Sur un ordinateur qui n'a pas ce menu, la liste est copiée : il reste à la coller.
 export default function ChecklistShare({ title, items, url }: { title: string; items: string[]; url: string }) {
   const [state, setState] = useState<'idle' | 'copied' | 'error'>('idle');
-  const text = `${title}\n\n${items.map((it) => `☐ ${it}`).join('\n')}\n\nSource : Loftissime, ${url}`;
+  // La première ligne devient le titre de la note. Une ligne par point, sans symbole devant :
+  // dans Notes, il suffit de sélectionner les lignes et de toucher l'icône de liste pour obtenir de vraies cases à cocher.
+  const text = `${title}\n${items.join('\n')}\n\nSource : Loftissime, ${url}`;
 
   async function send() {
     try {
       if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
-        await navigator.share({ title, text });
+        await navigator.share({ text });
         return;
       }
       await navigator.clipboard.writeText(text);
