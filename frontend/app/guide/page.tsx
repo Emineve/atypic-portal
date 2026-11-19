@@ -1,3 +1,4 @@
+import AlertBand, { ALERT_BUTTON } from '../AlertBand';
 import Crumbs from '../Crumbs';
 import GuideSearch from './GuideSearch';
 import { typo } from '../../lib/typo';
@@ -157,14 +158,11 @@ export default async function GuideIndex() {
           Ces articles donnent une information générale. Ils ne remplacent ni le conseil d&apos;un notaire, ni l&apos;avis d&apos;un professionnel du bâtiment sur un bien donné.
         </p>
 
-        <section data-alert-cta className="mt-14 md:mt-20 rounded-[14px] border border-stone-900 bg-white p-6 md:p-10 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
-          <div>
-            <h2 className="font-serif text-2xl md:text-3xl leading-snug">Les biens rares partent vite. Soyez le premier informé.</h2>
-          </div>
-          <Link href="/?alerte=1" className="mt-6 md:mt-0 inline-flex h-12 flex-none items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
+        <AlertBand title="Les biens rares partent vite. Soyez le premier informé." className="mt-14 md:mt-20">
+          <Link href="/?alerte=1" className={ALERT_BUTTON}>
             Créer mon alerte
           </Link>
-        </section>
+        </AlertBand>
       </main>
     </div>
   );

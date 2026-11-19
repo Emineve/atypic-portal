@@ -1,9 +1,11 @@
+import AlertBand, { ALERT_BUTTON } from '../../AlertBand';
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, ArrowUpRight, Check, Search } from 'lucide-react';
 import GuideArt from '../GuideArt';
 import ChecklistShare from '../ChecklistShare';
+import Checklist from '../Checklist';
 import ArticleShare from '../ArticleShare';
 import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
@@ -149,14 +151,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         {a.checklist && (
           <section className="mt-10 rounded-[14px] border border-stone-900 bg-white p-6">
             <h2 className="font-serif text-2xl leading-snug text-stone-900">{typo(a.checklist.title)}</h2>
-            <ul className="mt-4 space-y-3">
-              {a.checklist.items.map((it) => (
-                <li key={it} className="flex items-start gap-3 text-stone-700 leading-relaxed">
-                  <span className="mt-1.5 h-3.5 w-3.5 flex-none border border-stone-900" aria-hidden="true" />
-                  {typo(it)}
-                </li>
-              ))}
-            </ul>
+            <Checklist slug={a.slug} items={a.checklist.items} />
             <ChecklistShare title={a.checklist.title} items={a.checklist.items} url={url} />
           </section>
         )}
@@ -221,21 +216,23 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           </section>
         )}
 
-        <section data-alert-cta className="mt-12 rounded-[14px] bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
-          <h2 className="font-serif text-2xl md:text-3xl leading-snug">Ne passez pas à côté de votre prochain coup de cœur.</h2>
-          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
-              Créer mon alerte
-            </Link>
-            {a.listingsLink && !a.listingsLink.href.includes('alerte') && (
+        <AlertBand
+          title="Ne passez pas à côté de votre prochain coup de cœur."
+          className="mt-12"
+          extra={
+            a.listingsLink && !a.listingsLink.href.includes('alerte') ? (
               <Link href={a.listingsLink.href} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
                 {a.listingsLink.label}
               </Link>
-            )}
-          </div>
-        </section>
+            ) : undefined
+          }
+        >
+          <Link href="/?alerte=1" className={ALERT_BUTTON}>
+            Créer mon alerte
+          </Link>
+        </AlertBand>
 
-        <section className="mt-12 border-t border-b border-stone-200 py-6">
+        <section className="mt-10 border-b border-stone-200 pb-6">
           <p className="font-serif text-xl text-stone-900">Cet article peut servir à quelqu&apos;un ?</p>
           <div className="mt-4">
             <ArticleShare url={url} title={a.title} />

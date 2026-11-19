@@ -1,5 +1,6 @@
 'use client';
 
+import AlertBand, { ALERT_BUTTON } from './AlertBand';
 import { useState } from 'react';
 import AlertPhrase from './AlertPhrase';
 import AlertDialog from './AlertDialog';
@@ -48,21 +49,11 @@ export default function CollectionAlert({
   }
   return (
     <>
-      <div
-        data-alert-cta
-        className="rounded-[14px] border border-stone-900 bg-white p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5 text-left mt-14"
-      >
-        <p className="font-serif text-2xl md:text-3xl text-stone-900 leading-snug">
-          <AlertPhrase />
-        </p>
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="shrink-0 h-12 px-7 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px]"
-        >
+      <AlertBand title={<AlertPhrase />} className="mt-14">
+        <button type="button" onClick={() => setOpen(true)} className={ALERT_BUTTON}>
           Créer mon alerte
         </button>
-      </div>
+      </AlertBand>
       {dialog}
     </>
   );
