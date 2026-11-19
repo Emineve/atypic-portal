@@ -39,6 +39,93 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'chauffer-un-grand-volume',
+    art: 'dpe',
+    title: 'Chauffer un grand volume : pourquoi il fait froid en bas et chaud en haut',
+    description:
+      'Cinq mètres sous plafond font rêver en visite et réfléchir en janvier. Ce qui se passe dans un grand volume, les solutions qui existent, et les questions à poser avant d’acheter.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 4,
+    intro:
+      'La hauteur sous plafond est ce que l’on vient chercher dans un loft, un atelier ou une ancienne halle. C’est aussi ce qui change la manière de chauffer. Dans un grand volume, la chaleur ne reste pas là où l’on vit : elle monte. Ce n’est pas une fatalité, mais c’est une donnée à regarder avant d’acheter, factures à l’appui.',
+    takeaways: [
+      'Dans un local de grande hauteur, l’air chaud, plus léger, s’accumule sous le plafond pendant que l’air froid reste au sol. Les professionnels parlent de stratification.',
+      'Résultat : on a froid en bas, et l’on chauffe pour rien le haut du volume.',
+      'La parade la plus simple est de brasser l’air pour faire redescendre la chaleur : c’est le rôle d’un brasseur d’air, ou déstratificateur.',
+      'Avant d’acheter, demandez les factures d’énergie réelles des deux derniers hivers. Elles en disent plus que n’importe quelle description.',
+    ],
+    sections: [
+      {
+        title: 'Que se passe-t-il dans un grand volume ?',
+        paragraphs: [
+          'L’air chaud est plus léger que l’air froid : il s’élève. Dans une pièce de hauteur courante, l’écart entre le sol et le plafond reste faible. Sous une grande hauteur, il se creuse. Les spécialistes du chauffage des grands bâtiments le décrivent ainsi : une stratification inconfortable, parce que l’on grelotte au sol, et coûteuse, parce que la chaleur se perd sous le toit.',
+          'Ces constats viennent du chauffage des locaux professionnels, où le phénomène est étudié à partir de cinq mètres sous plafond. Un loft de quatre mètres n’est pas un hangar, mais la physique est la même, et une mezzanine placée en hauteur en profite quand le séjour, en bas, a froid.',
+        ],
+      },
+      {
+        title: 'Quelles solutions existent ?',
+        list: [
+          'Brasser l’air : un brasseur d’air installé sous le plafond fait redescendre l’air chaud vers le sol et réduit l’écart de température. Certains modèles font un bruit perceptible : écoutez-les avant de choisir.',
+          'Chauffer là où l’on vit plutôt que tout le volume : les systèmes qui chauffent par rayonnement, ou par le sol, réchauffent les personnes et les surfaces plus que l’air.',
+          'Isoler le haut : c’est sous la toiture ou la verrière que la chaleur s’échappe. Une toiture mal isolée annule tout le reste.',
+          'Réguler : un thermostat bien placé, à hauteur de vie et non en hauteur.',
+        ],
+        paragraphs: [
+          'Le bon choix dépend du bâtiment. Faites-le étudier par un professionnel du chauffage avant de vous engager dans des travaux.',
+        ],
+      },
+      {
+        title: 'Et en été ?',
+        paragraphs: [
+          'Le même volume joue alors en votre faveur, si l’air chaud peut s’échapper par le haut : un ouvrant en toiture ou en partie haute de verrière suffit souvent à créer un courant d’air. Sans ouvrant, et sous une toiture peu isolée, la chaleur s’accumule. Regardez donc ce qui s’ouvre, et à quelle hauteur.',
+        ],
+      },
+      {
+        title: 'Que demander avant d’acheter ?',
+        list: [
+          'Les factures d’énergie des deux derniers hivers, et le nombre de personnes qui occupaient le bien.',
+          'Le type de chauffage, son âge et son entretien.',
+          'L’isolation de la toiture et des vitrages : date et nature des travaux.',
+          'Le diagnostic de performance énergétique, en regardant aussi la consommation estimée, pas seulement la lettre.',
+          'En copropriété : le chauffage est-il collectif ou individuel, et que permet le règlement ?',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, pour un grand volume',
+      items: [
+        'J’ai vu les factures d’énergie réelles.',
+        'Je sais comment le bien est chauffé, et depuis quand.',
+        'Je connais l’état de l’isolation en partie haute.',
+        'J’ai repéré les ouvrants hauts pour l’été.',
+        'J’ai visité par temps froid, ou j’ai interrogé l’occupant sur l’hiver.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Pourquoi a-t-on froid dans un loft très haut de plafond ?',
+        a: 'Parce que l’air chaud monte et s’accumule sous le plafond, pendant que l’air froid reste au niveau du sol. C’est le phénomène de stratification.',
+      },
+      {
+        q: 'Un ventilateur de plafond sert-il aussi en hiver ?',
+        a: 'Oui. En brassant l’air, il fait redescendre la chaleur accumulée en hauteur et réduit l’écart de température entre le sol et le plafond.',
+      },
+      {
+        q: 'Un grand volume coûte-t-il forcément cher à chauffer ?',
+        a: 'Pas forcément : tout dépend de l’isolation, du mode de chauffage et du brassage de l’air. Les factures réelles de l’occupant sont le meilleur indicateur.',
+      },
+    ],
+    sources: [
+      { label: 'Richardson, fiche technique « Brasseurs d’air, déstratificateurs »', url: 'https://www.richardson.fr/files/richardson/technical_document/d55/377039_23670747.pdf' },
+      { label: 'EDF Entreprises, « Pourquoi s’équiper d’un déstratificateur d’air ? »', url: 'https://www.edf.fr/entreprises/le-mag/le-mag-entreprises/conseils-energie-competitivite/pourquoi-s-equiper-d-un-destratificateur-d-air' },
+      { label: 'XPair, « Chauffage des locaux de grands volumes : stratification d’air »', url: 'https://conseils.xpair.com/consulter_savoir_faire/chauffage-locaux-grands-volumes/faq-chauffage-stratification-air.htm' },
+      { label: 'ATEE, fiche d’économies d’énergie « Déstratificateur ou brasseur d’air »', url: 'https://atee.fr/system/files/2025-06/IND-BA-110%20v69-3%20%C3%A0%20compter%20du%2001-07-2025%20D%C3%A9stratificateur%20ou%20brasseur%20d%E2%80%99air.pdf' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'ouvrir-un-mur-porteur-en-copropriete',
     art: 'plans',
     title: 'Ouvrir les volumes : peut-on toucher à un mur porteur ?',
