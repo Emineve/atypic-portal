@@ -73,6 +73,24 @@ export default function GuideSearch() {
     }
     setPool(a);
   }, []);
+  // Les vraies questions des visiteurs, validées une à une dans le back-office.
+  // À partir de quatre, elles remplacent nos exemples, les plus récentes d'abord.
+  const [real, setReal] = useState<string[]>([]);
+  useEffect(() => {
+    let off = false;
+    (async () => {
+      try {
+        const { data } = await getSupabase().rpc('featured_guide_questions');
+        const list = Array.isArray(data) ? (data as { question: string }[]).map((r) => r.question).filter(Boolean) : [];
+        if (!off && list.length >= 4) setReal(list);
+      } catch {
+        /* sans réponse, on garde nos exemples */
+      }
+    })();
+    return () => {
+      off = true;
+    };
+  }, []);
   const [asked, setAsked] = useState(''); // la question à laquelle correspondent les résultats affichés
   const [hits, setHits] = useState<GuideHit[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -164,7 +182,7 @@ export default function GuideSearch() {
   const empty = hits !== null && hits.length === 0;
   // Suggestions : tant que la question n'est pas lancée, celles qui contiennent ce qui est déjà tapé
   const typed = plain(q.trim());
-  const suggestions = q.trim().length >= 3 ? [] : pool.filter((ex) => plain(ex).includes(typed)).slice(0, 4);
+  const suggestions = q.trim().length >= 3 ? [] : (real.length ? real : pool).filter((ex) => plain(ex).includes(typed)).slice(0, 4);
 
   return (
     <section className="mt-10 md:mt-12 max-w-3xl" aria-label="Poser une question">
@@ -208,7 +226,7 @@ export default function GuideSearch() {
           </div>
           {suggestions.length > 0 && (
             <div className="border-t border-stone-200 pb-3 pt-3">
-              <p className="px-5 pb-1 text-xs uppercase tracking-widest text-stone-500">Les questions qu’on nous pose</p>
+              <p className="px-5 pb-1 text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées' : 'Les questions qu’on nous pose'}</p>
               <ul>
                 {suggestions.map((ex) => (
                   <li key={ex}>

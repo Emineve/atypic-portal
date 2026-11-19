@@ -129,6 +129,23 @@ export default function AdminPage() {
   const [guideLog, setGuideLog] = useState<GuideLog>({ searches: [], questions: [] });
   const [alertRows, setAlertRows] = useState<AlertRow[]>([]);
   const [error, setError] = useState<string | null>(null);
+  // Questions de visiteurs affichées sur État des lieux (« Dernières questions posées »)
+  const [featured, setFeatured] = useState<{ id: string; question: string }[]>([]);
+  const [featDraft, setFeatDraft] = useState('');
+  const [featError, setFeatError] = useState('');
+  async function featureQuestion() {
+    const text = featDraft.trim();
+    if (text.length < 5 || text.length > 140) { setFeatError('Entre 5 et 140 caractères.'); return; }
+    const r = await getSupabase().rpc('admin_feature_guide_question', { p_token: token, p_question: text });
+    if (r.error) { setFeatError('Enregistrement impossible.'); return; }
+    setFeatured((r.data as { id: string; question: string }[]) || []);
+    setFeatDraft('');
+    setFeatError('');
+  }
+  async function unfeatureQuestion(id: string) {
+    const r = await getSupabase().rpc('admin_unfeature_guide_question', { p_token: token, p_id: id });
+    if (!r.error) setFeatured((r.data as { id: string; question: string }[]) || []);
+  }
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -156,7 +173,9 @@ export default function AdminPage() {
         const fr = await sb.rpc('admin_financing_requests', { p_token: token, p_limit: 200 });
         const gl = await sb.rpc('admin_guide_searches', { p_token: token, p_limit: 300 });
         const tr = await sb.rpc('admin_tee_requests', { p_token: token, p_limit: 300 });
+        const fq = await sb.rpc('featured_guide_questions');
         if (cancelled) return;
+        setFeatured((fq.data as { id: string; question: string }[]) || []);
         setFinReqs((fr.data as FinReq[]) || []);
         setTeeReqs((tr.data as TeeReq[]) || []);
         setGuideLog((gl.data as GuideLog) || { searches: [], questions: [] });
@@ -399,6 +418,33 @@ export default function AdminPage() {
 
             <section>
               <h2 className="font-serif text-xl mb-3">Questions posées dans État des lieux</h2>
+              <div className="mb-4 border border-stone-200 bg-white p-4">
+                <p className="text-[10px] uppercase tracking-widest text-stone-400">Affichées sur le site · {featured.length} validée{featured.length > 1 ? 's' : ''}</p>
+                <p className="mt-1 text-sm text-stone-500">
+                  À partir de 4 questions validées, le moteur d’État des lieux les affiche sous le titre « Dernières questions posées ». En dessous, il garde nos exemples.
+                </p>
+                {featured.length > 0 && (
+                  <ul className="mt-3 divide-y divide-stone-100">
+                    {featured.map((f) => (
+                      <li key={f.id} className="flex items-baseline justify-between gap-4 py-2 text-sm">
+                        <span>{f.question}</span>
+                        <button type="button" onClick={() => unfeatureQuestion(f.id)} className="flex-none text-stone-500 underline underline-offset-4 hover:text-stone-900">Retirer</button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <input
+                    value={featDraft}
+                    onChange={(e) => setFeatDraft(e.target.value)}
+                    maxLength={140}
+                    placeholder="Choisissez une question ci-dessous, corrigez-la si besoin"
+                    className="h-10 min-w-0 flex-1 border border-stone-300 px-3 text-sm"
+                  />
+                  <button type="button" onClick={featureQuestion} className="h-10 rounded-[10px] bg-stone-900 px-4 text-xs font-semibold uppercase tracking-wider text-white">Afficher sur le site</button>
+                </div>
+                {featError && <p className="mt-2 text-sm text-red-700">{featError}</p>}
+              </div>
               {guideLog.questions.length > 0 && (
                 <div className="mb-4 overflow-x-auto border border-stone-200 bg-white">
                   <table className="w-full text-sm">
@@ -423,7 +469,7 @@ export default function AdminPage() {
                 <div className="overflow-x-auto border border-stone-200 bg-white">
                   <table className="w-full text-sm">
                     <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
-                      <tr><th className="p-3">Date</th><th className="p-3">Question</th><th className="p-3">Réponses trouvées</th></tr>
+                      <tr><th className="p-3">Date</th><th className="p-3">Question</th><th className="p-3">Réponses trouvées</th><th className="p-3"></th></tr>
                     </thead>
                     <tbody>
                       {guideLog.searches.map((r, i) => (
@@ -431,6 +477,7 @@ export default function AdminPage() {
                           <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
                           <td className="p-3">{r.query}</td>
                           <td className="p-3">{r.results === 0 ? <span className="bg-[#F4E7B5] px-1.5 py-0.5 text-xs font-semibold">Sans réponse</span> : r.results}</td>
+                          <td className="p-3 text-right"><button type="button" onClick={() => { setFeatDraft(r.query.slice(0, 140)); setFeatError(''); }} className="whitespace-nowrap text-stone-500 underline underline-offset-4 hover:text-stone-900">Choisir</button></td>
                         </tr>
                       ))}
                     </tbody>
