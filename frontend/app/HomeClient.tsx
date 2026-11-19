@@ -10,6 +10,7 @@ import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
 import Tracker from './Tracker';
 import HeroTitle from './HeroTitle';
+import ModeEmploiBack, { useFromModeEmploi } from './ModeEmploiBack';
 import { DpeChip } from './DpeBadge';
 import FilterPanel from './FilterPanel';
 import { Filters, EMPTY_FILTERS, passesFilters, countActive, availableTypes } from './filters';
@@ -106,6 +107,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [query, setQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  // Venu du mode d'emploi : sur téléphone, le lien de retour prend la place des deux raccourcis de l'en-tête
+  const fromModeEmploi = useFromModeEmploi();
   const [places, setPlaces] = useState<Place[]>([]);
   const [searchFocused, setSearchFocused] = useState(false);
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error' | 'none'>('idle');
@@ -437,10 +440,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           </div>
 
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium text-stone-900">
+            <ModeEmploiBack />
             <a
               href="/guide"
               aria-label="État des lieux"
-              className="inline-flex items-center gap-1.5 hover:text-stone-500 transition"
+              className={`${fromModeEmploi ? 'hidden sm:inline-flex' : 'inline-flex'} items-center gap-1.5 hover:text-stone-500 transition`}
             >
               <span className="relative inline-flex">
                 <BookOpen className="w-5 h-5 sm:w-4 sm:h-4" />
@@ -458,7 +462,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               onClick={() => setOnlyFavs((v) => !v)}
               aria-label="Mes favoris"
               aria-pressed={onlyFavs}
-              className="inline-flex items-center gap-1.5 uppercase tracking-widest font-medium hover:text-stone-500 transition"
+              className={`${fromModeEmploi ? 'hidden sm:inline-flex' : 'inline-flex'} items-center gap-1.5 uppercase tracking-widest font-medium hover:text-stone-500 transition`}
             >
               <Heart className={`w-5 h-5 sm:w-4 sm:h-4 ${favorites.length > 0 ? 'fill-red-600 text-red-600' : ''}`} />
               <span className="hidden sm:inline">Mes favoris</span>

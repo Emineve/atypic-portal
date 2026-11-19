@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Bell, BookOpen, Calculator, Compass, Feather, Heart, Home, Info, Lightbulb, Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import ModeEmploiBack from './ModeEmploiBack';
 
 const FAVORITES_KEY = 'singulier:favorites';
 
@@ -48,6 +49,7 @@ export default function SiteHeader({
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
           <Logo />
           <div className="flex items-center gap-4 sm:gap-6">
+            <ModeEmploiBack />
             {back ??
               (backHref && backLabel ? (
                 <Link href={backHref} className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition whitespace-nowrap">

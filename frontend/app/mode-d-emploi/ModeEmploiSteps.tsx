@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AlertDialog from '../AlertDialog';
+import { MODE_EMPLOI_KEY } from '../ModeEmploiBack';
 
 // Le mode d'emploi, une étape à la fois : un titre, deux phrases, un lien pour le faire tout de suite.
 const STEPS: { title: string; text: string; link: string; href: string }[] = [
@@ -59,6 +60,24 @@ export default function ModeEmploiSteps() {
   const [all, setAll] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
 
+  // Retour depuis une autre page : on reprend à l'étape quittée, et le lien de retour s'efface
+  useEffect(() => {
+    try {
+      const saved = Number(sessionStorage.getItem(MODE_EMPLOI_KEY));
+      if (Number.isInteger(saved) && saved > 0 && saved < STEPS.length) setStep(saved);
+      sessionStorage.removeItem(MODE_EMPLOI_KEY);
+    } catch {
+      /* ignoré */
+    }
+  }, []);
+  const leave = (index: number) => {
+    try {
+      sessionStorage.setItem(MODE_EMPLOI_KEY, String(index));
+    } catch {
+      /* ignoré */
+    }
+  };
+
   const Action = ({ s }: { s: (typeof STEPS)[number] }) =>
     s.href === 'alerte' ? (
       <button type="button" onClick={() => setAlertOpen(true)} className={action}>
@@ -66,7 +85,7 @@ export default function ModeEmploiSteps() {
         <ArrowRight className="w-4 h-4" />
       </button>
     ) : (
-      <Link href={s.href} className={action}>
+      <Link href={s.href} onClick={() => leave(STEPS.indexOf(s))} className={action}>
         {s.link}
         <ArrowRight className="w-4 h-4" />
       </Link>
