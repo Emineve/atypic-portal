@@ -33,7 +33,7 @@ export default function GuideIndex() {
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
         {rest.length > 0 && (
-          <nav className="mb-10 md:mb-14 border-y border-stone-900 py-4 md:py-5" aria-label="Rubriques">
+          <nav className="mb-10 md:mb-14" aria-label="Rubriques">
             <p className="text-xs uppercase tracking-widest text-stone-500">Les rubriques</p>
             <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-2">
               {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
