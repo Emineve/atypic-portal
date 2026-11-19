@@ -9,7 +9,7 @@ export const metadata = {
   alternates: { canonical: '/charte' },
 };
 
-type Item = { q: string; a: string; points?: string[]; table?: { head: [string, string, string]; rows: [string, string, string][] } };
+type Item = { q: string; a: string; points?: string[]; table?: { lead?: string; head: [string, string, string]; rows: [string, string, string][] } };
 type Group = { id: string; title: string; items: Item[] };
 
 const groups: Group[] = [
@@ -135,6 +135,7 @@ const groups: Group[] = [
         q: 'À qui mes coordonnées sont-elles transmises ?',
         a: 'Uniquement au professionnel concerné par votre demande, et seulement quand vous envoyez cette demande.',
         table: {
+          lead: 'Vous ',
           head: ['Vous…', 'Vos coordonnées vont à', 'Pour'],
           rows: [
             ['demandez à être rappelé au sujet d’un bien', 'L’agence et le négociateur chargés de ce bien', 'Vous rappeler au sujet de ce bien'],
@@ -162,12 +163,16 @@ const groups: Group[] = [
       },
       {
         q: 'Combien de temps mes données sont-elles conservées ?',
-        a: 'Le temps nécessaire, pas davantage. Passé ces délais, la suppression est automatique :',
-        points: [
-          'Votre alerte : jusqu’à ce que vous l’arrêtiez, puis trente jours.',
-          'Vos demandes de rappel, de courtier ou de contact : douze mois.',
-          'Les mesures de fréquentation du site, qui ne permettent pas de vous identifier : vingt-cinq mois au plus.',
-        ],
+        a: 'Le temps nécessaire, pas davantage. Passé ces délais, la suppression est automatique, chaque nuit.',
+        table: {
+          head: ['Donnée', 'Conservée', 'Ensuite'],
+          rows: [
+            ['Votre alerte', 'Tant qu’elle est active', 'Supprimée trente jours après son arrêt'],
+            ['Vos demandes de rappel, de courtier ou de contact', 'Douze mois', 'Supprimées automatiquement'],
+            ['Vos questions et vos demandes de tee-shirt', 'Douze mois', 'Supprimées automatiquement'],
+            ['Les mesures de fréquentation, qui ne permettent pas de vous identifier', 'Vingt-cinq mois au plus', 'Supprimées automatiquement'],
+          ],
+        },
       },
       {
         q: 'Comment faire supprimer mes données ?',
@@ -215,7 +220,7 @@ export default function ChartePage() {
                           <ul className="mt-4 space-y-3 sm:hidden">
                             {it.table.rows.map((r) => (
                               <li key={r[0]} className="rounded-[14px] border border-stone-200 bg-white p-4">
-                                <p className="font-serif text-lg leading-snug text-stone-900">{typo(`Vous ${r[0]}`)}</p>
+                                <p className="font-serif text-lg leading-snug text-stone-900">{typo(`${it.table!.lead || ''}${r[0]}`)}</p>
                                 <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[1]}</p>
                                 <p className="mt-0.5 text-stone-900">{typo(r[1])}</p>
                                 <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[2]}</p>
@@ -262,7 +267,7 @@ export default function ChartePage() {
       </main>
 
                 <div className="h-16" />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: groups.flatMap((g) => g.items.map((it) => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: [it.a, ...(it.points || []), ...(it.table ? it.table.rows.map((r) => `Vous ${r[0]} : ${r[1]}. ${r[2]}.`) : [])].join(' ') } }))) }).replace(/</g, '\\u003c') }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: groups.flatMap((g) => g.items.map((it) => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: [it.a, ...(it.points || []), ...(it.table ? it.table.rows.map((r) => `${it.table!.lead || ''}${r[0]} : ${r[1]}. ${r[2]}.`) : [])].join(' ') } }))) }).replace(/</g, '\\u003c') }} />
     </div>
   );
 }
