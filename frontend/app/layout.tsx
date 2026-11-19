@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import ModeEmploiReturn from './ModeEmploiReturn';
 import { Poppins, DM_Sans, Newsreader } from 'next/font/google';
 import './globals.css';
 import { SITE_URL, SITE_NAME } from '../lib/site';
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd).replace(/</g, '\\u003c') }} />
         {children}
+        <ModeEmploiReturn />
       </body>
     </html>
   );
