@@ -143,7 +143,11 @@ const groups: Group[] = [
       },
       {
         q: 'Que faites-vous de mon e-mail quand je crée une alerte ?',
-        a: 'Une seule chose : vous écrire dès qu’un bien qui correspond à votre recherche arrive sur le marché. Votre e-mail et vos critères restent chez Loftissime. Chaque message contient un lien pour arrêter l’alerte en un clic.',
+        a: 'Une seule chose : vous écrire dès qu’un bien qui correspond à votre recherche arrive sur le marché. Si plusieurs biens arrivent le même jour, le premier vous est envoyé tout de suite et les suivants sont regroupés dans un seul message. Votre e-mail et vos critères restent chez Loftissime.',
+      },
+      {
+        q: 'Puis-je avoir plusieurs alertes, et les retrouver ?',
+        a: 'Oui. Vous pouvez créer autant d’alertes que vous avez de recherches. Chaque e-mail contient un lien « Gérer mes alertes » qui les réunit sur une page : vous pouvez en arrêter une ou en créer une nouvelle. Le lien « Mes alertes », en bas du site, vous renvoie cette page par e-mail.',
       },
       {
         q: 'Une agence peut-elle recevoir mon alerte ?',
@@ -151,10 +155,10 @@ const groups: Group[] = [
       },
       {
         q: 'Combien de temps mes données sont-elles conservées ?',
-        a: 'Le temps nécessaire, selon les durées recommandées par la CNIL :',
+        a: 'Le temps nécessaire, pas davantage. Passé ces délais, la suppression est automatique :',
         points: [
-          'Votre alerte : jusqu’à ce que vous l’arrêtiez.',
-          'Vos demandes de contact : douze mois.',
+          'Votre alerte : jusqu’à ce que vous l’arrêtiez, puis trente jours.',
+          'Vos demandes de rappel, de courtier ou de contact : douze mois.',
           'Les mesures de fréquentation du site, qui ne permettent pas de vous identifier : vingt-cinq mois au plus.',
         ],
       },

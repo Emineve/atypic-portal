@@ -69,10 +69,11 @@ export default function Page() {
 
       <h2>Durées de conservation</h2>
       <ul>
-        <li>Alertes : jusqu'à ce que vous arrêtiez l'alerte.</li>
-        <li>Demandes de rappel, recherches confiées, demandes de courtier, messages aux architectes, questions : 12 mois.</li>
+        <li>Alertes : jusqu'à ce que vous arrêtiez l'alerte, puis 30 jours.</li>
+        <li>Demandes de rappel, recherches confiées, demandes de courtier, messages aux architectes, questions, tee-shirts demandés : 12 mois.</li>
         <li>Mesure d'audience : 25 mois maximum.</li>
       </ul>
+      <p>Passé ces délais, les données sont supprimées automatiquement, chaque nuit.</p>
 
       <h2>Vos droits</h2>
       <p>
