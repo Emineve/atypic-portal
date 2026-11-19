@@ -23,7 +23,7 @@ export default function StickyContact() {
     >
       <a
         href="#contact"
-        className="pointer-events-auto h-12 px-5 inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-semibold uppercase tracking-wider shadow-lg transition bg-stone-900 text-white active:bg-stone-700"
+        className="pointer-events-auto h-12 px-6 rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-xs font-semibold uppercase tracking-wider shadow-lg transition bg-stone-900 text-white active:bg-stone-700"
       >
         <PhoneIncoming className="w-4 h-4 flex-none" />
         Être rappelé(e)
