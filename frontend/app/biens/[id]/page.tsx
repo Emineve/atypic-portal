@@ -347,10 +347,10 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   </div>
                 </dl>
 
-                <div className="mt-1 pt-5 border-t border-stone-200">
+                <div className="mt-1 pt-3 border-t border-stone-200">
                   <Link
                     href={`/financement?prix=${Math.round(priceNum)}`}
-                    className="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-[#F4E7B5] text-sm text-stone-900 hover:bg-[#EBD98F] transition"
+                    className="inline-flex items-center gap-2 min-h-[2.75rem] text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
                   >
                     <Calculator className="w-4 h-4" />
                     Estimer ma mensualité

@@ -162,11 +162,11 @@ export default function ContactForm({
             <p className="mt-1.5 font-serif text-2xl leading-tight text-stone-900 truncate">{person || agency}</p>
           </div>
           {phone && (
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-2 flex flex-wrap gap-x-7 gap-y-1">
               {shown ? (
                 <a
                   href={`tel:${phone.replace(/[^+\d]/g, '')}`}
-                  className="h-10 px-4 inline-flex items-center justify-center gap-2 rounded-full bg-stone-900 text-white text-sm font-semibold whitespace-nowrap hover:bg-stone-700 transition"
+                  className="inline-flex items-center gap-2 min-h-[2.75rem] text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition whitespace-nowrap"
                 >
                   {phone}
                 </a>
@@ -174,7 +174,7 @@ export default function ContactForm({
                 <button
                   type="button"
                   onClick={reveal}
-                  className="h-10 px-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#F4E7B5] text-stone-900 text-sm hover:bg-[#EBD98F] transition"
+                  className="inline-flex items-center gap-2 min-h-[2.75rem] text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
                 >
                   <Phone className="w-4 h-4" />
                   Appeler
@@ -186,7 +186,7 @@ export default function ContactForm({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={trackContact}
-                  className="h-10 px-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#F4E7B5] text-stone-900 text-sm hover:bg-[#EBD98F] transition"
+                  className="inline-flex items-center gap-2 min-h-[2.75rem] text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
                 >
                   <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#25D366]" fill="currentColor" aria-hidden="true">
                     <path d={WHATSAPP_ICON_PATH} />
@@ -198,7 +198,7 @@ export default function ContactForm({
           )}
 
           {/* Deux onglets discrets pour le formulaire : être rappelé, ou écrire */}
-          <div className="mt-6 pt-5 border-t border-stone-200 flex gap-6 border-b" role="tablist" aria-label="Votre demande">
+          <div className="mt-3 pt-5 border-t border-stone-200 flex gap-6 border-b" role="tablist" aria-label="Votre demande">
             {([
               ['tel', 'Être rappelé(e)'],
               ['msg', 'Écrire un message'],
