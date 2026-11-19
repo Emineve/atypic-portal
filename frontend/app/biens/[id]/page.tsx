@@ -357,7 +357,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
                 <div className="mt-1 pt-3 border-t border-stone-200">
                   <Link
-                    href={`/financement?prix=${Math.round(priceNum)}`}
+                    href={`/financement?prix=${Math.round(priceNum)}&bien=${item.id}`}
                     className="inline-flex items-center gap-2 min-h-[2.75rem] text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
                   >
                     <Calculator className="w-4 h-4" />
