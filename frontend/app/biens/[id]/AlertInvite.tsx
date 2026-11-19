@@ -119,7 +119,7 @@ export function AlertLink({ city, price }: Props) {
             <Bell className="mt-0.5 w-4 h-4 flex-none text-stone-500" strokeWidth={1.5} aria-hidden="true" />
             <span className="min-w-0">
               <span className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900">
-                Être prévenu(e) des prochains biens{city ? ` à ${city}` : ''}
+                Créer mon alerte{city ? ` pour ${city}` : ''}
               </span>
               <span className="mt-0.5 block text-xs text-stone-500">
                 Par e-mail{budgetLabel ? `, ${budgetLabel}` : ''}.

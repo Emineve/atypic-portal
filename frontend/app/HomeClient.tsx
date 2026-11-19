@@ -447,11 +447,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <button
               type="button"
               onClick={() => openAlert('header')}
-              aria-label="Créer une alerte"
+              aria-label="Créer mon alerte"
               className="inline-flex items-center gap-1.5 uppercase text-stone-900 hover:text-stone-600 transition"
             >
               <Bell className="w-5 h-5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Créer une alerte</span>
+              <span className="hidden sm:inline">Créer mon alerte</span>
             </button>
             <button
               onClick={() => setOnlyFavs((v) => !v)}
@@ -783,7 +783,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 className="mt-1 w-full h-11 inline-flex items-center justify-center gap-2 text-sm text-stone-700 hover:text-stone-900"
               >
                 <Bell className="w-4 h-4 flex-none" />
-                <span className="underline underline-offset-4 decoration-stone-300">Enregistrer cette recherche</span>
+                <span className="underline underline-offset-4 decoration-stone-300">Créer mon alerte avec ces critères</span>
               </button>
             </div>
           </div>
@@ -797,7 +797,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               {searchActive && !onlyFavs && alreadySaved && (
                 <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-500">
                   <Check className="w-3.5 h-3.5 flex-none" />
-                  Alerte enregistrée
+                  Alerte créée
                 </span>
               )}
               {searchActive && !onlyFavs && !alreadySaved && visible.length > 0 && (
@@ -807,7 +807,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                   className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
                 >
                   <Bell className="w-3.5 h-3.5 flex-none" />
-                  Enregistrer cette recherche
+                  Créer mon alerte
                 </button>
               )}
             </div>
@@ -834,7 +834,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         )}
 
         {loading ? (
-          <div className="text-center py-20 text-stone-400 font-serif">Chargement des lieux remarquables...</div>
+          <div className="text-center py-20 text-stone-400 font-serif">Chargement des biens…</div>
         ) : errorMessage ? (
           <div className="text-center py-20 max-w-xl mx-auto">
             <p className="font-serif text-stone-700">Impossible de charger les biens pour le moment.</p>
@@ -847,15 +847,14 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             </div>
           ) : (
             <div className="max-w-xl mx-auto text-center py-16">
-              <p className="text-stone-400 font-serif">Rien ne correspond encore à cette recherche.</p>
-              <span className="mt-8 mx-auto h-11 w-11 rounded-full bg-stone-900 text-white flex items-center justify-center">
+              <span className="mx-auto h-11 w-11 rounded-full bg-stone-900 text-white flex items-center justify-center">
                 <Bell className="w-5 h-5" />
               </span>
-              <p className="mt-4 font-serif text-xl text-stone-900 leading-snug">
-                Ne passez pas à côté de votre prochain coup de cœur !
+              <p className="mt-5 font-serif text-2xl text-stone-900 leading-snug">
+                Aucun bien ne correspond pour l&apos;instant.
               </p>
-              <p className="mt-2 text-sm text-stone-500">
-                Dès qu'un nouveau bien répond à vos attentes, vous êtes parmi les premiers prévenus.
+              <p className="mt-3 text-stone-600 leading-relaxed">
+                Créez votre alerte : vous serez prévenu(e) dès qu&apos;un nouveau bien correspondant à votre recherche arrive sur le marché.
               </p>
               <button
                 type="button"
@@ -959,9 +958,9 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               onClick={() => openAlert('recherche-bas')}
               className="font-semibold text-stone-900 underline underline-offset-4 decoration-1 hover:text-stone-600 transition"
             >
-              Enregistrer cette recherche
+              Créez votre alerte
             </button>{' '}
-            pour être prévenu(e) dès qu’un nouveau bien répond à vos attentes.
+            pour être prévenu(e) dès qu’un nouveau bien correspondant à cette recherche arrive sur le marché.
           </p>
         )}
       </main>
@@ -970,8 +969,8 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
         <div className="border-b border-stone-200 bg-[#FDFBF7]">
           <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-x-12 gap-y-5 md:items-center">
             <div>
-              <h2 className="font-serif text-2xl text-stone-900">Soyez le premier informé</h2>
-              <p className="mt-2 text-sm text-stone-500 max-w-md">Recevez en avant-première les nouveaux biens atypiques mis en vente par les agences les plus prestigieuses.</p>
+              <h2 className="font-serif text-2xl text-stone-900">Le bien que vous cherchez n&apos;est peut-être pas encore en ligne.</h2>
+              <p className="mt-2 text-sm text-stone-500 max-w-md">Laissez votre e-mail : vous recevrez les nouveaux biens atypiques dès leur arrivée sur le marché.</p>
             </div>
             <AlertBox kind="newsletter" />
           </div>

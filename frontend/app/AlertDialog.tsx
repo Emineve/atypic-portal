@@ -449,7 +449,7 @@ export default function AlertDialog({
               </>
             ) : (
               <p className="mt-4 text-stone-600 leading-relaxed max-w-md mx-auto">
-                Dès qu'un lieu correspond à votre recherche, vous serez parmi les premiers à le savoir. En attendant, bonne exploration.
+                Dès qu'un bien correspond à votre recherche, vous serez parmi les premiers à le savoir. En attendant, bonne exploration.
               </p>
             )}
             {!shareWith && shared.length > 0 && (
@@ -482,9 +482,9 @@ export default function AlertDialog({
               className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition"
             >
               {matches > 1
-                ? `Voir les ${matches} lieux correspondants`
+                ? `Voir les ${matches} biens correspondants`
                 : matches === 1
-                ? 'Voir le lieu correspondant'
+                ? 'Voir le bien correspondant'
                 : "Poursuivre l'exploration"}
             </button>
           </div>
@@ -507,7 +507,7 @@ export default function AlertDialog({
                     <>L&apos;agence vous recontacte dès qu&apos;un bien correspond. Loftissime crée aussi votre alerte e-mail avec ces critères.</>
                   ) : (
                     <>
-                      On vous prévient par e-mail dès qu'un lieu correspond
+                      On vous prévient par e-mail dès qu'un bien correspond
                       <span className="hidden md:inline">, sans que vous ayez à revenir le chercher</span>.
                     </>
                   )}

@@ -30,16 +30,16 @@ export default function CollectionAlert({
     return (
       <>
         <div className="max-w-3xl mx-auto mt-4 text-left">
-          <p className="font-serif text-2xl text-stone-900 leading-snug">Aucun bien ici pour le moment.</p>
+          <p className="font-serif text-2xl text-stone-900 leading-snug">Aucun bien ne correspond pour l&apos;instant.</p>
           <p className="mt-6 pt-6 border-t border-stone-200 font-serif text-lg md:text-xl text-stone-600 leading-relaxed">
             <button
               type="button"
               onClick={() => setOpen(true)}
               className="font-semibold text-stone-900 underline underline-offset-4 decoration-1 hover:text-stone-600 transition"
             >
-              Enregistrer cette recherche
+              Créez votre alerte
             </button>{' '}
-            pour être prévenu(e) dès qu’un nouveau bien répond à vos attentes.
+            : vous serez prévenu(e) dès qu’un nouveau bien correspondant arrive sur le marché.
           </p>
         </div>
         {dialog}
