@@ -12,7 +12,8 @@ export const metadata = {
   alternates: { canonical: '/agence' },
 };
 
-// Toutes les agences qui ont au moins un bien en ligne, avec leur nombre de biens.
+// Toutes les agences qui ont au moins un bien en ligne, par ordre alphabétique. Le nombre de biens n'est pas affiché :
+// une agence qui n'a qu'un bien atypique ne doit pas paraître moins sérieuse qu'une autre.
 async function getAgencies() {
   const { data } = await getSupabase().from('listings').select('source_agency').eq('is_active', true);
   const counts = new Map<string, number>();
@@ -41,14 +42,11 @@ export default async function AgenciesPage() {
 
       <main className="max-w-3xl mx-auto px-6 pb-24">
         <ul className="divide-y divide-stone-200 border-y border-stone-200">
-          {agencies.map(([name, n]) => (
+          {agencies.map(([name]) => (
             <li key={name}>
               <Link href={`/agence/${slugify(name)}`} className="group flex items-center justify-between gap-4 py-4">
                 <span className="font-serif text-2xl text-stone-900">{name}</span>
-                <span className="flex flex-none items-center gap-3 text-sm text-stone-500">
-                  {n} {n > 1 ? 'biens' : 'bien'}
-                  <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-stone-900 transition" />
-                </span>
+                <ArrowRight className="w-4 h-4 flex-none text-stone-400 group-hover:text-stone-900 transition" />
               </Link>
             </li>
           ))}
