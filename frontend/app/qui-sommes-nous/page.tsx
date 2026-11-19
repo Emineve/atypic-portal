@@ -16,13 +16,13 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
     text: 'On tombe amoureux d’une verrière, de quatre mètres sous plafond, d’une lumière à cinq heures du soir. C’est cela que nous montrons en premier.',
   },
   {
-    title: 'Votre lieu existe. Il est mal rangé.',
+    title: 'Votre lieu existe. Il n’est pas visible.',
     text: 'Un loft chez une agence, un atelier d’artiste chez une autre, un dernier étage noyé parmi dix mille annonces. Nous les réunissons au même endroit.',
     href: '/',
     link: 'Voir tous les biens',
   },
   {
-    title: 'Les lieux rares partent vite. Soyez là avant.',
+    title: 'Les lieux rares partent vite. Soyez le premier.',
     text: 'Dites-nous ce que vous cherchez. Le jour où il arrive, vous le savez. Pas trois semaines après, quand il est vendu.',
     href: '/?alerte=1',
     link: 'Créer mon alerte',
@@ -40,13 +40,13 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
     link: 'Découvrir Inspiration',
   },
   {
-    title: 'Ici, le banal n’entre pas.',
+    title: 'Ici, le banal n’a pas sa place.',
     text: 'Ni prix minimum, ni surface minimum. Une seule condition : avoir ce que les autres n’ont pas. Une autre vie avant, un volume, un dehors, une situation rare, une signature, une histoire.',
     href: '/charte',
     link: 'Ce que nous publions, et ce que nous ne publions pas',
   },
   {
-    title: 'Nous ne vendons rien.',
+    title: 'Nous ne vendons rien. Nous mettons en relation.',
     text: 'Loftissime n’est pas une agence. Vous parlez directement au professionnel qui connaît le bien. Vos coordonnées ne vont qu’à lui, et seulement quand vous le demandez.',
   },
 ];
