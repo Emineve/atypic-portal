@@ -112,40 +112,47 @@ export default function ChartePage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-6">
+      <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
         <p className="text-xs uppercase tracking-widest text-stone-500">Questions fréquentes</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>
         </h1>
-        <p className="mt-8 text-lg font-light leading-relaxed text-stone-600">
-          Tout ce qu&apos;il faut savoir sur les biens que nous diffusons et sur le fonctionnement du site.
+        <p className="mt-10 md:mt-12 max-w-2xl text-xl font-light leading-relaxed text-stone-700">
+          Les biens que nous diffusons, la façon dont le site fonctionne, et l&apos;ordre dans lequel les annonces apparaissent.
         </p>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-8">
-        {groups.map((g) => (
-          <section key={g.id} id={g.id} className="pt-12 scroll-mt-20">
-            <h2 className="font-serif text-2xl text-stone-900">{g.title}</h2>
-            <div className="mt-5 divide-y divide-stone-200 border-y border-stone-200">
-              {g.items.map((it) => (
-                <details key={it.q} className="group py-5">
-                  <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
-                    {it.q}
-                    <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
-                  </summary>
-                  <p className="mt-3 text-sm text-stone-600 leading-relaxed">{it.a}</p>
-                  {it.points && (
-                    <ul className="mt-3 space-y-2 text-sm text-stone-600 leading-relaxed">
-                      {it.points.map((pt) => (
-                        <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{pt}</span></li>
-                      ))}
-                    </ul>
-                  )}
-                </details>
-              ))}
-            </div>
-          </section>
-        ))}
+      <main className="max-w-4xl mx-auto px-6 pb-8">
+        <ol>
+          {groups.map((g, i) => (
+            <li key={g.id} id={g.id} className="grid md:grid-cols-[5rem_1fr] gap-x-6 border-t border-stone-900 py-10 md:py-14 scroll-mt-20">
+              <span className="font-serif text-xl text-stone-400 md:pt-2" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h2 className="mt-2 md:mt-0 font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900">{g.title}</h2>
+                <div className="mt-8 divide-y divide-stone-200 border-y border-stone-200">
+                  {g.items.map((it) => (
+                    <details key={it.q} className="group py-5">
+                      <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-xl text-stone-900">
+                        {it.q}
+                        <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
+                      </summary>
+                      <p className="mt-3 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{it.a}</p>
+                      {it.points && (
+                        <ul className="mt-3 max-w-2xl space-y-2 text-lg font-light leading-relaxed text-stone-600">
+                          {it.points.map((pt) => (
+                            <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{pt}</span></li>
+                          ))}
+                        </ul>
+                      )}
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
       </main>
 
                 <div className="h-16" />
