@@ -37,6 +37,16 @@ interface ArchiReq {
   created_at: string; architect_name: string; architect_email: string | null; name: string; email: string; phone: string | null; message: string | null;
 }
 
+interface FinReq {
+  created_at: string; name: string; phone: string; email: string | null; listing_id: string | null; listing_title: string | null;
+  price: number | null; down_payment: number | null; years: number | null; monthly: number | null;
+}
+
+interface GuideLog {
+  searches: { created_at: string; query: string; results: number }[];
+  questions: { created_at: string; question: string; email: string }[];
+}
+
 interface AgencyReq {
   created_at: string; agency: string; name: string; email: string; phone: string | null; message: string | null;
 }
@@ -110,6 +120,8 @@ export default function AdminPage() {
   const [reports, setReports] = useState<Report[]>([]);
   const [agencyReqs, setAgencyReqs] = useState<AgencyReq[]>([]);
   const [archiReqs, setArchiReqs] = useState<ArchiReq[]>([]);
+  const [finReqs, setFinReqs] = useState<FinReq[]>([]);
+  const [guideLog, setGuideLog] = useState<GuideLog>({ searches: [], questions: [] });
   const [alertRows, setAlertRows] = useState<AlertRow[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -136,7 +148,11 @@ export default function AdminPage() {
         const ar = await sb.rpc('admin_agency_requests', { p_token: token, p_limit: 200 });
         const al = await sb.rpc('admin_alerts', { p_token: token, p_limit: 1000 });
         const aq = await sb.rpc('admin_architect_requests', { p_token: token, p_limit: 200 });
+        const fr = await sb.rpc('admin_financing_requests', { p_token: token, p_limit: 200 });
+        const gl = await sb.rpc('admin_guide_searches', { p_token: token, p_limit: 300 });
         if (cancelled) return;
+        setFinReqs((fr.data as FinReq[]) || []);
+        setGuideLog((gl.data as GuideLog) || { searches: [], questions: [] });
         setAlertRows((al.data as AlertRow[]) || []);
         setAgencyReqs((ar.data as AgencyReq[]) || []);
         setArchiReqs((aq.data as ArchiReq[]) || []);
@@ -336,6 +352,78 @@ export default function AdminPage() {
                           <td className="p-3 text-stone-600 max-w-md">{a.kind === 'alert' ? criteria(a) : '–'}</td>
                           <td className="p-3 text-stone-600">{a.kind === 'alert' ? a.matches : '–'}</td>
                           <td className="p-3 text-stone-400">{a.source || '–'}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+
+            <section>
+              <h2 className="font-serif text-xl mb-3">Demandes de courtier</h2>
+              {finReqs.length === 0 ? (
+                <p className="text-sm text-stone-400">Aucune demande pour le moment.</p>
+              ) : (
+                <div className="overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Acheteur</th><th className="p-3">Bien</th><th className="p-3">Simulation</th></tr>
+                    </thead>
+                    <tbody>
+                      {finReqs.map((r, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">{r.name}<div className="text-xs text-stone-500">{r.phone}{r.email ? ` · ${r.email}` : ''}</div></td>
+                          <td className="p-3">{r.listing_id ? <a href={`/biens/${r.listing_id}`} target="_blank" rel="noopener" className="underline">{r.listing_title || 'Voir le bien'}</a> : <span className="text-stone-400">Simulation libre</span>}</td>
+                          <td className="p-3 text-stone-600">
+                            {r.price ? `${r.price.toLocaleString('fr-FR')} €` : 'Prix non indiqué'}
+                            {r.down_payment != null && r.price ? `, apport ${r.down_payment.toLocaleString('fr-FR')} €` : ''}
+                            {r.years ? `, ${r.years} ans` : ''}
+                            {r.monthly ? `, ${r.monthly.toLocaleString('fr-FR')} € par mois` : ''}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+
+            <section>
+              <h2 className="font-serif text-xl mb-3">Questions posées dans État des lieux</h2>
+              {guideLog.questions.length > 0 && (
+                <div className="mb-4 overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Question à traiter</th><th className="p-3">À prévenir</th></tr>
+                    </thead>
+                    <tbody>
+                      {guideLog.questions.map((r, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">{r.question}</td>
+                          <td className="p-3 text-stone-600">{r.email}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {guideLog.searches.length === 0 ? (
+                <p className="text-sm text-stone-400">Aucune question pour le moment.</p>
+              ) : (
+                <div className="overflow-x-auto border border-stone-200 bg-white">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase tracking-widest text-stone-400 text-left">
+                      <tr><th className="p-3">Date</th><th className="p-3">Question</th><th className="p-3">Réponses trouvées</th></tr>
+                    </thead>
+                    <tbody>
+                      {guideLog.searches.map((r, i) => (
+                        <tr key={i} className="border-t border-stone-100 align-top">
+                          <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+                          <td className="p-3">{r.query}</td>
+                          <td className="p-3">{r.results === 0 ? <span className="bg-[#F4E7B5] px-1.5 py-0.5 text-xs font-semibold">Sans réponse</span> : r.results}</td>
                         </tr>
                       ))}
                     </tbody>
