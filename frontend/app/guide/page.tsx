@@ -1,3 +1,4 @@
+import GuideSearch from './GuideSearch';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
@@ -29,6 +30,7 @@ export default function GuideIndex() {
         <p className="mt-8 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
           Un souplex, un loft, une péniche ne s&apos;achètent pas comme un appartement classique. Chaque semaine, une question précise et les vérifications à faire avant de signer.
         </p>
+        <GuideSearch />
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
