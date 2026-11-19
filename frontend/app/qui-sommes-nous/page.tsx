@@ -74,11 +74,9 @@ export default function ManifestoPage() {
         <div className="mt-10 md:mt-14 max-w-2xl">
           <p className="text-xs uppercase tracking-widest text-stone-500">Notre ambition</p>
           <p className="mt-4 font-serif text-2xl md:text-3xl leading-snug text-stone-900">
-            Réunir sur un seul site tous les biens atypiques à vendre, quelle que soit l&apos;agence qui les propose. En France d&apos;abord, au-delà ensuite.
+            Tous les biens atypiques à vendre, sur un seul site. Toutes les agences, sans préférence. Et un acheteur accompagné jusqu&apos;à la visite, pour que personne ne passe à côté du bien qui lui ressemble.
           </p>
-          <p className="mt-5 text-lg font-light leading-relaxed text-stone-600">
-            Et accompagner ceux qui les cherchent, de la première envie jusqu&apos;à la visite : pour que plus personne ne passe à côté du bien qui lui ressemble.
-          </p>
+          <p className="mt-4 font-serif text-2xl md:text-3xl leading-snug italic text-stone-500">En France aujourd&apos;hui, ailleurs demain.</p>
         </div>
       </header>
 
