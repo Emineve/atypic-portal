@@ -99,6 +99,58 @@ export default function AboutPage() {
           </ol>
         </section>
 
+        <section className="mt-16 md:mt-24">
+          <h2 className="max-w-3xl font-serif text-3xl md:text-4xl leading-tight text-stone-900">
+            Trouver l&apos;annonce ne suffit pas. <span className="italic text-stone-500">Nous vous accompagnons.</span>
+          </h2>
+          <p className="mt-4 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
+            Un bien atypique pose des questions qu&apos;un appartement classique ne pose pas. Nous avons créé deux rubriques
+            pour y répondre : l&apos;une pour décider, l&apos;autre pour se projeter.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <Link href="/guide" className="group flex flex-col border border-stone-300 bg-white">
+              <div className="overflow-hidden border-b border-stone-300">
+                <GuideArt art="visite" className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
+              </div>
+              <div className="flex flex-1 flex-col p-6 md:p-7">
+                <p className="text-[10px] uppercase tracking-widest text-stone-500">Pour décider</p>
+                <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900">L&apos;état des lieux</h3>
+                <p className="mt-3 flex-1 text-stone-600 leading-relaxed">
+                  Un souplex est-il vraiment habitable ? Une mezzanine compte-t-elle dans la surface ? Quelles questions poser
+                  pendant la visite ? Chaque semaine, un article répond à une question précise, sources à l&apos;appui, pour que
+                  vous sachiez exactement ce que vous achetez.
+                </p>
+                <p className="mt-5">
+                  <span className={link}>
+                    Lire les articles
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </p>
+              </div>
+            </Link>
+            <Link href="/inspiration" className="group flex flex-col border border-stone-300 bg-white">
+              <div className="overflow-hidden border-b border-stone-300">
+                <GuideArt art="mezzanine" className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
+              </div>
+              <div className="flex flex-1 flex-col p-6 md:p-7">
+                <p className="text-[10px] uppercase tracking-widest text-stone-500">Pour se projeter</p>
+                <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900">Inspiration</h3>
+                <p className="mt-3 flex-1 text-stone-600 leading-relaxed">
+                  Un grand volume brut peut intimider. Pour vous aider à imaginer ce qu&apos;il peut devenir, nous présentons des
+                  architectes et leurs réalisations : des lieux atypiques transformés, à regarder comme autant d&apos;idées pour
+                  le vôtre. Et si vous n&apos;avez pas de projet, venez simplement rêver.
+                </p>
+                <p className="mt-5">
+                  <span className={link}>
+                    Découvrir l&apos;architecte à la une
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </p>
+              </div>
+            </Link>
+          </div>
+        </section>
+
         <section className="mt-16 md:mt-24 border-y border-stone-900 py-12 md:py-16">
           <p className="max-w-4xl font-serif text-3xl md:text-5xl tracking-tight leading-[1.12] text-stone-900">
             On ne vit pas de la même façon sous une verrière d&apos;atelier.{' '}
@@ -135,23 +187,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="mt-16 md:mt-24 grid gap-4 md:grid-cols-2">
-          <div className="border border-stone-300 bg-white p-6 md:p-8">
-            <h2 className="font-serif text-2xl leading-snug text-stone-900">Vous n&apos;avez pas de projet ? Venez rêver.</h2>
-            <p className="mt-3 text-stone-600 leading-relaxed">
-              On peut venir ici pour flâner, se projeter, nourrir son imagination. Des lieux transformés par des architectes,
-              d&apos;autres aménagés avec goût et liberté par leurs propriétaires : autant de façons d&apos;habiter autrement.
-            </p>
-            <p className="mt-5">
-              <Link href="/inspiration" className={link}>
-                Découvrir l&apos;architecte à la une
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </p>
-          </div>
+        <section className="mt-16 md:mt-24">
           <div className="border border-stone-300 bg-white p-6 md:p-8">
             <h2 className="font-serif text-2xl leading-snug text-stone-900">Loftissime n&apos;est pas une agence.</h2>
-            <p className="mt-3 text-stone-600 leading-relaxed">
+            <p className="mt-3 max-w-3xl text-stone-600 leading-relaxed">
               Nous ne vendons aucun bien et n&apos;intervenons dans aucune transaction. Chaque annonce vous met en relation
               avec l&apos;agence ou le négociateur qui connaît le bien. Vos coordonnées ne sont transmises qu&apos;à lui, et
               seulement quand vous le demandez.
