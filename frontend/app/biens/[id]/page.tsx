@@ -132,10 +132,13 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const notary = Math.round((priceNum * NOTARY_RATE) / 1000) * 1000;
   const projectTotal = Math.round((priceNum + notary) / 1000) * 1000;
   // Postes du budget annuel, du plus lourd au plus léger (pour la barre de répartition)
+  // Montant ramené au m² : le seul moyen de comparer deux biens de tailles différentes
+  const sqm = Number(item.surface_sqm) || 0;
+  const perSqm = (amount: number) => (sqm > 0 && amount > 0 ? `soit ${Math.round(amount / sqm)} € par m²` : '');
   const costParts = [
-    { label: 'Charges de copropriété', amount: Number(item.charges_yearly) || 0, value: eur0(Number(item.charges_yearly) || 0) },
-    { label: 'Taxe foncière', amount: Number(item.property_tax) || 0, value: eur0(Number(item.property_tax) || 0) },
-    { label: 'Énergie', amount: energyMid || 0, value: energyCost },
+    { label: 'Charges de copropriété', amount: Number(item.charges_yearly) || 0, value: eur0(Number(item.charges_yearly) || 0), sub: perSqm(Number(item.charges_yearly) || 0) },
+    { label: 'Taxe foncière', amount: Number(item.property_tax) || 0, value: eur0(Number(item.property_tax) || 0), sub: perSqm(Number(item.property_tax) || 0) },
+    { label: 'Énergie', amount: energyMid || 0, value: energyCost, sub: perSqm(energyMid || 0) },
   ]
     .filter((c) => c.amount > 0)
     .sort((x, y) => y.amount - x.amount);
@@ -391,8 +394,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
                           {costParts.length > 1 && <span className={`h-2.5 w-2.5 flex-none ${COST_DOT[i]}`} aria-hidden="true" />}
                           {c.label}
                         </dt>
-                        <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
+                        <dd className="text-right font-serif text-lg text-stone-900 whitespace-nowrap">
                           {c.value} <span className="font-sans text-sm text-stone-500">par an</span>
+                          {c.sub && <span className="block font-sans text-sm text-stone-500">{c.sub}</span>}
                         </dd>
                       </div>
                     ))}
