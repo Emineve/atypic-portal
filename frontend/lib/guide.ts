@@ -39,6 +39,94 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'combien-de-temps-dure-une-recherche',
+    art: 'marche',
+    title: 'Combien de temps dure une recherche immobilière ?',
+    description:
+      'Trois à six mois en moyenne en France, davantage à Paris, plus encore pour un bien rare. Ce que disent les chiffres disponibles, et comment ne pas rater le bon bien quand il arrive.',
+    category: 'Marché',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 4,
+    intro:
+      'On commence une recherche en pensant trouver en quelques semaines. On la termine souvent bien plus tard, après des dizaines d’annonces et quelques déceptions. C’est normal, et c’est encore plus vrai quand on cherche un bien rare. Les chiffres disponibles donnent un ordre de grandeur. Ils disent surtout une chose : une recherche est longue, mais un bon bien, lui, reste très peu de temps.',
+    takeaways: [
+      'Il n’existe pas de statistique officielle sur la durée d’une recherche. Les estimations viennent de banques, de portails et de chasseurs immobiliers.',
+      'En France, elles convergent : entre deux et six mois pour trouver, et environ six visites.',
+      'À Paris, un chasseur immobilier évalue la recherche d’un acheteur seul à environ six mois et plus de quarante visites.',
+      'Dans les grandes villes, un bien au juste prix part en moins de quinze jours. D’où l’intérêt d’être prévenu le jour où il arrive.',
+    ],
+    sections: [
+      {
+        title: 'Que disent les chiffres en France ?',
+        list: [
+          'Le Crédit Agricole compte trois à six mois en moyenne pour trouver son logement, et six visites.',
+          'Meilleurs Agents donne une fourchette de deux à cinq mois, en précisant que c’est la phase la plus difficile à mesurer.',
+          'Entre le début de la recherche et la remise des clés, il faut ajouter le délai entre l’offre acceptée et la signature chez le notaire, soit trois à quatre mois.',
+        ],
+        paragraphs: [
+          'Ce sont des moyennes déclarées par des professionnels, pas une mesure officielle. Elles donnent un repère, pas une promesse.',
+        ],
+      },
+      {
+        title: 'Et à Paris ?',
+        paragraphs: [
+          'Le marché y est plus tendu, et les estimations plus hautes. Le chasseur immobilier Home Select avance environ six mois et plus de quarante appartements visités pour un acheteur qui cherche seul. Un courtier parle de trois à six mois pour un premier achat.',
+          'Prenez le premier chiffre avec recul : il vient d’un professionnel dont le métier est précisément de raccourcir la recherche. Il confirme tout de même ce que disent les autres : à Paris, compter en semaines est rarement réaliste.',
+        ],
+      },
+      {
+        title: 'Pourquoi est-ce plus long pour un bien atypique ?',
+        paragraphs: [
+          'Parce qu’il y en a peu. Un atelier d’artiste ou un dernier étage avec terrasse ne se présente pas chaque semaine dans un quartier donné. Le Crédit Agricole note que certains acheteurs, faute de biens disponibles ou parce qu’ils refusent toute concession, cherchent pendant un an ou deux.',
+          'Ajoutez que ces biens sont dispersés : un loft chez une agence, une maison d’architecte chez une autre. Faire le tour de tous les sites chaque jour pendant des mois, personne ne le tient.',
+        ],
+      },
+      {
+        title: 'Si la recherche est longue, pourquoi faut-il aller vite ?',
+        paragraphs: [
+          'Parce que les deux durées ne sont pas les mêmes. La vôtre se compte en mois. Celle d’un bon bien sur le marché se compte en jours : d’après Meilleurs Agents, à Paris, Lyon ou Bordeaux, les biens au juste prix partent en moins de quinze jours.',
+          'Chercher longtemps ne sert donc à rien si l’on apprend l’existence du bon bien trois semaines après sa mise en vente. La patience et la réactivité vont ensemble.',
+        ],
+      },
+      {
+        title: 'Comment tenir dans la durée ?',
+        list: [
+          'Créez une alerte précise : c’est elle qui cherche tous les jours à votre place.',
+          'Préparez votre financement avant de visiter, pour pouvoir faire une offre le jour même.',
+          'Fixez vos critères non négociables, trois au plus, et acceptez de bouger sur le reste.',
+          'Visitez vite, mais vérifiez : nos articles sur la visite et sur l’offre d’achat listent les questions à poser.',
+          'Faites savoir aux agences ce que vous cherchez : elles connaissent des biens avant leur mise en ligne.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Combien de temps faut-il pour trouver un logement à acheter ?',
+        a: 'Entre deux et six mois en moyenne en France d’après les estimations de banques et de portails, pour environ six visites. Il n’existe pas de statistique officielle.',
+      },
+      {
+        q: 'Combien de temps dure une recherche à Paris ?',
+        a: 'Souvent trois à six mois. Un chasseur immobilier parisien évalue à environ six mois et plus de quarante visites la recherche d’un acheteur seul.',
+      },
+      {
+        q: 'Combien de temps un bien reste-t-il en vente ?',
+        a: 'Très peu quand il est au juste prix : moins de quinze jours dans les grandes villes, d’après Meilleurs Agents.',
+      },
+      {
+        q: 'Comment ne pas rater un bien rare ?',
+        a: 'En étant prévenu dès sa mise en ligne, par une alerte, et en ayant un financement prêt pour faire une offre rapidement.',
+      },
+    ],
+    sources: [
+      { label: 'Crédit Agricole, « Quel délai pour un achat immobilier ? »', url: 'https://e-immobilier.credit-agricole.fr/conseils/1er-achat/quel-delai-pour-acquerir-un-logement' },
+      { label: 'Meilleurs Agents, « L’immo en chiffres : combien de temps prend l’achat d’un bien immobilier ? »', url: 'https://edito.meilleursagents.com/conseils-d-experts/acheter/l-immo-chiffres-combien-de-temps-prend-l-achat-d-un-bien-immobilier' },
+      { label: 'Home Select, « Recherche immobilière à Paris : combien de biens faut-il voir ? »', url: 'https://homeselect.paris/blog/recherche-immobiliere-combien-visites/' },
+      { label: 'Helloprêt, « Acheter un appartement à Paris en 2026 »', url: 'https://www.hellopret.fr/achat-immobilier/acheter-appartement-paris-conseils/' },
+    ],
+    listingsLink: { label: 'Créer mon alerte', href: '/?alerte=1' },
+  },
+  {
     slug: 'revendre-un-bien-atypique',
     art: 'ventes',
     title: 'Un bien atypique se revend-il bien ?',
