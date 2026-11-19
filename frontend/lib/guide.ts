@@ -39,6 +39,112 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'ouvrir-un-mur-porteur-en-copropriete',
+    art: 'plans',
+    title: 'Ouvrir les volumes : peut-on toucher à un mur porteur ?',
+    description:
+      'Faire tomber un mur pour créer un grand séjour est le projet le plus courant, et le plus encadré. Qui autorise, quel dossier présenter, que risque-t-on sans accord ?',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'On visite un appartement cloisonné, et l’on imagine déjà le grand plateau ouvert. Entre l’idée et le résultat, il y a un mot : porteur. Une cloison se retire librement, ou presque. Un mur porteur tient l’immeuble : il ne vous appartient pas, même au milieu de votre salon. Avant d’acheter pour transformer, il faut savoir lequel est lequel, et qui décide.',
+    takeaways: [
+      'Un mur porteur, même situé dans un appartement, fait partie de la structure de l’immeuble : c’est une partie commune.',
+      'Y toucher exige l’autorisation de l’assemblée générale, à la majorité des voix de tous les copropriétaires (article 25 b de la loi du 10 juillet 1965).',
+      'Le dossier doit contenir une étude de structure réalisée par un bureau d’études ou un ingénieur, des plans et un devis.',
+      'Sans vote, la copropriété peut demander en justice la remise en état, et la vente future du bien peut se bloquer.',
+      'Une cloison non porteuse se retire en principe sans autorisation. Encore faut-il être sûr qu’elle ne porte rien.',
+    ],
+    sections: [
+      {
+        title: 'Comment savoir si un mur est porteur ?',
+        paragraphs: [
+          'Ni l’épaisseur ni le son ne suffisent. Dans un immeuble ancien, une cloison a pu devenir porteuse avec le temps, parce que les planchers se sont appuyés dessus. Seul un professionnel peut trancher : architecte, ingénieur structure ou bureau d’études, à partir des plans de l’immeuble et de sondages.',
+          'Avant une offre, demandez au moins les plans d’origine et l’avis d’un architecte. C’est une visite de quelques heures qui peut changer tout votre projet.',
+        ],
+      },
+      {
+        title: 'Qui autorise l’ouverture d’un mur porteur ?',
+        paragraphs: [
+          'L’assemblée générale des copropriétaires. Les travaux qui affectent les parties communes doivent être autorisés à la majorité des voix de tous les copropriétaires, présents ou non. Le syndic ne peut pas donner cet accord seul, et l’accord des voisins de palier n’a aucune valeur.',
+          'La demande s’adresse au syndic par lettre recommandée, avec le projet de résolution, pour être inscrite à l’ordre du jour. L’assemblée ne se tient en général qu’une fois par an. Il est possible d’en provoquer une à ses frais.',
+        ],
+      },
+      {
+        title: 'Que doit contenir le dossier ?',
+        list: [
+          'Une étude de structure d’un bureau d’études techniques : comment ouvrir, par quoi remplacer le mur, quelles charges reprendre.',
+          'Les plans de l’existant et du projet, établis par un architecte.',
+          'Le devis de l’entreprise et son attestation d’assurance décennale.',
+          'Souvent, à la demande de la copropriété : le suivi du chantier par l’architecte de l’immeuble, à vos frais.',
+        ],
+        paragraphs: [
+          'Une autorisation vague est une source de litige. La résolution votée doit décrire précisément les travaux, avec les documents annexés.',
+        ],
+      },
+      {
+        title: 'Et si l’assemblée refuse ?',
+        paragraphs: [
+          'Un refus doit avoir une raison sérieuse : le risque pour la structure, par exemple. Vous pouvez représenter un dossier complété. Si le refus est injustifié, la loi permet de demander au tribunal judiciaire d’autoriser des travaux d’amélioration. C’est long, et jamais gagné d’avance.',
+        ],
+      },
+      {
+        title: 'Que risque-t-on à ouvrir sans autorisation ?',
+        paragraphs: [
+          'D’abord un risque physique : affaiblir l’immeuble, fissurer les étages voisins. Ensuite un risque juridique : le syndicat des copropriétaires peut agir en justice pour obtenir la remise en état, à vos frais. Enfin un risque à la revente : le notaire et l’acheteur demandent le procès-verbal de l’assemblée et les plans validés. Sans eux, la vente peut se bloquer ou se négocier à la baisse.',
+          'Votre assurance, elle aussi, peut refuser de couvrir des dommages nés de travaux non autorisés.',
+        ],
+      },
+      {
+        title: 'Vous achetez un bien déjà ouvert : que demander ?',
+        list: [
+          'Le procès-verbal de l’assemblée générale qui a autorisé l’ouverture.',
+          'L’étude de structure et les plans.',
+          'La facture de l’entreprise et son attestation décennale : la garantie court dix ans et vous est transmise.',
+          'En l’absence de ces documents : l’avis écrit d’un ingénieur structure avant de signer.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, si vous voulez ouvrir les volumes',
+      items: [
+        'Un professionnel m’a dit quels murs sont porteurs.',
+        'J’ai lu le règlement de copropriété sur les travaux privatifs.',
+        'Je sais quand se tient la prochaine assemblée générale.',
+        'Bien déjà ouvert : j’ai le vote, l’étude et les factures.',
+        'Mon budget inclut l’étude de structure et le suivi du chantier.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on abattre un mur porteur dans son appartement ?',
+        a: 'Oui, avec l’autorisation de l’assemblée générale des copropriétaires et une étude de structure. Le mur porteur est une partie commune, même à l’intérieur d’un logement.',
+      },
+      {
+        q: 'Quelle majorité faut-il en assemblée générale ?',
+        a: 'La majorité des voix de tous les copropriétaires, dite majorité de l’article 25.',
+      },
+      {
+        q: 'Faut-il une autorisation pour abattre une simple cloison ?',
+        a: 'En principe non, si elle n’est pas porteuse et que le règlement de copropriété ne prévoit rien de particulier. Faites tout de même vérifier qu’elle ne porte rien.',
+      },
+      {
+        q: 'L’ancien propriétaire a ouvert un mur sans autorisation : que faire ?',
+        a: 'Demandez-lui de faire régulariser les travaux par l’assemblée générale avant la vente, ou faites vérifier la structure par un ingénieur et décrire la situation dans la promesse.',
+      },
+    ],
+    sources: [
+      { label: 'Novlaw Avocats, « Comment procéder à l’ouverture d’un mur porteur en copropriété ? »', url: 'https://novlaw.fr/comment-proceder-a-l-ouverture-d-un-mur-porteur-en-copropriete/' },
+      { label: 'Me Simonnet, « Mur porteur et copropriété »', url: 'https://www.simonnetavocat.fr/mur-porteur-et-copropriete/' },
+      { label: 'ARC, « Les modalités juridiques de travaux privatifs affectant les parties communes »', url: 'https://arc-copro.fr/sites/default/files/pieces-jointes/2025/09/Les%20modalit%C3%A9s%20juridiques%20de%20travaux%20privatifs%20affectant%20les%20parties%20communes.pdf' },
+      { label: 'PAP, « Copropriété : ces travaux que vous ne pouvez pas faire sans autorisation »', url: 'https://www.pap.fr/patrimoine/copropriete/copropriete-ces-travaux-que-vous-ne-pouvez-pas-faire-sans-autorisation/a28132' },
+      { label: 'Village de la Justice, « Refus de travaux privatifs en copropriété : les solutions »', url: 'https://www.village-justice.com/articles/refus-travaux-privatifs-copropriete-les-solutions-pour-parvenir-leur,49142.html' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'creer-une-mezzanine-autorisations',
     art: 'mezzanine',
     title: 'Créer une mezzanine : quelles autorisations, quelle surface gagnée ?',
