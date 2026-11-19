@@ -39,6 +39,114 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'acheter-un-bien-classe-monument-historique',
+    art: 'plans',
+    title: 'Monument historique : acheter un bien classé ou inscrit',
+    description:
+      'Classé, inscrit, aux abords : trois niveaux de protection, trois régimes de travaux. Ce que le propriétaire doit, ce qu’il peut demander, et ce qu’il faut savoir avant d’acheter.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Acheter un monument historique, ou un appartement dans un immeuble protégé, c’est acheter un bien que l’État a reconnu pour son intérêt historique ou artistique. Cette reconnaissance fait sa valeur. Elle fait aussi de vous le responsable de sa conservation, et elle encadre chaque intervention. Avant d’acheter, il faut savoir exactement ce qui est protégé, et à quel niveau.',
+    takeaways: [
+      'Il existe deux niveaux de protection : le classement, le plus fort, et l’inscription. La protection peut ne porter que sur une partie de l’immeuble : une façade, un escalier, un décor.',
+      'Le propriétaire est responsable de la conservation du monument et maître d’ouvrage des travaux.',
+      'Sur un immeuble classé, les travaux qui touchent à la consistance ou à l’aspect du bâtiment demandent une autorisation du préfet de région. Seul l’entretien courant y échappe.',
+      'Des subventions du ministère de la Culture existent, y compris pour les particuliers, ainsi qu’un régime fiscal propre. Aucun des deux n’est automatique.',
+      'Être simplement « aux abords » d’un monument n’est pas être protégé soi-même, mais les travaux extérieurs sont soumis à l’accord de l’architecte des Bâtiments de France.',
+    ],
+    sections: [
+      {
+        title: 'Classé, inscrit, aux abords : quelle différence ?',
+        list: [
+          'Classé : la protection la plus forte, pour les édifices dont l’intérêt est jugé national.',
+          'Inscrit : une protection de second rang, pour un intérêt reconnu à l’échelle régionale.',
+          'Aux abords : votre bien n’est pas protégé, mais il se trouve dans le périmètre d’un monument. Ce sont alors vos travaux extérieurs qui sont contrôlés.',
+        ],
+        paragraphs: [
+          'Classement et inscription peuvent ne concerner qu’une partie de l’immeuble. C’est fréquent en ville : seuls la façade sur rue, la cage d’escalier ou un salon sont protégés. Demandez l’arrêté de protection : il dit précisément quoi.',
+        ],
+      },
+      {
+        title: 'Comment savoir si un bien est protégé ?',
+        paragraphs: [
+          'Les immeubles protégés sont recensés dans une base publique du ministère de la Culture, la base Mérimée. Le notaire le vérifie aussi, et l’information figure dans les documents d’urbanisme. En cas de doute, la direction régionale des affaires culturelles (DRAC) répond.',
+        ],
+      },
+      {
+        title: 'Quelles sont les obligations du propriétaire ?',
+        paragraphs: [
+          'Le ministère de la Culture le dit sans détour : le propriétaire a la responsabilité de la conservation du monument qui lui appartient, et il est le maître d’ouvrage des travaux. Pour un immeuble classé, l’État peut mettre en demeure un propriétaire défaillant de réaliser les travaux devenus indispensables à la conservation.',
+          'Les travaux autorisés sont réalisés sous le contrôle scientifique et technique des services de l’État. Pour un immeuble classé, la maîtrise d’œuvre doit être confiée à des professionnels dont les catégories sont fixées par décret.',
+        ],
+      },
+      {
+        title: 'Quels travaux demandent une autorisation ?',
+        paragraphs: [
+          'Sur un immeuble classé, d’après Service-Public, les constructions ou travaux qui affectent la consistance ou l’aspect de l’immeuble, ou qui compromettent sa conservation, sont soumis à l’autorisation du préfet de région, ou du ministre de la Culture dans certains cas. Les travaux et réparations d’entretien n’y sont pas soumis.',
+          'Sur un immeuble inscrit, les travaux sont eux aussi soumis à une autorisation, instruite avec les services chargés des monuments historiques. Dans les deux cas, le ministère recommande de se rapprocher de la DRAC avant tout projet : c’est gratuit, et cela évite de dessiner un projet qui ne passera pas.',
+          'Conséquence pour l’acheteur : comptez des délais plus longs, des matériaux et des artisans spécialisés, et renoncez à l’idée de travaux décidés seul.',
+        ],
+      },
+      {
+        title: 'Existe-t-il des aides ?',
+        paragraphs: [
+          'Oui. Le ministère de la Culture soutient les propriétaires de biens classés ou inscrits par des subventions pour études et travaux, que les particuliers peuvent demander auprès de la DRAC de leur région. Elles sont accordées sous conditions et ne couvrent qu’une partie de la dépense.',
+          'Les monuments historiques relèvent aussi d’un régime fiscal particulier, auquel le ministère consacre un guide pour les propriétaires. Ses conditions sont précises : faites-les vérifier par votre notaire ou un conseil fiscal avant de les intégrer à votre budget.',
+        ],
+      },
+      {
+        title: 'Que demander avant d’acheter ?',
+        list: [
+          'L’arrêté de classement ou d’inscription, pour savoir ce qui est protégé.',
+          'Les autorisations obtenues pour les travaux déjà réalisés, et leurs factures.',
+          'Un état du bâtiment : la DRAC peut dans certains cas réaliser un état sanitaire du monument.',
+          'Les subventions déjà perçues et les engagements qui les accompagnent.',
+          'En copropriété, les travaux votés sur les parties protégées.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, pour un bien protégé',
+      items: [
+        'Je sais si le bien est classé, inscrit ou seulement aux abords d’un monument.',
+        'J’ai lu l’arrêté de protection et je sais quelles parties sont concernées.',
+        'J’ai les autorisations des travaux déjà faits.',
+        'J’ai pris contact avec la DRAC au sujet de mon projet.',
+        'Mon budget prévoit des délais et des coûts plus élevés qu’ailleurs.',
+        'Les aides et avantages fiscaux ont été vérifiés par un professionnel.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on faire des travaux dans un monument historique ?',
+        a: 'Oui, mais pas librement. Sur un immeuble classé, tout ce qui touche à la consistance ou à l’aspect du bâtiment demande l’autorisation du préfet de région. Seul l’entretien courant en est dispensé.',
+      },
+      {
+        q: 'Quelle différence entre classé et inscrit ?',
+        a: 'Le classement est la protection la plus forte, l’inscription une protection de second rang. Les deux encadrent les travaux, avec des procédures différentes.',
+      },
+      {
+        q: 'Un particulier peut-il obtenir une subvention ?',
+        a: 'Oui. Tout propriétaire d’un monument classé ou inscrit peut déposer une demande auprès de la DRAC. L’aide est accordée sous conditions et ne couvre qu’une partie des travaux.',
+      },
+      {
+        q: 'Mon appartement est près d’un monument : suis-je concerné ?',
+        a: 'Votre logement n’est pas protégé pour autant. Mais les travaux qui modifient l’extérieur de l’immeuble sont soumis à l’accord de l’architecte des Bâtiments de France.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public, « Travaux sur monuments historiques ou ses alentours »', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F32190' },
+      { label: 'Ministère de la Culture, « Intervenir sur un immeuble inscrit »', url: 'https://www.culture.gouv.fr/thematiques/monuments-sites/interventions-demarches/travaux-sur-un-objet-un-immeuble-un-espace/intervenir-sur-un-immeuble-inscrit' },
+      { label: 'Ministère de la Culture, « Protéger des immeubles au titre des monuments historiques »', url: 'https://www.culture.gouv.fr/switchToLanguage/25285/fre-FR' },
+      { label: 'Ministère de la Culture, subvention « Études et travaux sur monuments historiques »', url: 'https://www.culture.gouv.fr/fr/catalogue-des-demarches-et-subventions/subvention/etudes-et-travaux-sur-monuments-historiques' },
+      { label: 'CAPEB, fiche « Les monuments historiques »', url: 'https://patrimoinebati.capeb.fr/wp-content/uploads/2021/03/fiche_patrimoine_monuhisto.pdf' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'lieu-reconverti-eglise-ecole-usine',
     art: 'loft',
     title: 'Église, école, usine : habiter un lieu qui a eu une autre vie',
