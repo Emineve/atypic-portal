@@ -18,7 +18,7 @@ export default function DressingPage() {
           Dans tout bien qui se respecte, <span className="italic text-stone-500">il y a un dressing.</span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Voici le nôtre. Deux tee-shirts, pour ceux qui ne veulent pas s&apos;habiller comme tout le monde non plus. Ils ne sont pas encore en vente : dites-nous lequel vous fait envie.
+          Voici le nôtre. Quatre tee-shirts, pour ceux qui ne veulent pas s&apos;habiller comme tout le monde non plus. Ils ne sont pas encore en vente : dites-nous lequel vous fait envie.
         </p>
       </header>
 
@@ -33,6 +33,17 @@ export default function DressingPage() {
           name="Le singulier"
           lines={['Première personne', 'du singulier.']}
           pitch="Blanc, phrase noire. Une leçon de grammaire, et une façon d’habiter."
+        />
+        <TeeCard
+          dark
+          logo="stack"
+          name="Le sssss"
+          pitch="Noir, le nom sur trois lignes, cinq s en jaune. À prononcer comme on le sent."
+        />
+        <TeeCard
+          logo="side"
+          name="Le vertical"
+          pitch="Blanc, le nom debout sur le côté. Tout en hauteur sous plafond."
         />
       </main>
     </div>

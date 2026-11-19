@@ -7,13 +7,13 @@ const SIZES = ['S', 'M', 'L', 'XL'];
 
 // Fiche d'un tee-shirt, présentée comme dans une boutique. Rien n'est encore en vente :
 // le bouton le dit clairement au lieu d'ouvrir un paiement.
-export default function TeeCard({ name, lines, dark = false, pitch }: { name: string; lines: string[]; dark?: boolean; pitch: string }) {
+export default function TeeCard({ name, lines = [], logo, dark = false, pitch }: { name: string; lines?: string[]; logo?: 'stack' | 'side'; dark?: boolean; pitch: string }) {
   const [size, setSize] = useState('M');
   const [asked, setAsked] = useState(false);
   return (
     <article className="border border-stone-300 bg-white">
       <div className="flex items-center justify-center bg-[#F4E7B5] py-8">
-        <TeeShirt lines={lines} dark={dark} className="h-64 w-64 md:h-72 md:w-72" />
+        <TeeShirt lines={lines} logo={logo} dark={dark} className="h-64 w-64 md:h-72 md:w-72" />
       </div>
       <div className="p-6 md:p-8">
         <p className="text-xs uppercase tracking-widest text-stone-500">Tee-shirt · Bientôt disponible</p>
