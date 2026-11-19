@@ -187,20 +187,23 @@ export default function ChartePage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="max-w-4xl">
         <Crumbs items={[{ label: 'Questions fréquentes' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>
         </h1>
-        <p className="mt-10 md:mt-12 max-w-2xl text-xl font-light leading-relaxed text-stone-700">
+        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
           Les biens que nous diffusons, la façon dont le site fonctionne, l&apos;ordre des annonces, et ce que deviennent vos coordonnées.
         </p>
+      </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 pb-8">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-4xl pb-8">
         <ol>
           {groups.map((g, i) => (
-            <li key={g.id} id={g.id} className="grid md:grid-cols-[5rem_1fr] gap-x-6 border-t border-stone-900 py-10 md:py-14 scroll-mt-20">
+            <li key={g.id} id={g.id} className="grid md:grid-cols-[5rem_1fr] gap-x-6 border-t border-stone-200 py-10 md:py-14 scroll-mt-20">
               <span className="font-serif text-xl text-stone-400 md:pt-2" aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
               </span>
@@ -264,6 +267,7 @@ export default function ChartePage() {
             </li>
           ))}
         </ol>
+      </div>
       </main>
 
                 <div className="h-16" />

@@ -1,5 +1,6 @@
 'use client';
 
+import Done from '../Done';
 import { useState } from 'react';
 import TeeShirt from '../TeeShirt';
 import { typo } from '../../lib/typo';
@@ -80,9 +81,9 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu' }: { name: 
         </div>
 
         {status === 'done' ? (
-          <p className="mt-7 text-base leading-relaxed text-stone-700" role="status">
-            C&apos;est noté : {name}, {color.name.toLowerCase()}, taille {size}. Nous vous écrivons dès qu&apos;il est en stock.
-          </p>
+          <Done title="Votre demande est bien envoyée." className="mt-7">
+            {name}, {color.name.toLowerCase()}, taille {size}. Nous vous écrivons dès qu&apos;il est en stock.
+          </Done>
         ) : asked ? (
           <form onSubmit={send} className="mt-7">
             <p className="text-base leading-relaxed text-stone-700">

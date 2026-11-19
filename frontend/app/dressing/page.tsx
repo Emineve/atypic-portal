@@ -13,7 +13,8 @@ export default function DressingPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-4xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="max-w-4xl">
         <Crumbs items={[{ label: 'Le dressing' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Dans tout bien qui se respecte, <span className="italic text-stone-500">il y a un dressing.</span>
@@ -21,9 +22,11 @@ export default function DressingPage() {
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
           Voici le nôtre. Deux tee-shirts, pour ceux qui ne veulent pas s&apos;habiller comme tout le monde non plus. Ils ne sont pas encore en vente : dites-nous lequel vous fait envie.
         </p>
+      </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-6 md:gap-8">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-4xl pb-24 grid md:grid-cols-2 gap-6 md:gap-8">
         <TeeCard
           name="Le superlatif"
           words={['loftisssssime.']}
@@ -35,6 +38,7 @@ export default function DressingPage() {
           words={['singulièrement', 'vôtre.']}
           pitch="Deux mots, en noir. Une formule de politesse, et une façon d’habiter."
         />
+      </div>
       </main>
     </div>
   );

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const { agency } = await getAgencyListings(params.slug);
   if (!agency) return { title: 'Agence introuvable · Loftissime', robots: { index: false } };
   const title = `${agency} · biens atypiques à vendre`;
-  const description = `Les biens singuliers proposés par ${agency} sur Loftissime.`;
+  const description = `Les biens atypiques proposés par ${agency} sur Loftissime.`;
   return {
     title: `${title} · Loftissime`,
     description,
@@ -36,7 +36,7 @@ export default async function AgencyPage({ params }: { params: { slug: string } 
   return (
     <CollectionPage
       title={agency}
-      intro={`Les biens singuliers proposés par ${agency}.`}
+      intro={`Les biens atypiques proposés par ${agency}.`}
       items={items}
       hideAgency
     />

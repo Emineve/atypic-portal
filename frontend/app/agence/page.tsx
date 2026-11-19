@@ -37,7 +37,8 @@ export default async function AgenciesPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="max-w-3xl">
         <Crumbs items={[{ label: 'Agences' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Confiez votre recherche <span className="italic text-stone-500">à qui vous voulez.</span>
@@ -45,9 +46,11 @@ export default async function AgenciesPage() {
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
           Ouvrez la page d&apos;une agence, puis partagez vos critères avec elle. Recommencez avec autant d&apos;agences que vous le souhaitez : rien ne part sans vous.
         </p>
+      </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-24">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-3xl pb-24">
         {cities.length > 1 && (
           <nav aria-label="Villes" className="mb-12 flex flex-wrap gap-x-6 gap-y-2">
             {cities.map(([city]) => (
@@ -72,6 +75,7 @@ export default async function AgenciesPage() {
             </section>
           ))}
         </div>
+      </div>
       </main>
     </div>
   );

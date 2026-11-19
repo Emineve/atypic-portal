@@ -1,7 +1,7 @@
 // Numéro de téléphone espacé à la saisie, pour rester lisible : « 06 12 34 56 78 », « +33 6 12 34 56 78 ».
 export function formatPhone(value: string): string {
   const plus = value.trim().startsWith('+');
-  const digits = value.replace(/\D/g, '').slice(0, 15);
+  const digits = value.replace(/\D/g, '').slice(0, plus ? 15 : 10); // dix chiffres pour un numéro français, quinze avec un indicatif
   const pairs = (s: string) => s.replace(/(\d{2})(?=\d)/g, '$1 ');
   if (!plus) return pairs(digits);
   // International : indicatif à deux chiffres, puis le premier chiffre seul, puis par deux (+33 6 12 34 56 78)

@@ -121,7 +121,6 @@ export default function AlertDialog({
   const [remote, setRemote] = useState<Place[]>([]);
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [email, setEmail] = useState('');
-  const [consent, setConsent] = useState(false);
   const [wantWhatsapp, setWantWhatsapp] = useState(false);
   const [whatsapp, setWhatsapp] = useState('');
   const [website, setWebsite] = useState(''); // champ piège anti-spam
@@ -334,7 +333,7 @@ export default function AlertDialog({
         p_price_max: toNum(filters.priceMax),
         p_surface_min: toNum(filters.surfaceMin),
         p_rooms_min: null,
-        p_consent: shareWith ? true : consent,
+        p_consent: true, // l'envoi vaut accord, la phrase sous le formulaire le précise
         p_locations: finalLocations.length ? finalLocations : null,
         p_surface_max: toNum(filters.surfaceMax),
         p_bedrooms_min: filters.bedrooms,
@@ -640,32 +639,20 @@ export default function AlertDialog({
                       </p>
                     )}
                     {!shareWith && (<>
-                    <label className="mt-4 flex items-start gap-3 text-xs text-stone-600 leading-relaxed cursor-pointer">
-                      <input
-                        type="checkbox"
-                        className="mt-0.5 h-4 w-4 accent-stone-900"
-                        checked={consent}
-                        onChange={(e) => setConsent(e.target.checked)}
-                        required
-                      />
-                      J'accepte de recevoir par email les nouveaux biens correspondant à cette recherche. Désinscription possible à tout moment.
-                    </label>
+                    <p className="mt-4 text-xs text-stone-600 leading-relaxed">
+                      En créant votre alerte, vous acceptez de recevoir par e-mail les nouveaux biens correspondant à cette recherche. Arrêt possible à tout moment.
+                    </p>
 
                     <div className="mt-6 border border-stone-200 bg-white p-4">
-                      <label className="flex items-start gap-3 text-sm text-stone-800 leading-relaxed cursor-pointer">
-                        <input
-                          type="checkbox"
-                          className="mt-1 h-4 w-4 accent-stone-900"
-                          checked={wantWhatsapp}
-                          onChange={(e) => setWantWhatsapp(e.target.checked)}
-                        />
+                      <button type="button" aria-expanded={wantWhatsapp} onClick={() => setWantWhatsapp(!wantWhatsapp)} className="group flex w-full items-start justify-between gap-3 text-left text-sm text-stone-900 leading-relaxed">
                         <span>
-                          Recevoir aussi mes alertes sur WhatsApp
-                          <span className="block text-xs text-stone-500">
-                            Bientôt disponible : laissez votre numéro pour être parmi les premiers. En attendant, vos alertes arrivent par email.
+                          <span className="font-medium underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900">Recevoir aussi mes alertes sur WhatsApp</span>
+                          <span className="mt-1 block text-xs text-stone-500">
+                            Bientôt disponible : laissez votre numéro pour être parmi les premiers. En attendant, vos alertes arrivent par e-mail.
                           </span>
                         </span>
-                      </label>
+                        <span className={`flex-none text-2xl leading-none text-stone-400 transition-transform ${wantWhatsapp ? 'rotate-45' : ''}`} aria-hidden="true">+</span>
+                      </button>
                       {wantWhatsapp && (
                         <>
                           <input
@@ -690,20 +677,15 @@ export default function AlertDialog({
                     </>)}
                     {!shareWith && agencyList.length > 0 && (
                       <div className="mt-4 border border-stone-200 bg-white p-4">
-                        <label className="flex items-start gap-3 text-sm text-stone-800 leading-relaxed cursor-pointer">
-                          <input
-                            type="checkbox"
-                            className="mt-1 h-4 w-4 accent-stone-900"
-                            checked={share}
-                            onChange={(e) => toggleShare(e.target.checked)}
-                          />
+                        <button type="button" aria-expanded={share} onClick={() => toggleShare(!share)} className="group flex w-full items-start justify-between gap-3 text-left text-sm text-stone-900 leading-relaxed">
                           <span>
-                            Transmettre aussi ma recherche aux agences
-                            <span className="block text-xs text-stone-500">
+                            <span className="font-medium underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900">Transmettre aussi ma recherche aux agences</span>
+                            <span className="mt-1 block text-xs text-stone-500">
                               Elles vous recontactent, y compris pour des biens qui ne sont pas encore en ligne. {MAX_AGENCIES} agences au maximum.
                             </span>
                           </span>
-                        </label>
+                          <span className={`flex-none text-2xl leading-none text-stone-400 transition-transform ${share ? 'rotate-45' : ''}`} aria-hidden="true">+</span>
+                        </button>
                         {share && (
                           <>
                             <ul className="mt-3 border border-stone-200 divide-y divide-stone-200 max-h-56 overflow-y-auto">

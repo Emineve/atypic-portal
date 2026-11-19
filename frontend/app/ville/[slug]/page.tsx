@@ -46,7 +46,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
   return (
     <CollectionPage
       title={`Biens atypiques à vendre à ${cityName}`}
-      intro={`Une sélection de biens singuliers à ${cityName}, issus d'annonces d'agences.`}
+      intro={`Les biens atypiques à vendre à ${cityName}, toutes agences réunies.`}
       items={items}
       alert={{ location: cityName }}
     />

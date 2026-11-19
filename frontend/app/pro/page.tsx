@@ -23,7 +23,7 @@ const PROMISES: Promise5[] = [
     text: 'Votre agence, votre négociateur et son téléphone figurent sur chaque annonce. L’acheteur vous appelle, vous écrit ou demande à être rappelé. Sans intermédiaire.',
   },
   {
-    title: 'Seuls les biens singuliers entrent.',
+    title: 'Seuls les biens atypiques entrent.',
     text: 'Six caractéristiques précises : un bien en présente au moins une, ou il n’est pas diffusé. Un cadre qui valorise vos mandats les plus rares.',
     href: '/charte',
     link: 'Ce que nous publions, et ce que nous ne publions pas',
@@ -69,26 +69,29 @@ export default function ProPage() {
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>
 
-      <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="max-w-4xl">
         <Crumbs items={[{ label: 'Espace pro' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Vos biens atypiques méritent <span className="italic text-stone-500">des acheteurs qui les cherchent.</span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Lofts, ateliers d&apos;artistes, rooftops et d&apos;autres biens singuliers : Loftissime est le premier hub d&apos;annonces immobilières atypiques.
+          Lofts, ateliers d&apos;artistes, rooftops et d&apos;autres biens atypiques : Loftissime est le premier hub d&apos;annonces immobilières atypiques.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <a href="#rejoindre" className={btn}>Diffuser mes annonces</a>
           <span className="text-sm text-stone-500">Gratuit pendant le lancement, sans engagement.</span>
         </div>
+      </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 pb-24">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-4xl pb-24">
         <div className="mb-14 md:mb-24">
           <ProSteps promises={PROMISES} softwareSrc={logiciels.src} />
         </div>
 
-        <section className="border-t border-stone-900 py-12 md:py-16">
+        <section className="border-t border-stone-200 py-12 md:py-16">
           <h2 className={h2}>
             Qui sont les acheteurs <span className="italic text-stone-500">de Loftissime.</span>
           </h2>
@@ -106,12 +109,13 @@ export default function ProPage() {
           </div>
         </section>
 
-        <section id="rejoindre" className="border-t border-stone-900 pt-12 md:pt-16 scroll-mt-20">
+        <section id="rejoindre" className="border-t border-stone-200 pt-12 md:pt-16 scroll-mt-20">
           <ProForm />
           <p className="mt-8">
             <Link href="/charte" className={link}>Toutes les questions fréquentes</Link>
           </p>
         </section>
+      </div>
       </main>
     </div>
   );

@@ -9,7 +9,8 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
-      <main className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-24">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-4xl pt-12 md:pt-20 pb-24">
         <p className="text-xs uppercase tracking-widest text-stone-500">Page introuvable</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Ce bien n&apos;est plus en ligne, <span className="italic text-stone-500">ou cette page n&apos;existe pas.</span>
@@ -28,6 +29,7 @@ export default function NotFound() {
             Créer mon alerte
           </Link>
         </div>
+      </div>
       </main>
     </div>
   );

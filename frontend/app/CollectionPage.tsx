@@ -49,9 +49,9 @@ export default function CollectionPage({
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
       <Tracker />
-      <SiteHeader />
+      <SiteHeader wide />
 
-      <header className="max-w-7xl mx-auto px-6 pt-14 md:pt-20 pb-10">
+      <header className="max-w-7xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <Crumbs items={hideAgency ? [{ label: 'Agences', href: '/agence' }, { label: title }] : [{ label: alert?.location || alert?.category || title }]} />
         <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{title}</h1>
         <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{intro}</p>

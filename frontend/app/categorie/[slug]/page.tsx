@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     .eq('is_active', true)
     .eq('atypic_category', cat);
   const title = `${cat} à vendre`;
-  const description = `Notre sélection de biens singuliers dans la catégorie « ${cat} », issus d'annonces d'agences.`;
+  const description = `Les biens atypiques à vendre dans la catégorie « ${cat} », issus d'annonces d'agences.`;
   return {
     title: `${title} · Loftissime`,
     description,
@@ -44,7 +44,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
   return (
     <CollectionPage
       title={`${cat} à vendre`}
-      intro={`Notre sélection de biens singuliers : ${cat.toLowerCase()}.`}
+      intro={`Les biens atypiques à vendre dans la catégorie ${cat}, toutes agences réunies.`}
       items={data || []}
       alert={{ category: cat }}
     />

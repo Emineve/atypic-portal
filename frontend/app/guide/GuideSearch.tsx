@@ -1,5 +1,6 @@
 'use client';
 
+import Done from '../Done';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Search, X } from 'lucide-react';
@@ -316,9 +317,9 @@ export default function GuideSearch() {
         )}
 
         {status === 'done' && (
-          <p className="mt-8 font-serif text-2xl text-stone-900">
-            Merci, <span className="italic text-stone-500">c’est noté.</span> Nous vous écrivons dès que la réponse est en ligne.
-          </p>
+          <Done title="Votre question est bien envoyée." className="mt-8 rounded-[20px] border border-stone-900 bg-white p-6 md:p-8">
+            Nous vous écrivons dès que la réponse est en ligne.
+          </Done>
         )}
       </div>
     </section>

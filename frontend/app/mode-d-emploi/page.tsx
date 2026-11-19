@@ -15,14 +15,17 @@ export default function ModeEmploiPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="max-w-3xl">
         <Crumbs items={[{ label: 'Mode d’emploi' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Du premier clic à la visite. <span className="italic text-stone-500">Nous vous accompagnons.</span>
         </h1>
+      </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-24">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-3xl pb-24">
         <ModeEmploiSteps />
         <p className="mt-12 md:mt-16 text-sm text-stone-500">
           Envie de savoir pourquoi ce site existe ?{' '}
@@ -31,6 +34,7 @@ export default function ModeEmploiPage() {
           </Link>
           .
         </p>
+      </div>
       </main>
     </div>
   );

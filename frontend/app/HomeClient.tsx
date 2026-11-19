@@ -424,7 +424,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       )}
 
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div
             className="flex items-baseline gap-3"
             onClick={() => {
@@ -938,9 +938,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               <p className="mt-5 font-serif text-2xl text-stone-900 leading-snug">
                 Aucun bien ne correspond pour l&apos;instant.
               </p>
-              <p className="mt-3 text-stone-600 leading-relaxed">
-                Créez votre alerte : vous serez prévenu(e) dès qu&apos;un nouveau bien correspondant à votre recherche arrive sur le marché.
-              </p>
               <button
                 type="button"
                 onClick={() => openAlert('empty')}
@@ -1055,7 +1052,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-x-12 gap-y-5 md:items-center">
             <div>
               <h2 className="font-serif text-2xl text-stone-900">Le bien que vous cherchez n&apos;est peut-être pas encore en ligne.</h2>
-              <p className="mt-2 text-sm text-stone-500 max-w-md">Dites-nous ce que vous cherchez : nous vous écrivons dès qu&apos;un bien qui y correspond arrive sur le marché.</p>
             </div>
             <div className="md:justify-self-end">
               <button

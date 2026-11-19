@@ -83,9 +83,9 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(crumbLd) }} />
-      <SiteHeader backHref="/guide" backLabel="État des lieux" />
+      <SiteHeader />
 
-      <header className="max-w-5xl mx-auto px-6 pt-8 md:pt-12">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20">
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">
           <Link href="/" className="hover:text-stone-900">Accueil</Link>
           {' › '}
@@ -104,7 +104,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </div>
       </header>
 
-      <article className="max-w-5xl mx-auto px-6 pt-10 md:pt-14 pb-20 [&>*]:max-w-3xl">
+      <article className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-20 [&>*]:max-w-3xl">
         <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{typo(a.intro)}</p>
 
         <section className="mt-8 bg-[#F4E7B5] p-6" aria-label="À retenir">
@@ -222,10 +222,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         )}
 
         <section data-alert-cta className="mt-12 bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
-          <h2 className="font-serif text-2xl leading-snug">Ne passez pas à côté de votre prochain coup de cœur.</h2>
-          <p className="mt-2 text-stone-600 leading-relaxed">
-            Loftissime réunit les biens atypiques des agences sur un seul site. Créez une alerte, et vous êtes parmi les premiers prévenus.
-          </p>
+          <h2 className="font-serif text-2xl md:text-3xl leading-snug">Ne passez pas à côté de votre prochain coup de cœur.</h2>
           <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-4">
             <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
               Créer mon alerte

@@ -26,7 +26,9 @@ export default function SiteHeaderClient({
   children,
   alert = true,
   newArticles = 0,
+  wide = false,
 }: {
+  wide?: boolean; // pages de listes d'annonces : même largeur que la grille
   backHref?: string;
   backLabel?: string;
   back?: React.ReactNode; // lien de retour sur mesure (ex. retour à l'annonce)
@@ -69,7 +71,7 @@ export default function SiteHeaderClient({
   return (
     <>
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+        <div className={`${wide ? 'max-w-7xl' : 'max-w-6xl'} mx-auto px-6 h-16 flex items-center justify-between gap-4`}>
           <Logo />
           <div className="flex items-center gap-4 sm:gap-6">
             <ModeEmploiBack />

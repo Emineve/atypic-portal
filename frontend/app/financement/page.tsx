@@ -22,7 +22,8 @@ export default function FinancementPage() {
       {/* Sur téléphone, le retour à l'annonce passe sous l'en-tête, qui n'a pas la place de l'accueillir */}
       <SiteHeader back={<BackLink className="hidden sm:inline-flex" />} />
 
-      <header className="max-w-4xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="max-w-4xl">
         <BackLink className="mb-8 flex sm:hidden" />
         <Crumbs items={[{ label: 'Financement' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
@@ -31,9 +32,11 @@ export default function FinancementPage() {
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
           Un coup de cœur se décide aussi avec des chiffres. Estimez votre mensualité en quelques secondes, avec les taux du moment.
         </p>
+      </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 pb-20 space-y-14">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-4xl pb-20 space-y-14">
         <Simulator />
 
         <section>
@@ -73,6 +76,7 @@ export default function FinancementPage() {
             engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
           </p>
         </section>
+      </div>
       </main>
     </div>
   );

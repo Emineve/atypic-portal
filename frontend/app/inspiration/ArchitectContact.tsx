@@ -13,7 +13,6 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
 
@@ -36,7 +35,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
         p_email: email,
         p_phone: phone || null,
         p_message: message,
-        p_consent: consent,
+        p_consent: true, // l'envoi vaut accord, la phrase du formulaire le précise
       });
       setStatus(!error && data === true ? 'done' : 'error');
     } catch {
@@ -108,10 +107,9 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
                 <div className="hidden" aria-hidden="true">
                   <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
                 </div>
-                <label className="flex items-start gap-2 text-xs text-stone-600 leading-relaxed">
-                  <input type="checkbox" className="mt-0.5" required checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-                  J&apos;accepte que ces informations soient enregistrées et transmises à {name} pour traiter ma demande.
-                </label>
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  En envoyant, vous acceptez que ces informations soient enregistrées et transmises à {name} pour traiter votre demande.
+                </p>
                 {status === 'error' && <p className="text-xs text-red-700">L&apos;envoi a échoué. Vérifiez les champs et réessayez.</p>}
                 <button
                   type="submit"

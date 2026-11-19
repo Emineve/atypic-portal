@@ -1,5 +1,6 @@
 'use client';
 
+import Done from '../Done';
 import { useState } from 'react';
 import { getSupabase } from '../../lib/supabase';
 import { formatPhone } from '../../lib/phone';
@@ -36,12 +37,9 @@ export default function ProForm() {
 
   if (status === 'done') {
     return (
-      <div>
-        <h2 className={h2}>
-          Merci, <span className="italic text-stone-500">votre demande est enregistrée.</span>
-        </h2>
-        <p className="mt-4 text-lg font-light text-stone-600">Nous revenons vers vous très vite pour échanger sur votre catalogue.</p>
-      </div>
+      <Done title="Votre demande est bien envoyée." className="rounded-[14px] border border-stone-900 bg-white p-6 md:p-8">
+        Nous revenons vers vous dans les meilleurs délais pour échanger sur votre catalogue.
+      </Done>
     );
   }
 

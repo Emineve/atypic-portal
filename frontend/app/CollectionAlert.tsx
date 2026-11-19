@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Bell } from 'lucide-react';
 import AlertPhrase from './AlertPhrase';
 import AlertDialog from './AlertDialog';
 
@@ -50,21 +49,12 @@ export default function CollectionAlert({
   return (
     <>
       <div
-        className="border border-stone-200 bg-white p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5 text-left mt-14"
+        data-alert-cta
+        className="border border-stone-900 bg-white p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5 text-left mt-14"
       >
-        <div className="flex items-start gap-4">
-          <span className="shrink-0 h-11 w-11 rounded-full bg-stone-900 text-white flex items-center justify-center">
-            <Bell className="w-5 h-5" />
-          </span>
-          <div>
-            <p className="font-serif text-lg text-stone-900 leading-snug">
-              <AlertPhrase />
-            </p>
-            <p className="mt-1 text-sm text-stone-500">
-              Dès qu’un nouveau bien répond à vos attentes, vous êtes parmi les premiers prévenus.
-            </p>
-          </div>
-        </div>
+        <p className="font-serif text-2xl md:text-3xl text-stone-900 leading-snug">
+          <AlertPhrase />
+        </p>
         <button
           type="button"
           onClick={() => setOpen(true)}

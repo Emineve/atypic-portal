@@ -63,7 +63,8 @@ export default function ManifestoPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-4xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="max-w-4xl">
         <Crumbs items={[{ label: 'Pourquoi Loftissime' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
@@ -71,9 +72,11 @@ export default function ManifestoPage() {
         <p className="mt-8 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
           Tous les biens atypiques à vendre, sur un seul site. Partout en France, toutes agences réunies, sans préférence. Et vous, accompagné jusqu&apos;à la visite, pour ne pas passer à côté du bien qui vous ressemble.
         </p>
+      </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 pb-24">
+      <main className="max-w-6xl mx-auto px-6">
+        <div className="max-w-4xl pb-24">
         <ol className="space-y-4">
           {ARTICLES.map((a, i) => (
             <li key={a.title} className="rounded-[20px] border border-stone-200 bg-white p-6 md:p-9">
@@ -108,6 +111,7 @@ export default function ManifestoPage() {
             </Link>
           </div>
         </section>
+      </div>
       </main>
     </div>
   );
