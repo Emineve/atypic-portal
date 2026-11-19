@@ -313,46 +313,58 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <AlertLink city={item.city} price={Number(item.price)} />
 
             {priceNum > 0 && (
-              <section className="mt-10">
+              <section className="mt-10 border border-stone-300 bg-white p-6">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
-                <div className="mt-5">
-                  <div>
-                    <dl className="border-t border-stone-200 divide-y divide-stone-200 text-stone-700">
-                      <div className="flex items-baseline justify-between gap-4 py-3">
-                        <dt>
-                          Prix du bien
-                          <span className="block text-xs text-stone-400">{feesLabel}</span>
-                        </dt>
-                        <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
-                      </div>
-                      <div className="flex items-baseline justify-between gap-4 py-3">
-                        <dt>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></dt>
-                        <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
-                      </div>
-                      <div className="flex items-baseline justify-between gap-4 py-3 border-b border-stone-200">
-                        <dt className="text-stone-900">
-                          Montant estimé du projet
-                          <span className="block text-xs text-stone-400">Hors travaux de rénovation</span>
-                        </dt>
-                        <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
-                      </div>
-                    </dl>
-                    <p className="mt-3 text-xs text-stone-400 leading-relaxed">
-                      Estimation indicative pour un bien ancien. Le montant exact des frais est calculé par le notaire.
-                    </p>
-                    <Link
-                      href={`/financement?prix=${Math.round(priceNum)}`}
-                      className="mt-3 inline-block text-sm text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900"
-                    >
-                      Estimer ma mensualité
-                    </Link>
-                  </div>
+
+                <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-serif text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</span>
+                  <span className="text-sm text-stone-500">montant estimé du projet, hors travaux</span>
+                </p>
+
+                {/* Part du prix et des frais de notaire dans le projet */}
+                <div className="mt-5 flex h-2.5 w-full overflow-hidden" aria-hidden="true">
+                  <span className="bg-stone-900" style={{ width: `${(priceNum / (priceNum + notary)) * 100}%` }} />
+                  <span className="bg-[#F4E7B5] border border-stone-900" style={{ width: `${(notary / (priceNum + notary)) * 100}%` }} />
                 </div>
+
+                <dl className="mt-2 divide-y divide-stone-200 text-stone-700">
+                  <div className="flex items-start justify-between gap-4 py-3.5">
+                    <dt className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-2.5 w-2.5 flex-none bg-stone-900" aria-hidden="true" />
+                      <span>
+                        Prix du bien
+                        <span className="block text-xs text-stone-400">{feesLabel}</span>
+                      </span>
+                    </dt>
+                    <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 py-3.5">
+                    <dt className="flex items-center gap-2.5">
+                      <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
+                      <span>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></span>
+                    </dt>
+                    <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
+                  </div>
+                </dl>
+
+                <div className="mt-1 pt-5 border-t border-stone-200">
+                  <Link
+                    href={`/financement?prix=${Math.round(priceNum)}`}
+                    className="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-[#F4E7B5] text-sm text-stone-900 hover:bg-[#EBD98F] transition"
+                  >
+                    <Calculator className="w-4 h-4" />
+                    Estimer ma mensualité
+                  </Link>
+                </div>
+
+                <p className="mt-5 text-xs text-stone-400 leading-relaxed">
+                  Estimation indicative pour un bien ancien. Le montant exact des frais est calculé par le notaire.
+                </p>
               </section>
             )}
 
             {(costParts.length > 0 || hasCopro) && (
-              <section className="mt-10 border border-stone-300 bg-white p-6">
+              <section className={`${priceNum > 0 ? 'mt-4' : 'mt-10'} border border-stone-300 bg-white p-6`}>
                 <h2 className="font-serif text-2xl text-stone-900">Vivre ici, au quotidien</h2>
 
                 {monthly > 0 && (
