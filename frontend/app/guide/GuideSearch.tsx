@@ -146,7 +146,7 @@ export default function GuideSearch() {
         <label htmlFor="question" className="block text-xs uppercase tracking-widest text-stone-500">
           Posez votre question
         </label>
-        <div className="mt-2 flex h-16 items-center gap-3 border border-stone-900 bg-white pl-5 pr-2 focus-within:shadow-[0_0_0_1px_#1c1917]">
+        <div className="mt-2 flex h-14 items-center gap-3 border border-stone-300 bg-white pl-4 pr-2 transition focus-within:border-stone-900">
           <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.5} />
           <input
             ref={input}
@@ -162,7 +162,7 @@ export default function GuideSearch() {
               if (e.key === 'Escape') clear();
             }}
             placeholder="Peut-on louer un bien classé G ?"
-            className="h-full w-full min-w-0 border-0 bg-transparent p-0 font-serif text-xl md:text-2xl text-stone-900 placeholder:text-stone-300 focus:outline-none focus:ring-0"
+            className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
           />
           {q !== '' && (
             <button type="button" onClick={clear} aria-label="Effacer la question" className="flex h-11 w-11 flex-none items-center justify-center text-stone-400 hover:text-stone-900 transition">
