@@ -45,7 +45,7 @@ export default function ProForm() {
   const label = 'block text-xs uppercase tracking-wider text-stone-500 mb-1';
 
   return (
-    <form onSubmit={onSubmit} className="border border-stone-200 bg-white p-6 md:p-8 space-y-4 text-left">
+    <form onSubmit={onSubmit} className="rounded-[10px] border border-stone-200 bg-white p-6 md:p-8 space-y-4 text-left">
       <div>
         <label htmlFor="p-agency" className={label}>Agence</label>
         <input id="p-agency" className={field} required minLength={2} maxLength={160} value={agency} onChange={(e) => setAgency(e.target.value)} />
@@ -79,7 +79,7 @@ export default function ProForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+        className="w-full sm:w-auto sm:min-w-[16rem] sm:px-10 h-12 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
       >
         {status === 'sending' ? 'Envoi…' : 'Envoyer'}
       </button>
