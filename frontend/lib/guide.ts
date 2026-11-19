@@ -39,6 +39,114 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'acheter-un-atelier-d-artiste',
+    art: 'loft',
+    title: 'Acheter un atelier d’artiste : un lieu de travail, pas toujours un logement',
+    description:
+      'Verrière, grande hauteur, fond de cour : l’atelier d’artiste fait rêver. Avant d’acheter, vérifiez qu’il est bien un logement aux yeux de la mairie, de la copropriété et de la banque.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Un atelier d’artiste a été construit pour travailler, pas pour habiter : une grande verrière pour la lumière, de la hauteur pour les toiles et les sculptures, souvent au fond d’une cour. C’est ce qui fait son charme. C’est aussi ce qui oblige à poser une question que l’on ne pose jamais pour un appartement : ce lieu est-il officiellement un logement ?',
+    takeaways: [
+      'Un atelier peut être vendu comme un lieu de vie sans être un logement sur le papier. Trois documents le disent : l’autorisation d’urbanisme, le règlement de copropriété et la déclaration aux impôts.',
+      'Transformer un local d’activité en logement est un changement de destination : il faut une déclaration préalable, ou un permis de construire si la façade ou la structure sont modifiées.',
+      'En copropriété, habiter un lot décrit comme « atelier » doit être compatible avec le règlement et la destination de l’immeuble.',
+      'Si la situation n’est pas régularisée, le financement, l’assurance et la revente se compliquent. Demandez les preuves avant de faire une offre.',
+    ],
+    sections: [
+      {
+        title: 'Qu’est-ce qu’un atelier d’artiste ?',
+        paragraphs: [
+          'C’est un local conçu pour un peintre, un sculpteur ou un photographe. On le reconnaît à sa verrière, souvent tournée vers le nord pour une lumière constante, à sa hauteur sous plafond et à son plan très ouvert. Beaucoup ont été transformés en logements au fil des ventes, parfois avec une mezzanine.',
+          'Le mot « atelier » dans une annonce décrit donc un style autant qu’un statut. C’est le statut qu’il faut vérifier.',
+        ],
+      },
+      {
+        title: 'Comment savoir si c’est officiellement un logement ?',
+        paragraphs: [
+          'Trois regards se superposent, et ils ne disent pas toujours la même chose.',
+        ],
+        list: [
+          'La mairie : la destination du local au sens de l’urbanisme. Passer d’un local d’activité à un logement est un changement de destination, qui doit avoir été autorisé.',
+          'La copropriété : la désignation du lot dans le règlement et l’état descriptif de division. Un lot peut y figurer comme « atelier » alors qu’il est habité depuis trente ans.',
+          'Les impôts : le local doit avoir été déclaré comme habitation. La taxe foncière en donne une première indication.',
+        ],
+      },
+      {
+        title: 'Quelle autorisation fallait-il pour le transformer ?',
+        paragraphs: [
+          'D’après la fiche officielle de Service-Public, transformer un local professionnel en logement suppose une autorisation d’urbanisme : une déclaration préalable quand le changement se fait sans toucher à la façade ni à la structure, un permis de construire dans le cas contraire.',
+          'À Paris, la Ville précise qu’elle n’est pas habilitée à se prononcer sur l’usage d’un local : c’est au propriétaire d’en apporter la preuve, par les actes de vente, les baux, le règlement de copropriété, les autorisations d’urbanisme ou les documents fiscaux. Demandez donc au vendeur ce dossier, pas une simple affirmation.',
+        ],
+      },
+      {
+        title: 'Et du côté de la copropriété ?',
+        paragraphs: [
+          'Un copropriétaire peut en principe changer l’affectation de son lot sans vote, à condition de respecter la destination de l’immeuble et les clauses du règlement. Si le changement est contraire à cette destination ou interdit par le règlement, il ne peut être autorisé qu’à l’unanimité, rappelle une réponse ministérielle.',
+          'Lisez la désignation exacte du lot. « Atelier », « local », « remise » ou « logement » n’emportent pas les mêmes droits, ni toujours les mêmes charges.',
+        ],
+      },
+      {
+        title: 'Que se passe-t-il si rien n’a été régularisé ?',
+        list: [
+          'La banque peut refuser de financer un bien dont la destination n’est pas l’habitation, ou demander une expertise.',
+          'L’assurance habitation suppose un logement : déclarez la situation réelle.',
+          'La mairie ou la copropriété peuvent demander une régularisation, qui sera à votre charge une fois propriétaire.',
+          'À la revente, votre acheteur posera les mêmes questions que vous.',
+        ],
+      },
+      {
+        title: 'Verrière, hauteur, mezzanine : ce qu’il faut regarder en visite',
+        list: [
+          'La verrière : son âge, son vitrage, son étanchéité. C’est la pièce maîtresse, et le premier poste de dépense.',
+          'Le confort : une grande surface vitrée chauffe l’été et refroidit l’hiver. Visitez si possible par temps chaud et par temps froid, et lisez le diagnostic de performance énergétique.',
+          'La surface : une mezzanine sous faible hauteur ne compte pas dans la surface officielle. Demandez le mesurage.',
+          'La situation : en fond de cour ou en rez-de-chaussée, vérifiez la lumière réelle, l’humidité et le vis-à-vis.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, pour un atelier',
+      items: [
+        'J’ai l’autorisation d’urbanisme qui a fait de l’atelier un logement, ou la preuve qu’il l’a toujours été.',
+        'J’ai lu la désignation du lot dans le règlement de copropriété.',
+        'La taxe foncière porte sur un local d’habitation.',
+        'Ma banque sait qu’il s’agit d’un ancien atelier.',
+        'J’ai fait regarder la verrière par un professionnel.',
+        'Je connais la surface officielle, mezzanine exclue.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on habiter un atelier d’artiste ?',
+        a: 'Oui, s’il a été transformé en logement dans les règles : autorisation d’urbanisme, compatibilité avec le règlement de copropriété et déclaration aux impôts. Sans cela, il reste un local d’activité, même s’il est aménagé.',
+      },
+      {
+        q: 'Faut-il un permis pour transformer un atelier en logement ?',
+        a: 'Il faut au moins une déclaration préalable. Un permis de construire est nécessaire si les travaux modifient la façade ou la structure porteuse.',
+      },
+      {
+        q: 'La copropriété peut-elle s’opposer à ce qu’un atelier soit habité ?',
+        a: 'Oui, si l’habitation est contraire à la destination de l’immeuble ou interdite par le règlement. Dans ce cas, seul un accord unanime des copropriétaires peut l’autoriser.',
+      },
+      {
+        q: 'Une banque finance-t-elle un atelier d’artiste ?',
+        a: 'Oui quand le bien est officiellement un logement. Si sa destination n’a pas été régularisée, le financement devient difficile : faites vérifier ce point avant de déposer votre dossier.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public, « Comment transformer un local professionnel ou commercial en logement ? »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F2416' },
+      { label: 'Justice.fr, « Transformer un local professionnel ou commercial en logement »', url: 'https://www.justice.fr/fiche/transformer-local-professionnel-commercial-logement' },
+      { label: 'Ville de Paris, fiche technique « Comment établir l’usage de mon local ? »', url: 'https://cdn.paris.fr/paris/2025/02/18/1-fiche-technique-paris-fr-comment-etablir-l-usage-de-mon-local-lGtt.pdf' },
+      { label: 'Assemblée nationale, réponse ministérielle sur le changement d’affectation d’un lot de copropriété', url: 'https://www.assemblee-nationale.fr/dyn/12/questions/QANR5L12QE35328.pdf' },
+      { label: 'Bourse des crédits, « Bien immobilier atypique : les vérifications avant d’acheter »', url: 'https://www.boursedescredits.com/guide-immobilier-atypique-verifications-acheter-6182.php' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'cheminee-a-paris-peut-on-faire-du-feu',
     art: 'charges',
     title: 'Cheminée à Paris : a-t-on encore le droit de faire du feu ?',
