@@ -149,6 +149,11 @@ export default function PlanDownload({
                   </button>
                   <p className="mt-2 text-center text-[11px] text-stone-500">
                     Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.
+                    {' '}
+                    <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">
+                      Vos données et vos droits
+                    </a>
+                    .
                   </p>
                 </div>
               </form>

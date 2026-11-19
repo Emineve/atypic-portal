@@ -719,7 +719,13 @@ export default function AlertDialog({
               >
                 {status === 'sending' ? 'Enregistrement…' : 'Créer mon alerte'}
               </button>
-              <p className="mt-2 text-xs text-stone-500 text-center">Gratuit et sans engagement.</p>
+              <p className="mt-2 text-xs text-stone-500 text-center">
+                Gratuit et sans engagement.{' '}
+                <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">
+                  Vos données et vos droits
+                </a>
+                .
+              </p>
             </div>
           </form>
         )}
