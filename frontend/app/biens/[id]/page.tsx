@@ -135,6 +135,13 @@ export default async function ListingPage({ params }: { params: { id: string } }
   // Montant ramené au m² : le seul moyen de comparer deux biens de tailles différentes
   const sqm = Number(item.surface_sqm) || 0;
   const perSqm = (amount: number) => (sqm > 0 && amount > 0 ? `soit ${Math.round(amount / sqm)} € par m²` : '');
+  // Charges situées par rapport au repère parisien (FNAIM du Grand Paris, comptes 2023 : 43 € par m² de surface assurée).
+  // Notre calcul divise par la surface du logement, plus petite : d'où trois niveaux volontairement larges, et Paris seulement.
+  const chargesSqm = sqm > 0 ? (Number(item.charges_yearly) || 0) / sqm : 0;
+  const chargesLevel = /^75/.test(String(item.postal_code || '')) && chargesSqm > 0
+    ? chargesSqm < 35 ? 'Charges plutôt basses pour Paris' : chargesSqm <= 60 ? 'Charges dans la moyenne parisienne' : 'Charges plutôt élevées pour Paris'
+    : '';
+  const chargesHigh = chargesSqm > 60;
   const costParts = [
     { label: 'Charges de copropriété', amount: Number(item.charges_yearly) || 0, value: eur0(Number(item.charges_yearly) || 0), sub: perSqm(Number(item.charges_yearly) || 0) },
     { label: 'Taxe foncière', amount: Number(item.property_tax) || 0, value: eur0(Number(item.property_tax) || 0), sub: perSqm(Number(item.property_tax) || 0) },
@@ -403,13 +410,18 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   </dl>
                 )}
 
-                {(item.copro_lots || item.copro_procedure) && (
+                {(item.copro_lots || item.copro_procedure || chargesLevel) && (
                   <div className={costParts.length > 0 ? 'mt-1 pt-5 border-t border-stone-200' : 'mt-4'}>
                     <p className="text-[10px] uppercase tracking-widest text-stone-500">La copropriété</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {item.copro_lots ? (
                         <span className="inline-flex items-center h-9 px-4 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
                           {item.copro_lots} {Number(item.copro_lots) > 1 ? 'lots' : 'lot'}
+                        </span>
+                      ) : null}
+                      {chargesLevel ? (
+                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
+                          {chargesLevel}
                         </span>
                       ) : null}
                       {item.copro_procedure ? (
@@ -421,8 +433,14 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   </div>
                 )}
 
+                {chargesLevel && (
+                  <p className="mt-5 text-xs text-stone-500 leading-relaxed">
+                    Charges : à Paris, elles sont en moyenne de 43 € par m² et par an (FNAIM du Grand Paris, comptes 2023).
+                    {chargesHigh ? ' Des charges élevées sont souvent le signe d’un gardien, d’un ascenseur ou d’un chauffage collectif compris : à demander à l’agence.' : ''}
+                  </p>
+                )}
                 {energyCost && (
-                  <p className="mt-5 text-xs text-stone-400 leading-relaxed">
+                  <p className={`${chargesLevel ? 'mt-2' : 'mt-5'} text-xs text-stone-400 leading-relaxed`}>
                     Énergie : montant moyen estimé pour un usage standard, abonnement compris{item.energy_cost_ref ? `, sur la base des prix des années ${item.energy_cost_ref}` : ''}.
                   </p>
                 )}

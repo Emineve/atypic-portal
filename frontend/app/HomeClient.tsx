@@ -420,7 +420,13 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-baseline gap-3">
+          <div
+            className="flex items-baseline gap-3"
+            onClick={() => {
+              setOnlyFavs(false);
+              window.scrollTo({ top: 0 });
+            }}
+          >
             <Logo tagline={false} />
           </div>
 
@@ -467,7 +473,15 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           <div className="absolute inset-0 bg-stone-900/40" onClick={() => setMenuOpen(false)} />
           <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl flex flex-col">
             <div className="flex items-center justify-between px-6 h-20 border-b border-stone-200 shrink-0">
-              <Logo />
+              <span
+                onClick={() => {
+                  setMenuOpen(false);
+                  setOnlyFavs(false);
+                  window.scrollTo({ top: 0 });
+                }}
+              >
+                <Logo />
+              </span>
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}

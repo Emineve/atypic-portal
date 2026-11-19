@@ -2,6 +2,7 @@ import Logo from '../Logo';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import ProForm from './ProForm';
+import GuideArt from '../guide/GuideArt';
 import logiciels from './logiciels.png';
 export const metadata = {
   title: 'Agences : présentez vos biens atypiques · Loftissime',
@@ -106,6 +107,35 @@ export default function ProPage() {
       </header>
 
       <main className="max-w-4xl mx-auto px-6 pb-24">
+        {/* La preuve par l'image : l'annonce telle que l'acheteur la voit, l'agence en bonne place */}
+        <section className="pb-14 md:pb-20" aria-label="Exemple d'annonce sur Loftissime">
+          <div className="rounded-[10px] border border-stone-200 bg-white p-4 md:p-5 grid md:grid-cols-[1.3fr_1fr] gap-5 md:gap-7">
+            <GuideArt art="loft" className="w-full h-56 md:h-full md:min-h-[20rem] rounded-[6px]" />
+            <div className="flex flex-col py-1 md:py-3 md:pr-2">
+              <p>
+                <span className="inline-flex items-center h-7 px-3 rounded-full bg-[#F4E7B5] text-xs text-stone-900">Loft</span>
+              </p>
+              <p className="mt-3 font-serif text-2xl md:text-3xl leading-tight text-stone-900">Ancien atelier sous verrière</p>
+              <p className="mt-1 text-sm text-stone-500">Paris 11e · 142 m² · 1 890 000 €</p>
+              <div className="mt-5 border-t border-stone-200 pt-5">
+                <p className="text-xs uppercase tracking-widest text-stone-500">Votre agence</p>
+                <p className="mt-2 font-serif text-xl text-stone-900">Votre négociateur</p>
+                <p className="mt-2 text-sm text-stone-900">
+                  <span className="underline underline-offset-4 decoration-stone-300">Appeler</span>
+                  <span className="mx-2 text-stone-300">·</span>
+                  <span className="underline underline-offset-4 decoration-stone-300">WhatsApp</span>
+                </p>
+                <p className="mt-5 flex h-12 items-center justify-center rounded-[10px] bg-stone-900 text-xs font-semibold uppercase tracking-wider text-white">
+                  Être rappelé
+                </p>
+              </div>
+            </div>
+          </div>
+          <p className="mt-4 text-sm text-stone-500">
+            Exemple d&apos;annonce. Sur chacune : votre agence, votre négociateur, vos coordonnées. L&apos;acheteur vous contacte directement.
+          </p>
+        </section>
+
         <section className="border-t border-stone-900 py-12 md:py-16">
           <h2 className={h2}>Ce que Loftissime vous apporte</h2>
           <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-10">
