@@ -222,6 +222,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         <ShareButtons
           url={`${SITE_URL}/biens/${item.id}`}
           title={item.title}
+          city={item.city || undefined}
           detail={[item.city, item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', price].filter(Boolean).join(' · ')}
         />
       </div>

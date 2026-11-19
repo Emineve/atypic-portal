@@ -16,13 +16,14 @@ export default function ArticleShare({ url, title, label = true }: { url: string
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) setSmsSep('&');
   }, []);
 
-  const text = `${title}\n${url}`;
+  // Message court : l'aperçu du lien affiche déjà l'illustration et le titre de l'article
+  const text = `À lire avant d’acheter :\n${url}`;
   const u = encodeURIComponent(url);
   const links = {
     whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`,
     // Lien seul : Messages affiche alors la vignette de l'article dès la rédaction
     sms: `sms:${smsSep}body=${u}`,
-    mail: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`À lire sur Loftissime :\n\n${title}\n${url}`)}`,
+    mail: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`À lire sur Loftissime :\n${url}`)}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${u}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`,
     x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${u}`,
@@ -39,7 +40,7 @@ export default function ArticleShare({ url, title, label = true }: { url: string
   };
   const share = async () => {
     try {
-      await navigator.share({ title, url });
+      await navigator.share({ title, text: 'À lire avant d’acheter', url });
     } catch {
       /* partage annulé */
     }
