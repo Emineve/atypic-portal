@@ -469,25 +469,10 @@ export default async function ListingPage({ params }: { params: { id: string } }
         <aside className="min-w-0">
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
           <div className="hidden lg:block border border-stone-200 bg-white p-6">
-            <p className="text-xs uppercase tracking-widest text-stone-500">Prix</p>
-            <p className="mt-2 font-serif text-5xl leading-none tracking-tight text-stone-900 whitespace-nowrap">{price}</p>
-            {(sqm > 0 && priceNum > 0) || feesPayer ? (
-              <p className="mt-4 border-t border-stone-200 pt-4 text-sm leading-relaxed text-stone-600">
-                {sqm > 0 && priceNum > 0 ? (
-                  <span className="block">
-                    Soit {new Intl.NumberFormat('fr-FR').format(Math.round(priceNum / sqm / 10) * 10)} € par m²
-                  </span>
-                ) : null}
-                {feesPayer ? (
-                  <span className="block">Honoraires à la charge {feesPayer === 'vendeur' ? 'du vendeur' : 'de l’acquéreur'}</span>
-                ) : null}
-              </p>
-            ) : null}
-            {priceNum > 0 && (
-              <a href="#prix" className="mt-4 inline-block text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
-                Le prix en détail
-              </a>
-            )}
+            <p className="font-serif text-5xl leading-none tracking-tight text-stone-900 whitespace-nowrap">
+              {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum)}
+              <span className="ml-2 text-3xl text-stone-400">€</span>
+            </p>
           </div>
           {/* Sur mobile, le contact est placé juste après la présentation (voir plus haut) */}
           <div className="hidden lg:block space-y-4">

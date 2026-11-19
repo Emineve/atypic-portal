@@ -23,8 +23,8 @@ function pct(n: number) {
 }
 
 export default function Simulator() {
-  const [price, setPrice] = useState('800 000');
-  const [down, setDown] = useState('160 000');
+  const [price, setPrice] = useState('');
+  const [down, setDown] = useState('');
   const [years, setYears] = useState(20);
   const [rate, setRate] = useState(String(RATES.byYears[1].rate).replace('.', ','));
 
@@ -52,7 +52,7 @@ export default function Simulator() {
 
   const total = principal + interest || 1;
 
-  const field = 'mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
+  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
   const label = 'block text-xs uppercase tracking-widest text-stone-500';
 
   return (
@@ -60,11 +60,11 @@ export default function Simulator() {
       <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
         <label className={label}>
           Prix du bien (€)
-          <input inputMode="numeric" value={price} onChange={(e) => setPrice(group(e.target.value))} className={field} />
+          <input inputMode="numeric" value={price} onChange={(e) => setPrice(group(e.target.value))} className={field} placeholder="800 000" />
         </label>
         <label className={label}>
           Apport (€)
-          <input inputMode="numeric" value={down} onChange={(e) => setDown(group(e.target.value))} className={field} />
+          <input inputMode="numeric" value={down} onChange={(e) => setDown(group(e.target.value))} className={field} placeholder="160 000" />
         </label>
         <div>
           <span className={label}>Durée</span>
@@ -90,6 +90,10 @@ export default function Simulator() {
 
       <div className="mt-10 border-t border-stone-200 pt-8" aria-live="polite">
         <h2 className="font-serif text-2xl text-stone-900">Votre mensualité</h2>
+        {principal <= 0 ? (
+          <p className="mt-3 text-stone-600">Indiquez le prix du bien et votre apport : votre mensualité s&apos;affiche ici.</p>
+        ) : (
+        <>
         <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <span className="font-serif text-5xl md:text-6xl leading-none tracking-tight text-stone-900">{eur(monthly)}</span>
           <span className="text-stone-500">par mois, hors assurance</span>
@@ -125,6 +129,8 @@ export default function Simulator() {
         <p className="mt-5 text-xs text-stone-500 leading-relaxed">
           Taux de {pct(num(rate))} % sur {years} ans. Revenus calculés pour un endettement de 35 %.
         </p>
+        </>
+        )}
       </div>
     </div>
   );
