@@ -39,6 +39,107 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'qu-est-ce-qu-un-bien-atypique',
+    art: 'marche',
+    title: 'Qu’est-ce qu’un bien atypique, et qui en achète ?',
+    description:
+      'Loft, atelier, péniche, maison d’architecte : le mot « atypique » n’a pas de définition légale. Ce qu’il recouvre vraiment, ce qu’il ne garantit pas, et le portrait de ceux qui achètent.',
+    category: 'Marché',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Le mot est partout dans les annonces, et il ne veut pas toujours dire grand-chose. Un bien atypique n’est pas un bien cher, ni un bien grand, ni un bien bizarre. C’est un bien qui s’écarte du logement standard par quelque chose de précis, que l’on peut nommer. Savoir quoi, c’est déjà savoir ce qu’il faudra vérifier avant d’acheter.',
+    takeaways: [
+      'Il n’existe aucune définition légale du bien atypique. Banques, portails et agences s’accordent sur une idée : un logement qui s’écarte des standards par son architecture, son histoire, son usage d’origine ou son emplacement.',
+      'L’atypique n’est pas une question de prix : d’après la dernière étude détaillée du réseau Espaces Atypiques, près d’une vente sur quatre se faisait sous 300 000 euros.',
+      'Chaque singularité a sa vérification : un ancien local d’activité pose la question de la destination, une terrasse celle de la propriété, une péniche celle de l’emplacement.',
+      'Les acheteurs ne sont pas des originaux : le premier motif d’achat est le coup de cœur, à égalité avec le besoin d’espace.',
+    ],
+    sections: [
+      {
+        title: 'Existe-t-il une définition ?',
+        paragraphs: [
+          'Pas dans la loi. Le terme est un usage de la profession. Le Crédit Agricole le définit comme un logement qui s’écarte des standards du marché par son architecture (volumes ouverts, verrières, structures industrielles), par son histoire ou son usage initial (ancien commerce, atelier, usine), par son emplacement inhabituel (péniche, cabane, habitat troglodytique) ou par ses matériaux et caractéristiques remarquables.',
+          'Un comparateur de crédit retient une lecture plus étroite, et plus utile pour l’acheteur : un logement dont l’usage initial n’était pas l’habitation, ou dont les caractéristiques sortent des standards résidentiels. C’est cette origine qui explique la plupart des vérifications à faire.',
+        ],
+      },
+      {
+        title: 'Comment Loftissime le définit-il ?',
+        paragraphs: [
+          'Par six caractéristiques précises. Un bien est publié s’il en présente au moins une.',
+        ],
+        list: [
+          'Une autre vie avant : loft, atelier d’artiste, ancienne usine, commerce ou bureaux transformés, péniche.',
+          'Un volume : hauteur sous plafond, verrière, duplex, triplex.',
+          'Un dehors en ville : terrasse, toit-terrasse, jardin, cour.',
+          'Une situation rare : dernier étage, vue dégagée, bord de l’eau, maison en ville.',
+          'Une signature : maison ou appartement d’architecte, immeuble remarquable.',
+          'Une histoire : hôtel particulier, maison de maître, bien ancien de caractère.',
+        ],
+      },
+      {
+        title: 'Atypique veut-il dire cher ?',
+        paragraphs: [
+          'Non. La dernière étude détaillée publiée par le réseau Espaces Atypiques, sur ses ventes de 2017, donnait un budget moyen de 560 000 euros, mais 24 % des ventes se faisaient en dessous de 300 000 euros, et seulement 3 % de l’offre dépassait deux millions. Les petites surfaces, autour de 50 m², représentaient 30 % des ventes.',
+          'Ces chiffres ont plusieurs années et ne concernent qu’un réseau : ils donnent un ordre de grandeur, pas un état du marché d’aujourd’hui.',
+        ],
+      },
+      {
+        title: 'Quels biens se vendent le plus ?',
+        paragraphs: [
+          'Dans cette même étude, la répartition des ventes était la suivante :',
+        ],
+        list: [
+          'Appartements avec belle terrasse ou rénovés de façon contemporaine : 37 %.',
+          'Maisons d’architecte : 28 %.',
+          'Lofts et anciens locaux industriels : 26 %.',
+          'Duplex et triplex : 8 %.',
+          'Péniches, anciens couvents et autres : 1 %.',
+        ],
+      },
+      {
+        title: 'Qui achète un bien atypique ?',
+        paragraphs: [
+          'Toujours d’après cette étude : un acheteur de 42 ans en moyenne, le plus souvent entre 30 et 50 ans, marié dans 47 % des cas et célibataire dans 27 %, cadre ou exerçant une profession intellectuelle supérieure.',
+          'Ses motivations disent l’essentiel : le coup de cœur pour le bien (25 %), le besoin d’espace (25 %), l’envie d’un nouveau projet (18 %). Les biens vendus étaient en moyenne plus grands de 50 m² que la moyenne française, et 61 % avaient un espace extérieur.',
+        ],
+      },
+      {
+        title: 'Ce que le mot ne garantit pas',
+        paragraphs: [
+          'Dans une annonce, « atypique » peut aussi habiller un défaut : un plan biscornu, un rez-de-chaussée sombre, un local sans statut clair. Demandez toujours ce qui, précisément, rend le bien atypique. Si la réponse tient en une caractéristique nommable, vous savez quoi vérifier. Si elle reste vague, méfiez-vous.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Qu’est-ce qu’un bien atypique en immobilier ?',
+        a: 'Un logement qui s’écarte des standards du marché par son architecture, son histoire, son usage d’origine ou son emplacement : loft, atelier d’artiste, maison d’architecte, péniche, dernier étage avec terrasse, lieu reconverti. Le terme n’a pas de définition légale.',
+      },
+      {
+        q: 'Un bien atypique est-il forcément cher ?',
+        a: 'Non. Le prix n’est pas un critère. Dans la dernière étude détaillée du réseau Espaces Atypiques, près d’une vente sur quatre se faisait sous 300 000 euros.',
+      },
+      {
+        q: 'Un bien atypique est-il plus risqué à acheter ?',
+        a: 'Il demande plus de vérifications, parce que sa singularité vient souvent d’une transformation : destination, autorisations, surface réelle, copropriété. Bien vérifié, il n’est pas plus risqué qu’un autre.',
+      },
+      {
+        q: 'Où trouver les biens atypiques à vendre ?',
+        a: 'Ils sont dispersés chez de nombreuses agences. Loftissime les réunit sur un seul site et permet de créer une alerte pour être prévenu des nouveaux biens.',
+      },
+    ],
+    sources: [
+      { label: 'Crédit Agricole, « Qu’est-ce qu’un bien immobilier atypique et comment l’acheter ? »', url: 'https://e-immobilier.credit-agricole.fr/conseils/marche/ce-quil-faut-savoir-avant-dacheter-un-bien-immobilier-atypique' },
+      { label: 'PAP, « Logements atypiques : qui les achète ? » (étude Espaces Atypiques, ventes 2017)', url: 'https://www.pap.fr/actualites/logements-atypiques-qui-les-achetent/a20331' },
+      { label: 'Bourse des crédits, « Bien immobilier atypique : les vérifications avant d’acheter »', url: 'https://www.boursedescredits.com/guide-immobilier-atypique-verifications-acheter-6182.php' },
+      { label: 'Pretto, « Que faut-il savoir quand on cherche un bien atypique ? »', url: 'https://www.pretto.fr/bien-immobilier/maison-ou-appartement/bien-atypique/' },
+      { label: 'Loftissime, « Questions fréquentes : ce que nous publions »', url: 'https://loftissime.fr/charte' },
+    ],
+    listingsLink: { label: 'Voir tous les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'surelever-ou-racheter-des-combles',
     art: 'duplex',
     title: 'Surélever, racheter des combles : gagner des mètres au-dessus de chez soi',
