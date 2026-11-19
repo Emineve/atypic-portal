@@ -117,7 +117,7 @@ export default function FavoritesContact({
             </span>
             <p className="mt-4 font-serif text-2xl text-stone-900">C&apos;est envoyé.</p>
             <p className="mt-2 text-sm text-stone-600">
-              Vos coordonnées ont été transmises. Le contact de chaque bien revient vers vous directement.
+              L’agent qui s’occupe de la vente de chaque bien revient directement vers vous.
             </p>
           </div>
         ) : (
