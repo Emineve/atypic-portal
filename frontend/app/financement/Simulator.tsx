@@ -50,12 +50,14 @@ export default function Simulator() {
   const interest = Math.max(0, monthly * n - principal);
   const income = monthly / 0.35;
 
-  const field = 'mt-1.5 w-full h-12 border border-stone-300 bg-white px-3 text-base text-stone-900 focus:outline-none focus:border-stone-900';
-  const label = 'block text-[11px] uppercase tracking-widest text-stone-500';
+  const total = principal + interest || 1;
+
+  const field = 'mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
+  const label = 'block text-xs uppercase tracking-widest text-stone-500';
 
   return (
-    <div className="grid md:grid-cols-2 border border-stone-200 bg-white">
-      <div className="p-6 md:p-8 space-y-5">
+    <div className="border border-stone-300 bg-white p-6 md:p-8">
+      <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
         <label className={label}>
           Prix du bien (€)
           <input inputMode="numeric" value={price} onChange={(e) => setPrice(group(e.target.value))} className={field} />
@@ -66,14 +68,14 @@ export default function Simulator() {
         </label>
         <div>
           <span className={label}>Durée</span>
-          <div className="mt-1.5 grid grid-cols-3 gap-2">
+          <div className="mt-2 flex gap-6 pb-2">
             {RATES.byYears.map((o) => (
               <button
                 key={o.years}
                 type="button"
                 onClick={() => pickYears(o.years)}
                 aria-pressed={years === o.years}
-                className={`h-12 border text-sm transition ${years === o.years ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-300 bg-white text-stone-800 hover:border-stone-900'}`}
+                className={`font-serif text-2xl underline-offset-8 transition ${years === o.years ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-400 hover:text-stone-900'}`}
               >
                 {o.years} ans
               </button>
@@ -86,26 +88,41 @@ export default function Simulator() {
         </label>
       </div>
 
-      <div className="p-6 md:p-8 bg-stone-900 text-white flex flex-col justify-center" aria-live="polite">
-        <p className="text-[11px] uppercase tracking-widest text-stone-400">Votre mensualité estimée</p>
-        <p className="mt-2 font-serif text-5xl leading-none">
-          {eur(monthly)} <span className="text-base text-stone-400">/ mois</span>
+      <div className="mt-10 border-t border-stone-200 pt-8" aria-live="polite">
+        <h2 className="font-serif text-2xl text-stone-900">Votre mensualité</h2>
+        <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="font-serif text-5xl md:text-6xl leading-none tracking-tight text-stone-900">{eur(monthly)}</span>
+          <span className="text-stone-500">par mois, hors assurance</span>
         </p>
-        <dl className="mt-8 space-y-3 text-sm">
-          <div className="flex justify-between gap-4 border-t border-stone-700 pt-3">
-            <dt className="text-stone-400">Montant emprunté</dt>
-            <dd>{eur(principal)}</dd>
+
+        <div className="mt-6 flex h-3 w-full overflow-hidden" aria-hidden="true">
+          <span className="bg-stone-900" style={{ width: `${(principal / total) * 100}%` }} />
+          <span className="bg-[#F4E7B5] border border-stone-900" style={{ width: `${(interest / total) * 100}%` }} />
+        </div>
+
+        <dl className="mt-2 divide-y divide-stone-200 border-b border-stone-200 text-stone-700">
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
+            <dt className="flex items-center gap-2.5">
+              <span className="h-2.5 w-2.5 flex-none bg-stone-900" aria-hidden="true" />
+              Montant emprunté
+            </dt>
+            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur(principal)}</dd>
           </div>
-          <div className="flex justify-between gap-4 border-t border-stone-700 pt-3">
-            <dt className="text-stone-400">Coût total des intérêts</dt>
-            <dd>{eur(interest)}</dd>
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
+            <dt className="flex items-center gap-2.5">
+              <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
+              Intérêts sur {years} ans
+            </dt>
+            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur(interest)}</dd>
           </div>
-          <div className="flex justify-between gap-4 border-t border-stone-700 pt-3">
-            <dt className="text-stone-400">Revenus mensuels conseillés</dt>
-            <dd>environ {eur(income)}</dd>
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
+            <dt className="pl-5">Revenus mensuels conseillés</dt>
+            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
+              <span className="font-sans text-sm text-stone-500">environ</span> {eur(income)}
+            </dd>
           </div>
         </dl>
-        <p className="mt-6 text-[11px] text-stone-400 leading-relaxed">
+        <p className="mt-5 text-xs text-stone-500 leading-relaxed">
           Taux de {pct(num(rate))} % sur {years} ans. Revenus calculés pour un endettement de 35 %.
         </p>
       </div>

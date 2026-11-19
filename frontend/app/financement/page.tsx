@@ -28,12 +28,12 @@ export default function FinancementPage() {
         </div>
       </nav>
 
-      <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-20 pb-10 text-center">
-        <p className="text-[10px] uppercase tracking-widest text-stone-400">Financement</p>
-        <h1 className="mt-4 text-3xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.15]">
-          Votre projet, <span className="italic text-stone-600">en mensualités</span>.
+      <header className="max-w-4xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
+        <p className="text-xs uppercase tracking-widest text-stone-500">Financement</p>
+        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+          Votre projet, <span className="italic text-stone-500">en mensualités.</span>
         </h1>
-        <p className="mt-5 text-stone-600 text-lg font-light leading-relaxed">
+        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
           Un coup de cœur se décide aussi avec des chiffres. Estimez votre mensualité en quelques secondes, avec les taux du moment.
         </p>
       </header>
