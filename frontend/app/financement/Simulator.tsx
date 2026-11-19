@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { RATES } from '../../lib/rates';
+import BrokerRequest from './BrokerRequest';
 
 function eur(n: number) {
   return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
@@ -61,6 +62,7 @@ export default function Simulator() {
   const label = 'block text-xs uppercase tracking-widest text-stone-500';
 
   return (
+    <div>
     <div className="border border-stone-300 bg-white p-6 md:p-8">
       <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
         <label className={label}>
@@ -158,6 +160,8 @@ export default function Simulator() {
         </>
         )}
       </div>
+    </div>
+    <BrokerRequest price={num(price)} down={num(down)} years={years} monthly={monthlyAll} />
     </div>
   );
 }

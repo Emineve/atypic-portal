@@ -1,5 +1,4 @@
 import SiteHeader from '../SiteHeader';
-import Link from 'next/link';
 import { TrendingUp } from 'lucide-react';
 import BackLink from './BackLink';
 import Simulator from './Simulator';
@@ -70,9 +69,6 @@ export default function FinancementPage() {
             Simulation indicative, sans valeur contractuelle : elle ne constitue ni une offre de prêt ni un conseil en financement. Un crédit vous
             engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
           </p>
-          <Link href="/" className="mt-8 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px]">
-            Découvrir les biens
-          </Link>
         </section>
       </main>
     </div>

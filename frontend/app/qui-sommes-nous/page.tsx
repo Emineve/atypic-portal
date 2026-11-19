@@ -14,12 +14,14 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
   {
     title: 'On ne tombe pas amoureux d’un nombre de pièces.',
     text: 'On tombe amoureux d’une verrière, de quatre mètres sous plafond, d’une lumière à cinq heures du soir. C’est cela que nous montrons en premier.',
+    href: '/',
+    link: 'Voir tous les biens',
   },
   {
     title: 'Le bien que vous cherchez existe. Il n’est pas visible.',
     text: 'Un loft chez une agence, un atelier d’artiste chez une autre, un dernier étage noyé parmi dix mille annonces. Nous les réunissons au même endroit.',
-    href: '/',
-    link: 'Voir tous les biens',
+    href: '/mode-d-emploi',
+    link: 'Lire le mode d’emploi',
   },
   {
     title: 'Les biens rares partent vite. Soyez le premier informé.',
@@ -48,6 +50,8 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
   {
     title: 'Nous ne vendons rien. Nous mettons en relation.',
     text: 'Loftissime n’est pas une agence. Vous parlez directement au professionnel qui connaît le bien. Vos coordonnées ne vont qu’à lui, et seulement quand vous le demandez.',
+    href: '/charte#fonctionnement',
+    link: 'Comment fonctionne le site',
   },
 ];
 
