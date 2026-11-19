@@ -265,6 +265,20 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
   }, [allPlaces, typed, places]);
   const showSuggestions = searchFocused && typed !== '';
 
+  // Saisie d'un lieu directement dans le panneau Critères (mêmes suggestions que la barre de recherche)
+  const [panelQuery, setPanelQuery] = useState('');
+  const panelTyped = normalize(panelQuery.trim());
+  const panelMatches = useMemo(() => {
+    if (!panelTyped) return [];
+    return allPlaces
+      .filter((p) => p.search.includes(panelTyped) && !places.some((x) => x.kind === p.kind && x.value === p.value && x.city === p.city))
+      .slice(0, 5);
+  }, [allPlaces, panelTyped, places]);
+  function addPanelPlace(p: Place) {
+    setPlaces((prev) => [...prev, p]);
+    setPanelQuery('');
+  }
+
   function addPlace(p: Place) {
     setPlaces((prev) => [...prev, p]);
     setQuery('');
@@ -691,22 +705,50 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                       </button>
                     </span>
                   )}
-                  {places.length === 0 && query.trim() === '' && <span className="text-stone-700">Toute la France</span>}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowFilters(false);
-                      setTimeout(() => {
-                        const el = document.getElementById('recherche-lieu');
-                        el?.scrollIntoView({ block: 'center' });
-                        el?.focus();
-                      }, 60);
-                    }}
-                    className="h-10 px-1 text-sm text-stone-600 underline underline-offset-4 decoration-stone-300 hover:text-stone-900"
-                  >
-                    {places.length > 0 ? 'Ajouter un lieu' : 'Choisir un lieu'}
-                  </button>
                 </div>
+                <div className="relative mt-3">
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+                  <input
+                    type="text"
+                    value={panelQuery}
+                    onChange={(e) => setPanelQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && panelMatches.length > 0) {
+                        e.preventDefault();
+                        addPanelPlace(panelMatches[0]);
+                      }
+                    }}
+                    placeholder={places.length > 0 ? 'Ajouter un lieu' : 'Ville, code postal, quartier…'}
+                    aria-label="Ajouter un lieu"
+                    autoComplete="off"
+                    className="w-full h-12 pl-9 pr-3 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
+                  />
+                </div>
+                {panelTyped !== '' && (
+                  <ul className="mt-1 border border-stone-300 bg-white" role="listbox">
+                    {panelMatches.map((p) => (
+                      <li key={p.kind + p.city + p.value} role="option" aria-selected={false}>
+                        <button
+                          type="button"
+                          onClick={() => addPanelPlace(p)}
+                          className="w-full min-h-[48px] px-3 py-2 flex items-center gap-3 text-left hover:bg-stone-100"
+                        >
+                          <span className="flex-1 min-w-0">
+                            <span className="block text-base text-stone-900 truncate">{p.value}</span>
+                            {p.sub && <span className="block text-xs text-stone-500 truncate">{p.sub}</span>}
+                          </span>
+                          <span className="flex-none text-xs text-stone-500">
+                            {p.count} {p.count > 1 ? 'biens' : 'bien'}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                    {panelMatches.length === 0 && <li className="px-3 py-3 text-sm text-stone-500">Aucun lieu ne correspond.</li>}
+                  </ul>
+                )}
+                {places.length === 0 && query.trim() === '' && panelTyped === '' && (
+                  <p className="mt-2 text-sm text-stone-500">Sans lieu, la recherche porte sur toute la France.</p>
+                )}
               </div>
               <FilterPanel value={filters} onChange={setFilters} mode="search" padX="px-6" types={typeOptions} />
               <div className="px-6 py-6">
