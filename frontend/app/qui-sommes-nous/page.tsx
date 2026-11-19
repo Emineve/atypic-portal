@@ -28,7 +28,7 @@ const PROMISES = [
   {
     n: '03',
     title: 'Acheter en connaissance de cause',
-    text: 'Un souplex, un loft ou une péniche ne s’achètent pas comme un appartement classique. Chaque fiche détaille le prix et le budget au quotidien, et nos articles expliquent ce qu’il faut vérifier avant de signer.',
+    text: 'Un souplex, un loft ou une péniche ne s’achètent pas comme un appartement classique. Les fiches détaillent le coût réel du projet, frais de notaire compris, et nos articles expliquent ce qu’il faut vérifier avant de signer.',
     href: '/guide',
     link: 'Lire l’état des lieux',
   },
