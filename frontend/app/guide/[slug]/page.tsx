@@ -9,6 +9,7 @@ import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
 import { passageAnchor } from '../../../lib/guide-search';
 import OpenHash from '../OpenHash';
+import { typo } from '../../../lib/typo';
 
 export const revalidate = 3600;
 
@@ -88,7 +89,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           <Link href="/guide" className="hover:text-stone-900">État des lieux</Link>
         </nav>
         <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">{a.category}</p>
-        <h1 className="mt-3 max-w-4xl font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-stone-900">{a.title}</h1>
+        <h1 className="mt-3 max-w-4xl font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-stone-900">{typo(a.title)}</h1>
         <p className="mt-5 text-sm text-stone-500">
           Mis à jour le <time dateTime={a.updated}>{formatGuideDate(a.updated)}</time> · {a.readMinutes} min de lecture
         </p>
@@ -101,7 +102,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
       </header>
 
       <article className="max-w-5xl mx-auto px-6 pt-10 md:pt-14 pb-20 [&>*]:max-w-3xl">
-        <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{a.intro}</p>
+        <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{typo(a.intro)}</p>
 
         <section className="mt-8 bg-[#F4E7B5] p-6" aria-label="À retenir">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-900">À retenir</h2>
@@ -109,7 +110,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             {a.takeaways.map((t) => (
               <li key={t} className="flex items-start gap-3 text-stone-900 leading-relaxed">
                 <Check className="mt-1 w-4 h-4 flex-none" />
-                {t}
+                {typo(t)}
               </li>
             ))}
           </ul>
@@ -117,14 +118,14 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
 
         {a.sections.map((s) => (
           <section key={s.title} id={passageAnchor(s.title)} className="mt-10 scroll-mt-24">
-            <h2 className="font-serif text-2xl leading-snug text-stone-900">{s.title}</h2>
+            <h2 className="font-serif text-2xl leading-snug text-stone-900">{typo(s.title)}</h2>
             {(s.paragraphs || []).map((p) => (
-              <p key={p} className="mt-4 text-stone-700 leading-relaxed">{p}</p>
+              <p key={p} className="mt-4 text-stone-700 leading-relaxed">{typo(p)}</p>
             ))}
             {s.list && (
               <ul className="mt-4 space-y-2.5 list-disc pl-5 text-stone-700 leading-relaxed marker:text-stone-400">
                 {s.list.map((li) => (
-                  <li key={li}>{li}</li>
+                  <li key={li}>{typo(li)}</li>
                 ))}
               </ul>
             )}
@@ -133,12 +134,12 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
 
         {a.checklist && (
           <section className="mt-10 border border-stone-900 bg-white p-6">
-            <h2 className="font-serif text-2xl leading-snug text-stone-900">{a.checklist.title}</h2>
+            <h2 className="font-serif text-2xl leading-snug text-stone-900">{typo(a.checklist.title)}</h2>
             <ul className="mt-4 space-y-3">
               {a.checklist.items.map((it) => (
                 <li key={it} className="flex items-start gap-3 text-stone-700 leading-relaxed">
                   <span className="mt-1.5 h-3.5 w-3.5 flex-none border border-stone-900" aria-hidden="true" />
-                  {it}
+                  {typo(it)}
                 </li>
               ))}
             </ul>
@@ -152,10 +153,10 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             {a.faq.map((f) => (
               <details key={f.q} id={passageAnchor(f.q)} className="group py-5 scroll-mt-24">
                 <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
-                  {f.q}
+                  {typo(f.q)}
                   <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
                 </summary>
-                <p className="mt-3 text-stone-700 leading-relaxed">{f.a}</p>
+                <p className="mt-3 text-stone-700 leading-relaxed">{typo(f.a)}</p>
               </details>
             ))}
           </div>
@@ -197,7 +198,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
                     <div className="w-28 flex-none overflow-hidden border border-stone-900 sm:w-auto">
                       <GuideArt art={o.art} className="block w-full aspect-[12/7] group-hover:scale-[1.05] transition-transform duration-700" />
                     </div>
-                    <p className="font-serif text-lg leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300 sm:mt-3">{o.title}</p>
+                    <p className="font-serif text-lg leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300 sm:mt-3">{typo(o.title)}</p>
                   </Link>
                 </li>
               ))}
@@ -234,9 +235,9 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           <ul className="mt-3 space-y-2 text-sm">
             {a.sources.map((s) => (
               <li key={s.url}>
-                <a href={s.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1 text-stone-700 underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
-                  {s.label}
-                  <ArrowUpRight className="mt-0.5 w-3.5 h-3.5 flex-none" />
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-stone-700 underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
+                  {typo(s.label)}
+                  <ArrowUpRight className="ml-1 inline-block w-3.5 h-3.5 align-[-2px]" />
                 </a>
               </li>
             ))}

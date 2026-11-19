@@ -1,4 +1,5 @@
 import GuideSearch from './GuideSearch';
+import { typo } from '../../lib/typo';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
@@ -59,8 +60,8 @@ export default function GuideIndex() {
               <p className="text-xs uppercase tracking-widest text-stone-500">
                 À la une · {first.category} · {first.readMinutes} min de lecture
               </p>
-              <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">{first.title}</h2>
-              <p className="mt-4 text-stone-600 leading-relaxed">{first.description}</p>
+              <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">{typo(first.title)}</h2>
+              <p className="mt-4 text-stone-600 leading-relaxed">{typo(first.description)}</p>
               <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900">
                 Lire l&apos;article
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -78,7 +79,26 @@ export default function GuideIndex() {
                 <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">{r.name}</h2>
                 <p className="mt-2 text-stone-600">{r.intro}</p>
               </div>
-              <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {/* Sur téléphone : une liste serrée (vignette, titre, durée) pour parcourir une rubrique d'un coup d'œil.
+                  À partir de la tablette : les cartes illustrées. */}
+              {/* Sur téléphone : une liste serrée (vignette, titre, durée) pour parcourir une rubrique d'un coup d'œil */}
+              <ul className="mt-6 divide-y divide-stone-200 border-y border-stone-200 sm:hidden">
+                {items.map((a) => (
+                  <li key={a.slug}>
+                    <Link href={`/guide/${a.slug}`} className="flex items-center gap-4 py-4">
+                      <div className="w-24 flex-none overflow-hidden border border-stone-900">
+                        <GuideArt art={a.art} className="block w-full aspect-[12/7]" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-serif text-lg leading-snug text-stone-900">{typo(a.title)}</h3>
+                        <p className="mt-1 text-xs uppercase tracking-widest text-stone-500">{a.readMinutes} min de lecture</p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {/* À partir de la tablette : les cartes illustrées */}
+              <ul className="mt-8 hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {items.map((a) => (
                   <li key={a.slug}>
                     <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
@@ -88,9 +108,9 @@ export default function GuideIndex() {
                       <div className="p-6 md:p-7">
                         <p className="text-xs uppercase tracking-widest text-stone-500">{a.readMinutes} min de lecture</p>
                         <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
-                          {a.title}
+                          {typo(a.title)}
                         </h3>
-                        <p className="mt-2 text-stone-600 leading-relaxed">{a.description}</p>
+                        <p className="mt-2 text-stone-600 leading-relaxed">{typo(a.description)}</p>
                       </div>
                     </Link>
                   </li>

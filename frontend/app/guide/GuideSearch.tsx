@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Search, X } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import type { GuideHit } from '../../lib/guide-search';
+import { typo } from '../../lib/typo';
 
 const EXAMPLES = [
   'Puis-je installer une clim sans autorisation ?',
@@ -136,7 +137,7 @@ export default function GuideSearch() {
   const empty = hits !== null && hits.length === 0;
   // Suggestions : tant que la question n'est pas lancée, celles qui contiennent ce qui est déjà tapé
   const typed = plain(q.trim());
-  const suggestions = q.trim().length >= 3 ? [] : EXAMPLES.filter((ex) => plain(ex).includes(typed)).slice(0, 6);
+  const suggestions = q.trim().length >= 3 ? [] : EXAMPLES.filter((ex) => plain(ex).includes(typed)).slice(0, 4);
 
   return (
     <section className="mt-10 md:mt-12 max-w-3xl" aria-label="Poser une question">
@@ -186,7 +187,7 @@ export default function GuideSearch() {
                   <li key={ex}>
                     <button type="button" onClick={() => setQ(ex)} className="flex w-full items-start gap-3 px-5 py-2.5 text-left text-base text-stone-800 transition hover:bg-stone-50">
                       <Search className="mt-1 h-4 w-4 flex-none text-stone-400" strokeWidth={1.75} />
-                      {ex}
+                      {typo(ex)}
                     </button>
                   </li>
                 ))}
@@ -208,10 +209,10 @@ export default function GuideSearch() {
               {hits.map((h, i) => (
                 <li key={h.slug} className={`rounded-[20px] border bg-white p-6 md:p-7 ${i === 0 ? 'border-stone-900' : 'border-stone-200'}`}>
                   <p className="text-xs uppercase tracking-widest text-stone-500">{h.category}</p>
-                  <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900">{h.heading}</h2>
+                  <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900">{typo(h.heading)}</h2>
                   {h.excerpt && (
                     <p className="mt-3 text-stone-700 leading-relaxed">
-                      <Marked text={h.excerpt} query={asked} />
+                      <Marked text={typo(h.excerpt)} query={asked} />
                     </p>
                   )}
                   <p className="mt-4">
