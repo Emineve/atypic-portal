@@ -174,7 +174,7 @@ export default function FavoritesContact({
               >
                 {status === 'sending'
                   ? 'Envoi en cours…'
-                  : `Envoyer ma demande pour ${selected.length} ${selected.length > 1 ? 'biens' : 'bien'}`}
+                  : 'Envoyer'}
               </button>
               <p className="mt-2 text-center text-[11px] text-stone-500">
                 Vos coordonnées sont transmises uniquement {agencies.length > 1 ? 'aux agences en charge de ces biens' : 'à l’agence en charge du bien'}.
