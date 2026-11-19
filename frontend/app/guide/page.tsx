@@ -43,7 +43,6 @@ export default function GuideIndex() {
                 <li key={r.anchor}>
                   <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group inline-flex items-baseline gap-2 font-serif text-lg md:text-xl text-stone-900">
                     <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
-                    <span className="font-sans text-sm text-stone-500">{articles.filter((a) => a.category === r.name).length}</span>
                   </a>
                 </li>
               ))}

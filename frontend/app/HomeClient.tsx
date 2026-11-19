@@ -527,7 +527,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                       {label}
                       {href === '/guide' && newArticles > 0 && (
                         <span className="ml-3 inline-block align-middle bg-[#F4E7B5] px-1.5 py-0.5 font-sans text-xs font-semibold uppercase tracking-wider text-stone-900">
-                          + {newArticles} {newArticles > 1 ? 'articles' : 'article'}
+                          Nouveau
                         </span>
                       )}
                     </span>

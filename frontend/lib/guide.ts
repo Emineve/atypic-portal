@@ -21,7 +21,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -38,6 +38,370 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'acheter-une-ancienne-loge-de-gardien',
+    art: 'loge',
+    title: 'Ancienne loge de gardien : petit bien, grand dossier',
+    description:
+      'Vente par la copropriété, vote en assemblée générale, création du lot, charges, lumière et passage : ce qu’il faut vérifier avant d’acheter une ancienne loge de gardien transformée en logement.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Au pied de l’escalier, derrière une porte vitrée, la loge a vu passer tout l’immeuble. Quand le poste de gardien disparaît, la copropriété la vend, et elle devient un studio ou un deux-pièces au charme particulier : une adresse dans un bel immeuble, à un prix qui n’est pas celui des étages. C’est un achat à part, parce que le vendeur n’est pas un particulier. C’est l’immeuble tout entier.',
+    takeaways: [
+      'Une loge appartient à la copropriété. Sa vente doit avoir été votée en assemblée générale, à la double majorité, parfois à l’unanimité.',
+      'Avant d’être vendue, elle doit devenir un lot : avec un numéro, des tantièmes et une désignation dans le règlement de copropriété.',
+      'Le prix de la vente revient aux copropriétaires, en proportion de leurs tantièmes.',
+      'Rez-de-chaussée, passage, lumière : les vérifications sont celles d’un bien sur cour, en plus exposé.',
+    ],
+    sections: [
+      {
+        title: 'Qui vend, et à quelles conditions ?',
+        paragraphs: [
+          'Tant qu’elle loge le gardien, la loge est une partie commune. Pour la vendre, la copropriété doit d’abord décider de supprimer le poste, puis voter la vente.',
+          'Cette vente se décide à la double majorité : la majorité des copropriétaires, représentant au moins les deux tiers des voix. L’unanimité est exigée lorsque la loge est nécessaire au respect de la destination de l’immeuble, par exemple quand le règlement prévoit expressément un service de gardiennage.',
+          'Un vote acquis à la mauvaise majorité peut être contesté dans les deux mois par un copropriétaire opposant ou absent. Demandez le procès-verbal, et assurez-vous que ce délai est passé sans recours.',
+        ],
+      },
+      {
+        title: 'La loge est-elle devenue un lot ?',
+        paragraphs: [
+          'On n’achète pas une partie commune, on achète un lot. Il faut donc que le règlement de copropriété ait été modifié pour créer ce lot, lui attribuer des tantièmes et le désigner comme logement, avec l’intervention d’un géomètre et d’un notaire.',
+          'Si vous achetez à un particulier une loge déjà vendue par la copropriété, vérifiez que ces étapes ont bien été accomplies : elles figurent dans son titre de propriété.',
+        ],
+      },
+      {
+        title: 'Que regarder dans le bien lui-même ?',
+        list: [
+          'La lumière : une loge donne souvent sur le hall ou sur la cour, parfois par une seule fenêtre.',
+          'Le passage : tout l’immeuble passe devant votre porte, et le bruit du hall avec lui.',
+          'Les équipements communs qui s’y trouvaient : boîtes aux lettres, tableau électrique, interphone, compteurs. Ont-ils été déplacés, ou la copropriété garde-t-elle un droit d’accès ?',
+          'L’humidité et la ventilation, comme pour tout rez-de-chaussée.',
+          'La salle d’eau et la cuisine : beaucoup de loges ont été équipées de façon sommaire.',
+        ],
+      },
+      {
+        title: 'Quelles charges paierez-vous ?',
+        paragraphs: [
+          'La loge ne payait pas de charges : elle en était une. Devenue un lot, elle reçoit des tantièmes et contribue aux dépenses de l’immeuble. Vérifiez la grille retenue, en particulier pour l’ascenseur, dont un rez-de-chaussée est en principe dispensé.',
+          'Demandez aussi comment l’immeuble s’organise depuis le départ du gardien : entreprise de ménage, sortie des poubelles, réception des colis. Ce sont de nouvelles charges pour tous, et parfois de nouveaux sujets de discorde.',
+        ],
+      },
+      {
+        title: 'Peut-on la louer, ou y travailler ?',
+        paragraphs: [
+          'Pour être louée, elle doit respecter les critères du logement décent : une pièce principale de 9 m² sous 2,20 mètres de plafond ou de 20 m³, éclairée par la lumière du jour.',
+          'Pour y exercer une activité, lisez la désignation du lot et ce que le règlement autorise. Une loge vendue comme logement ne devient pas un local professionnel sans l’accord de la copropriété.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À demander avant d’acheter',
+      items: [
+        'Le procès-verbal de l’assemblée générale qui a voté la vente, et la majorité obtenue.',
+        'L’absence de recours contre cette décision.',
+        'Le modificatif du règlement de copropriété qui crée le lot.',
+        'Les tantièmes et la grille de charges du lot.',
+        'Les équipements communs encore présents dans la loge.',
+        'Le certificat de mesurage et le DPE.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Un copropriétaire est-il prioritaire pour acheter la loge ?',
+        a: 'Pas de plein droit. L’assemblée choisit l’acquéreur et le prix. En pratique, la loge est souvent proposée d’abord aux copropriétaires, en particulier au voisin qui peut l’agrandir.',
+      },
+      {
+        q: 'Peut-on réunir une loge avec l’appartement voisin ?',
+        a: 'Oui, avec l’accord de la copropriété pour les travaux qui touchent les murs communs. C’est souvent ce qui donne le plus de valeur à une loge.',
+      },
+      {
+        q: 'Le prix d’une loge est-il négociable ?',
+        a: 'Il a été fixé ou accepté par un vote. La marge existe avant l’assemblée, dans la discussion avec le syndic et le conseil syndical, plus guère après.',
+      },
+    ],
+    sources: [
+      { label: 'SeLoger, « Comment se passe la vente des parties communes d’une copropriété ? »', url: 'https://edito.seloger.com/conseils-d-experts/reglementations/se-passe-vente-parties-communes-d-une-copropriete-article-20036' },
+      { label: 'Service-Public.fr, « Quelles sont les règles de vote en assemblée générale de copropriété ? »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F32066' },
+      { label: 'Caisse d’allocations familiales, « Les critères du logement décent »', url: 'https://www.caf.fr/sites/default/files/medias/101/OFFRE-DE-SERVICE/Logement/logement_decent_criteres.pdf' },
+    ],
+  },
+  {
+    slug: 'jacuzzi-bassin-sur-une-terrasse',
+    art: 'spa',
+    title: 'Jacuzzi, bassin, jardin suspendu : que peut porter une terrasse ?',
+    description:
+      'Poids, étanchéité, accord de la copropriété, autorisation d’urbanisme : ce qu’il faut vérifier quand une terrasse est vendue avec un spa ou une piscine, et avant d’en installer un.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Un bain chaud sur les toits, face à la ville : c’est l’image qui vend les plus belles terrasses. C’est aussi une tonne d’eau ou davantage, posée sur un toit que vous partagez avec tout l’immeuble. Qu’il soit déjà là ou que vous en rêviez, un bassin sur une terrasse pose toujours les mêmes questions : la structure le supporte-t-elle, l’étanchéité tiendra-t-elle, et qui l’a autorisé ?',
+    takeaways: [
+      'Le poids décide de tout : un spa rempli pèse plusieurs centaines de kilos par mètre carré. Seule une étude de structure dit si la dalle le supporte.',
+      'La dalle et l’étanchéité d’une terrasse sont des parties communes. Un équipement lourd ou fixé exige l’accord de l’assemblée générale.',
+      'Un bassin hors-sol de plus de 10 m² installé plus de trois mois par an demande une déclaration préalable. Sous un abri de plus de 1,80 mètre, il faut un permis.',
+      'Si vos aménagements causent une fuite, c’est votre responsabilité qui est engagée.',
+    ],
+    sections: [
+      {
+        title: 'La terrasse peut-elle porter ce poids ?',
+        paragraphs: [
+          'Une terrasse d’immeuble est calculée pour une charge donnée : des personnes, du mobilier, de la neige. Un spa ou un bassin la dépasse facilement, puisque l’eau pèse une tonne par mètre cube, sans compter la cuve et les baigneurs.',
+          'Seul un bureau d’études de structure peut dire ce que la dalle supporte, et à quel endroit : au-dessus d’un mur porteur ou d’une poutre, jamais au milieu d’une portée. Si un bassin est déjà en place, demandez cette étude. Si elle n’existe pas, c’est un mauvais signe.',
+          'La même prudence vaut pour les grands bacs plantés : la terre mouillée est lourde, et le règlement de copropriété fixe souvent un poids maximal.',
+        ],
+      },
+      {
+        title: 'Qu’en est-il de l’étanchéité ?',
+        paragraphs: [
+          'Sous le revêtement de la terrasse se trouve une couche d’étanchéité qui protège les logements du dessous. Elle appartient à la copropriété, qui paie sa réfection.',
+          'Vos aménagements ne doivent ni la percer, ni empêcher d’y accéder. Un bassin posé sur l’étanchéité, un ancrage dans la dalle, une évacuation mal raccordée suffisent à provoquer une fuite. Si elle vient de votre installation, vous en répondez.',
+          'Demandez la date de la dernière réfection de l’étanchéité : il faudra tout démonter le jour où elle sera refaite.',
+        ],
+      },
+      {
+        title: 'Faut-il l’accord de la copropriété ?',
+        paragraphs: [
+          'Le mobilier léger, les pots et les revêtements démontables se posent en général sans autorisation, dans les limites du règlement. Tout ce qui est fixé à la dalle ou au mur, ou qui modifie l’aspect de l’immeuble, doit être voté en assemblée générale.',
+          'Un spa lourd, raccordé à l’eau et à l’électricité, entre dans cette catégorie. Si la terrasse est vendue avec, demandez le procès-verbal qui l’a autorisé. Sans lui, la copropriété peut exiger son retrait.',
+          'Vérifiez aussi votre titre : sur une terrasse dont vous n’avez que la jouissance privative, vos droits sont plus étroits que sur une terrasse qui vous appartient.',
+        ],
+      },
+      {
+        title: 'Et la mairie ?',
+        list: [
+          'Un bassin hors-sol de 10 m² ou moins, installé moins de trois mois par an : pas de formalité en général.',
+          'Un bassin de plus de 10 m² et jusqu’à 100 m², installé plus de trois mois par an : déclaration préalable.',
+          'Un bassin sous un abri de plus de 1,80 mètre de haut : permis de construire.',
+          'En secteur protégé, les délais sont plus courts et les règles plus strictes : renseignez-vous avant tout achat.',
+          'Dans tous les cas, un dispositif de sécurité contre la noyade est obligatoire pour une piscine, et le bassin doit être déclaré aux impôts.',
+        ],
+      },
+      {
+        title: 'Et les voisins ?',
+        paragraphs: [
+          'Une pompe et un système de filtration font du bruit, de jour comme de nuit. Les baigneurs aussi. Regardez qui se trouve à côté, au-dessus et en dessous.',
+          'Un trouble de voisinage répété peut conduire un juge à ordonner des aménagements, voire l’arrêt de l’installation, même si elle a été autorisée.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À demander si un bassin est déjà installé',
+      items: [
+        'L’étude de structure qui a validé la charge.',
+        'Le procès-verbal de l’assemblée générale qui a autorisé l’installation.',
+        'L’autorisation d’urbanisme, si elle était nécessaire.',
+        'Le titre sur la terrasse : propriété ou jouissance privative.',
+        'La date de la dernière réfection de l’étanchéité.',
+        'L’attestation d’assurance couvrant l’installation.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Un spa gonflable est-il concerné ?',
+        a: 'Par le poids, oui : rempli, il pèse autant qu’un autre. Posé temporairement, il échappe en général aux formalités d’urbanisme, mais pas au règlement de copropriété.',
+      },
+      {
+        q: 'Mon assurance couvre-t-elle un dégât causé par mon bassin ?',
+        a: 'Seulement si vous l’avez déclaré, et s’il a été installé dans les règles. Prévenez votre assureur avant la mise en eau.',
+      },
+      {
+        q: 'Peut-on créer une vraie piscine sur un toit ?',
+        a: 'C’est possible dans des immeubles conçus ou renforcés pour cela, avec une étude de structure, un vote de la copropriété et un permis. C’est un chantier lourd, rarement accepté dans un immeuble ancien.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public.fr, « Installation ou construction d’une piscine privative »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F35108/3_1_1?idFicheParent=F31404' },
+      { label: 'Crédit Agricole e-immobilier, « Copropriété : aménager sa terrasse dans les règles »', url: 'https://e-immobilier.credit-agricole.fr/index.php/conseils/habiter/copropriete-amenager-sa-terrasse-dans-les-regles' },
+    ],
+    listingsLink: { label: 'Voir les rooftops et les biens avec terrasse', href: '/categorie/rooftop-vue' },
+  },
+  {
+    slug: 'acheter-a-plusieurs-un-grand-volume',
+    art: 'plusieurs',
+    title: 'Acheter à plusieurs un grand volume : indivision ou société ?',
+    description:
+      'Entre amis, en famille ou à deux sans être mariés : comment acheter ensemble un loft ou une grande maison, ce que prévoient l’indivision et la société civile immobilière, et comment en sortir.',
+    category: 'Financement',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Un plateau de 250 m², une grande maison, un ancien atelier : certains biens atypiques sont trop grands, ou trop chers, pour un seul acheteur. On les achète alors à deux, entre frères et sœurs, entre amis. L’idée est bonne, à une condition : décider avant l’achat ce qui se passera le jour où l’un voudra partir. Le droit propose deux cadres. Ils ne protègent pas de la même façon.',
+    takeaways: [
+      'Sans rien prévoir, des acheteurs sont en indivision : chacun possède une part du tout, et les décisions importantes exigent l’accord de tous.',
+      'Les parts inscrites dans l’acte doivent refléter ce que chacun apporte et rembourse. C’est la première source de conflit.',
+      'Nul n’est tenu de rester dans l’indivision : un seul peut provoquer la vente. Une convention d’indivision permet de l’éviter pendant cinq ans.',
+      'Une société civile immobilière permet d’écrire ses propres règles, au prix de formalités et d’une gestion plus lourdes.',
+    ],
+    sections: [
+      {
+        title: 'Qu’est-ce que l’indivision ?',
+        paragraphs: [
+          'C’est le régime qui s’applique de lui-même quand plusieurs personnes achètent ensemble. Personne ne possède une pièce en particulier : chacun est propriétaire d’une fraction de l’ensemble, sa quote-part.',
+          'Les actes courants de gestion se décident à la majorité des deux tiers des parts. Les actes graves, comme vendre le bien, demandent l’accord de tous.',
+        ],
+      },
+      {
+        title: 'Comment fixer les parts ?',
+        paragraphs: [
+          'L’acte d’achat indique la part de chacun. Par défaut, elles sont égales. Si l’un apporte davantage ou rembourse une part plus grande du prêt, écrivez-le : c’est la répartition de l’acte qui fera foi le jour de la revente, pas vos souvenirs.',
+          'Tenez compte de tout : l’apport, les mensualités, mais aussi les travaux que l’un paiera et l’autre non.',
+        ],
+      },
+      {
+        title: 'Que se passe-t-il si l’un veut partir ?',
+        paragraphs: [
+          'La loi pose un principe : nul ne peut être contraint de rester dans l’indivision. Celui qui veut sortir peut vendre sa part, que les autres ont le droit d’acheter en priorité, ou demander le partage. Si personne ne rachète, le bien est vendu, au besoin sur décision du juge.',
+          'Pour l’éviter, les acheteurs peuvent signer une convention d’indivision, devant notaire. Elle organise la gestion, désigne un gérant, et peut interdire de demander le partage pendant une durée déterminée, cinq ans au plus, renouvelable.',
+        ],
+      },
+      {
+        title: 'Pourquoi passer par une société ?',
+        paragraphs: [
+          'Dans une société civile immobilière, c’est la société qui achète. Chacun détient des parts sociales, à hauteur de ce qu’il apporte. Les règles du jeu sont écrites dans les statuts : qui décide, à quelle majorité, à quelles conditions on peut vendre ses parts, à qui.',
+          'Ce cadre convient bien à un projet durable à plusieurs, ou à la transmission d’un bien de famille. Il a ses contraintes : rédaction des statuts, immatriculation, comptabilité, assemblée annuelle. Et les banques prêtent plus volontiers à des personnes qu’à une société nouvellement créée.',
+        ],
+      },
+      {
+        title: 'Et si l’on veut partager le bien lui-même ?',
+        paragraphs: [
+          'Quand le volume s’y prête, il existe une troisième voie : diviser le bien en deux lots, et que chacun achète le sien. Chacun est alors pleinement propriétaire de son logement, libre de le vendre.',
+          'Cette solution suppose que la division soit autorisée par la copropriété et par la commune. Elle se vérifie avant l’achat.',
+        ],
+      },
+      {
+        title: 'Que décider avant de signer ?',
+        list: [
+          'Les parts de chacun, et la manière dont elles évolueront si les apports changent.',
+          'Qui paie quoi : mensualités, charges, taxe foncière, travaux.',
+          'Qui occupe le bien, et à quelles conditions.',
+          'Ce qui se passe en cas de départ, de séparation ou de décès.',
+          'Comment le bien sera évalué le jour où l’un rachètera la part de l’autre.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À préparer avec votre notaire',
+      items: [
+        'Le tableau des apports et des remboursements de chacun.',
+        'Les quotes-parts à inscrire dans l’acte.',
+        'Une convention d’indivision, ou des statuts de société.',
+        'L’assurance de prêt de chaque emprunteur.',
+        'La question du décès : testament, clause dans l’acte, protection du survivant.',
+        'La possibilité de diviser le bien, si c’est une option.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Des concubins sont-ils protégés comme des époux ?',
+        a: 'Non. Sans mariage ni pacte civil de solidarité, le survivant n’hérite pas de la part de l’autre, qui revient à ses héritiers. Il faut l’organiser par écrit, avec un notaire.',
+      },
+      {
+        q: 'Peut-on emprunter à plusieurs ?',
+        a: 'Oui. Les banques demandent en général que les emprunteurs soient solidaires : chacun peut être tenu de rembourser la totalité si l’autre fait défaut.',
+      },
+      {
+        q: 'Peut-on passer de l’indivision à une société plus tard ?',
+        a: 'Oui, en apportant le bien à une société. L’opération a un coût, en droits et en frais d’acte. Mieux vaut choisir le bon cadre dès l’achat.',
+      },
+    ],
+    sources: [
+      { label: 'Crédit Agricole e-immobilier, « L’indivision, mode d’emploi »', url: 'https://e-immobilier.credit-agricole.fr/conseils/reglementation/lindivision-mode-demploi' },
+    ],
+  },
+  {
+    slug: 'cave-parking-annexes-d-un-bien',
+    art: 'cave',
+    title: 'Cave, parking, remise : ce que valent les annexes d’un bien',
+    description:
+      'Lots distincts, surface non comptée, charges, usage autorisé, borne de recharge : ce qu’il faut vérifier sur la cave et le stationnement vendus avec un bien, et ce qu’ils ajoutent à sa valeur.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 4,
+    intro:
+      'L’annonce les cite en une ligne, après la surface et l’étage : « une cave et un parking complètent ce bien ». Dans une grande ville, ces annexes pèsent pourtant lourd, dans le prix comme dans la vie quotidienne. Pour un bien atypique, elles réservent aussi des surprises : une cave qui n’est pas celle que l’on visite, une remise habitée sans droit, un parking que l’on ne peut pas équiper.',
+    takeaways: [
+      'La cave et le parking sont des lots distincts, avec leurs propres numéros, leurs tantièmes et leurs charges.',
+      'Ils ne comptent pas dans la surface Carrez, pas plus que les lots de moins de 8 m².',
+      'Vérifiez que les lots visités sont bien ceux de l’acte : les caves s’échangent et se trompent de porte depuis des décennies.',
+      'Une cave ou une remise aménagée en pièce de vie n’est un logement que si la transformation a été autorisée.',
+    ],
+    sections: [
+      {
+        title: 'Que dit l’acte ?',
+        paragraphs: [
+          'Chaque annexe est un lot de copropriété, désigné par un numéro et un emplacement dans le règlement. C’est ce numéro que vous achetez, pas la cave que le vendeur utilise.',
+          'Faites vérifier la concordance : le numéro du lot, le plan des caves ou du parking, la porte ou l’emplacement que l’on vous montre. Les erreurs sont fréquentes, et elles se découvrent en général au moment de revendre.',
+        ],
+      },
+      {
+        title: 'Comptent-ils dans la surface ?',
+        paragraphs: [
+          'Non. La surface Carrez exclut les caves, les garages, les emplacements de stationnement, ainsi que les lots de moins de 8 m². Une annonce qui additionne la cave à la surface de l’appartement mélange deux choses qui ne se paient pas au même prix.',
+          'Leur valeur s’apprécie à part, selon le quartier. Dans les secteurs où l’on ne se gare pas, un parking vaut cher. Une cave saine et accessible aussi.',
+        ],
+      },
+      {
+        title: 'Dans quel état sont-ils ?',
+        list: [
+          'La cave : sol, humidité, ventilation, porte et serrure, éclairage, accès par l’escalier ou par l’ascenseur.',
+          'Le parking : dimensions réelles, hauteur sous plafond, largeur de la rampe et des manœuvres. Un véhicule récent n’entre pas partout.',
+          'Les réseaux de l’immeuble qui passent dans votre cave : la copropriété garde le droit d’y accéder.',
+        ],
+      },
+      {
+        title: 'Que peut-on en faire ?',
+        paragraphs: [
+          'Une cave sert à entreposer. La transformer en pièce de vie, en studio de musique ou en buanderie reliée à l’appartement change son usage : il faut l’accord de la copropriété, souvent une autorisation de la mairie, et respecter les règles de salubrité qui interdisent d’habiter certains sous-sols.',
+          'Si le bien est vendu avec un niveau bas déjà aménagé, les mêmes preuves sont à demander que pour un souplex : la désignation du lot et les autorisations obtenues.',
+          'Pour le parking, la loi vous permet d’installer à vos frais une borne de recharge pour véhicule électrique. La demande est adressée au syndic par lettre recommandée, sans vote de l’assemblée générale. Il ne peut s’y opposer que pour un motif sérieux et légitime, en saisissant le tribunal.',
+        ],
+      },
+      {
+        title: 'Peut-on les vendre ou les louer séparément ?',
+        paragraphs: [
+          'En principe oui, puisque ce sont des lots distincts. Certains règlements l’interdisent ou réservent la vente aux copropriétaires de l’immeuble, pour éviter les allées et venues de personnes extérieures. Lisez la clause.',
+          'Une annexe que l’on peut céder à part est une valeur de plus. Une annexe que l’on est obligé de garder est un confort, pas un placement.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À vérifier sur les annexes',
+      items: [
+        'Les numéros de lots dans l’acte, et le plan qui les situe.',
+        'La cave ou l’emplacement réellement visité.',
+        'Les tantièmes et les charges de chaque annexe.',
+        'L’état : humidité de la cave, dimensions du parking.',
+        'Les clauses du règlement sur l’usage, la vente et la location.',
+        'Pour une cave aménagée : les autorisations obtenues.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Une cave augmente-t-elle les charges ?',
+        a: 'Un peu. Elle a ses propres tantièmes, généralement faibles, et contribue aux dépenses communes en proportion.',
+      },
+      {
+        q: 'Le vendeur peut-il garder la cave ou le parking ?',
+        a: 'Oui, s’ils sont des lots distincts et si le règlement ne l’interdit pas. Vérifiez ce que comprend exactement le prix annoncé.',
+      },
+      {
+        q: 'Un box peut-il devenir un atelier ?',
+        a: 'Pour y bricoler, oui. Pour y exercer une activité ou le transformer, il faut regarder le règlement de copropriété et les règles d’urbanisme : un emplacement de stationnement est souvent protégé par le plan local d’urbanisme.',
+      },
+    ],
+    sources: [
+      { label: 'FNAIM, « Loi Carrez : explications et mode de calcul »', url: 'https://www.fnaim.fr/4116-loi-carrez-explications-et-mode-de-calcul.htm' },
+      { label: 'ANIL, analyse juridique sur le règlement sanitaire et l’habitat indigne', url: 'https://www.anil.org/aj-rsd-habitat-indigne/' },
+      { label: 'ANIL, « Copropriété : comment installer une borne de recharge électrique ? »', url: 'https://www.anil.org/parole-expert-logement-copropriete-borne-recharge-electrique-droit-prise/' },
+    ],
+  },
   {
     slug: 'rez-de-chaussee-sur-cour',
     art: 'rdc',
