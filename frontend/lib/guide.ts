@@ -39,6 +39,108 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'conditions-suspensives-bien-atypique',
+    art: 'offre',
+    title: 'Conditions suspensives : celles qu’il faut prévoir pour un bien atypique',
+    description:
+      'La condition de prêt ne suffit pas quand on achète un atelier à transformer ou un loft à régulariser. Les clauses à faire inscrire dans la promesse, et comment les rédiger.',
+    category: 'Visite et négociation',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Une promesse de vente contient presque toujours une condition suspensive : l’obtention du prêt. Pour un appartement classique, c’est l’essentiel. Pour un bien atypique, votre achat dépend souvent d’autre chose : une autorisation de la mairie, un vote de la copropriété, un document que le vendeur doit encore obtenir. Si ce n’est pas écrit dans la promesse, ce n’est pas une condition. C’est votre risque.',
+    takeaways: [
+      'Une condition suspensive est un événement dont dépend la vente : s’il ne se réalise pas, la promesse tombe et vos sommes vous sont rendues.',
+      'Elle doit être acceptée par le vendeur et inscrite dans la promesse. Un projet dont vous lui avez parlé à l’oral ne vous protège pas.',
+      'Pour un bien atypique, pensez au-delà du prêt : permis ou déclaration préalable, changement d’usage, vote de la copropriété, régularisation de travaux.',
+      'Une condition utile est précise : quel projet, quelle autorisation, dans quel délai.',
+      'Le délai de rétractation de dix jours s’ajoute aux conditions suspensives. Il ne les remplace pas.',
+    ],
+    sections: [
+      {
+        title: 'À quoi sert une condition suspensive ?',
+        paragraphs: [
+          'À ne pas rester engagé si ce qui rendait l’achat possible ne se produit pas. Le Crédit Agricole la définit ainsi : si l’une de ces conditions ne se réalise pas, l’avant-contrat devient caduc. L’acheteur récupère alors intégralement les sommes versées, sans pénalité.',
+          'Deux précisions. Les conditions doivent être le fruit d’un accord entre l’acheteur et le vendeur : elles se négocient avec le prix. Et elles se distinguent du délai de rétractation : pendant dix jours après la signature, l’acheteur particulier peut renoncer sans avoir à se justifier. Passé ce délai, seules les conditions suspensives le protègent.',
+        ],
+      },
+      {
+        title: 'Quelles conditions prévoir pour un bien atypique ?',
+        list: [
+          'Le prêt, comme pour tout achat, en vérifiant que la banque sait qu’il s’agit d’un ancien local ou d’un bien particulier.',
+          'L’obtention d’un permis de construire ou d’une déclaration préalable, si vous achetez pour transformer : mezzanine, ouverture, changement de façade.',
+          'L’acceptation d’un changement de destination ou d’usage, si le local n’est pas encore un logement, ou si vous comptez y exercer une activité.',
+          'Le vote de l’assemblée générale, si votre projet touche les parties communes ou si des travaux anciens doivent être régularisés.',
+          'La remise d’un document par le vendeur : autorisation d’urbanisme retrouvée, attestation, mesurage, diagnostic complémentaire.',
+        ],
+      },
+      {
+        title: 'Pourquoi faut-il l’écrire noir sur blanc ?',
+        paragraphs: [
+          'Parce que les juges s’en tiennent au texte. Un site juridique rapporte le cas d’un acheteur qui voulait faire annuler son achat faute d’avoir obtenu le permis nécessaire à sa rénovation. Le vendeur lui a opposé que l’obtention du permis n’avait pas été érigée en condition suspensive dans le compromis.',
+          'Le vendeur savait peut-être tout du projet. Cela ne change rien : ce qui n’est pas dans l’acte n’engage personne.',
+        ],
+      },
+      {
+        title: 'Comment rédiger une condition utile ?',
+        paragraphs: [
+          'Une condition vague ne protège pas mieux qu’une absence de condition. Les praticiens recommandent de préciser quatre choses.',
+        ],
+        list: [
+          'La nature exacte du projet : par exemple, la création d’une mezzanine de telle surface.',
+          'L’autorisation attendue : déclaration préalable, permis de construire, vote de l’assemblée générale.',
+          'Le délai pour l’obtenir. Pour un permis de construire, comptez généralement quatre à six mois ; pour un vote de copropriété, la date de la prochaine assemblée.',
+          'Ce qui se passe en cas de refus, et qui doit faire les démarches.',
+        ],
+      },
+      {
+        title: 'Le vendeur va-t-il accepter ?',
+        paragraphs: [
+          'Chaque condition allonge la vente et ajoute une incertitude pour lui. Il peut refuser, ou demander un prix plus élevé. C’est une négociation : plus votre condition est précise et son délai court, plus elle est acceptable.',
+          'Vous pouvez aussi réduire l’incertitude avant de signer : un certificat d’urbanisme demandé à la mairie, un avis d’architecte, une question posée au syndic. Ce que vous savez déjà n’a plus besoin d’être une condition.',
+          'Parlez-en au notaire dès l’offre acceptée. C’est lui qui rédige, et il a l’habitude de ces clauses.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer la promesse',
+      items: [
+        'J’ai listé tout ce dont mon achat dépend, au-delà du prêt.',
+        'Chaque point est écrit dans la promesse, pas seulement évoqué.',
+        'Chaque condition précise le projet, l’autorisation et le délai.',
+        'Je sais qui fait les démarches, et à quelle date.',
+        'Le notaire a relu les clauses avec moi.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on conditionner un achat à l’obtention d’un permis de construire ?',
+        a: 'Oui, si le vendeur l’accepte et que la condition est inscrite dans la promesse. En cas de refus du permis dans le délai prévu, la vente est annulée et les sommes versées sont restituées.',
+      },
+      {
+        q: 'Peut-on conditionner un achat à un vote de copropriété ?',
+        a: 'Oui. C’est une condition librement négociée entre acheteur et vendeur. Elle doit préciser l’objet du vote et la date limite.',
+      },
+      {
+        q: 'Quelle différence avec le délai de rétractation ?',
+        a: 'Le délai de rétractation dure dix jours et permet de renoncer sans motif. Les conditions suspensives jouent ensuite, pendant toute la durée de la promesse, pour des événements précis.',
+      },
+      {
+        q: 'Que se passe-t-il si une condition ne se réalise pas ?',
+        a: 'L’avant-contrat devient caduc et l’acheteur récupère intégralement les sommes versées, sans pénalité.',
+      },
+    ],
+    sources: [
+      { label: 'Crédit Agricole, « Les conditions suspensives d’un avant-contrat »', url: 'https://e-immobilier.credit-agricole.fr/index.php/guide-immobilier/pret-immobilier/conditions-suspensives' },
+      { label: 'SeLoger, « Rétractation d’un compromis de vente : quel délai après la signature ? »', url: 'https://edito.seloger.com/conseils-d-experts/acheter/compromis-de-vente-pouvez-renoncer-a-achat-a-moment-article-39658.html' },
+      { label: 'Weblex, « Vente immobilière : rappels utiles sur le compromis de vente »', url: 'https://www.weblex.fr/fiches-conseils/vente-immobiliere-rappels-utiles-sur-le-compromis-de-vente' },
+      { label: 'CPIM, « Clauses suspensives du compromis »', url: 'https://www.cpim.fr/clauses-suspensives-compromis-2026/' },
+      { label: 'ADIL des Alpes-Maritimes, « Achat d’un logement existant »', url: 'https://www.nicecotedazur.org/wp-content/uploads/2025/06/ADIL06-4volets_achat_logement_existant_imp.pdf' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'assurer-un-bien-atypique',
     art: 'credit',
     title: 'Assurer un bien atypique : ce qu’il faut déclarer',

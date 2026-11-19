@@ -32,6 +32,7 @@ const SYNONYMS: string[][] = [
   ['travaux', 'renovation', 'renover', 'refaire'],
   ['notaire', 'acte', 'compromis', 'promesse'],
   ['bateau', 'peniche'],
+  ['condition', 'conditions', 'suspensive', 'suspensives', 'clause', 'retractation'],
   ['assurance', 'assurer', 'assureur', 'sinistre'],
   ['duree', 'temps', 'delai', 'recherche', 'patience', 'visites'],
   ['revendre', 'revente', 'estimer', 'estimation', 'valeur'],
