@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import TeeShirt from './TeeShirt';
 import { CATEGORY_LIST, slugify, cityHub } from '../lib/catalog';
 
 // Réseaux sociaux : affichés sans lien pour l'instant (comptes à créer)
@@ -58,6 +59,17 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
           <li><a href="/pro" className={link}>Espace agences</a></li>
         </ul>
       </nav>
+      <div className="col-span-2 md:col-span-4 border-t border-stone-200 pt-8 flex flex-wrap items-center gap-x-10 gap-y-6">
+        <div className="max-w-xs">
+          <h2 className={title}>Le dressing</h2>
+          <p className="mt-3 font-serif text-xl leading-snug text-stone-900">Nos phrases, bientôt à porter.</p>
+          <p className="mt-2 text-stone-500">Deux tee-shirts en préparation, pour ceux qui ne veulent pas s&apos;habiller comme tout le monde non plus.</p>
+        </div>
+        <div className="flex gap-4">
+          <TeeShirt dark lines={['Ici, le banal', 'n’a pas sa place.']} className="h-36 w-36 md:h-40 md:w-40" />
+          <TeeShirt lines={['Première personne', 'du singulier.']} className="h-36 w-36 md:h-40 md:w-40" />
+        </div>
+      </div>
       <nav className="col-span-2 md:col-span-4 border-t border-stone-200 pt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-stone-500" aria-label="Informations légales">
         <span>© Loftissime</span>
         <a href="/mentions-legales" className={link}>Mentions légales</a>
