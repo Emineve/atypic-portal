@@ -1,6 +1,6 @@
 import Logo from '../Logo';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Target, Moon, Building2 } from 'lucide-react';
 import ProForm from './ProForm';
 import logiciels from './logiciels.png';
 export const metadata = {
@@ -38,16 +38,19 @@ const PROMISES: { title: string; text: string; href?: string; link?: string; sof
 ];
 
 // Qui sont les acheteurs du site : trois portraits, sans chiffres.
-const VISITORS: { title: string; text: string }[] = [
+const VISITORS: { title: string; text: string; Icon: typeof Target }[] = [
   {
+    Icon: Target,
     title: 'L’acheteur décidé',
     text: 'Il a un projet, un budget et peu de temps. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être rappelé dès qu’un bien lui plaît.',
   },
   {
+    Icon: Moon,
     title: 'Le rêveur',
     text: 'Il n’achète pas encore. Il regarde, met en favori, se nourrit de la rubrique Inspiration. C’est l’acheteur de demain, et il connaît déjà votre agence.',
   },
   {
+    Icon: Building2,
     title: 'L’amoureux d’architecture',
     text: 'Architecture, design, décoration : il sait ce qu’est une verrière d’atelier ou une belle hauteur sous plafond, et il ne visite pas par hasard.',
   },
@@ -124,7 +127,8 @@ export default function ProPage() {
           <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
             {VISITORS.map((v) => (
               <div key={v.title} className="border-t border-stone-200 pt-5">
-                <h3 className="font-serif text-2xl text-stone-900">{v.title}</h3>
+                <v.Icon className="w-7 h-7 text-stone-900" strokeWidth={1.25} aria-hidden="true" />
+                <h3 className="mt-4 font-serif text-2xl text-stone-900">{v.title}</h3>
                 <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{v.text}</p>
               </div>
             ))}
