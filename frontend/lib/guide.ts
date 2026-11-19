@@ -21,7 +21,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -38,6 +38,472 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'rez-de-chaussee-sur-cour',
+    art: 'rdc',
+    title: 'Rez-de-chaussée sur cour : le charme, et les cinq vérifications',
+    description:
+      'Lumière, humidité, sécurité, intimité, usage de la cour : ce qu’il faut regarder avant d’acheter un rez-de-chaussée ou un ancien atelier en fond de cour, et ce que cela change pour le prix.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Une porte au fond d’une cour pavée, une verrière d’atelier, parfois quelques mètres de jardin : beaucoup de biens atypiques sont des rez-de-chaussée. Ils se vendent moins cher que les étages, et offrent ce que les étages n’ont pas, un accès de plain-pied, un dehors, un volume. Ils ont aussi leurs points faibles, toujours les mêmes. Cinq vérifications suffisent à savoir si le charme tiendra dans la durée.',
+    takeaways: [
+      'Un rez-de-chaussée se négocie en dessous des étages : c’est ce qui rend accessibles de grands volumes.',
+      'La lumière se juge sur place, à plusieurs heures, et pas sur les photos de l’annonce.',
+      'L’humidité vient du sol : regardez le bas des murs et demandez ce qu’il y a sous le plancher.',
+      'La cour appartient en général à la copropriété. Vérifiez ce que vous avez le droit d’y faire.',
+    ],
+    sections: [
+      {
+        title: 'Y a-t-il assez de lumière ?',
+        paragraphs: [
+          'C’est la première question, et la seule que l’on ne peut pas corriger par des travaux. Une cour étroite entourée d’immeubles hauts ne reçoit le soleil que quelques heures, parfois aucune en hiver.',
+          'Visitez une première fois le matin et une seconde en fin d’après-midi, lumières éteintes. Regardez l’orientation de la cour, la hauteur des bâtiments en face, et la présence d’une verrière en toiture, qui change tout dans un ancien atelier.',
+        ],
+      },
+      {
+        title: 'Le bien est-il sain ?',
+        paragraphs: ['Un rez-de-chaussée est en contact avec le sol. L’eau y remonte par les murs si rien ne l’arrête.'],
+        list: [
+          'Le bas des murs : peinture qui cloque, salpêtre, plinthes gonflées, odeur de renfermé.',
+          'Ce qu’il y a dessous : une cave ventilée protège, un terre-plein beaucoup moins.',
+          'La ventilation : des entrées d’air et une extraction en état de marche.',
+          'Le risque d’inondation de la parcelle, qui figure dans l’état des risques remis à l’acheteur.',
+        ],
+      },
+      {
+        title: 'Est-on chez soi ?',
+        paragraphs: [
+          'Dans une cour, on passe devant vos fenêtres. Regardez qui passe, et pour aller où : l’entrée d’un autre bâtiment, le local à vélos, les poubelles. Leur emplacement compte autant que l’exposition.',
+          'Regardez aussi la sécurité : la porte de l’immeuble et son contrôle d’accès, l’état des fenêtres et de leurs fermetures. Votre assureur peut exiger des protections particulières pour un rez-de-chaussée.',
+        ],
+      },
+      {
+        title: 'Que pouvez-vous faire de la cour ?',
+        paragraphs: [
+          'La cour est presque toujours une partie commune. Y poser une table, des plantes ou un vélo relève de la tolérance, pas d’un droit, sauf si votre lot bénéficie d’un droit de jouissance privative inscrit dans le règlement de copropriété.',
+          'Si l’annonce parle de « cour privative » ou de « jardin », demandez le texte du règlement qui le fonde. La différence entre une propriété, une jouissance exclusive et une simple habitude vaut plusieurs dizaines de milliers d’euros.',
+        ],
+      },
+      {
+        title: 'Le bien a-t-il toujours été un logement ?',
+        paragraphs: [
+          'Beaucoup de rez-de-chaussée sur cour sont d’anciens ateliers, des remises ou des boutiques. Vérifiez que le lot est bien désigné comme habitation dans le règlement de copropriété, et que le changement a été autorisé par la mairie.',
+          'À l’inverse, un rez-de-chaussée se prête parfois à une activité professionnelle. Si c’est votre projet, lisez ce que le règlement autorise.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À regarder et à demander',
+      items: [
+        'La lumière, à deux heures différentes de la journée.',
+        'Le bas des murs et ce qui se trouve sous le plancher.',
+        'Le passage dans la cour, et l’emplacement des poubelles.',
+        'Les fermetures et le contrôle d’accès de l’immeuble.',
+        'Le règlement de copropriété : désignation du lot, usage de la cour.',
+        'L’état des risques, pour le risque d’inondation.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Un rez-de-chaussée paie-t-il les charges d’ascenseur ?',
+        a: 'En général non, ou très peu : les charges d’un équipement se répartissent selon son utilité pour chaque lot. La grille figure dans le règlement de copropriété.',
+      },
+      {
+        q: 'Un rez-de-chaussée se revend-il bien ?',
+        a: 'Il se revend à son prix, c’est-à-dire avec la même décote que celle dont vous avez bénéficié. Un rez-de-chaussée lumineux, sain et calme trouve toujours preneur.',
+      },
+      {
+        q: 'Peut-on ouvrir une porte ou une fenêtre sur la cour ?',
+        a: 'Pas sans l’accord de la copropriété : la façade est une partie commune. Il faut aussi une autorisation d’urbanisme.',
+      },
+    ],
+    sources: [
+      { label: 'Géorisques, pour connaître les risques à une adresse', url: 'https://www.georisques.gouv.fr' },
+      { label: 'Caisse d’allocations familiales, « Les critères du logement décent »', url: 'https://www.caf.fr/sites/default/files/medias/101/OFFRE-DE-SERVICE/Logement/logement_decent_criteres.pdf' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'chambres-de-service-reunies-sous-les-toits',
+    art: 'chambres',
+    title: 'Chambres de service réunies : un appartement sous les toits, à quelles conditions',
+    description:
+      'Surface réelle sous les pentes, couloir commun à racheter, eau et évacuations, accès par l’escalier de service : ce qu’il faut vérifier avant d’acheter des chambres de bonne réunies, ou de les réunir.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Au dernier étage des immeubles anciens, sous le zinc, s’alignent les anciennes chambres de service. Réunies, elles donnent des appartements très recherchés : la vue sur les toits, la lumière, le calme. Elles donnent aussi des dossiers délicats, parce que ces étages n’ont pas été conçus pour être habités ainsi. Ce qui a été réuni, et la manière dont cela l’a été, décide de tout.',
+    takeaways: [
+      'Sous les pentes, seule la surface de plus de 1,80 mètre de hauteur compte. L’écart avec la surface au sol est souvent important.',
+      'Le couloir qui desservait les chambres est une partie commune. S’il a été intégré à l’appartement, la copropriété doit l’avoir vendu.',
+      'Une chambre seule ne peut être louée que si elle atteint 9 m² sous 2,20 mètres de plafond, ou 20 m³.',
+      'Eau, évacuations, isolation de la toiture, accès : vérifiez ce qui a réellement été mis aux normes d’un logement.',
+    ],
+    sections: [
+      {
+        title: 'Quelle surface achetez-vous ?',
+        paragraphs: [
+          'Sous un toit en pente, une partie du sol se trouve sous 1,80 mètre de hauteur. Elle sert, pour un lit ou des rangements, mais ne compte pas dans la surface Carrez.',
+          'Demandez le certificat de mesurage et comparez-le à la surface au sol. C’est sur la surface Carrez que se compare le prix au mètre carré, et c’est elle que le vendeur garantit.',
+        ],
+      },
+      {
+        title: 'Le couloir a-t-il été acheté ?',
+        paragraphs: [
+          'Réunir plusieurs chambres conduit presque toujours à fermer le bout de couloir qui les desservait. Ce couloir appartient à la copropriété. Pour l’intégrer à un lot, il faut que l’assemblée générale ait voté sa vente, à une majorité renforcée, et que le règlement de copropriété ait été modifié.',
+          'Demandez l’acte d’achat de cette partie commune, ou le procès-verbal qui l’a décidé. Sans lui, une partie de l’appartement que vous visitez n’appartient pas au vendeur.',
+        ],
+      },
+      {
+        title: 'Les lots ont-ils été réunis dans les règles ?',
+        list: [
+          'Chaque chambre est un lot. Vérifiez que tous les lots vendus figurent bien dans le titre du vendeur.',
+          'Les ouvertures créées dans les cloisons porteuses ou les murs de refend ont dû être autorisées par la copropriété.',
+          'Les fenêtres de toit ajoutées modifient l’aspect de l’immeuble : il fallait un vote et une autorisation d’urbanisme.',
+        ],
+      },
+      {
+        title: 'L’étage est-il équipé pour un logement ?',
+        paragraphs: ['À l’origine, ces étages n’avaient ni salle d’eau ni cuisine. Regardez comment ils ont été raccordés.'],
+        list: [
+          'L’arrivée d’eau et surtout les évacuations : leur pente et leur raccordement aux colonnes de l’immeuble.',
+          'L’isolation de la toiture, qui décide du froid en hiver et de la chaleur en été.',
+          'Le chauffage : l’étage est-il relié au chauffage collectif ?',
+          'L’accès : par l’escalier principal, par l’ascenseur, ou seulement par l’escalier de service.',
+        ],
+      },
+      {
+        title: 'Et si vous achetez pour louer ?',
+        paragraphs: [
+          'Un logement loué doit comporter au moins une pièce principale de 9 m² avec 2,20 mètres sous plafond, ou d’un volume de 20 m³, éclairée par la lumière du jour. Beaucoup de chambres de service isolées n’y parviennent pas et ne peuvent pas être louées comme logements.',
+          'Regardez aussi le DPE : sous les toits, une mauvaise isolation suffit à classer le bien parmi ceux dont la location est interdite ou le sera bientôt.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À demander avant d’acheter',
+      items: [
+        'Le certificat de mesurage Carrez, et la surface au sol.',
+        'La liste des lots réunis, et le titre de propriété de chacun.',
+        'L’acte d’achat du couloir ou de la partie commune intégrée.',
+        'Les procès-verbaux d’assemblée générale autorisant les travaux.',
+        'Le DPE, et la date de l’isolation de la toiture.',
+        'Le mode d’accès à l’étage.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on encore réunir des chambres de service ?',
+        a: 'Oui, si vous en possédez plusieurs qui se touchent. Il faut l’accord de la copropriété pour les travaux qui touchent les parties communes, et acheter le couloir s’il doit être fermé.',
+      },
+      {
+        q: 'Les toilettes sur le palier font-elles partie du lot ?',
+        a: 'Non, sauf mention contraire. Ce sont en général des parties communes, à l’usage de tout l’étage.',
+      },
+      {
+        q: 'Les charges sont-elles élevées sous les toits ?',
+        a: 'Les chambres de service ont souvent peu de tantièmes, donc des charges modestes. Vérifiez en revanche les travaux de toiture votés ou à prévoir : ils concernent tout l’immeuble, mais c’est vous qui êtes dessous.',
+      },
+    ],
+    sources: [
+      { label: 'FNAIM, « Achat d’une partie commune en copropriété : que faut-il savoir ? »', url: 'https://www.fnaim.fr/3386-achat-d-une-partie-commune-en-copropriete-que-faut-il-savoir-.htm' },
+      { label: 'Caisse d’allocations familiales, « Les critères du logement décent »', url: 'https://www.caf.fr/sites/default/files/medias/101/OFFRE-DE-SERVICE/Logement/logement_decent_criteres.pdf' },
+      { label: 'FNAIM, « Loi Carrez : explications et mode de calcul »', url: 'https://www.fnaim.fr/4116-loi-carrez-explications-et-mode-de-calcul.htm' },
+    ],
+    listingsLink: { label: 'Voir les derniers étages et rooftops', href: '/categorie/rooftop-vue' },
+  },
+  {
+    slug: 'bruit-dans-un-loft',
+    art: 'bruit',
+    title: 'Le bruit dans un loft : ce que l’on entend, ce que l’on fait entendre',
+    description:
+      'Planchers légers, volumes qui résonnent, cour partagée, parquet sans isolant : comment juger l’acoustique d’un loft ou d’un atelier pendant la visite, et ce que dit le règlement de copropriété.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Un grand volume, du béton, du métal, du verre, pas de porte entre la cuisine et la chambre : un loft est beau, et il sonne. Les bâtiments d’activité n’ont pas été construits pour le silence. On y entend ses voisins, on s’y entend soi-même, et l’on se fait entendre. Le bruit ne figure dans aucun diagnostic. Il se juge pendant la visite, à condition de savoir où écouter.',
+    takeaways: [
+      'Aucun diagnostic obligatoire ne porte sur le bruit entre logements. C’est à vous de l’évaluer.',
+      'Les immeubles construits avant 1970 n’étaient soumis à aucune règle d’isolation acoustique.',
+      'Le règlement de copropriété peut encadrer les revêtements de sol : remplacer une moquette par un parquet sans isolant engage votre responsabilité.',
+      'Dans un volume ouvert, le bruit vient aussi de l’intérieur : il se traite par l’aménagement.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi un loft est-il plus bruyant ?',
+        list: [
+          'Les planchers : dans un ancien atelier, ils sont souvent en bois ou en métal, plus légers et plus sonores qu’une dalle de béton.',
+          'Les surfaces dures : béton ciré, verre et métal renvoient le son au lieu de l’absorber.',
+          'Le volume ouvert : sans cloisons ni portes, tout s’entend d’un bout à l’autre.',
+          'Le voisinage : une cour partagée, d’autres ateliers, parfois une activité encore en place.',
+        ],
+      },
+      {
+        title: 'Comment l’évaluer pendant la visite ?',
+        paragraphs: ['Faites silence deux minutes, fenêtres fermées puis ouvertes. Et revenez à une autre heure.'],
+        list: [
+          'Les bruits de pas au-dessus : demandez qui habite là, et sur quel sol.',
+          'Les bruits d’équipement : ascenseur, chaufferie, ventilation, porte de garage.',
+          'La cour : passage, voix, livraisons, local à poubelles.',
+          'L’écho de la pièce : parlez à voix normale, et écoutez ce que la pièce en fait.',
+          'Ce que vous ferez entendre : votre plancher est le plafond de quelqu’un.',
+        ],
+      },
+      {
+        title: 'Que dit la réglementation ?',
+        paragraphs: [
+          'Les exigences d’isolation acoustique ne s’appliquent qu’aux bâtiments construits depuis 1970, et ont été renforcées pour ceux construits depuis 1996. Un immeuble plus ancien, ou un bâtiment d’activité transformé, n’y était pas soumis.',
+          'Cela ne veut pas dire que tout est permis. Celui qui dégrade l’isolation existante par ses travaux en répond, et un bruit excessif peut être sanctionné comme un trouble anormal de voisinage, quelle que soit l’époque de l’immeuble.',
+        ],
+      },
+      {
+        title: 'Que dit le règlement de copropriété ?',
+        paragraphs: [
+          'Lisez ce qu’il prévoit sur les revêtements de sol. Certains règlements interdisent de remplacer une moquette par un sol dur, d’autres exigent que l’isolation ne soit pas diminuée, d’autres encore demandent l’accord du syndic ou de l’assemblée.',
+          'Si le vendeur a posé un parquet ou du béton ciré, demandez ce qui a été mis dessous. Un voisin qui se plaint peut obtenir la pose d’un isolant, voire la remise en état, aux frais du propriétaire du moment.',
+          'Les procès-verbaux d’assemblée générale gardent la trace des conflits de bruit. Lisez-les.',
+        ],
+      },
+      {
+        title: 'Peut-on améliorer les choses ?',
+        list: [
+          'Au sol : une sous-couche isolante sous le parquet, des tapis épais.',
+          'Au plafond : un faux plafond acoustique, si la hauteur le permet.',
+          'Dans le volume : rideaux lourds, bibliothèques, panneaux absorbants, qui cassent l’écho.',
+          'Pour les chambres : une vraie cloison et une porte, plutôt qu’une mezzanine ouverte.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À écouter et à demander',
+      items: [
+        'Deux minutes de silence, fenêtres fermées puis ouvertes.',
+        'Une seconde visite à une autre heure, en semaine si possible.',
+        'La nature du plancher, et ce qu’il y a sous le revêtement.',
+        'Ce que le règlement de copropriété dit des sols.',
+        'Les activités présentes dans l’immeuble et dans la cour.',
+        'Les procès-verbaux d’assemblée générale, pour les plaintes de bruit.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Le vendeur doit-il signaler un problème de bruit ?',
+        a: 'Il ne doit pas vous cacher un trouble grave dont il a connaissance, comme un litige en cours avec un voisin. En revanche, aucun diagnostic acoustique n’est exigé pour vendre.',
+      },
+      {
+        q: 'Puis-je poser un parquet dans mon loft ?',
+        a: 'Oui si le règlement de copropriété ne l’interdit pas, et à condition de ne pas dégrader l’isolation existante. Prévoyez une sous-couche isolante et gardez la facture.',
+      },
+      {
+        q: 'Une activité voisine peut-elle être contrainte de faire moins de bruit ?',
+        a: 'Elle doit respecter la réglementation sur les bruits de voisinage. Mais un atelier installé avant vous, et qui exerce dans les règles, ne sera pas obligé de partir. Renseignez-vous avant d’acheter.',
+      },
+    ],
+    sources: [
+      { label: 'PAP, « Comment changer ses revêtements de sol »', url: 'https://www.pap.fr/patrimoine/renover-ameliorer/changer-ses-revetements-de-sol/a8547' },
+      { label: 'Centre d’information sur le bruit, « Bruits de pas et de chocs »', url: 'https://www.bruit.fr/images/mediatheque/bonnes-pratiques/Bruits_de_pas_chocs.pdf' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'diviser-un-grand-bien-en-deux-logements',
+    art: 'division',
+    title: 'Diviser un grand bien en deux logements : ce qui est permis',
+    description:
+      'Règlement de copropriété, surface minimale des logements créés, autorisation de la commune, nouvelle répartition des charges : les règles à connaître avant d’acheter un grand volume pour le diviser.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Un plateau de 200 m², deux entrées possibles, deux familles ou un logement et un atelier : l’idée de diviser vient vite devant un grand volume. Elle permet d’acheter à plusieurs, de financer une partie des travaux par une revente, ou de garder un pied-à-terre. La loi ne l’interdit pas. Elle l’encadre, à trois niveaux : la copropriété, la commune, et les logements eux-mêmes.',
+    takeaways: [
+      'En copropriété, diviser un lot est en principe libre, sauf si le règlement l’interdit ou si la division heurte la destination de l’immeuble.',
+      'L’assemblée générale doit approuver la nouvelle répartition des charges entre les lots créés.',
+      'Chaque logement créé doit faire au moins 14 m² et 33 m³, et disposer de l’eau, d’une évacuation et de l’électricité.',
+      'Certaines communes soumettent toute division à une autorisation préalable.',
+    ],
+    sections: [
+      {
+        title: 'Que dit la copropriété ?',
+        paragraphs: [
+          'Un copropriétaire peut diviser son lot, à condition que le règlement de copropriété ne l’interdise pas. Certains règlements le font expressément, d’autres le limitent par la destination de l’immeuble : dans un immeuble de grands appartements, créer des studios peut être refusé.',
+          'La division crée de nouveaux lots. Il faut un acte modifiant l’état descriptif de division, établi par un notaire avec un géomètre, et l’assemblée générale doit approuver la répartition des charges entre ces nouveaux lots.',
+          'Les travaux qui touchent les parties communes, comme une seconde porte sur le palier ou de nouveaux raccordements aux colonnes de l’immeuble, doivent être autorisés par un vote.',
+        ],
+      },
+      {
+        title: 'Quelles conditions pour les logements créés ?',
+        paragraphs: ['Le Code de la construction interdit les divisions qui créent des logements trop petits ou mal équipés.'],
+        list: [
+          'Une surface habitable d’au moins 14 m² et un volume habitable d’au moins 33 m³ pour chaque logement.',
+          'Une alimentation en eau potable, une évacuation des eaux usées et un accès à l’électricité.',
+          'Des diagnostics amiante et plomb réalisés.',
+          'Aucune division dans un immeuble frappé d’une interdiction d’habiter ou déclaré insalubre.',
+        ],
+      },
+      {
+        title: 'La commune a-t-elle son mot à dire ?',
+        paragraphs: [
+          'Oui, de deux façons. D’abord par l’urbanisme : le plan local d’urbanisme peut fixer une taille minimale de logements, exiger des places de stationnement pour chaque logement créé, et une autorisation est nécessaire dès que la division modifie la façade ou change la destination d’une partie du bien.',
+          'Ensuite par le « permis de diviser » : dans certains secteurs, la commune soumet à une autorisation préalable tous les travaux qui créent plusieurs logements dans un immeuble existant. La mairie vous dira si le bien est concerné.',
+        ],
+      },
+      {
+        title: 'Est-ce techniquement faisable ?',
+        list: [
+          'Deux entrées indépendantes, sans passer par le logement de l’autre.',
+          'Deux pièces d’eau et deux cuisines, proches des colonnes d’évacuation.',
+          'Deux compteurs, deux tableaux électriques, deux chauffages.',
+          'De la lumière des deux côtés : la division ne doit pas laisser un logement sans fenêtre.',
+          'Une séparation qui isole du bruit et du feu.',
+        ],
+      },
+      {
+        title: 'Que faire avant d’acheter ?',
+        paragraphs: [
+          'Ne payez pas un bien au prix de deux logements tant que la division n’est pas acquise. Lisez le règlement de copropriété, interrogez la mairie, et faites venir un architecte pour vérifier la faisabilité.',
+          'Si le projet est décisif pour vous, inscrivez dans la promesse de vente une condition liée aux autorisations nécessaires.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant d’acheter pour diviser',
+      items: [
+        'Le règlement de copropriété : la division est-elle interdite ou limitée ?',
+        'La destination de l’immeuble.',
+        'Les règles du plan local d’urbanisme : taille des logements, stationnement.',
+        'L’existence d’une autorisation préalable de division dans le secteur.',
+        'L’emplacement des colonnes d’eau et d’évacuation.',
+        'L’avis d’un architecte sur les deux entrées et la lumière.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Puis-je diviser sans rien demander si je ne fais pas de travaux ?',
+        a: 'Non. La création de deux lots modifie l’état descriptif de division et la répartition des charges, qui doit être approuvée par l’assemblée générale.',
+      },
+      {
+        q: 'Peut-on diviser une maison ?',
+        a: 'Oui, sous réserve des règles d’urbanisme de la commune et, le cas échéant, de l’autorisation préalable de division. Les exigences de surface et d’équipement des logements créés sont les mêmes.',
+      },
+      {
+        q: 'La division augmente-t-elle les impôts ?',
+        a: 'Chaque logement créé est évalué séparément pour la taxe foncière. Déclarez le changement au service des impôts après les travaux.',
+      },
+    ],
+    sources: [
+      { label: 'Sites & Cités remarquables, textes applicables aux divisions d’immeubles (Code de la construction et de l’habitation)', url: 'https://www.sites-cites.fr/app/uploads/2022/04/textes-divisions-dimmeubles.pdf' },
+      { label: 'ANIL, « Les règles de majorité pour décider en assemblée générale de copropriété »', url: 'https://anil.org/majorite-decision-assemblee-generale-copropriete' },
+    ],
+  },
+  {
+    slug: 'acheter-un-moulin',
+    art: 'moulin',
+    title: 'Acheter un moulin : la maison, l’eau et les obligations qui vont avec',
+    description:
+      'Droit d’eau, règlement d’eau, entretien des vannes et du bief, continuité écologique, risque d’inondation : ce qu’il faut comprendre et demander avant d’acheter un moulin.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Le bruit de l’eau, une bâtisse en pierre, un bief sous les arbres : peu de biens font autant rêver qu’un moulin. Peu engagent autant leur propriétaire. Avec la maison, vous achetez des ouvrages sur une rivière, un droit d’utiliser son eau, et des obligations d’entretien que l’administration contrôle. Rien de tout cela ne se voit pendant la visite. Tout se lit dans les papiers.',
+    takeaways: [
+      'Un moulin se vend avec ses ouvrages : seuil, vannes, bief, canaux. Vous en devenez responsable, même lorsqu’ils traversent d’autres terrains.',
+      'Le droit d’eau n’est pas automatique. Il repose sur un titre ancien ou sur un arrêté préfectoral, et il peut être perdu.',
+      'Le propriétaire doit entretenir les ouvrages, manœuvrer les vannes et laisser passer l’eau, les sédiments et parfois les poissons.',
+      'Un moulin est par nature au bord de l’eau : le risque d’inondation fait partie de l’achat.',
+    ],
+    sections: [
+      {
+        title: 'Qu’achète-t-on exactement ?',
+        paragraphs: [
+          'Un bâtiment, et un système hydraulique. Le seuil qui retient l’eau, les vannes qui la règlent, le bief qui l’amène, le canal qui la rend à la rivière font partie du moulin, y compris sur les parcelles voisines qu’ils traversent.',
+          'Vérifiez que le titre de propriété couvre bien tous ces ouvrages, et qu’une servitude vous permet d’y accéder pour les entretenir.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que le droit d’eau ?',
+        paragraphs: [
+          'C’est le droit d’utiliser la force de la rivière. Pour les moulins qui existaient avant la Révolution, il est dit « fondé en titre » : il est attaché à l’ouvrage et n’a pas de durée, tant que celui-ci n’a pas été modifié ni laissé à l’état de ruine. Il se prouve par des documents anciens, un acte ou une carte d’époque.',
+          'Pour les autres moulins, ou ceux dont la puissance a été augmentée, le droit résulte d’un arrêté préfectoral. Dans les deux cas, l’administration peut le retirer pour un motif d’intérêt général, comme le risque d’inondation ou la protection du milieu.',
+          'Un moulin sans droit d’eau reconnu reste une belle maison. Il ne permet ni de produire de l’électricité, ni toujours de conserver son plan d’eau.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que le règlement d’eau ?',
+        paragraphs: [
+          'C’est le document qui fixe les conditions de fonctionnement du moulin : la hauteur légale de l’eau, les dimensions des ouvrages, la manœuvre des vannes, le débit à laisser à la rivière en aval.',
+          'Demandez-le. S’il n’existe pas ou a été perdu, la direction départementale des territoires peut vous renseigner sur la situation administrative du moulin.',
+        ],
+      },
+      {
+        title: 'À quoi le propriétaire est-il tenu ?',
+        list: [
+          'Maintenir le seuil et les déversoirs en bon état, au niveau légal, dégagés des branches et des débris.',
+          'Garder des vannes en état de marche, et les ouvrir régulièrement pour laisser passer les sédiments.',
+          'Être présent ou représenté en cas de crue, pour manœuvrer les vannes.',
+          'Laisser à la rivière le débit minimal fixé, surtout en période de basses eaux.',
+          'Signaler à l’administration les travaux sur les ouvrages.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que la continuité écologique ?',
+        paragraphs: [
+          'C’est l’obligation de ne pas faire obstacle à la circulation des poissons et des sédiments. Sur les cours d’eau classés, l’administration peut exiger des aménagements : une passe à poissons, une gestion particulière des vannes, voire une modification du seuil.',
+          'Ces travaux peuvent être coûteux. Avant d’acheter, demandez où en est le moulin au regard de cette obligation, et si une mise en conformité a été demandée au vendeur.',
+        ],
+      },
+      {
+        title: 'Et le risque d’inondation ?',
+        paragraphs: [
+          'Il est inhérent au lieu. Consultez l’état des risques remis par le vendeur et le plan de prévention des risques d’inondation de la commune : il peut limiter les travaux, les extensions et l’aménagement des niveaux bas.',
+          'Demandez au vendeur les crues qu’il a connues, la hauteur atteinte par l’eau, et ce que l’assurance a pris en charge.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À demander avant d’acheter',
+      items: [
+        'Le titre de propriété, et la liste des ouvrages qu’il couvre.',
+        'Le droit d’eau : titre ancien ou arrêté préfectoral.',
+        'Le règlement d’eau.',
+        'Les servitudes d’accès au bief et aux canaux.',
+        'Un état des ouvrages hydrauliques, et les travaux à prévoir.',
+        'La situation au regard de la continuité écologique.',
+        'L’historique des crues et des sinistres.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on produire de l’électricité avec un moulin ?',
+        a: 'Oui, si le droit d’eau est reconnu et dans la limite de la puissance qu’il autorise. Tout projet doit être déclaré à l’administration, qui vérifie sa compatibilité avec la rivière.',
+      },
+      {
+        q: 'Qui entretient la rivière ?',
+        a: 'Le propriétaire riverain entretient les berges et le lit sur sa propriété. Le propriétaire du moulin entretient en plus ses ouvrages : seuil, vannes, bief et canaux.',
+      },
+      {
+        q: 'À qui s’adresser avant d’acheter ?',
+        a: 'À la direction départementale des territoires pour le droit d’eau et les obligations, et au syndicat de rivière du secteur, qui connaît les ouvrages et les travaux attendus.',
+      },
+    ],
+    sources: [
+      { label: 'GrandAngoulême, « Guide du propriétaire de moulin »', url: 'https://www.grandangouleme.fr/wp-content/uploads/2022/08/Guide_moulin.pdf' },
+      { label: 'Fédération française des associations de sauvegarde des moulins', url: 'https://www.moulinsdefrance.org' },
+      { label: 'Géorisques, pour connaître les risques à une adresse', url: 'https://www.georisques.gouv.fr' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
   {
     slug: 'acheter-atypique-est-ce-risque',
     art: 'balance',

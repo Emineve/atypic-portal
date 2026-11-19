@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin';
 
 const INK = '#1c1917';
 const SUN = '#F4E7B5';
@@ -1095,7 +1095,116 @@ function Expertise() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise };
+function Rdc() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* l'immeuble sur cour : le rez-de-chaussée, sa verrière d'atelier */}
+      <rect x={280} y={90} width={360} height={350} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[120, 210].map((y) =>
+        [320, 430, 540].map((x) => <rect key={`${x}-${y}`} x={x} y={y} width={56} height={60} fill={SUN} stroke={INK} strokeWidth={2} />),
+      )}
+      <rect x={280} y={300} width={360} height={140} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <rect x={310} y={325} width={210} height={115} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M380 325 V440 M450 325 V440 M310 382 H520" {...thin} />
+      <rect x={550} y={345} width={60} height={95} fill={PAPER} stroke={INK} strokeWidth={2} />
+      {/* la cour, son arbre, ses pavés */}
+      <path d="M800 440 V300" {...line} />
+      <circle cx={800} cy={250} r={62} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M800 300 l-26 -34 M800 284 l24 -30" {...thin} />
+      <path d="M690 458 h40 M750 458 h40 M810 458 h40 M870 458 h40 M930 458 h40" {...thin} />
+      <Plant x={940} y={414} />
+    </>
+  );
+}
+
+function Chambres() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* le toit, et les chambres alignées dessous */}
+      <path d="M240 280 L330 130 H870 L960 280" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <rect x={240} y={280} width={720} height={160} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[390, 540, 690, 840].map((x) => (
+        <rect key={x} x={x - 30} y={170} width={60} height={64} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      {/* les cloisons qui tombent */}
+      <path d="M420 280 V440 M780 280 V440" {...dash} />
+      <path d="M600 280 V440" {...line} />
+      <path d="M240 400 H960" {...thin} />
+      <Sofa x={290} y={400} />
+      <Lamp x={690} y={280} />
+      <rect x={830} y={366} width={90} height={22} rx={4} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M830 388 V400 M920 388 V400" {...thin} />
+    </>
+  );
+}
+
+function Bruit() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M260 440 V80 H940 V440" {...line} />
+      {/* le plancher entre deux logements */}
+      <rect x={260} y={250} width={680} height={22} fill={SHADE} stroke={INK} strokeWidth={3} />
+      {/* en haut : des pas */}
+      <path d="M470 250 v-70 M520 250 v-70 M470 180 h50 M495 180 v-50" {...line} />
+      <circle cx={495} cy={112} r={18} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {/* les ondes qui traversent */}
+      <path d="M430 300 q65 44 130 0 M400 330 q95 62 190 0 M370 360 q125 80 250 0" {...thin} />
+      <Sofa x={660} y={440} />
+      <Lamp x={800} y={272} />
+      <Plant x={330} y={224} />
+    </>
+  );
+}
+
+function Division() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* le plan d'un grand plateau, partagé en deux */}
+      <rect x={280} y={110} width={640} height={300} fill={PAPER} stroke={INK} strokeWidth={4} />
+      <rect x={280} y={110} width={320} height={300} fill={SUN} stroke="none" />
+      <rect x={280} y={110} width={640} height={300} fill="none" stroke={INK} strokeWidth={4} />
+      <path d="M600 110 V410" stroke={INK} strokeWidth={5} strokeDasharray="14 10" fill="none" />
+      {/* deux portes d'entrée */}
+      <path d="M420 410 a50 50 0 0 1 50 -50" {...thin} />
+      <path d="M420 410 H470" stroke={PAPER} strokeWidth={6} />
+      <path d="M720 410 a50 50 0 0 1 50 -50" {...thin} />
+      <path d="M720 410 H770" stroke={PAPER} strokeWidth={6} />
+      {/* deux pièces d'eau */}
+      <rect x={300} y={130} width={90} height={70} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <rect x={810} y={130} width={90} height={70} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M440 250 H540 M660 250 H760" {...thin} />
+    </>
+  );
+}
+
+function Moulin() {
+  return (
+    <>
+      {/* l'eau */}
+      <path d="M160 440 H1040" {...line} />
+      <path d="M200 410 q30 -18 60 0 t60 0 t60 0 t60 0 t60 0 t60 0" {...thin} />
+      <path d="M740 414 q30 -18 60 0 t60 0 t60 0 t60 0" {...thin} />
+      {/* le moulin */}
+      <path d="M470 210 L610 120 L750 210" {...line} />
+      <rect x={490} y={210} width={240} height={200} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={530} y={250} width={50} height={60} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={640} y={250} width={50} height={60} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={590} y={340} width={46} height={70} fill={SHADE} stroke={INK} strokeWidth={2} />
+      {/* la roue */}
+      <circle cx={400} cy={340} r={86} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <circle cx={400} cy={340} r={56} fill={SUN} stroke={INK} strokeWidth={2} />
+      <circle cx={400} cy={340} r={10} fill={INK} />
+      <path d="M400 254 V426 M314 340 H486 M339 279 L461 401 M461 279 L339 401" {...thin} />
+      <Plant x={900} y={384} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise, rdc: Rdc, chambres: Chambres, bruit: Bruit, division: Division, moulin: Moulin };
 
 // fit « meet » : le dessin entier reste visible (article à la une) ; « slice » : il remplit le cadre, quitte à être rogné
 export default function GuideArt({ art, className = '', fit = 'slice' }: { art: GuideArtKey; className?: string; fit?: 'slice' | 'meet' }) {
