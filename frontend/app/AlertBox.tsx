@@ -85,7 +85,7 @@ export default function AlertBox({
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 py-2.5 hover:bg-stone-800 transition disabled:opacity-50 rounded-full"
+          className="bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-5 py-2.5 hover:bg-stone-800 transition disabled:opacity-50 rounded-[10px]"
         >
           {status === 'sending' ? 'Envoi…' : isAlert ? 'Créer mon alerte' : "Je m'inscris"}
         </button>

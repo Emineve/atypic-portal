@@ -88,7 +88,7 @@ export default function GuideIndex() {
             <h2 className="font-serif text-2xl md:text-3xl leading-snug">Le bon bien n&apos;attend pas.</h2>
             <p className="mt-2 text-stone-600 leading-relaxed">Créez une alerte : vous êtes prévenu dès qu&apos;un bien atypique correspond à votre recherche.</p>
           </div>
-          <Link href="/?alerte=1" className="mt-6 md:mt-0 inline-flex h-12 flex-none items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-full">
+          <Link href="/?alerte=1" className="mt-6 md:mt-0 inline-flex h-12 flex-none items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
             Créer mon alerte
           </Link>
         </section>

@@ -167,7 +167,7 @@ export default function FavoritesContact({
               <button
                 type="submit"
                 disabled={status === 'sending' || selected.length === 0}
-                className="w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
+                className="w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-[10px]"
               >
                 {status !== 'sending' && <Send className="w-4 h-4" />}
                 {status === 'sending'

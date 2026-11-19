@@ -67,7 +67,7 @@ export default function CollectionAlert({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="shrink-0 h-12 px-7 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
+          className="shrink-0 h-12 px-7 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px]"
         >
           Créer mon alerte
         </button>

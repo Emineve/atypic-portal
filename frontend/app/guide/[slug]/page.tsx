@@ -170,11 +170,11 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             Loftissime réunit les biens atypiques des agences sur un seul site. Créez une alerte, et vous êtes parmi les premiers prévenus.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-full">
+            <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
               Créer mon alerte
             </Link>
             {a.listingsLink && (
-              <Link href={a.listingsLink.href} className="inline-flex h-12 items-center px-6 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition rounded-full">
+              <Link href={a.listingsLink.href} className="inline-flex h-12 items-center px-6 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition rounded-[10px]">
                 {a.listingsLink.label}
               </Link>
             )}

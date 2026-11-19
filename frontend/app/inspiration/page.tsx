@@ -153,7 +153,7 @@ export default async function InspirationPage() {
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
         <Link
           href="/"
-          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
+          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px]"
         >
           Découvrez les biens à visiter
         </Link>
