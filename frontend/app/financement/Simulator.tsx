@@ -149,7 +149,10 @@ export default function Simulator() {
             </dd>
           </div>
         </dl>
-        <p className="mt-5 text-xs text-stone-500 leading-relaxed">
+        <p className="mt-5 text-sm text-stone-700 leading-relaxed">
+          Ce n&apos;est qu&apos;une projection, à ajuster : le taux, l&apos;assurance et la durée dépendent du profil de chaque acquéreur (âge, revenus, apport, situation). Modifiez les chiffres ci-dessus pour vous en approcher.
+        </p>
+        <p className="mt-3 text-xs text-stone-500 leading-relaxed">
           Taux de {pct(num(rate))} % sur {years} ans. Assurance estimée à {pct(num(insurance))} % du capital emprunté par an : elle va d&apos;environ 0,10 % à 25 ans à 0,47 % à 55 ans pour un non-fumeur (moyennes indicatives Meilleurtaux, 2026). Revenus calculés pour un endettement de 35 %, assurance comprise.
         </p>
         </>
