@@ -105,7 +105,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       {
         title: 'Et pour une église ou une chapelle ?',
         paragraphs: [
-          'Un édifice religieux ne peut être vendu comme un bien ordinaire qu’une fois désaffecté, c’est-à-dire retiré officiellement du culte. Beaucoup sont en outre protégés au titre des monuments historiques, ce qui encadre fortement les travaux. Demandez l’acte de désaffectation et le niveau de protection avant toute chose.',
+          'Une église construite avant 1905 est affectée au culte, et cette affectation ne tombe pas d’elle-même : elle doit avoir été levée par une procédure de désaffectation, prévue par la loi de 1905 et prononcée en général par arrêté du préfet avec l’accord écrit de l’évêque. La « désacralisation », elle, est la démarche religieuse. Certains édifices sont en outre protégés au titre des monuments historiques, ce qui encadre les travaux. Demandez l’arrêté de désaffectation et le niveau de protection avant toute chose.',
         ],
       },
     ],
@@ -135,7 +135,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       },
       {
         q: 'Peut-on acheter une église pour y vivre ?',
-        a: 'Oui, si elle a été désaffectée. Vérifiez aussi sa protection éventuelle au titre des monuments historiques, qui encadre les travaux.',
+        a: 'Oui, si elle a été officiellement désaffectée, en général par arrêté préfectoral. Vérifiez aussi sa protection éventuelle au titre des monuments historiques, qui encadre les travaux.',
       },
     ],
     sources: [
@@ -144,6 +144,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Crédit Agricole, « Qu’est-ce qu’un bien immobilier atypique et comment l’acheter ? »', url: 'https://e-immobilier.credit-agricole.fr/conseils/marche/ce-quil-faut-savoir-avant-dacheter-un-bien-immobilier-atypique' },
       { label: 'Bourse des crédits, « Bien immobilier atypique : les vérifications avant d’acheter »', url: 'https://www.boursedescredits.com/guide-immobilier-atypique-verifications-acheter-6182.php' },
       { label: 'SeLoger, « Église désacralisée, ancienne école, phare… Acheter un bien atypique : mode d’emploi »', url: 'https://edito.seloger.com/conseils-d-experts/acheter/acheter-un-bien-atypique-mode-d-emploi-article-16977.html' },
+      { label: 'Actu-Juridique, « La désaffectation des édifices cultuels »', url: 'https://www.actu-juridique.fr/divers/colloque/la-desaffectation-des-edifices-cultuels/' },
     ],
     listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
   },
