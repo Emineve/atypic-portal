@@ -9,6 +9,7 @@ import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
 import { passageAnchor } from '../../../lib/guide-search';
 import OpenHash from '../OpenHash';
+import Tracker from '../../Tracker';
 import SpecialistVideoCard from '../SpecialistVideoCard';
 import { videosForArticle } from '../../../lib/specialists';
 import { typo } from '../../../lib/typo';
@@ -176,6 +177,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </section>
 
         <OpenHash />
+      <Tracker />
 
         <form action="/guide" method="get" className="mt-12" role="search">
           <label className="block font-serif text-2xl text-stone-900" htmlFor="autre-question">Une autre question ?</label>

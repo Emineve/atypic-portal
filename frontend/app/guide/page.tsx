@@ -4,6 +4,7 @@ import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import GuideArt from './GuideArt';
+import { getSupabase } from '../../lib/supabase';
 import SpecialistVideoCard from './SpecialistVideoCard';
 import { publishedVideos } from '../../lib/specialists';
 import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/guide';
@@ -18,9 +19,24 @@ export const metadata = {
   alternates: { canonical: '/guide' },
 };
 
-export default function GuideIndex() {
+// L'article mis en avant est le plus lu du jour, à défaut de la semaine ; sans assez de lectures, le plus récent.
+async function topArticle(): Promise<{ slug: string; period: 'today' | 'week' } | null> {
+  try {
+    const { data } = await getSupabase().rpc('top_guide_article');
+    const t = data as { slug?: string; period?: string } | null;
+    return t && t.slug && (t.period === 'today' || t.period === 'week') ? { slug: t.slug, period: t.period } : null;
+  } catch {
+    return null;
+  }
+}
+
+export default async function GuideIndex() {
   const articles = publishedArticles();
-  const [first, ...rest] = articles;
+  const top = await topArticle();
+  const topped = top ? articles.find((a) => a.slug === top.slug) : undefined;
+  const first = topped || articles[0];
+  const rest = articles.filter((a) => a !== first);
+  const firstLabel = topped ? (top!.period === 'today' ? 'Le plus lu aujourd’hui' : 'Le plus lu cette semaine') : 'À la une';
   const videos = publishedVideos();
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -60,7 +76,7 @@ export default function GuideIndex() {
             </div>
             <div className="p-7 md:p-10 flex flex-col justify-center">
               <p className="text-xs uppercase tracking-widest text-stone-500">
-                À la une · {first.category} · {first.readMinutes} min de lecture
+                {firstLabel} · {first.category} · {first.readMinutes} min de lecture
               </p>
               <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">{typo(first.title)}</h2>
               <p className="mt-4 text-stone-600 leading-relaxed">{typo(first.description)}</p>
