@@ -199,6 +199,9 @@ export default function ContactForm({
           )}
 
           {/* Deux onglets discrets pour le formulaire : être rappelé, ou écrire */}
+          {status === 'done' ? (
+            <div className="mt-3 border-t border-stone-200" />
+          ) : (
           <div className="mt-3 pt-5 border-t border-stone-200 flex gap-6 border-b" role="tablist" aria-label="Votre demande">
             {([
               ['tel', 'Être rappelé(e)'],
@@ -218,6 +221,7 @@ export default function ContactForm({
               </button>
             ))}
           </div>
+          )}
 
       {status === 'done' ? (
         <>
