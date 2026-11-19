@@ -32,6 +32,7 @@ const SYNONYMS: string[][] = [
   ['travaux', 'renovation', 'renover', 'refaire'],
   ['notaire', 'acte', 'compromis', 'promesse'],
   ['bateau', 'peniche'],
+  ['hotel', 'particulier', 'maison', 'ville', 'sauvegarde'],
   ['toit', 'toiture', 'etancheite', 'fuite', 'combles', 'ascenseur'],
   ['architecte', 'signature', 'decennale'],
   ['atelier', 'artiste', 'verriere'],

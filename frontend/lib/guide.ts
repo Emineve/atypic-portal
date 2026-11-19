@@ -39,6 +39,97 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'hotel-particulier-maison-en-ville',
+    art: 'visite',
+    title: 'Hôtel particulier, maison en ville : seul maître à bord, seul à payer',
+    description:
+      'Une maison au cœur de la ville, sans voisin au-dessus : le bien le plus rare. Protection du patrimoine, entretien à sa seule charge, usage des lieux : ce qu’il faut vérifier.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Une porte cochère, une cour, parfois un jardin, et personne au-dessus de soi : la maison en ville est ce que l’appartement ne sera jamais. C’est aussi un bien dont on porte seul toute la charge, dans des quartiers où l’on ne fait pas ce que l’on veut de ses murs. Deux réalités à regarder en face avant de se laisser emporter par la visite.',
+    takeaways: [
+      'Le terme « hôtel particulier » n’a pas de définition légale. Il désigne une grande maison de ville, sur plusieurs niveaux, avec cour ou jardin. Une « maison de ville » en est la version plus modeste.',
+      'Ces biens sont très rares : à Paris, un chasseur immobilier n’en compte qu’une à cinq ventes par an sur le marché ouvert.',
+      'Dans les quartiers anciens, la plupart sont dans un périmètre protégé : les travaux extérieurs, et parfois intérieurs, passent par l’architecte des Bâtiments de France.',
+      'Sans copropriété, toiture, façade et réseaux sont à votre seule charge. Le budget d’entretien se prévoit avant l’achat.',
+    ],
+    sections: [
+      {
+        title: 'Hôtel particulier ou maison de ville : quelle différence ?',
+        paragraphs: [
+          'Aucune au sens du droit : ce sont deux maisons. L’usage réserve le nom d’hôtel particulier aux demeures de grande taille, construites pour une seule famille, avec une cour, un jardin ou les deux. La maison de ville est plus petite et plus simple. Dans une annonce, le mot dit surtout l’ambition du prix.',
+          'Ce qui compte pour vous : la surface réelle, le terrain, l’accès (rue, voie privée, cour commune) et le statut de l’ensemble. Certaines maisons sont en pleine propriété, d’autres font partie d’une copropriété ou d’une voie privée avec des charges et des règles communes.',
+        ],
+      },
+      {
+        title: 'Pourquoi sont-ils si rares ?',
+        paragraphs: [
+          'Parce qu’on n’en construit plus et que beaucoup ont été divisés en appartements ou transformés en bureaux. Le chasseur immobilier Home Select estime que Paris compte plusieurs centaines d’hôtels particuliers, pour une à cinq ventes par an sur le marché ouvert, avec des prix allant de quelques millions d’euros pour une maison de ville à rénover à plusieurs dizaines de millions dans le 7e arrondissement ou le Marais. Ce sont des estimations de professionnel, pas une statistique officielle.',
+        ],
+      },
+      {
+        title: 'Peut-on y faire les travaux que l’on veut ?',
+        paragraphs: [
+          'Rarement. Même sans être lui-même classé, un hôtel particulier se trouve le plus souvent aux abords d’un monument historique ou dans un secteur sauvegardé. Les travaux qui modifient l’extérieur demandent alors l’accord de l’architecte des Bâtiments de France.',
+          'Dans les secteurs dotés d’un plan de sauvegarde, comme le Marais, la protection peut aller plus loin : le plan indique, immeuble par immeuble, ce qui est protégé, des façades aux cours et, pour certains bâtiments, jusqu’aux intérieurs. Consultez-le avant de rêver d’ouvrir une baie ou de déplacer un escalier.',
+        ],
+      },
+      {
+        title: 'Que coûte une maison que l’on entretient seul ?',
+        paragraphs: [
+          'Dans un immeuble, la toiture et la façade se paient à plusieurs. Dans une maison, tout est pour vous : couverture, ravalement, menuiseries, réseaux, cour, jardin, mur mitoyen. Sur un bâtiment ancien et protégé, ces travaux se font avec des matériaux et des artisans adaptés, donc plus chers.',
+        ],
+        list: [
+          'Demandez les factures des dix dernières années : toiture, façade, chauffage, électricité.',
+          'Faites passer un architecte ou un maître d’œuvre avant l’offre, pas après.',
+          'Lisez le diagnostic de performance énergétique : chauffer de grands volumes anciens pèse lourd.',
+          'Si la maison dépend d’une voie privée ou d’une copropriété, demandez les charges et les derniers procès-verbaux.',
+        ],
+      },
+      {
+        title: 'L’usage des lieux est-il bien l’habitation ?',
+        paragraphs: [
+          'Beaucoup d’hôtels particuliers ont abrité des bureaux, une ambassade, un cabinet. Vérifiez que le bâtiment, ou la partie que vous achetez, est bien à usage d’habitation, et l’inverse si vous comptez y travailler ou y recevoir du public. À Paris, l’usage des locaux est contrôlé, et le changer suppose une autorisation.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, pour une maison en ville',
+      items: [
+        'Je sais si le bien est en pleine propriété, en copropriété ou sur une voie privée.',
+        'Je connais le niveau de protection : monument, abords, secteur sauvegardé.',
+        'J’ai les factures de toiture, de façade et de chauffage.',
+        'Un professionnel du bâtiment a visité avant mon offre.',
+        'L’usage d’habitation est établi par des documents.',
+        'J’ai chiffré le budget d’entretien annuel.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Qu’est-ce qu’un hôtel particulier ?',
+        a: 'Une grande maison de ville construite pour une seule famille, sur plusieurs niveaux, avec cour ou jardin. Le terme n’a pas de définition légale : c’est une maison, souvent ancienne et protégée.',
+      },
+      {
+        q: 'Faut-il l’accord de l’architecte des Bâtiments de France pour des travaux ?',
+        a: 'Oui dès que le bâtiment est protégé ou situé dans un périmètre protégé et que les travaux modifient son aspect extérieur. Dans un secteur sauvegardé, certains intérieurs sont protégés eux aussi.',
+      },
+      {
+        q: 'Une maison en ville a-t-elle des charges ?',
+        a: 'Pas de charges de copropriété si elle est en pleine propriété, mais tout l’entretien du bâtiment est à votre charge. Si elle dépend d’une voie privée ou d’une copropriété, des charges communes s’ajoutent.',
+      },
+    ],
+    sources: [
+      { label: 'Kohen Avocats, « Hôtel particulier à vendre à Paris : que vérifier avant d’acheter en 2026 »', url: 'https://kohenavocats.fr/?p=2141096' },
+      { label: 'Home Select, « Hôtels particuliers de Paris : rêve accessible ou privilège ? »', url: 'https://homeselect.paris/blog/hotels-particuliers-paris-guide/' },
+      { label: 'Home Select, « Acheter dans le Marais, secteur sauvegardé »', url: 'https://homeselect.paris/carnet/acheter-dans-le-marais-secteur-sauvegarde/' },
+      { label: 'Capifrance, « Protected buildings in France: responsibilities regarding renovation work »', url: 'https://www.capifrance.fr/en/blog/protected-buildings-in-france-what-are-the-responsibilities-regarding-renovation-work' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'acheter-un-dernier-etage',
     art: 'terrasse',
     title: 'Dernier étage : la vue, la lumière… et le toit juste au-dessus',
