@@ -231,7 +231,7 @@ export default function ContactForm({
             </span>
             <div>
               <p className="font-serif text-lg text-stone-900">Votre demande est bien envoyée.</p>
-              <p className="mt-1 text-sm text-stone-600">L&apos;agence en charge de ce bien vous recontacte.</p>
+              <p className="mt-1 text-sm text-stone-600">L&apos;agence en charge de ce bien vous recontacte dans les meilleurs délais.</p>
             </div>
           </div>
           {confirmOpen && createPortal(
