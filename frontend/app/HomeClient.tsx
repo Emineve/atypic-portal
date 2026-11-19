@@ -6,6 +6,7 @@ import { Menu, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
+import AlertPhrase from './AlertPhrase';
 import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
 import Tracker from './Tracker';
@@ -1031,7 +1032,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   >
                     <Bell className="w-4 h-4 flex-none text-stone-900" />
                     <span className="flex-1 font-serif text-base leading-snug text-stone-900">
-                      Ne passez pas à côté de votre prochain coup de cœur !
+                      <AlertPhrase />
                     </span>
                     <span className="flex-none text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover/alert:text-stone-600">
                       Créer mon alerte →

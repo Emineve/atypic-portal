@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Bell } from 'lucide-react';
+import AlertPhrase from './AlertPhrase';
 import AlertDialog from './AlertDialog';
 
 // Encart « Créer mon alerte » des pages par ville et par catégorie.
@@ -57,7 +58,7 @@ export default function CollectionAlert({
           </span>
           <div>
             <p className="font-serif text-lg text-stone-900 leading-snug">
-              Ne passez pas à côté de votre prochain coup de cœur !
+              <AlertPhrase />
             </p>
             <p className="mt-1 text-sm text-stone-500">
               Dès qu’un nouveau bien répond à vos attentes, vous êtes parmi les premiers prévenus.
