@@ -64,10 +64,13 @@ export default async function InspirationPage() {
         <p className="text-center py-24 text-stone-400 font-serif">Bientôt le premier architecte à la une.</p>
       ) : (
         <>
-          <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-6 md:pb-2">
+          <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">
             <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
-            <p className="mt-3 max-w-2xl font-serif text-2xl md:text-3xl leading-snug text-stone-900">
-              Un architecte à la une, et ses réalisations pour imaginer ce qu&apos;un lieu atypique peut devenir.
+            <p className="mt-4 max-w-4xl font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
+              Ce qu&apos;un lieu atypique <span className="italic text-stone-500">peut devenir</span>.
+            </p>
+            <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+              Un architecte à la une, et ses réalisations pour nourrir votre projet.
             </p>
           </div>
           {photos.length > 0 && (
