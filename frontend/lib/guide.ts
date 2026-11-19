@@ -39,6 +39,107 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'acheter-une-maison-d-architecte',
+    art: 'plans',
+    title: 'Maison d’architecte : ce que l’on achète, ce que l’on peut modifier',
+    description:
+      'Une maison signée se choisit pour son dessin. Avant d’acheter : les droits de l’architecte sur son œuvre, les garanties encore en cours et les documents à réclamer.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Une maison d’architecte a été dessinée pour un terrain et pour des habitants précis. On l’achète pour cela : une lumière, un plan, des matériaux que l’on ne trouve pas ailleurs. Mais une œuvre a un auteur, et cet auteur garde des droits. Et une construction récente ou très singulière demande quelques vérifications de plus qu’une maison ordinaire.',
+    takeaways: [
+      'L’architecte garde un droit moral sur son œuvre quand elle est originale : ce droit ne se vend pas et ne s’éteint pas. Vous achetez les murs, pas ce droit.',
+      'Ce droit ne rend pas la maison intouchable. Le propriétaire peut l’adapter à de nouveaux besoins, à condition que les modifications restent nécessaires et mesurées.',
+      'Si la maison ou des travaux ont moins de dix ans, la garantie décennale vous est transmise avec la vente. Réclamez les attestations d’assurance.',
+      'Demandez le dossier complet : plans, permis, nom de l’architecte, factures et notices des matériaux et équipements.',
+    ],
+    sections: [
+      {
+        title: 'Qu’appelle-t-on une maison d’architecte ?',
+        paragraphs: [
+          'Le terme n’a pas de définition légale. Il désigne une maison conçue sur mesure par un architecte, par opposition à un modèle de constructeur. Ce qui compte pour l’acheteur, c’est de savoir qui l’a dessinée, quand, et si des documents le prouvent : permis de construire, plans signés, publications.',
+          'Une signature reconnue soutient la valeur du bien. Une simple mention « maison d’architecte » dans une annonce, sans nom ni plans, ne prouve rien.',
+        ],
+      },
+      {
+        title: 'L’architecte garde-t-il des droits sur la maison ?',
+        paragraphs: [
+          'Oui, si la maison est une œuvre originale. L’Ordre des architectes le rappelle : l’auteur d’une œuvre architecturale a sur elle, du seul fait de sa création, un droit de propriété incorporelle, avec un droit moral qui comprend le respect de son nom et de son œuvre. Ce droit moral est perpétuel et ne peut pas être cédé : il passe aux héritiers.',
+          'Toutes les maisons ne sont pas concernées. L’architecte doit pouvoir établir l’originalité de sa réalisation, c’est-à-dire des choix qui lui sont propres.',
+        ],
+      },
+      {
+        title: 'Peut-on quand même faire des travaux ?',
+        paragraphs: [
+          'Oui. Les tribunaux cherchent un équilibre entre le droit de l’auteur et celui du propriétaire. Le droit moral n’impose pas que l’œuvre reste figée : le propriétaire peut l’adapter à des besoins nouveaux, dans la limite de ce qui est nécessaire et sans la dénaturer.',
+          'La loi n’oblige pas à prévenir l’architecte avant des travaux. Mais s’il estime son œuvre dénaturée, lui ou ses héritiers peuvent demander en justice l’arrêt du chantier ou une réparation. Pour une extension, une surélévation ou un changement de façade, le plus sûr est donc de le contacter en amont. C’est souvent aussi le meilleur conseil que vous aurez sur la maison.',
+        ],
+      },
+      {
+        title: 'Quelles garanties si la maison est récente ?',
+        paragraphs: [
+          'Pendant dix ans après la réception des travaux, les constructeurs répondent des dommages graves : ceux qui menacent la solidité de l’ouvrage ou le rendent impropre à son usage. Cette garantie décennale suit la maison : l’acte de vente ne peut pas en priver l’acheteur.',
+          'En pratique, le notaire demande au vendeur les attestations d’assurance décennale des entreprises et l’assurance dommages-ouvrage. Si elles manquent, la vente reste possible, mais l’acte le mentionne et le vendeur reste personnellement garant. Sachez-le avant de fixer votre prix.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui demande plus d’attention qu’ailleurs ?',
+        list: [
+          'Les grandes baies et les toits plats : étanchéité, isolation, entretien. Demandez les factures des dernières interventions.',
+          'Les matériaux peu courants (béton brut, bois, acier, zinc) : leur vieillissement et le coût de leur entretien.',
+          'Les équipements sur mesure : menuiseries, chauffage, domotique. Peut-on encore les faire réparer ou remplacer ?',
+          'Le confort réel : visitez à plusieurs moments de la journée, et lisez le diagnostic de performance énergétique.',
+          'Le terrain et les règles locales : ce que le plan local d’urbanisme permet encore de construire ou d’agrandir.',
+        ],
+      },
+      {
+        title: 'Et à la revente ?',
+        paragraphs: [
+          'Une maison très personnelle plaît beaucoup à peu de gens. Elle peut se vendre vite et bien au bon acheteur, ou attendre longtemps. C’est une raison de plus pour ne pas la dénaturer : ce qui fait sa valeur, c’est la cohérence du dessin d’origine, et le dossier qui le documente.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, pour une maison d’architecte',
+      items: [
+        'Je connais le nom de l’architecte et l’année de construction, documents à l’appui.',
+        'J’ai les plans et le permis de construire, avec la déclaration d’achèvement.',
+        'Maison ou travaux de moins de dix ans : j’ai les attestations décennales et la dommages-ouvrage.',
+        'J’ai les factures d’entretien de la toiture, des baies et du chauffage.',
+        'Je sais ce que je veux modifier, et j’en ai parlé à un architecte.',
+      ],
+    },
+    faq: [
+      {
+        q: 'L’architecte peut-il m’interdire de modifier ma maison ?',
+        a: 'Pas par principe. Vous pouvez l’adapter à vos besoins. Mais si la maison est une œuvre originale et que les travaux la dénaturent, l’architecte ou ses héritiers peuvent saisir le juge. Mieux vaut le consulter avant un projet important.',
+      },
+      {
+        q: 'Dois-je prévenir l’architecte avant de faire des travaux ?',
+        a: 'La loi ne l’impose pas. C’est pourtant recommandé pour une extension ou une modification de façade : un accord trouvé en amont évite un litige.',
+      },
+      {
+        q: 'La garantie décennale profite-t-elle à l’acheteur ?',
+        a: 'Oui. Elle est attachée à l’ouvrage et se transmet avec la vente, pendant dix ans à compter de la réception des travaux.',
+      },
+      {
+        q: 'Une maison d’architecte se revend-elle bien ?',
+        a: 'Cela dépend de sa signature, de son état et de son emplacement. Elle s’adresse à moins d’acheteurs qu’une maison classique, mais ceux-là la cherchent précisément.',
+      },
+    ],
+    sources: [
+      { label: 'Ordre des architectes, « Propriété artistique des architectes : le droit moral »', url: 'https://prod.architectes.ows.fr/sites/cnoa/files/2024-11/propriete_artistique_droit_moral_jan_2017.pdf' },
+      { label: 'Me Simon Rolin, « Modifier un bâtiment existant : quels risques juridiques avant travaux ? »', url: 'https://consultation.avocat.fr/blog/simon-rolin/article-2983965-architecture-modifier-un-batiment-existant-quels-risques-juridiques-avant-travaux.html' },
+      { label: 'Seban Avocats, Le Moniteur, « Le propriétaire d’une œuvre architecturale face à son auteur »', url: 'https://www.seban-associes.avocat.fr/wp-content/uploads/2025/04/Audrey-Lefevre-et-Lucile-Martin-Le-Moniteur-Le-proprietaire-dune-oeuvre-architecturale-face-a-son-auteur.pdf' },
+      { label: 'Batiweb, « La garantie des travaux doit être transmise à la vente d’un logement »', url: 'https://www.batiweb.com/actualites/vie-pratique/la-garantie-des-travaux-doit-etre-transmise-a-la-vente-d-un-logement-36481' },
+      { label: 'AGN Avocats, « Travaux sans garantie décennale : les risques »', url: 'https://www.agn-avocats.fr/blog/immobilier/garantie-decennale/travaux-sans-garantie-decennale-les-risques-me-sylvain-maury-et-me-chloe-soudan/' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'acheter-un-atelier-d-artiste',
     art: 'loft',
     title: 'Acheter un atelier d’artiste : un lieu de travail, pas toujours un logement',
