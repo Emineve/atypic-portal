@@ -39,6 +39,115 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'lieu-reconverti-eglise-ecole-usine',
+    art: 'loft',
+    title: 'Église, école, usine : habiter un lieu qui a eu une autre vie',
+    description:
+      'Chapelle, école, gare, atelier d’usine devenus logements : ces lieux reconvertis font rêver. Destination, conformité, financement, travaux : ce qu’il faut vérifier avant d’acheter.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Une nef devenue salon, une salle de classe devenue cuisine, une halle d’usine devenue loft : les lieux reconvertis sont les plus singuliers de tous. Ils ont été construits pour autre chose qu’y vivre, et tout l’enjeu est là. La transformation a-t-elle été faite dans les règles, et le bâtiment est-il aujourd’hui un vrai logement ? Si elle reste à faire, a-t-elle une chance d’être autorisée ?',
+    takeaways: [
+      'Un lieu reconverti est un bien dont l’usage d’origine n’était pas l’habitation. Le passage au logement est un changement de destination, que la mairie doit avoir autorisé.',
+      'Sans travaux lourds, une déclaration préalable suffit. Dès que la façade ou la structure sont touchées, il faut un permis de construire.',
+      'La destination est le premier point que la banque regarde : sans régularisation, le financement se complique.',
+      'Deux situations très différentes : acheter un lieu déjà transformé, ou acheter un lieu à transformer. Dans le second cas, faites de l’autorisation une condition de votre achat.',
+    ],
+    sections: [
+      {
+        title: 'De quels lieux parle-t-on ?',
+        paragraphs: [
+          'D’anciens ateliers, usines et entrepôts, les plus nombreux en ville. Mais aussi des écoles, des gares, des granges, des moulins, des commerces, des chapelles et des églises désacralisées. Leur point commun : des volumes que l’on ne trouve dans aucun logement conçu comme tel, et une histoire.',
+        ],
+      },
+      {
+        title: 'Le lieu est déjà transformé : que vérifier ?',
+        paragraphs: [
+          'Que la transformation existe sur le papier, et pas seulement dans les murs. Le Code de l’urbanisme range les bâtiments par destination : habitation, commerce, bureaux, artisanat, équipement public… Passer de l’une à l’autre est un changement de destination, soumis à autorisation.',
+        ],
+        list: [
+          'L’autorisation d’urbanisme : déclaration préalable ou permis de construire, avec la déclaration d’achèvement des travaux.',
+          'La déclaration aux impôts : le local doit être imposé comme une habitation.',
+          'En copropriété, la désignation du lot dans le règlement.',
+          'Les règles d’un logement décent : hauteur sous plafond, lumière naturelle, ventilation.',
+          'Les diagnostics : amiante et plomb sont fréquents dans les anciens bâtiments d’activité.',
+        ],
+      },
+      {
+        title: 'Déclaration préalable ou permis : quelle différence ?',
+        paragraphs: [
+          'D’après Service-Public et le site Justice.fr, tout dépend de l’ampleur des travaux. Un changement de destination sans modification de la façade ni de la structure porteuse relève d’une déclaration préalable. S’il s’accompagne d’une modification de la façade ou de la structure, il faut un permis de construire.',
+          'Pour l’acheteur d’un lieu déjà transformé, la question est simple : le vendeur a-t-il l’un ou l’autre ? S’il ne retrouve rien, la mairie peut vous dire ce qui a été déposé à cette adresse.',
+        ],
+      },
+      {
+        title: 'Le lieu est à transformer : comment se protéger ?',
+        paragraphs: [
+          'Ne supposez jamais que l’autorisation sera accordée. Le plan local d’urbanisme peut interdire le logement dans certaines zones, ou protéger l’activité. En secteur protégé, l’architecte des Bâtiments de France a son mot à dire. En copropriété, le règlement peut s’y opposer.',
+        ],
+        list: [
+          'Demandez à la mairie un certificat d’urbanisme, qui indique les règles applicables au terrain.',
+          'Faites étudier le projet par un architecte avant de signer.',
+          'Inscrivez dans la promesse une condition suspensive : pas d’autorisation, pas de vente.',
+          'Chiffrez les raccordements : eau, assainissement, électricité, chauffage. Un bâtiment d’activité n’a pas toujours ce qu’il faut.',
+        ],
+      },
+      {
+        title: 'Une banque finance-t-elle ce type de bien ?',
+        paragraphs: [
+          'Oui, mais elle regarde le dossier de plus près. Le Crédit Agricole indique que le financement d’un bien atypique demande parfois une expertise complémentaire et une analyse plus poussée du projet. Un comparateur de crédit le dit plus crûment : la conformité de la destination est le premier filtre, et sans autorisation régularisée la majorité des banques refusent.',
+          'Venez donc avec les autorisations, les diagnostics et, s’il y a des travaux, des devis.',
+        ],
+      },
+      {
+        title: 'Et pour une église ou une chapelle ?',
+        paragraphs: [
+          'Un édifice religieux ne peut être vendu comme un bien ordinaire qu’une fois désaffecté, c’est-à-dire retiré officiellement du culte. Beaucoup sont en outre protégés au titre des monuments historiques, ce qui encadre fortement les travaux. Demandez l’acte de désaffectation et le niveau de protection avant toute chose.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, pour un lieu reconverti',
+      items: [
+        'J’ai l’autorisation qui a fait de ce lieu un logement, et la déclaration d’achèvement.',
+        'La taxe foncière porte sur une habitation.',
+        'J’ai les diagnostics amiante et plomb.',
+        'Lieu à transformer : j’ai un certificat d’urbanisme et l’avis d’un architecte.',
+        'Lieu à transformer : la promesse contient une condition suspensive d’autorisation.',
+        'Ma banque connaît l’histoire du bien.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on habiter une ancienne usine ou un ancien commerce ?',
+        a: 'Oui, si le changement de destination vers l’habitation a été autorisé par la mairie et que le local répond aux règles d’un logement décent.',
+      },
+      {
+        q: 'Faut-il un permis de construire pour transformer un local en logement ?',
+        a: 'Une déclaration préalable suffit si ni la façade ni la structure ne sont modifiées. Dans le cas contraire, il faut un permis de construire.',
+      },
+      {
+        q: 'Que risque-t-on à acheter un lieu transformé sans autorisation ?',
+        a: 'Vous devenez propriétaire d’un bien irrégulier : la mairie peut exiger une régularisation, la banque peut refuser le financement et la revente sera plus difficile. Demandez au vendeur de régulariser avant la vente.',
+      },
+      {
+        q: 'Peut-on acheter une église pour y vivre ?',
+        a: 'Oui, si elle a été désaffectée. Vérifiez aussi sa protection éventuelle au titre des monuments historiques, qui encadre les travaux.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public, « Comment transformer un local professionnel ou commercial en logement ? »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F2416' },
+      { label: 'Justice.fr, « Transformer un local professionnel ou commercial en logement »', url: 'https://www.justice.fr/fiche/transformer-local-professionnel-commercial-logement' },
+      { label: 'Crédit Agricole, « Qu’est-ce qu’un bien immobilier atypique et comment l’acheter ? »', url: 'https://e-immobilier.credit-agricole.fr/conseils/marche/ce-quil-faut-savoir-avant-dacheter-un-bien-immobilier-atypique' },
+      { label: 'Bourse des crédits, « Bien immobilier atypique : les vérifications avant d’acheter »', url: 'https://www.boursedescredits.com/guide-immobilier-atypique-verifications-acheter-6182.php' },
+      { label: 'SeLoger, « Église désacralisée, ancienne école, phare… Acheter un bien atypique : mode d’emploi »', url: 'https://edito.seloger.com/conseils-d-experts/acheter/acheter-un-bien-atypique-mode-d-emploi-article-16977.html' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'hotel-particulier-maison-en-ville',
     art: 'visite',
     title: 'Hôtel particulier, maison en ville : seul maître à bord, seul à payer',
