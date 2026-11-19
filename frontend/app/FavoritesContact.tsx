@@ -118,9 +118,6 @@ export default function FavoritesContact({
             <p className="mt-2 text-sm text-stone-600">
               Vos coordonnées ont été transmises. Le contact de chaque bien revient vers vous directement.
             </p>
-            <button type="button" onClick={onClose} className="mt-6 h-12 px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full">
-              Fermer
-            </button>
           </div>
         ) : (
           <form onSubmit={onSubmit} className="flex flex-col min-h-0">
