@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Sparkles, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown } from 'lucide-react';
+import { Menu, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
@@ -105,6 +105,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
 
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [query, setQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [places, setPlaces] = useState<Place[]>([]);
   const [searchFocused, setSearchFocused] = useState(false);
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error' | 'none'>('idle');
@@ -423,19 +424,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             <Logo />
           </div>
 
-                    <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium">
-            <a
-              href="/inspiration"
-              aria-label="Inspiration"
-              className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition"
-            >
-              <Sparkles className="w-5 h-5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Inspiration</span>
-            </a>
+          <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium text-stone-900">
             <a
               href="/guide"
               aria-label="L'état des lieux"
-              className="inline-flex items-center gap-1.5 text-stone-500 hover:text-stone-900 transition"
+              className="inline-flex items-center gap-1.5 hover:text-stone-500 transition"
             >
               <span className="relative inline-flex">
                 <BookOpen className="w-5 h-5 sm:w-4 sm:h-4" />
@@ -448,25 +441,89 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               type="button"
               onClick={() => openAlert('header')}
               aria-label="Créer mon alerte"
-              className="inline-flex items-center gap-1.5 uppercase text-stone-900 hover:text-stone-600 transition"
+              className="inline-flex items-center gap-1.5 uppercase tracking-widest font-medium hover:text-stone-500 transition"
             >
               <Bell className="w-5 h-5 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Créer mon alerte</span>
             </button>
             <button
-              onClick={() => setOnlyFavs((v) => !v)}
-              aria-label="Mes favoris"
-              className={`inline-flex items-center gap-1.5 uppercase transition ${onlyFavs ? 'text-stone-900' : 'text-stone-500 hover:text-stone-900'}`}
-              aria-pressed={onlyFavs}
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Ouvrir le menu"
+              aria-expanded={menuOpen}
+              className="relative -mr-2 h-11 w-11 inline-flex items-center justify-center hover:text-stone-500 transition"
             >
-              <Heart className={`w-5 h-5 sm:w-4 sm:h-4 ${onlyFavs ? 'fill-current' : ''}`} />
-              <span className="hidden sm:inline">Mes favoris</span>
-              {favorites.length > 0 ? ` (${favorites.length})` : ''}
+              <Menu className="w-6 h-6" strokeWidth={1.5} />
+              {favorites.length > 0 && (
+                <span className="absolute top-1.5 right-1 h-2 w-2 rounded-full bg-red-600 ring-2 ring-white" aria-hidden="true" />
+              )}
             </button>
           </div>
 
         </div>
       </nav>
+
+      {menuOpen && (
+        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Menu">
+          <div className="absolute inset-0 bg-stone-900/40" onClick={() => setMenuOpen(false)} />
+          <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl flex flex-col">
+            <div className="flex items-center justify-between px-6 h-20 border-b border-stone-200 shrink-0">
+              <Logo />
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Fermer le menu"
+                className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <nav className="flex-1 overflow-y-auto px-6 py-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setOnlyFavs(true);
+                  setMenuOpen(false);
+                  window.scrollTo({ top: 0 });
+                }}
+                className="w-full flex items-center justify-between gap-3 py-4 border-b border-stone-200 text-left"
+              >
+                <span className="flex items-center gap-3 font-serif text-2xl text-stone-900">
+                  <Heart className={`w-5 h-5 ${favorites.length > 0 ? 'fill-red-600 text-red-600' : 'text-stone-400'}`} strokeWidth={1.5} />
+                  Mes favoris
+                </span>
+                {favorites.length > 0 && <span className="text-sm text-stone-500">{favorites.length}</span>}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false);
+                  openAlert('menu');
+                }}
+                className="w-full flex items-center gap-3 py-4 border-b border-stone-200 text-left font-serif text-2xl text-stone-900"
+              >
+                <Bell className="w-5 h-5 text-stone-400" strokeWidth={1.5} />
+                Créer mon alerte
+              </button>
+              {[
+                ['/guide', 'L’état des lieux', 'Ce qu’il faut savoir avant d’acheter'],
+                ['/inspiration', 'Inspiration', 'Un architecte à la une'],
+                ['/financement', 'Financement', 'Estimer ma mensualité'],
+                ['/qui-sommes-nous', 'Qui sommes-nous', ''],
+                ['/charte', 'Questions fréquentes', ''],
+              ].map(([href, label, sub]) => (
+                <a key={href} href={href} className="block py-4 border-b border-stone-200">
+                  <span className="block font-serif text-2xl text-stone-900">{label}</span>
+                  {sub && <span className="mt-0.5 block text-sm text-stone-500">{sub}</span>}
+                </a>
+              ))}
+              <a href="/pro" className="mt-6 inline-block text-sm text-stone-500 underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
+                Espace agences
+              </a>
+            </nav>
+          </div>
+        </div>
+      )}
 
       {onlyFavs ? (
         <header className="max-w-7xl mx-auto px-6 pt-8 md:pt-12 pb-6">
