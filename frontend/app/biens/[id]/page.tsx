@@ -10,7 +10,7 @@ import ReportButton from './ReportButton';
 import PhotoMosaic from './PhotoMosaic';
 import Description from './Description';
 import PlanDownload from './PlanDownload';
-import { AlertLink, FavoriteAlertToast } from './AlertInvite';
+import { FavoriteAlertToast } from './AlertInvite';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
@@ -424,9 +424,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 )}
               </section>
             )}
-
-            {/* Après le prix et le budget : proposer de suivre les prochains biens du même secteur */}
-            <AlertLink city={item.city} price={Number(item.price)} />
 
             <div className="hidden lg:block mt-10 space-y-4">
               {agencyBlock}
