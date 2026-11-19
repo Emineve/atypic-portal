@@ -2,6 +2,7 @@ import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import BuyerFigure, { type BuyerKind } from './BuyerFigure';
 import ProForm from './ProForm';
+import ProSteps, { type Promise5 } from './ProSteps';
 import logiciels from './logiciels.png';
 export const metadata = {
   title: 'Agences : présentez vos biens atypiques · Loftissime',
@@ -11,7 +12,7 @@ export const metadata = {
 };
 
 // Cinq promesses faites aux agences, dans le même ton que « Pourquoi Loftissime ».
-const PROMISES: { title: string; text: string; href?: string; link?: string; software?: boolean }[] = [
+const PROMISES: Promise5[] = [
   {
     title: 'Vos acheteurs sont déjà là.',
     text: 'Ici, on ne vient que pour l’atypique : lofts, ateliers d’artistes, rooftops, péniches. Vos biens ne sont plus noyés parmi les annonces classiques, et les acheteurs qui ont créé une alerte sont prévenus dès qu’ils arrivent.',
@@ -67,7 +68,7 @@ export default function ProPage() {
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>
 
-      <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
+      <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-10 md:pb-14">
         <p className="text-xs uppercase tracking-widest text-stone-500">Espace pro</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Vos biens atypiques méritent <span className="italic text-stone-500">des acheteurs qui les cherchent.</span>
@@ -82,31 +83,9 @@ export default function ProPage() {
       </header>
 
       <main className="max-w-4xl mx-auto px-6 pb-24">
-        <ol>
-          {PROMISES.map((p, i) => (
-            <li key={p.title} className="grid md:grid-cols-[5rem_1fr] gap-x-6 border-t border-stone-900 py-10 md:py-14">
-              <span className="font-serif text-xl text-stone-400 md:pt-2" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <div>
-                <h2 className="mt-2 md:mt-0 font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900">{p.title}</h2>
-                <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{p.text}</p>
-                {p.href && p.link && (
-                  <p className="mt-5">
-                    <Link href={p.href} className={link}>{p.link}</Link>
-                  </p>
-                )}
-                {p.software && (
-                  <>
-                    <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">Passerelles prévues avec les principaux logiciels</p>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={logiciels.src} alt="Hektor, AC3, Ubiflow, Netty, Apimo" className="mt-5 w-full max-w-xl" />
-                  </>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
+        <div className="mb-14 md:mb-24">
+          <ProSteps promises={PROMISES} softwareSrc={logiciels.src} />
+        </div>
 
         <section className="border-t border-stone-900 py-12 md:py-16">
           <h2 className={h2}>
