@@ -310,8 +310,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
               <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
             </div>
 
-            <AlertLink city={item.city} price={Number(item.price)} />
-
             {priceNum > 0 && (
               <section className="mt-10 border border-stone-300 bg-white p-6">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
@@ -426,6 +424,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 )}
               </section>
             )}
+
+            {/* Après le prix et le budget : proposer de suivre les prochains biens du même secteur */}
+            <AlertLink city={item.city} price={Number(item.price)} />
 
             <div className="hidden lg:block mt-10 space-y-4">
               {agencyBlock}
