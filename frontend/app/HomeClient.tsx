@@ -1094,7 +1094,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 h-14 rounded-full shadow-lg hover:bg-stone-800 transition"
           >
             <Send className="w-4 h-4" />
-            <span>{visible.length > 1 ? `Être rappelé(e) pour ces ${visible.length} biens` : 'Être rappelé(e) pour ce bien'}</span>
+            <span>{visible.length > 1 ? `Ces ${visible.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
           </button>
         </div>
       )}
