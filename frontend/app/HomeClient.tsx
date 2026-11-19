@@ -504,6 +504,7 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                 }
                 if (e.key === 'Escape') setSearchFocused(false);
               }}
+              id="recherche-lieu"
               placeholder="Ville, code postal, quartier…"
               className="w-full h-14 pl-12 pr-14 sm:pr-44 bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900"
               aria-label="Rechercher un lieu"
@@ -638,7 +639,11 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={resetFilters}
+                  onClick={() => {
+                    resetFilters();
+                    setQuery('');
+                    setPlaces([]);
+                  }}
                   className="h-11 px-2 text-sm text-stone-500 underline underline-offset-4 decoration-stone-300 hover:text-stone-900"
                 >
                   Tout effacer
@@ -655,6 +660,54 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             </div>
 
             <div className="flex-1 overflow-y-auto">
+              {/* Rappel de la recherche en cours : lieux choisis et mot saisi */}
+              <div className="px-6 py-5 border-b border-stone-200">
+                <p className="text-[10px] uppercase tracking-widest text-stone-500">Localisation</p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  {places.map((p) => (
+                    <span key={p.kind + p.city + p.value} className="inline-flex items-center h-10 pl-3 bg-stone-900 text-white text-sm">
+                      <MapPin className="w-3.5 h-3.5 mr-1.5" />
+                      {p.value}
+                      <button
+                        type="button"
+                        onClick={() => removePlace(p)}
+                        aria-label={`Retirer ${p.value}`}
+                        className="h-10 w-10 flex items-center justify-center text-stone-300 hover:text-white"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </span>
+                  ))}
+                  {query.trim() !== '' && (
+                    <span className="inline-flex items-center h-10 pl-3 border border-stone-900 text-stone-900 text-sm">
+                      « {query.trim()} »
+                      <button
+                        type="button"
+                        onClick={() => setQuery('')}
+                        aria-label="Retirer ce mot de la recherche"
+                        className="h-10 w-10 flex items-center justify-center text-stone-500 hover:text-stone-900"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </span>
+                  )}
+                  {places.length === 0 && query.trim() === '' && <span className="text-stone-700">Toute la France</span>}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowFilters(false);
+                      setTimeout(() => {
+                        const el = document.getElementById('recherche-lieu');
+                        el?.scrollIntoView({ block: 'center' });
+                        el?.focus();
+                      }, 60);
+                    }}
+                    className="h-10 px-1 text-sm text-stone-600 underline underline-offset-4 decoration-stone-300 hover:text-stone-900"
+                  >
+                    {places.length > 0 ? 'Ajouter un lieu' : 'Choisir un lieu'}
+                  </button>
+                </div>
+              </div>
               <FilterPanel value={filters} onChange={setFilters} mode="search" padX="px-6" types={typeOptions} />
               <div className="px-6 py-6">
                 <label className="text-[10px] uppercase tracking-widest text-stone-500" htmlFor="f-sort">Trier par</label>
