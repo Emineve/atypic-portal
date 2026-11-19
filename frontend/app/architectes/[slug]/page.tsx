@@ -114,10 +114,9 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       </header>
 
       <section className="max-w-2xl mx-auto px-6 pb-16 text-center">
-        <p className="font-serif text-xl text-stone-900">Envie d&apos;un lieu à vous ?</p>
         <Link
           href="/"
-          className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
+          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
         >
           Découvrez les biens à visiter
         </Link>

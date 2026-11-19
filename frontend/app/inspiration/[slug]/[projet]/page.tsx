@@ -113,10 +113,9 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
 
       <section className="border-t border-stone-200 bg-white">
         <div className="max-w-2xl mx-auto px-6 py-14 text-center">
-          <p className="font-serif text-xl text-stone-900">Envie d&apos;un lieu à vous ?</p>
           <Link
             href={p.sale ? `/categorie/${slugify(p.sale)}` : '/'}
-            className="mt-6 inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
+            className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-full"
           >
             {p.sale ? `Découvrez les biens « ${p.sale} » à visiter` : 'Découvrez les biens à visiter'}
           </Link>
