@@ -64,6 +64,12 @@ export default async function InspirationPage() {
         <p className="text-center py-24 text-stone-400 font-serif">Bientôt le premier architecte à la une.</p>
       ) : (
         <>
+          <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-6 md:pb-2">
+            <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
+            <p className="mt-3 max-w-2xl font-serif text-2xl md:text-3xl leading-snug text-stone-900">
+              Un architecte à la une, et ses réalisations pour imaginer ce qu&apos;un lieu atypique peut devenir.
+            </p>
+          </div>
           {photos.length > 0 && (
             <div className="md:pt-6">
               <PhotoMosaic images={photos} title={featured.name} />
@@ -72,7 +78,7 @@ export default async function InspirationPage() {
 
           <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-12 pb-14 [&>*]:max-w-3xl">
             <p className="text-[10px] uppercase tracking-widest text-stone-400">
-              Inspiration · L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
+              L&apos;architecte à la une{featured.city ? ` · ${featured.city}` : ''}
             </p>
             <h1 className="mt-3 text-4xl md:text-5xl font-serif tracking-tight text-stone-900 leading-[1.1]">{featured.name}</h1>
             {featured.tagline && <p className="mt-3 text-stone-500 font-light text-lg">{featured.tagline}</p>}
