@@ -46,16 +46,21 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
   const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px] disabled:opacity-60';
 
   return (
-    <section className="mt-6 rounded-[14px] border border-stone-200 bg-white p-6 md:p-8">
+    <section aria-live="polite" className={`mt-6 rounded-[14px] border bg-white p-6 md:p-8 ${status === 'done' ? 'border-stone-900' : 'border-stone-200'}`}>
       <div className="flex items-start justify-between gap-6">
         <div className="max-w-xl">
           {status === 'done' ? (
-            <>
-              <h2 className="font-serif text-2xl md:text-3xl tracking-tight text-stone-900">
-                Merci, <span className="italic text-stone-500">c&apos;est noté.</span>
-              </h2>
-              <p className="mt-3 text-stone-600 leading-relaxed">Un courtier vous rappelle très vite pour étudier votre projet.</p>
-            </>
+            <div className="flex items-start gap-4">
+              <span className="mt-1 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-stone-900 text-white">
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+              <div>
+                <h2 className="font-serif text-2xl md:text-3xl tracking-tight text-stone-900">Votre demande est bien envoyée.</h2>
+                <p className="mt-2 text-stone-600 leading-relaxed">Un courtier vous rappelle très vite pour étudier votre projet.</p>
+              </div>
+            </div>
           ) : (
             <>
               <h2 className="font-serif text-2xl md:text-3xl tracking-tight text-stone-900">
@@ -67,7 +72,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
             </>
           )}
         </div>
-        <svg viewBox="0 0 72 72" className="hidden sm:block h-20 w-20 flex-none" fill="none" stroke="#1c1917" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg viewBox="0 0 72 72" className={`h-20 w-20 flex-none ${status === 'done' ? 'hidden' : 'hidden sm:block'}`} fill="none" stroke="#1c1917" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           {/* Un dossier de prêt, tamponné */}
           <path d="M14 10 h30 l10 10 v40 a3 3 0 0 1 -3 3 h-37 a3 3 0 0 1 -3 -3 v-47 a3 3 0 0 1 3 -3 z" fill="#fff" />
           <path d="M44 10 v10 h10" />
