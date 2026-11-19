@@ -29,7 +29,7 @@ export default function GuideIndex() {
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>
         <p className="mt-8 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
-          Un souplex, un loft, une péniche ne s&apos;achètent pas comme un appartement classique. Chaque semaine, une question précise et les vérifications à faire avant de signer.
+          Un souplex, un loft, une péniche ne s&apos;achètent pas comme un appartement classique. Posez votre question : la réponse est dans nos articles, avec les vérifications à faire avant de signer.
         </p>
         <GuideSearch />
       </header>
