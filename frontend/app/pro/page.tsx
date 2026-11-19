@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import BuyerFigure, { type BuyerKind } from './BuyerFigure';
@@ -69,7 +70,7 @@ export default function ProPage() {
       </SiteHeader>
 
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-10 md:pb-14">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Espace pro</p>
+        <Crumbs items={[{ label: 'Espace pro' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Vos biens atypiques méritent <span className="italic text-stone-500">des acheteurs qui les cherchent.</span>
         </h1>

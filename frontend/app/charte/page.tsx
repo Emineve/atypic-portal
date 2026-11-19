@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import { typo } from '../../lib/typo';
 import SiteHeader from '../SiteHeader';
 
@@ -177,7 +178,7 @@ export default function ChartePage() {
       <SiteHeader />
 
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Questions fréquentes</p>
+        <Crumbs items={[{ label: 'Questions fréquentes' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>
         </h1>

@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import { TrendingUp } from 'lucide-react';
 import BackLink from './BackLink';
@@ -23,7 +24,7 @@ export default function FinancementPage() {
 
       <header className="max-w-4xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
         <BackLink className="mb-8 flex sm:hidden" />
-        <p className="text-xs uppercase tracking-widest text-stone-500">Financement</p>
+        <Crumbs items={[{ label: 'Financement' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Votre projet, <span className="italic text-stone-500">en mensualités.</span>
         </h1>

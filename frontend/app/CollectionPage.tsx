@@ -1,3 +1,4 @@
+import Crumbs from './Crumbs';
 import SiteHeader from './SiteHeader';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
@@ -51,7 +52,7 @@ export default function CollectionPage({
       <SiteHeader />
 
       <header className="max-w-7xl mx-auto px-6 pt-14 md:pt-20 pb-10">
-        <p className="text-xs uppercase tracking-widest text-stone-500">{hideAgency ? 'Agence' : 'Biens atypiques'}</p>
+        <Crumbs items={hideAgency ? [{ label: 'Agences', href: '/agence' }, { label: title }] : [{ label: alert?.location || alert?.category || title }]} />
         <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{title}</h1>
         <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{intro}</p>
         {!hideAgency && (

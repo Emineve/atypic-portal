@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import ModeEmploiSteps from './ModeEmploiSteps';
@@ -15,7 +16,7 @@ export default function ModeEmploiPage() {
       <SiteHeader />
 
       <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Mode d&apos;emploi</p>
+        <Crumbs items={[{ label: 'Mode d’emploi' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Du premier clic à la visite. <span className="italic text-stone-500">Nous vous accompagnons.</span>
         </h1>

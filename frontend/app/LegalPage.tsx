@@ -1,4 +1,5 @@
 import SiteHeader from './SiteHeader';
+import Crumbs from './Crumbs';
 import { LEGAL_READY, UPDATED } from '../lib/legal';
 
 export default function LegalPage({ title, children, hideBanner }: { title: string; children: React.ReactNode; hideBanner?: boolean }) {
@@ -6,6 +7,7 @@ export default function LegalPage({ title, children, hideBanner }: { title: stri
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
       <main className="max-w-3xl mx-auto px-6 py-12">
+        <Crumbs items={[{ label: title }]} className="mb-8" />
         {!LEGAL_READY && !hideBanner && (
           <p className="mb-8 border border-stone-300 bg-stone-50 text-xs text-stone-600 p-3 leading-relaxed">
             Version provisoire : certaines informations de l'éditeur seront complétées avant le lancement officiel du site.

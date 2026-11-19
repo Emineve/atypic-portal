@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import TeeCard from './TeeCard';
 
@@ -13,7 +14,7 @@ export default function DressingPage() {
       <SiteHeader />
 
       <header className="max-w-4xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Le dressing</p>
+        <Crumbs items={[{ label: 'Le dressing' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Dans tout bien qui se respecte, <span className="italic text-stone-500">il y a un dressing.</span>
         </h1>

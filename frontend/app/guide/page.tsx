@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import GuideSearch from './GuideSearch';
 import { typo } from '../../lib/typo';
 import SiteHeader from '../SiteHeader';
@@ -43,7 +44,7 @@ export default async function GuideIndex() {
       <SiteHeader />
 
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
-        <p className="text-xs uppercase tracking-widest text-stone-500">État des lieux</p>
+        <Crumbs items={[{ label: 'État des lieux' }]} />
         <h1 className="max-w-4xl mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>

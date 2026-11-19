@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import MyAlerts from './MyAlerts';
 
@@ -13,7 +14,7 @@ export default function AlertsPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader alert={false} />
       <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Mes alertes</p>
+        <Crumbs items={[{ label: 'Mes alertes' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Toutes vos alertes, <span className="italic text-stone-500">au même endroit.</span>
         </h1>

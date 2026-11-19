@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import { typo } from '../../lib/typo';
 import Link from 'next/link';
@@ -63,7 +64,7 @@ export default function ManifestoPage() {
       <SiteHeader />
 
       <header className="max-w-4xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Pourquoi Loftissime</p>
+        <Crumbs items={[{ label: 'Pourquoi Loftissime' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
         </h1>

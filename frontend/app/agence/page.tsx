@@ -1,3 +1,4 @@
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -37,7 +38,7 @@ export default async function AgenciesPage() {
       <SiteHeader />
 
       <header className="max-w-3xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Les agences</p>
+        <Crumbs items={[{ label: 'Agences' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Confiez votre recherche <span className="italic text-stone-500">à qui vous voulez.</span>
         </h1>
