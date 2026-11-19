@@ -155,8 +155,8 @@ export default function ContactForm({
   return (
     <div className="space-y-4">
       <div className="border border-stone-900 bg-white shadow-[0_10px_30px_rgba(13,15,17,0.10)]">
-        <div className="bg-[#F4E7B5] px-6 py-4 border-b border-stone-900">
-          <p className="font-serif text-2xl leading-tight text-stone-900">Ce bien vous intéresse ?</p>
+        <div className="bg-stone-900 px-6 py-4">
+          <p className="font-serif text-2xl leading-tight text-white">Ce bien vous intéresse ?</p>
         </div>
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
@@ -345,7 +345,7 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="!mt-7 w-full h-14 inline-flex items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+            className="!mt-7 w-full h-14 inline-flex items-center justify-center gap-2.5 bg-[#F4E7B5] text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition disabled:opacity-50"
           >
             {status !== 'sending' && tab === 'tel' && <Phone className="w-4 h-4" />}
             {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer mon message'}
