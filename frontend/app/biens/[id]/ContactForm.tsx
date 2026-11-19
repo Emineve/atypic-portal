@@ -154,22 +154,20 @@ export default function ContactForm({
 
   return (
     <div className="space-y-4">
-      <div className="border border-stone-900 bg-white shadow-[0_10px_30px_rgba(13,15,17,0.10)]">
-        <div className="bg-stone-900 px-6 py-4">
-          <p className="font-serif text-2xl leading-tight text-white">Ce bien vous intéresse ?</p>
-        </div>
+      <div className="border border-stone-300 bg-white">
         <div className="p-6">
+          <p className="inline-block bg-stone-900 px-3 py-1.5 text-[11px] uppercase tracking-widest text-white">Ce bien vous intéresse ?</p>
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
-          <div className="min-w-0">
-            <p className="text-[10px] uppercase tracking-widest text-stone-500">{person ? agency : 'Votre contact pour ce bien'}</p>
-            <p className="mt-0.5 font-serif text-xl leading-tight text-stone-900 truncate">{person || agency}</p>
+          <div className="mt-5 min-w-0">
+            <p className="text-xs uppercase tracking-widest text-stone-400">{person ? agency : 'Votre contact pour ce bien'}</p>
+            <p className="mt-1.5 font-serif text-2xl leading-tight text-stone-900 truncate">{person || agency}</p>
           </div>
           {phone && (
-            <div className={`mt-5 grid gap-2 ${wa ? 'grid-cols-2' : 'grid-cols-1'}`}>
+            <div className="mt-4 flex flex-wrap gap-2">
               {shown ? (
                 <a
                   href={`tel:${phone.replace(/[^+\d]/g, '')}`}
-                  className="h-12 inline-flex items-center justify-center gap-2 border border-stone-900 text-stone-900 text-sm font-semibold whitespace-nowrap hover:bg-stone-900 hover:text-white transition"
+                  className="h-10 px-4 inline-flex items-center justify-center gap-2 rounded-full bg-stone-900 text-white text-sm font-semibold whitespace-nowrap hover:bg-stone-700 transition"
                 >
                   {phone}
                 </a>
@@ -177,7 +175,7 @@ export default function ContactForm({
                 <button
                   type="button"
                   onClick={reveal}
-                  className="h-12 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
+                  className="h-10 px-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#F4E7B5] text-stone-900 text-sm hover:bg-[#EBD98F] transition"
                 >
                   <Phone className="w-4 h-4" />
                   Appeler
@@ -189,7 +187,7 @@ export default function ContactForm({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={trackContact}
-                  className="h-12 inline-flex items-center justify-center gap-2 border border-stone-300 bg-white text-stone-900 text-sm hover:border-stone-900 transition"
+                  className="h-10 px-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#F4E7B5] text-stone-900 text-sm hover:bg-[#EBD98F] transition"
                 >
                   <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#25D366]" fill="currentColor" aria-hidden="true">
                     <path d={WHATSAPP_ICON_PATH} />
@@ -201,7 +199,7 @@ export default function ContactForm({
           )}
 
           {/* Deux onglets discrets pour le formulaire : être rappelé, ou écrire */}
-          <div className="mt-7 flex gap-6 border-b border-stone-200" role="tablist" aria-label="Votre demande">
+          <div className="mt-6 pt-5 border-t border-stone-200 flex gap-6 border-b" role="tablist" aria-label="Votre demande">
             {([
               ['tel', 'Être rappelé(e)'],
               ['msg', 'Écrire un message'],
@@ -345,7 +343,7 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="!mt-7 w-full h-14 inline-flex items-center justify-center gap-2.5 bg-[#F4E7B5] text-stone-900 border border-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition disabled:opacity-50"
+            className="!mt-7 w-full h-14 inline-flex items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
           >
             {status !== 'sending' && tab === 'tel' && <Phone className="w-4 h-4" />}
             {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer mon message'}
