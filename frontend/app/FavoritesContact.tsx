@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { X, Check } from 'lucide-react';
+import { X, Check, Send } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
 import { readVisitor, saveVisitor } from '../lib/visitor';
 
@@ -170,8 +170,9 @@ export default function FavoritesContact({
               <button
                 type="submit"
                 disabled={status === 'sending' || selected.length === 0}
-                className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+                className="w-full h-12 inline-flex items-center justify-center gap-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
               >
+                {status !== 'sending' && <Send className="w-4 h-4" />}
                 {status === 'sending'
                   ? 'Envoi en cours…'
                   : 'Envoyer'}
