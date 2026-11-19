@@ -397,10 +397,11 @@ function Marche() {
 
 const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche };
 
-export default function GuideArt({ art, className = '' }: { art: GuideArtKey; className?: string }) {
+// fit « meet » : le dessin entier reste visible (article à la une) ; « slice » : il remplit le cadre, quitte à être rogné
+export default function GuideArt({ art, className = '', fit = 'slice' }: { art: GuideArtKey; className?: string; fit?: 'slice' | 'meet' }) {
   const Drawing = ART[art];
   return (
-    <svg viewBox="0 0 1200 500" className={className} role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <svg viewBox="0 0 1200 500" className={className} role="img" aria-hidden="true" preserveAspectRatio={`xMidYMid ${fit}`}>
       <rect width={1200} height={500} fill={SUN} />
       <Drawing />
     </svg>

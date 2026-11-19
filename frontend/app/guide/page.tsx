@@ -42,8 +42,8 @@ export default function GuideIndex() {
       <main className="max-w-6xl mx-auto px-6 pb-20">
         {first && (
           <Link href={`/guide/${first.slug}`} className="group grid md:grid-cols-5 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
-            <div className="md:col-span-2 overflow-hidden border-b md:border-b-0 md:border-r border-stone-900">
-              <GuideArt art={first.art} className="block w-full h-full min-h-[180px] md:min-h-[280px] group-hover:scale-[1.03] transition-transform duration-700" />
+            <div className="md:col-span-2 overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F4E7B5] flex items-center">
+              <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
             <div className="md:col-span-3 p-7 md:p-10 flex flex-col justify-center">
               <p className="text-[10px] uppercase tracking-widest text-stone-400">
@@ -60,21 +60,27 @@ export default function GuideIndex() {
         )}
 
         {rest.length > 0 && (
-          <nav className="mt-12 md:mt-16 flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Rubriques">
-            {GUIDE_RUBRICS.filter((r) => rest.some((a) => a.category === r.name)).map((r) => (
-              <a key={r.anchor} href={`#${r.anchor}`} className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
-                {r.name}
-              </a>
-            ))}
+          <nav className="mt-14 md:mt-20 border-y border-stone-900 py-5 md:py-6" aria-label="Rubriques">
+            <p className="text-xs uppercase tracking-widest text-stone-500">Les rubriques</p>
+            <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
+              {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
+                <li key={r.anchor}>
+                  <a href={`#${r.anchor}`} className="group inline-flex items-baseline gap-2 font-serif text-xl md:text-2xl text-stone-900">
+                    <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
+                    <span className="font-sans text-sm text-stone-500">{articles.filter((a) => a.category === r.name).length}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
         )}
 
         {GUIDE_RUBRICS.map((r) => {
-          const items = rest.filter((a) => a.category === r.name);
+          const items = articles.filter((a) => a.category === r.name);
           if (items.length === 0) return null;
           return (
             <section key={r.anchor} id={r.anchor} className="mt-12 md:mt-16 scroll-mt-24">
-              <div className="border-t border-stone-900 pt-6">
+              <div>
                 <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">{r.name}</h2>
                 <p className="mt-2 text-stone-600">{r.intro}</p>
               </div>
