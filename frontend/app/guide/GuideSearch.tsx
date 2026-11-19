@@ -1,43 +1,119 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Search } from 'lucide-react';
+import { ArrowRight, Search, X } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import type { GuideHit } from '../../lib/guide-search';
 
-const EXAMPLES = ['La mezzanine compte-t-elle dans la surface ?', 'Comment négocier le prix ?', 'La terrasse est-elle à moi ?'];
+const EXAMPLES = [
+  'La mezzanine compte-t-elle dans la surface ?',
+  'La terrasse est-elle à moi ?',
+  'Comment négocier le prix ?',
+  'Peut-on louer un bien classé G ?',
+  'À quoi m’engage une offre d’achat ?',
+];
 
 const btn = 'inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-60';
 const link = 'inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
 
-// L'acheteur pose sa question : on lui montre le passage de nos articles qui y répond.
+const plain = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+// Surligne dans la réponse les mots de la question (à partir de quatre lettres)
+function Marked({ text, query }: { text: string; query: string }) {
+  const roots = plain(query)
+    .split(/[^a-z0-9]+/)
+    .filter((w) => w.length >= 4)
+    .map((w) => w.slice(0, 5));
+  if (roots.length === 0) return <>{text}</>;
+  return (
+    <>
+      {text.split(/(\s+)/).map((part, i) =>
+        roots.some((r) => plain(part).replace(/^[^a-z0-9]+/, '').startsWith(r)) ? (
+          <mark key={i} className="bg-[#F4E7B5] text-inherit">{part}</mark>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
+// L'acheteur pose sa question : la réponse s'affiche pendant qu'il écrit, tirée de nos articles.
 // Sans réponse, il peut laisser sa question et son e-mail pour être prévenu quand l'article paraît.
 export default function GuideSearch() {
   const [q, setQ] = useState('');
-  const [asked, setAsked] = useState('');
+  const [asked, setAsked] = useState(''); // la question à laquelle correspondent les résultats affichés
   const [hits, setHits] = useState<GuideHit[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [askOpen, setAskOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const run = useRef(0);
+  const logged = useRef('');
+  const input = useRef<HTMLInputElement>(null);
 
-  async function run(question: string) {
-    const text = question.trim();
-    if (text.length < 3) return;
-    setQ(text);
-    setLoading(true);
-    setAskOpen(false);
-    setStatus('idle');
+  // Question reçue par l'adresse (/guide?q=...), depuis un article par exemple
+  useEffect(() => {
+    const first = (new URLSearchParams(window.location.search).get('q') || '').trim().slice(0, 300);
+    if (first) setQ(first);
+  }, []);
+
+  // La question aboutie entre dans le journal, une seule fois, et dans l'adresse de la page
+  function log(text: string) {
+    if (text.length < 3 || logged.current === text) return;
+    logged.current = text;
+    fetch(`/api/guide-search?log=1&q=${encodeURIComponent(text)}`).catch(() => {});
     try {
-      const res = await fetch(`/api/guide-search?q=${encodeURIComponent(text)}`);
-      const data = await res.json();
-      setHits(Array.isArray(data.hits) ? data.hits : []);
+      window.history.replaceState(null, '', `/guide?q=${encodeURIComponent(text)}`);
     } catch {
-      setHits([]);
+      /* ignoré */
     }
-    setAsked(text);
-    setLoading(false);
+  }
+
+  // Réponse pendant la frappe, puis enregistrement quand l'acheteur s'arrête d'écrire
+  useEffect(() => {
+    const text = q.trim();
+    if (text.length < 3) {
+      run.current++;
+      setHits(null);
+      setAsked('');
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    const id = ++run.current;
+    const search = setTimeout(async () => {
+      let found: GuideHit[] = [];
+      try {
+        const res = await fetch(`/api/guide-search?q=${encodeURIComponent(text)}`);
+        const data = await res.json();
+        if (Array.isArray(data.hits)) found = data.hits;
+      } catch {
+        /* pas de réseau : on affiche l'absence de réponse */
+      }
+      if (id !== run.current) return;
+      setHits(found);
+      setAsked(text);
+      setLoading(false);
+      setAskOpen(false);
+      setStatus('idle');
+    }, 280);
+    const journal = setTimeout(() => log(text), 2500);
+    return () => {
+      clearTimeout(search);
+      clearTimeout(journal);
+    };
+  }, [q]);
+
+  function clear() {
+    setQ('');
+    try {
+      window.history.replaceState(null, '', '/guide');
+    } catch {
+      /* ignoré */
+    }
+    input.current?.focus();
   }
 
   async function send(e: React.FormEvent) {
@@ -60,64 +136,89 @@ export default function GuideSearch() {
   return (
     <section className="mt-10 md:mt-12 max-w-3xl" aria-label="Poser une question">
       <form
+        role="search"
         onSubmit={(e) => {
           e.preventDefault();
-          run(q);
+          log(q.trim());
+          input.current?.blur();
         }}
-        className="flex flex-wrap items-end gap-x-5 gap-y-4"
       >
-        <label className="block min-w-0 flex-1 basis-72 text-xs uppercase tracking-widest text-stone-500">
+        <label htmlFor="question" className="block text-xs uppercase tracking-widest text-stone-500">
           Posez votre question
-          <span className="mt-1 flex items-center gap-3 border-b border-stone-300 pb-2 focus-within:border-stone-900">
-            <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.5} />
-            <input
-              type="search"
-              enterKeyHint="search"
-              maxLength={300}
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Peut-on louer un bien classé G ?"
-              className="w-full min-w-0 border-0 bg-transparent p-0 font-serif text-xl md:text-2xl normal-case tracking-normal text-stone-900 placeholder:text-stone-300 focus:outline-none focus:ring-0"
-            />
-          </span>
         </label>
-        <button type="submit" disabled={loading || q.trim().length < 3} className={btn}>
-          {loading ? 'Recherche…' : 'Chercher'}
-        </button>
+        <div className="mt-2 flex h-16 items-center gap-3 border border-stone-900 bg-white pl-5 pr-2 focus-within:shadow-[0_0_0_1px_#1c1917]">
+          <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.5} />
+          <input
+            ref={input}
+            id="question"
+            type="text"
+            inputMode="search"
+            enterKeyHint="search"
+            autoComplete="off"
+            maxLength={300}
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') clear();
+            }}
+            placeholder="Peut-on louer un bien classé G ?"
+            className="h-full w-full min-w-0 border-0 bg-transparent p-0 font-serif text-xl md:text-2xl text-stone-900 placeholder:text-stone-300 focus:outline-none focus:ring-0"
+          />
+          {q !== '' && (
+            <button type="button" onClick={clear} aria-label="Effacer la question" className="flex h-11 w-11 flex-none items-center justify-center text-stone-400 hover:text-stone-900 transition">
+              <X className="h-5 w-5" strokeWidth={1.5} />
+            </button>
+          )}
+        </div>
       </form>
 
-      {hits === null && (
-        <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm text-stone-500">
-          <span>Par exemple :</span>
-          {EXAMPLES.map((ex) => (
-            <button key={ex} type="button" onClick={() => run(ex)} className="text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
-              {ex}
-            </button>
-          ))}
-        </p>
-      )}
-
-      <div aria-live="polite">
-        {hits !== null && hits.length > 0 && (
-          <ol className="mt-8 divide-y divide-stone-200 border-y border-stone-200">
-            {hits.map((h) => (
-              <li key={h.slug} className="py-6">
-                <p className="text-xs uppercase tracking-widest text-stone-500">{h.category}</p>
-                <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900">{h.heading}</h2>
-                {h.excerpt && <p className="mt-2 text-stone-700 leading-relaxed">{h.excerpt}</p>}
-                <p className="mt-3">
-                  <Link href={`/guide/${h.slug}`} className={link}>
-                    {h.kind === 'article' ? 'Lire l’article' : `Lire l’article : ${h.title}`}
-                    <ArrowRight className="h-4 w-4 flex-none" />
-                  </Link>
-                </p>
+      {q.trim().length < 3 && (
+        <div className="mt-5">
+          <p className="text-xs uppercase tracking-widest text-stone-500">Les questions qu’on nous pose</p>
+          <ul className="mt-3 space-y-2">
+            {EXAMPLES.map((ex) => (
+              <li key={ex}>
+                <button type="button" onClick={() => setQ(ex)} className="text-left font-serif text-lg text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
+                  {ex}
+                </button>
               </li>
             ))}
-          </ol>
+          </ul>
+        </div>
+      )}
+
+      <div aria-live="polite" className={loading && hits !== null ? 'opacity-60 transition-opacity' : 'transition-opacity'}>
+        {loading && hits === null && <p className="mt-6 text-sm text-stone-500">Nous cherchons dans nos articles…</p>}
+
+        {hits !== null && hits.length > 0 && (
+          <>
+            <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">
+              {hits.length > 1 ? `${hits.length} réponses dans nos articles` : 'La réponse, dans nos articles'}
+            </p>
+            <ol className="mt-3 space-y-4">
+              {hits.map((h, i) => (
+                <li key={h.slug} className={`border bg-white p-6 md:p-7 ${i === 0 ? 'border-stone-900' : 'border-stone-200'}`}>
+                  <p className="text-xs uppercase tracking-widest text-stone-500">{h.category}</p>
+                  <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900">{h.heading}</h2>
+                  {h.excerpt && (
+                    <p className="mt-3 text-stone-700 leading-relaxed">
+                      <Marked text={h.excerpt} query={asked} />
+                    </p>
+                  )}
+                  <p className="mt-4">
+                    <Link href={`/guide/${h.slug}${h.anchor ? `#${h.anchor}` : ''}`} onClick={() => log(asked)} className={link}>
+                      {h.kind === 'article' ? 'Lire l’article' : `Lire la suite : ${h.title}`}
+                      <ArrowRight className="h-4 w-4 flex-none" />
+                    </Link>
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </>
         )}
 
         {hits !== null && status !== 'done' && (
-          <div className={empty ? 'mt-8 rounded-[14px] border border-stone-200 bg-white p-6 md:p-8' : 'mt-6'}>
+          <div className={empty ? 'mt-8 border border-stone-900 bg-white p-6 md:p-8' : 'mt-6'}>
             {empty && (
               <>
                 <h2 className="font-serif text-2xl text-stone-900">Nous n’avons pas encore écrit sur cette question.</h2>
@@ -130,7 +231,7 @@ export default function GuideSearch() {
               </button>
             )}
             {(empty || askOpen) && (
-              <form onSubmit={send} className="mt-5">
+              <form onSubmit={send} className={empty ? 'mt-5' : ''}>
                 {!empty && <p className="text-stone-600 leading-relaxed">Laissez-nous votre e-mail : nous vous écrivons dès que la réponse à « {asked} » est en ligne.</p>}
                 <div className="mt-4 flex flex-wrap items-end gap-x-5 gap-y-4">
                   <label className="block min-w-0 flex-1 basis-64 text-xs uppercase tracking-widest text-stone-500">

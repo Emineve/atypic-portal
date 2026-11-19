@@ -1,6 +1,12 @@
 // Recherche dans les articles d'État des lieux : l'acheteur pose sa question, on lui montre le passage qui y répond.
 // Tout se passe côté serveur, sur les textes déjà publiés : aucune réponse n'est inventée.
 import { publishedArticles, type GuideArticle } from './guide';
+import { slugify } from './catalog';
+
+// Ancre d'une section ou d'une question dans la page de l'article : le résultat de recherche y mène tout droit
+export function passageAnchor(heading: string): string {
+  return 'q-' + slugify(heading).slice(0, 60);
+}
 
 export type GuideHit = {
   slug: string;
@@ -9,11 +15,28 @@ export type GuideHit = {
   heading: string; // question ou intertitre du passage retenu
   excerpt: string; // le passage, raccourci
   kind: 'faq' | 'section' | 'article';
+  anchor: string; // vide pour un article entier
 };
+
+// Mots que l'acheteur emploie l'un pour l'autre
+const SYNONYMS: string[][] = [
+  ['credit', 'pret', 'emprunt', 'emprunter', 'banque', 'financement', 'financer', 'apport'],
+  ['prix', 'tarif', 'cout', 'coute', 'cher'],
+  ['negocier', 'negociation', 'marchander', 'rabais', 'baisser'],
+  ['copropriete', 'copro', 'syndic', 'immeuble'],
+  ['dpe', 'energie', 'energetique', 'passoire', 'isolation', 'chauffage'],
+  ['louer', 'location', 'locataire', 'bail'],
+  ['humide', 'humidite', 'infiltration', 'moisissure'],
+  ['surface', 'superficie', 'metres', 'carrez', 'm2'],
+  ['terrasse', 'balcon', 'jardin', 'exterieur', 'rooftop'],
+  ['travaux', 'renovation', 'renover', 'refaire'],
+  ['notaire', 'acte', 'compromis', 'promesse'],
+  ['bateau', 'peniche'],
+];
 
 const STOP = new Set(
   ('a au aux avec ce ces cet cette dans de des du elle en est et il ils je la le les leur lui ma mais me mes mon ne nos notre nous on ou où par pas pour qu que quel quelle quelles quels qui sa se ses son sur ta te tes ton tu un une vos votre vous y ça ca c d j l m n s t ' +
-    'comment combien pourquoi quand quoi est-ce faut peut peut-on dois doit puis-je suis sont être etre avoir fait faire ai as ont cela si plus tout tous très tres bien bon dire savoir veux veut moi toi mien toute toutes annee acheter achete achat atypique atypiques immobilier logement appartement')
+    'comment combien pourquoi quand quoi est-ce faut peut peut-on dois doit puis-je suis sont être etre avoir fait faire ai as ont cela si plus tout tous très tres bien bon dire savoir veux veut puis moi toi mien toute toutes annee acheter achete achat atypique atypiques immobilier logement appartement')
     .split(/\s+/),
 );
 
@@ -75,13 +98,22 @@ function shorten(text: string, max = 260): string {
   return stop > 120 ? cut.slice(0, stop + 1) : cut.slice(0, cut.lastIndexOf(' ')) + '…';
 }
 
+const SYN = new Map<string, string[]>();
+for (const group of SYNONYMS) {
+  const stems = Array.from(new Set(group.map(stem)));
+  for (const t of stems) SYN.set(t, stems);
+}
+
 export function searchGuide(query: string, limit = 3): GuideHit[] {
   const q = Array.from(new Set(tokens(query)));
   if (q.length === 0) return [];
   const all = passages();
   // Un mot présent partout pèse moins qu'un mot rare
   const df = new Map<string, number>();
-  for (const t of q) df.set(t, all.filter((p) => p.head.has(t) || p.body.has(t)).length);
+  const forms = (t: string) => SYN.get(t) || [t];
+  const inHeadOf = (p: Passage, t: string) => forms(t).some((f) => p.head.has(f));
+  const inBodyOf = (p: Passage, t: string) => forms(t).reduce((n, f) => n + (p.body.get(f) || 0), 0);
+  for (const t of q) df.set(t, all.filter((p) => inHeadOf(p, t) || inBodyOf(p, t) > 0).length);
   // Un ou deux mots : tous doivent se retrouver dans le passage. Au-delà, six sur dix.
   const need = q.length <= 2 ? q.length : Math.ceil(q.length * 0.6);
 
@@ -94,10 +126,10 @@ export function searchGuide(query: string, limit = 3): GuideHit[] {
         const n = df.get(t) || 0;
         if (n === 0) continue;
         const w = Math.log(1 + all.length / n) ** 2;
-        const inHead = p.head.has(t);
-        const inBody = p.body.get(t) || 0;
+        const inHead = inHeadOf(p, t);
+        const inBody = inBodyOf(p, t);
         if (inHead || inBody) matched++;
-        score += w * ((inHead ? 3 : 0) + Math.min(inBody, 3) + (titleTokens.has(t) ? 1 : 0));
+        score += w * ((inHead ? 3 : 0) + Math.min(inBody, 3) + (forms(t).some((f) => titleTokens.has(f)) ? 1 : 0));
       }
       if (p.kind === 'faq') score *= 1.15; // une question fréquente répond plus directement
       return { p, score, matched };
@@ -108,7 +140,7 @@ export function searchGuide(query: string, limit = 3): GuideHit[] {
   // Rien d'assez complet : on accepte un passage dont le titre porte au moins un mot rare de la question
   if (scored.length === 0) {
     const rare = q.filter((t) => (df.get(t) || 0) > 0 && (df.get(t) || 0) <= all.length * 0.1);
-    scored = ranked.filter((x) => rare.some((t) => x.p.head.has(t)));
+    scored = ranked.filter((x) => rare.some((t) => inHeadOf(x.p, t)));
   }
 
   if (scored.length === 0) return [];
@@ -120,11 +152,11 @@ export function searchGuide(query: string, limit = 3): GuideHit[] {
   for (const x of scored) {
     if (seen.has(x.p.article.slug)) continue;
     if (x.matched < best.matched && x.score < best.score * 0.6) continue;
-    if (x.score < best.score * 0.4) continue;
+    if (x.score < best.score * 0.55) continue;
     seen.add(x.p.article.slug);
-    const precise = x.p.kind === 'article' ? scored.find((y) => y.p.article === x.p.article && y.p.kind !== 'article' && y.matched >= x.matched && y.score >= x.score * 0.8) : undefined;
+    const precise = x.p.kind === 'article' && q.length > 1 ? scored.find((y) => y.p.article === x.p.article && y.p.kind !== 'article' && y.matched >= x.matched && y.score >= x.score * 0.8) : undefined;
     const p = (precise || x).p;
-    hits.push({ slug: p.article.slug, title: p.article.title, category: p.article.category, heading: p.heading, excerpt: shorten(p.text), kind: p.kind });
+    hits.push({ slug: p.article.slug, title: p.article.title, category: p.article.category, heading: p.heading, excerpt: p.kind === 'faq' ? p.text : shorten(p.text, 320), kind: p.kind, anchor: p.kind === 'article' ? '' : passageAnchor(p.heading) });
     if (hits.length >= limit) break;
   }
   return hits;

@@ -1,12 +1,14 @@
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowUpRight, Check } from 'lucide-react';
+import { ArrowUpRight, Check, Search } from 'lucide-react';
 import GuideArt from '../GuideArt';
 import ChecklistShare from '../ChecklistShare';
 import ArticleShare from '../ArticleShare';
 import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
+import { passageAnchor } from '../../../lib/guide-search';
+import OpenHash from '../OpenHash';
 
 export const revalidate = 3600;
 
@@ -114,7 +116,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </section>
 
         {a.sections.map((s) => (
-          <section key={s.title} className="mt-10">
+          <section key={s.title} id={passageAnchor(s.title)} className="mt-10 scroll-mt-24">
             <h2 className="font-serif text-2xl leading-snug text-stone-900">{s.title}</h2>
             {(s.paragraphs || []).map((p) => (
               <p key={p} className="mt-4 text-stone-700 leading-relaxed">{p}</p>
@@ -148,7 +150,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           <h2 className="font-serif text-2xl text-stone-900">Questions fréquentes</h2>
           <div className="mt-4 border-y border-stone-200 divide-y divide-stone-200">
             {a.faq.map((f) => (
-              <details key={f.q} className="group py-5">
+              <details key={f.q} id={passageAnchor(f.q)} className="group py-5 scroll-mt-24">
                 <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
                   {f.q}
                   <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
@@ -158,6 +160,29 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             ))}
           </div>
         </section>
+
+        <OpenHash />
+
+        <form action="/guide" method="get" className="mt-12" role="search">
+          <label className="block text-xs uppercase tracking-widest text-stone-500" htmlFor="autre-question">Une autre question ?</label>
+          <div className="mt-2 flex h-14 items-center gap-3 border border-stone-900 bg-white pl-4 pr-2">
+            <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.5} />
+            <input
+              id="autre-question"
+              name="q"
+              type="search"
+              enterKeyHint="search"
+              maxLength={300}
+              required
+              minLength={3}
+              placeholder="Posez-la ici"
+              className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
+            />
+            <button type="submit" className="inline-flex h-10 flex-none items-center rounded-[10px] bg-stone-900 px-5 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-stone-800">
+              Chercher
+            </button>
+          </div>
+        </form>
 
         <section className="mt-12 bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
           <h2 className="font-serif text-2xl leading-snug">Ne passez pas à côté de votre prochain coup de cœur.</h2>

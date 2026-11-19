@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Bell, BookOpen, Calculator, Compass, Feather, Heart, Home, Info, Lightbulb, Menu, X } from 'lucide-react';
+import { ArrowLeft, Bell, BookOpen, Calculator, Compass, Feather, Heart, Info, Lightbulb, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import ModeEmploiBack from './ModeEmploiBack';
 
@@ -111,10 +111,6 @@ export default function SiteHeaderClient({
                   Mes favoris
                 </span>
                 {favs > 0 && <span className="text-sm text-stone-500">{favs}</span>}
-              </a>
-              <a href="/" className="flex gap-3 py-4 border-b border-stone-200 font-serif text-2xl text-stone-900">
-                <Home className="mt-1.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} />
-                Accueil
               </a>
               {LINKS.map(({ href, label, sub, Icon }) => (
                 <a key={href} href={href} className="flex gap-3 py-4 border-b border-stone-200">
