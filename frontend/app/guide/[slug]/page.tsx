@@ -1,7 +1,7 @@
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowUpRight, Check, Search } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, Search } from 'lucide-react';
 import GuideArt from '../GuideArt';
 import ChecklistShare from '../ChecklistShare';
 import ArticleShare from '../ArticleShare';
@@ -164,37 +164,58 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <OpenHash />
 
         <form action="/guide" method="get" className="mt-12" role="search">
-          <label className="block text-xs uppercase tracking-widest text-stone-500" htmlFor="autre-question">Une autre question ?</label>
-          <div className="mt-2 flex h-14 items-center gap-3 border border-stone-900 bg-white pl-4 pr-2">
-            <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.5} />
+          <label className="block font-serif text-2xl text-stone-900" htmlFor="autre-question">Une autre question ?</label>
+          <div className="mt-4 flex h-14 items-center gap-3 rounded-full border border-stone-300 bg-white pl-5 pr-2 shadow-[0_2px_12px_rgba(28,25,23,0.08)] transition focus-within:border-stone-900">
+            <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.75} />
             <input
               id="autre-question"
               name="q"
-              type="search"
+              type="text"
+              inputMode="search"
               enterKeyHint="search"
+              autoComplete="off"
               maxLength={300}
               required
               minLength={3}
-              placeholder="Posez-la ici"
+              placeholder="Posez votre question"
               className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
             />
-            <button type="submit" className="inline-flex h-10 flex-none items-center rounded-[10px] bg-stone-900 px-5 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-stone-800">
-              Chercher
+            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700">
+              <ArrowRight className="h-5 w-5" strokeWidth={1.75} />
             </button>
           </div>
         </form>
 
-        <section className="mt-12 bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
+        {others.length > 0 && (
+          <section className="mt-12 border-t border-stone-200 pt-8">
+            <h2 className="font-serif text-2xl text-stone-900">À lire aussi</h2>
+            {/* Sur téléphone : une vignette et le titre sur une ligne, pour ne pas dérouler trois grands dessins */}
+            <ul className="mt-6 grid gap-5 sm:grid-cols-3 sm:gap-6">
+              {others.map((o) => (
+                <li key={o.slug}>
+                  <Link href={`/guide/${o.slug}`} className="group flex items-center gap-4 sm:block">
+                    <div className="w-28 flex-none overflow-hidden border border-stone-900 sm:w-auto">
+                      <GuideArt art={o.art} className="block w-full aspect-[12/7] group-hover:scale-[1.05] transition-transform duration-700" />
+                    </div>
+                    <p className="font-serif text-lg leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300 sm:mt-3">{o.title}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <section data-alert-cta className="mt-12 bg-white border border-stone-900 text-stone-900 p-6 md:p-8">
           <h2 className="font-serif text-2xl leading-snug">Ne passez pas à côté de votre prochain coup de cœur.</h2>
           <p className="mt-2 text-stone-600 leading-relaxed">
             Loftissime réunit les biens atypiques des agences sur un seul site. Créez une alerte, et vous êtes parmi les premiers prévenus.
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-4">
             <Link href="/?alerte=1" className="inline-flex h-12 items-center px-6 text-xs font-semibold uppercase tracking-wider transition bg-stone-900 text-white hover:bg-stone-800 rounded-[10px]">
               Créer mon alerte
             </Link>
             {a.listingsLink && (
-              <Link href={a.listingsLink.href} className="inline-flex h-12 items-center px-6 border border-stone-900 text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition rounded-[10px]">
+              <Link href={a.listingsLink.href} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
                 {a.listingsLink.label}
               </Link>
             )}
@@ -224,24 +245,6 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             Cet article donne une information générale, à jour à la date indiquée. Il ne constitue pas un conseil juridique et ne remplace ni l&apos;avis d&apos;un notaire, ni celui d&apos;un professionnel du bâtiment sur un bien donné.
           </p>
         </section>
-
-        {others.length > 0 && (
-          <section className="mt-12 border-t border-stone-200 pt-8">
-            <h2 className="font-serif text-2xl text-stone-900">À lire aussi</h2>
-            <ul className="mt-6 grid sm:grid-cols-3 gap-6">
-              {others.map((o) => (
-                <li key={o.slug}>
-                  <Link href={`/guide/${o.slug}`} className="group block">
-                    <div className="overflow-hidden border border-stone-900">
-                      <GuideArt art={o.art} className="block w-full aspect-[12/7] group-hover:scale-[1.05] transition-transform duration-700" />
-                    </div>
-                    <p className="mt-3 font-serif text-lg leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">{o.title}</p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
       </article>
     </div>
   );

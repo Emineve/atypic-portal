@@ -101,7 +101,7 @@ export default function GuideIndex() {
         })}
         {articles.length === 0 && <p className="py-10 text-stone-500">Les premiers articles arrivent très bientôt.</p>}
 
-        <section className="mt-16 md:mt-20 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
+        <section data-alert-cta className="mt-16 md:mt-20 text-stone-900 md:flex md:items-center md:justify-between md:gap-10">
           <div>
             <h2 className="font-serif text-2xl md:text-3xl leading-snug">Les biens rares partent vite. Soyez le premier informé.</h2>
             <p className="mt-2 text-stone-600 leading-relaxed">Créez une alerte : vous êtes prévenu dès qu&apos;un bien atypique correspond à votre recherche.</p>

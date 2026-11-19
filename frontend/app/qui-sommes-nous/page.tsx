@@ -100,7 +100,7 @@ export default function ManifestoPage() {
             Un bien qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
             <span className="italic text-stone-500">Trouvons le vôtre.</span>
           </p>
-          <div className="mt-10">
+          <div data-alert-cta className="mt-10">
             <Link
               href="/?alerte=1"
               className="inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"

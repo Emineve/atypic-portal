@@ -44,7 +44,12 @@ export default function SiteHeaderClient({
     const onScroll = () => {
       const y = window.scrollY;
       const left = document.documentElement.scrollHeight - y - window.innerHeight;
-      setFab(y > 500 && left > 500);
+      // Pas deux invitations à la fois : il s'efface dès qu'un bloc « Créer mon alerte » de la page est à l'écran
+      const cta = Array.from(document.querySelectorAll('[data-alert-cta]')).some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+      });
+      setFab(y > 500 && left > 500 && !cta);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
