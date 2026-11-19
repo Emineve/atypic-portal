@@ -902,8 +902,19 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
           </div>
         ) : visible.length === 0 ? (
           onlyFavs && favorites.length === 0 ? (
-            <div className="text-center py-20 text-stone-400 font-serif">
-              Vous n'avez pas encore de favori. Touchez le cœur d'une annonce pour l'ajouter.
+            <div className="text-center py-20">
+              <p className="font-serif text-2xl text-stone-900">Vous n&apos;avez pas encore de favori.</p>
+              <p className="mt-3 text-stone-600">Touchez le cœur d&apos;un bien pour le retrouver ici.</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setOnlyFavs(false);
+                  window.scrollTo({ top: 0 });
+                }}
+                className="mt-6 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
+              >
+                Voir tous les biens
+              </button>
             </div>
           ) : (
             <div className="max-w-xl mx-auto text-center py-16">
