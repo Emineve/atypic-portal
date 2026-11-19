@@ -32,6 +32,7 @@ const SYNONYMS: string[][] = [
   ['travaux', 'renovation', 'renover', 'refaire'],
   ['notaire', 'acte', 'compromis', 'promesse'],
   ['bateau', 'peniche'],
+  ['clim', 'climatisation', 'climatiseur', 'climatiser', 'rafraichir'],
 ];
 
 const STOP = new Set(

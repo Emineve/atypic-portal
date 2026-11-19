@@ -39,6 +39,142 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'installer-une-climatisation-sans-autorisation',
+    art: 'plans',
+    title: 'Peut-on installer une climatisation sans autorisation ?',
+    description:
+      'Dernier étage, verrière, loft sous les toits : avant de poser une climatisation, deux accords sont presque toujours nécessaires. Ce qu’il faut vérifier avant d’acheter.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 7,
+    intro:
+      'Un dernier étage, une verrière plein sud, un loft sous les toits : les biens atypiques sont souvent ceux qui chauffent le plus en été. La question de la climatisation arrive donc vite, parfois dès la visite. La réponse tient en une ligne : dès qu’un appareil se voit de l’extérieur ou touche à l’immeuble, il faut des autorisations. Et il vaut mieux savoir avant d’acheter si elles ont une chance d’être accordées.',
+    takeaways: [
+      'Un climatiseur mobile, sans unité extérieure ni percement, se pose sans rien demander à personne.',
+      'Une climatisation avec unité extérieure demande presque toujours deux accords distincts : celui de la copropriété, voté en assemblée générale, et celui de la mairie, par une déclaration préalable de travaux. L’un ne remplace pas l’autre.',
+      'Sans autorisation, le risque principal n’est pas l’amende : c’est le démontage de l’appareil et la remise en état de la façade, à vos frais, parfois sous astreinte.',
+      'Vous achetez un bien déjà climatisé ? Demandez le vote de l’assemblée générale et la déclaration en mairie. Vous comptez climatiser après l’achat ? Vérifiez la faisabilité avant de faire une offre.',
+    ],
+    sections: [
+      {
+        title: 'Tout dépend-il du type d’appareil ?',
+        paragraphs: [
+          'Oui. Ce qui déclenche les autorisations, ce n’est pas la climatisation elle-même, c’est ce qu’elle change à l’immeuble : un boîtier visible, un mur percé, une fixation sur la façade, le toit ou le garde-corps.',
+        ],
+        list: [
+          'Climatiseur mobile, posé dans la pièce, sans installation fixe : aucune autorisation.',
+          'Climatisation « split », avec une unité intérieure et une unité extérieure : c’est le cas qui demande des autorisations, parce que l’unité extérieure se voit et se fixe.',
+          'Appareil monobloc sans unité extérieure : plus discret, mais il rejette l’air par deux ouvertures percées dans la façade. Percer un mur extérieur reste un travail soumis à l’accord de la copropriété.',
+        ],
+      },
+      {
+        title: 'En copropriété, qui donne l’accord ?',
+        paragraphs: [
+          'L’assemblée générale, et elle seule. Les travaux qui touchent les parties communes ou l’aspect extérieur de l’immeuble doivent être votés à la majorité des voix de tous les copropriétaires (article 25 b de la loi du 10 juillet 1965). Le syndic ne peut pas autoriser seul : il inscrit votre demande à l’ordre du jour. L’accord oral d’un voisin, du gardien ou d’un membre du conseil syndical ne vaut rien.',
+          'La façade, la toiture et le gros œuvre sont des parties communes. Un balcon ou une terrasse, même à usage privatif, se voit de l’extérieur : y poser un boîtier modifie l’aspect de l’immeuble. L’Agence nationale pour l’information sur le logement ne retient qu’une exception : une unité placée sur une partie réellement privative, sans modifier l’aspect extérieur. En pratique, c’est rare.',
+          'Lisez aussi le règlement de copropriété : certains interdisent tout appareil en façade ou imposent un emplacement. Et comptez le délai : l’assemblée se réunit en général une fois par an.',
+        ],
+      },
+      {
+        title: 'Faut-il aussi une autorisation de la mairie ?',
+        paragraphs: [
+          'Oui, dès que l’installation modifie l’aspect extérieur du bâtiment. Il s’agit d’une déclaration préalable de travaux (article R. 421-17 du Code de l’urbanisme), gratuite, à déposer avant la pose. La mairie a un mois pour répondre, davantage en secteur protégé.',
+          'La règle vaut aussi pour une maison : une unité fixée sur une façade visible se déclare. Le plan local d’urbanisme de la commune, ou le règlement d’un lotissement, peut en plus imposer un emplacement ou un habillage.',
+          'Aux abords d’un monument historique ou dans un site patrimonial remarquable, l’architecte des Bâtiments de France donne son avis, et il peut exiger que rien ne soit visible depuis la rue. Une grande partie des centres anciens est concernée.',
+        ],
+      },
+      {
+        title: 'Et à Paris ?',
+        paragraphs: [
+          'La Ville de Paris rappelle la même double règle : accord de la copropriété et autorisation d’urbanisme, avec dans certains cas l’accord de l’architecte des Bâtiments de France. Son plan local d’urbanisme bioclimatique n’interdit pas les climatiseurs, mais il recommande de privilégier les systèmes collectifs.',
+          'Dans les faits, une unité visible depuis la rue a peu de chances d’être acceptée sur un immeuble ancien. Les projets qui passent sont ceux qui se cachent : en courette, en toiture derrière un acrotère, dans un local technique.',
+        ],
+      },
+      {
+        title: 'Que risque-t-on à installer sans autorisation ?',
+        paragraphs: [
+          'Du côté de la copropriété, le syndic ou un copropriétaire peut saisir le juge, y compris en urgence. Les tribunaux ordonnent régulièrement la dépose de l’appareil et la remise en état de la façade, aux frais du propriétaire, avec une astreinte par jour de retard : 500 euros par jour dans une décision du tribunal judiciaire de Paris de décembre 2025, 50 euros par jour à Béziers en mars 2026.',
+          'Du côté de la mairie, des travaux faits sans déclaration sont une infraction au Code de l’urbanisme, punie d’une amende d’au moins 1 200 euros (article L. 480-4), à laquelle peut s’ajouter l’obligation de remettre les lieux en conformité.',
+          'Enfin, le bruit. Une unité extérieure qui gêne les voisins peut être jugée comme un trouble anormal de voisinage, même si elle a été autorisée. Le juge peut alors imposer son déplacement.',
+        ],
+      },
+      {
+        title: 'Vous visitez un bien déjà climatisé : que demander ?',
+        paragraphs: [
+          'Une climatisation en place n’est pas une climatisation autorisée. Si elle a été posée sans vote ni déclaration, l’irrégularité ne reste pas chez le vendeur : c’est à vous que la copropriété ou la mairie s’adressera après la vente. Et l’appareil que vous pensiez acheter avec le bien peut devoir être retiré.',
+        ],
+        list: [
+          'Le procès-verbal de l’assemblée générale qui a autorisé l’installation, avec l’emplacement et le modèle décrits.',
+          'La déclaration préalable déposée en mairie et la décision obtenue.',
+          'La facture de pose par un professionnel et le contrat d’entretien.',
+          'Dans les derniers procès-verbaux, toute plainte d’un voisin sur le bruit ou les écoulements d’eau.',
+        ],
+      },
+      {
+        title: 'Vous comptez climatiser après l’achat : que vérifier avant l’offre ?',
+        paragraphs: [
+          'Ne tenez jamais l’accord pour acquis. Dans un dernier étage ou sous une verrière, la climatisation peut peser sur votre décision d’achat : vérifiez donc sa faisabilité avant de vous engager, pas après.',
+        ],
+        list: [
+          'Le règlement de copropriété : interdit-il les appareils en façade, en toiture ou sur les balcons ?',
+          'Les procès-verbaux des trois dernières assemblées : une demande de climatisation a-t-elle déjà été acceptée, ou refusée ?',
+          'L’emplacement possible : existe-t-il un endroit invisible depuis la rue et éloigné des fenêtres voisines ?',
+          'Le secteur : l’immeuble est-il aux abords d’un monument historique ? La mairie vous le dit.',
+          'Le voisinage : d’autres appareils sont-ils déjà installés dans l’immeuble, et l’ont-ils été régulièrement ?',
+        ],
+      },
+      {
+        title: 'Et si l’assemblée générale refuse ?',
+        paragraphs: [
+          'Un refus n’est pas toujours définitif. Vous pouvez représenter un projet amélioré : autre emplacement, appareil plus silencieux, habillage assorti à la façade, engagement de remise en état à votre départ. En dernier recours, la loi permet de demander au tribunal judiciaire d’autoriser des travaux d’amélioration refusés par l’assemblée. C’est long, et l’issue n’est jamais garantie.',
+          'Pensez aussi aux solutions qui ne demandent rien à personne, ou presque : stores intérieurs, films solaires posés à l’intérieur, brasseurs d’air, climatiseur mobile pour les semaines les plus chaudes. Les stores extérieurs et les volets, eux, modifient la façade et suivent les mêmes règles qu’une climatisation.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, côté climatisation',
+      items: [
+        'Bien déjà climatisé : j’ai le vote de l’assemblée générale et la déclaration en mairie.',
+        'J’ai lu ce que le règlement de copropriété dit des appareils en façade, en toiture et sur les balcons.',
+        'J’ai cherché dans les procès-verbaux les demandes de climatisation acceptées ou refusées.',
+        'Je sais si l’immeuble est en secteur protégé.',
+        'J’ai repéré un emplacement discret et éloigné des voisins.',
+        'Je n’ai pas compté la climatisation comme acquise dans mon budget ni dans ma décision.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Puis-je installer une clim sans autorisation ?',
+        a: 'Seulement un climatiseur mobile, sans unité extérieure ni percement. Dès qu’un boîtier se voit de l’extérieur ou qu’un mur est percé, il faut l’accord de l’assemblée générale en copropriété et, le plus souvent, une déclaration préalable en mairie.',
+      },
+      {
+        q: 'Le syndic peut-il m’autoriser à poser une climatisation ?',
+        a: 'Non. Seule l’assemblée générale peut autoriser des travaux qui touchent les parties communes ou l’aspect extérieur de l’immeuble, à la majorité des voix de tous les copropriétaires. Le syndic inscrit la question à l’ordre du jour.',
+      },
+      {
+        q: 'Mon balcon est privatif : puis-je y poser l’unité extérieure ?',
+        a: 'Pas sans accord dans la plupart des cas. Un boîtier posé sur un balcon se voit de l’extérieur et modifie l’aspect de l’immeuble : le vote de l’assemblée générale et la déclaration en mairie restent nécessaires.',
+      },
+      {
+        q: 'Le vendeur a posé une clim sans autorisation : est-ce mon problème ?',
+        a: 'Oui, une fois que vous êtes propriétaire. La copropriété ou la mairie peut vous demander de la retirer et de remettre la façade en état. Demandez au vendeur de régulariser avant la vente, ou faites décrire la situation dans la promesse.',
+      },
+      {
+        q: 'Un locataire peut-il installer une climatisation ?',
+        a: 'Un appareil mobile, oui. Pour une installation fixe, il lui faut l’accord écrit du propriétaire, qui doit lui-même obtenir celui de la copropriété. Sans cela, le bailleur peut exiger la remise en état.',
+      },
+    ],
+    sources: [
+      { label: 'ANIL, « Copropriété : je souhaite installer une climatisation, est-ce possible ? »', url: 'https://www.anil.org/parole-expert-logement-copropriete-installation-climatisation/' },
+      { label: 'Ville de Paris, « Volets, stores, climatiseurs… Quelles sont les règles à respecter avant toute installation ? »', url: 'https://www.paris.fr/pages/volets-stores-climatiseurs-quelles-sont-les-regles-a-respecter-avant-toute-installation-35881' },
+      { label: 'Assemblée nationale, réponse ministérielle sur la climatisation en copropriété', url: 'https://questions.assemblee-nationale.fr/dyn/12/questions/QANR5L12QE47384.pdf' },
+      { label: 'Novlaw Avocats, « Autorisation d’urbanisme et installation d’une climatisation »', url: 'https://novlaw.fr/ressource/autorisation-urbanisme-installation-climatisation' },
+      { label: 'Kohen Avocats, « Pose de climatisation sans autorisation : mairie, copropriété et recours »', url: 'https://kohenavocats.fr/2026/05/06/pose-climatisation-sans-autorisation-mairie-copropriete-recours-2026/' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'negocier-le-prix-d-un-bien-atypique',
     art: 'negociation',
     title: 'Négocier un bien atypique : sur quoi s’appuyer quand rien ne lui ressemble',
