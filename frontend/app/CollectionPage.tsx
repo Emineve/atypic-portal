@@ -83,9 +83,6 @@ export default function CollectionPage({
                       {item.surface_sqm && <span>{Math.round(item.surface_sqm)} m²</span>}
                     </div>
                     <h2 className="font-serif text-lg leading-snug text-stone-900">{item.title}</h2>
-                    {item.short_description && (
-                      <p className="mt-1 text-xs text-stone-500 line-clamp-2 leading-relaxed">{item.short_description}</p>
-                    )}
                     {item.atypic_tags && item.atypic_tags.length > 0 && (
                       <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
                         {item.atypic_tags.slice(0, 3).map((tag) => (
