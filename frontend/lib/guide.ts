@@ -39,6 +39,112 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'acheter-un-dernier-etage',
+    art: 'terrasse',
+    title: 'Dernier étage : la vue, la lumière… et le toit juste au-dessus',
+    description:
+      'Pas de voisin au-dessus, de la lumière, parfois une terrasse : le dernier étage se paie plus cher. Toiture, chaleur d’été, ascenseur, combles : ce qu’il faut vérifier avant d’acheter.',
+    category: 'Types de biens',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Le dernier étage est le plus demandé de l’immeuble : pas de bruit de pas au-dessus, une vue dégagée, de la lumière, parfois une terrasse. Il a aussi une particularité que les autres étages n’ont pas : il vit directement sous le toit. Quand la toiture vieillit, c’est lui qui le sait le premier. Avant de payer la prime du dernier étage, regardez donc ce qu’il y a au-dessus du plafond.',
+    takeaways: [
+      'La toiture et son étanchéité sont en principe des parties communes : leur réfection est payée par toute la copropriété, pas par le seul dernier étage. Mais c’est vous qui subirez les fuites en attendant les travaux.',
+      'Avoir la jouissance d’une terrasse ne rend pas propriétaire de l’étanchéité qui est dessous. Vous entretenez le revêtement, la copropriété répond de ce qui protège l’immeuble.',
+      'L’état du toit ne se voit pas en visite. Il se lit dans le carnet d’entretien et les procès-verbaux d’assemblée générale.',
+      'Sous une toiture mal isolée, l’inconfort d’été est réel. Visitez par temps chaud si vous le pouvez.',
+      'L’ascenseur se paie selon l’étage : le dernier paie la plus grosse part.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi le dernier étage est-il plus cher ?',
+        paragraphs: [
+          'Parce qu’il réunit ce que les acheteurs cherchent en ville : le calme, la lumière, une vue, et souvent un extérieur. C’est aussi pour cela qu’il est rare. Cette prime n’a de sens que si le toit, l’isolation et l’accès sont à la hauteur.',
+        ],
+      },
+      {
+        title: 'À qui appartient le toit, et qui paie sa réparation ?',
+        paragraphs: [
+          'Dans un immeuble en copropriété, la toiture relève en principe du gros œuvre commun, sauf si le règlement dit autre chose. Le syndicat des copropriétaires doit l’entretenir, et la dépense se répartit entre tous.',
+          'Le cas d’une terrasse à jouissance privative suit la même logique : jouir seul d’une terrasse ne rend pas propriétaire de l’étanchéité qui se trouve dessous. Celui qui en profite entretient le revêtement de sol ; l’étanchéité, qui protège l’immeuble, reste le plus souvent une charge commune.',
+          'Vérifiez tout de même votre règlement : il peut prévoir des parties communes spéciales ou une répartition particulière. Et retenez la conséquence pratique : si une réfection est votée après votre achat, vous en paierez votre part. Si elle tarde, c’est chez vous que l’eau arrive.',
+        ],
+      },
+      {
+        title: 'Comment connaître l’état de la toiture ?',
+        paragraphs: [
+          'On ne monte pas sur le toit pendant une visite. Les documents de la copropriété le racontent à sa place.',
+        ],
+        list: [
+          'Le carnet d’entretien de l’immeuble : il recense les travaux faits sur les parties communes, dont la dernière réfection de toiture.',
+          'Les procès-verbaux des trois dernières assemblées générales : travaux de toiture ou d’étanchéité votés, reportés ou refusés, avec leur montant et leurs échéances.',
+          'Les sinistres déclarés : demandez à l’agence s’il y a eu des infiltrations au dernier étage, et comment elles ont été réglées.',
+          'Dans l’appartement : auréoles au plafond, peinture qui cloque, traces autour des fenêtres de toit.',
+        ],
+      },
+      {
+        title: 'Fait-il trop chaud l’été ?',
+        paragraphs: [
+          'C’est le point faible classique. Une toiture est souvent à l’origine de fortes déperditions, et les occupants du dernier étage en ressentent l’inconfort, surtout en été, relève une fiche technique de l’Agence parisienne du climat. Une isolation refaite en même temps que l’étanchéité change la situation.',
+          'Demandez de quand date l’isolation du toit, lisez le diagnostic de performance énergétique, et gardez en tête qu’une climatisation ne s’installe pas librement en copropriété.',
+        ],
+      },
+      {
+        title: 'Ascenseur et charges : combien coûte la hauteur ?',
+        paragraphs: [
+          'Les charges d’ascenseur se répartissent selon l’utilité pour chaque lot : le rez-de-chaussée paie peu ou pas, le dernier étage paie le plus. Regardez le montant sur le relevé de charges, et vérifiez qu’aucun remplacement de l’appareil n’est annoncé.',
+          'Sans ascenseur, le dernier étage se négocie. Pensez à votre vie dans dix ans, et à la revente.',
+        ],
+      },
+      {
+        title: 'Combles et surélévation : y a-t-il quelque chose à gagner ?',
+        paragraphs: [
+          'Les combles situés au-dessus de l’appartement ne vous appartiennent pas forcément : ils peuvent être des parties communes. Les annexer suppose de les racheter à la copropriété, avec un vote.',
+          'Même chose pour le droit de surélever : dans certains immeubles il est attaché au dernier étage, dans d’autres il appartient à la copropriété, qui pourrait un jour construire au-dessus de vous. Le règlement le dit.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, pour un dernier étage',
+      items: [
+        'Je connais la date de la dernière réfection de la toiture.',
+        'J’ai lu les trois derniers procès-verbaux d’assemblée générale, côté toiture et étanchéité.',
+        'Je sais s’il y a déjà eu des infiltrations dans l’appartement.',
+        'Je sais qui est propriétaire des combles et du droit de surélever.',
+        'J’ai le montant des charges d’ascenseur, ou j’ai accepté l’absence d’ascenseur.',
+        'J’ai une idée de la température en plein été.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Le propriétaire du dernier étage paie-t-il seul la toiture ?',
+        a: 'Non, en principe. La toiture est une partie commune et sa réfection est répartie entre tous les copropriétaires, sauf clause particulière du règlement de copropriété.',
+      },
+      {
+        q: 'Qui paie l’étanchéité d’une terrasse privative ?',
+        a: 'Le plus souvent la copropriété. Le titulaire de la jouissance entretient le revêtement de sol, mais l’étanchéité qui protège l’immeuble reste une charge commune, sauf disposition contraire du règlement.',
+      },
+      {
+        q: 'Peut-on aménager les combles au-dessus de son appartement ?',
+        a: 'Seulement s’ils sont à vous. S’ils sont des parties communes, il faut les acheter à la copropriété et obtenir un vote de l’assemblée générale.',
+      },
+      {
+        q: 'Un dernier étage sans ascenseur est-il un mauvais achat ?',
+        a: 'Pas forcément, mais il s’adresse à moins d’acheteurs. Le prix doit en tenir compte, à l’achat comme à la revente.',
+      },
+    ],
+    sources: [
+      { label: 'Kohen Avocats, « Fuite de toiture en copropriété : qui paie et comment forcer le syndic »', url: 'https://kohenavocats.fr/?p=2123560' },
+      { label: 'Kohen Avocats, « Infiltration par la toiture-terrasse en copropriété : qui paie l’étanchéité et les dégâts »', url: 'https://kohenavocats.fr/?p=2134727' },
+      { label: 'Agence parisienne du climat (CoachCopro), fiche « Isolation thermique d’une toiture-terrasse »', url: 'https://www.coachcopro.com/pdfs/51/fiche-ami-copro-itoiture-terrassepdf-40.pdf' },
+      { label: 'Home Select, « La copropriété à Paris : charges, carnet d’entretien, droit de surélévation »', url: 'https://www.homeselect.paris/blog/copropriete' },
+      { label: 'Bourse Inside, « Achat en copropriété : ce que disent les procès-verbaux d’assemblée générale »', url: 'https://bourseinside.fr/?p=12164' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'acheter-une-maison-d-architecte',
     art: 'plans',
     title: 'Maison d’architecte : ce que l’on achète, ce que l’on peut modifier',
