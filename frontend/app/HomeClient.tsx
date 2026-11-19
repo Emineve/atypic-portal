@@ -458,7 +458,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               aria-label="Créer mon alerte"
               className="inline-flex h-10 items-center gap-2 px-3 sm:px-4 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-stone-800 transition"
             >
-              <Bell className="w-4 h-4 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
+              <Bell className="w-4 h-4 text-white" strokeWidth={1.5} />
               <span className="md:hidden">Alerte</span>
               <span className="hidden md:inline">Créer mon alerte</span>
             </button>
@@ -508,7 +508,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 }}
                 className="w-full flex items-center gap-3 py-4 border-b border-stone-200 text-left font-serif text-2xl text-stone-900"
               >
-                <Bell className="w-5 h-5 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
+                <Bell className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
                 Créer mon alerte
               </button>
               <button

@@ -68,7 +68,7 @@ export default function SiteHeaderClient({
                 aria-label="Créer mon alerte"
                 className="inline-flex h-10 items-center gap-2 px-3 sm:px-4 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-stone-800 transition"
               >
-                <Bell className="w-4 h-4 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
+                <Bell className="w-4 h-4 text-white" strokeWidth={1.5} />
                 <span className="hidden sm:inline">Créer mon alerte</span>
               </a>
             )}
@@ -102,7 +102,7 @@ export default function SiteHeaderClient({
             </div>
             <nav className="flex-1 overflow-y-auto px-6 py-4">
               <a href="/?alerte=1" className="flex items-center gap-3 py-4 border-b border-stone-200 font-serif text-2xl text-stone-900">
-                <Bell className="w-5 h-5 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
+                <Bell className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
                 Créer mon alerte
               </a>
               <a href="/?favoris=1" className="flex items-center justify-between gap-3 py-4 border-b border-stone-200">
