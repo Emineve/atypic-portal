@@ -486,17 +486,18 @@ export default async function ListingPage({ params }: { params: { id: string } }
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">
                    <h2 className="font-serif text-2xl text-stone-900">Autres biens à découvrir à {hubName}</h2>
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {/* Sur téléphone : une vignette, le titre et le prix sur une ligne. À partir de la tablette : trois cartes. */}
+          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
             {related.map((r) => (
-              <Link key={r.id} href={`/biens/${r.id}`} className="group block border border-stone-300 hover:shadow-lg transition">
-                <div className="aspect-[4/3] bg-stone-100 overflow-hidden">
+              <Link key={r.id} href={`/biens/${r.id}`} className="group flex items-center gap-4 sm:block sm:border sm:border-stone-300 sm:hover:shadow-lg sm:transition">
+                <div className="w-28 flex-none aspect-[4/3] bg-stone-100 overflow-hidden sm:w-auto">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={r.cover_image_url} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
-                <div className="p-4">
+                <div className="min-w-0 sm:p-4">
                   <p className="text-xs uppercase tracking-widest text-stone-500">{r.city}{r.surface_sqm ? ` · ${r.surface_sqm} m²` : ''}</p>
                   <p className="mt-1 font-serif text-stone-900 leading-snug">{r.title}</p>
-                  <p className="mt-2 font-serif text-lg text-stone-900">{fmt(Number(r.price))}</p>
+                  <p className="mt-1 font-serif text-lg text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
                 </div>
               </Link>
             ))}

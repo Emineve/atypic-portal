@@ -24,7 +24,6 @@ export default function AlertBox({
   criteria?: AlertCriteria;
 }) {
   const [email, setEmail] = useState('');
-  const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // champ piège anti-spam
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
 
@@ -43,7 +42,7 @@ export default function AlertBox({
         p_price_max: kind === 'alert' && c ? toNum(c.priceMax) : null,
         p_surface_min: kind === 'alert' && c ? toNum(c.surfaceMin) : null,
         p_rooms_min: kind === 'alert' && c ? toNum(c.roomsMin) : null,
-        p_consent: consent,
+        p_consent: true, // l'envoi vaut accord, la phrase sous le champ le précise
       });
       setStatus(!error && data === true ? 'done' : 'error');
     } catch {
@@ -90,12 +89,11 @@ export default function AlertBox({
           {status === 'sending' ? 'Envoi…' : isAlert ? 'Créer mon alerte' : "Je m'inscris"}
         </button>
       </div>
-      <label className="flex items-start gap-2 text-xs text-stone-600 leading-relaxed">
-        <input type="checkbox" className="mt-0.5" checked={consent} onChange={(e) => setConsent(e.target.checked)} required />
+      <p className="text-xs text-stone-500 leading-relaxed">
         {isAlert
-          ? "J'accepte de recevoir par email les nouveaux biens correspondant à cette recherche. Désinscription possible à tout moment."
-          : "J'accepte de recevoir la lettre Loftissime. Désinscription possible à tout moment."}
-      </label>
+          ? 'En envoyant, vous acceptez de recevoir par e-mail les nouveaux biens correspondant à cette recherche. Vous pouvez arrêter à tout moment.'
+          : 'En envoyant, vous acceptez de recevoir la lettre Loftissime. Vous pouvez vous désinscrire à tout moment.'}
+      </p>
       {status === 'error' && (
         <p className="text-xs text-red-700">L'enregistrement a échoué. Vérifiez l'email et réessayez.</p>
       )}
