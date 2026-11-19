@@ -39,6 +39,102 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'verriere-ce-qu-il-faut-verifier',
+    art: 'loft',
+    title: 'Verrière : la pièce maîtresse, et le premier poste à vérifier',
+    description:
+      'Elle fait la lumière et le charme d’un atelier ou d’un loft. À qui appartient-elle, qui l’entretient, peut-on la remplacer ? Les questions à poser avant d’acheter.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'C’est souvent elle qui déclenche le coup de cœur. Une verrière donne à un logement une lumière qu’aucune fenêtre n’offre. Elle est aussi la partie la plus exposée du bien : à la pluie, au soleil, au froid. Et son statut n’est pas toujours celui que l’on croit. Avant d’acheter, trois questions : à qui est-elle, dans quel état est-elle, et que pourrez-vous en faire ?',
+    takeaways: [
+      'Le statut d’une verrière dépend du règlement de copropriété : partie privative, comme une fenêtre, ou partie commune, quand elle fait office de toiture. Cela décide de qui paie.',
+      'Même privative, elle participe à l’aspect extérieur de l’immeuble : la remplacer autrement qu’à l’identique demande l’accord de la copropriété et une déclaration préalable en mairie.',
+      'Son état se vérifie par temps de pluie et par temps chaud, et se documente : âge, vitrage, dernières interventions.',
+      'En secteur protégé, l’architecte des Bâtiments de France peut imposer les matériaux et le dessin.',
+    ],
+    sections: [
+      {
+        title: 'De quelle verrière parle-t-on ?',
+        list: [
+          'La verrière de toit, ou zénithale : elle remplace une partie de la couverture. C’est la plus exposée.',
+          'La verrière de façade : un grand vitrage vertical, typique des ateliers d’artistes.',
+          'La verrière intérieure : une cloison vitrée entre deux pièces. Elle ne pose aucune des questions qui suivent.',
+        ],
+      },
+      {
+        title: 'À qui appartient-elle ?',
+        paragraphs: [
+          'En maison, la réponse est simple : à vous. En copropriété, elle se trouve dans le règlement. Dans la plupart des immeubles, les fenêtres sont des parties privatives, dont l’entretien et le remplacement reviennent au copropriétaire. Une verrière peut suivre ce régime : un tribunal a ainsi retenu, dans une affaire récente, qu’une verrière était une partie privative de ses propriétaires, et qu’elle était à l’origine des désordres subis par le voisin.',
+          'À l’inverse, quand elle fait office de couverture, elle peut relever du clos et du couvert de l’immeuble, donc des parties communes. Lisez la clause exacte, et faites-la confirmer par le syndic. La différence se chiffre vite : une verrière ancienne à refaire coûte cher, et il vaut mieux savoir si la dépense est pour vous seul ou pour tous.',
+        ],
+      },
+      {
+        title: 'Peut-on la remplacer ou la modifier ?',
+        paragraphs: [
+          'Oui, avec deux accords possibles. Côté copropriété : même privative, une verrière visible participe à l’aspect extérieur de l’immeuble. En changer le dessin, le matériau ou la couleur doit être autorisé par l’assemblée générale.',
+          'Côté mairie : le Code de l’urbanisme soumet à déclaration préalable les travaux qui modifient l’aspect extérieur d’un bâtiment. Un remplacement strictement à l’identique peut en être dispensé, mais certaines communes l’exigent quand même : dans le doute, déposez-la. En secteur protégé, l’architecte des Bâtiments de France donne son avis.',
+        ],
+      },
+      {
+        title: 'Comment juger son état en visite ?',
+        list: [
+          'Les traces d’eau : auréoles, coulures, joints noircis, peinture qui cloque au pied de la verrière.',
+          'La structure : rouille sur l’acier, bois abîmé, mastic qui s’effrite.',
+          'Le vitrage : simple ou double, feuilleté ou non. Un vitrage ancien en toiture pose une question de sécurité.',
+          'La condensation : de la buée ou des gouttes à l’intérieur signalent une mauvaise isolation ou une ventilation insuffisante.',
+          'Les ouvrants : fonctionnent-ils encore ? Ce sont eux qui permettent de rafraîchir.',
+        ],
+        paragraphs: [
+          'Demandez l’âge de la verrière, les factures d’entretien ou de remplacement, et les sinistres déclarés. Pour un achat important, faites venir un professionnel avant l’offre.',
+        ],
+      },
+      {
+        title: 'Et le confort, été comme hiver ?',
+        paragraphs: [
+          'Une grande surface vitrée chauffe l’été et refroidit l’hiver, surtout si elle est ancienne. Le diagnostic de performance énergétique en tient compte. Des solutions existent : vitrage performant, stores, ouvrants. Mais les stores extérieurs et la climatisation modifient l’aspect de l’immeuble et suivent les mêmes règles d’autorisation que la verrière elle-même.',
+          'Visitez si possible par une journée chaude. C’est le meilleur test.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, côté verrière',
+      items: [
+        'Je sais si la verrière est privative ou commune, clause du règlement à l’appui.',
+        'Je connais son âge et la date des dernières interventions.',
+        'J’ai cherché les traces d’infiltration et de condensation.',
+        'Je sais quel vitrage est en place.',
+        'J’ai un avis de professionnel, ou un devis de remise en état.',
+        'Je sais ce que la copropriété et la mairie exigeraient pour la remplacer.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Une verrière est-elle une partie commune ?',
+        a: 'Cela dépend du règlement de copropriété. Elle peut être privative, comme une fenêtre, ou commune si elle tient lieu de toiture. Vérifiez la clause avant d’acheter.',
+      },
+      {
+        q: 'Faut-il une autorisation pour remplacer une verrière ?',
+        a: 'Oui si son aspect change : accord de l’assemblée générale en copropriété et déclaration préalable en mairie. Un remplacement strictement à l’identique peut en être dispensé, selon les communes.',
+      },
+      {
+        q: 'Qui paie les dégâts si la verrière fuit ?',
+        a: 'Celui à qui elle appartient. Si elle est privative, son propriétaire répond des dommages causés aux voisins. Si elle est commune, c’est la copropriété.',
+      },
+    ],
+    sources: [
+      { label: 'Kohen Avocats, « Fenêtres et ouvertures en copropriété : parties privatives, aspect extérieur et autorisations »', url: 'https://kohenavocats.fr/?p=2138135' },
+      { label: 'Kohen Avocats, « Verrières et balcons en copropriété : parties privatives, règlement et assemblée générale »', url: 'https://kohenavocats.fr/2026/09/23/verrieres-balcons-copropriete-parties-privatives-reglement-assemblee-generale/' },
+      { label: 'Construires.fr, « Changer ses fenêtres en copropriété : règles et formalités »', url: 'https://www.construires.fr/changer-fenetre-copropriete-autorisation/' },
+      { label: 'Doctrine, tribunal judiciaire de Pau, 2026 (verrière, partie privative)', url: 'https://www.doctrine.fr/d/TJ/Pau/2026/TJPF1157573F409B1ABEE7F' },
+      { label: 'Agence parisienne du climat (CoachCopro), « Les travaux en copropriété »', url: 'https://www.coachcopro.com/pdfs/90/les-travaux-en-coproprietepdf-6b.pdf' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'acheter-un-bien-classe-monument-historique',
     art: 'plans',
     title: 'Monument historique : acheter un bien classé ou inscrit',
