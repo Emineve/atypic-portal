@@ -99,7 +99,10 @@ export default function AlertDialog({
   onShowMatches,
   types,
   agencies,
+  shareWith,
 }: {
+  // Page agence : la recherche est partagée avec cette agence, et l'alerte Loftissime est créée du même geste
+  shareWith?: string;
   // Accueil uniquement : agences auxquelles l'acheteur peut transmettre sa recherche
   agencies?: AlertAgency[];
   open: boolean;
@@ -126,6 +129,7 @@ export default function AlertDialog({
   const [shareName, setShareName] = useState('');
   const [sharePhone, setSharePhone] = useState('');
   const [shared, setShared] = useState<string[]>([]); // agences qui ont bien reçu la recherche
+  const [alertCreated, setAlertCreated] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
   const [progress, setProgress] = useState(0); // avancement dans le formulaire, de 0 à 1
@@ -148,12 +152,13 @@ export default function AlertDialog({
     );
     setStatus('idle');
     setGeo('idle');
-    setShare(false);
+    setShare(!!shareWith);
+    setAlertCreated(false);
     const known = readVisitor();
     if (known.email) setEmail((cur) => cur || known.email || '');
     if (known.name) setShareName((cur) => cur || known.name || '');
     if (known.phone) setSharePhone((cur) => cur || known.phone || '');
-    setAgencySel([]);
+    setAgencySel(shareWith ? [shareWith] : []);
     setShared([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
@@ -328,7 +333,7 @@ export default function AlertDialog({
         p_price_max: toNum(filters.priceMax),
         p_surface_min: toNum(filters.surfaceMin),
         p_rooms_min: null,
-        p_consent: consent,
+        p_consent: shareWith ? true : consent,
         p_locations: finalLocations.length ? finalLocations : null,
         p_surface_max: toNum(filters.surfaceMax),
         p_bedrooms_min: filters.bedrooms,
@@ -349,8 +354,10 @@ export default function AlertDialog({
           /* l'alerte par e-mail est enregistrée même si le numéro ne l'est pas */
         }
       }
-      // Recherche transmise aux agences cochées (cinq au maximum)
-      if (ok && share && agencySel.length > 0) {
+      setAlertCreated(ok);
+      // Recherche transmise aux agences cochées (cinq au maximum). Page agence : le partage part même si l'alerte n'a pas pu être créée.
+      let sharedOk = false;
+      if ((ok || shareWith) && share && agencySel.length > 0) {
         const sent: string[] = [];
         for (const a of agencySel.slice(0, MAX_AGENCIES)) {
           try {
@@ -362,7 +369,7 @@ export default function AlertDialog({
               p_location: finalLocations.join(', ') || null,
               p_budget_max: toNum(filters.priceMax),
               p_surface_min: toNum(filters.surfaceMin),
-              p_message: `Recherche issue d’une alerte Loftissime : ${recapLine}.`,
+              p_message: `${shareWith ? 'Recherche partagée depuis la page de l’agence sur Loftissime' : 'Recherche issue d’une alerte Loftissime'} : ${recapLine}.`,
             });
             if (!res.error && res.data === true) sent.push(a);
           } catch {
@@ -370,9 +377,10 @@ export default function AlertDialog({
           }
         }
         setShared(sent);
+        sharedOk = sent.length > 0;
       }
-      if (ok) saveVisitor({ email, name: shareName, phone: sharePhone || whatsapp, locations: finalLocations, budget: filters.priceMax });
-      setStatus(ok ? 'done' : 'error');
+      if (ok || sharedOk) saveVisitor({ email, name: shareName, phone: sharePhone || whatsapp, locations: finalLocations, budget: filters.priceMax });
+      setStatus((shareWith ? sharedOk : ok) ? 'done' : 'error');
     } catch {
       setStatus('error');
     }
@@ -404,7 +412,7 @@ export default function AlertDialog({
   const recapLine = recap.length ? recap.join(' · ') : 'Tous les nouveaux biens atypiques, partout en France';
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6" role="dialog" aria-modal="true" aria-label="Créer une alerte">
+    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6" role="dialog" aria-modal="true" aria-label={shareWith ? `Partager ma recherche avec ${shareWith}` : 'Créer une alerte'}>
       <div className="absolute inset-0 bg-stone-900/60" onClick={onClose} />
       <div className="relative w-full h-[100dvh] md:h-auto md:max-w-2xl md:max-h-[94vh] flex flex-col bg-[#FDFBF7] shadow-2xl overflow-hidden">
         <button
@@ -425,11 +433,26 @@ export default function AlertDialog({
             <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-white flex items-center justify-center">
               <Check className="w-8 h-8" />
             </span>
-            <h2 className="mt-7 font-serif text-3xl md:text-4xl text-stone-900 leading-tight">C'est noté, on veille pour vous.</h2>
-            <p className="mt-4 text-stone-600 leading-relaxed max-w-md mx-auto">
-              Dès qu'un lieu correspond à votre recherche, vous serez parmi les premiers à le savoir. En attendant, bonne exploration.
-            </p>
-            {shared.length > 0 && (
+            <h2 className="mt-7 font-serif text-3xl md:text-4xl text-stone-900 leading-tight">
+              {shareWith ? 'Recherche partagée.' : "C'est noté, on veille pour vous."}
+            </h2>
+            {shareWith ? (
+              <>
+                <p className="mt-4 text-stone-600 leading-relaxed max-w-md mx-auto">
+                  <span className="text-stone-900">{shareWith}</span> a bien reçu votre recherche et vous recontacte dès qu&apos;un bien correspond, y compris avant sa mise en ligne.
+                </p>
+                {alertCreated && (
+                  <p className="mt-3 text-stone-600 leading-relaxed max-w-md mx-auto">
+                    Votre alerte Loftissime est créée elle aussi : vous recevrez par e-mail les nouveaux biens de toutes les agences qui correspondent à ces critères.
+                  </p>
+                )}
+              </>
+            ) : (
+              <p className="mt-4 text-stone-600 leading-relaxed max-w-md mx-auto">
+                Dès qu'un lieu correspond à votre recherche, vous serez parmi les premiers à le savoir. En attendant, bonne exploration.
+              </p>
+            )}
+            {!shareWith && shared.length > 0 && (
               <p className="mt-3 text-stone-600 leading-relaxed max-w-md mx-auto">
                 Votre recherche a aussi été transmise à{' '}
                 <span className="text-stone-900">
@@ -476,10 +499,18 @@ export default function AlertDialog({
               }}
             >
               <div className="bg-stone-900 text-white px-6 md:px-12 pt-6 pb-5 md:pt-10 md:pb-9">
-                <h2 className="pr-10 font-serif text-[1.7rem] md:text-4xl leading-[1.1]">Dites-nous ce que vous cherchez.</h2>
+                <h2 className="pr-10 font-serif text-[1.7rem] md:text-4xl leading-[1.1]">
+                  {shareWith ? `Partagez votre recherche avec ${shareWith}.` : 'Dites-nous ce que vous cherchez.'}
+                </h2>
                 <p className="mt-2 md:mt-3 text-sm md:text-base text-stone-300 max-w-md leading-relaxed">
-                  On vous prévient par e-mail dès qu'un lieu correspond
-                  <span className="hidden md:inline">, sans que vous ayez à revenir le chercher</span>.
+                  {shareWith ? (
+                    <>L&apos;agence vous recontacte dès qu&apos;un bien correspond. Loftissime crée aussi votre alerte e-mail avec ces critères.</>
+                  ) : (
+                    <>
+                      On vous prévient par e-mail dès qu'un lieu correspond
+                      <span className="hidden md:inline">, sans que vous ayez à revenir le chercher</span>.
+                    </>
+                  )}
                 </p>
               </div>
               <div className="px-6 md:px-12 pt-6 pb-8 md:py-10 space-y-10">
@@ -557,7 +588,35 @@ export default function AlertDialog({
 
               <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
                 <div>
-                  <Step title="Adresse mail">
+                  <Step title={shareWith ? 'Vos coordonnées' : 'Adresse mail'}>
+                    {shareWith && (
+                      <>
+                        <input
+                          type="text"
+                          required
+                          minLength={2}
+                          maxLength={120}
+                          autoComplete="name"
+                          aria-label="Votre nom"
+                          value={shareName}
+                          onChange={(e) => setShareName(e.target.value)}
+                          placeholder="Nom"
+                          className={`${field} mb-2`}
+                        />
+                        <input
+                          type="tel"
+                          required
+                          minLength={9}
+                          maxLength={20}
+                          autoComplete="tel"
+                          aria-label="Votre téléphone"
+                          value={sharePhone}
+                          onChange={(e) => setSharePhone(e.target.value)}
+                          placeholder="Téléphone"
+                          className={`${field} mb-2`}
+                        />
+                      </>
+                    )}
                     <input
                       id="alert-email"
                       type="email"
@@ -573,6 +632,12 @@ export default function AlertDialog({
                     <div className="hidden" aria-hidden="true">
                       <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
                     </div>
+                    {shareWith && (
+                      <p className="mt-4 text-xs text-stone-600 leading-relaxed">
+                        Votre nom, votre téléphone, votre e-mail et votre recherche sont transmis uniquement à {shareWith}. En partageant, vous créez aussi votre alerte Loftissime : vous acceptez de recevoir par e-mail les nouveaux biens correspondant à ces critères. Arrêt possible à tout moment.
+                      </p>
+                    )}
+                    {!shareWith && (<>
                     <label className="mt-4 flex items-start gap-3 text-xs text-stone-600 leading-relaxed cursor-pointer">
                       <input
                         type="checkbox"
@@ -620,7 +685,8 @@ export default function AlertDialog({
                         </>
                       )}
                     </div>
-                    {agencyList.length > 0 && (
+                    </>)}
+                    {!shareWith && agencyList.length > 0 && (
                       <div className="mt-4 border border-stone-200 bg-white p-4">
                         <label className="flex items-start gap-3 text-sm text-stone-800 leading-relaxed cursor-pointer">
                           <input
@@ -697,7 +763,7 @@ export default function AlertDialog({
                     )}
                     {status === 'error' && (
                       <p className="mt-4 text-xs text-red-700">
-                        L'enregistrement a échoué. Vérifiez l'email et réessayez (dix alertes actives au maximum par adresse).
+                        {shareWith ? 'L’envoi a échoué. Vérifiez vos coordonnées et réessayez.' : "L'enregistrement a échoué. Vérifiez l'email et réessayez (dix alertes actives au maximum par adresse)."}
                       </p>
                     )}
                   </Step>
@@ -710,14 +776,14 @@ export default function AlertDialog({
               <div className="h-full bg-stone-900 transition-[width] duration-200 ease-out" style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} />
             </div>
             <div className="shrink-0 bg-white px-6 md:px-12 py-4">
-              <p className="hidden md:block text-[11px] uppercase tracking-widest text-stone-400">Votre alerte</p>
+              <p className="hidden md:block text-[11px] uppercase tracking-widest text-stone-400">{shareWith ? 'Votre recherche' : 'Votre alerte'}</p>
               <p className="md:mt-0.5 text-sm text-stone-800 line-clamp-2" title={recapLine}>{recapLine}</p>
               <button
                 type="submit"
                 disabled={status === 'sending'}
                 className="mt-3 w-full h-12 md:h-14 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
               >
-                {status === 'sending' ? 'Enregistrement…' : 'Créer mon alerte'}
+                {status === 'sending' ? (shareWith ? 'Envoi…' : 'Enregistrement…') : shareWith ? 'Partager ma recherche' : 'Créer mon alerte'}
               </button>
               <p className="mt-2 text-xs text-stone-500 text-center">
                 Gratuit et sans engagement.{' '}
