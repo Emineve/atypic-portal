@@ -9,6 +9,8 @@ import { SITE_URL } from '../../../lib/site';
 import { publishedArticles, formatGuideDate } from '../../../lib/guide';
 import { passageAnchor } from '../../../lib/guide-search';
 import OpenHash from '../OpenHash';
+import SpecialistVideoCard from '../SpecialistVideoCard';
+import { videosForArticle } from '../../../lib/specialists';
 import { typo } from '../../../lib/typo';
 
 export const revalidate = 3600;
@@ -131,6 +133,17 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             )}
           </section>
         ))}
+
+        {videosForArticle(a.slug).length > 0 && (
+          <section className="mt-10">
+            <h2 className="font-serif text-2xl leading-snug text-stone-900">La parole au spécialiste</h2>
+            <div className="mt-4 space-y-4">
+              {videosForArticle(a.slug).map((v) => (
+                <SpecialistVideoCard key={v.id} v={v} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {a.checklist && (
           <section className="mt-10 border border-stone-900 bg-white p-6">

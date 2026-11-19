@@ -4,6 +4,8 @@ import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import GuideArt from './GuideArt';
+import SpecialistVideoCard from './SpecialistVideoCard';
+import { publishedVideos } from '../../lib/specialists';
 import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/guide';
 
 // La liste se recalcule toutes les heures : un article daté du jour apparaît sans nouvelle mise en ligne
@@ -19,6 +21,7 @@ export const metadata = {
 export default function GuideIndex() {
   const articles = publishedArticles();
   const [first, ...rest] = articles;
+  const videos = publishedVideos();
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
@@ -67,6 +70,18 @@ export default function GuideIndex() {
               </span>
             </div>
           </Link>
+        )}
+
+        {videos.length > 0 && (
+          <section id="specialistes" className="mt-14 md:mt-20 scroll-mt-24">
+            <h2 className="font-serif text-3xl md:text-4xl text-stone-900">La parole aux spécialistes</h2>
+            <p className="mt-3 max-w-2xl text-stone-600 font-light leading-relaxed">Une question, une réponse, en une minute.</p>
+            <div className="mt-6 grid gap-4 lg:grid-cols-2">
+              {videos.map((v) => (
+                <SpecialistVideoCard key={v.id} v={v} />
+              ))}
+            </div>
+          </section>
         )}
 
         {GUIDE_RUBRICS.map((r) => {
