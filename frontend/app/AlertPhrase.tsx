@@ -9,6 +9,7 @@ const PHRASES: { main: string; accent?: string }[] = [
   { main: 'Les biens rares partent vite.', accent: 'Soyez le premier informé.' },
   { main: 'Le bien que vous cherchez existe.', accent: 'Il n’est pas visible.' },
   { main: 'Dites-nous ce que vous cherchez.', accent: 'Le jour où il arrive, vous le savez.' },
+  { main: 'Dans les grandes villes, un bien au juste prix part en moins de 15 jours.', accent: 'Soyez prévenu avant les autres.' },
   { main: 'Ne passez pas à côté de votre prochain coup de cœur !' },
 ];
 
