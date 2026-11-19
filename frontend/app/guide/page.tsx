@@ -41,11 +41,11 @@ export default function GuideIndex() {
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
         {first && (
-          <Link href={`/guide/${first.slug}`} className="group grid md:grid-cols-5 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
-            <div className="md:col-span-2 overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F4E7B5] flex items-center">
+          <Link href={`/guide/${first.slug}`} className="group grid md:grid-cols-2 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+            <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F4E7B5] flex items-center">
               <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
-            <div className="md:col-span-3 p-7 md:p-10 flex flex-col justify-center">
+            <div className="p-7 md:p-10 flex flex-col justify-center">
               <p className="text-[10px] uppercase tracking-widest text-stone-400">
                 À la une · {first.category} · {first.readMinutes} min de lecture
               </p>
