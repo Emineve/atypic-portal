@@ -35,7 +35,7 @@ export async function GET() {
     '## Pages principales',
     '',
     `- [Tous les biens atypiques à vendre](${SITE_URL}/)`,
-    `- [Manifeste : pourquoi Loftissime](${SITE_URL}/qui-sommes-nous)`,
+    `- [Pourquoi Loftissime](${SITE_URL}/qui-sommes-nous)`,
     `- [Questions fréquentes : sélection des biens, fonctionnement, classement](${SITE_URL}/charte)`,
     `- [Agences : diffuser ses annonces sur Loftissime](${SITE_URL}/pro)`,
     `- [Inspiration : un architecte à la une](${SITE_URL}/inspiration)`,

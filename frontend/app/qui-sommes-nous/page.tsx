@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import Logo from '../Logo';
 
 export const metadata = {
-  title: 'Manifeste · Loftissime',
+  title: 'Pourquoi Loftissime',
   description:
     'Pour ceux qui ne veulent pas habiter comme tout le monde : pourquoi Loftissime réunit les biens atypiques à vendre et accompagne ceux qui les cherchent.',
   alternates: { canonical: '/qui-sommes-nous' },
@@ -31,7 +31,7 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
     title: 'Un coup de cœur n’empêche pas d’y voir clair.',
     text: 'Un souplex, une péniche, un ancien atelier ne s’achètent pas comme un appartement classique. Nous avons créé la rubrique État des lieux pour répondre aux questions que personne ne vous pose avant de signer.',
     href: '/guide',
-    link: 'Lire État des lieux',
+    link: 'Lire la rubrique',
   },
   {
     title: 'Il faut pouvoir imaginer avant de choisir.',
@@ -67,7 +67,7 @@ export default function ManifestoPage() {
       </nav>
 
       <header className="max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-14 md:pb-24">
-        <p className="text-xs uppercase tracking-widest text-stone-500">Manifeste</p>
+        <p className="text-xs uppercase tracking-widest text-stone-500">Pourquoi Loftissime</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
         </h1>
