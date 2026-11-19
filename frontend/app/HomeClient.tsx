@@ -2,7 +2,7 @@
 
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Menu, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Lightbulb, Calculator, Compass, Feather, Info } from 'lucide-react';
+import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Lightbulb, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertBox from './AlertBox';
@@ -452,12 +452,12 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             <button
               type="button"
               onClick={() => openAlert('header')}
-              aria-label="Créer mon alerte"
-              className="inline-flex h-10 items-center gap-2 px-3 sm:px-4 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-stone-800 transition"
+              aria-label="Nouvelle alerte"
+              className="inline-flex h-10 items-center gap-1.5 pl-3 pr-4 rounded-full bg-stone-900 text-white text-sm font-medium whitespace-nowrap hover:bg-stone-800 transition"
             >
-              <Bell className="w-4 h-4 text-white" strokeWidth={1.5} />
+              <Plus className="w-4 h-4" strokeWidth={2} />
               <span className="md:hidden">Alerte</span>
-              <span className="hidden md:inline">Créer mon alerte</span>
+              <span className="hidden md:inline">Nouvelle alerte</span>
             </button>
             <button
               type="button"
@@ -505,8 +505,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 }}
                 className="w-full flex items-center gap-3 py-4 border-b border-stone-200 text-left font-serif text-2xl text-stone-900"
               >
-                <Bell className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
-                Créer mon alerte
+                <Plus className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
+                Nouvelle alerte
               </button>
               <button
                 type="button"

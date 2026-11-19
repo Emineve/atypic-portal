@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Bell, BookOpen, Calculator, Compass, Feather, Heart, Info, Lightbulb, Menu, X } from 'lucide-react';
+import { ArrowLeft, Plus, BookOpen, Calculator, Compass, Feather, Heart, Info, Lightbulb, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import ModeEmploiBack from './ModeEmploiBack';
 
@@ -56,7 +56,7 @@ export default function SiteHeaderClient({
             <ModeEmploiBack />
             {back ??
               (backHref && backLabel ? (
-                <Link href={backHref} className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition whitespace-nowrap">
+                <Link href={backHref} className="hidden sm:inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition whitespace-nowrap">
                   <ArrowLeft className="w-3.5 h-3.5" />
                   {backLabel}
                 </Link>
@@ -65,11 +65,12 @@ export default function SiteHeaderClient({
             {alert && (
               <a
                 href="/?alerte=1"
-                aria-label="Créer mon alerte"
-                className="inline-flex h-10 items-center gap-2 px-3 sm:px-4 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-stone-800 transition"
+                aria-label="Nouvelle alerte"
+                className="inline-flex h-10 items-center gap-1.5 pl-3 pr-4 rounded-full bg-stone-900 text-white text-sm font-medium whitespace-nowrap hover:bg-stone-800 transition"
               >
-                <Bell className="w-4 h-4 text-white" strokeWidth={1.5} />
-                <span className="hidden sm:inline">Créer mon alerte</span>
+                <Plus className="w-4 h-4" strokeWidth={2} />
+                <span className="sm:hidden">Alerte</span>
+                <span className="hidden sm:inline">Nouvelle alerte</span>
               </a>
             )}
             <button
@@ -102,8 +103,8 @@ export default function SiteHeaderClient({
             </div>
             <nav className="flex-1 overflow-y-auto px-6 py-4">
               <a href="/?alerte=1" className="flex items-center gap-3 py-4 border-b border-stone-200 font-serif text-2xl text-stone-900">
-                <Bell className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
-                Créer mon alerte
+                <Plus className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
+                Nouvelle alerte
               </a>
               <a href="/?favoris=1" className="flex items-center justify-between gap-3 py-4 border-b border-stone-200">
                 <span className="flex items-center gap-3 font-serif text-2xl text-stone-900">
