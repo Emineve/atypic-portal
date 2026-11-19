@@ -67,7 +67,7 @@ export default async function InspirationPage() {
           <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">
             <p className="text-[10px] uppercase tracking-widest text-stone-400">Inspiration</p>
             <p className="mt-4 max-w-4xl font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
-              Ce qu&apos;un lieu atypique <span className="italic text-stone-500">peut devenir</span>.
+              Des idées pour <span className="italic text-stone-500">habiter autrement.</span>
             </p>
             <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
               Un architecte à la une, et ses réalisations pour nourrir votre projet.
