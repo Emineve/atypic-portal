@@ -134,6 +134,9 @@ export default function GuideSearch() {
   }
 
   const empty = hits !== null && hits.length === 0;
+  // Suggestions : tant que la question n'est pas lancée, celles qui contiennent ce qui est déjà tapé
+  const typed = plain(q.trim());
+  const suggestions = q.trim().length >= 3 ? [] : EXAMPLES.filter((ex) => plain(ex).includes(typed)).slice(0, 6);
 
   return (
     <section className="mt-10 md:mt-12 max-w-3xl" aria-label="Poser une question">
@@ -145,49 +148,53 @@ export default function GuideSearch() {
           input.current?.blur();
         }}
       >
-        <label htmlFor="question" className="block text-xs uppercase tracking-widest text-stone-500">
-          Posez votre question
-        </label>
-        <div className="mt-2 flex h-14 items-center gap-3 bg-stone-900 pl-4 pr-2">
-          <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.5} />
-          <input
-            ref={input}
-            id="question"
-            type="text"
-            inputMode="search"
-            enterKeyHint="search"
-            autoComplete="off"
-            maxLength={300}
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Escape') clear();
-            }}
-            placeholder="Puis-je installer une clim sans autorisation ?"
-            className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base text-white caret-white placeholder:text-stone-400 focus:outline-none focus:ring-0"
-          />
-          {q !== '' && (
-            <button type="button" onClick={clear} aria-label="Effacer la question" className="flex h-11 w-11 flex-none items-center justify-center text-stone-400 hover:text-white transition">
-              <X className="h-5 w-5" strokeWidth={1.5} />
+        <label htmlFor="question" className="sr-only">Posez votre question</label>
+        {/* Une barre de moteur de recherche : arrondie, blanche, avec ses suggestions qui s'ouvrent dessous dans le même cadre */}
+        <div className="rounded-[28px] border border-stone-300 bg-white shadow-[0_2px_12px_rgba(28,25,23,0.08)] transition focus-within:border-stone-900 focus-within:shadow-[0_6px_24px_rgba(28,25,23,0.14)]">
+          <div className="flex h-14 md:h-16 items-center gap-3 pl-5 pr-2">
+            <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.75} />
+            <input
+              ref={input}
+              id="question"
+              type="text"
+              inputMode="search"
+              enterKeyHint="search"
+              autoComplete="off"
+              maxLength={300}
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') clear();
+              }}
+              placeholder="Posez votre question"
+              className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base md:text-lg text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
+            />
+            {q !== '' && (
+              <button type="button" onClick={clear} aria-label="Effacer la question" className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-stone-400 transition hover:bg-stone-100 hover:text-stone-900">
+                <X className="h-5 w-5" strokeWidth={1.5} />
+              </button>
+            )}
+            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 md:h-12 md:w-12 flex-none items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700">
+              <ArrowRight className="h-5 w-5" strokeWidth={1.75} />
             </button>
+          </div>
+          {suggestions.length > 0 && (
+            <div className="border-t border-stone-200 pb-3 pt-3">
+              <p className="px-5 pb-1 text-xs uppercase tracking-widest text-stone-500">Les questions qu’on nous pose</p>
+              <ul>
+                {suggestions.map((ex) => (
+                  <li key={ex}>
+                    <button type="button" onClick={() => setQ(ex)} className="flex w-full items-start gap-3 px-5 py-2.5 text-left text-base text-stone-800 transition hover:bg-stone-50">
+                      <Search className="mt-1 h-4 w-4 flex-none text-stone-400" strokeWidth={1.75} />
+                      {ex}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </form>
-
-      {q.trim().length < 3 && (
-        <div className="mt-5">
-          <p className="text-xs uppercase tracking-widest text-stone-500">Les questions qu’on nous pose</p>
-          <ul className="mt-3 space-y-2">
-            {EXAMPLES.map((ex) => (
-              <li key={ex}>
-                <button type="button" onClick={() => setQ(ex)} className="text-left font-serif text-lg text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
-                  {ex}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <div aria-live="polite" className={loading && hits !== null ? 'opacity-60 transition-opacity' : 'transition-opacity'}>
         {loading && hits === null && <p className="mt-6 text-sm text-stone-500">Nous cherchons dans nos articles…</p>}
@@ -199,7 +206,7 @@ export default function GuideSearch() {
             </p>
             <ol className="mt-3 space-y-4">
               {hits.map((h, i) => (
-                <li key={h.slug} className={`border bg-white p-6 md:p-7 ${i === 0 ? 'border-stone-900' : 'border-stone-200'}`}>
+                <li key={h.slug} className={`rounded-[20px] border bg-white p-6 md:p-7 ${i === 0 ? 'border-stone-900' : 'border-stone-200'}`}>
                   <p className="text-xs uppercase tracking-widest text-stone-500">{h.category}</p>
                   <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900">{h.heading}</h2>
                   {h.excerpt && (
@@ -220,7 +227,7 @@ export default function GuideSearch() {
         )}
 
         {hits !== null && status !== 'done' && (
-          <div className={empty ? 'mt-8 border border-stone-900 bg-white p-6 md:p-8' : 'mt-6'}>
+          <div className={empty ? 'mt-8 rounded-[20px] border border-stone-900 bg-white p-6 md:p-8' : 'mt-6'}>
             {empty && (
               <>
                 <h2 className="font-serif text-2xl text-stone-900">Nous n’avons pas encore écrit sur cette question.</h2>
