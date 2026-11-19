@@ -71,13 +71,9 @@ export default function ManifestoPage() {
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
         </h1>
-        <div className="mt-10 md:mt-14 max-w-2xl">
-          <p className="text-xs uppercase tracking-widest text-stone-500">Notre ambition</p>
-          <p className="mt-4 font-serif text-2xl md:text-3xl leading-snug text-stone-900">
-            Tous les biens atypiques à vendre, sur un seul site. Toutes les agences, sans préférence. Et un acheteur accompagné jusqu&apos;à la visite, pour que personne ne passe à côté du bien qui lui ressemble.
-          </p>
-          <p className="mt-4 font-serif text-2xl md:text-3xl leading-snug italic text-stone-500">En France aujourd&apos;hui, ailleurs demain.</p>
-        </div>
+        <p className="mt-10 md:mt-12 max-w-2xl text-xl font-light leading-relaxed text-stone-700">
+          Tous les biens atypiques à vendre, sur un seul site. Partout en France, toutes agences réunies, sans préférence. Et vous, accompagné jusqu&apos;à la visite, pour ne pas passer à côté du bien qui vous ressemble.
+        </p>
       </header>
 
       <main className="max-w-4xl mx-auto px-6 pb-24">

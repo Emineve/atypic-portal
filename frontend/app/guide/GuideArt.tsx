@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges';
 
 const INK = '#1c1917';
 const SUN = '#F4E7B5';
@@ -251,7 +251,133 @@ function Visite() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite };
+function Terrasse() {
+  return (
+    <>
+      {/* ciel et soleil */}
+      <circle cx={930} cy={110} r={46} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {/* immeuble et toit-terrasse */}
+      <rect x={300} y={300} width={600} height={200} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M260 300 H940" {...line} />
+      {[360, 480, 600, 720].map((x) => (
+        <rect key={x} x={x} y={350} width={70} height={90} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      {/* garde-corps */}
+      <path d="M300 300 V240 H900 V300" {...thin} />
+      {[340, 380, 420, 780, 820, 860].map((x) => (
+        <path key={x} d={`M${x} 240 V300`} {...thin} />
+      ))}
+      {/* parasol, table, plantes */}
+      <path d="M600 130 V300" {...thin} />
+      <path d="M490 170 Q600 80 710 170 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M545 262 H655 M565 262 V300 M635 262 V300" {...line} />
+      <Plant x={470} y={274} />
+      <Plant x={735} y={274} />
+    </>
+  );
+}
+
+function Dpe() {
+  const rows: [string, number, string][] = [
+    ['A', 150, PAPER],
+    ['B', 210, PAPER],
+    ['C', 270, PAPER],
+    ['D', 330, SHADE],
+    ['E', 390, PAPER],
+    ['F', 450, PAPER],
+    ['G', 510, PAPER],
+  ];
+  return (
+    <>
+      <rect x={330} y={70} width={540} height={380} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {rows.map(([l, w, c], i) => (
+        <g key={l}>
+          <path d={`M370 ${100 + i * 46} h${w - 20} l20 17 l-20 17 h-${w - 20} z`} fill={c} stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+          <text x={384} y={124 + i * 46} fontSize={22} fontFamily="Georgia, serif" fill={INK}>{l}</text>
+        </g>
+      ))}
+      <path d="M800 255 h-70 M745 240 l-15 15 l15 15" {...line} />
+      <Lamp x={200} y={0} />
+      <Plant x={1010} y={424} />
+      <path d="M120 450 H1080" {...line} />
+    </>
+  );
+}
+
+function Credit() {
+  return (
+    <>
+      <path d="M120 430 H1080" {...line} />
+      {/* maison */}
+      <path d="M330 430 V250 L470 150 L610 250 V430 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <rect x={440} y={330} width={60} height={100} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={370} y={270} width={50} height={50} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={520} y={270} width={50} height={50} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* piles de pièces qui montent */}
+      {[0, 1, 2, 3].map((i) => (
+        <g key={i}>
+          {Array.from({ length: i + 2 }).map((_, j) => (
+            <ellipse key={j} cx={720 + i * 86} cy={418 - j * 22} rx={34} ry={11} fill={j % 2 ? SHADE : PAPER} stroke={INK} strokeWidth={2} />
+          ))}
+        </g>
+      ))}
+      <path d="M700 330 L790 290 L870 262 L990 200" {...dash} />
+      <path d="M990 200 l-26 2 M990 200 l-8 24" {...line} />
+    </>
+  );
+}
+
+function Duplex() {
+  return (
+    <>
+      <rect x={340} y={60} width={520} height={390} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {/* plancher percé par la trémie */}
+      <path d="M340 255 H560 M700 255 H860" {...line} />
+      <path d="M560 255 H700" {...dash} />
+      {/* escalier */}
+      <path d="M700 450 v-39 h-28 v-39 h-28 v-39 h-28 v-39 h-28 v-39 h-28" {...line} />
+      <path d="M560 255 V205 M700 255 V205" {...thin} />
+      {/* étage du haut : fenêtre et lit */}
+      <rect x={380} y={100} width={90} height={100} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={730} y={215} width={100} height={22} rx={4} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M730 237 V255 M830 237 V255" {...thin} />
+      {/* étage du bas */}
+      <Sofa x={390} y={450} />
+      <Lamp x={790} y={255} />
+      <path d="M200 450 H1000" {...line} />
+      <Plant x={270} y={424} />
+    </>
+  );
+}
+
+function Charges() {
+  return (
+    <>
+      <path d="M120 440 H1080" {...line} />
+      {/* immeuble */}
+      <rect x={280} y={110} width={300} height={330} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[150, 230, 310].map((y) =>
+        [320, 400, 480].map((x) => <rect key={`${x}-${y}`} x={x} y={y} width={50} height={50} fill={SUN} stroke={INK} strokeWidth={2} />),
+      )}
+      <rect x={405} y={385} width={50} height={55} fill={SHADE} stroke={INK} strokeWidth={2} />
+      {/* relevé de charges */}
+      <g transform="rotate(6 800 260)">
+        <rect x={680} y={100} width={250} height={320} fill={PAPER} stroke={INK} strokeWidth={3} />
+        <path d="M710 150 H830" {...line} />
+        {[200, 240, 280, 320].map((y) => (
+          <g key={y}>
+            <path d={`M710 ${y} H820`} {...thin} />
+            <path d={`M860 ${y} H900`} {...thin} />
+          </g>
+        ))}
+        <path d="M710 368 H900" {...line} />
+        <rect x={840} y={378} width={62} height={22} fill={SHADE} stroke={INK} strokeWidth={2} />
+      </g>
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges };
 
 export default function GuideArt({ art, className = '' }: { art: GuideArtKey; className?: string }) {
   const Drawing = ART[art];

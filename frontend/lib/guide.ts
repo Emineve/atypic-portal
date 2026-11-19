@@ -10,7 +10,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: 'Avant d’acheter' | 'Financer et assurer' | 'Vivre et entretenir' | 'Estimer et revendre';
@@ -687,6 +687,495 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'ANIL, « Vente / Cave aménagée » (Cour de cassation, 5 décembre 2007)', url: 'https://www.anil.org/documentation-experte/analyses-juridiques-jurisprudence/jurisprudence/jurisprudence-2008/vente-/-cave-amenagee/' },
     ],
     listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'terrasse-jardin-jouissance-privative',
+    art: 'terrasse',
+    title: 'Terrasse, toit-terrasse, jardin : en êtes-vous vraiment propriétaire ?',
+    description:
+      'Dans une copropriété, une terrasse ou un jardin « privatif » est souvent une partie commune dont vous avez seulement l’usage. Ce que cela change pour l’entretien, les travaux et le prix.',
+    category: 'Avant d’acheter',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'L’annonce dit « terrasse privative de 30 m² ». Sur le papier, c’est parfois autre chose : une partie commune de l’immeuble, dont le lot a seulement la jouissance exclusive. Vous y êtes chez vous au quotidien, mais vous n’en êtes pas propriétaire. La différence ne se voit pas à la visite. Elle se lit dans le règlement de copropriété, et elle compte le jour où il faut refaire l’étanchéité ou poser une pergola.',
+    takeaways: [
+      'Une terrasse ou un jardin peut être une partie privative du lot, ou une partie commune à jouissance privative. Seul le règlement de copropriété le dit.',
+      'Le droit de jouissance n’est pas un droit de propriété. Il est attaché au lot et se transmet avec lui à la vente.',
+      'En règle générale, l’entretien courant revient à celui qui profite de la terrasse, et le gros œuvre (étanchéité, structure) à la copropriété. Le règlement peut prévoir autre chose.',
+      'Pergola, véranda, jacuzzi, bac lourd : tout aménagement durable demande l’accord de l’assemblée générale.',
+    ],
+    sections: [
+      {
+        title: 'Partie privative ou simple droit de jouissance : quelle différence ?',
+        paragraphs: [
+          'Dans une copropriété, chaque lot comprend des parties privatives, qui vous appartiennent, et une quote-part des parties communes. Une terrasse, un toit-terrasse ou un jardin peut entrer dans l’une ou l’autre catégorie.',
+          'Très souvent, le toit de l’immeuble ou le jardin du rez-de-chaussée reste une partie commune, et le règlement en réserve l’usage à un seul lot. La loi du 10 juillet 1965 sur la copropriété le prévoit depuis 2019 dans son article 6-3 : on parle de partie commune à jouissance privative. Le droit de jouissance est l’accessoire du lot. Il ne peut pas être vendu séparément, et il suit le bien à chaque vente.',
+          'Concrètement, vous êtes le seul à pouvoir utiliser l’espace. Mais le sol, la dalle et l’étanchéité restent à la copropriété.',
+        ],
+      },
+      {
+        title: 'Qui paie l’entretien, qui paie l’étanchéité ?',
+        paragraphs: [
+          'Le partage habituel est simple. À vous l’entretien courant : nettoyage, plantations, revêtement de surface. À la copropriété ce qui touche à la structure : étanchéité, dalle, garde-corps.',
+          'Ce partage n’est qu’une règle par défaut. Le règlement de copropriété peut mettre davantage à la charge du bénéficiaire, parfois jusqu’à la réfection de l’étanchéité. Lisez la clause avant de vous engager : refaire l’étanchéité d’un toit-terrasse coûte cher.',
+          'Un point reste acquis quelle que soit la clause. La Cour de cassation l’a rappelé le 17 septembre 2026 : la copropriété répond des dégâts causés aux tiers par un défaut d’entretien d’une partie commune, même si le règlement confie cet entretien à un copropriétaire. Elle peut ensuite se retourner contre lui.',
+        ],
+      },
+      {
+        title: 'Que pouvez-vous y installer ?',
+        paragraphs: [
+          'Du mobilier, des pots, un parasol : sans difficulté. Dès que l’aménagement est durable ou touche à l’immeuble, il faut un vote de l’assemblée générale. C’est le cas d’une pergola, d’une véranda, d’un abri, d’un spa, ou de bacs dont le poids pèse sur la dalle.',
+          'Si le vendeur a fait des aménagements, demandez le procès-verbal qui les autorise. Un aménagement posé sans accord peut être contesté, et vous en hériteriez avec le bien.',
+        ],
+      },
+      {
+        title: 'La terrasse compte-t-elle dans la surface ?',
+        paragraphs: [
+          'Non. La surface Carrez ne retient que des locaux clos et couverts. Une terrasse, un balcon ou un jardin n’y entre jamais, qu’il soit privatif ou en simple jouissance. L’annonce doit donc donner deux chiffres distincts : la surface du logement, et celle de l’extérieur.',
+          'L’extérieur a bien une valeur, souvent décisive dans le prix. Mais cette valeur se discute : elle n’est pas garantie au mètre carré comme l’est la surface Carrez.',
+        ],
+      },
+      {
+        title: 'Et pour un jardin en rez-de-chaussée ?',
+        paragraphs: [
+          'Les règles sont les mêmes. Le jardin est le plus souvent une partie commune dont le lot a l’usage. Tonte, taille et plantations sont à votre charge. Abattre un arbre, poser une clôture ou construire un abri relève de l’assemblée générale.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À vérifier avant de faire une offre',
+      items: [
+        'Dans le règlement de copropriété : la terrasse est-elle une partie privative ou une partie commune à jouissance privative ?',
+        'La clause qui répartit l’entretien et les réparations, étanchéité comprise.',
+        'La date de la dernière réfection de l’étanchéité, et les travaux votés ou envisagés.',
+        'Le procès-verbal d’assemblée générale pour chaque aménagement existant.',
+        'Les surfaces annoncées : celle du logement d’un côté, celle de l’extérieur de l’autre.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Une terrasse à jouissance privative m’appartient-elle ?',
+        a: 'Non. Elle reste une partie commune de l’immeuble. Vous en avez l’usage exclusif, attaché à votre lot, mais pas la propriété.',
+      },
+      {
+        q: 'Qui paie la réfection de l’étanchéité d’un toit-terrasse ?',
+        a: 'En règle générale la copropriété, puisque l’étanchéité protège l’immeuble. Le règlement peut toutefois la mettre à la charge du bénéficiaire : il faut lire la clause.',
+      },
+      {
+        q: 'Puis-je installer une pergola sur ma terrasse ?',
+        a: 'Pas sans l’accord de l’assemblée générale, dès lors que l’installation est durable ou visible de l’extérieur.',
+      },
+      {
+        q: 'La terrasse est-elle comptée dans la surface Carrez ?',
+        a: 'Non. La surface Carrez ne compte que les locaux clos et couverts.',
+      },
+    ],
+    sources: [
+      { label: 'Construires.fr, « Partie commune à jouissance privative : qui paie les travaux ? »', url: 'https://www.construires.fr/une-partie-commune-a-jouissance-privative-terrasse-cour-genere-une-repartition-specifique-gros-entretien-a-charge-du-syn/' },
+      { label: 'MySweetImmo, « Copropriété : qui répond des dégâts d’une terrasse commune ? » (Cour de cassation, 17 septembre 2026)', url: 'https://www.mysweetimmo.com/2026/10/14/copropriete-qui-repond-des-degats-dune-terrasse-commune/' },
+      { label: 'FNAIM, « Loi Carrez : explications et mode de calcul de superficie »', url: 'https://www.fnaim.fr/4116-loi-carrez-explications-et-mode-de-calcul.htm' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'dpe-loft-atelier-dernier-etage',
+    art: 'dpe',
+    title: 'DPE d’un loft, d’un atelier, d’un dernier étage : comment lire l’étiquette',
+    description:
+      'Validité, classes, calendrier des interdictions de louer, audit énergétique : ce que le DPE dit d’un bien atypique, ce qu’il ne dit pas, et ce qu’il change pour l’acheteur.',
+    category: 'Avant d’acheter',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Grands volumes, verrière, toiture juste au-dessus de la tête : ce qui fait le charme d’un bien atypique est aussi ce qui pèse sur sa facture d’énergie. Le diagnostic de performance énergétique, ou DPE, résume tout cela en une lettre. Elle mérite mieux qu’un coup d’œil : elle engage votre confort, votre budget, et la possibilité de louer le bien un jour.',
+    takeaways: [
+      'Un DPE réalisé depuis le 1er juillet 2021 est valable dix ans. Ceux réalisés entre 2018 et juin 2021 ne sont plus valables depuis le 1er janvier 2025.',
+      'Le DPE se calcule d’après les caractéristiques du logement, pas d’après les factures de l’occupant.',
+      'Les logements classés G ne peuvent plus être mis en location depuis le 1er janvier 2025. Suivront les F en 2028 et les E en 2034.',
+      'Depuis le 1er janvier 2026, le calcul est plus favorable aux logements chauffés à l’électricité : un DPE antérieur peut mériter d’être mis à jour.',
+    ],
+    sections: [
+      {
+        title: 'Que contient un DPE ?',
+        paragraphs: [
+          'Deux étiquettes, de A à G : l’une pour la consommation d’énergie, l’autre pour les émissions de gaz à effet de serre. Le logement est classé selon la moins bonne des deux.',
+        ],
+        list: [
+          'La consommation annuelle estimée et la dépense correspondante, donnée sous forme de fourchette.',
+          'La description de l’isolation, du chauffage, de l’eau chaude et de la ventilation.',
+          'Une appréciation du confort en été, à regarder de près sous une verrière ou sous les toits.',
+          'Des recommandations de travaux, avec un coût estimé. Elles sont indicatives.',
+        ],
+      },
+      {
+        title: 'Le DPE est-il encore valable ?',
+        paragraphs: [
+          'Regardez sa date. Un DPE établi depuis le 1er juillet 2021 vaut dix ans. Un DPE établi entre le 1er janvier 2018 et le 30 juin 2021 n’est plus valable depuis le 1er janvier 2025 : le vendeur doit le refaire.',
+          'Le DPE vous est remis au plus tard à la signature de la promesse de vente. Demandez-le dès la visite : la lettre figure sur l’annonce, mais c’est le rapport complet qui vous renseigne.',
+        ],
+      },
+      {
+        title: 'Pourquoi un bien atypique est-il souvent moins bien classé ?',
+        paragraphs: [
+          'Le DPE ne regarde pas vos habitudes. Il calcule ce que consommerait le logement pour un usage standard, à partir de ses murs, de ses vitrages, de sa toiture et de ses équipements.',
+          'Un ancien atelier ou un loft cumule souvent ce que ce calcul pénalise : de grandes surfaces vitrées, de la hauteur à chauffer, une toiture ou un sol en contact direct avec l’extérieur. Un dernier étage perd par le toit, un rez-de-chaussée par le sol.',
+          'Une lettre moyenne n’est donc pas forcément le signe d’un bien mal entretenu. Elle indique où se trouvent les travaux utiles : le rapport le détaille poste par poste.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que la lettre change pour l’acheteur ?',
+        paragraphs: [
+          'Si vous comptez habiter le bien, elle pèse sur votre budget et sur le prix à négocier. Si vous comptez le louer, même plus tard, elle peut l’interdire.',
+        ],
+        list: [
+          'Logements classés G : mise en location interdite depuis le 1er janvier 2025.',
+          'Logements classés F : à partir du 1er janvier 2028.',
+          'Logements classés E : à partir du 1er janvier 2034.',
+          'Pour un bien classé F ou G, l’annonce et l’acte de vente doivent mentionner l’obligation de rénovation.',
+        ],
+      },
+      {
+        title: 'Dans quels cas un audit énergétique est-il obligatoire ?',
+        paragraphs: [
+          'Pour la vente d’une maison individuelle ou d’un immeuble appartenant à un seul propriétaire. L’audit est obligatoire pour les classes F et G depuis le 1er avril 2023, et pour la classe E depuis le 1er janvier 2025. Il va plus loin que le DPE : il chiffre un parcours de travaux.',
+          'Un appartement en copropriété n’est pas concerné par cet audit.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui a changé récemment ?',
+        list: [
+          'Depuis le 1er juillet 2024, les seuils sont adaptés pour les logements de 40 m² ou moins, jusque-là pénalisés.',
+          'Depuis le 1er janvier 2026, le coefficient appliqué à l’électricité est passé de 2,3 à 1,9. Un logement chauffé à l’électricité peut gagner une classe sans travaux.',
+          'De nouveaux changements sont annoncés pour le 1er janvier 2027.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'À demander et à regarder',
+      items: [
+        'Le rapport de DPE complet, et sa date.',
+        'La fourchette de dépense annuelle d’énergie, à comparer aux factures réelles du vendeur.',
+        'L’appréciation du confort d’été, surtout sous verrière ou sous les toits.',
+        'Les travaux recommandés et leur coût estimé.',
+        'L’audit énergétique, si le bien est une maison ou un immeuble entier classé E, F ou G.',
+        'En copropriété : les travaux d’isolation votés ou à l’étude dans l’immeuble.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Combien de temps un DPE est-il valable ?',
+        a: 'Dix ans s’il a été réalisé depuis le 1er juillet 2021. Les DPE réalisés entre 2018 et juin 2021 ne sont plus valables depuis le 1er janvier 2025.',
+      },
+      {
+        q: 'Peut-on acheter un logement classé G ?',
+        a: 'Oui. La vente reste possible. C’est la mise en location qui est interdite depuis le 1er janvier 2025, tant que des travaux n’ont pas amélioré le classement.',
+      },
+      {
+        q: 'Le DPE dépend-il des factures du vendeur ?',
+        a: 'Non. Il est calculé à partir des caractéristiques du logement, pour un usage standard. Les factures du vendeur sont un complément utile à demander.',
+      },
+      {
+        q: 'Faut-il refaire un DPE datant de 2025 ?',
+        a: 'Il reste valable. Mais si le logement est chauffé à l’électricité, le calcul en vigueur depuis le 1er janvier 2026 peut lui être plus favorable.',
+      },
+    ],
+    sources: [
+      { label: 'Service-Public.fr, « Diagnostic de performance énergétique (DPE) »', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F16096' },
+      { label: 'Notaires de France, « Quelles sont les conséquences du DPE sur les ventes et locations immobilières ? »', url: 'https://notaires.fr/fr/article/quelles-sont-les-consequences-du-dpe-sur-les-ventes-et-locations-immobilieres' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'financer-un-bien-atypique',
+    art: 'credit',
+    title: 'Financer un bien atypique : ce que la banque regarde',
+    description:
+      'Taux d’endettement, durée, travaux, assurance : les règles du crédit immobilier en 2026 et les points que la banque examine de plus près quand le bien sort de l’ordinaire.',
+    category: 'Financer et assurer',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Une banque finance un emprunteur, mais elle prend le bien en garantie. Devant un loft issu d’un ancien local, un souplex ou une péniche, elle se pose une question de plus : que vaudrait ce bien s’il fallait le revendre ? Mieux vaut le savoir avant de faire une offre, et préparer les réponses.',
+    takeaways: [
+      'Les règles sont les mêmes pour tous : mensualités limitées à 35 % des revenus, assurance comprise, sur 25 ans au plus.',
+      'La durée peut aller jusqu’à 27 ans quand les travaux représentent au moins un quart du coût de l’opération.',
+      'Pour un bien atypique, la banque regarde de près ce qui pèse sur la revente : la destination du bien, la surface réellement comptée, les travaux à prévoir.',
+      'Un dossier complet dès le premier rendez-vous fait gagner des semaines. Dans un marché de biens rares, cela compte.',
+    ],
+    sections: [
+      {
+        title: 'Quelles sont les règles du crédit immobilier ?',
+        paragraphs: [
+          'Elles sont fixées par le Haut Conseil de stabilité financière et s’imposent aux banques.',
+        ],
+        list: [
+          'Les mensualités de tous vos crédits, assurance comprise, ne doivent pas dépasser 35 % de vos revenus.',
+          'La durée du prêt est limitée à 25 ans.',
+          'Elle peut atteindre 27 ans pour un achat dans l’ancien avec des travaux représentant au moins 25 % du coût total de l’opération, ou pour un achat sur plan.',
+          'Les banques disposent d’une marge : jusqu’à 20 % des prêts qu’elles accordent peuvent s’écarter de ces règles, en priorité pour l’achat d’une résidence principale.',
+        ],
+      },
+      {
+        title: 'Pourquoi un bien atypique est-il regardé de plus près ?',
+        paragraphs: [
+          'Parce que la banque raisonne aussi en valeur de revente. Un bien singulier séduit moins d’acheteurs qu’un appartement classique, mais ceux qu’il séduit le cherchent précisément. Ce qui inquiète une banque, ce n’est pas l’originalité : c’est l’incertitude.',
+        ],
+        list: [
+          'La destination : un ancien local commercial est-il devenu officiellement un logement ?',
+          'La surface : quelle part est réellement comptée, quelle part est en sous-sol, sous pente ou en mezzanine ?',
+          'Les travaux : ont-ils été autorisés, et que reste-t-il à faire ?',
+          'La nature du bien : une péniche n’est pas un bien immobilier, et toutes les banques ne la financent pas comme un logement.',
+        ],
+      },
+      {
+        title: 'Comment financer les travaux ?',
+        paragraphs: [
+          'Ils peuvent être intégrés au prêt. La banque demande alors des devis. C’est souvent la meilleure solution : un seul prêt, un seul taux, une seule mensualité.',
+          'Si les travaux pèsent au moins un quart de l’opération, la durée peut être portée à 27 ans, ce qui allège la mensualité pendant le chantier.',
+          'Pensez aussi aux travaux qui ne dépendent pas de vous : ceux que la copropriété a votés ou s’apprête à voter.',
+        ],
+      },
+      {
+        title: 'Combien coûte l’assurance du prêt ?',
+        paragraphs: [
+          'Elle dépend surtout de votre âge et de votre santé. À titre indicatif, les moyennes relevées en 2026 par un courtier vont d’environ 0,10 % du capital emprunté par an à 25 ans à 0,47 % à 55 ans, pour un non-fumeur.',
+          'Vous n’êtes pas tenu de prendre l’assurance de la banque : vous pouvez en choisir une autre, à garanties équivalentes.',
+        ],
+      },
+      {
+        title: 'Comment préparer son dossier ?',
+        paragraphs: [
+          'Présentez le bien comme vous présentez vos revenus : avec des pièces. Plus le bien est singulier, plus les documents rassurent.',
+          'Rencontrez votre banque ou un courtier avant de visiter. Vous connaîtrez votre budget réel, et vous pourrez vous décider vite le jour où le bon bien se présente.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Les pièces qui rassurent une banque',
+      items: [
+        'Le mesurage Carrez, avec le détail des surfaces non comptées.',
+        'Pour un ancien local : la preuve du changement de destination.',
+        'Les autorisations des travaux réalisés : urbanisme et assemblée générale.',
+        'Les trois derniers procès-verbaux d’assemblée générale et le montant des charges.',
+        'Le DPE, et des devis pour les travaux que vous prévoyez.',
+        'Une estimation de votre mensualité, assurance comprise.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Quel est le taux d’endettement maximal ?',
+        a: '35 % des revenus, assurance comprise. Les banques peuvent y déroger pour une part limitée de leurs prêts.',
+      },
+      {
+        q: 'Peut-on emprunter sur plus de 25 ans ?',
+        a: 'Oui, jusqu’à 27 ans, notamment pour un achat dans l’ancien avec des travaux représentant au moins 25 % du coût total de l’opération.',
+      },
+      {
+        q: 'Une banque peut-elle refuser de financer un bien atypique ?',
+        a: 'Oui, si elle juge la garantie insuffisante ou la situation du bien incertaine. Un dossier documenté lève la plupart des réticences, et une autre banque peut apprécier le bien différemment.',
+      },
+      {
+        q: 'Les travaux peuvent-ils être inclus dans le prêt ?',
+        a: 'Oui, sur présentation de devis.',
+      },
+    ],
+    sources: [
+      { label: 'Pretto, « Haut Conseil de stabilité financière (HCSF) : définition et normes en 2026 »', url: 'https://www.pretto.fr/pret-immobilier/hcsf/assouplissements-credit-immobilier-hcsf' },
+      { label: 'Meilleurtaux, « Comparez les taux d’assurance de prêt immobilier »', url: 'https://www.meilleurtaux.com/assurance-de-pret/taux.html' },
+    ],
+    listingsLink: { label: 'Estimer ma mensualité', href: '/financement' },
+  },
+  {
+    slug: 'duplex-reunion-de-lots',
+    art: 'duplex',
+    title: 'Duplex né de deux appartements réunis : ce qu’il faut vérifier',
+    description:
+      'Escalier percé dans le plancher, palier annexé, deux lots devenus un seul logement : les autorisations à demander au vendeur et les risques quand elles manquent.',
+    category: 'Avant d’acheter',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 6,
+    intro:
+      'Deux appartements superposés reliés par un escalier, un studio réuni à son voisin, un bout de palier devenu entrée : beaucoup de duplex et de grands plateaux sont nés ainsi. Le résultat est souvent superbe. Il repose sur des travaux qui touchent à l’immeuble, et donc sur des autorisations. Avant d’acheter, il faut s’assurer qu’elles existent.',
+    takeaways: [
+      'Percer un plancher pour créer un escalier touche une partie commune : il faut l’accord de l’assemblée générale.',
+      'Annexer un morceau de palier ou de couloir suppose de l’acheter à la copropriété, par un vote puis un acte notarié.',
+      'Des travaux faits sans accord peuvent être contestés pendant cinq ans à compter du jour où ils ont été connus.',
+      'Vous achetez peut-être deux lots : vérifiez que l’acte, la surface et les charges correspondent au logement que vous visitez.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi un duplex réuni demande-t-il des autorisations ?',
+        paragraphs: [
+          'Dans une copropriété, vous êtes libre chez vous. Mais les planchers, les murs porteurs et les paliers ne sont pas chez vous : ce sont des parties communes. Relier deux étages suppose d’ouvrir le plancher. Cette ouverture s’appelle une trémie.',
+          'Le copropriétaire doit donc demander l’accord de l’assemblée générale avant les travaux. Le vote se fait à la majorité des voix de tous les copropriétaires. La demande est accompagnée d’un dossier technique, et l’assemblée peut exiger le suivi du chantier par un architecte ou un ingénieur.',
+        ],
+      },
+      {
+        title: 'Et si le vendeur a annexé un palier ou un couloir ?',
+        paragraphs: [
+          'Réunir deux appartements voisins conduit souvent à fermer le bout de couloir qui les sépare. Ce morceau de palier appartient à tous. Pour l’intégrer au logement, il faut l’acheter à la copropriété.',
+        ],
+        list: [
+          'La vente est votée à la double majorité : la majorité des copropriétaires, représentant au moins les deux tiers des voix.',
+          'Un géomètre mesure la surface, et le règlement de copropriété est modifié.',
+          'La vente est signée chez un notaire et publiée.',
+          'Les charges du lot augmentent, puisqu’il représente une part plus grande de l’immeuble.',
+        ],
+      },
+      {
+        title: 'Que risque-t-on si l’autorisation manque ?',
+        paragraphs: [
+          'La copropriété, ou un seul copropriétaire, peut demander en justice la remise en état des lieux. Le délai pour agir est de cinq ans à compter du jour où les travaux ont été connus ou auraient dû l’être.',
+          'Une régularisation reste possible : l’assemblée générale peut approuver les travaux après coup. Mais elle n’y est pas obligée, et tant qu’elle ne l’a pas fait, le risque pèse sur le propriétaire du moment. Après la vente, ce serait vous.',
+        ],
+      },
+      {
+        title: 'Achetez-vous un lot ou deux ?',
+        paragraphs: [
+          'La réunion physique de deux appartements ne les fusionne pas sur le papier. Très souvent, le logement reste composé de deux lots, chacun avec son numéro, sa quote-part et ses charges.',
+          'Ce n’est pas un problème, à condition que tout concorde. L’acte doit porter sur tous les lots qui composent le logement. La surface Carrez doit correspondre à l’ensemble. Et les charges annoncées doivent additionner celles de chaque lot.',
+        ],
+      },
+      {
+        title: 'Peut-on séparer de nouveau les deux appartements ?',
+        paragraphs: [
+          'C’est parfois un atout à la revente. Si les deux lots existent toujours, refermer la trémie reste un chantier, mais pas un casse-tête juridique. Vérifiez tout de même le règlement de copropriété : certains encadrent la division des logements.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Les documents à demander au vendeur',
+      items: [
+        'Le procès-verbal d’assemblée générale qui autorise l’ouverture du plancher ou du mur.',
+        'Le dossier technique des travaux et, si possible, l’attestation de l’architecte ou du bureau d’études.',
+        'Pour un palier annexé : l’acte d’achat de la partie commune et le règlement de copropriété modifié.',
+        'La liste des lots vendus, avec leurs quotes-parts.',
+        'Le mesurage Carrez de l’ensemble.',
+        'Le montant des charges de chaque lot.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Faut-il une autorisation pour relier deux appartements par un escalier ?',
+        a: 'Oui. Le plancher est une partie commune : l’assemblée générale doit autoriser l’ouverture, à la majorité des voix de tous les copropriétaires.',
+      },
+      {
+        q: 'Pendant combien de temps des travaux non autorisés peuvent-ils être contestés ?',
+        a: 'Cinq ans, à compter du jour où celui qui agit a connu les travaux ou aurait dû les connaître.',
+      },
+      {
+        q: 'Peut-on régulariser après coup ?',
+        a: 'Oui, si l’assemblée générale accepte de voter l’autorisation a posteriori. Elle n’y est pas tenue.',
+      },
+      {
+        q: 'Un bout de palier peut-il faire partie de l’appartement ?',
+        a: 'Seulement s’il a été acheté à la copropriété, par un vote à la double majorité puis un acte notarié.',
+      },
+    ],
+    sources: [
+      { label: 'ARC, « Les modalités juridiques de travaux privatifs affectant les parties communes »', url: 'https://arc-copro.fr/sites/default/files/pieces-jointes/2025/09/Les%20modalit%C3%A9s%20juridiques%20de%20travaux%20privatifs%20affectant%20les%20parties%20communes.pdf' },
+      { label: 'FNAIM, « Achat d’une partie commune en copropriété : que faut-il savoir ? »', url: 'https://www.fnaim.fr/3386-achat-d-une-partie-commune-en-copropriete-que-faut-il-savoir-.htm' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'charges-de-copropriete-avant-d-acheter',
+    art: 'charges',
+    title: 'Charges de copropriété : comment les lire avant d’acheter',
+    description:
+      'Combien paie-t-on en moyenne, ce que les charges comprennent, pourquoi elles varient d’un immeuble à l’autre, et les documents à demander avant de s’engager.',
+    category: 'Avant d’acheter',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Le prix d’un bien se paie une fois. Les charges, elles, reviennent chaque trimestre. Deux appartements au même prix peuvent coûter du simple au double à vivre. Avant d’acheter, il faut donc savoir ce que ce chiffre recouvre, et ce qu’il ne dit pas encore.',
+    takeaways: [
+      'À Paris, les charges de copropriété étaient en moyenne de 43 € par m² et par an selon les comptes 2023 des syndics de la FNAIM du Grand Paris.',
+      'Un montant élevé s’explique souvent : gardien, ascenseur, chauffage collectif compris.',
+      'Le montant des charges courantes ne dit rien des travaux à venir. Ce sont les procès-verbaux d’assemblée générale qui les annoncent.',
+      'Ramenez toujours les charges au mètre carré pour comparer deux biens.',
+    ],
+    sections: [
+      {
+        title: 'Combien paie-t-on en moyenne ?',
+        paragraphs: [
+          'Deux repères récents. À Paris, l’observatoire de la FNAIM du Grand Paris relève une moyenne de 43 € par m² et par an sur les comptes 2023, en hausse de près de 11 % sur un an. Au niveau national, l’observatoire de Foncia donne 1 488 € par lot en 2025, et 2 251 € à Paris.',
+          'Ces moyennes sont des ordres de grandeur. Elles mêlent des immeubles très différents, et ne sont pas calculées sur la même base que la surface de votre logement.',
+        ],
+      },
+      {
+        title: 'Que comprennent les charges ?',
+        paragraphs: [
+          'La loi distingue deux familles. Les charges générales couvrent l’entretien et l’administration de l’immeuble : ménage, assurance, syndic, petites réparations. Chacun y contribue selon la quote-part de son lot.',
+          'Les charges spéciales couvrent les services et équipements collectifs : ascenseur, chauffage, eau chaude, gardien. Elles sont réparties selon l’utilité que chaque lot en retire. C’est pourquoi un rez-de-chaussée ne paie en général pas l’ascenseur.',
+        ],
+      },
+      {
+        title: 'Pourquoi un tel écart d’un immeuble à l’autre ?',
+        list: [
+          'Le chauffage collectif : quand il est compris, les charges montent, mais votre facture d’énergie baisse d’autant.',
+          'Le gardien : un service apprécié, qui pèse lourd dans un petit immeuble.',
+          'L’ascenseur, son contrat d’entretien et ses mises aux normes.',
+          'La taille de l’immeuble : les frais fixes se répartissent sur plus ou moins de lots.',
+          'L’âge et l’état du bâtiment.',
+        ],
+      },
+      {
+        title: 'Et pour un bien atypique ?',
+        paragraphs: [
+          'Un ancien atelier en fond de cour, un loft dans une petite copropriété sans ascenseur ni gardien : les charges y sont souvent faibles. C’est un vrai avantage au quotidien.',
+          'La contrepartie existe. Peu de lots, cela veut dire peu de copropriétaires pour partager une toiture ou un ravalement. Regardez l’état de l’immeuble avec d’autant plus d’attention que les charges sont basses.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que le montant des charges ne dit pas ?',
+        paragraphs: [
+          'Il ne dit rien des travaux exceptionnels. Un ravalement, une toiture ou un ascenseur à remplacer se votent en assemblée générale et se paient en plus des charges courantes.',
+          'La copropriété constitue aussi un fonds de travaux, alimenté chaque année par les copropriétaires. Les sommes versées restent attachées au lot : le vendeur ne les récupère pas, et vous en bénéficiez.',
+          'Enfin, le compromis précise qui, du vendeur ou de l’acheteur, paie les travaux déjà votés. Lisez cette clause.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Les documents à demander',
+      items: [
+        'Le montant annuel des charges courantes du lot, et ce qu’elles comprennent.',
+        'Les trois derniers procès-verbaux d’assemblée générale.',
+        'Les travaux votés et non encore payés, et ceux qui sont à l’étude.',
+        'Le montant du fonds de travaux attaché au lot.',
+        'Le carnet d’entretien de l’immeuble.',
+        'Le nombre de lots, et l’existence éventuelle d’une procédure en cours dans la copropriété.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Quel est le montant moyen des charges de copropriété à Paris ?',
+        a: 'Environ 43 € par m² et par an selon l’observatoire de la FNAIM du Grand Paris, sur les comptes 2023. C’est un ordre de grandeur.',
+      },
+      {
+        q: 'Des charges élevées sont-elles mauvais signe ?',
+        a: 'Pas forcément. Elles s’expliquent souvent par un gardien, un ascenseur ou un chauffage collectif compris. Demandez ce qu’elles couvrent.',
+      },
+      {
+        q: 'Qui paie les travaux votés avant la vente ?',
+        a: 'Le compromis le précise. Vérifiez la clause, ainsi que les travaux votés dans les derniers procès-verbaux.',
+      },
+      {
+        q: 'Le vendeur récupère-t-il sa part du fonds de travaux ?',
+        a: 'Non. Les sommes versées restent attachées au lot et profitent à l’acheteur.',
+      },
+    ],
+    sources: [
+      { label: 'FNAIM du Grand Paris, 12e Observatoire des charges de copropriété', url: 'https://www.galivel.com/media/files/fnaim_gp___12e_obs_des_charges_2024___04022025_vok.pdf' },
+      { label: 'MySweetImmo, « Observatoire des charges de copropriété 2026 : Foncia annonce une baisse des charges »', url: 'https://www.mysweetimmo.com/2026/04/07/charges-de-copropriete-ce-qui-a-baisse-et-ce-qui-a-augmente-en-2025/' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
   },
 ];
 
