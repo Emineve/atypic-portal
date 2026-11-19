@@ -1,4 +1,5 @@
 import SiteHeader from '../SiteHeader';
+import { typo } from '../../lib/typo';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -56,8 +57,7 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
 ];
 
 export default function ManifestoPage() {
-  const link =
-    'inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
+  const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
@@ -80,13 +80,13 @@ export default function ManifestoPage() {
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
-                <h2 className="mt-2 md:mt-0 font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900">{a.title}</h2>
-                <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{a.text}</p>
+                <h2 className="mt-2 md:mt-0 font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900">{typo(a.title)}</h2>
+                <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(a.text)}</p>
                 {a.href && a.link && (
                   <p className="mt-5">
                     <Link href={a.href} className={link}>
-                      {a.link}
-                      <ArrowUpRight className="w-4 h-4" />
+                      {typo(a.link)}
+                      <ArrowUpRight className="ml-1.5 inline-block w-4 h-4 align-[-3px]" />
                     </Link>
                   </p>
                 )}

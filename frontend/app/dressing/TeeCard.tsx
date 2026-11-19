@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import TeeShirt from '../TeeShirt';
+import { typo } from '../../lib/typo';
 import { getSupabase } from '../../lib/supabase';
 
 const SIZES = ['S', 'M', 'L', 'XL'];
@@ -46,7 +47,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu' }: { name: 
       <div className="p-6 md:p-8">
         <p className="text-xs uppercase tracking-widest text-stone-500">Tee-shirt · Bientôt disponible</p>
         <h2 className="mt-2 font-serif text-3xl leading-tight text-stone-900">{name}</h2>
-        <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{pitch}</p>
+        <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{typo(pitch)}</p>
 
         <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Couleur : {color.name}</p>
         <div className="mt-3 flex gap-3">

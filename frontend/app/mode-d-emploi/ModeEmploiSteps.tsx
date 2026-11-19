@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AlertDialog from '../AlertDialog';
 import { MODE_EMPLOI_KEY } from '../ModeEmploiBack';
+import { typo } from '../../lib/typo';
 
 // Le mode d'emploi, une étape à la fois : un titre, deux phrases, un lien pour le faire tout de suite.
 const STEPS: { title: string; text: string; link: string; href: string }[] = [
@@ -104,7 +105,7 @@ export default function ModeEmploiSteps() {
                 <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[#F4E7B5] text-sm font-medium text-stone-900">{i + 1}</span>
                 <div>
                   <h2 className="font-serif text-2xl leading-snug text-stone-900">{s.title}</h2>
-                  <p className="mt-2 max-w-2xl text-base font-light leading-relaxed text-stone-600">{s.text}</p>
+                  <p className="mt-2 max-w-2xl text-base font-light leading-relaxed text-stone-600">{typo(s.text)}</p>
                   <p className="mt-3">
                     <Action s={s} />
                   </p>
@@ -115,7 +116,7 @@ export default function ModeEmploiSteps() {
         ) : (
           <div className="min-h-[15rem] md:min-h-[13rem]" aria-live="polite">
             <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-stone-900">{current.title}</h2>
-            <p className="mt-4 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{current.text}</p>
+            <p className="mt-4 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(current.text)}</p>
             <p className="mt-5">
               <Action s={current} />
             </p>

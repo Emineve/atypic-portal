@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { typo } from '../../lib/typo';
 
 export type Promise5 = { title: string; text: string; href?: string; link?: string; software?: boolean };
 
@@ -46,7 +47,7 @@ export default function ProSteps({ promises, softwareSrc }: { promises: Promise5
               <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[#F4E7B5] text-sm font-medium text-stone-900">{i + 1}</span>
               <div>
                 <h2 className="font-serif text-2xl leading-snug text-stone-900">{p.title}</h2>
-                <p className="mt-2 max-w-2xl text-base font-light leading-relaxed text-stone-600">{p.text}</p>
+                <p className="mt-2 max-w-2xl text-base font-light leading-relaxed text-stone-600">{typo(p.text)}</p>
                 <Extra p={p} />
               </div>
             </li>
@@ -55,7 +56,7 @@ export default function ProSteps({ promises, softwareSrc }: { promises: Promise5
       ) : (
         <div className="min-h-[19rem] md:min-h-[15rem]" aria-live="polite">
           <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-stone-900">{current.title}</h2>
-          <p className="mt-4 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{current.text}</p>
+          <p className="mt-4 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(current.text)}</p>
           <Extra p={current} />
         </div>
       )}

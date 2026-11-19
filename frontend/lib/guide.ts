@@ -21,7 +21,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -40,7 +40,7 @@ export interface GuideArticle {
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
     slug: 'hors-marche-off-market-mythe-et-realite',
-    art: 'annonce',
+    art: 'horsmarche',
     title: 'Hors marché : les meilleurs biens se vendent-ils vraiment sans annonce ?',
     description:
       'Le « off market » fait fantasmer tous les acheteurs. Ce que c’est, ce qu’il pèse réellement, pourquoi personne ne peut le mesurer, et comment accéder aux biens avant les autres.',
@@ -129,7 +129,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'conditions-suspensives-bien-atypique',
-    art: 'offre',
+    art: 'conditions',
     title: 'Conditions suspensives : celles qu’il faut prévoir pour un bien atypique',
     description:
       'La condition de prêt ne suffit pas quand on achète un atelier à transformer ou un loft à régulariser. Les clauses à faire inscrire dans la promesse, et comment les rédiger.',
@@ -231,7 +231,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'assurer-un-bien-atypique',
-    art: 'credit',
+    art: 'assurance',
     title: 'Assurer un bien atypique : ce qu’il faut déclarer',
     description:
       'Un séjour de 60 m², une mezzanine, une verrière, un atelier où l’on travaille : un loft ne se déclare pas comme un trois-pièces. Les points à ne pas oublier pour être bien couvert.',
@@ -326,7 +326,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'combien-de-temps-dure-une-recherche',
-    art: 'marche',
+    art: 'temps',
     title: 'Combien de temps dure une recherche immobilière ?',
     description:
       'Trois à six mois en moyenne en France, davantage à Paris, plus encore pour un bien rare. Ce que disent les chiffres disponibles, et comment ne pas rater le bon bien quand il arrive.',
@@ -414,7 +414,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'revendre-un-bien-atypique',
-    art: 'ventes',
+    art: 'revendre',
     title: 'Un bien atypique se revend-il bien ?',
     description:
       'Moins d’acheteurs, mais plus motivés : la revente d’un bien singulier ne suit pas les règles habituelles. Ce qui la facilite, ce qui la freine, et comment y penser dès l’achat.',
@@ -498,7 +498,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'qu-est-ce-qu-un-bien-atypique',
-    art: 'marche',
+    art: 'atypique',
     title: 'Qu’est-ce qu’un bien atypique, et qui en achète ?',
     description:
       'Loft, atelier, péniche, maison d’architecte : le mot « atypique » n’a pas de définition légale. Ce qu’il recouvre vraiment, ce qu’il ne garantit pas, et le portrait de ceux qui achètent.',
@@ -599,7 +599,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'surelever-ou-racheter-des-combles',
-    art: 'duplex',
+    art: 'surelever',
     title: 'Surélever, racheter des combles : gagner des mètres au-dessus de chez soi',
     description:
       'Au dernier étage, on lève les yeux : et si l’on montait ? À qui appartient le droit de surélever, comment racheter des combles, quels votes sont nécessaires.',
@@ -702,7 +702,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'meuble-touristique-paris-regles',
-    art: 'annonce',
+    art: 'meuble',
     title: 'Louer en meublé touristique à Paris : ce qui est permis, ce qui ne l’est pas',
     description:
       'Compter sur la location de courte durée pour financer un achat à Paris est risqué. Résidence principale, 90 jours, numéro d’enregistrement, changement d’usage : les règles en 2026.',
@@ -792,7 +792,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'travailler-chez-soi-usage-mixte',
-    art: 'charges',
+    art: 'bureau',
     title: 'Vivre et travailler au même endroit : ce que permet votre logement',
     description:
       'Atelier, cabinet, studio photo chez soi : le loft s’y prête. Règlement de copropriété, clause d’habitation bourgeoise, changement d’usage : ce qu’il faut vérifier avant d’acheter.',
@@ -895,7 +895,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'amiante-plomb-anciens-ateliers',
-    art: 'annonce',
+    art: 'amiante',
     title: 'Amiante et plomb : ce que cachent parfois les anciens ateliers',
     description:
       'Lofts, ateliers, anciennes usines : des bâtiments où l’amiante et le plomb sont fréquents. Quels diagnostics exiger, comment les lire, et que prévoir avant des travaux.',
@@ -998,7 +998,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'chauffer-un-grand-volume',
-    art: 'dpe',
+    art: 'chauffage',
     title: 'Chauffer un grand volume : pourquoi il fait froid en bas et chaud en haut',
     description:
       'Cinq mètres sous plafond font rêver en visite et réfléchir en janvier. Ce qui se passe dans un grand volume, les solutions qui existent, et les questions à poser avant d’acheter.',
@@ -1085,7 +1085,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'ouvrir-un-mur-porteur-en-copropriete',
-    art: 'plans',
+    art: 'mur',
     title: 'Ouvrir les volumes : peut-on toucher à un mur porteur ?',
     description:
       'Faire tomber un mur pour créer un grand séjour est le projet le plus courant, et le plus encadré. Qui autorise, quel dossier présenter, que risque-t-on sans accord ?',
@@ -1191,7 +1191,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'creer-une-mezzanine-autorisations',
-    art: 'mezzanine',
+    art: 'plateforme',
     title: 'Créer une mezzanine : quelles autorisations, quelle surface gagnée ?',
     description:
       'Une belle hauteur sous plafond donne envie d’ajouter un niveau. Mairie, copropriété, seuils de surface, hauteur de 1,80 m : les règles à connaître avant d’acheter pour transformer.',
@@ -1293,7 +1293,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'verriere-ce-qu-il-faut-verifier',
-    art: 'loft',
+    art: 'verriere',
     title: 'Verrière : la pièce maîtresse, et le premier poste à vérifier',
     description:
       'Elle fait la lumière et le charme d’un atelier ou d’un loft. À qui appartient-elle, qui l’entretient, peut-on la remplacer ? Les questions à poser avant d’acheter.',
@@ -1389,7 +1389,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'acheter-un-bien-classe-monument-historique',
-    art: 'plans',
+    art: 'monument',
     title: 'Monument historique : acheter un bien classé ou inscrit',
     description:
       'Classé, inscrit, aux abords : trois niveaux de protection, trois régimes de travaux. Ce que le propriétaire doit, ce qu’il peut demander, et ce qu’il faut savoir avant d’acheter.',
@@ -1497,7 +1497,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'lieu-reconverti-eglise-ecole-usine',
-    art: 'loft',
+    art: 'eglise',
     title: 'Église, école, usine : habiter un lieu qui a eu une autre vie',
     description:
       'Chapelle, école, gare, atelier d’usine devenus logements : ces lieux reconvertis font rêver. Destination, conformité, financement, travaux : ce qu’il faut vérifier avant d’acheter.',
@@ -1607,7 +1607,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'hotel-particulier-maison-en-ville',
-    art: 'visite',
+    art: 'hotel',
     title: 'Hôtel particulier, maison en ville : seul maître à bord, seul à payer',
     description:
       'Une maison au cœur de la ville, sans voisin au-dessus : le bien le plus rare. Protection du patrimoine, entretien à sa seule charge, usage des lieux : ce qu’il faut vérifier.',
@@ -1698,7 +1698,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'acheter-un-dernier-etage',
-    art: 'terrasse',
+    art: 'dernieretage',
     title: 'Dernier étage : la vue, la lumière… et le toit juste au-dessus',
     description:
       'Pas de voisin au-dessus, de la lumière, parfois une terrasse : le dernier étage se paie plus cher. Toiture, chaleur d’été, ascenseur, combles : ce qu’il faut vérifier avant d’acheter.',
@@ -1804,7 +1804,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'acheter-une-maison-d-architecte',
-    art: 'plans',
+    art: 'architecte',
     title: 'Maison d’architecte : ce que l’on achète, ce que l’on peut modifier',
     description:
       'Une maison signée se choisit pour son dessin. Avant d’acheter : les droits de l’architecte sur son œuvre, les garanties encore en cours et les documents à réclamer.',
@@ -1905,7 +1905,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'acheter-un-atelier-d-artiste',
-    art: 'loft',
+    art: 'atelier',
     title: 'Acheter un atelier d’artiste : un lieu de travail, pas toujours un logement',
     description:
       'Verrière, grande hauteur, fond de cour : l’atelier d’artiste fait rêver. Avant d’acheter, vérifiez qu’il est bien un logement aux yeux de la mairie, de la copropriété et de la banque.',
@@ -2013,7 +2013,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'cheminee-a-paris-peut-on-faire-du-feu',
-    art: 'charges',
+    art: 'cheminee',
     title: 'Cheminée à Paris : a-t-on encore le droit de faire du feu ?',
     description:
       'Foyer ouvert, insert, feu d’agrément : ce qui est permis à Paris, ce que dit la copropriété, et les vérifications à faire avant d’acheter un bien « avec cheminée ».',
@@ -2132,7 +2132,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
   },
   {
     slug: 'installer-une-climatisation-sans-autorisation',
-    art: 'plans',
+    art: 'clim',
     title: 'Peut-on installer une climatisation sans autorisation ?',
     description:
       'Dernier étage, verrière, loft sous les toits : avant de poser une climatisation, deux accords sont presque toujours nécessaires. Ce qu’il faut vérifier avant d’acheter.',

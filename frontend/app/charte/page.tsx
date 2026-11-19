@@ -1,3 +1,4 @@
+import { typo } from '../../lib/typo';
 import SiteHeader from '../SiteHeader';
 
 export const metadata = {
@@ -198,14 +199,14 @@ export default function ChartePage() {
                   {g.items.map((it) => (
                     <details key={it.q} className="group py-5">
                       <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-xl text-stone-900">
-                        {it.q}
+                        {typo(it.q)}
                         <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
                       </summary>
-                      <p className="mt-3 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{it.a}</p>
+                      <p className="mt-3 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(it.a)}</p>
                       {it.points && (
                         <ul className="mt-3 max-w-2xl space-y-2 text-lg font-light leading-relaxed text-stone-600">
                           {it.points.map((pt) => (
-                            <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{pt}</span></li>
+                            <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{typo(pt)}</span></li>
                           ))}
                         </ul>
                       )}

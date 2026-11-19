@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme';
 
 const INK = '#1c1917';
 const SUN = '#F4E7B5';
@@ -498,7 +498,445 @@ function Annonce() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce };
+function HorsMarche() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* une porte, sa serrure */}
+      <rect x={560} y={110} width={200} height={330} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={585} y={135} width={150} height={120} fill={SUN} stroke={INK} strokeWidth={2} />
+      <circle cx={720} cy={300} r={16} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M720 300 v26" {...line} />
+      {/* la clé qui s'en approche */}
+      <circle cx={330} cy={290} r={42} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <circle cx={330} cy={290} r={16} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M372 290 H500 M452 290 V322 M482 290 V314" {...line} />
+      <path d="M520 290 h20" {...dash} />
+      <Plant x={900} y={414} />
+    </>
+  );
+}
+
+function Temps() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* le sablier */}
+      <path d="M300 110 H480 M300 440 H480" {...line} />
+      <path d="M320 110 C320 220 390 240 390 275 C390 310 320 330 320 440 H460 C460 330 390 310 390 275 C390 240 460 220 460 110 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M344 440 C350 392 430 392 436 440 Z" fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M390 290 V380" {...dash} />
+      {/* le calendrier */}
+      <rect x={600} y={130} width={330} height={290} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M600 190 H930 M670 110 V150 M860 110 V150" {...line} />
+      {[0, 1, 2].map((r) =>
+        [0, 1, 2, 3, 4].map((c) => (
+          <rect key={`${r}-${c}`} x={626 + c * 58} y={214 + r * 62} width={40} height={40} fill={r === 1 && c > 0 && c < 4 ? SHADE : SUN} stroke={INK} strokeWidth={2} />
+        )),
+      )}
+    </>
+  );
+}
+
+function Revendre() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* la maison */}
+      <path d="M300 250 L460 130 L620 250" {...line} />
+      <rect x={330} y={250} width={260} height={190} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={430} y={340} width={60} height={100} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <rect x={360} y={285} width={50} height={50} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={510} y={285} width={50} height={50} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* le panneau */}
+      <path d="M800 440 V170" {...line} />
+      <path d="M800 190 H900" {...line} />
+      <rect x={760} y={210} width={180} height={110} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M782 245 H918" {...line} />
+      <rect x={782} y={268} width={90} height={26} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M800 210 V190 M900 210 V190" {...thin} />
+    </>
+  );
+}
+
+function Atypique() {
+  const xs = [180, 330, 720, 870];
+  return (
+    <>
+      <path d="M140 440 H1060" {...line} />
+      {/* quatre maisons semblables */}
+      {xs.map((x) => (
+        <g key={x}>
+          <path d={`M${x - 10} 320 L${x + 55} 270 L${x + 120} 320`} {...thin} />
+          <rect x={x} y={320} width={110} height={120} fill={PAPER} stroke={INK} strokeWidth={2} />
+          <rect x={x + 40} y={380} width={30} height={60} fill={SUN} stroke={INK} strokeWidth={2} />
+        </g>
+      ))}
+      {/* et celle qui ne leur ressemble pas : un atelier sous sheds vitrés */}
+      <path d="M480 440 V200 L540 140 V200 L600 140 V200 L660 140 V200 L690 200 V440 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M540 140 V200 M600 140 V200 M660 140 V200" {...thin} />
+      <rect x={510} y={250} width={150} height={110} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M560 250 V360 M610 250 V360 M510 305 H660" {...thin} />
+      <rect x={560} y={380} width={50} height={60} fill={PAPER} stroke={INK} strokeWidth={2} />
+    </>
+  );
+}
+
+function Mur() {
+  return (
+    <>
+      <path d="M200 440 H1000" {...line} />
+      <path d="M260 100 H940 V440 M260 100 V440" {...line} />
+      {/* le mur porteur, et l'ouverture projetée */}
+      <rect x={570} y={100} width={44} height={340} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <rect x={520} y={170} width={144} height={30} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={560} y={200} width={64} height={240} fill={SUN} stroke={INK} strokeWidth={2} strokeDasharray="8 8" />
+      <path d="M592 240 V400 M576 384 L592 400 L608 384" {...thin} />
+      <Sofa x={330} y={440} />
+      <Lamp x={800} y={100} />
+      <Plant x={860} y={414} />
+    </>
+  );
+}
+
+function Monument() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M330 440 V410 H870 V440 M360 410 V386 H840 V410" {...line} />
+      <path d="M340 190 L600 90 L860 190 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <circle cx={600} cy={152} r={20} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <rect x={360} y={190} width={480} height={26} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[390, 500, 660, 770].map((x) => (
+        <rect key={x} x={x} y={216} width={40} height={170} fill={PAPER} stroke={INK} strokeWidth={3} />
+      ))}
+      <rect x={565} y={266} width={70} height={120} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <Plant x={960} y={414} />
+    </>
+  );
+}
+
+function Architecte() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* deux volumes décalés, sur pilotis */}
+      <rect x={300} y={250} width={420} height={110} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={480} y={130} width={400} height={120} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <rect x={520} y={160} width={320} height={60} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M600 160 V220 M680 160 V220 M760 160 V220" {...thin} />
+      <rect x={330} y={280} width={240} height={80} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M410 280 V360 M490 280 V360" {...thin} />
+      <path d="M340 360 V440 M680 360 V440 M840 250 V440" {...line} />
+      <Plant x={960} y={414} />
+      <Plant x={230} y={414} />
+    </>
+  );
+}
+
+function Clim() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <rect x={300} y={90} width={420} height={350} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[130, 250].map((y) =>
+        [350, 480, 610].map((x) => <rect key={`${x}-${y}`} x={x} y={y} width={60} height={80} fill={SUN} stroke={INK} strokeWidth={2} />),
+      )}
+      <rect x={480} y={360} width={60} height={80} fill={SHADE} stroke={INK} strokeWidth={2} />
+      {/* le groupe extérieur, accroché à la façade */}
+      <rect x={720} y={250} width={150} height={100} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <circle cx={782} cy={300} r={32} fill={PAPER} stroke={INK} strokeWidth={2} />
+      <path d="M782 268 V332 M750 300 H814" {...thin} />
+      <path d="M836 276 H856 M836 300 H856 M836 324 H856" {...thin} />
+      <path d="M900 270 q20 -14 40 0 t40 0 M900 310 q20 -14 40 0 t40 0" {...thin} />
+    </>
+  );
+}
+
+function Verriere() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M240 440 V90 H960 V440" {...line} />
+      {/* la grande verrière */}
+      <rect x={330} y={130} width={420} height={250} fill={SUN} stroke={INK} strokeWidth={4} />
+      {[400, 470, 540, 610, 680].map((x) => (
+        <path key={x} d={`M${x} 130 V380`} {...thin} />
+      ))}
+      <path d="M330 213 H750 M330 296 H750" {...thin} />
+      <rect x={470} y={213} width={70} height={83} fill={PAPER} stroke={INK} strokeWidth={2} />
+      <Sofa x={790} y={440} />
+      <Plant x={290} y={414} />
+    </>
+  );
+}
+
+function Eglise() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* le clocher */}
+      <path d="M380 200 L430 90 L480 200" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <rect x={380} y={200} width={100} height={240} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M410 300 V250 a20 20 0 0 1 40 0 V300 Z" fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* la nef */}
+      <path d="M480 270 L650 190 L820 270" {...line} />
+      <rect x={480} y={270} width={340} height={170} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <circle cx={650} cy={250} r={22} fill={SHADE} stroke={INK} strokeWidth={2} />
+      {[520, 610, 700].map((x) => (
+        <path key={x} d={`M${x} 400 V330 a25 25 0 0 1 50 0 V400 Z`} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      <Plant x={900} y={414} />
+    </>
+  );
+}
+
+function Atelier() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M240 440 V90 H960 V440" {...line} />
+      {/* la baie d'atelier, haute et inclinée */}
+      <path d="M280 110 H520 L460 330 H280 Z" fill={SUN} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M360 110 V330 M440 110 L412 330 M280 220 H490" {...thin} />
+      {/* le chevalet et sa toile */}
+      <path d="M690 440 L740 150 L790 440 M740 150 V440" {...line} />
+      <rect x={650} y={190} width={180} height={140} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M680 300 q30 -70 60 -30 t60 -20" {...thin} />
+      <circle cx={790} cy={225} r={14} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M640 345 H840" {...line} />
+      {/* le tabouret */}
+      <path d="M540 380 H610 M550 380 L540 440 M600 380 L610 440" {...line} />
+      <Plant x={900} y={414} />
+    </>
+  );
+}
+
+function Meuble() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* la porte de l'immeuble */}
+      <rect x={300} y={110} width={220} height={330} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={330} y={140} width={160} height={110} fill={SUN} stroke={INK} strokeWidth={2} />
+      <circle cx={490} cy={300} r={9} fill={INK} />
+      {/* la valise */}
+      <path d="M700 250 V215 a12 12 0 0 1 12 -12 H788 a12 12 0 0 1 12 12 V250" {...line} />
+      <rect x={630} y={250} width={240} height={170} rx={14} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <path d="M690 250 V420 M810 250 V420" {...thin} />
+      <rect x={722} y={300} width={56} height={40} fill={PAPER} stroke={INK} strokeWidth={2} />
+      <circle cx={670} cy={430} r={10} fill={PAPER} stroke={INK} strokeWidth={2} />
+      <circle cx={830} cy={430} r={10} fill={PAPER} stroke={INK} strokeWidth={2} />
+    </>
+  );
+}
+
+function Amiante() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* l'ancien atelier et sa toiture en sheds */}
+      <path d="M260 440 V230 L360 150 V230 L460 150 V230 L560 150 V230 L660 150 V440 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {[285, 310, 335, 385, 410, 435, 485, 510, 535, 585, 610, 635].map((x) => (
+        <path key={x} d={`M${x} ${230 - ((x - 260) % 100) * 0.8} V230`} {...thin} />
+      ))}
+      <rect x={300} y={290} width={120} height={150} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={470} y={290} width={150} height={80} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* le signal d'alerte */}
+      <path d="M850 180 L960 370 H740 Z" fill={SHADE} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+      <path d="M850 250 V315" stroke={INK} strokeWidth={10} strokeLinecap="round" fill="none" />
+      <circle cx={850} cy={342} r={7} fill={INK} />
+    </>
+  );
+}
+
+function Bureau() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M240 440 V100 H960 V440" {...line} />
+      <path d="M600 100 V440" {...dash} />
+      {/* côté travail */}
+      <path d="M290 330 H540 M310 330 V440 M520 330 V440" {...line} />
+      <rect x={360} y={230} width={130} height={84} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M425 314 V330 M395 330 H455" {...line} />
+      <rect x={380} y={250} width={90} height={14} fill={SHADE} stroke={INK} strokeWidth={2} />
+      <path d="M380 282 H450" {...thin} />
+      <Lamp x={320} y={100} />
+      {/* côté vie */}
+      <Sofa x={700} y={440} />
+      <rect x={720} y={160} width={90} height={110} fill={SUN} stroke={INK} strokeWidth={2} />
+      <Plant x={900} y={414} />
+    </>
+  );
+}
+
+function Cheminee() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M240 440 V100 H960 V440" {...line} />
+      {/* le conduit, le manteau, le foyer */}
+      <rect x={530} y={100} width={140} height={150} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={440} y={250} width={320} height={30} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <rect x={470} y={280} width={260} height={160} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M520 440 V350 a80 80 0 0 1 160 0 V440 Z" fill={INK} stroke={INK} strokeWidth={3} />
+      <path d="M600 432 C560 410 580 380 596 366 C598 386 616 384 610 356 C644 380 644 416 600 432 Z" fill={SHADE} stroke={PAPER} strokeWidth={2} strokeLinejoin="round" />
+      <path d="M560 436 H640" stroke={PAPER} strokeWidth={3} strokeLinecap="round" />
+      <rect x={560} y={160} width={80} height={60} fill={SUN} stroke={INK} strokeWidth={2} />
+      <Sofa x={790} y={440} />
+      <Plant x={320} y={414} />
+    </>
+  );
+}
+
+function Assurance() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* le parapluie */}
+      <path d="M330 250 C340 110 860 110 870 250 C830 215 790 215 750 250 C710 215 670 215 630 250 C590 215 550 215 510 250 C470 215 430 215 390 250 C370 232 350 232 330 250 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M600 146 V120" {...line} />
+      {/* la maison à l'abri */}
+      <path d="M490 330 L600 250 L710 330" {...line} />
+      <rect x={510} y={330} width={180} height={110} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={580} y={370} width={40} height={70} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* la pluie */}
+      <path d="M250 150 l-14 36 M300 230 l-14 36 M930 140 l-14 36 M960 240 l-14 36 M890 320 l-14 36 M280 330 l-14 36" {...thin} />
+    </>
+  );
+}
+
+function Conditions() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* la planchette et sa liste de conditions */}
+      <rect x={420} y={90} width={360} height={350} rx={10} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <rect x={450} y={125} width={300} height={315} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <rect x={540} y={74} width={120} height={44} rx={8} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[180, 250, 320, 390].map((y, i) => (
+        <g key={y}>
+          <rect x={480} y={y - 16} width={32} height={32} fill={i < 3 ? SUN : PAPER} stroke={INK} strokeWidth={2} />
+          {i < 3 && <path d={`M487 ${y} l7 8 l12 -15`} {...thin} />}
+          <path d={`M536 ${y} H${i === 3 ? 660 : 716}`} {...line} />
+        </g>
+      ))}
+      <Plant x={900} y={414} />
+    </>
+  );
+}
+
+function Hotel() {
+  return (
+    <>
+      <path d="M140 440 H1060" {...line} />
+      {/* le toit à la Mansart et ses lucarnes */}
+      <path d="M330 190 L370 110 H830 L870 190 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {[430, 580, 730].map((x) => (
+        <rect key={x} x={x} y={132} width={40} height={44} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      <rect x={330} y={190} width={540} height={250} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[370, 460, 700, 790].map((x) => (
+        <g key={x}>
+          <rect x={x} y={220} width={44} height={74} fill={SUN} stroke={INK} strokeWidth={2} />
+          <rect x={x} y={330} width={44} height={74} fill={SUN} stroke={INK} strokeWidth={2} />
+        </g>
+      ))}
+      <path d="M560 440 V330 a40 40 0 0 1 80 0 V440 Z" fill={SHADE} stroke={INK} strokeWidth={3} />
+      <rect x={578} y={220} width={44} height={60} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* la grille */}
+      <path d="M200 440 V330 M250 440 V330 M950 440 V330 M1000 440 V330 M190 330 H260 M940 330 H1010" {...line} />
+    </>
+  );
+}
+
+function DernierEtage() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <circle cx={900} cy={130} r={36} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M380 170 H780 L740 110 H420 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <rect x={470} y={76} width={34} height={44} fill={PAPER} stroke={INK} strokeWidth={2} />
+      {/* le dernier étage, celui qui compte */}
+      <rect x={400} y={170} width={360} height={90} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <rect x={430} y={190} width={300} height={50} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M505 190 V240 M580 190 V240 M655 190 V240" {...thin} />
+      <rect x={400} y={260} width={360} height={180} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[285, 365].map((y) =>
+        [440, 555, 670].map((x) => <rect key={`${x}-${y}`} x={x} y={y} width={50} height={50} fill={SUN} stroke={INK} strokeWidth={2} />),
+      )}
+      <path d="M400 350 H760" {...thin} />
+      <path d="M300 215 H380 M356 199 L380 215 L356 231" {...line} />
+    </>
+  );
+}
+
+function Chauffage() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M260 440 V70 H940 V440" {...line} />
+      {/* le radiateur, tout en bas */}
+      {[330, 356, 382, 408, 434, 460].map((x) => (
+        <rect key={x} x={x} y={350} width={22} height={74} rx={6} fill={PAPER} stroke={INK} strokeWidth={2} />
+      ))}
+      <path d="M320 424 H494 M340 424 V440 M472 424 V440" {...line} />
+      {/* la chaleur qui monte sous le plafond */}
+      <path d="M360 320 q-18 -30 0 -60 t0 -60 t0 -60 M410 320 q-18 -30 0 -60 t0 -60 t0 -60 M460 320 q-18 -30 0 -60 t0 -60 t0 -60" {...thin} />
+      <rect x={300} y={84} width={600} height={40} fill={SHADE} stroke={INK} strokeWidth={2} strokeDasharray="8 8" />
+      {/* le thermomètre */}
+      <rect x={770} y={170} width={28} height={190} rx={14} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <circle cx={784} cy={376} r={26} fill={SHADE} stroke={INK} strokeWidth={3} />
+      <path d="M784 350 V250" stroke={INK} strokeWidth={8} strokeLinecap="round" fill="none" />
+      <path d="M812 200 H832 M812 240 H832 M812 280 H832 M812 320 H832" {...thin} />
+      <Sofa x={560} y={440} />
+    </>
+  );
+}
+
+function Surelever() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      {/* l'étage ajouté, encore en projet */}
+      <rect x={380} y={120} width={360} height={100} fill={SHADE} stroke={INK} strokeWidth={3} strokeDasharray="10 8" />
+      <rect x={420} y={145} width={60} height={50} fill={SUN} stroke={INK} strokeWidth={2} strokeDasharray="8 8" />
+      <rect x={640} y={145} width={60} height={50} fill={SUN} stroke={INK} strokeWidth={2} strokeDasharray="8 8" />
+      <rect x={380} y={220} width={360} height={220} fill={PAPER} stroke={INK} strokeWidth={3} />
+      {[250, 340].map((y) =>
+        [420, 530, 640].map((x) => <rect key={`${x}-${y}`} x={x} y={y} width={60} height={56} fill={SUN} stroke={INK} strokeWidth={2} />),
+      )}
+      {/* la flèche vers le haut */}
+      <path d="M850 400 V130 M822 162 L850 130 L878 162" {...line} />
+      <path d="M826 400 H874" {...line} />
+      <Plant x={270} y={414} />
+    </>
+  );
+}
+
+function Plateforme() {
+  return (
+    <>
+      <path d="M160 440 H1040" {...line} />
+      <path d="M260 440 V80 H940 V440" {...line} />
+      {/* la mezzanine à créer */}
+      <rect x={260} y={240} width={380} height={24} fill={SHADE} stroke={INK} strokeWidth={3} strokeDasharray="10 8" />
+      <path d="M640 264 V440" {...dash} />
+      {/* l'échelle */}
+      <path d="M690 440 L730 240 M740 440 L780 240" {...line} />
+      <path d="M700 392 H750 M710 344 H760 M720 296 H770" {...thin} />
+      {/* les deux hauteurs à mesurer */}
+      <path d="M860 100 V230 M846 116 L860 100 L874 116 M846 214 L860 230 L874 214" {...thin} />
+      <path d="M860 274 V424 M846 290 L860 274 L874 290 M846 408 L860 424 L874 408" {...thin} />
+      <path d="M840 252 H880" {...line} />
+      <Sofa x={330} y={440} />
+      <Plant x={560} y={414} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme };
 
 // fit « meet » : le dessin entier reste visible (article à la une) ; « slice » : il remplit le cadre, quitte à être rogné
 export default function GuideArt({ art, className = '', fit = 'slice' }: { art: GuideArtKey; className?: string; fit?: 'slice' | 'meet' }) {

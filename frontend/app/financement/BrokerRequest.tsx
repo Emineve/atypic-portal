@@ -46,7 +46,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
   const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px] disabled:opacity-60';
 
   return (
-    <section className="mt-6 rounded-[14px] border border-stone-200 bg-[#F6F2EA] p-6 md:p-8">
+    <section className="mt-6 rounded-[14px] border border-stone-200 bg-white p-6 md:p-8">
       <div className="flex items-start justify-between gap-6">
         <div className="max-w-xl">
           {status === 'done' ? (
