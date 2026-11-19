@@ -12,8 +12,8 @@ export const metadata = {
 // Le manifeste : une conviction par article, quelques lignes pour la tenir, parfois un lien pour agir.
 const ARTICLES: { title: string; text: string; href?: string; link?: string }[] = [
   {
-    title: 'Personne ne rêve d’un trois-pièces.',
-    text: 'On rêve d’une verrière, de quatre mètres sous plafond, d’une lumière à cinq heures du soir. Les autres sites comptent les pièces. Nous montrons ce qui fait qu’on s’arrête.',
+    title: 'On ne tombe pas amoureux d’un nombre de pièces.',
+    text: 'On tombe amoureux d’une verrière, de quatre mètres sous plafond, d’une lumière à cinq heures du soir. C’est cela que nous montrons en premier.',
   },
   {
     title: 'Votre lieu existe. Il est mal rangé.',
