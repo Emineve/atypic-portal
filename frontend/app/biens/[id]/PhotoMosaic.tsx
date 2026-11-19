@@ -46,8 +46,9 @@ export default function PhotoMosaic({
     );
   }
 
-  const small = total >= 7 ? images.slice(1, 7) : images.slice(1, 5);
-  const cols = small.length === 6 ? 'grid-cols-3' : 'grid-cols-2';
+  // Quatre vignettes au plus. Sur écran moyen, deux seulement : chaque photo garde un format proche du 4/3
+  // au lieu de s'étirer en hauteur. La hauteur suit la largeur (pas la hauteur de la fenêtre).
+  const small = images.slice(1, 5);
   const arrow = 'absolute top-1/2 -translate-y-1/2 h-12 w-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition disabled:opacity-0';
 
   return (
@@ -56,8 +57,8 @@ export default function PhotoMosaic({
         <Gallery images={images} title={title} category={category} favoriteId={favoriteId} thumbs={false} />
       </div>
 
-      <div className="hidden md:grid grid-cols-2 gap-1.5 h-[min(62vh,640px)] bg-white">
-        <div className="relative min-h-0">
+      <div className="relative hidden md:grid grid-cols-3 lg:grid-cols-2 gap-1.5 aspect-[2/1] lg:aspect-[8/3] bg-white">
+        <div className="relative min-h-0 col-span-2 lg:col-span-1">
           <button type="button" onClick={() => setViewer(0)} aria-label="Voir la photo 1 en grand" className="block w-full h-full overflow-hidden bg-stone-100">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={images[0]} alt={`${title} - photo 1`} className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
@@ -69,26 +70,24 @@ export default function PhotoMosaic({
           )}
           {favoriteId && <FavoriteButton listingId={favoriteId} />}
         </div>
-        <div className={`grid ${cols} grid-rows-2 gap-1.5 min-h-0`}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-1.5 min-h-0">
           {small.map((src, i) => (
-            <div key={src} className="relative min-h-0">
+            <div key={src} className={`relative min-h-0 ${i > 1 ? 'hidden lg:block' : ''}`}>
               <button type="button" onClick={() => setViewer(i + 1)} aria-label={`Voir la photo ${i + 2} en grand`} className="block w-full h-full overflow-hidden bg-stone-100">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={src} alt={`${title} - photo ${i + 2}`} className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </button>
-              {i === small.length - 1 && (
-                <button
-                  type="button"
-                  onClick={() => setViewer(0)}
-                  className="absolute bottom-3 right-3 inline-flex items-center gap-2 bg-white text-stone-900 text-[11px] font-semibold uppercase tracking-wider px-3 h-9 shadow hover:bg-stone-100 transition"
-                >
-                  <LayoutGrid className="w-4 h-4" />
-                  Voir les {total} photos
-                </button>
-              )}
             </div>
           ))}
         </div>
+        <button
+          type="button"
+          onClick={() => setViewer(0)}
+          className="absolute bottom-3 right-3 inline-flex items-center gap-2 whitespace-nowrap bg-white text-stone-900 text-[11px] font-semibold uppercase tracking-wider px-3 h-9 shadow hover:bg-stone-100 transition"
+        >
+          <LayoutGrid className="w-4 h-4 flex-none" />
+          Voir les {total} photos
+        </button>
       </div>
 
       {viewer !== null && (
