@@ -25,6 +25,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
   const [email, setEmail] = useState('');
   const [website, setWebsite] = useState(''); // champ piège anti-spam, invisible
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
+  const [limit, setLimit] = useState(false); // dix alertes actives déjà enregistrées pour cet e-mail
   const { budget } = criteria({ city, price });
 
   useEffect(() => {
@@ -45,6 +46,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
         p_locations: city ? [city] : null,
         p_source: 'fiche',
       });
+      setLimit(Boolean(error && error.message.includes('alert_limit')));
       if (!error && data === true) {
         saveVisitor({ email });
         try {
@@ -85,7 +87,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
         </button>
       </div>
       {status === 'error' && (
-        <p className={`mt-2 text-xs ${dark ? 'text-red-300' : 'text-red-700'}`}>L&apos;alerte n&apos;a pas pu être créée. Vérifiez votre e-mail et réessayez.</p>
+        <p className={`mt-2 text-xs ${dark ? 'text-red-300' : 'text-red-700'}`}>{limit ? <>Vous avez déjà dix alertes actives avec cet e-mail. Arrêtez-en une depuis <a href="/alerte" className="underline underline-offset-2">Mes alertes</a> pour en créer une nouvelle.</> : <>L&apos;alerte n&apos;a pas pu être créée. Vérifiez votre e-mail et réessayez.</>}</p>
       )}
       <p className={`mt-2 text-xs ${dark ? 'text-stone-400' : 'text-stone-500'}`}>
         En créant l&apos;alerte, vous acceptez de recevoir ces e-mails. Arrêt possible à tout moment.

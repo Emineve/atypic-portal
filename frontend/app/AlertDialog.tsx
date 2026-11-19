@@ -131,6 +131,7 @@ export default function AlertDialog({
   const [shared, setShared] = useState<string[]>([]); // agences qui ont bien reçu la recherche
   const [alertCreated, setAlertCreated] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [limit, setLimit] = useState(false); // dix alertes actives déjà enregistrées pour cet e-mail
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
   const [progress, setProgress] = useState(0); // avancement dans le formulaire, de 0 à 1
 
@@ -346,6 +347,7 @@ export default function AlertDialog({
         p_nice: filters.nice.length ? filters.nice : null,
       });
       const ok = !error && data === true;
+      setLimit(Boolean(error && error.message.includes('alert_limit')));
       // Numéro WhatsApp facultatif : rattaché à l'alerte qui vient d'être créée
       if (ok && wantWhatsapp && whatsapp.trim()) {
         try {
@@ -747,7 +749,13 @@ export default function AlertDialog({
                     )}
                     {status === 'error' && (
                       <p className="mt-4 text-xs text-red-700">
-                        {shareWith ? 'L’envoi a échoué. Vérifiez vos coordonnées et réessayez.' : "L'enregistrement a échoué. Vérifiez l'email et réessayez (dix alertes actives au maximum par adresse)."}
+                        {limit ? (
+                          <>Vous avez déjà dix alertes actives avec cet e-mail. Arrêtez-en une depuis <a href="/alerte" className="underline underline-offset-2">Mes alertes</a> pour en créer une nouvelle.</>
+                        ) : shareWith ? (
+                          'L’envoi a échoué. Vérifiez vos coordonnées et réessayez.'
+                        ) : (
+                          'L’enregistrement a échoué. Vérifiez votre e-mail et réessayez.'
+                        )}
                       </p>
                     )}
                   </Step>

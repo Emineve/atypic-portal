@@ -56,6 +56,7 @@ export default function ContactForm({
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [confirmOpen, setConfirmOpen] = useState(true); // fenêtre de confirmation après l'envoi
   const [alertStatus, setAlertStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [alertLimit, setAlertLimit] = useState(false); // dix alertes actives déjà enregistrées pour cet e-mail
 
   // Alerte proposée juste après la demande : même ville, budget jusqu'à 20 % au-dessus du bien consulté
   const alertBudget = price && price > 0 ? Math.ceil((price * 1.2) / 50000) * 50000 : null;
@@ -98,6 +99,7 @@ export default function ContactForm({
         p_locations: city ? [city] : null,
         p_source: 'apres-demande',
       });
+      setAlertLimit(Boolean(error && error.message.includes('alert_limit')));
       setAlertStatus(!error && data === true ? 'done' : 'error');
     } catch {
       setAlertStatus('error');
@@ -285,7 +287,13 @@ export default function ContactForm({
                       )}
                     </div>
                     {(alertStatus === 'error' || shareStatus === 'error') && (
-                      <p className="mt-2 text-xs text-red-700">Cela n&apos;a pas abouti. Réessayez.</p>
+                      <p className="mt-2 text-xs text-red-700">
+                        {alertStatus === 'error' && alertLimit ? (
+                          <>Vous avez déjà dix alertes actives avec cet e-mail. Arrêtez-en une depuis <a href="/alerte" className="underline underline-offset-2">Mes alertes</a> pour en créer une nouvelle.</>
+                        ) : (
+                          <>Cela n&apos;a pas abouti. Réessayez.</>
+                        )}
+                      </p>
                     )}
                     <p className="mt-3 text-xs text-stone-500 leading-relaxed">
                       Le partage transmet vos coordonnées à {agency} uniquement.
