@@ -15,6 +15,23 @@ const EXAMPLES = [
   'Comment négocier le prix ?',
   'Peut-on louer un bien classé G ?',
   'À quoi m’engage une offre d’achat ?',
+  'Un souplex est-il un vrai logement ?',
+  'Peut-on vivre toute l’année sur une péniche ?',
+  'La vue peut-elle disparaître ?',
+  'Qui paie l’ascenseur au dernier étage ?',
+  'Un loft est-il bruyant ?',
+  'Peut-on habiter un ancien local commercial ?',
+  'Faut-il un permis pour une véranda ?',
+  'Quelle hauteur sous plafond pour une mezzanine ?',
+  'Peut-on diviser un grand appartement en deux ?',
+  'Combien d’apport pour un bien atypique ?',
+  'Que peut porter une terrasse ?',
+  'Peut-on acheter à deux sans être mariés ?',
+  'La cave compte-t-elle dans la surface ?',
+  'Comment connaître les prix de vente du quartier ?',
+  'Un rez-de-chaussée sur cour est-il sombre ?',
+  'Peut-on réunir des chambres de service ?',
+  'Faut-il visiter avec un architecte ?',
 ];
 
 const btn = 'inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-60';
@@ -46,6 +63,16 @@ function Marked({ text, query }: { text: string; query: string }) {
 // Sans réponse, il peut laisser sa question et son e-mail pour être prévenu quand l'article paraît.
 export default function GuideSearch() {
   const [q, setQ] = useState('');
+  // Les suggestions tournent : un tirage différent à chaque visite
+  const [pool, setPool] = useState(EXAMPLES);
+  useEffect(() => {
+    const a = [...EXAMPLES];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    setPool(a);
+  }, []);
   const [asked, setAsked] = useState(''); // la question à laquelle correspondent les résultats affichés
   const [hits, setHits] = useState<GuideHit[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -137,7 +164,7 @@ export default function GuideSearch() {
   const empty = hits !== null && hits.length === 0;
   // Suggestions : tant que la question n'est pas lancée, celles qui contiennent ce qui est déjà tapé
   const typed = plain(q.trim());
-  const suggestions = q.trim().length >= 3 ? [] : EXAMPLES.filter((ex) => plain(ex).includes(typed)).slice(0, 4);
+  const suggestions = q.trim().length >= 3 ? [] : pool.filter((ex) => plain(ex).includes(typed)).slice(0, 4);
 
   return (
     <section className="mt-10 md:mt-12 max-w-3xl" aria-label="Poser une question">
