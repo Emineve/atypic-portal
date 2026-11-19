@@ -39,6 +39,109 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'surelever-ou-racheter-des-combles',
+    art: 'duplex',
+    title: 'Surélever, racheter des combles : gagner des mètres au-dessus de chez soi',
+    description:
+      'Au dernier étage, on lève les yeux : et si l’on montait ? À qui appartient le droit de surélever, comment racheter des combles, quels votes sont nécessaires.',
+    category: 'Copropriété',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Un dernier étage sous des combles vides, un toit plat sur lequel on se verrait bien construire une pièce de plus : le potentiel est souvent l’argument qui fait pencher un achat. Encore faut-il qu’il vous appartienne. En copropriété, ce qui se trouve au-dessus de votre plafond est rarement à vous. Voici comment le savoir, et comment l’obtenir.',
+    takeaways: [
+      'Le droit de surélever appartient à la copropriété, pas au propriétaire du dernier étage, sauf si le règlement en dispose autrement.',
+      'La copropriété peut céder ce droit, à un copropriétaire ou à un tiers, par un vote en assemblée générale et contre un prix réparti entre tous.',
+      'Les copropriétaires du dernier étage n’ont plus de droit de veto sur une surélévation, mais un droit de priorité pour acheter.',
+      'Des combles qui sont des parties communes s’achètent à la copropriété, là aussi par un vote. S’ils sont déjà privatifs, les relier au logement demande tout de même une autorisation.',
+    ],
+    sections: [
+      {
+        title: 'À qui appartient ce qu’il y a au-dessus de chez vous ?',
+        paragraphs: [
+          'Le règlement de copropriété et l’état descriptif de division le disent. Trois cas se rencontrent.',
+        ],
+        list: [
+          'Les combles sont un lot privatif, ou font partie de votre lot : ils sont à vous.',
+          'Les combles sont des parties communes : ils appartiennent à tous, même si vous êtes le seul à pouvoir y accéder.',
+          'Le toit et le volume au-dessus : ce sont des parties communes, et le droit d’y construire en est l’accessoire.',
+        ],
+      },
+      {
+        title: 'Qui a le droit de surélever l’immeuble ?',
+        paragraphs: [
+          'Le syndicat des copropriétaires. La Cour de cassation l’a rappelé dans un arrêt du 2 avril 2026 : le droit de surélever n’appartient pas au copropriétaire du dernier étage, mais au syndicat, sauf stipulation contraire du règlement. Le propriétaire du dernier étage n’a aucune prérogative particulière sur le volume situé au-dessus de son plafond.',
+          'Certains règlements attribuent expressément ce droit à un lot. C’est rare, précieux, et cela se vérifie mot pour mot. Le silence du règlement ne profite jamais au copropriétaire.',
+        ],
+      },
+      {
+        title: 'Comment obtenir le droit de surélever ?',
+        paragraphs: [
+          'En l’achetant à la copropriété. La décision de céder le droit de surélever se vote en assemblée générale, à une majorité renforcée : la loi prévoit selon les cas la double majorité de l’article 26 ou la majorité de l’article 25. Le prix payé est réparti entre les copropriétaires en proportion de leurs tantièmes. Il sert souvent à financer des travaux dans l’immeuble, ce qui est un bon argument pour convaincre.',
+          'Même titulaire du droit, vous devrez obtenir les autorisations d’urbanisme, respecter les hauteurs permises par le plan local d’urbanisme et faire étudier la structure de l’immeuble.',
+        ],
+      },
+      {
+        title: 'Et si c’est la copropriété qui veut surélever ?',
+        paragraphs: [
+          'C’est le risque inverse, à connaître quand on achète un dernier étage. Depuis la loi Alur de 2014, les copropriétaires du dernier étage ne peuvent plus bloquer une surélévation. Ils disposent en échange d’un droit de priorité : avant toute vente des lots créés, le syndic leur notifie le prix et les conditions, et ils peuvent acheter en premier.',
+          'Cherchez dans les procès-verbaux d’assemblée générale si un tel projet a déjà été discuté.',
+        ],
+      },
+      {
+        title: 'Comment racheter des combles ?',
+        paragraphs: [
+          'Si les combles sont des parties communes, il faut les acheter à la copropriété : proposition de prix, vote en assemblée générale à la majorité de l’article 26, puis acte notarié et modification du règlement et des tantièmes, à vos frais. Vous n’avez aucune priorité légale du seul fait d’habiter dessous : c’est à vous de convaincre.',
+          'Si les combles sont déjà privatifs et vous appartiennent, les relier à votre logement touche le plancher, donc une partie commune : l’assemblée générale doit l’autoriser, à la majorité de l’article 25.',
+          'Dans les deux cas, la surface gagnée ne compte que là où la hauteur atteint 1,80 m, et une fenêtre de toit se déclare en mairie.',
+        ],
+      },
+      {
+        title: 'Que vérifier avant d’acheter « avec potentiel » ?',
+        list: [
+          'Le règlement de copropriété : statut des combles, du toit et du droit de surélever.',
+          'Les procès-verbaux : une demande a-t-elle déjà été faite, acceptée ou refusée ?',
+          'Le plan local d’urbanisme : la hauteur maximale laisse-t-elle de la place ?',
+          'La hauteur réelle sous les combles, et l’état de la charpente.',
+          'Le prix : un potentiel que vous ne possédez pas ne se paie pas comme une surface acquise.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, si vous achetez pour le potentiel',
+      items: [
+        'Je sais à qui appartiennent les combles, le toit et le droit de surélever.',
+        'J’ai lu les procès-verbaux sur ces sujets.',
+        'J’ai vérifié les hauteurs permises par l’urbanisme.',
+        'J’ai fait visiter les combles par un architecte.',
+        'Je n’ai pas payé un potentiel qui dépend d’un vote.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Le propriétaire du dernier étage a-t-il le droit de surélever ?',
+        a: 'Non, sauf si le règlement de copropriété le lui attribue expressément. Ce droit appartient au syndicat des copropriétaires, qui peut le lui céder par un vote.',
+      },
+      {
+        q: 'Suis-je prioritaire pour acheter les combles au-dessus de chez moi ?',
+        a: 'Non. S’ils sont des parties communes, leur vente se décide en assemblée générale et vous devez convaincre les autres copropriétaires. La priorité légale ne concerne que les lots créés par une surélévation.',
+      },
+      {
+        q: 'La copropriété peut-elle construire un étage au-dessus de mon appartement ?',
+        a: 'Oui, si l’assemblée générale le vote et que l’urbanisme le permet. Vous ne pouvez plus vous y opposer seul, mais vous avez un droit de priorité pour acheter les lots créés.',
+      },
+    ],
+    sources: [
+      { label: 'Kohen Avocats, « Surélévation en copropriété : à qui appartient le droit de surélever »', url: 'https://kohenavocats.fr/?p=2145500' },
+      { label: 'Institut national de la consommation, « Copropriété : les conditions pour surélever l’immeuble »', url: 'https://www.inc-conso.fr/content/copropriete-les-conditions-pour-surelever-limmeuble' },
+      { label: 'Mon Immeuble, « Surélévation en copropriété »', url: 'https://monimmeuble.com/?p=106844' },
+      { label: 'Notaires du Grand Paris, fiche sur les majorités en copropriété', url: 'https://notairesdugrandparis.fr/fr/print/pdf/node/187810' },
+      { label: 'Crédit Agricole, « Copropriété : comment faire pour surélever l’immeuble ? »', url: 'https://e-immobilier.credit-agricole.fr/conseils/reglementation/copropriete-comment-faire-pour-surelever-limmeuble' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
     slug: 'meuble-touristique-paris-regles',
     art: 'annonce',
     title: 'Louer en meublé touristique à Paris : ce qui est permis, ce qui ne l’est pas',
