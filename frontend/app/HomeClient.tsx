@@ -439,12 +439,14 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
             </a>
             <button
               type="button"
-              onClick={() => openAlert('header')}
-              aria-label="Créer mon alerte"
+              onClick={() => setOnlyFavs((v) => !v)}
+              aria-label="Mes favoris"
+              aria-pressed={onlyFavs}
               className="inline-flex items-center gap-1.5 uppercase tracking-widest font-medium hover:text-stone-500 transition"
             >
-              <Bell className="w-5 h-5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Créer mon alerte</span>
+              <Heart className={`w-5 h-5 sm:w-4 sm:h-4 ${onlyFavs ? 'fill-current' : ''}`} />
+              <span className="hidden sm:inline">Mes favoris</span>
+              {favorites.length > 0 ? ` (${favorites.length})` : ''}
             </button>
             <button
               type="button"
@@ -454,9 +456,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               className="relative -mr-2 h-11 w-11 inline-flex items-center justify-center hover:text-stone-500 transition"
             >
               <Menu className="w-6 h-6" strokeWidth={1.5} />
-              {favorites.length > 0 && (
-                <span className="absolute top-1.5 right-1 h-2 w-2 rounded-full bg-red-600 ring-2 ring-white" aria-hidden="true" />
-              )}
             </button>
           </div>
 
@@ -482,6 +481,17 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
               <button
                 type="button"
                 onClick={() => {
+                  setMenuOpen(false);
+                  openAlert('menu');
+                }}
+                className="w-full flex items-center gap-3 py-4 border-b border-stone-200 text-left font-serif text-2xl text-stone-900"
+              >
+                <Bell className="w-5 h-5 text-stone-400" strokeWidth={1.5} />
+                Créer mon alerte
+              </button>
+              <button
+                type="button"
+                onClick={() => {
                   setOnlyFavs(true);
                   setMenuOpen(false);
                   window.scrollTo({ top: 0 });
@@ -493,17 +503,6 @@ export default function HomeClient({ initialListings }: { initialListings: Listi
                   Mes favoris
                 </span>
                 {favorites.length > 0 && <span className="text-sm text-stone-500">{favorites.length}</span>}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setMenuOpen(false);
-                  openAlert('menu');
-                }}
-                className="w-full flex items-center gap-3 py-4 border-b border-stone-200 text-left font-serif text-2xl text-stone-900"
-              >
-                <Bell className="w-5 h-5 text-stone-400" strokeWidth={1.5} />
-                Créer mon alerte
               </button>
               {[
                 ['/guide', 'L’état des lieux', 'Ce qu’il faut savoir avant d’acheter'],
