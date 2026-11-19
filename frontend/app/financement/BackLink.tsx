@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 // Arrivée depuis la fiche d'un bien : le lien de retour ramène à cette annonce, pas à la liste.
-export default function BackLink() {
+export default function BackLink({ className = 'inline-flex' }: { className?: string }) {
   const [listing, setListing] = useState('');
   useEffect(() => {
     const id = new URLSearchParams(window.location.search).get('bien') || '';
@@ -15,7 +15,7 @@ export default function BackLink() {
   return (
     <Link
       href={`/biens/${listing}`}
-      className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition"
+      className={`${className} items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition whitespace-nowrap`}
     >
       <ArrowLeft className="w-3.5 h-3.5" />
       Retourner à l’annonce

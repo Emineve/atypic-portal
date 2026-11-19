@@ -18,9 +18,11 @@ function pct(n: number) {
 export default function FinancementPage() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <SiteHeader back={<BackLink />} />
+      {/* Sur téléphone, le retour à l'annonce passe sous l'en-tête, qui n'a pas la place de l'accueillir */}
+      <SiteHeader back={<BackLink className="hidden sm:inline-flex" />} />
 
       <header className="max-w-4xl mx-auto px-6 pt-14 md:pt-24 pb-10 md:pb-14">
+        <BackLink className="mb-8 flex sm:hidden" />
         <p className="text-xs uppercase tracking-widest text-stone-500">Financement</p>
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Votre projet, <span className="italic text-stone-500">en mensualités.</span>

@@ -116,39 +116,42 @@ export default function Simulator() {
           <span className="bg-[#F4E7B5] border border-stone-900" style={{ width: `${(insTotal / total) * 100}%` }} />
         </div>
 
+        {/* Chaque ligne : le libellé à gauche, le montant à droite, sur la même ligne quel que soit l'écran */}
         <dl className="mt-2 divide-y divide-stone-200 border-b border-stone-200 text-stone-700">
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
-            <dt className="flex items-center gap-2.5">
+          <div className="flex items-baseline justify-between gap-4 py-3.5">
+            <dt className="flex items-baseline gap-2.5">
               <span className="h-2.5 w-2.5 flex-none bg-stone-900" aria-hidden="true" />
               Montant emprunté
             </dt>
             <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur(principal)}</dd>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
-            <dt className="flex items-center gap-2.5">
+          <div className="flex items-baseline justify-between gap-4 py-3.5">
+            <dt className="flex items-baseline gap-2.5">
               <span className="h-2.5 w-2.5 flex-none bg-stone-400" aria-hidden="true" />
               Intérêts sur {years} ans
             </dt>
             <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur(interest)}</dd>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
-            <dt className="flex items-center gap-2.5">
+          <div className="flex items-baseline justify-between gap-4 py-3.5">
+            <dt className="flex items-baseline gap-2.5">
               <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
-              Assurance sur {years} ans
+              <span>
+                Assurance sur {years} ans
+                <span className="block text-sm text-stone-500">soit {eur(insMonthly)} par mois</span>
+              </span>
             </dt>
-            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
-              {eur(insTotal)} <span className="font-sans text-sm text-stone-500">soit {eur(insMonthly)} par mois</span>
-            </dd>
+            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur(insTotal)}</dd>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-4">
+          <div className="flex items-baseline justify-between gap-4 py-4">
             <dt className="pl-5 font-medium text-stone-900">Montant total à rembourser</dt>
             <dd className="font-serif text-2xl text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3.5">
-            <dt className="pl-5">Revenus mensuels conseillés</dt>
-            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">
-              <span className="font-sans text-sm text-stone-500">environ</span> {eur(income)}
-            </dd>
+          <div className="flex items-baseline justify-between gap-4 py-3.5">
+            <dt className="pl-5">
+              Revenus mensuels conseillés
+              <span className="block text-sm text-stone-500">environ, pour 35 % d&apos;endettement</span>
+            </dt>
+            <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur(income)}</dd>
           </div>
         </dl>
         <p className="mt-5 text-sm text-stone-700 leading-relaxed">
