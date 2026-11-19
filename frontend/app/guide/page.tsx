@@ -42,10 +42,10 @@ export default function GuideIndex() {
       <main className="max-w-6xl mx-auto px-6 pb-20">
         {first && (
           <Link href={`/guide/${first.slug}`} className="group grid md:grid-cols-5 bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
-            <div className="md:col-span-3 overflow-hidden border-b md:border-b-0 md:border-r border-stone-900">
-              <GuideArt art={first.art} className="block w-full h-full min-h-[220px] md:min-h-[380px] group-hover:scale-[1.03] transition-transform duration-700" />
+            <div className="md:col-span-2 overflow-hidden border-b md:border-b-0 md:border-r border-stone-900">
+              <GuideArt art={first.art} className="block w-full h-full min-h-[180px] md:min-h-[280px] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
-            <div className="md:col-span-2 p-7 md:p-10 flex flex-col justify-center">
+            <div className="md:col-span-3 p-7 md:p-10 flex flex-col justify-center">
               <p className="text-[10px] uppercase tracking-widest text-stone-400">
                 À la une · {first.readMinutes} min de lecture
               </p>
@@ -60,7 +60,7 @@ export default function GuideIndex() {
         )}
 
         {rest.length > 0 && (
-          <ul className="mt-12 md:mt-16 grid sm:grid-cols-2 gap-8">
+          <ul className="mt-12 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {rest.map((a) => (
               <li key={a.slug}>
                 <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
@@ -71,7 +71,7 @@ export default function GuideIndex() {
                     <p className="text-[10px] uppercase tracking-widest text-stone-400">
                       {a.category} · {a.readMinutes} min de lecture
                     </p>
-                    <h2 className="mt-2 font-serif text-2xl md:text-[28px] leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
+                    <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
                       {a.title}
                     </h2>
                     <p className="mt-2 text-stone-600 leading-relaxed">{a.description}</p>
