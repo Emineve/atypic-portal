@@ -470,6 +470,15 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             </button>
             <button
               type="button"
+              onClick={() => openAlert('header')}
+              aria-label="Créer mon alerte"
+              className="inline-flex h-10 items-center gap-2 px-3 sm:px-4 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-stone-800 transition"
+            >
+              <Bell className="w-4 h-4 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
+              <span className="hidden md:inline">Créer mon alerte</span>
+            </button>
+            <button
+              type="button"
               onClick={() => setMenuOpen(true)}
               aria-label="Ouvrir le menu"
               aria-expanded={menuOpen}

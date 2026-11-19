@@ -63,7 +63,7 @@ export default function ProPage() {
   const h2 = 'font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900';
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
-      <SiteHeader>
+      <SiteHeader alert={false}>
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>
 

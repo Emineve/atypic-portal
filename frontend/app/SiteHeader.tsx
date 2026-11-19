@@ -24,11 +24,13 @@ export default function SiteHeader({
   backLabel,
   back,
   children,
+  alert = true,
 }: {
   backHref?: string;
   backLabel?: string;
   back?: React.ReactNode; // lien de retour sur mesure (ex. retour à l'annonce)
   children?: React.ReactNode; // lien supplémentaire propre à la page
+  alert?: boolean; // bouton « Créer mon alerte » (masqué sur les pages destinées aux agences)
 }) {
   const [open, setOpen] = useState(false);
   const [favs, setFavs] = useState(0);
@@ -58,6 +60,16 @@ export default function SiteHeader({
                 </Link>
               ) : null)}
             {children}
+            {alert && (
+              <a
+                href="/?alerte=1"
+                aria-label="Créer mon alerte"
+                className="inline-flex h-10 items-center gap-2 px-3 sm:px-4 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-stone-800 transition"
+              >
+                <Bell className="w-4 h-4 fill-[#E9C84A] text-[#E9C84A]" strokeWidth={1.5} />
+                <span className="hidden sm:inline">Créer mon alerte</span>
+              </a>
+            )}
             <button
               type="button"
               onClick={() => setOpen(true)}

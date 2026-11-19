@@ -6,7 +6,7 @@ import { formatPhone } from '../../lib/phone';
 
 type Props = { price: number; down: number; years: number; monthly: number };
 
-// Mise en relation avec un courtier : la demande arrive à Loftissime, avec le bien et la simulation en cours.
+// Mise en relation avec un courtier : la demande arrive à Loftissime, qui la transmet au courtier, avec le bien et la simulation en cours.
 export default function BrokerRequest({ price, down, years, monthly }: Props) {
   const [open, setOpen] = useState(false);
   const [listing, setListing] = useState<string | null>(null);
@@ -54,7 +54,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
               <h2 className="font-serif text-2xl md:text-3xl tracking-tight text-stone-900">
                 Merci, <span className="italic text-stone-500">c&apos;est noté.</span>
               </h2>
-              <p className="mt-3 text-stone-600 leading-relaxed">Nous vous rappelons très vite pour vous mettre en relation avec un courtier.</p>
+              <p className="mt-3 text-stone-600 leading-relaxed">Un courtier vous rappelle très vite pour étudier votre projet.</p>
             </>
           ) : (
             <>
@@ -62,7 +62,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
                 {listing ? 'Un courtier pour financer ce bien ?' : 'Un courtier pour financer votre projet ?'}
               </h2>
               <p className="mt-3 text-stone-600 leading-relaxed">
-                Il met les banques en concurrence et défend votre dossier. Laissez-nous vos coordonnées, nous vous mettons en relation.
+                Il met les banques en concurrence et défend votre dossier. Laissez vos coordonnées, il vous rappelle.
               </p>
             </>
           )}
@@ -108,7 +108,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
           </div>
           {status === 'error' && <p className="mt-4 text-sm text-red-700">L&apos;envoi n&apos;a pas fonctionné. Vérifiez votre téléphone et réessayez.</p>}
           <p className="mt-4 text-xs text-stone-500 leading-relaxed">
-            En envoyant, vous acceptez que Loftissime vous rappelle au sujet de votre financement{price > 0 ? ' et conserve votre simulation' : ''}. Vos coordonnées ne sont transmises à un courtier qu&apos;avec votre accord.{' '}
+            En envoyant, vous acceptez que vos coordonnées{price > 0 ? ' et votre simulation' : ''} soient transmises à un courtier, qui vous rappelle au sujet de votre financement.{' '}
             <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">Confidentialité</a>
           </p>
         </form>
