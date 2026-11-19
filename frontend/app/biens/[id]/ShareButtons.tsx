@@ -12,7 +12,7 @@ export default function ShareButtons({ url, title, city }: { url: string; title:
   }, []);
 
   // Message court : l'aperçu du lien affiche déjà la photo, le titre, la surface et le prix
-  const hook = city ? `Regarde ce bien à ${city}` : 'Regarde ce bien';
+  const hook = 'Jette un coup d’œil sur ce bien';
   const message = `${hook} :\n${url}`;
   const whatsapp = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
