@@ -39,6 +39,108 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'creer-une-mezzanine-autorisations',
+    art: 'mezzanine',
+    title: 'Créer une mezzanine : quelles autorisations, quelle surface gagnée ?',
+    description:
+      'Une belle hauteur sous plafond donne envie d’ajouter un niveau. Mairie, copropriété, seuils de surface, hauteur de 1,80 m : les règles à connaître avant d’acheter pour transformer.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-19',
+    updated: '2026-11-19',
+    readMinutes: 5,
+    intro:
+      'Quatre mètres sous plafond, et l’on voit déjà la chambre en mezzanine. C’est souvent ce projet qui justifie le prix d’un loft ou d’un atelier. Mais une mezzanine n’est pas un meuble : c’est de la surface créée. À ce titre, elle se déclare à la mairie, et en copropriété elle se vote. Mieux vaut le savoir avant d’acheter un volume « à aménager ».',
+    takeaways: [
+      'Côté mairie, tout dépend de la surface de plancher créée : rien à déclarer jusqu’à 5 m², déclaration préalable au-delà, permis de construire à partir de 20 m², ou de 40 m² dans les zones urbaines couvertes par un plan local d’urbanisme.',
+      'Seule la partie située sous au moins 1,80 m de hauteur compte comme surface de plancher.',
+      'En copropriété, créer une surface nouvelle demande l’accord de l’assemblée générale, surtout si la mezzanine s’ancre dans des murs porteurs, qui sont des parties communes.',
+      'Une mezzanine posée sans autorisation suit le bien à la revente : c’est l’acheteur suivant, ou vous, qui en répondez.',
+    ],
+    sections: [
+      {
+        title: 'Faut-il une autorisation de la mairie ?',
+        paragraphs: [
+          'Oui, au-delà d’un petit seuil. D’après la fiche de Service-Public reprise par Justice.fr :',
+        ],
+        list: [
+          'Jusqu’à 5 m² de surface de plancher créée : aucune formalité.',
+          'Au-dessus de 5 m² : une déclaration préalable de travaux, à déposer en mairie.',
+          'À partir de 20 m², ou de 40 m² dans une zone urbaine couverte par un plan local d’urbanisme : un permis de construire.',
+          'Si la surface totale du logement dépasse 150 m² après travaux, le recours à un architecte est obligatoire pour le permis.',
+        ],
+      },
+      {
+        title: 'Comment compte-t-on la surface créée ?',
+        paragraphs: [
+          'On ne compte que la partie de la mezzanine où la hauteur sous plafond atteint au moins 1,80 m. Une mezzanine de 20 m² dont 5 m² sont sous une pente à 1,50 m ne crée que 15 m² de surface de plancher.',
+          'Attention au revers : ce qui est trop bas pour être déclaré est aussi trop bas pour être vendu comme de la surface. Une mezzanine où l’on ne tient pas debout est un couchage, pas une pièce.',
+          'Autre point à vérifier : la hauteur qui reste dessous. Un niveau ajouté dans 3,50 m laisse peu de place aux deux étages. Faites dessiner la coupe avant de rêver.',
+        ],
+      },
+      {
+        title: 'Et la copropriété ?',
+        paragraphs: [
+          'Deux raisons de passer par l’assemblée générale. La première : le droit de construire appartient à l’ensemble des copropriétaires, et créer de la surface peut conduire à modifier le règlement de copropriété et la répartition des charges. La seconde : une mezzanine qui s’appuie sur des murs porteurs ou sur les planchers touche à la structure de l’immeuble, donc aux parties communes.',
+          'En pratique, on présente un dossier : plans, note d’un bureau d’études sur les charges reprises par la structure, devis. Une mezzanine indépendante, posée sur ses propres poteaux et démontable, est plus simple à faire accepter, mais lisez votre règlement avant de vous en dispenser.',
+        ],
+      },
+      {
+        title: 'Y a-t-il des taxes ?',
+        paragraphs: [
+          'Oui. La taxe d’aménagement s’applique dès que l’on crée une surface de plancher close, couverte et d’au moins 1,80 m de hauteur, y compris à l’intérieur d’un volume existant. La surface créée est aussi à déclarer aux impôts, ce qui peut faire évoluer la taxe foncière.',
+        ],
+      },
+      {
+        title: 'Vous achetez un bien avec une mezzanine déjà faite : que demander ?',
+        list: [
+          'L’autorisation d’urbanisme, si la mezzanine crée plus de 5 m² de surface de plancher.',
+          'Le procès-verbal de l’assemblée générale qui l’a autorisée.',
+          'Le mesurage officiel du bien : la mezzanine y figure-t-elle, et pour quelle surface ?',
+          'La note de calcul ou la facture de l’entreprise : une mezzanine supporte du poids, elle doit avoir été dimensionnée.',
+        ],
+        paragraphs: [
+          'S’il manque quelque chose, demandez au vendeur de régulariser avant la vente ou faites décrire la situation dans la promesse. Notre article sur les travaux non déclarés détaille les risques.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer, côté mezzanine',
+      items: [
+        'Mezzanine existante : j’ai l’autorisation de la mairie et le vote de la copropriété.',
+        'Je sais quelle surface elle représente dans le mesurage officiel.',
+        'Mezzanine à créer : j’ai fait dessiner une coupe avec les hauteurs réelles.',
+        'J’ai lu ce que le règlement de copropriété permet.',
+        'Je sais sur quoi elle s’appuie, et un professionnel l’a vérifié.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Faut-il un permis de construire pour une mezzanine ?',
+        a: 'Seulement à partir de 20 m² de surface de plancher créée, ou de 40 m² en zone urbaine couverte par un plan local d’urbanisme. Entre 5 m² et ce seuil, une déclaration préalable suffit. Jusqu’à 5 m², aucune formalité.',
+      },
+      {
+        q: 'Une mezzanine compte-t-elle dans la surface du logement ?',
+        a: 'Uniquement pour sa partie située sous au moins 1,80 m de hauteur. Le reste n’est pas de la surface de plancher.',
+      },
+      {
+        q: 'Faut-il l’accord de la copropriété ?',
+        a: 'Oui dès que la mezzanine crée de la surface ou s’ancre dans la structure de l’immeuble. L’assemblée générale doit l’autoriser.',
+      },
+      {
+        q: 'Que risque-t-on avec une mezzanine non déclarée ?',
+        a: 'La mairie peut exiger une mise en conformité et la copropriété une remise en état. À la revente, le notaire et l’acheteur demanderont les autorisations.',
+      },
+    ],
+    sources: [
+      { label: 'Justice.fr (Service-Public), « Faut-il une autorisation d’urbanisme pour construire une mezzanine ou un étage supplémentaire ? »', url: 'https://www.justice.fr/fiche/faut-autorisation-urbanisme-construire-mezzanine-etage-supplementaire' },
+      { label: 'Construires.fr, « Créer une mezzanine : permis de construire ou déclaration préalable ? »', url: 'https://www.construires.fr/creer-mezzanine-permis-declaration/' },
+      { label: 'Juritravail, « Construire une mezzanine dans son appartement »', url: 'https://www.juritravail.com/Actualite/construire-une-mezzanine-dans-son-appartement/Id/377185' },
+      { label: 'Village de la Justice, « Refus de travaux privatifs en copropriété : les solutions »', url: 'https://www.village-justice.com/articles/refus-travaux-privatifs-copropriete-les-solutions-pour-parvenir-leur,49142.html' },
+      { label: 'SeLoger, « Agrandissement facile : petit guide de la mezzanine »', url: 'https://edito.seloger.com/node/21266' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'verriere-ce-qu-il-faut-verifier',
     art: 'loft',
     title: 'Verrière : la pièce maîtresse, et le premier poste à vérifier',
