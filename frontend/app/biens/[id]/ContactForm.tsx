@@ -156,9 +156,8 @@ export default function ContactForm({
     <div className="space-y-4">
       <div className="border border-stone-300 bg-white">
         <div className="p-6">
-          <p className="inline-block bg-stone-900 px-3 py-1.5 text-[11px] uppercase tracking-widest text-white">Ce bien vous intéresse ?</p>
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
-          <div className="mt-5 min-w-0">
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-widest text-stone-400">{person ? agency : 'Votre contact pour ce bien'}</p>
             <p className="mt-1.5 font-serif text-2xl leading-tight text-stone-900 truncate">{person || agency}</p>
           </div>
