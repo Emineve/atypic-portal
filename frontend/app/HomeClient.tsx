@@ -454,7 +454,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               aria-pressed={onlyFavs}
               className="inline-flex items-center gap-1.5 uppercase tracking-widest font-medium hover:text-stone-500 transition"
             >
-              <Heart className={`w-5 h-5 sm:w-4 sm:h-4 ${onlyFavs ? 'fill-current' : ''}`} />
+              <Heart className={`w-5 h-5 sm:w-4 sm:h-4 ${favorites.length > 0 ? 'fill-red-600 text-red-600' : ''}`} />
               <span className="hidden sm:inline">Mes favoris</span>
               {favorites.length > 0 ? ` (${favorites.length})` : ''}
             </button>
