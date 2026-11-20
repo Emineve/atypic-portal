@@ -11,6 +11,7 @@ import AlertDialog from './AlertDialog';
 import FooterLinks from './FooterLinks';
 import Tracker from './Tracker';
 import HeroTitle from './HeroTitle';
+import FavHint from './FavHint';
 import ModeEmploiBack, { useFromModeEmploi } from './ModeEmploiBack';
 import { DpeChip } from './DpeBadge';
 import FilterPanel from './FilterPanel';
@@ -983,7 +984,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           </div>
         ) : visible.length === 0 ? (
           onlyFavs && favorites.length === 0 ? (
-            <div className="text-center py-20">
+            <div className="text-center py-16">
+              <FavHint />
               <p className="font-serif text-2xl text-stone-900">Vous n&apos;avez pas encore de favori.</p>
               <p className="mt-3 text-stone-600">Touchez le cœur d&apos;un bien pour le retrouver ici.</p>
               <button

@@ -31,3 +31,30 @@ body {
 .tabular-nums {
   word-spacing: 0.14em;
 }
+
+/* Écran « aucun favori » : le pointeur rejoint le cœur, qui se remplit */
+.fav-hint-cursor {
+  left: 18%;
+  top: 92%;
+  animation: fav-hint-move 3.6s ease-in-out infinite;
+}
+.fav-hint-heart {
+  fill: transparent;
+  animation: fav-hint-fill 3.6s ease-in-out infinite;
+}
+@keyframes fav-hint-move {
+  0%, 10% { left: 18%; top: 92%; transform: scale(1); }
+  45% { left: 86%; top: 17%; transform: scale(1); }
+  52% { left: 86%; top: 17%; transform: scale(0.85); }
+  60%, 88% { left: 86%; top: 17%; transform: scale(1); }
+  100% { left: 18%; top: 92%; transform: scale(1); }
+}
+@keyframes fav-hint-fill {
+  0%, 50% { fill: transparent; }
+  56%, 90% { fill: #dc2626; stroke: #dc2626; }
+  100% { fill: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fav-hint-cursor { animation: none; left: 86%; top: 17%; }
+  .fav-hint-heart { animation: none; fill: #dc2626; stroke: #dc2626; }
+}
