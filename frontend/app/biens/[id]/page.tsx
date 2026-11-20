@@ -489,11 +489,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <p className="font-sans text-[2.5rem] font-medium leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap">
               {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum)} €
             </p>
-            {sqm > 0 && priceNum > 0 && (
-              <p className="mt-2 text-sm text-stone-500">
-                {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(priceNum / sqm))} € par m²
-              </p>
-            )}
           </div>
           {/* Sur mobile, le contact est placé juste après la présentation (voir plus haut) */}
           <div className="hidden lg:block space-y-4">
