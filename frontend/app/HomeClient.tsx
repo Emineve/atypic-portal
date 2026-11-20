@@ -650,7 +650,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               }}
               id="recherche-lieu"
               placeholder="Ville, code postal, quartier…"
-              className="w-full h-14 pl-12 pr-14 sm:pr-44 rounded-[10px] bg-white border border-stone-300 text-base focus:outline-none focus:border-stone-900 shadow-[0_12px_30px_-14px_rgba(28,25,23,0.28)]"
+              className="w-full h-14 pl-12 pr-14 sm:pr-44 rounded-[10px] bg-white border border-stone-200 text-base focus:outline-none focus:border-stone-900 shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
               aria-label="Rechercher un lieu"
               role="combobox"
               aria-expanded={showSuggestions}
@@ -716,7 +716,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <button
             type="button"
             onClick={() => setShowFilters(true)}
-            className="relative h-14 w-14 flex-none rounded-[10px] border border-stone-300 bg-white inline-flex items-center justify-center hover:border-stone-900 transition shadow-[0_12px_30px_-14px_rgba(28,25,23,0.28)]"
+            className="relative h-14 w-14 flex-none rounded-[10px] border border-stone-200 bg-white inline-flex items-center justify-center hover:border-stone-900 transition shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
             aria-haspopup="dialog"
             aria-label={activeFilters > 0 ? `Critères (${activeFilters})` : 'Critères'}
             title="Critères"
