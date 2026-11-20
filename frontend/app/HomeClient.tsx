@@ -1000,8 +1000,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         )}
                       </div>
                       <div>
-                        <div className="mt-6 flex flex-col items-start gap-3">
-                          <span className="text-xs leading-snug text-stone-500">{agencyLine(item.source_agency)}</span>
+                        <div className="mt-6 flex items-end justify-between gap-4">
+                          <span className="min-w-0 text-[11px] leading-snug text-stone-500">{agencyLine(item.source_agency)}</span>
                           <span className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900 transition">
                             Voir le bien
                             <ArrowUpRight className="w-3.5 h-3.5" />

@@ -96,8 +96,8 @@ export default function CollectionPage({
                       </ul>
                     )}
                   </div>
-                  <div className="mt-6 flex flex-col items-start gap-3">
-                    <span className="text-xs leading-snug text-stone-500">
+                  <div className="mt-6 flex items-end justify-between gap-4">
+                    <span className="min-w-0 text-[11px] leading-snug text-stone-500">
                       {[hideAgency ? null : agencyLine(item.source_agency), item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
                     </span>
                     <Link href={`/biens/${item.id}`} className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
