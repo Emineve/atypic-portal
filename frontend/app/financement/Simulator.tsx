@@ -58,7 +58,7 @@ export default function Simulator() {
 
   const total = principal + interest + insTotal || 1;
 
-  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans font-normal tabular-nums text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
+  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans font-normal tabular-nums [word-spacing:0] text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
   const label = 'block text-xs uppercase tracking-widest text-stone-500';
 
   return (
