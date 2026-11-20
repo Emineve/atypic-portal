@@ -485,11 +485,15 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
         <aside className="min-w-0">
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
-          <div className="hidden lg:block rounded-[14px] border border-stone-200 bg-white p-6">
-            <p className="font-serif text-5xl leading-none tracking-tight text-stone-900 whitespace-nowrap">
-              {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum)}
-              <span className="ml-2 text-3xl text-stone-400">€</span>
+          <div className="hidden lg:block px-1 pb-2">
+            <p className="font-sans text-[2.5rem] font-medium leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap">
+              {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum)} €
             </p>
+            {sqm > 0 && priceNum > 0 && (
+              <p className="mt-2 text-sm text-stone-500">
+                {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(priceNum / sqm))} € par m²
+              </p>
+            )}
           </div>
           {/* Sur mobile, le contact est placé juste après la présentation (voir plus haut) */}
           <div className="hidden lg:block space-y-4">
