@@ -67,7 +67,7 @@ export default function Contacts({ token }: { token: string }) {
         )}
       </div>
       <p className="mb-3 max-w-3xl text-sm text-stone-500">
-        Une ligne par personne, regroupée par e-mail. Cliquez sur une ligne pour voir tout ce qu’elle a enregistré : alertes, demandes sur un bien, recherches confiées, courtier, questions, tee-shirts. Les données d’exemple n’y figurent pas.
+        Une ligne par personne, regroupée par e-mail. Cliquez sur une ligne pour voir tout ce qu’elle a enregistré : alertes, demandes sur un bien, recherches confiées, courtier, questions, tee-shirts. Pendant la phase de test, vos essais y figurent avec la mention « test ».
       </p>
       {failed ? (
         <p className="text-sm text-red-700">Le fichier des contacts n’a pas pu être chargé.</p>
