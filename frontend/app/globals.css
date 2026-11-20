@@ -26,3 +26,8 @@ body {
     font-size: 16px !important;
   }
 }
+
+/* Montants : les milliers sont espacés partout de la même façon */
+.tabular-nums {
+  word-spacing: 0.14em;
+}

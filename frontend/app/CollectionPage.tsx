@@ -92,7 +92,7 @@ export default function CollectionPage({
                   </div>
                   <div className="mt-6 flex items-end justify-between gap-3">
                     <span>
-                      <span className="block whitespace-nowrap text-xl font-medium tracking-tight font-sans tabular-nums [word-spacing:0.12em]">
+                      <span className="block whitespace-nowrap text-xl font-normal tracking-tight font-sans tabular-nums">
                         {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
                       </span>
                       {(!hideAgency || item.source_id) && (

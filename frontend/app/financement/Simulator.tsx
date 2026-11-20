@@ -5,7 +5,7 @@ import { RATES } from '../../lib/rates';
 import BrokerRequest from './BrokerRequest';
 
 function eur(n: number) {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n).replace(/[\u202f\u00a0]/g, '\u00a0');
 }
 
 function num(v: string) {
@@ -58,7 +58,7 @@ export default function Simulator() {
 
   const total = principal + interest + insTotal || 1;
 
-  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans font-medium tabular-nums text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
+  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans font-normal tabular-nums text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
   const label = 'block text-xs uppercase tracking-widest text-stone-500';
 
   return (
@@ -82,7 +82,7 @@ export default function Simulator() {
                 type="button"
                 onClick={() => pickYears(o.years)}
                 aria-pressed={years === o.years}
-                className={`font-sans font-medium tabular-nums text-2xl underline-offset-8 transition ${years === o.years ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-400 hover:text-stone-900'}`}
+                className={`font-sans font-normal tabular-nums text-2xl underline-offset-8 transition ${years === o.years ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-400 hover:text-stone-900'}`}
               >
                 {o.years} ans
               </button>
@@ -123,14 +123,14 @@ export default function Simulator() {
               <span className="h-2.5 w-2.5 flex-none bg-stone-900" aria-hidden="true" />
               Montant emprunté
             </dt>
-            <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(principal)}</dd>
+            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(principal)}</dd>
           </div>
           <div className="flex items-baseline justify-between gap-4 py-3.5">
             <dt className="flex items-baseline gap-2.5">
               <span className="h-2.5 w-2.5 flex-none bg-stone-400" aria-hidden="true" />
               Intérêts sur {years} ans
             </dt>
-            <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(interest)}</dd>
+            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(interest)}</dd>
           </div>
           <div className="flex items-baseline justify-between gap-4 py-3.5">
             <dt className="flex items-baseline gap-2.5">
@@ -140,18 +140,18 @@ export default function Simulator() {
                 <span className="block text-sm text-stone-500">soit {eur(insMonthly)} par mois</span>
               </span>
             </dt>
-            <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(insTotal)}</dd>
+            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(insTotal)}</dd>
           </div>
           <div className="flex items-baseline justify-between gap-4 py-4">
             <dt className="pl-5 font-medium text-stone-900">Montant total à rembourser</dt>
-            <dd className="font-sans font-medium tabular-nums text-2xl text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
+            <dd className="font-sans font-normal tabular-nums text-2xl text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
           </div>
           <div className="flex items-baseline justify-between gap-4 py-3.5">
             <dt className="pl-5">
               Revenus mensuels conseillés
               <span className="block text-sm text-stone-500">environ, pour 35 % d&apos;endettement</span>
             </dt>
-            <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(income)}</dd>
+            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(income)}</dd>
           </div>
         </dl>
         <p className="mt-5 text-sm text-stone-700 leading-relaxed">

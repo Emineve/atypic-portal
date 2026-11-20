@@ -115,7 +115,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const item = await getListing(params.id);
   if (!item) notFound();
 
-  const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
+  const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0');
 
   // Chiffres clés : libellé, valeur, icône
   const facts: [string, string, typeof Ruler][] = [];
@@ -129,7 +129,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   // Dépenses d'énergie estimées par an (fourchette du diagnostic), mises en avant quand l'annonce les donne
   const eMin = Number(item.energy_cost_min) || 0;
   const eMax = Number(item.energy_cost_max) || 0;
-  const eur0 = (n: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
+  const eur0 = (n: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n).replace(/[\u202f\u00a0]/g, '\u00a0') + '\u00a0€';
   const energyCost = eMin > 0 && eMax > 0 && eMax !== eMin ? `${eur0(eMin)} à ${eur0(eMax)}` : eMin > 0 || eMax > 0 ? eur0(eMax || eMin) : '';
   // Budget annuel : énergie, charges, taxe foncière, et leur équivalent mensuel
   const energyMid = eMin > 0 && eMax > 0 ? (eMin + eMax) / 2 : eMax || eMin;
@@ -194,7 +194,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const agencyCount = agencyTotal || 1;
   const hubName = item.city ? cityHub(item.city) : null;
   const hubUrl = hubName ? `/ville/${slugify(hubName)}` : null;
-  const fmt = (n: number) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  const fmt = (n: number) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n).replace(/[\u202f\u00a0]/g, '\u00a0');
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -361,14 +361,14 @@ export default async function ListingPage({ params }: { params: { id: string } }
                         <span className="block text-sm text-stone-500">{feesLabel}</span>
                       </span>
                     </dt>
-                    <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
+                    <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
                   </div>
                   <div className="flex items-center justify-between gap-4 py-3.5">
                     <dt className="flex items-center gap-2.5">
                       <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
                       <span>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></span>
                     </dt>
-                    <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
+                    <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                   </div>
                 </dl>
 
@@ -418,7 +418,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                           {costParts.length > 1 && <span className={`h-2.5 w-2.5 flex-none ${COST_DOT[i]}`} aria-hidden="true" />}
                           {c.label}
                         </dt>
-                        <dd className="text-right font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">
+                        <dd className="text-right font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">
                           {c.value} <span className="font-sans text-sm text-stone-500">par an</span>
                           {c.sub && <span className="block font-sans text-sm text-stone-500">{c.sub}</span>}
                         </dd>
@@ -486,7 +486,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         <aside className="min-w-0">
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
           <div className="hidden lg:block px-1 pb-2">
-            <p className="font-sans text-[2.5rem] font-light leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap [word-spacing:0.14em]">
+            <p className="font-sans text-[2.5rem] font-light leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap">
               {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum).replace(/[\u202f\u00a0]/g, '\u00a0')}{'\u00a0'}€
             </p>
           </div>
@@ -521,7 +521,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 <div className="min-w-0 sm:p-4">
                   <p className="text-xs uppercase tracking-widest text-stone-500">{r.city}{r.surface_sqm ? ` · ${r.surface_sqm} m²` : ''}</p>
                   <p className="mt-1 font-serif text-stone-900 leading-snug">{r.title}</p>
-                  <p className="mt-1 font-sans font-medium tabular-nums text-lg text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
+                  <p className="mt-1 font-sans font-normal tabular-nums text-lg text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
                 </div>
               </Link>
             ))}

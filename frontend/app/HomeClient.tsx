@@ -1054,7 +1054,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                       <div>
                         <div className="mt-6 flex items-end justify-between gap-3">
                           <span>
-                            <span className="block whitespace-nowrap text-xl font-medium tracking-tight font-sans tabular-nums [word-spacing:0.12em]">{price.replace(/[\u202f\u00a0]/g, '\u00a0')}</span>
+                            <span className="block whitespace-nowrap text-xl font-normal tracking-tight font-sans tabular-nums">{price.replace(/[\u202f\u00a0]/g, '\u00a0')}</span>
                             <span className="mt-1 block text-xs text-stone-500">{item.source_agency}</span>
                           </span>
                           <span className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900 transition">
