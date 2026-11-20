@@ -1,5 +1,6 @@
 'use client';
 
+import { blackButtonOnScreen } from '../lib/blackButton';
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Lightbulb, Calculator, Compass, Feather, Info } from 'lucide-react';
@@ -247,7 +248,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
   // Bouton flottant d'alerte : n'apparaît qu'après un peu de défilement
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 500);
+    const onScroll = () => setScrolled(window.scrollY > 500 && !blackButtonOnScreen());
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -1114,6 +1115,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
       {scrolled && !footerVisible && !onlyFavs && !showFilters && !alertOpen && !favContactOpen && !menuOpen && !loading && !errorMessage && (
         <div
+          data-fab
           className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
           style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
         >
@@ -1126,6 +1128,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
       {onlyFavs && visible.length > 0 && !footerVisible && !favContactOpen && (
         <div
+          data-fab
           className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
           style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
         >

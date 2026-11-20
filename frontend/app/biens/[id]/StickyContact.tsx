@@ -1,5 +1,6 @@
 'use client';
 
+import { blackButtonOnScreen } from '../../../lib/blackButton';
 import { useEffect, useState } from 'react';
 import { PhoneIncoming } from 'lucide-react';
 
@@ -14,7 +15,7 @@ export default function StickyContact() {
     if (!target) return;
     const update = () => {
       const nearEnd = window.innerHeight + window.scrollY > document.documentElement.scrollHeight - 420;
-      setHidden(target.getBoundingClientRect().bottom > 0 || nearEnd);
+      setHidden(target.getBoundingClientRect().bottom > 0 || nearEnd || blackButtonOnScreen());
     };
     update();
     window.addEventListener('scroll', update, { passive: true });
@@ -27,6 +28,7 @@ export default function StickyContact() {
 
   return (
     <div
+      data-fab
       className={`lg:hidden fixed inset-x-0 z-40 flex items-center justify-center px-4 pointer-events-none transition duration-300 ${hidden ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
       style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
     >

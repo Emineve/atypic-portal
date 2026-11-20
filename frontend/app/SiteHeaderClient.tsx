@@ -1,5 +1,6 @@
 'use client';
 
+import { blackButtonOnScreen } from '../lib/blackButton';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Plus, BookOpen, Calculator, Compass, Feather, Heart, Info, Lightbulb, Menu, X } from 'lucide-react';
@@ -47,11 +48,7 @@ export default function SiteHeaderClient({
       const y = window.scrollY;
       const left = document.documentElement.scrollHeight - y - window.innerHeight;
       // Pas deux invitations à la fois : il s'efface dès qu'un bloc « Créer mon alerte » de la page est à l'écran
-      const cta = Array.from(document.querySelectorAll('[data-alert-cta]')).some((el) => {
-        const r = el.getBoundingClientRect();
-        return r.top < window.innerHeight && r.bottom > 0;
-      });
-      setFab(y > 500 && left > 500 && !cta);
+      setFab(y > 500 && left > 500 && !blackButtonOnScreen());
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -97,7 +94,7 @@ export default function SiteHeaderClient({
       </nav>
 
       {alert && fab && !open && (
-        <div className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none" style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}>
+        <div data-fab className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none" style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}>
           <a href="/?alerte=1" className="pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-white text-sm font-medium shadow-lg hover:bg-stone-800 transition">
             <Plus className="w-4 h-4" strokeWidth={2} />
             Nouvelle alerte
