@@ -2,6 +2,7 @@
 
 import { blackButtonOnScreen } from '../lib/blackButton';
 import Logo from './Logo';
+import MenuPanel from './MenuPanel';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
@@ -520,82 +521,25 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       </nav>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Menu">
-          <div className="absolute inset-0 bg-stone-900/40" onClick={() => setMenuOpen(false)} />
-          <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl flex flex-col">
-            <div className="flex items-center justify-between px-6 h-20 border-b border-stone-200 shrink-0">
-              <span
-                onClick={() => {
-                  setMenuOpen(false);
-                  setOnlyFavs(false);
-                  window.scrollTo({ top: 0 });
-                }}
-              >
-                <Logo />
-              </span>
-              <button
-                type="button"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Fermer le menu"
-                className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <nav className="flex-1 overflow-y-auto px-6 py-4">
-              <button
-                type="button"
-                onClick={() => {
-                  setMenuOpen(false);
-                  openAlert('menu');
-                }}
-                className="w-full flex items-center gap-3 py-4 border-b border-stone-200 text-left font-serif text-2xl text-stone-900"
-              >
-                <Plus className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
-                Nouvelle alerte
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setOnlyFavs(true);
-                  setMenuOpen(false);
-                  window.scrollTo({ top: 0 });
-                }}
-                className="w-full flex items-center justify-between gap-3 py-4 border-b border-stone-200 text-left"
-              >
-                <span className="flex items-center gap-3 font-serif text-2xl text-stone-900">
-                  <Heart className={`w-5 h-5 ${favorites.length > 0 ? 'fill-red-600 text-red-600' : 'text-stone-400'}`} strokeWidth={1.5} />
-                  <span>
-                    Mes favoris
-                    {favorites.length > 0 && <span className="text-stone-500"> ({favorites.length})</span>}
-                  </span>
-                </span>
-              </button>
-              {[
-                { href: '/guide', label: 'État des lieux', sub: 'Ce qu’il faut savoir avant d’acheter', Icon: BookOpen },
-                { href: '/financement', label: 'Financement', sub: 'Estimer ma mensualité', Icon: Calculator },
-                { href: '/mode-d-emploi', label: 'Mode d’emploi', sub: 'Du premier clic à la visite', Icon: Compass },
-                { href: '/qui-sommes-nous', label: 'Pourquoi Loftissime', sub: '', Icon: Feather },
-                { href: '/charte', label: 'Questions fréquentes', sub: '', Icon: Info },
-              ].map(({ href, label, sub, Icon }) => (
-                <a key={href} href={href} className="flex gap-3 py-4 border-b border-stone-200">
-                  <Icon className="mt-1.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} />
-                  <span>
-                    <span className="block font-serif text-2xl text-stone-900">
-                      {label}
-                      {href === '/guide' && newArticles > 0 && (
-                        <span className="ml-3 inline-block align-middle rounded-full bg-[#F4E7B5] px-2.5 py-0.5 font-sans text-xs text-stone-800">
-                          {newArticles} articles
-                        </span>
-                      )}
-                    </span>
-                    {sub && <span className="mt-0.5 block text-sm text-stone-500">{sub}</span>}
-                  </span>
-                </a>
-              ))}
-            </nav>
-          </div>
-        </div>
+        <MenuPanel
+          onClose={() => setMenuOpen(false)}
+          onLogo={() => {
+            setMenuOpen(false);
+            setOnlyFavs(false);
+            window.scrollTo({ top: 0 });
+          }}
+          onAlert={() => {
+            setMenuOpen(false);
+            openAlert('menu');
+          }}
+          onFavs={() => {
+            setOnlyFavs(true);
+            setMenuOpen(false);
+            window.scrollTo({ top: 0 });
+          }}
+          favs={favorites.length}
+          articles={newArticles}
+        />
       )}
 
       {onlyFavs ? (

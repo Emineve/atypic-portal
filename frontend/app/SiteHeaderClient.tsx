@@ -3,19 +3,12 @@
 import { blackButtonOnScreen } from '../lib/blackButton';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Plus, BookOpen, Calculator, Compass, Feather, Heart, Info, Menu, X } from 'lucide-react';
+import { ArrowLeft, Plus, Menu } from 'lucide-react';
 import Logo from './Logo';
+import MenuPanel from './MenuPanel';
 import ModeEmploiBack from './ModeEmploiBack';
 
 const FAVORITES_KEY = 'singulier:favorites';
-
-const LINKS = [
-  { href: '/guide', label: 'État des lieux', sub: 'Ce qu’il faut savoir avant d’acheter', Icon: BookOpen },
-  { href: '/financement', label: 'Financement', sub: 'Estimer ma mensualité', Icon: Calculator },
-  { href: '/mode-d-emploi', label: 'Mode d’emploi', sub: 'Du premier clic à la visite', Icon: Compass },
-  { href: '/qui-sommes-nous', label: 'Pourquoi Loftissime', sub: '', Icon: Feather },
-  { href: '/charte', label: 'Questions fréquentes', sub: '', Icon: Info },
-];
 
 // En-tête commun aux pages intérieures : logo (retour à l'accueil), lien de retour vers une rubrique s'il y en a un, et le même menu que sur l'accueil,
 // pour passer d'une rubrique à l'autre sans revenir à la liste des biens.
@@ -101,55 +94,7 @@ export default function SiteHeaderClient({
         </div>
       )}
 
-      {open && (
-        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Menu">
-          <div className="absolute inset-0 bg-stone-900/40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl flex flex-col">
-            <div className="flex items-center justify-between px-6 h-16 border-b border-stone-200 shrink-0">
-              <Logo />
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label="Fermer le menu"
-                className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <nav className="flex-1 overflow-y-auto px-6 py-4">
-              <a href="/?alerte=1" className="flex items-center gap-3 py-4 border-b border-stone-200 font-serif text-2xl text-stone-900">
-                <Plus className="w-5 h-5 text-stone-900" strokeWidth={1.5} />
-                Nouvelle alerte
-              </a>
-              <a href="/?favoris=1" className="flex items-center justify-between gap-3 py-4 border-b border-stone-200">
-                <span className="flex items-center gap-3 font-serif text-2xl text-stone-900">
-                  <Heart className={`w-5 h-5 ${favs > 0 ? 'fill-red-600 text-red-600' : 'text-stone-400'}`} strokeWidth={1.5} />
-                  <span>
-                    Mes favoris
-                    {favs > 0 && <span className="text-stone-500"> ({favs})</span>}
-                  </span>
-                </span>
-              </a>
-              {LINKS.map(({ href, label, sub, Icon }) => (
-                <a key={href} href={href} className="flex gap-3 py-4 border-b border-stone-200">
-                  <Icon className="mt-1.5 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} />
-                  <span>
-                    <span className="block font-serif text-2xl text-stone-900">
-                      {label}
-                      {href === '/guide' && newArticles > 0 && (
-                        <span className="ml-3 inline-block align-middle rounded-full bg-[#F4E7B5] px-2.5 py-0.5 font-sans text-xs text-stone-800">
-                          {newArticles} articles
-                        </span>
-                      )}
-                    </span>
-                    {sub && <span className="mt-0.5 block text-sm text-stone-500">{sub}</span>}
-                  </span>
-                </a>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
+      {open && <MenuPanel onClose={() => setOpen(false)} favs={favs} articles={newArticles} />}
     </>
   );
 }
