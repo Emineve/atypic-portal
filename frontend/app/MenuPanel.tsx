@@ -90,7 +90,7 @@ export default function MenuPanel({
   return (
     <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Menu">
       <div className="absolute inset-0 bg-stone-900/40" onClick={onClose} />
-      <div className="absolute right-0 top-0 flex h-full w-full max-w-sm flex-col bg-white shadow-xl">
+      <div className="absolute right-0 top-0 flex h-full w-full sm:max-w-sm flex-col bg-white shadow-xl">
         <div className="flex h-16 shrink-0 items-center justify-between px-6">
           <span onClick={onLogo}>
             <Logo />
