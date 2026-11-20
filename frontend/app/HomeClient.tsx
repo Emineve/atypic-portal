@@ -1019,17 +1019,15 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     </div>
                     <div className="p-6 flex flex-1 flex-col justify-between">
                       <div>
-                        <div className="flex justify-between gap-3 text-xs text-stone-400 uppercase tracking-wider mb-2">
-                          <span>
-                            {item.city}
-                            {isNew(item.first_seen_at) && <span className="text-stone-900"> · Nouveauté</span>}
-                          </span>
-                          {item.surface_sqm ? <span className="flex-none">{Math.round(item.surface_sqm)} m²</span> : null}
-                        </div>
-                        <h2 className="font-serif text-lg leading-snug text-stone-900 line-clamp-2">{item.title}</h2>
-                        {item.atypic_tags && item.atypic_tags.length > 0 && (
-                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
-                            {item.atypic_tags.slice(0, 3).map((tag) => (
+                        <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">
+                          {item.city}
+                          {isNew(item.first_seen_at) && <span className="text-stone-900"> · Nouveauté</span>}
+                        </p>
+                        <h2 className="font-serif text-2xl leading-tight text-stone-900 line-clamp-2">{item.title}</h2>
+                        {(item.surface_sqm || (item.atypic_tags && item.atypic_tags.length > 0)) && (
+                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Surface et atouts du bien">
+                            {item.surface_sqm ? <li className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">{Math.round(item.surface_sqm)} m²</li> : null}
+                            {(item.atypic_tags || []).slice(0, 3).map((tag) => (
                               <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">
                                 {tag}
                               </li>
