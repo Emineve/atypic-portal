@@ -18,6 +18,13 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
   useEffect(() => {
     const id = new URLSearchParams(window.location.search).get('bien') || '';
     if (/^[0-9a-f-]{36}$/i.test(id)) setListing(id);
+    // Lien « Être rappelé par un courtier » en haut de page : le formulaire s'ouvre directement
+    const openFromHash = () => {
+      if (window.location.hash === '#courtier') setOpen(true);
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => window.removeEventListener('hashchange', openFromHash);
   }, []);
 
   async function onSubmit(e: React.FormEvent) {
@@ -46,7 +53,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
   const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full disabled:opacity-60';
 
   return (
-    <section aria-live="polite" className={`mt-6 rounded-[14px] border bg-white p-6 md:p-8 shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)] ${status === 'done' ? 'border-stone-900' : 'border-stone-200'}`}>
+    <section id="courtier" aria-live="polite" className={`scroll-mt-24 mt-6 rounded-[14px] border bg-white p-6 md:p-8 shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)] ${status === 'done' ? 'border-stone-900' : 'border-stone-200'}`}>
       <div className="flex items-start justify-between gap-6">
         <div className="max-w-xl">
           {status === 'done' ? (
@@ -64,11 +71,27 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
           ) : (
             <>
               <h2 className="font-serif text-2xl md:text-3xl tracking-tight text-stone-900">
-                {listing ? 'Un courtier pour financer ce bien ?' : 'Un courtier pour financer votre projet ?'}
+                {listing ? 'Faites étudier le financement de ce bien.' : 'Faites étudier votre projet par un courtier.'}
               </h2>
               <p className="mt-3 text-stone-600 leading-relaxed">
-                Il met les banques en concurrence et défend votre dossier. Laissez vos coordonnées, il vous rappelle.
+                Laissez vos coordonnées, un courtier vous rappelle.
               </p>
+              <ul className="mt-4 space-y-2.5 text-[15px] leading-snug text-stone-800">
+                {[
+                  'Vous savez ce que vous pouvez emprunter avant de faire une offre.',
+                  'Il met les banques en concurrence pour vous.',
+                  'Il défend votre dossier, y compris pour un bien atypique.',
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F4E7B5]">
+                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="#1c1917" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
             </>
           )}
         </div>

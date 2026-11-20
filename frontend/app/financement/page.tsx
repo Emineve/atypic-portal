@@ -16,30 +16,57 @@ function pct(n: number) {
 }
 
 export default function FinancementPage() {
+  const best = RATES.tiers[RATES.tiers.length - 1];
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       {/* Sur téléphone, le retour à l'annonce passe sous l'en-tête, qui n'a pas la place de l'accueillir */}
       <SiteHeader back={<BackLink className="hidden sm:inline-flex" />} />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-10 md:pb-12">
         <div className="max-w-4xl">
-        <BackLink className="mb-8 flex sm:hidden" />
-        <Crumbs items={[{ label: 'Financement' }]} />
-        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
-          Votre projet, <span className="italic text-stone-500">en mensualités.</span>
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Un coup de cœur se décide aussi avec des chiffres. Estimez votre mensualité en quelques secondes, avec les taux du moment.
-        </p>
-      </div>
+          <BackLink className="mb-8 flex sm:hidden" />
+          <Crumbs items={[{ label: 'Financement' }]} />
+          <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
+            Votre coup de cœur, <span className="text-stone-500">financé.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
+            Simulez votre mensualité, consultez les taux du mois et faites étudier votre projet par un courtier. Gratuit, sans engagement.
+          </p>
+
+          <div className="mt-8 rounded-[14px] bg-[#F4E7B5] px-5 py-5 md:px-8 md:py-6">
+            <p className="text-sm text-stone-700">Taux de {RATES.asOf}, pour un excellent dossier</p>
+            <dl className="mt-3 grid grid-cols-3 gap-3">
+              {RATES.byYears.map((r, j) => (
+                <div key={r.years}>
+                  <dd className="font-sans text-3xl font-light tabular-nums leading-none text-stone-900 whitespace-nowrap md:text-5xl">
+                    {pct(best.rates[j])}&nbsp;%
+                  </dd>
+                  <dt className="mt-2 text-sm text-stone-700">sur {r.years} ans</dt>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a href="#courtier" className="inline-flex h-12 items-center rounded-full bg-stone-900 px-8 text-[15px] font-medium text-white transition hover:bg-stone-800">
+              Être rappelé par un courtier
+            </a>
+            <a href="#simulateur" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 transition hover:decoration-stone-900">
+              Simuler ma mensualité
+            </a>
+          </div>
+          <p className="mt-4 text-xs text-stone-500">Hors assurance. Un crédit vous engage et doit être remboursé.</p>
+        </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
         <div className="max-w-4xl pb-20 space-y-14">
-        <Simulator />
+        <div id="simulateur" className="scroll-mt-24">
+          <Simulator />
+        </div>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-900">Les taux du moment</h2>
+          <h2 className="font-serif text-2xl text-stone-900">Les taux du mois, selon votre dossier</h2>
           <div className="mt-5 overflow-hidden rounded-[14px] border border-stone-200 bg-white shadow-[0_10px_28px_-16px_rgba(28,25,23,0.25)]">
             <table className="w-full text-center">
               <thead>
