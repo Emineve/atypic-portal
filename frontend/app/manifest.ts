@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { SITE_NAME } from '../lib/site';
 
 // Fiche lue par Android (Chrome) quand on ajoute le site à l'écran d'accueil :
-// nom du raccourci et icône « L. » blanc sur fond noir. Ouverture dans le navigateur, comme un lien.
+// nom du raccourci et icône « l. » dont le point est un œil, blanc sur fond noir. Ouverture dans le navigateur, comme un lien.
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME,
