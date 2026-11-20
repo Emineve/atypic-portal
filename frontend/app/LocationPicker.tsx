@@ -171,13 +171,13 @@ export default function LocationPicker({
       {value.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-2">
           {value.map((l) => (
-            <span key={l} className="inline-flex items-center h-8 pl-3 rounded-full border border-stone-300 text-stone-800 text-[13px]">
+            <span key={l} className="inline-flex items-center h-8 pl-3 rounded-full bg-[#F4E7B5] text-stone-800 text-[13px]">
               {l}
               <button
                 type="button"
                 onClick={() => onChange(value.filter((x) => x !== l))}
                 aria-label={`Retirer ${l}`}
-                className="h-8 w-8 flex items-center justify-center rounded-full text-stone-400 hover:text-stone-900"
+                className="h-8 w-8 flex items-center justify-center rounded-full text-stone-600 hover:text-stone-900"
               >
                 <X className="w-4 h-4" />
               </button>
