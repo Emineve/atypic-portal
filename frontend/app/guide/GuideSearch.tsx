@@ -33,6 +33,58 @@ const EXAMPLES = [
   'Un rez-de-chaussée sur cour est-il sombre ?',
   'Peut-on réunir des chambres de service ?',
   'Faut-il visiter avec un architecte ?',
+  'Une ancienne loge de gardien est-elle un vrai lot ?',
+  'Peut-on installer un jacuzzi sur une terrasse ?',
+  'Indivision ou société pour acheter à plusieurs ?',
+  'Peut-on vendre une cave séparément ?',
+  'Peut-on utiliser la cour d’un rez-de-chaussée ?',
+  'Le couloir des chambres de service m’appartient-il ?',
+  'Comment évaluer le bruit pendant une visite ?',
+  'Qu’est-ce que le droit d’eau d’un moulin ?',
+  'Acheter atypique, est-ce plus risqué ?',
+  'Un voisin peut-il construire devant ma vue ?',
+  'Pourquoi 1,80 mètre de hauteur compte-t-il ?',
+  'Peut-on transformer un garage en logement ?',
+  'Qui entretient une voie privée ?',
+  'Peut-on installer un ascenseur dans un vieil immeuble ?',
+  'Les meilleurs biens se vendent-ils sans annonce ?',
+  'Quelles conditions suspensives prévoir ?',
+  'Comment assurer un bien atypique ?',
+  'Combien de temps dure une recherche ?',
+  'Un bien atypique se revend-il bien ?',
+  'Peut-on surélever sa maison ?',
+  'Peut-on racheter les combles au-dessus de chez soi ?',
+  'Peut-on louer son appartement en Airbnb à Paris ?',
+  'Peut-on travailler chez soi dans un immeuble bourgeois ?',
+  'Y a-t-il de l’amiante dans les anciens ateliers ?',
+  'Peut-on abattre un mur porteur ?',
+  'Faut-il une autorisation pour créer une mezzanine ?',
+  'Peut-on habiter une ancienne église ?',
+  'Combien coûte l’entretien d’un hôtel particulier ?',
+  'Qui paie la toiture au dernier étage ?',
+  'Peut-on modifier une maison d’architecte ?',
+  'Faut-il ramoner une cheminée ?',
+  'Sur quoi s’appuyer pour négocier un bien rare ?',
+  'Une offre d’achat peut-elle être retirée ?',
+  'Quelles questions poser pendant une visite ?',
+  'Un souplex est-il humide ?',
+  'Un ancien commerce peut-il devenir un loft ?',
+  'Que risque-t-on avec des travaux non déclarés ?',
+  'Où amarrer une péniche ?',
+  'Les combles comptent-ils dans la surface ?',
+  'Un toit-terrasse est-il privatif ?',
+  'Comment lire le DPE d’un loft ?',
+  'La banque prête-t-elle pour une péniche ?',
+  'Que vérifier dans un duplex réuni ?',
+  'Comment lire les charges de copropriété ?',
+  'Le plomb est-il dangereux dans un logement ancien ?',
+  'Peut-on mettre une piscine sur un toit ?',
+  'Un dernier étage est-il plus chaud en été ?',
+  'Peut-on exercer une profession libérale chez soi ?',
+  'Combien de jours peut-on louer sa résidence principale ?',
+  'Quel délai de rétractation après un compromis ?',
+  'Un moulin est-il inondable ?',
+  'Comment estimer un bien qui ne ressemble à aucun autre ?',
 ];
 
 const btn = 'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-60';
@@ -227,7 +279,7 @@ export default function GuideSearch() {
           </div>
           {suggestions.length > 0 && (
             <div className="mt-5">
-              <p className="text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées' : 'Les questions qu’on nous pose'}</p>
+              <p className="text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées' : 'Les questions que les acheteurs nous posent'}</p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {suggestions.map((ex) => (
                   <li key={ex}>
