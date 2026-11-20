@@ -27,6 +27,7 @@ interface ListingRow {
   clicks: number;
   leads: number;
   matching_alerts: number;
+  report_token: string | null;
 }
 
 interface Report {
@@ -156,7 +157,8 @@ export default async function EspaceAgence({
                   <th className="px-3 py-3 text-right">Favoris</th>
                   <th className="px-3 py-3 text-right">Clics</th>
                   <th className="px-3 py-3 text-right">Contacts</th>
-                  <th className="px-4 py-3 text-right">Acheteurs en alerte</th>
+                  <th className="px-3 py-3 text-right">Acheteurs en alerte</th>
+                  <th className="px-4 py-3 text-right">Bilan</th>
                 </tr>
               </thead>
               <tbody>
@@ -184,12 +186,19 @@ export default async function EspaceAgence({
                     <td className="px-3 py-3 text-right tabular-nums">{num(l.favorites)}</td>
                     <td className="px-3 py-3 text-right tabular-nums">{num(l.clicks)}</td>
                     <td className="px-3 py-3 text-right tabular-nums">{num(l.leads)}</td>
-                    <td className="px-4 py-3 text-right tabular-nums">{num(l.matching_alerts)}</td>
+                    <td className="px-3 py-3 text-right tabular-nums">{num(l.matching_alerts)}</td>
+                    <td className="px-4 py-3 text-right whitespace-nowrap">
+                      {l.report_token && (
+                        <a href={`/bilan/${l.report_token}`} target="_blank" rel="noopener" className="underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
+                          Ouvrir
+                        </a>
+                      )}
+                    </td>
                   </tr>
                 ))}
                 {listings.length === 0 && (
                   <tr>
-                    <td colSpan={7} className="px-4 py-8 text-center text-stone-500">
+                    <td colSpan={8} className="px-4 py-8 text-center text-stone-500">
                       Aucun bien publié pour le moment.
                     </td>
                   </tr>
@@ -207,7 +216,8 @@ export default async function EspaceAgence({
             faible, ils restent modestes.
           </p>
           <p className="mt-3">
-            Ce lien est personnel : ne le partagez qu&apos;avec votre équipe. Une question ou un bien à ajouter ?{' '}
+            Le bilan de chaque bien a son propre lien : vous pouvez le transmettre à votre vendeur, ou l&apos;imprimer en PDF. Il ne donne accès qu&apos;à ce bien.
+            Le lien de cet espace, lui, est personnel : ne le partagez qu&apos;avec votre équipe. Une question ou un bien à ajouter ?{' '}
             <Link href="/pro" className="underline underline-offset-4">Contactez-nous</Link>.
           </p>
         </section>

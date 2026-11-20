@@ -16,6 +16,11 @@ function sessionId() {
 // Enregistre un événement anonyme (aucun cookie, aucune donnée personnelle). Les erreurs sont ignorées.
 export function trackEvent(type: 'view' | 'favorite', listingId?: string) {
   try {
+    if (localStorage.getItem('loftissime:interne') === '1') return; // navigateur du back-office : non compté
+  } catch {
+    /* stockage indisponible : l'événement est compté */
+  }
+  try {
     getSupabase()
       .rpc('track_event', {
         p_type: type,

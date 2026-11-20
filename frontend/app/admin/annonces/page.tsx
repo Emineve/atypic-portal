@@ -244,6 +244,14 @@ function parseListingPage(html: string) {
 
 export default function AdminAnnonces() {
   const [token, setToken] = useState<string | null>(null);
+
+  // Bilan de diffusion d'une annonce : le lien secret est créé à la demande, puis ouvert dans un nouvel onglet
+  async function openReport(id: string) {
+    const win = window.open('', '_blank');
+    const { data } = await getSupabase().rpc('admin_report_token', { p_token: token, p_listing: id });
+    if (data && win) win.location.href = `/bilan/${data}`;
+    else if (win) win.close();
+  }
   const [rows, setRows] = useState<Listing[] | null>(null);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
@@ -813,6 +821,9 @@ export default function AdminAnnonces() {
                         <a href={`/biens/${l.id}`} target="_blank" rel="noreferrer" className="ml-3 text-xs underline underline-offset-4 text-stone-600">
                           Voir
                         </a>
+                        <button onClick={() => openReport(l.id)} className="ml-3 text-xs underline underline-offset-4 text-stone-600">
+                          Bilan
+                        </button>
                       </td>
                     </tr>
                   ))}

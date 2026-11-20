@@ -185,7 +185,7 @@ export default function AdminPage() {
         setStats(s.data as Stats);
         setReports((rp.data as Report[]) || []);
         setLeads((l.data as Lead[]) || []);
-        try { sessionStorage.setItem(KEY, token); } catch { /* ignoré */ }
+        try { sessionStorage.setItem(KEY, token); localStorage.setItem('loftissime:interne', '1'); } catch { /* ignoré */ }
       } catch (e) {
         if (cancelled) return;
         setStats(null);

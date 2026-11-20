@@ -18,6 +18,12 @@ function sessionId() {
 
 export default function Tracker({ listingId }: { listingId?: string }) {
   useEffect(() => {
+    // Les visites faites depuis un navigateur connecté au back-office ne sont pas comptées
+    try {
+      if (localStorage.getItem('loftissime:interne') === '1') return;
+    } catch {
+      /* stockage indisponible : la visite est comptée */
+    }
     getSupabase()
       .rpc('track_event', {
         p_type: 'view',
