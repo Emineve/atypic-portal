@@ -742,7 +742,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           )}
         </div>
 
-        {places.length > 0 && (
+        {(places.length > 0 || (searchActive && !onlyFavs)) && (
           <div className="max-w-3xl mx-auto mt-3 flex flex-wrap items-center gap-2" aria-live="polite">
             {places.map((p) => (
               <span
@@ -760,6 +760,22 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 </button>
               </span>
             ))}
+            {searchActive && !onlyFavs && alreadySaved && (
+              <span className="ml-auto inline-flex items-center gap-1.5 whitespace-nowrap text-sm text-stone-500">
+                <Check className="w-3.5 h-3.5 flex-none" />
+                Alerte créée
+              </span>
+            )}
+            {searchActive && !onlyFavs && !alreadySaved && visible.length > 0 && (
+              <button
+                type="button"
+                onClick={() => openAlert('recherche')}
+                className="ml-auto inline-flex h-8 items-center gap-1.5 whitespace-nowrap text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900"
+              >
+                <Bell className="w-3.5 h-3.5 flex-none" />
+                Créer mon alerte
+              </button>
+            )}
           </div>
         )}
 
@@ -933,22 +949,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   {visible.length} {visible.length > 1 ? 'biens' : 'bien'}
                   {searchActive ? '' : ' à vendre'}
                 </p>
-              )}
-              {searchActive && !onlyFavs && alreadySaved && (
-                <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-500">
-                  <Check className="w-3.5 h-3.5 flex-none" />
-                  Alerte créée
-                </span>
-              )}
-              {searchActive && !onlyFavs && !alreadySaved && visible.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => openAlert('recherche')}
-                  className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-medium text-stone-900 underline underline-offset-4"
-                >
-                  <Bell className="w-3.5 h-3.5 flex-none" />
-                  Créer mon alerte
-                </button>
               )}
             </div>
             {!onlyFavs && visible.length > 1 && (

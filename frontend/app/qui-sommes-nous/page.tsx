@@ -1,3 +1,4 @@
+import AlertBand, { ALERT_BUTTON } from '../AlertBand';
 import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import { typo } from '../../lib/typo';
@@ -91,20 +92,18 @@ export default function ManifestoPage() {
           ))}
         </ol>
 
-        <section className="pt-14 md:pt-20">
-          <p className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
-            Un bien qui a du caractère en donne à ceux qui l&apos;habitent.{' '}
-            <span className="italic text-stone-500">Trouvons le vôtre.</span>
-          </p>
-          <div data-alert-cta className="mt-10">
-            <Link
-              href="/?alerte=1"
-              className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition"
-            >
-              Créer mon alerte
-            </Link>
-          </div>
-        </section>
+        <AlertBand
+          className="mt-14 md:mt-20"
+          title={
+            <>
+              Un bien qui a du caractère en donne à ceux qui l&apos;habitent. <span className="italic">Trouvons le vôtre.</span>
+            </>
+          }
+        >
+          <Link href="/?alerte=1" className={ALERT_BUTTON}>
+            Créer mon alerte
+          </Link>
+        </AlertBand>
       </div>
       </main>
     </div>
