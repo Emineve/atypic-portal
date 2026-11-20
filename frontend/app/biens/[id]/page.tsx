@@ -366,16 +366,16 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     </dt>
                     <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                   </div>
-                  <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="pl-5 font-medium text-stone-900">
+                  <div className="!border-t-0 mt-2 flex items-center justify-between gap-4 rounded-[10px] bg-[#F4E7B5] px-4 py-3.5">
+                    <dt className="whitespace-nowrap font-medium text-stone-900">
                       Total estimé
-                      <span className="block text-sm font-normal text-stone-500">Hors travaux</span>
+                      <span className="block text-sm font-normal text-stone-700">Hors travaux</span>
                     </dt>
-                    <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
+                    <dd className="font-sans font-medium tabular-nums text-xl sm:text-2xl text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
                   </div>
                 </dl>
 
-                <div className="mt-1 pt-3 border-t border-stone-200">
+                <div className="mt-3">
                   <Link
                     href={`/financement?prix=${Math.round(priceNum)}&bien=${item.id}`}
                     className="inline-flex items-center gap-2 min-h-[2.75rem] text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
