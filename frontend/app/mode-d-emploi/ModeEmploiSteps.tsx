@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AlertDialog from '../AlertDialog';
+import StepDeck from '../StepDeck';
 import { MODE_EMPLOI_KEY } from '../ModeEmploiBack';
 import { typo } from '../../lib/typo';
 
@@ -58,7 +59,6 @@ const action =
 
 export default function ModeEmploiSteps() {
   const [step, setStep] = useState(0);
-  const [all, setAll] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
 
   // Retour depuis une autre page : on reprend à l'étape quittée, et le lien de retour s'efface
@@ -92,76 +92,18 @@ export default function ModeEmploiSteps() {
       </Link>
     );
 
-  const current = STEPS[step];
-  const last = step === STEPS.length - 1;
-
   return (
     <>
-      <div className="rounded-[14px] border border-stone-200 bg-white p-6 md:p-10">
-        {all ? (
-          <ol className="divide-y divide-stone-200">
-            {STEPS.map((s, i) => (
-              <li key={s.title} className="flex gap-4 py-6 first:pt-0 last:pb-0">
-                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[#F4E7B5] text-sm font-medium text-stone-900">{i + 1}</span>
-                <div>
-                  <h2 className="font-serif text-2xl leading-snug text-stone-900">{s.title}</h2>
-                  <p className="mt-2 max-w-2xl text-base font-light leading-relaxed text-stone-600">{typo(s.text)}</p>
-                  <p className="mt-3">
-                    <Action s={s} />
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <div className="min-h-[15rem] md:min-h-[13rem]" aria-live="polite">
-            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-stone-900">{current.title}</h2>
-            <p className="mt-4 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(current.text)}</p>
-            <p className="mt-5">
-              <Action s={current} />
-            </p>
-          </div>
-        )}
-
-        {!all && (
-          <div className="mt-8 flex flex-wrap gap-2.5" role="tablist" aria-label="Étapes">
-            {STEPS.map((s, i) => (
-              <button
-                key={s.title}
-                type="button"
-                role="tab"
-                aria-selected={i === step}
-                aria-label={`Étape ${i + 1} : ${s.title}`}
-                onClick={() => setStep(i)}
-                className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition ${
-                  i === step ? 'bg-[#F4E7B5] text-stone-900' : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
-        )}
-
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-          <button
-            type="button"
-            onClick={() => setAll((v) => !v)}
-            className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
-          >
-            {all ? 'Revenir étape par étape' : 'Voir toutes les étapes'}
-          </button>
-          {!all && (
-            <button
-              type="button"
-              onClick={() => setStep(last ? 0 : step + 1)}
-              className="inline-flex h-12 items-center rounded-[10px] bg-stone-900 px-8 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-stone-800"
-            >
-              {last ? 'Recommencer' : 'Suivant'}
-            </button>
-          )}
-        </div>
-      </div>
+      <StepDeck
+        items={STEPS.map((x) => ({ title: x.title, text: x.text, extra: <p className="mt-5"><Action s={x} /></p> }))}
+        step={step}
+        onStep={setStep}
+        word="Étape"
+        listLabel="Étapes"
+        allLabel="Voir toutes les étapes"
+        backLabel="Revenir étape par étape"
+        format={typo}
+      />
       <AlertDialog open={alertOpen} onClose={() => setAlertOpen(false)} source="mode-emploi" suggestions={[]} />
     </>
   );

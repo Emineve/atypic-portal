@@ -104,13 +104,13 @@ function FeedPost({ label, note, text }: { label: string; note: string; text: st
 }
 
 const POINTS = [
-  { title: 'Une question d’acheteur.', text: 'Une vraie question, posée avant de signer : l’apport, l’offre d’achat, la mezzanine, le DPE. Une seule par vidéo.' },
+  { title: 'Une question d’acheteur.', text: 'Une vraie question, posée avant de signer : l’apport, l’offre d’achat, la mezzanine, le coût des travaux, le DPE. Une seule par vidéo.' },
   { title: 'Votre réponse, en une minute.', text: 'Face caméra, sans jargon, dans un bien atypique. Vous allez droit au but, comme vous le feriez avec un client.' },
   { title: 'Votre nom partout où elle passe.', text: 'Sur Loftissime et sur chaque réseau, la vidéo porte votre nom, votre métier et votre société.' },
 ];
 
 const TERMS = [
-  { title: 'Exclusif', text: 'Un seul partenaire par métier : un courtier, un notaire, un architecte, un diagnostiqueur.' },
+  { title: 'Exclusif', text: 'Un seul partenaire par métier : un courtier, un notaire, un architecte, une entreprise de travaux, un diagnostiqueur.' },
   { title: 'Gratuit la première année', text: 'Vous ne payez rien à Loftissime, Loftissime ne vous paie rien. Nous faisons le point ensemble au bout d’un an.' },
   { title: 'Validé par vous', text: 'Aucune vidéo, aucun texte n’est publié sans votre accord.' },
   { title: 'Une demi-heure', text: 'Quatre questions, quatre vidéos, tournées au téléphone en une seule fois.' },
@@ -120,6 +120,7 @@ const SERIES = [
   { role: 'Courtier', question: 'Quel apport pour un bien atypique ?', quote: '« Comptez 10 à 20 % du prix… »' },
   { role: 'Notaire', question: 'À quoi m’engage une offre d’achat ?', quote: '« Une fois acceptée, elle vous lie… »' },
   { role: 'Architecte', question: 'Une mezzanine, partout ?', quote: '« Il faut d’abord de la hauteur… »' },
+  { role: 'Entreprise de travaux', question: 'Combien coûte un plateau brut ?', quote: '« Tout part de l’état des réseaux… »' },
   { role: 'Diagnostiqueur', question: 'Le souplex compte-t-il en Carrez ?', quote: '« Tout dépend de la hauteur… »' },
 ];
 
@@ -194,7 +195,7 @@ export default function ContreVisitePartners() {
             </div>
             <div className="border-t border-stone-200 px-5 py-6 md:px-8">
               <p className="font-serif text-xl text-stone-900">Contre-visite</p>
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                 {SERIES.map((m) => (
                   <div key={m.role}>
                     <div className="overflow-hidden rounded-[10px]">
