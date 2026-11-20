@@ -185,20 +185,18 @@ export default function ChartePage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
-        <div className="max-w-4xl">
+      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-7 md:pb-9">
         <Crumbs items={[{ label: 'Questions fréquentes' }]} />
-        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+        <h1 className="mt-5 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+        <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
           Les biens que nous diffusons, la façon dont le site fonctionne, l&apos;ordre des annonces, et ce que deviennent vos coordonnées.
         </p>
-      </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
-        <div className="max-w-5xl pb-8">
+        <div className="pb-8">
           <FaqDeck groups={groups} />
         </div>
       </main>
