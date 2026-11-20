@@ -51,7 +51,7 @@ export default function FinancementPage() {
             {RATES.byYears.map((r) => (
               <div key={r.years} className="rounded-[14px] border border-stone-200 bg-white p-4 md:p-6 text-center">
                 <p className="text-xs uppercase tracking-widest text-stone-500">{r.years} ans</p>
-                <p className="mt-2 font-serif text-2xl md:text-4xl text-stone-900 whitespace-nowrap">{pct(r.rate)}&nbsp;%</p>
+                <p className="mt-2 font-sans font-light text-2xl md:text-4xl text-stone-900 whitespace-nowrap">{pct(r.rate)}&nbsp;%</p>
               </div>
             ))}
           </div>

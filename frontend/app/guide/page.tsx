@@ -62,7 +62,7 @@ export default async function GuideIndex() {
             <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-2">
               {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
                 <li key={r.anchor}>
-                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group inline-flex items-baseline gap-2 font-serif text-lg md:text-xl text-stone-900">
+                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group inline-flex items-baseline gap-2 text-base font-medium md:text-xl text-stone-900">
                     <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
                   </a>
                 </li>

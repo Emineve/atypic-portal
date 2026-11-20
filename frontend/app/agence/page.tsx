@@ -54,7 +54,7 @@ export default async function AgenciesPage() {
         {cities.length > 1 && (
           <nav aria-label="Villes" className="mb-12 flex flex-wrap gap-x-6 gap-y-2">
             {cities.map(([city]) => (
-              <a key={city} href={`#${slugify(city)}`} className="font-serif text-xl text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">{city}</a>
+              <a key={city} href={`#${slugify(city)}`} className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">{city}</a>
             ))}
           </nav>
         )}
@@ -66,7 +66,7 @@ export default async function AgenciesPage() {
                 {names.map((name) => (
                   <li key={name}>
                     <Link href={`/agence/${slugify(name)}`} className="group flex items-center justify-between gap-4 py-4">
-                      <span className="font-serif text-xl text-stone-900">{name}</span>
+                      <span className="text-lg font-medium text-stone-900">{name}</span>
                       <ArrowRight className="w-4 h-4 flex-none text-stone-400 group-hover:text-stone-900 transition" />
                     </Link>
                   </li>

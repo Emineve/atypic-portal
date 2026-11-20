@@ -299,7 +299,7 @@ export default function GuideSearch() {
                       maxLength={200}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-xl normal-case tracking-normal text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-0"
+                      className="mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans text-lg normal-case tracking-normal text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-0"
                     />
                   </label>
                   <button type="submit" disabled={status === 'sending'} className={btn}>

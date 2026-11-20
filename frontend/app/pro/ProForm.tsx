@@ -43,7 +43,7 @@ export default function ProForm() {
     );
   }
 
-  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-xl text-stone-900 rounded-none focus:outline-none focus:border-stone-900 focus:ring-0';
+  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans text-lg text-stone-900 rounded-none focus:outline-none focus:border-stone-900 focus:ring-0';
   const label = 'block text-xs uppercase tracking-wider text-stone-500 mb-1';
 
   return (

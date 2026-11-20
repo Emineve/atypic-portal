@@ -31,7 +31,7 @@ export default async function ArchitectsPage() {
 
       <main className="max-w-6xl mx-auto px-6 pb-24">
         {rows.length === 0 ? (
-          <p className="text-center py-16 text-stone-400 font-serif">Bientôt les premiers portraits.</p>
+          <p className="text-center py-16 text-stone-400">Bientôt les premiers portraits.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {rows.map((a) => (

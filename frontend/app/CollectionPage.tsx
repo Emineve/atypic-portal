@@ -56,7 +56,7 @@ export default function CollectionPage({
         <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{title}</h1>
         <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{intro}</p>
         {!hideAgency && (
-          <p className="mt-5 font-serif text-lg text-stone-700">
+          <p className="mt-5 text-base text-stone-600">
             {items.length} {items.length > 1 ? 'biens' : 'bien'}<span className="hidden sm:inline"> à découvrir</span>
           </p>
         )}

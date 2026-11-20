@@ -82,7 +82,7 @@ export default function Simulator() {
                 type="button"
                 onClick={() => pickYears(o.years)}
                 aria-pressed={years === o.years}
-                className={`font-sans font-normal tabular-nums text-2xl underline-offset-8 transition ${years === o.years ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-400 hover:text-stone-900'}`}
+                className={`font-sans font-normal text-2xl underline-offset-8 transition ${years === o.years ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-400 hover:text-stone-900'}`}
               >
                 {o.years} ans
               </button>

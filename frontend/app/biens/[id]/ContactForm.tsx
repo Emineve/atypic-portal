@@ -157,7 +157,7 @@ export default function ContactForm({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-[14px] border border-stone-300 bg-white">
+      <div className="rounded-[14px] border border-stone-300 bg-white shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)]">
         <div className="p-6">
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
           <div className="min-w-0">
@@ -257,7 +257,7 @@ export default function ContactForm({
                 {alertLabel && (
                   <div className="mt-8 text-left">
                     <p className="text-xs uppercase tracking-widest text-stone-500">Et pour la suite</p>
-                    <p className="mt-1.5 font-serif text-lg leading-snug text-stone-900">Les prochains biens : {alertLabel}</p>
+                    <p className="mt-1.5 font-medium leading-snug text-stone-900">Les prochains biens : {alertLabel}</p>
                     <div className="mt-3 border-y border-stone-200 divide-y divide-stone-200">
                       {alertStatus === 'done' ? (
                         <p className="flex items-center gap-3 py-4 text-stone-600">

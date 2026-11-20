@@ -974,10 +974,10 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         )}
 
         {loading ? (
-          <div className="text-center py-20 text-stone-400 font-serif">Chargement des biens…</div>
+          <div className="text-center py-20 text-stone-400">Chargement des biens…</div>
         ) : errorMessage ? (
           <div className="text-center py-20 max-w-xl mx-auto">
-            <p className="font-serif text-stone-700">Impossible de charger les biens pour le moment.</p>
+            <p className="text-stone-700">Impossible de charger les biens pour le moment.</p>
             <p className="mt-3 text-xs text-stone-400 font-mono break-words">{errorMessage}</p>
           </div>
         ) : visible.length === 0 ? (
@@ -1081,7 +1081,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     className="col-span-full flex items-center gap-3 border-y border-stone-200 py-4 text-left group/alert"
                   >
                     <Bell className="w-4 h-4 flex-none text-stone-900" />
-                    <span className="flex-1 font-serif text-base leading-snug text-stone-900">
+                    <span className="flex-1 text-[15px] leading-snug text-stone-900">
                       <AlertPhrase />
                     </span>
                     <span className="flex-none text-[15px] font-medium text-stone-900 underline underline-offset-4 group-hover/alert:text-stone-600">
@@ -1096,7 +1096,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         )}
 
         {!loading && !errorMessage && searchActive && !onlyFavs && !alreadySaved && visible.length > 0 && (
-          <p className="mt-16 pt-8 border-t border-stone-200 font-serif text-lg md:text-xl text-stone-600 leading-relaxed">
+          <p className="mt-16 pt-8 border-t border-stone-200 text-base md:text-lg text-stone-600 leading-relaxed">
             <button
               type="button"
               onClick={() => openAlert('recherche-bas')}

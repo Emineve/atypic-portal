@@ -32,7 +32,7 @@ export default function CollectionAlert({
       <>
         <div className="max-w-3xl mx-auto mt-4 text-left">
           <p className="font-serif text-2xl text-stone-900 leading-snug">Aucun bien ne correspond pour l&apos;instant.</p>
-          <p className="mt-6 pt-6 border-t border-stone-200 font-serif text-lg md:text-xl text-stone-600 leading-relaxed">
+          <p className="mt-6 pt-6 border-t border-stone-200 text-base md:text-lg text-stone-600 leading-relaxed">
             <button
               type="button"
               onClick={() => setOpen(true)}

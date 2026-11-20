@@ -18,12 +18,12 @@ export function DpeChip({ value }: { value: string | null | undefined }) {
   const i = LETTERS.indexOf(c);
   return (
        <span
-      className="inline-flex items-stretch text-xs font-semibold uppercase tracking-wider leading-none"
+      className="inline-flex items-stretch overflow-hidden rounded-full text-xs font-semibold uppercase tracking-wider leading-none"
       title={`Classe énergie (DPE) : ${c}`}
     >
-      <span className="bg-white text-stone-600 px-1 py-[3px]">DPE</span>
+      <span className="bg-white text-stone-600 pl-2 pr-1 py-[3px]">DPE</span>
       <span
-        className="px-1.5 py-[3px]"
+        className="pl-1.5 pr-2 py-[3px]"
         style={{ backgroundColor: DPE_COLORS[i], color: DARK_TEXT[i] ? '#1c1917' : '#ffffff' }}
       >
         {c}
@@ -65,6 +65,7 @@ export function DpeScale({
                   opacity: on ? 1 : 0.45,
                   outline: on ? '2px solid #1c1917' : 'none',
                   outlineOffset: 1,
+                  borderRadius: 6,
                 }}
               >
                 {l}
@@ -90,7 +91,7 @@ export function EnergyPill({ kind, value, bare = false }: { kind: 'dpe' | 'ges';
   if (bare) {
     return (
       <span
-        className="h-7 w-7 inline-flex items-center justify-center text-sm font-sans font-semibold"
+        className="h-7 w-7 rounded-full inline-flex items-center justify-center text-sm font-sans font-semibold"
         style={{ backgroundColor: bg, color: dark ? '#1c1917' : '#ffffff' }}
         title={kind === 'dpe' ? `Classe énergie (DPE) : ${c}` : `Classe climat (GES) : ${c}`}
       >
@@ -105,7 +106,7 @@ export function EnergyPill({ kind, value, bare = false }: { kind: 'dpe' | 'ges';
     >
       {kind === 'dpe' ? 'DPE' : 'GES'}
       <span
-        className="h-7 w-7 inline-flex items-center justify-center text-sm font-semibold normal-case"
+        className="h-7 w-7 rounded-full inline-flex items-center justify-center text-sm font-semibold normal-case"
         style={{ backgroundColor: bg, color: dark ? '#1c1917' : '#ffffff' }}
       >
         {c}

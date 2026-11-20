@@ -56,7 +56,7 @@ export default async function InspirationPage() {
       <SiteHeader />
 
       {!featured ? (
-        <p className="text-center py-24 text-stone-400 font-serif">Bientôt le premier architecte à la une.</p>
+        <p className="text-center py-24 text-stone-400">Bientôt le premier architecte à la une.</p>
       ) : (
         <>
           <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">

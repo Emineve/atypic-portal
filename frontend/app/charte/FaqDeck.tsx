@@ -77,7 +77,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
                           <ul className="mt-4 space-y-3 sm:hidden">
                             {it.table.rows.map((r) => (
                               <li key={r[0]} className="rounded-[14px] border border-stone-200 bg-white p-4">
-                                <p className="font-serif text-lg leading-snug text-stone-900">{typo(`${it.table!.lead || ''}${r[0]}`)}</p>
+                                <p className="font-medium leading-snug text-stone-900">{typo(`${it.table!.lead || ''}${r[0]}`)}</p>
                                 <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[1]}</p>
                                 <p className="mt-0.5 text-stone-900">{typo(r[1])}</p>
                                 <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[2]}</p>

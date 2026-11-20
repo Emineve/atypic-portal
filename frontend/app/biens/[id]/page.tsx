@@ -366,11 +366,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-4 py-3.5">
-                    <dt className="pl-5">
-                      Montant estimé du projet
-                      <span className="block text-sm text-stone-500">Hors travaux</span>
+                    <dt className="pl-5 font-medium text-stone-900">
+                      Total estimé
+                      <span className="block text-sm font-normal text-stone-500">Hors travaux</span>
                     </dt>
-                    <dd className="font-sans font-normal tabular-nums text-2xl text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
+                    <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
                   </div>
                 </dl>
 

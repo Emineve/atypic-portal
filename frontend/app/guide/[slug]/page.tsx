@@ -161,7 +161,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           <div className="mt-4 border-y border-stone-200 divide-y divide-stone-200">
             {a.faq.map((f) => (
               <details key={f.q} id={passageAnchor(f.q)} className="group py-5 scroll-mt-24">
-                <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 font-serif text-lg text-stone-900">
+                <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 text-lg font-medium text-stone-900">
                   {typo(f.q)}
                   <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
                 </summary>
