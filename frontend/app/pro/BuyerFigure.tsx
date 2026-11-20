@@ -1,60 +1,64 @@
-// Petits personnages dessinés pour Loftissime : un par profil d'acheteur.
+// Silhouettes dessinées pour Loftissime : une par profil d'acheteur. Trait fin, sans visage, un seul accessoire.
 export type BuyerKind = 'decide' | 'reveur' | 'architecture';
 
 const INK = '#1c1917';
 const YELLOW = '#F4E7B5';
 
+// Un manteau long, des épaules aux genoux
+function Coat({ x }: { x: number }) {
+  return (
+    <>
+      <path d={`M${x - 6.5} 20 Q${x} 16.5 ${x + 6.5} 20 L${x + 8.5} 47 H${x - 8.5} Z`} fill={YELLOW} />
+      <path d={`M${x - 2.6} 18.6 L${x} 24 L${x + 2.6} 18.6`} />
+      <path d={`M${x} 24 V47`} strokeWidth="1" />
+    </>
+  );
+}
+
 export default function BuyerFigure({ kind, className = '' }: { kind: BuyerKind; className?: string }) {
   return (
-    <svg viewBox="0 0 72 72" className={className} fill="none" stroke={INK} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg viewBox="0 0 72 72" className={className} fill="none" stroke={INK} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       {kind === 'decide' && (
         <>
-          {/* Il marche d'un bon pas, les clés déjà en main */}
-          <path d="M30 47 L23 63 M38 47 L46 63" />
-          <path d="M20 63 h6 M43 63 h6" />
-          <rect x="24" y="24" width="20" height="24" rx="7" fill={YELLOW} />
-          <circle cx="34" cy="14" r="7.5" fill="#fff" />
-          <path d="M31 13.5 h.01 M37 13.5 h.01" strokeWidth="2.4" />
-          <path d="M31.5 17 q2.5 2 5 0" />
-          <path d="M24 30 L16 38" />
-          <path d="M44 30 L53 33" />
-          <circle cx="57" cy="34" r="3.2" fill={YELLOW} />
-          <path d="M60 35 L67 37 M64 36.2 v3 M66.5 37 v2.4" />
+          {/* Il avance d'un bon pas, la clé déjà en main */}
+          <path d="M28 47 L22.5 63.5 M35 47 L41.5 63.5" />
+          <path d="M19.5 63.5 h5.5 M39.5 63.5 h5.5" />
+          <path d="M25.5 22 L20.5 36" />
+          <Coat x={31.5} />
+          <circle cx="31.5" cy="10.5" r="4.6" fill="#fff" />
+          <path d="M37.5 22 L48.5 30.5" />
+          <circle cx="52" cy="32.2" r="3.1" fill={YELLOW} />
+          <path d="M55 33 L64.5 35.4 M61 34.5 v3 M63.6 35.2 v2.3" />
         </>
       )}
       {kind === 'reveur' && (
         <>
-          {/* Il lève les yeux et imagine déjà la verrière */}
-          <path d="M31 47 V63 M39 47 V63" />
-          <path d="M27 63 h6 M37 63 h6" />
-          <rect x="25" y="24" width="20" height="24" rx="7" fill={YELLOW} />
-          <circle cx="35" cy="14" r="7.5" fill="#fff" />
-          <path d="M31 12.5 q1.5 -1.6 3 0 M36.5 12.5 q1.5 -1.6 3 0" />
-          <path d="M32.5 17 q2.5 2 5 0" />
-          <path d="M25 30 L19 40 M45 30 L51 40" />
-          <circle cx="46" cy="8" r="1.3" />
-          <circle cx="51" cy="5" r="2" />
-          <path d="M56 12 v-7 l6 -4 l6 4 v7 z" fill={YELLOW} />
-          <path d="M60.5 12 v-3.5 h3 v3.5" />
+          {/* Mains dans les poches, la tête levée vers la maison qu'il imagine */}
+          <path d="M27 47 V63.5 M34 47 V63.5" />
+          <path d="M24 63.5 h5.5 M32 63.5 h5.5" />
+          <Coat x={30.5} />
+          <path d="M24.5 22 L22.5 35 L26 38.5 M36.5 22 L38.5 35 L35 38.5" />
+          <circle cx="32" cy="10" r="4.6" fill="#fff" />
+          <path d="M38.5 7 Q44 1.5 50 6.5" strokeDasharray="0.5 3.2" strokeWidth="1.8" />
+          <path d="M53 18 V9.5 L60 4.5 L67 9.5 V18 Z" fill={YELLOW} />
+          <path d="M58.3 18 v-4.2 h3.4 V18" />
         </>
       )}
       {kind === 'architecture' && (
         <>
-          {/* Lunettes rondes et plan roulé sous le bras */}
-          <path d="M31 47 V63 M39 47 V63" />
-          <path d="M27 63 h6 M37 63 h6" />
-          <rect x="25" y="24" width="20" height="24" rx="7" fill={YELLOW} />
-          <circle cx="35" cy="14" r="7.5" fill="#fff" />
-          <circle cx="32" cy="13.5" r="2.4" />
-          <circle cx="38" cy="13.5" r="2.4" />
-          <path d="M34.4 13.5 h1.2" />
-          <path d="M33 18 q2 1.4 4 0" />
-          <path d="M25 30 L19 40" />
-          <g transform="rotate(24 49 38)">
-            <rect x="46" y="22" width="6.5" height="30" rx="3.2" fill="#fff" />
-            <path d="M46 27 h6.5" />
+          {/* Lunettes rondes, un plan roulé sous le bras */}
+          <path d="M28 47 V63.5 M35 47 V63.5" />
+          <path d="M25 63.5 h5.5 M33 63.5 h5.5" />
+          <path d="M25.5 22 L22 37" />
+          <Coat x={31.5} />
+          <circle cx="31.5" cy="10.5" r="4.6" fill="#fff" />
+          <circle cx="29.7" cy="10.4" r="1.5" strokeWidth="1" />
+          <circle cx="33.3" cy="10.4" r="1.5" strokeWidth="1" />
+          <g transform="rotate(22 47 36)">
+            <rect x="44" y="17" width="6" height="36" rx="3" fill="#fff" />
+            <path d="M44 22.5 h6 M44 47.5 h6" strokeWidth="1" />
           </g>
-          <path d="M45 31 L50 39" />
+          <path d="M37.5 22 L43.5 33.5" />
         </>
       )}
     </svg>

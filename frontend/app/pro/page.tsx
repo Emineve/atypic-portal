@@ -101,7 +101,7 @@ export default function ProPage() {
           <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
             {VISITORS.map((v) => (
               <div key={v.title} className="border-t border-stone-200 pt-5">
-                <BuyerFigure kind={v.kind} className="h-20 w-20 -ml-2" />
+                <BuyerFigure kind={v.kind} className="h-24 w-24 -ml-3" />
                 <h3 className="mt-4 font-serif text-2xl text-stone-900">{v.title}</h3>
                 <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{v.text}</p>
               </div>
