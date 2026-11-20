@@ -3,6 +3,7 @@
 import { blackButtonOnScreen } from '../lib/blackButton';
 import Logo from './Logo';
 import MenuPanel from './MenuPanel';
+import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
@@ -1000,7 +1001,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                       </div>
                       <div>
                         <div className="mt-6 flex items-baseline justify-between gap-3">
-                          <span className="min-w-0 truncate text-xs text-stone-500">{item.source_agency}</span>
+                          <span className="min-w-0 truncate text-xs text-stone-500">{agencyLine(item.source_agency)}</span>
                           <span className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900 transition">
                             Voir le bien
                             <ArrowUpRight className="w-3.5 h-3.5" />

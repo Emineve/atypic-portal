@@ -1,3 +1,4 @@
+import { agencyLine } from '../lib/agencyLine';
 import Crumbs from './Crumbs';
 import SiteHeader from './SiteHeader';
 import Link from 'next/link';
@@ -97,7 +98,7 @@ export default function CollectionPage({
                   </div>
                   <div className="mt-6 flex items-baseline justify-between gap-3">
                     <span className="min-w-0 truncate text-xs text-stone-500">
-                      {[hideAgency ? null : item.source_agency, item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
+                      {[hideAgency ? null : agencyLine(item.source_agency), item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
                     </span>
                     <Link href={`/biens/${item.id}`} className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
                       Voir le bien
