@@ -1066,6 +1066,23 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           </div>
         )}
 
+        {/* Favoris : le bouton de contact suit la liste des favoris, pour qu'on sache de quels biens il parle */}
+        {onlyFavs && !loading && !errorMessage && visible.length > 0 && (
+          <div className="mt-10 flex flex-col items-center gap-3 text-center">
+            <button
+              type="button"
+              onClick={() => setFavContactOpen(true)}
+              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-8 text-[15px] font-medium text-white transition hover:bg-stone-800 sm:w-auto"
+            >
+              <Send className="w-4 h-4" />
+              <span>{visible.length > 1 ? `Ces ${visible.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
+            </button>
+            <p className="text-sm text-stone-500">
+              {visible.length > 1 ? 'Vos coordonnées une seule fois, chaque agence vous rappelle.' : 'Laissez vos coordonnées, l’agence vous rappelle.'}
+            </p>
+          </div>
+        )}
+
         {onlyFavs && !loading && !errorMessage && recent.length > 0 && (
           <section className={`border-t border-stone-200 pt-8 ${visible.length > 0 ? 'mt-16' : ''}`} aria-labelledby="vus-recemment">
             <div className="flex items-baseline justify-between gap-4">
@@ -1146,23 +1163,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <button type="button" onClick={() => openAlert('flottant')} className="pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-white text-sm font-medium shadow-lg hover:bg-stone-800 transition">
             <Plus className="w-4 h-4" strokeWidth={2} />
             Nouvelle alerte
-          </button>
-        </div>
-      )}
-
-      {onlyFavs && visible.length > 0 && !footerVisible && !favContactOpen && (
-        <div
-          data-fab
-          className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
-          style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
-        >
-          <button
-            type="button"
-            onClick={() => setFavContactOpen(true)}
-            className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900 text-white text-[15px] font-medium px-6 h-14 rounded-full shadow-lg hover:bg-stone-800 transition"
-          >
-            <Send className="w-4 h-4" />
-            <span>{visible.length > 1 ? `Ces ${visible.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
           </button>
         </div>
       )}
