@@ -1,7 +1,6 @@
 'use client';
 
 import Logo from '../Logo';
-import Contacts from './Contacts';
 import { useEffect, useState } from 'react';
 import { getSupabase } from '../../lib/supabase';
 
@@ -318,8 +317,6 @@ export default function AdminPage() {
                 </div>
               )}
             </section>
-
-            <Contacts token={token} />
 
             <section>
               <h2 className="font-serif text-xl mb-3">Demandes de contact</h2>
