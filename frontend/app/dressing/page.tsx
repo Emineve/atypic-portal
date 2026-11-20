@@ -39,7 +39,7 @@ export default function DressingPage() {
           pitch="Deux mots, en noir. Une formule de politesse, et une façon d’habiter."
         />
         <TeeCard
-          first="Vert"
+          first="Rouge"
           name="Le regard"
           words={['l.']}
           mark
