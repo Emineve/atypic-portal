@@ -341,11 +341,6 @@ export default async function ListingPage({ params }: { params: { id: string } }
               <section id="prix" className="mt-10 rounded-[14px] border border-stone-300 bg-white p-6 scroll-mt-24">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
 
-                <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="font-sans font-light tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</span>
-                  <span className="text-sm text-stone-500">montant estimé du projet, hors travaux</span>
-                </p>
-
                 {/* Part du prix et des frais de notaire dans le projet */}
                 <div className="mt-5 flex h-2.5 w-full overflow-hidden" aria-hidden="true">
                   <span className="bg-stone-900" style={{ width: `${(priceNum / (priceNum + notary)) * 100}%` }} />
@@ -369,6 +364,13 @@ export default async function ListingPage({ params }: { params: { id: string } }
                       <span>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></span>
                     </dt>
                     <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-4 py-3.5">
+                    <dt className="pl-5">
+                      Montant estimé du projet
+                      <span className="block text-sm text-stone-500">Hors travaux</span>
+                    </dt>
+                    <dd className="font-sans font-normal tabular-nums text-2xl text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
                   </div>
                 </dl>
 
