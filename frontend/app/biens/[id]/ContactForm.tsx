@@ -239,25 +239,25 @@ export default function ContactForm({
           {confirmOpen && createPortal(
             <div className="fixed inset-0 z-[80] flex items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Demande envoyée">
               <div className="absolute inset-0 bg-stone-900/60" onClick={() => setConfirmOpen(false)} />
-              <div className="relative w-full max-w-sm max-h-full overflow-y-auto bg-white shadow-2xl px-7 pt-12 pb-7 text-center">
+              <div className="relative w-full max-w-sm max-h-full overflow-y-auto rounded-[20px] bg-white shadow-2xl px-7 pt-12 pb-7 text-center">
                 <button
                   type="button"
                   onClick={() => setConfirmOpen(false)}
                   aria-label="Fermer"
-                  className="absolute top-2 right-2 h-11 w-11 flex items-center justify-center text-stone-500 hover:text-stone-900"
+                  className="absolute top-2 right-2 h-11 w-11 rounded-full flex items-center justify-center text-stone-500 hover:text-stone-900"
                 >
                   <X className="w-5 h-5" />
                 </button>
                 <span className="mx-auto h-12 w-12 rounded-full bg-stone-900 text-white flex items-center justify-center">
                   <Check className="w-6 h-6" />
                 </span>
-                <h2 className="mt-5 font-serif text-3xl text-stone-900 leading-tight">C&apos;est envoyé.</h2>
-                <p className="mt-2 text-stone-600">L&apos;agence vous recontacte dans les meilleurs délais.</p>
+                <h2 className="mt-5 font-serif text-3xl text-stone-900 leading-tight">Demande envoyée.</h2>
+                <p className="mt-2 text-stone-600">{agency} vous recontacte dans les meilleurs délais.</p>
 
                 {alertLabel && (
                   <div className="mt-8 text-left">
-                    <p className="text-xs uppercase tracking-widest text-stone-500">Et pour la suite</p>
-                    <p className="mt-1.5 font-medium leading-snug text-stone-900">Les prochains biens : {alertLabel}</p>
+                    <p className="text-xs uppercase tracking-widest text-stone-500">Ne manquez pas les suivants</p>
+                    <p className="mt-1.5 font-medium leading-snug text-stone-900">D&apos;autres biens comme celui-ci vont paraître : {alertLabel}.</p>
                     <div className="mt-3 border-y border-stone-200 divide-y divide-stone-200">
                       {alertStatus === 'done' ? (
                         <p className="flex items-center gap-3 py-4 text-stone-600">
@@ -268,20 +268,20 @@ export default function ContactForm({
                         <button type="button" onClick={createAlert} disabled={alertStatus === 'sending'} className="w-full flex items-center gap-3 py-4 text-left text-stone-900 disabled:opacity-60">
                           <Bell className="w-4 h-4 flex-none text-stone-500" strokeWidth={1.5} />
                           <span className="flex-1 underline underline-offset-4 decoration-stone-300">
-                            {alertStatus === 'sending' ? 'Un instant…' : 'Les recevoir par e-mail'}
+                            {alertStatus === 'sending' ? 'Un instant…' : 'Me prévenir par e-mail'}
                           </span>
                         </button>
                       )}
                       {shareStatus === 'done' ? (
                         <p className="flex items-center gap-3 py-4 text-stone-600">
                           <Check className="w-4 h-4 flex-none" />
-                          Recherche partagée avec {agency}
+                          Recherche confiée à {agency}
                         </p>
                       ) : (
                         <button type="button" onClick={shareCriteria} disabled={shareStatus === 'sending'} className="w-full flex items-center gap-3 py-4 text-left text-stone-900 disabled:opacity-60">
                           <Send className="w-4 h-4 flex-none text-stone-500" strokeWidth={1.5} />
                           <span className="flex-1 underline underline-offset-4 decoration-stone-300">
-                            {shareStatus === 'sending' ? 'Un instant…' : `Partager ma recherche avec ${agency}`}
+                            {shareStatus === 'sending' ? 'Un instant…' : `Confier aussi ma recherche à ${agency}`}
                           </span>
                         </button>
                       )}
@@ -296,7 +296,7 @@ export default function ContactForm({
                       </p>
                     )}
                     <p className="mt-3 text-xs text-stone-500 leading-relaxed">
-                      Le partage transmet vos coordonnées à {agency} uniquement.
+                      Si vous lui confiez votre recherche, {agency} reçoit vos critères et vos coordonnées. Personne d&apos;autre.
                     </p>
                   </div>
                 )}

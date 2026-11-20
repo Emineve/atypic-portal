@@ -78,7 +78,12 @@ export default function CollectionPage({
                 </Link>
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>
-                    <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">{item.city}{item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}</p>
+                    <p className="mb-2 flex items-baseline justify-between gap-3">
+                      <span className="text-xs text-stone-400 uppercase tracking-wider">{item.city}{item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}</span>
+                      <span className="flex-none whitespace-nowrap text-lg font-medium tracking-tight font-sans tabular-nums text-stone-900">
+                        {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
+                      </span>
+                    </p>
                     <h2 className="font-serif text-2xl leading-tight text-stone-900 line-clamp-3">{item.title}</h2>
                     {item.atypic_tags && item.atypic_tags.length > 0 && (
                       <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
@@ -90,16 +95,9 @@ export default function CollectionPage({
                       </ul>
                     )}
                   </div>
-                  <div className="mt-6 flex items-end justify-between gap-3">
-                    <span>
-                      <span className="block whitespace-nowrap text-xl font-normal tracking-tight font-sans tabular-nums">
-                        {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
-                      </span>
-                      {(!hideAgency || item.source_id) && (
-                        <span className="mt-1 block text-xs text-stone-500">
-                          {[hideAgency ? null : item.source_agency, item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
-                        </span>
-                      )}
+                  <div className="mt-6 flex items-baseline justify-between gap-3">
+                    <span className="min-w-0 truncate text-xs text-stone-500">
+                      {[hideAgency ? null : item.source_agency, item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
                     </span>
                     <Link href={`/biens/${item.id}`} className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
                       Voir le bien
