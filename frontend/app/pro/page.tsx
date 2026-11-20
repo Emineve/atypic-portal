@@ -25,8 +25,15 @@ const PROMISES: Promise5[] = [
   {
     title: 'Seuls les biens atypiques entrent.',
     text: 'Six caractéristiques précises : un bien en présente au moins une, ou il n’est pas diffusé. Un cadre qui valorise vos mandats les plus rares.',
-    href: '/charte',
-    link: 'Ce que nous publions, et ce que nous ne publions pas',
+    points: [
+      ['Une autre vie avant', 'loft, atelier d’artiste, ancienne usine, péniche'],
+      ['Un volume', 'grande hauteur, mezzanine, verrière, duplex'],
+      ['Un dehors en ville', 'terrasse, toit-terrasse, jardin, patio'],
+      ['Une situation rare', 'dernier étage, vue, bord de l’eau, voie privée'],
+      ['Une signature', 'maison d’architecte, immeuble remarquable'],
+      ['Une histoire', 'hôtel particulier, bien ancien resté dans son jus'],
+    ],
+    note: 'Un appartement classique, même très beau ou très cher, n’est pas publié. Le prix et l’adresse ne comptent pas.',
   },
   {
     title: 'Vous n’avez rien à faire.',

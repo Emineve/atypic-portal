@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { typo } from '../../lib/typo';
 import StepDeck from '../StepDeck';
 
-export type Promise5 = { title: string; text: string; href?: string; link?: string; software?: boolean };
+export type Promise5 = { title: string; text: string; href?: string; link?: string; software?: boolean; points?: [string, string][]; note?: string };
 
 const action =
   'inline-flex items-center gap-1.5 text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
@@ -26,6 +26,17 @@ export default function ProSteps({ promises, softwareSrc }: { promises: Promise5
           </Link>
         </p>
       )}
+      {p.points && (
+        <ul className="mt-6 grid max-w-2xl gap-x-10 gap-y-3 sm:grid-cols-2">
+          {p.points.map(([t, d]) => (
+            <li key={t} className="border-t border-stone-200 pt-3">
+              <p className="text-[15px] font-medium text-stone-900">{t}</p>
+              <p className="mt-0.5 text-sm leading-snug text-stone-500">{d}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      {p.note && <p className="mt-6 max-w-2xl text-sm leading-relaxed text-stone-600">{p.note}</p>}
       {p.software && (
         <>
           <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Passerelles prévues avec les principaux logiciels</p>

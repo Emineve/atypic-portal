@@ -711,11 +711,17 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <button
             type="button"
             onClick={() => setShowFilters(true)}
-            className="h-14 px-4 sm:px-5 rounded-[10px] border border-stone-300 bg-white text-xs uppercase tracking-wider inline-flex items-center gap-2 hover:border-stone-900 transition"
+            className="relative h-14 w-14 flex-none rounded-[10px] border border-stone-300 bg-white inline-flex items-center justify-center hover:border-stone-900 transition"
             aria-haspopup="dialog"
+            aria-label={activeFilters > 0 ? `Critères (${activeFilters})` : 'Critères'}
+            title="Critères"
           >
-            <SlidersHorizontal className="w-4 h-4" />
-            <span>Critères{activeFilters > 0 ? ` (${activeFilters})` : ''}</span>
+            <SlidersHorizontal className="w-5 h-5" />
+            {activeFilters > 0 && (
+              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#F4E7B5] px-1 text-[11px] font-semibold text-stone-900">
+                {activeFilters}
+              </span>
+            )}
           </button>
         </div>
 
