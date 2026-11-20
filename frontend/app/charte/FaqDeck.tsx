@@ -59,11 +59,11 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
             </button>
           ))}
         </div>
-        <p className="text-xs uppercase tracking-widest text-stone-500">
+        <p className="text-xs uppercase tracking-widest text-stone-500 md:hidden">
           Rubrique {active + 1} sur {groups.length}
         </p>
-        <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-tight tracking-tight text-stone-900">{g.title}</h2>
-        <div key={g.id} className="mt-6 divide-y divide-stone-200 border-y border-stone-200">
+        <h2 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-stone-900 md:sr-only">{g.title}</h2>
+        <div key={g.id} className="mt-6 divide-y divide-stone-200 border-y border-stone-200 md:mt-0 md:border-t-0 md:[&>details:first-child]:pt-0">
           {g.items.map((it) => (
                     <details key={it.q} className="group py-5">
                       <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-xl text-stone-900">
