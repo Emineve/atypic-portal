@@ -280,10 +280,10 @@ export default function GuideSearch() {
           {suggestions.length > 0 && (
             <div className="mt-5">
               <p className="text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées' : 'Les questions que les acheteurs nous posent'}</p>
-              <ul className="mt-3 flex flex-wrap gap-2">
+              <ul className="mt-3 space-y-1.5">
                 {suggestions.map((ex) => (
                   <li key={ex}>
-                    <button type="button" onClick={() => setQ(ex)} className="rounded-full border border-stone-300 bg-white px-4 py-2 text-left text-[15px] leading-snug text-stone-800 transition hover:border-stone-900 hover:bg-[#F6CF4E]">
+                    <button type="button" onClick={() => setQ(ex)} className="py-1 text-left text-[15px] leading-snug text-stone-900 underline underline-offset-4 decoration-stone-300 transition hover:decoration-stone-900">
                       {typo(ex)}
                     </button>
                   </li>
