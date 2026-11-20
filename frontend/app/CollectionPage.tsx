@@ -81,25 +81,27 @@ export default function CollectionPage({
                     <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">{item.city}{item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}</p>
                     <h2 className="font-serif text-2xl leading-tight text-stone-900 line-clamp-3">{item.title}</h2>
                     {item.atypic_tags && item.atypic_tags.length > 0 && (
-                      <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
+                      <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
                         {item.atypic_tags.slice(0, 3).map((tag) => (
-                          <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">
+                          <li key={tag} className="rounded-full bg-[#F4E7B5] px-3 py-1 text-[13px] leading-tight text-stone-800">
                             {tag}
                           </li>
                         ))}
                       </ul>
                     )}
                   </div>
-                  {(!hideAgency || item.source_id) && (
-                    <p className="mt-4 text-xs text-stone-400">
-                      {[hideAgency ? null : `Annonce ${item.source_agency}`, item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
-                    </p>
-                  )}
-                  <div className={`${hideAgency && !item.source_id ? 'mt-6' : 'mt-3'} pt-4 border-t border-stone-100 flex items-center justify-between`}>
-                    <span className="text-xl font-medium tracking-tight font-sans tabular-nums">
-                      {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price)}
+                  <div className="mt-6 flex items-end justify-between gap-3">
+                    <span>
+                      <span className="block whitespace-nowrap text-xl font-medium tracking-tight font-sans tabular-nums [word-spacing:0.12em]">
+                        {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
+                      </span>
+                      {(!hideAgency || item.source_id) && (
+                        <span className="mt-1 block text-xs text-stone-500">
+                          {[hideAgency ? null : item.source_agency, item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
+                        </span>
+                      )}
                     </span>
-                    <Link href={`/biens/${item.id}`} className="inline-flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 hover:text-stone-600 transition">
+                    <Link href={`/biens/${item.id}`} className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
                       Voir le bien
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </Link>

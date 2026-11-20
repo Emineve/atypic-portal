@@ -1022,7 +1022,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
               return (
                 <Fragment key={item.id}>
-                <article className="group relative flex flex-col rounded-[14px] border border-stone-300 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <article className="group relative flex flex-col rounded-[14px] border border-stone-200 bg-white overflow-hidden hover:shadow-lg transition-all duration-300">
                   <a href={`/biens/${item.id}`} className="flex flex-1 flex-col" aria-label={item.title}>
                     <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
                       <img
@@ -1042,9 +1042,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         </p>
                         <h2 className="font-serif text-2xl leading-tight text-stone-900 line-clamp-3">{item.title}</h2>
                         {item.atypic_tags && item.atypic_tags.length > 0 && (
-                          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
+                          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
                             {item.atypic_tags.slice(0, 3).map((tag) => (
-                              <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">
+                              <li key={tag} className="rounded-full bg-[#F4E7B5] px-3 py-1 text-[13px] leading-tight text-stone-800">
                                 {tag}
                               </li>
                             ))}
@@ -1052,10 +1052,12 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         )}
                       </div>
                       <div>
-                        <p className="mt-4 text-xs text-stone-400">{item.source_agency}</p>
-                        <div className="mt-3 pt-4 border-t border-stone-200 flex items-center justify-between gap-3">
-                          <span className="text-xl font-medium tracking-tight font-sans tabular-nums">{price}</span>
-                          <span className="inline-flex items-center gap-1 py-2 text-[15px] font-medium text-stone-900 underline underline-offset-4 group-hover:text-stone-600 transition">
+                        <div className="mt-6 flex items-end justify-between gap-3">
+                          <span>
+                            <span className="block whitespace-nowrap text-xl font-medium tracking-tight font-sans tabular-nums [word-spacing:0.12em]">{price.replace(/[\u202f\u00a0]/g, '\u00a0')}</span>
+                            <span className="mt-1 block text-xs text-stone-500">{item.source_agency}</span>
+                          </span>
+                          <span className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900 transition">
                             Voir le bien
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </span>
