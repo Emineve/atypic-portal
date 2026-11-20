@@ -196,9 +196,9 @@ export default function GuideSearch() {
         }}
       >
         <label htmlFor="question" className="sr-only">Posez-nous une question, un expert vous répond</label>
-        {/* Une barre de moteur de recherche : arrondie, blanche, avec ses suggestions qui s'ouvrent dessous dans le même cadre */}
-        <div className="rounded-[28px] border border-stone-300 bg-white shadow-[0_2px_12px_rgba(28,25,23,0.08)] transition focus-within:border-stone-900 focus-within:shadow-[0_6px_24px_rgba(28,25,23,0.14)]">
-          <div className="flex h-14 md:h-16 items-center gap-3 pl-5 pr-2">
+        {/* Une barre de recherche en pilule, seule ; les questions d'exemple sont des pastilles à toucher, dessous */}
+        <div>
+          <div className="flex h-14 md:h-16 items-center gap-3 rounded-full border border-stone-200 bg-white pl-6 pr-2 shadow-[0_1px_2px_rgba(28,25,23,0.05)] transition focus-within:border-stone-900">
             <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.75} />
             <input
               ref={input}
@@ -226,13 +226,12 @@ export default function GuideSearch() {
             </button>
           </div>
           {suggestions.length > 0 && (
-            <div className="border-t border-stone-200 pb-3 pt-3">
-              <p className="px-5 pb-1 text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées' : 'Les questions qu’on nous pose'}</p>
-              <ul>
+            <div className="mt-5">
+              <p className="text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées' : 'Les questions qu’on nous pose'}</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
                 {suggestions.map((ex) => (
                   <li key={ex}>
-                    <button type="button" onClick={() => setQ(ex)} className="flex w-full items-start gap-3 px-5 py-2.5 text-left text-base text-stone-800 transition hover:bg-stone-50">
-                      <Search className="mt-1 h-4 w-4 flex-none text-stone-400" strokeWidth={1.75} />
+                    <button type="button" onClick={() => setQ(ex)} className="rounded-full border border-stone-300 bg-white px-4 py-2 text-left text-[15px] leading-snug text-stone-800 transition hover:border-stone-900 hover:bg-[#F4E7B5]">
                       {typo(ex)}
                     </button>
                   </li>
