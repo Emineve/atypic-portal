@@ -61,7 +61,7 @@ export default function MenuPanel({
     {
       title: 'Bien acheter',
       items: [
-        { href: '/guide', label: 'État des lieux', sub: 'Ce qu’il faut savoir avant d’acheter', Icon: BookOpen, badge: articles > 0 ? `${articles} articles` : undefined },
+        { href: '/guide', label: 'État des lieux', sub: 'Ce qu’il faut savoir avant d’acheter', Icon: BookOpen },
         { href: '/financement', label: 'Financement', sub: 'Estimer ma mensualité', Icon: Calculator },
         { href: '/mode-d-emploi', label: 'Mode d’emploi', sub: 'Du premier clic à la visite', Icon: Compass },
       ],
