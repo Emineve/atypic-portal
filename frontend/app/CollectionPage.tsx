@@ -78,12 +78,11 @@ export default function CollectionPage({
                 </Link>
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>
-                    <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">{item.city}</p>
-                    <h2 className="font-serif text-2xl leading-tight text-stone-900 line-clamp-2">{item.title}</h2>
-                    {(item.surface_sqm || (item.atypic_tags && item.atypic_tags.length > 0)) && (
-                      <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Surface et atouts du bien">
-                        {item.surface_sqm ? <li className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">{Math.round(item.surface_sqm)} m²</li> : null}
-                        {(item.atypic_tags || []).slice(0, 3).map((tag) => (
+                    <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">{item.city}{item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}</p>
+                    <h2 className="font-serif text-2xl leading-tight text-stone-900 line-clamp-3">{item.title}</h2>
+                    {item.atypic_tags && item.atypic_tags.length > 0 && (
+                      <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Atouts du bien">
+                        {item.atypic_tags.slice(0, 3).map((tag) => (
                           <li key={tag} className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs text-stone-800">
                             {tag}
                           </li>
