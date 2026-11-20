@@ -21,7 +21,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
             <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white">
               loftissime.
             </a>
-            <p className="mt-4 font-serif text-xl italic text-[#F4E7B5]">Curateur de biens atypiques</p>
+            <p className="mt-4 font-serif text-xl text-[#F4E7B5]">Curateur de biens atypiques</p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-400">
               Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte : tous les biens atypiques, réunis sur un seul site.
             </p>
