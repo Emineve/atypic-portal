@@ -49,9 +49,9 @@ export default function ProForm() {
   return (
     <>
     <h2 className={h2}>
-      Diffuser mes annonces <span className="italic text-stone-500">sur Loftissime.</span>
+      Diffusez vos biens atypiques. <span className="italic text-stone-500">Dès maintenant.</span>
     </h2>
-    <p className="mt-4 text-lg font-light text-stone-600">Dites-nous qui vous êtes, nous revenons vers vous rapidement.</p>
+    <p className="mt-4 text-lg font-light text-stone-600">Laissez-nous vos coordonnées : nous vous rappelons rapidement pour mettre vos annonces en ligne.</p>
     <form onSubmit={onSubmit} className="mt-8 max-w-2xl rounded-[14px] border border-stone-200 bg-white p-6 md:p-8 space-y-6 text-left">
       <div>
         <label htmlFor="p-agency" className={label}>Agence</label>

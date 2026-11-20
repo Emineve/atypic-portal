@@ -8,23 +8,23 @@ import logiciels from './logiciels.png';
 export const metadata = {
   title: 'Agences : présentez vos biens atypiques · Loftissime',
   description:
-    'Loftissime, le premier hub d’annonces immobilières atypiques. Présentez vos biens à des acheteurs qui cherchent précisément cela. Gratuit pendant le lancement.',
+    'Diffusez vos biens atypiques auprès d’acheteurs qui ne cherchent que cela. Contacts directs, mise à jour automatique, gratuit pendant le lancement.',
   alternates: { canonical: '/pro' },
 };
 
 // Cinq promesses faites aux agences, dans le même ton que « Pourquoi Loftissime ».
 const PROMISES: Promise5[] = [
   {
-    title: 'Vos acheteurs sont déjà là.',
-    text: 'Ici, on ne vient que pour l’atypique : lofts, ateliers d’artistes, rooftops, péniches. Vos biens ne sont plus noyés parmi les annonces classiques, et les acheteurs qui ont créé une alerte sont prévenus dès qu’ils arrivent.',
+    title: 'Des acheteurs qualifiés.',
+    text: 'Sur Loftissime, on ne cherche que de l’atypique. Vos biens ne sont plus noyés entre deux trois-pièces : ils sont vus par des acheteurs qui veulent exactement cela. Ceux qui ont créé une alerte sont prévenus dès la mise en ligne.',
   },
   {
-    title: 'Le contact est pour vous.',
-    text: 'Votre agence, votre négociateur et son téléphone figurent sur chaque annonce. L’acheteur vous appelle, vous écrit ou demande à être rappelé. Sans intermédiaire.',
+    title: 'Des contacts directs.',
+    text: 'Votre agence, votre négociateur et son téléphone sur chaque annonce. L’acheteur vous appelle, vous écrit ou demande à être rappelé : la demande arrive chez vous, sans intermédiaire.',
   },
   {
-    title: 'Seuls les biens atypiques entrent.',
-    text: 'Six caractéristiques précises : un bien en présente au moins une, ou il n’est pas diffusé. Un cadre qui valorise vos mandats les plus rares.',
+    title: 'Une vitrine qui valorise vos mandats.',
+    text: 'Seuls les biens atypiques sont publiés. Vos mandats les plus rares ont enfin leur vitrine, et vous avez un argument de plus face à un vendeur.',
     points: [
       ['Une autre vie avant', 'loft, atelier d’artiste, ancienne usine, péniche'],
       ['Un volume', 'grande hauteur, mezzanine, verrière, duplex'],
@@ -36,13 +36,13 @@ const PROMISES: Promise5[] = [
     note: 'Un appartement classique, même très beau ou très cher, n’est pas publié. Le prix et l’adresse ne comptent pas.',
   },
   {
-    title: 'Vous n’avez rien à faire.',
-    text: 'Une passerelle avec votre logiciel de diffusion, et vos annonces se publient et se mettent à jour seules. Un bien vendu est retiré.',
+    title: 'Zéro saisie.',
+    text: 'Une passerelle avec votre logiciel de diffusion : vos annonces se publient et se mettent à jour seules. Un bien vendu est retiré. Vous ne changez rien à vos habitudes.',
     software: true,
   },
   {
-    title: 'C’est gratuit.',
-    text: 'Pendant toute la phase de lancement, sans engagement. Toute évolution des conditions vous sera annoncée à l’avance.',
+    title: 'Gratuit pendant le lancement.',
+    text: 'Aucun frais, aucun engagement pendant toute la phase de lancement. Toute évolution des conditions vous sera annoncée à l’avance : vous restez libre d’arrêter.',
   },
 ];
 
@@ -51,18 +51,25 @@ const VISITORS: { title: string; text: string; kind: BuyerKind }[] = [
   {
     kind: 'decide',
     title: 'L’acheteur décidé',
-    text: 'Il a un projet, un budget et peu de temps. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être rappelé dès qu’un bien lui plaît.',
+    text: 'Projet, budget, calendrier : il est prêt. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être rappelé dès qu’un bien lui plaît. C’est votre contact le plus sérieux.',
   },
   {
     kind: 'reveur',
     title: 'Le rêveur',
-    text: 'Il n’achète pas encore. Il regarde, met en favori, se nourrit de la rubrique Inspiration. C’est l’acheteur de demain, et il connaît déjà votre agence.',
+    text: 'Il n’achète pas encore. Il regarde, met en favori, revient. C’est votre acquéreur de demain, et le jour où il se décide, il connaît déjà votre agence.',
   },
   {
     kind: 'architecture',
     title: 'L’amoureux d’architecture',
-    text: 'Architecture, design, décoration : il sait ce qu’est une verrière d’atelier ou une belle hauteur sous plafond, et il ne visite pas par hasard.',
+    text: 'Architecture, design, décoration : il sait ce qu’est une verrière d’atelier ou une belle hauteur sous plafond. Il ne visite pas par hasard, et vous ne perdez pas votre temps.',
   },
+];
+
+// La mise en route, en trois temps
+const HOW: [string, string][] = [
+  ['Vous nous écrivez.', 'Le nom de votre agence et un e-mail suffisent. Nous vous rappelons pour faire le point sur vos biens atypiques.'],
+  ['Nous branchons vos annonces.', 'Une passerelle avec votre logiciel de diffusion, mise en place par nos soins. Vous n’avez rien à installer.'],
+  ['Les contacts arrivent chez vous.', 'Vos biens sont en ligne, les acheteurs en alerte sont prévenus, et chaque demande vous parvient directement.'],
 ];
 
 export default function ProPage() {
@@ -80,14 +87,14 @@ export default function ProPage() {
         <div className="max-w-4xl">
         <Crumbs items={[{ label: 'Espace pro' }]} />
         <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
-          Vos biens atypiques méritent <span className="italic text-stone-500">des acheteurs qui les cherchent.</span>
+          Vendez vos biens atypiques <span className="italic text-stone-500">à ceux qui les cherchent.</span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Lofts, ateliers d&apos;artistes, rooftops et d&apos;autres biens atypiques : Loftissime est le premier hub d&apos;annonces immobilières atypiques.
+          Loftissime réunit les acheteurs de lofts, d&apos;ateliers d&apos;artistes et de toits-terrasses. Vos annonces y trouvent leur public, et chaque contact vous revient directement.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <a href="#rejoindre" className={btn}>Diffuser mes annonces</a>
-          <span className="text-sm text-stone-500">Gratuit pendant le lancement, sans engagement.</span>
+          <span className="text-sm text-stone-500">Gratuit pendant le lancement · Sans engagement</span>
         </div>
       </div>
       </header>
@@ -100,10 +107,10 @@ export default function ProPage() {
 
         <section className="border-t border-stone-200 py-12 md:py-16">
           <h2 className={h2}>
-            Qui sont les acheteurs <span className="italic text-stone-500">de Loftissime.</span>
+            Vos futurs acquéreurs <span className="italic text-stone-500">sont ici.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-            Ils veulent un bien qui leur ressemble, quel que soit leur budget. Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire.
+            Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire. Trois profils, trois façons d&apos;arriver jusqu&apos;à vous.
           </p>
           <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
             {VISITORS.map((v) => (
@@ -114,6 +121,21 @@ export default function ProPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="border-t border-stone-200 py-12 md:py-16">
+          <h2 className={h2}>
+            Comment ça marche. <span className="italic text-stone-500">Nous nous occupons de tout.</span>
+          </h2>
+          <ol className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
+            {HOW.map(([t, d], i) => (
+              <li key={t} className="border-t-2 border-stone-900 pt-5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F4E7B5] text-sm font-medium text-stone-900">{i + 1}</span>
+                <h3 className="mt-4 font-serif text-2xl text-stone-900">{t}</h3>
+                <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{d}</p>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section id="rejoindre" className="border-t border-stone-200 pt-12 md:pt-16 scroll-mt-20">
