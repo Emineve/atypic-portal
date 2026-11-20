@@ -66,7 +66,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
         <div key={g.id} className="mt-6 divide-y divide-stone-200 border-y border-stone-200 md:mt-0 md:border-t-0 md:[&>details:first-child]:pt-0">
           {g.items.map((it) => (
                     <details key={it.q} className="group py-5">
-                      <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-xl text-stone-900">
+                      <summary className="cursor-pointer list-none flex items-center justify-between gap-4 text-lg font-medium text-stone-900">
                         {typo(it.q)}
                         <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
                       </summary>

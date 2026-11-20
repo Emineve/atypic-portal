@@ -280,7 +280,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </ul>
             )}
 
-            <p className="mt-5 font-sans font-medium tabular-nums text-3xl text-stone-900 lg:hidden">{price}</p>
+            <p className="mt-5 font-sans font-normal tabular-nums text-3xl text-stone-900 lg:hidden">{price}</p>
             {plans.length > 0 && (
               <div className="lg:hidden mt-1">
                 <PlanDownload listingId={item.id} plans={plans} title={item.title} variant="link" />
@@ -342,7 +342,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
 
                 <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="font-sans font-medium tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</span>
+                  <span className="font-sans font-light tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</span>
                   <span className="text-sm text-stone-500">montant estimé du projet, hors travaux</span>
                 </p>
 
@@ -394,7 +394,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
                 {monthly > 0 && (
                   <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="font-sans font-medium tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
+                    <span className="font-sans font-light tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
                       <span className="font-sans text-3xl text-stone-400" aria-label="environ">≈</span> {eur0(monthly)}
                     </span>
                     <span className="text-sm text-stone-500">par mois, hors crédit</span>
@@ -486,7 +486,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         <aside className="min-w-0">
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
           <div className="hidden lg:block px-1 pb-2">
-            <p className="font-sans text-[2.5rem] font-medium leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap [word-spacing:0.14em]">
+            <p className="font-sans text-[2.5rem] font-light leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap [word-spacing:0.14em]">
               {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum).replace(/[\u202f\u00a0]/g, '\u00a0')}{'\u00a0'}€
             </p>
           </div>

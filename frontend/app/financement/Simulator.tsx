@@ -106,7 +106,7 @@ export default function Simulator() {
         ) : (
         <>
         <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="font-sans font-medium tabular-nums text-5xl md:text-6xl leading-none tracking-tight text-stone-900">{eur(monthlyAll)}</span>
+          <span className="font-sans font-light tabular-nums text-5xl md:text-6xl leading-none tracking-tight text-stone-900">{eur(monthlyAll)}</span>
           <span className="text-stone-500">par mois, assurance comprise</span>
         </p>
 
