@@ -10,7 +10,6 @@ export type Promise5 = { title: string; text: string; href?: string; link?: stri
 
 const action =
   'inline-flex items-center gap-1.5 text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
-const btn = 'inline-flex h-12 items-center rounded-full bg-stone-900 px-8 text-[15px] font-medium text-white transition hover:bg-stone-800';
 
 // Les promesses faites aux agences, présentées comme le mode d'emploi des acheteurs : une à la fois, ou toutes d'un coup.
 export default function ProSteps({ promises, softwareSrc }: { promises: Promise5[]; softwareSrc: string }) {
@@ -54,7 +53,7 @@ export default function ProSteps({ promises, softwareSrc }: { promises: Promise5
       onStep={setStep}
       word="Engagement"
       listLabel="Nos engagements"
-      final={<a href="#rejoindre" className={btn}>Diffuser mes annonces</a>}
+      final={<a href="#rejoindre" className={action}>Contacter Loftissime<ArrowRight className="w-4 h-4" /></a>}
       format={typo}
     />
   );
