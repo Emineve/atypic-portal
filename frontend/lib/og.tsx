@@ -43,8 +43,8 @@ export async function shareImage(title: string, accent = '') {
   const [logo, sans, serif, serifItalic] = await Promise.all([
     loadFont('Poppins', 'wght@600', 'loftissime.'),
     loadFont('DM+Sans', 'wght@400', OG_SIGNATURE),
-    loadFont('Newsreader', 'wght@400', full),
-    loadFont('Newsreader', 'ital,wght@1,400', full),
+    loadFont('Newsreader', 'opsz,wght@72,400', full),
+    loadFont('Newsreader', 'ital,opsz,wght@1,72,400', full),
   ]);
   // Un titre long passe dans une taille en dessous pour tenir sur trois lignes au plus
   const long = full.length > 62;
@@ -74,6 +74,7 @@ export async function shareImage(title: string, accent = '') {
           style={{
             display: 'flex',
             flexWrap: 'wrap',
+            width: 1016,
             marginTop: 62,
             fontFamily: 'Newsreader',
             fontSize: size,
