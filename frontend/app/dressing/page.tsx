@@ -4,7 +4,7 @@ import TeeCard from './TeeCard';
 
 export const metadata = {
   title: 'Le dressing · Loftissime',
-  description: 'Les phrases de Loftissime, bientôt à porter : deux tee-shirts en préparation pour ceux qui ne veulent pas habiter comme tout le monde.',
+  description: 'Les phrases de Loftissime, bientôt à porter : trois tee-shirts en préparation pour ceux qui ne veulent pas habiter comme tout le monde.',
   alternates: { canonical: '/dressing' },
 };
 
@@ -20,13 +20,13 @@ export default function DressingPage() {
           Dans tout bien qui se respecte, <span className="italic text-stone-500">il y a un dressing.</span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Voici le nôtre. Deux tee-shirts, pour ceux qui ne veulent pas s&apos;habiller comme tout le monde non plus. Ils ne sont pas encore en vente : dites-nous lequel vous fait envie.
+          Voici le nôtre. Trois tee-shirts, pour ceux qui ne veulent pas s&apos;habiller comme tout le monde non plus. Ils ne sont pas encore en vente : dites-nous lequel vous fait envie.
         </p>
       </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
-        <div className="max-w-4xl pb-24 grid md:grid-cols-2 gap-6 md:gap-8">
+        <div className="pb-24 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <TeeCard
           name="Le superlatif"
           words={['loftisssssime.']}
@@ -37,6 +37,13 @@ export default function DressingPage() {
           name="Le singulier"
           words={['singulièrement', 'vôtre.']}
           pitch="Deux mots, en noir. Une formule de politesse, et une façon d’habiter."
+        />
+        <TeeCard
+          first="Vert"
+          name="Le regard"
+          words={['l.']}
+          mark
+          pitch="Le « l. » de Loftissime, dont le point vous regarde. Pour ceux qui ont l’œil."
         />
       </div>
       </main>
