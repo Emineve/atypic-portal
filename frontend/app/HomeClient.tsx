@@ -1044,7 +1044,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         {item.atypic_tags && item.atypic_tags.length > 0 && (
                           <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
                             {item.atypic_tags.slice(0, 3).map((tag) => (
-                              <li key={tag} className="rounded-full bg-[#F4E7B5] px-3 py-1 text-[13px] leading-tight text-stone-800">
+                              <li key={tag} className="rounded-full border border-stone-300 px-3 py-1 text-[13px] leading-tight text-stone-700">
                                 {tag}
                               </li>
                             ))}
