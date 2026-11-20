@@ -133,9 +133,9 @@ export default function FilterPanel({
               type="button"
               aria-pressed={value.bedrooms === n}
               onClick={() => set({ bedrooms: value.bedrooms === n ? null : n })}
-              className={`h-12 w-12 text-base border transition ${
+              className={`h-12 w-12 rounded-full text-base border transition ${
                 value.bedrooms === n
-                  ? 'bg-stone-900 border-stone-900 text-white'
+                  ? 'bg-[#F4E7B5] border-[#F4E7B5] font-medium text-stone-900'
                   : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
               }`}
             >

@@ -422,7 +422,7 @@ export default function AlertDialog({
           type="button"
           onClick={onClose}
           aria-label="Fermer"
-          className={`absolute top-2 right-2 z-20 h-9 w-9 flex items-center justify-center transition ${
+          className={`absolute top-2 right-2 z-20 h-9 w-9 rounded-full flex items-center justify-center transition ${
             status === 'done'
               ? 'text-stone-500 hover:text-stone-900'
               : 'bg-stone-900 text-white border border-stone-600 hover:bg-stone-700'
@@ -525,7 +525,7 @@ export default function AlertDialog({
                           key={l}
                           type="button"
                           onClick={() => setLocations(locations.filter((x) => x !== l))}
-                          className="inline-flex items-center gap-2 text-sm bg-stone-900 text-white pl-4 pr-3 py-2 hover:bg-stone-700 transition"
+                          className="inline-flex items-center gap-2 rounded-full bg-[#F4E7B5] pl-4 pr-3 py-2 text-sm font-medium text-stone-900 hover:bg-[#EBDB9C] transition"
                           aria-label={`Retirer ${l}`}
                         >
                           {l} <X className="w-3.5 h-3.5" />

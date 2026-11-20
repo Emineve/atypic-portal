@@ -18,11 +18,11 @@ export function Chip({
       type="button"
       aria-pressed={state !== 'off'}
       onClick={onClick}
-      className={`h-10 px-4 text-sm border transition ${
+      className={`h-10 px-4 rounded-full text-sm border transition ${
         state === 'must'
-          ? 'bg-stone-900 border-stone-900 text-white'
+          ? 'bg-[#F4E7B5] border-[#F4E7B5] font-medium text-stone-900'
           : state === 'nice'
-          ? 'bg-stone-100 border-stone-900 text-stone-900'
+          ? 'bg-white border-stone-900 text-stone-900'
           : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900 hover:text-stone-900'
       }`}
     >
