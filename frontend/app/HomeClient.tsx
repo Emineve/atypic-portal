@@ -3,6 +3,7 @@
 import { blackButtonOnScreen } from '../lib/blackButton';
 import Logo from './Logo';
 import MenuPanel from './MenuPanel';
+import AlertBand, { ALERT_BUTTON } from './AlertBand';
 import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
@@ -944,20 +945,15 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               </button>
             </div>
           ) : (
-            <div className="max-w-xl mx-auto text-center py-16">
-              <span className="mx-auto h-11 w-11 rounded-full bg-stone-900 text-white flex items-center justify-center">
-                <Bell className="w-5 h-5" />
-              </span>
-              <p className="mt-5 font-serif text-2xl text-stone-900 leading-snug">
+            <div className="max-w-2xl mx-auto py-16">
+              <p className="mb-6 text-center font-serif text-2xl text-stone-900 leading-snug">
                 Aucun bien ne correspond pour l&apos;instant.
               </p>
-              <button
-                type="button"
-                onClick={() => openAlert('empty')}
-                className="mt-6 bg-stone-900 text-white text-[15px] font-medium px-6 py-3.5 hover:bg-stone-800 transition rounded-full"
-              >
-                Créer mon alerte
-              </button>
+              <AlertBand title="Gardez ces critères : vous serez prévenu dès qu’un bien paraît.">
+                <button type="button" onClick={() => openAlert('empty')} className={ALERT_BUTTON}>
+                  Créer mon alerte
+                </button>
+              </AlertBand>
             </div>
           )
         ) : (
@@ -1057,20 +1053,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
       <footer ref={footerRef} className="border-t border-stone-200 bg-white">
         <div className="border-b border-stone-200 bg-[#FDFBF7] px-6 py-10 md:py-14">
-          <div data-alert-cta className="max-w-6xl mx-auto rounded-[20px] bg-[#F4E7B5] p-8 md:px-12 md:py-10 grid md:grid-cols-[1fr_auto] gap-x-12 gap-y-6 md:items-center">
-            <div>
-              <h2 className="font-serif text-2xl md:text-[1.7rem] leading-snug text-stone-900 [text-wrap:balance]">Le bien que vous cherchez n&apos;est peut-être pas encore en ligne.</h2>
-            </div>
-            <div>
-              <button
-                type="button"
-                onClick={() => openAlert('pied')}
-                className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition"
-              >
-                Créer mon alerte
-              </button>
-            </div>
-          </div>
+          <AlertBand title="Le bien que vous cherchez n’est peut-être pas encore en ligne." className="max-w-6xl mx-auto">
+            <button type="button" onClick={() => openAlert('pied')} className={ALERT_BUTTON}>
+              Créer mon alerte
+            </button>
+          </AlertBand>
         </div>
         <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
       </footer>
