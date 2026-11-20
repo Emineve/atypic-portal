@@ -227,7 +227,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <Link href={`/agence/${slugify(item.source_agency)}`} className="group flex items-center gap-4 py-4">
               <span className="flex-1 min-w-0">
                 <span className="block text-xs uppercase tracking-widest text-stone-500">Proposé par</span>
-                <span className="block mt-1 font-serif text-lg text-stone-900 truncate">{item.source_agency}</span>
+                <span className="block mt-1 font-sans text-lg font-medium text-stone-900 truncate">{item.source_agency}</span>
                 <span className="block text-sm text-stone-500">
                   {agencyCount > 1 ? `Voir ses ${agencyCount} biens sur Loftissime` : 'Voir sa page sur Loftissime'}
                 </span>
@@ -267,7 +267,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         <div className="lg:col-span-2 min-w-0">
           <div>
             <h1 className="font-serif text-3xl md:text-5xl leading-[1.1] text-stone-900">{item.title}</h1>
-            <p className="mt-4 flex items-center gap-2 font-serif text-lg text-stone-800">
+            <p className="mt-4 flex items-center gap-2 font-sans text-lg text-stone-800">
               <MapPin className="w-5 h-5 flex-none text-stone-500" strokeWidth={1.5} aria-hidden="true" />
               {item.district ? `${item.district}, ` : ''}{item.city}
             </p>
@@ -294,7 +294,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <Icon className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
                     <div className="min-w-0">
                       <dt className="text-xs uppercase tracking-widest text-stone-500">{label}</dt>
-                      <dd className="mt-0.5 font-serif text-xl leading-snug text-stone-900">{value}</dd>
+                      <dd className="mt-0.5 font-sans text-lg font-medium leading-snug text-stone-900">{value}</dd>
                     </div>
                   </div>
                 ))}

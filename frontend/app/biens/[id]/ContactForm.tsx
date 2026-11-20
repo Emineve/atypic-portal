@@ -162,7 +162,7 @@ export default function ContactForm({
           {/* Le contact, puis les deux moyens de le joindre tout de suite */}
           <div className="min-w-0">
             <p className="text-xs uppercase tracking-widest text-stone-500">{person ? agency : 'Votre contact pour ce bien'}</p>
-            <p className="mt-1.5 font-serif text-2xl leading-tight text-stone-900 truncate">{person || agency}</p>
+            <p className="mt-1.5 font-sans text-xl font-medium leading-tight text-stone-900 truncate">{person || agency}</p>
           </div>
           {phone && (
             <div className="mt-2 flex flex-wrap gap-x-7 gap-y-1">
