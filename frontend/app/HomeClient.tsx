@@ -579,8 +579,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     <span className="block font-serif text-2xl text-stone-900">
                       {label}
                       {href === '/guide' && newArticles > 0 && (
-                        <span className="ml-3 inline-block align-middle bg-[#F4E7B5] px-1.5 py-0.5 font-sans text-xs font-semibold uppercase tracking-wider text-stone-900">
-                          Nouveau
+                        <span className="ml-3 inline-block align-middle rounded-full bg-[#F4E7B5] px-2.5 py-0.5 font-sans text-xs text-stone-800">
+                          {newArticles} articles
                         </span>
                       )}
                     </span>
@@ -919,6 +919,12 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         {!loading && !errorMessage && !onlyFavs && (
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-5">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+              {visible.length > 0 && (
+                <p className="font-serif text-xl text-stone-900">
+                  {visible.length} {visible.length > 1 ? 'biens' : 'bien'}
+                  {searchActive ? '' : ' à vendre'}
+                </p>
+              )}
               {searchActive && !onlyFavs && alreadySaved && (
                 <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-500">
                   <Check className="w-3.5 h-3.5 flex-none" />
@@ -1014,9 +1020,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute inset-x-0 top-0 px-4 pt-3.5 pb-10 bg-gradient-to-b from-black/50 to-transparent text-white text-xs font-semibold uppercase tracking-widest [text-shadow:0_1px_2px_rgba(0,0,0,.6)]">
-                        {item.atypic_category}
-                      </div>
+                      <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-medium text-stone-900 shadow-sm">{item.atypic_category}</span>
                     </div>
                     <div className="p-6 flex flex-1 flex-col justify-between">
                       <div>

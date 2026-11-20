@@ -138,8 +138,8 @@ export default function SiteHeaderClient({
                     <span className="block font-serif text-2xl text-stone-900">
                       {label}
                       {href === '/guide' && newArticles > 0 && (
-                        <span className="ml-3 inline-block align-middle bg-[#F4E7B5] px-1.5 py-0.5 font-sans text-xs font-semibold uppercase tracking-wider text-stone-900">
-                          Nouveau
+                        <span className="ml-3 inline-block align-middle rounded-full bg-[#F4E7B5] px-2.5 py-0.5 font-sans text-xs text-stone-800">
+                          {newArticles} articles
                         </span>
                       )}
                     </span>

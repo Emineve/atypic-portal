@@ -5508,6 +5508,11 @@ export function publishedArticles(now: Date = new Date()): GuideArticle[] {
 }
 
 // Nombre d'articles parus à la date de publication la plus récente (étiquette « + N articles » de l'en-tête)
+// Nombre d'articles en ligne, affiché à côté d'« État des lieux » dans le menu
+export function articlesCount(now: Date = new Date()): number {
+  return publishedArticles(now).length;
+}
+
 export function latestArticlesCount(now: Date = new Date()): number {
   const list = publishedArticles(now);
   return list.length === 0 ? 0 : list.filter((a) => a.published === list[0].published).length;
