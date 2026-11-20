@@ -23,6 +23,9 @@ import { trackEvent } from '../lib/track';
 
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
+import { readSeen, clearSeen } from '../lib/seen';
+import { SEEN_BADGE } from './SeenMark';
+
 const FAVORITES_KEY = 'singulier:favorites';
 // « Nouveauté » : uniquement les biens mis en ligne depuis moins de 24 heures
 const NEW_DAYS = 1;
@@ -217,6 +220,15 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
     } catch {
       /* stockage indisponible : les favoris fonctionnent le temps de la visite */
     }
+  }, []);
+
+  // Biens déjà consultés (mémorisés dans le navigateur), relus à chaque retour sur la page
+  const [seen, setSeen] = useState<string[]>([]);
+  useEffect(() => {
+    const load = () => setSeen(readSeen().map((x) => x.id));
+    load();
+    window.addEventListener('pageshow', load);
+    return () => window.removeEventListener('pageshow', load);
   }, []);
 
   // Panneau de filtres : on bloque le défilement de la page derrière, Échap le ferme
@@ -467,6 +479,17 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
   const alreadySaved = savedSearch !== null && savedSearch === searchSignature(filters, places, query);
   // Une vraie recherche est en cours (filtres ou lieu saisi) : on propose de l'enregistrer en alerte
   const searchActive = activeFilters > 0 || query.trim() !== '' || places.length > 0;
+  // Page favoris : les biens consultés récemment qui ne sont pas (encore) en favori
+  const recent = useMemo(
+    () =>
+      seen
+        .filter((id) => !favorites.includes(id))
+        .map((id) => listings.find((l) => l.id === id))
+        .filter((l): l is (typeof listings)[number] => Boolean(l))
+        .slice(0, 12),
+    [seen, favorites, listings]
+  );
+
   const anythingActive = activeFilters > 0 || query.trim() !== '' || places.length > 0 || onlyFavs || sort !== 'selection';
 
   function resetFilters() {
@@ -929,7 +952,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           </div>
         ) : visible.length === 0 ? (
           onlyFavs && favorites.length === 0 ? (
-            <div className="text-center py-16">
+            <div className={`text-center ${recent.length > 0 ? 'pt-6 pb-12' : 'py-16'}`}>
               <FavHint />
               <p className="font-serif text-2xl text-stone-900">Vous n&apos;avez pas encore de favori.</p>
               <p className="mt-3 text-stone-600">Touchez le cœur d&apos;un bien pour le retrouver ici.</p>
@@ -973,6 +996,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                       <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-medium text-stone-900 shadow-sm">{item.atypic_category}</span>
+                      {seen.includes(item.id) && <span className={SEEN_BADGE}>Déjà vu</span>}
                     </div>
                     <div className="p-6 flex flex-1 flex-col justify-between">
                       <div>
@@ -1035,6 +1059,52 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               );
             })}
           </div>
+        )}
+
+        {onlyFavs && !loading && !errorMessage && recent.length > 0 && (
+          <section className={`border-t border-stone-200 pt-10 ${visible.length > 0 ? 'mt-16' : ''}`} aria-labelledby="vus-recemment">
+            <div className="flex items-baseline justify-between gap-4">
+              <h2 id="vus-recemment" className="font-serif text-2xl text-stone-900">Vus récemment</h2>
+              <button
+                type="button"
+                onClick={() => {
+                  clearSeen();
+                  setSeen([]);
+                }}
+                className="flex-none text-sm text-stone-500 underline underline-offset-4 decoration-stone-300 hover:text-stone-900 transition"
+              >
+                Effacer
+              </button>
+            </div>
+            <p className="mt-2 text-sm text-stone-500">Les biens que vous avez consultés, mémorisés sur cet appareil uniquement.</p>
+            <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {recent.map((item) => (
+                <li key={item.id} className="relative flex items-center gap-4 rounded-[14px] border border-stone-200 bg-white p-3 pr-14 transition hover:shadow-md">
+                  <a href={`/biens/${item.id}`} className="flex min-w-0 flex-1 items-center gap-4" aria-label={item.title}>
+                    <img src={item.cover_image_url} alt="" loading="lazy" className="h-20 w-24 flex-none rounded-[10px] object-cover bg-stone-100" />
+                    <span className="min-w-0">
+                      <span className="block text-[11px] uppercase tracking-wider text-stone-400">
+                        {item.city}
+                        {item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}
+                      </span>
+                      <span className="mt-0.5 block font-serif text-lg leading-tight text-stone-900 line-clamp-2">{item.title}</span>
+                      <span className="mt-1 block text-sm font-medium font-sans tabular-nums text-stone-900">
+                        {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
+                      </span>
+                    </span>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => toggleFavorite(item.id)}
+                    aria-label="Ajouter aux favoris"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full hover:bg-stone-100 transition"
+                  >
+                    <Heart className="w-5 h-5 text-stone-700" />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
 
         {!loading && !errorMessage && searchActive && !onlyFavs && !alreadySaved && visible.length > 0 && (

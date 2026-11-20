@@ -14,6 +14,7 @@ import { FavoriteAlertToast } from './AlertInvite';
 import StickyContact from './StickyContact';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
+import { MarkSeen } from '../../SeenMark';
 import { EnergyPill } from '../../DpeBadge';
 
 // Page rendue à la demande : toujours à jour avec la base
@@ -498,6 +499,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
           </div>
           <Tracker listingId={item.id} />
+          <MarkSeen id={item.id} />
           <div className="lg:hidden space-y-4">
             {agencyBlock}
             <ReportButton listingId={item.id} />

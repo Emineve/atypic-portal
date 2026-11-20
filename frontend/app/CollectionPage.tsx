@@ -6,6 +6,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { SITE_URL } from '../lib/site';
 import Tracker from './Tracker';
 import CollectionAlert from './CollectionAlert';
+import SeenMark from './SeenMark';
 import AgencySearch from './AgencySearch';
 
 export interface CollectionItem {
@@ -76,6 +77,7 @@ export default function CollectionPage({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.cover_image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                   <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-medium text-stone-900 shadow-sm">{item.atypic_category}</span>
+                  <SeenMark id={item.id} />
                 </Link>
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>
