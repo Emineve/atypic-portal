@@ -100,8 +100,6 @@ export default function ModeEmploiSteps() {
         onStep={setStep}
         word="Étape"
         listLabel="Étapes"
-        allLabel="Voir toutes les étapes"
-        backLabel="Revenir étape par étape"
         format={typo}
       />
       <AlertDialog open={alertOpen} onClose={() => setAlertOpen(false)} source="mode-emploi" suggestions={[]} />

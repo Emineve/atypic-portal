@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 
 // Un parcours en étapes, le même pour le mode d'emploi des acheteurs et les engagements pris envers les agences.
 // Ordinateur : la liste des étapes à gauche, l'étape ouverte à droite. Téléphone : une étape à la fois, des pastilles pour passer de l'une à l'autre.
 export type DeckItem = { title: string; text: string; extra?: React.ReactNode };
 
-const btn = 'inline-flex h-12 items-center rounded-[10px] bg-stone-900 px-8 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-stone-800';
-const toggle = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
+const next = 'group inline-flex items-center gap-2 text-left text-sm font-medium text-stone-900';
 
 export default function StepDeck({
   items,
@@ -15,8 +14,6 @@ export default function StepDeck({
   onStep,
   word,
   listLabel,
-  allLabel,
-  backLabel,
   final,
   format = (t) => t,
 }: {
@@ -25,55 +22,26 @@ export default function StepDeck({
   onStep: (i: number) => void;
   word: string; // « Étape », « Engagement »
   listLabel: string;
-  allLabel: string;
-  backLabel: string;
-  final?: React.ReactNode; // ce qui remplace « Suivant » à la dernière étape et dans la vue d'ensemble
+  final?: React.ReactNode; // l'action proposée à la dernière étape
   format?: (t: string) => string;
 }) {
-  const [all, setAll] = useState(false);
   const current = items[step];
   const last = step === items.length - 1;
 
+  // Passer à la suite : un lien discret qui annonce l'étape suivante, pas un gros bouton
   const footer = (
-    <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-      <button type="button" onClick={() => setAll((v) => !v)} className={toggle}>
-        {all ? backLabel : allLabel}
-      </button>
-      {all || last ? (
-        final || (
-          !all && (
-            <button type="button" onClick={() => onStep(0)} className={btn}>
-              Recommencer
-            </button>
-          )
-        )
+    <div className="mt-8 flex flex-wrap items-center justify-end gap-4">
+      {last ? (
+        final
       ) : (
-        <button type="button" onClick={() => onStep(step + 1)} className={btn}>
-          Suivant
+        <button type="button" onClick={() => onStep(step + 1)} className={next}>
+          <span className="text-stone-500">Ensuite :</span>
+          <span className="underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900">{items[step + 1].title}</span>
+          <ArrowRight className="h-4 w-4 flex-none" />
         </button>
       )}
     </div>
   );
-
-  if (all) {
-    return (
-      <div className="rounded-[14px] border border-stone-200 bg-white p-6 md:p-10">
-        <ol className="divide-y divide-stone-200">
-          {items.map((s, i) => (
-            <li key={s.title} className="flex gap-4 py-6 first:pt-0 last:pb-0">
-              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[#F4E7B5] text-sm font-medium text-stone-900">{i + 1}</span>
-              <div>
-                <h2 className="font-serif text-2xl leading-snug text-stone-900">{s.title}</h2>
-                <p className="mt-2 max-w-2xl text-base font-light leading-relaxed text-stone-600">{format(s.text)}</p>
-                {s.extra}
-              </div>
-            </li>
-          ))}
-        </ol>
-        {footer}
-      </div>
-    );
-  }
 
   return (
     <div className="rounded-[14px] border border-stone-200 bg-white md:grid md:grid-cols-[19rem_1fr]">
@@ -106,7 +74,7 @@ export default function StepDeck({
         </div>
 
         {/* Téléphone : des pastilles pour passer d'une étape à l'autre */}
-        <div className="mt-8 flex flex-wrap gap-2.5 md:hidden" role="tablist" aria-label={listLabel}>
+        <div className="mt-8 flex flex-wrap gap-1.5 md:hidden" role="tablist" aria-label={listLabel}>
           {items.map((s, i) => (
             <button
               key={s.title}
@@ -115,7 +83,7 @@ export default function StepDeck({
               aria-selected={i === step}
               aria-label={`${word} ${i + 1} : ${s.title}`}
               onClick={() => onStep(i)}
-              className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition ${
+              className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium transition ${
                 i === step ? 'bg-[#F4E7B5] text-stone-900' : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
               }`}
             >

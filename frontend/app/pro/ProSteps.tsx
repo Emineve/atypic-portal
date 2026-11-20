@@ -43,8 +43,6 @@ export default function ProSteps({ promises, softwareSrc }: { promises: Promise5
       onStep={setStep}
       word="Engagement"
       listLabel="Nos engagements"
-      allLabel="Tout voir d’un coup"
-      backLabel="Revenir point par point"
       final={<a href="#rejoindre" className={btn}>Diffuser mes annonces</a>}
       format={typo}
     />
