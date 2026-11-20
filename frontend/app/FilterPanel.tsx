@@ -95,7 +95,7 @@ export default function FilterPanel({
 
       <Section
         id="surface"
-        title="Surface min."
+        title="Surface minimale"
         open={isOpen('surface')}
         onToggle={() => toggleOpen('surface')}
         active={value.surfaceMin !== ''}
@@ -119,7 +119,7 @@ export default function FilterPanel({
 
       <Section
         id="chambres"
-        title="Chambres min."
+        title="Chambres (minimum)"
         open={isOpen('chambres')}
         onToggle={() => toggleOpen('chambres')}
         active={value.bedrooms !== null}

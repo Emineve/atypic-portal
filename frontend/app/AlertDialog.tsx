@@ -133,7 +133,6 @@ export default function AlertDialog({
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [limit, setLimit] = useState(false); // dix alertes actives déjà enregistrées pour cet e-mail
   const [geo, setGeo] = useState<'idle' | 'loading' | 'denied' | 'error'>('idle');
-  const [progress, setProgress] = useState(0); // avancement dans le formulaire, de 0 à 1
 
   // À chaque ouverture : on repart des critères de la recherche en cours
   useEffect(() => {
@@ -422,10 +421,8 @@ export default function AlertDialog({
           type="button"
           onClick={onClose}
           aria-label="Fermer"
-          className={`absolute top-2 right-2 z-20 h-9 w-9 rounded-full flex items-center justify-center transition ${
-            status === 'done'
-              ? 'text-stone-500 hover:text-stone-900'
-              : 'bg-stone-900 text-white border border-stone-600 hover:bg-stone-700'
+          className={`absolute top-3 right-3 z-20 h-10 w-10 rounded-full flex items-center justify-center transition ${
+            status === 'done' ? 'text-stone-500 hover:text-stone-900' : 'text-stone-600 hover:bg-stone-200 hover:text-stone-900'
           }`}
         >
           <X className="w-5 h-5" />
@@ -495,17 +492,12 @@ export default function AlertDialog({
           <form onSubmit={onSubmit} className="flex flex-col min-h-0 flex-1">
                         <div
               className="flex-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              onScroll={(e) => {
-                const el = e.currentTarget;
-                const max = el.scrollHeight - el.clientHeight;
-                setProgress(max > 0 ? Math.min(1, el.scrollTop / max) : 1);
-              }}
             >
-              <div className="bg-stone-900 text-white px-6 md:px-12 pt-6 pb-5 md:pt-10 md:pb-9">
-                <h2 className="pr-10 font-serif text-[1.7rem] md:text-4xl leading-[1.1]">
+              <div className="px-6 md:px-12 pt-8 md:pt-10">
+                <h2 className="pr-10 font-serif text-[1.7rem] md:text-4xl leading-[1.1] text-stone-900">
                   {shareWith ? `Partagez votre recherche avec ${shareWith}.` : 'Dites-nous ce que vous cherchez.'}
                 </h2>
-                <p className="mt-2 md:mt-3 text-sm md:text-base text-stone-300 max-w-md leading-relaxed">
+                <p className="mt-2 text-sm md:text-base text-stone-600 max-w-md leading-relaxed">
                   {shareWith ? (
                     <>L&apos;agence vous recontacte dès qu&apos;un bien correspond. Loftissime crée aussi votre alerte e-mail avec ces critères.</>
                   ) : (
@@ -516,8 +508,8 @@ export default function AlertDialog({
                   )}
                 </p>
               </div>
-              <div className="px-6 md:px-12 pt-6 pb-8 md:py-10 space-y-10">
-                <Step title="Où ?" hint="Plusieurs possibles. Vide = toute la France.">
+              <div className="px-6 md:px-12 pt-7 pb-7">
+                <Step title="Où ?" hint="Plusieurs lieux possibles. Sans lieu : toute la France.">
                   {locations.length > 0 && (
                     <div className="mb-3 flex flex-wrap gap-2">
                       {locations.map((l) => (
@@ -589,9 +581,9 @@ export default function AlertDialog({
 
               <FilterPanel value={filters} onChange={setFilters} mode="alert" padX="px-6 md:px-12" types={types} />
 
-              <div className="px-6 md:px-12 py-8 md:py-10 space-y-10">
+              <div className="border-t border-stone-200 px-6 md:px-12 py-7">
                 <div>
-                  <Step title={shareWith ? 'Vos coordonnées' : 'Adresse mail'}>
+                  <Step title={shareWith ? 'Vos coordonnées' : 'En option'}>
                     {shareWith && (
                       <>
                         <input
@@ -620,18 +612,6 @@ export default function AlertDialog({
                         />
                       </>
                     )}
-                    <input
-                      id="alert-email"
-                      type="email"
-                      required
-                      maxLength={200}
-                      autoComplete="email"
-                      aria-label="Votre email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Votre email"
-                      className={field}
-                    />
                     <div className="hidden" aria-hidden="true">
                       <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
                     </div>
@@ -641,11 +621,7 @@ export default function AlertDialog({
                       </p>
                     )}
                     {!shareWith && (<>
-                    <p className="mt-4 text-xs text-stone-600 leading-relaxed">
-                      En créant votre alerte, vous acceptez de recevoir par e-mail les nouveaux biens correspondant à cette recherche. Arrêt possible à tout moment.
-                    </p>
-
-                    <div className="mt-6 rounded-[14px] border border-stone-200 bg-white p-4">
+                    <div className="rounded-[14px] border border-stone-200 bg-white p-4">
                       <button type="button" aria-expanded={wantWhatsapp} onClick={() => setWantWhatsapp(!wantWhatsapp)} className="group flex w-full items-start justify-between gap-3 text-left text-sm text-stone-900 leading-relaxed">
                         <span>
                           <span className="font-medium underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900">Recevoir aussi mes alertes sur WhatsApp</span>
@@ -747,38 +723,52 @@ export default function AlertDialog({
                         )}
                       </div>
                     )}
-                    {status === 'error' && (
-                      <p className="mt-4 text-xs text-red-700">
-                        {limit ? (
-                          <>Vous avez déjà dix alertes actives avec cet e-mail. Arrêtez-en une depuis <a href="/alerte" className="underline underline-offset-2">Mes alertes</a> pour en créer une nouvelle.</>
-                        ) : shareWith ? (
-                          'L’envoi a échoué. Vérifiez vos coordonnées et réessayez.'
-                        ) : (
-                          'L’enregistrement a échoué. Vérifiez votre e-mail et réessayez.'
-                        )}
-                      </p>
-                    )}
                   </Step>
                 </div>
               </div>
             </div>
 
-            {/* Barre de progression : avance à mesure que l'on parcourt le formulaire */}
-            <div className="shrink-0 h-1 bg-stone-200" role="progressbar" aria-label="Avancement du formulaire" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}>
-              <div className="h-full bg-stone-900 transition-[width] duration-200 ease-out" style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} />
-            </div>
-            <div className="shrink-0 bg-white px-6 md:px-12 py-4">
-              <p className="hidden md:block text-xs uppercase tracking-widest text-stone-500">{shareWith ? 'Votre recherche' : 'Votre alerte'}</p>
-              <p className="md:mt-0.5 text-sm text-stone-800 line-clamp-2" title={recapLine}>{recapLine}</p>
-              <button
-                type="submit"
-                disabled={status === 'sending'}
-                className="mt-3 w-full h-12 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center rounded-full"
-              >
-                {status === 'sending' ? (shareWith ? 'Envoi…' : 'Enregistrement…') : shareWith ? 'Partager ma recherche' : 'Créer mon alerte'}
-              </button>
-              <p className="mt-2 text-xs text-stone-500 text-center">
-                Gratuit et sans engagement.{' '}
+            <div className="shrink-0 border-t border-stone-200 bg-white px-6 md:px-12 pt-3 pb-4">
+              <p className="text-sm text-stone-600 line-clamp-1 md:line-clamp-2" title={recapLine}>
+                <span className="font-medium text-stone-900">{shareWith ? 'Votre recherche : ' : 'Votre alerte : '}</span>
+                {recapLine}
+              </p>
+              <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+                <input
+                  id="alert-email"
+                  type="email"
+                  required
+                  maxLength={200}
+                  autoComplete="email"
+                  aria-label="Votre email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Votre email"
+                  className={`${field} sm:flex-1`}
+                />
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="h-12 flex-none px-7 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center rounded-full"
+                >
+                  {status === 'sending' ? (shareWith ? 'Envoi…' : 'Enregistrement…') : shareWith ? 'Partager ma recherche' : 'Créer mon alerte'}
+                </button>
+              </div>
+              {status === 'error' && (
+                <p className="mt-2 text-xs text-red-700">
+                  {limit ? (
+                    <>Vous avez déjà dix alertes actives avec cet e-mail. Arrêtez-en une depuis <a href="/alerte" className="underline underline-offset-2">Mes alertes</a> pour en créer une nouvelle.</>
+                  ) : shareWith ? (
+                    'L’envoi a échoué. Vérifiez vos coordonnées et réessayez.'
+                  ) : (
+                    'L’enregistrement a échoué. Vérifiez votre e-mail et réessayez.'
+                  )}
+                </p>
+              )}
+              <p className="mt-2 text-xs text-stone-500 leading-relaxed">
+                {shareWith
+                  ? 'Gratuit et sans engagement. '
+                  : 'Gratuit. En créant votre alerte, vous acceptez de recevoir par e-mail les nouveaux biens correspondant à cette recherche. Arrêt possible à tout moment. '}
                 <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">
                   Vos données et vos droits
                 </a>
