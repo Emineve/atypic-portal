@@ -747,9 +747,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             {places.map((p) => (
               <span
                 key={p.kind + p.city + p.value}
-                className="inline-flex items-center h-8 pl-3 rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] font-semibold"
+                className="inline-flex items-center h-8 pl-3.5 rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] font-semibold"
               >
-                <MapPin className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
                 {p.value}
                 <button
                   type="button"
@@ -815,8 +814,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 <p className="text-xs uppercase tracking-widest text-stone-500">Localisation</p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   {places.map((p) => (
-                    <span key={p.kind + p.city + p.value} className="inline-flex items-center h-8 pl-3 rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] font-semibold">
-                      <MapPin className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
+                    <span key={p.kind + p.city + p.value} className="inline-flex items-center h-8 pl-3.5 rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] font-semibold">
                       {p.value}
                       <button
                         type="button"
@@ -829,7 +827,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     </span>
                   ))}
                   {query.trim() !== '' && (
-                    <span className="inline-flex items-center h-8 pl-3 rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] font-semibold">
+                    <span className="inline-flex items-center h-8 pl-3.5 rounded-full bg-[#F4E7B5] text-stone-900 text-[13px] font-semibold">
                       « {query.trim()} »
                       <button
                         type="button"
