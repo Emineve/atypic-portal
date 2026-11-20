@@ -1057,9 +1057,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
       <footer ref={footerRef} className="border-t border-stone-200 bg-white">
         <div className="border-b border-stone-200 bg-[#FDFBF7] px-6 py-10 md:py-14">
-          <div data-alert-cta className="max-w-6xl mx-auto rounded-[20px] bg-[#F4E7B5] p-8 md:p-12 grid md:grid-cols-[1fr_auto] gap-x-12 gap-y-6 md:items-center">
+          <div data-alert-cta className="max-w-6xl mx-auto rounded-[20px] bg-[#F4E7B5] p-8 md:px-12 md:py-10 grid md:grid-cols-[1fr_auto] gap-x-12 gap-y-6 md:items-center">
             <div>
-              <h2 className="font-serif text-3xl md:text-4xl leading-tight text-stone-900">Le bien que vous cherchez n&apos;est peut-être pas encore en ligne.</h2>
+              <h2 className="font-serif text-2xl md:text-[1.7rem] leading-snug text-stone-900 [text-wrap:balance]">Le bien que vous cherchez n&apos;est peut-être pas encore en ligne.</h2>
             </div>
             <div>
               <button
