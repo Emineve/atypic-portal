@@ -32,17 +32,42 @@ async function getListing(id: string) {
   return data;
 }
 
-async function getRelated(item: { id: string; city: string | null }) {
-  if (!item.city) return [];
-  const hub = cityHub(item.city);
+// Les trois biens proposés sous l'annonce : d'abord ceux du même arrondissement ou de la même commune,
+// puis les plus proches. L'ordre ne dépend que de la distance (à défaut, de la date de mise en ligne).
+type Near = { id: string; title: string; price: number; city: string | null; surface_sqm: number | null; cover_image_url: string | null; latitude: number | null; longitude: number | null };
+
+function km(a: { latitude: number | null; longitude: number | null }, b: { latitude: number | null; longitude: number | null }): number | null {
+  if (a.latitude == null || a.longitude == null || b.latitude == null || b.longitude == null) return null;
+  const rad = Math.PI / 180;
+  const dLat = (Number(b.latitude) - Number(a.latitude)) * rad;
+  const dLon = (Number(b.longitude) - Number(a.longitude)) * rad;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(Number(a.latitude) * rad) * Math.cos(Number(b.latitude) * rad) * Math.sin(dLon / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+
+async function getRelated(item: { id: string; city: string | null; latitude?: number | null; longitude?: number | null }): Promise<{ list: Near[]; sameCity: boolean }> {
+  if (!item.city) return { list: [], sameCity: false };
   const { data } = await getSupabase()
     .from('listings')
-    .select('id,title,price,city,surface_sqm,cover_image_url,curation_score')
+    .select('id,title,price,city,surface_sqm,cover_image_url,latitude,longitude')
     .eq('is_active', true)
     .neq('id', item.id)
     .order('first_seen_at', { ascending: false })
-    .limit(60);
-  return (data || []).filter((r) => r.city && cityHub(r.city) === hub).slice(0, 3);
+    .limit(300);
+  const here = { latitude: item.latitude ?? null, longitude: item.longitude ?? null };
+  const city = item.city.trim().toLowerCase();
+  const hub = cityHub(item.city);
+  const rows = ((data || []) as Near[]).map((r, i) => {
+    const same = (r.city || '').trim().toLowerCase() === city;
+    const d = km(here, r);
+    // rang : même arrondissement ou commune, puis le reste ; sans coordonnées, la même ville passe avant les autres
+    const fallback = r.city && cityHub(r.city) === hub ? 50 : 5000;
+    return { r, same, d: d ?? fallback, i };
+  });
+  rows.sort((x, y) => Number(y.same) - Number(x.same) || x.d - y.d || x.i - y.i);
+  // on ne propose pas un bien à l'autre bout du pays
+  const kept = rows.filter((x) => x.same || x.d <= 60).slice(0, 3);
+  return { list: kept.map((x) => x.r), sameCity: kept.length > 0 && kept.every((x) => x.same) };
 }
 
 // Empêche une valeur de la base de refermer la balise <script>
@@ -160,7 +185,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   const allImages: string[] = Array.from(new Set([item.cover_image_url, ...rawImages].filter(Boolean)))
     .filter((u) => !plans.includes(u as string))
     .slice(0, 30) as string[];
-    const related = await getRelated(item);
+    const { list: related, sameCity } = await getRelated(item);
   const { count: agencyTotal } = await getSupabase()
     .from('listings')
     .select('id', { count: 'exact', head: true })
@@ -485,7 +510,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
       {related.length > 0 && hubName && hubUrl && (
         <section className="max-w-6xl mx-auto px-6 pb-16">
-                   <h2 className="font-serif text-2xl text-stone-900">Autres biens à découvrir à {hubName}</h2>
+                   <h2 className="font-serif text-2xl text-stone-900">{sameCity ? `Autres biens à découvrir à ${item.city}` : 'Autres biens à proximité'}</h2>
           {/* Sur téléphone : une vignette, le titre et le prix sur une ligne. À partir de la tablette : trois cartes. */}
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
             {related.map((r) => (
