@@ -568,7 +568,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       )}
 
       {onlyFavs ? (
-        <header className="max-w-7xl mx-auto px-6 pt-8 md:pt-12 pb-6">
+        <header className="max-w-7xl mx-auto px-6 pt-6 md:pt-8 pb-5">
           <button
             type="button"
             onClick={() => setOnlyFavs(false)}
@@ -951,8 +951,13 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             <p className="mt-3 text-xs text-stone-400 font-mono break-words">{errorMessage}</p>
           </div>
         ) : visible.length === 0 ? (
-          onlyFavs && favorites.length === 0 ? (
-            <div className={`text-center ${recent.length > 0 ? 'pt-6 pb-12' : 'py-16'}`}>
+          onlyFavs && favorites.length === 0 && recent.length > 0 ? (
+            <div className="pb-8">
+              <p className="font-serif text-2xl text-stone-900">Vous n&apos;avez pas encore de favori.</p>
+              <p className="mt-2 text-sm text-stone-600">Touchez le cœur d&apos;un bien pour le retrouver ici.</p>
+            </div>
+          ) : onlyFavs && favorites.length === 0 ? (
+            <div className="text-center py-16">
               <FavHint />
               <p className="font-serif text-2xl text-stone-900">Vous n&apos;avez pas encore de favori.</p>
               <p className="mt-3 text-stone-600">Touchez le cœur d&apos;un bien pour le retrouver ici.</p>
@@ -1062,7 +1067,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         )}
 
         {onlyFavs && !loading && !errorMessage && recent.length > 0 && (
-          <section className={`border-t border-stone-200 pt-10 ${visible.length > 0 ? 'mt-16' : ''}`} aria-labelledby="vus-recemment">
+          <section className={`border-t border-stone-200 pt-8 ${visible.length > 0 ? 'mt-16' : ''}`} aria-labelledby="vus-recemment">
             <div className="flex items-baseline justify-between gap-4">
               <h2 id="vus-recemment" className="font-serif text-2xl text-stone-900">Vus récemment</h2>
               <button
