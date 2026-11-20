@@ -5,7 +5,7 @@ export const ALERT_BUTTON = 'alert-arrow inline-flex h-11 w-11 flex-none items-c
 
 export default function AlertBand({ title, children, extra, className = '' }: { title: React.ReactNode; children: React.ReactNode; extra?: React.ReactNode; className?: string }) {
   return (
-    <section data-alert-cta className={`flex items-center justify-between gap-5 rounded-[14px] bg-[#F4E7B5] px-5 py-3.5 text-left md:px-8 md:py-5 ${className}`}>
+    <section data-alert-cta className={`flex items-center justify-between gap-5 rounded-[14px] bg-[#F6CF4E] px-5 py-3.5 text-left md:px-8 md:py-5 ${className}`}>
       <div className="min-w-0">
         <h2 className="font-serif text-xl leading-tight text-stone-900 md:text-2xl">Créer une alerte</h2>
         <p className="mt-0.5 text-sm leading-snug text-stone-700">{title}</p>

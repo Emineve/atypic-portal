@@ -2,7 +2,7 @@
 export type BuyerKind = 'decide' | 'reveur' | 'architecture';
 
 const INK = '#1c1917';
-const YELLOW = '#F4E7B5';
+const YELLOW = '#F6CF4E';
 
 // Un manteau long, des épaules aux genoux
 function Coat({ x }: { x: number }) {

@@ -135,7 +135,7 @@ export default function FilterPanel({
               onClick={() => set({ bedrooms: value.bedrooms === n ? null : n })}
               className={`h-12 w-12 rounded-full text-base border transition ${
                 value.bedrooms === n
-                  ? 'bg-[#F4E7B5] border-[#F4E7B5] font-medium text-stone-900'
+                  ? 'bg-[#F6CF4E] border-[#F6CF4E] font-medium text-stone-900'
                   : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
               }`}
             >

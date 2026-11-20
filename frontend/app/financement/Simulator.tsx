@@ -93,7 +93,7 @@ export default function Simulator() {
               aria-pressed={years === o.years}
               className={`h-12 rounded-full border text-base transition ${
                 years === o.years
-                  ? 'border-[#F4E7B5] bg-[#F4E7B5] font-medium text-stone-900'
+                  ? 'border-[#F6CF4E] bg-[#F6CF4E] font-medium text-stone-900'
                   : 'border-stone-300 bg-white text-stone-700 hover:border-stone-900'
               }`}
             >
@@ -123,13 +123,13 @@ export default function Simulator() {
           <div className="mt-4 flex h-3 w-full overflow-hidden rounded-full" aria-hidden="true">
             <span className="bg-stone-900" style={{ width: `${(principal / total) * 100}%` }} />
             <span className="bg-stone-400" style={{ width: `${(interest / total) * 100}%` }} />
-            <span className="bg-[#F4E7B5]" style={{ width: `${(insTotal / total) * 100}%` }} />
+            <span className="bg-[#F6CF4E]" style={{ width: `${(insTotal / total) * 100}%` }} />
           </div>
           <dl className="mt-2 divide-y divide-stone-200 text-stone-700">
             {[
               ['bg-stone-900', 'Montant emprunté', eur(principal)],
               ['bg-stone-400', `Intérêts sur ${years} ans`, eur(interest)],
-              ['bg-[#F4E7B5] border border-stone-400', `Assurance sur ${years} ans`, eur(insTotal)],
+              ['bg-[#F6CF4E] border border-stone-400', `Assurance sur ${years} ans`, eur(insTotal)],
             ].map(([dot, t, v]) => (
               <div key={t} className="flex items-baseline justify-between gap-4 py-3">
                 <dt className="flex items-baseline gap-2.5">

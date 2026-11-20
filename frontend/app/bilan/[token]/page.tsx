@@ -143,7 +143,7 @@ export default async function BilanPage({ params }: { params: { token: string } 
 
         {/* Ce que les autres portails ne montrent pas : les acheteurs qui attendent ce type de bien */}
         {r.matching_alerts > 0 && (
-          <section className="mt-4 flex items-center gap-5 rounded-[14px] bg-[#F4E7B5] px-6 py-5 print:break-inside-avoid">
+          <section className="mt-4 flex items-center gap-5 rounded-[14px] bg-[#F6CF4E] px-6 py-5 print:break-inside-avoid">
             <p className="flex-none font-sans text-5xl font-light tabular-nums leading-none">{num(r.matching_alerts)}</p>
             <p className="text-[15px] leading-snug text-stone-800 md:text-base">
               <span className="font-medium text-stone-900">

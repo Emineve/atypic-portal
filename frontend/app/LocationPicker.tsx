@@ -171,7 +171,7 @@ export default function LocationPicker({
       {value.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-2">
           {value.map((l) => (
-            <span key={l} className="inline-flex items-center h-8 pl-3 rounded-full bg-[#F4E7B5] text-stone-800 text-[13px]">
+            <span key={l} className="inline-flex items-center h-8 pl-3 rounded-full bg-[#F6CF4E] text-stone-800 text-[13px]">
               {l}
               <button
                 type="button"

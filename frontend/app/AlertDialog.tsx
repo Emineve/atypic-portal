@@ -517,7 +517,7 @@ export default function AlertDialog({
                           key={l}
                           type="button"
                           onClick={() => setLocations(locations.filter((x) => x !== l))}
-                          className="inline-flex items-center gap-2 rounded-full bg-[#F4E7B5] pl-4 pr-3 py-2 text-sm font-medium text-stone-900 hover:bg-[#EBDB9C] transition"
+                          className="inline-flex items-center gap-2 rounded-full bg-[#F6CF4E] pl-4 pr-3 py-2 text-sm font-medium text-stone-900 hover:bg-[#EFC234] transition"
                           aria-label={`Retirer ${l}`}
                         >
                           {l} <X className="w-3.5 h-3.5" />

@@ -73,7 +73,7 @@ export default async function GuideIndex() {
 
         {first && (
           <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 rounded-[14px] overflow-hidden bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
-            <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F4E7B5] flex items-center">
+            <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F6CF4E] flex items-center">
               <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
             <div className="p-7 md:p-10 flex flex-col justify-center">

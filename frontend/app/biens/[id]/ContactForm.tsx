@@ -259,9 +259,9 @@ export default function ContactForm({
                     <p className="text-xs uppercase tracking-widest text-stone-500">Et les prochains ?</p>
                     <p className="mt-1.5 font-medium leading-snug text-stone-900">Recevez les biens qui ressemblent à celui-ci, dès leur mise en ligne.</p>
                     <ul className="mt-3 flex flex-wrap gap-2" aria-label="Critères de l’alerte">
-                      {city && <li className="rounded-full bg-[#F4E7B5] px-3 py-1 text-[13px] text-stone-900">{city}</li>}
+                      {city && <li className="rounded-full bg-[#F6CF4E] px-3 py-1 text-[13px] text-stone-900">{city}</li>}
                       {alertBudget ? (
-                        <li className="rounded-full bg-[#F4E7B5] px-3 py-1 text-[13px] text-stone-900 whitespace-nowrap">
+                        <li className="rounded-full bg-[#F6CF4E] px-3 py-1 text-[13px] text-stone-900 whitespace-nowrap">
                           Jusqu&apos;à {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(alertBudget).replace(/[\u202f\u00a0]/g, '\u00a0')}&nbsp;€
                         </li>
                       ) : null}

@@ -83,7 +83,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
                   'Il défend votre dossier, y compris pour un bien atypique.',
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F4E7B5]">
+                    <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F6CF4E]">
                       <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="#1c1917" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M20 6 9 17l-5-5" />
                       </svg>
@@ -100,7 +100,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
           <path d="M14 10 h30 l10 10 v40 a3 3 0 0 1 -3 3 h-37 a3 3 0 0 1 -3 -3 v-47 a3 3 0 0 1 3 -3 z" fill="#fff" />
           <path d="M44 10 v10 h10" />
           <path d="M20 26 h20 M20 33 h26 M20 40 h14" />
-          <circle cx="45" cy="50" r="10" fill="#F4E7B5" />
+          <circle cx="45" cy="50" r="10" fill="#F6CF4E" />
           <path d="M40.5 50 l3.2 3.2 l6 -6.4" strokeWidth="2" />
         </svg>
       </div>

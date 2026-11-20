@@ -27,7 +27,7 @@ export default function ContreVisitePartners() {
       <SiteHeader alert={false} />
 
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
-        <p className="inline-block rounded-full bg-[#F4E7B5] px-3 py-1 text-xs text-stone-800">Présentation aux partenaires · exemples</p>
+        <p className="inline-block rounded-full bg-[#F6CF4E] px-3 py-1 text-xs text-stone-800">Présentation aux partenaires · exemples</p>
         <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">Contre-visite</p>
         <h1 className="mt-4 max-w-4xl text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
           Une question, un spécialiste, <span className="italic text-stone-500">une minute.</span>

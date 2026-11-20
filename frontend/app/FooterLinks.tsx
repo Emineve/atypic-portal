@@ -11,7 +11,7 @@ const SOCIALS = [
 
 export default function FooterLinks({ cities }: { cities: string[] }) {
   const hubs = Array.from(new Set(cities.filter(Boolean).map((c) => cityHub(c)))).sort();
-  const link = 'text-stone-300 hover:text-white underline-offset-4 hover:underline decoration-[#F4E7B5]';
+  const link = 'text-stone-300 hover:text-white underline-offset-4 hover:underline decoration-[#F6CF4E]';
   const title = 'text-xs uppercase tracking-widest text-stone-500';
   return (
     <div className="bg-stone-900 text-white">
@@ -21,7 +21,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
             <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white">
               loftissime.
             </a>
-            <p className="mt-4 font-serif text-xl text-[#F4E7B5]">Curateur de biens atypiques</p>
+            <p className="mt-4 font-serif text-xl text-[#F6CF4E]">Curateur de biens atypiques</p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-400">
               Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte : tous les biens atypiques, réunis sur un seul site.
             </p>
@@ -69,7 +69,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
           <p className="text-sm text-stone-300">
             <span className="font-medium text-white">Vous êtes une agence ?</span> Diffusez vos biens atypiques, gratuitement pendant le lancement.
           </p>
-          <a href="/pro" className="text-sm font-medium text-[#F4E7B5] underline underline-offset-4 decoration-[#F4E7B5]/40 hover:decoration-[#F4E7B5]">
+          <a href="/pro" className="text-sm font-medium text-[#F6CF4E] underline underline-offset-4 decoration-[#F6CF4E]/40 hover:decoration-[#F6CF4E]">
             Espace pro →
           </a>
         </div>

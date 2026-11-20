@@ -81,7 +81,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
         <button
           type="submit"
           disabled={status === 'sending'}
-          className={`h-11 px-4 flex-none rounded-full text-[15px] font-medium transition disabled:opacity-60 ${dark ? 'bg-[#F4E7B5] text-stone-900 hover:bg-white' : 'bg-stone-900 text-white hover:bg-stone-800'}`}
+          className={`h-11 px-4 flex-none rounded-full text-[15px] font-medium transition disabled:opacity-60 ${dark ? 'bg-[#F6CF4E] text-stone-900 hover:bg-white' : 'bg-stone-900 text-white hover:bg-stone-800'}`}
         >
           {status === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
         </button>
@@ -217,7 +217,7 @@ export function FavoriteAlertToast({ city, price }: Props) {
         )}
         {state === 'done' && (
           <p className="flex items-center gap-3 px-4 py-3 text-sm">
-            <span className="h-6 w-6 flex-none rounded-full bg-[#F4E7B5] text-stone-900 flex items-center justify-center">
+            <span className="h-6 w-6 flex-none rounded-full bg-[#F6CF4E] text-stone-900 flex items-center justify-center">
               <Check className="w-3.5 h-3.5" />
             </span>
             Alerte créée. Vous serez prévenu(e) par e-mail.

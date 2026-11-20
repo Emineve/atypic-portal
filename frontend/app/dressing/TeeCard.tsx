@@ -42,7 +42,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
   }
   return (
     <article className="flex flex-col rounded-[14px] overflow-hidden border border-stone-300 bg-white">
-      <div className="flex items-center justify-center bg-[#F4E7B5] py-8">
+      <div className="flex items-center justify-center bg-[#F6CF4E] py-8">
         <TeeShirt words={words} color={color.value} mark={mark} className="h-64 w-64 md:h-72 md:w-72" />
       </div>
       <div className="flex flex-1 flex-col p-6 md:p-8">

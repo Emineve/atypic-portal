@@ -176,8 +176,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
     .filter((c) => c.amount > 0)
     .sort((x, y) => y.amount - x.amount);
   const costTotal = costParts.reduce((sum, c) => sum + c.amount, 0) || 1;
-  const COST_BAR = ['bg-stone-900', 'bg-stone-400', 'bg-[#F4E7B5] border border-stone-900'];
-  const COST_DOT = ['bg-stone-900', 'bg-stone-400', 'bg-[#F4E7B5] border border-stone-900'];
+  const COST_BAR = ['bg-stone-900', 'bg-stone-400', 'bg-[#F6CF4E] border border-stone-900'];
+  const COST_DOT = ['bg-stone-900', 'bg-stone-400', 'bg-[#F6CF4E] border border-stone-900'];
   const hasCopro = Boolean(item.copro_lots || Number(item.charges_yearly) > 0 || item.copro_procedure);
 
   const rawImages: string[] = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
@@ -345,7 +345,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 {/* Part du prix et des frais de notaire dans le projet */}
                 <div className="mt-5 flex h-2.5 w-full overflow-hidden" aria-hidden="true">
                   <span className="bg-stone-900" style={{ width: `${(priceNum / (priceNum + notary)) * 100}%` }} />
-                  <span className="bg-[#F4E7B5] border border-stone-900" style={{ width: `${(notary / (priceNum + notary)) * 100}%` }} />
+                  <span className="bg-[#F6CF4E] border border-stone-900" style={{ width: `${(notary / (priceNum + notary)) * 100}%` }} />
                 </div>
 
                 <dl className="mt-2 divide-y divide-stone-200 text-stone-700">
@@ -361,12 +361,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   </div>
                   <div className="flex items-center justify-between gap-4 py-3.5">
                     <dt className="flex items-center gap-2.5">
-                      <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
+                      <span className="h-2.5 w-2.5 flex-none bg-[#F6CF4E] border border-stone-900" aria-hidden="true" />
                       <span>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></span>
                     </dt>
                     <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                   </div>
-                  <div className="!border-t-0 mt-2 flex items-center justify-between gap-4 rounded-[10px] bg-[#F4E7B5] px-4 py-3.5">
+                  <div className="!border-t-0 mt-2 flex items-center justify-between gap-4 rounded-[10px] bg-[#F6CF4E] px-4 py-3.5">
                     <dt className="whitespace-nowrap font-medium text-stone-900">
                       Total estimé
                       <span className="block text-sm font-normal text-stone-700">Hors travaux</span>
@@ -435,17 +435,17 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <p className="text-xs uppercase tracking-widest text-stone-500">La copropriété</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {item.copro_lots ? (
-                        <span className="inline-flex items-center h-9 px-4 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
+                        <span className="inline-flex items-center h-9 px-4 rounded-full bg-[#F6CF4E] text-sm text-stone-900">
                           {item.copro_lots} {Number(item.copro_lots) > 1 ? 'lots' : 'lot'}
                         </span>
                       ) : null}
                       {chargesLevel ? (
-                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
+                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F6CF4E] text-sm text-stone-900">
                           {chargesLevel}
                         </span>
                       ) : null}
                       {item.copro_procedure ? (
-                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F4E7B5] text-sm text-stone-900">
+                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F6CF4E] text-sm text-stone-900">
                           {/^aucune/i.test(String(item.copro_procedure)) ? 'Aucune procédure en cours' : item.copro_procedure}
                         </span>
                       ) : null}

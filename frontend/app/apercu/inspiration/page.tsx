@@ -156,7 +156,7 @@ export default function InspirationMockup() {
           <ol className="mt-8 grid gap-4 md:grid-cols-2">
             {LOOKS.map((t, i) => (
               <li key={t} className="flex gap-5 rounded-[14px] border border-stone-200 bg-white p-6">
-                <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[#F4E7B5] text-sm font-medium text-stone-900">{i + 1}</span>
+                <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[#F6CF4E] text-sm font-medium text-stone-900">{i + 1}</span>
                 <div>
                   <h3 className="font-serif text-2xl text-stone-900">{t}</h3>
                   <p className="mt-2 font-light leading-relaxed text-stone-600">Votre conseil, en deux ou trois lignes : ce que vous regardez, et ce que cela change pour l’acheteur.</p>

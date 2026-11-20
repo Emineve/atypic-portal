@@ -21,7 +21,7 @@ export function Shot({ children, ratio = 'aspect-[9/16]', question = QUESTION, r
       <Bust className="absolute bottom-0 left-1/2 h-[62%] -translate-x-1/2" />
       <p className="absolute inset-x-0 top-0 bg-gradient-to-b from-black/60 to-transparent px-4 pb-8 pt-4 font-serif text-[15px] leading-snug text-white">{question}</p>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-4 pt-10">
-        <p className="inline-block rounded bg-[#F4E7B5] px-1.5 py-0.5 text-[11px] font-semibold text-stone-900">{quote}</p>
+        <p className="inline-block rounded bg-[#F6CF4E] px-1.5 py-0.5 text-[11px] font-semibold text-stone-900">{quote}</p>
         <p className="mt-2 text-[12px] font-semibold text-white">Votre nom</p>
         <p className="text-[11px] text-white/80">{role}</p>
       </div>
@@ -113,7 +113,7 @@ export const SERIES = [
 export function Channel({ className = 'mt-8', grid = 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5' }: { className?: string; grid?: string }) {
   return (
     <div className={`${className} overflow-hidden rounded-[14px] border border-stone-200 bg-white`}>
-            <div className="h-20 bg-[#F4E7B5] md:h-28" />
+            <div className="h-20 bg-[#F6CF4E] md:h-28" />
             <div className="flex items-center gap-4 px-5 py-5 md:px-8">
               <span className="-mt-12 flex h-16 w-16 flex-none items-center justify-center rounded-full border-4 border-white bg-stone-900 text-xl font-semibold text-white md:h-20 md:w-20">l.</span>
               <div>

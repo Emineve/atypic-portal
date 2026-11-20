@@ -43,7 +43,7 @@ export default function StepDeck({
               >
                 <span
                   className={`flex h-9 w-9 flex-none items-center justify-center rounded-full text-sm font-medium transition ${
-                    open ? 'bg-[#F4E7B5] text-stone-900' : 'bg-stone-100 text-stone-500'
+                    open ? 'bg-[#F6CF4E] text-stone-900' : 'bg-stone-100 text-stone-500'
                   }`}
                 >
                   {i + 1}

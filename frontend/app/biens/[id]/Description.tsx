@@ -18,7 +18,7 @@ export default function Description({ text }: { text: string }) {
     <div className="mt-6">
       <div className={`relative ${open ? '' : 'max-h-64 overflow-hidden'}`}>
         <p id="texte-annonce" className="text-stone-700 leading-relaxed whitespace-pre-line">{text}</p>
-        {!open && <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#F8FAFC] to-transparent" />}
+        {!open && <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#FBF5E9] to-transparent" />}
       </div>
       <button
         type="button"

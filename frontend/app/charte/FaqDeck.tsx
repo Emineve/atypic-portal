@@ -119,7 +119,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
               onClick={() => setActive(i)}
               className={`h-10 flex-none whitespace-nowrap rounded-full border px-4 text-sm transition ${
                 i === active
-                  ? 'border-[#F4E7B5] bg-[#F4E7B5] font-medium text-stone-900'
+                  ? 'border-[#F6CF4E] bg-[#F6CF4E] font-medium text-stone-900'
                   : 'border-stone-300 bg-white text-stone-700 hover:border-stone-900 hover:text-stone-900'
               }`}
             >
@@ -152,7 +152,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
                 {rubric && <span className="mb-0.5 block text-xs font-normal text-stone-500">{rubric}</span>}
                 {typo(it.q)}
               </span>
-              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-stone-100 text-xl leading-none text-stone-600 transition-transform group-open:rotate-45 group-open:bg-[#F4E7B5] group-open:text-stone-900" aria-hidden="true">+</span>
+              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-stone-100 text-xl leading-none text-stone-600 transition-transform group-open:rotate-45 group-open:bg-[#F6CF4E] group-open:text-stone-900" aria-hidden="true">+</span>
             </summary>
             <div className="pb-5">
               <Answer it={it} />

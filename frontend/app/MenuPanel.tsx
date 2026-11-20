@@ -16,7 +16,7 @@ function Row({ item }: { item: Item }) {
       <span className="min-w-0 flex-1">
         <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[17px] font-medium leading-snug text-stone-900">
           {item.label}
-          {item.badge && <span className="rounded-full bg-[#F4E7B5] px-2.5 py-0.5 text-xs font-normal text-stone-800">{item.badge}</span>}
+          {item.badge && <span className="rounded-full bg-[#F6CF4E] px-2.5 py-0.5 text-xs font-normal text-stone-800">{item.badge}</span>}
         </span>
         {item.sub && <span className="mt-0.5 block text-sm text-stone-500">{item.sub}</span>}
       </span>
@@ -75,7 +75,7 @@ export default function MenuPanel({
       ],
     },
   ];
-  const alertCls = 'flex w-full items-center justify-between gap-4 rounded-[14px] bg-[#F4E7B5] px-5 py-4 text-left transition hover:bg-[#EFDFA3]';
+  const alertCls = 'flex w-full items-center justify-between gap-4 rounded-[14px] bg-[#F6CF4E] px-5 py-4 text-left transition hover:bg-[#EFC234]';
   const alertInner = (
     <>
       <span>
@@ -126,7 +126,7 @@ export default function MenuPanel({
               <span className="block font-medium text-white">Vous êtes une agence ?</span>
               Diffusez vos biens atypiques
             </span>
-            <span className="flex-none font-medium text-[#F4E7B5] underline decoration-[#F4E7B5]/40 underline-offset-4">Espace pro →</span>
+            <span className="flex-none font-medium text-[#F6CF4E] underline decoration-[#F6CF4E]/40 underline-offset-4">Espace pro →</span>
           </a>
         </div>
       </div>

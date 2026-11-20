@@ -476,7 +476,7 @@ export default function AdminPage() {
                         <tr key={i} className="border-t border-stone-100 align-top">
                           <td className="p-3 whitespace-nowrap text-stone-500">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
                           <td className="p-3">{r.query}</td>
-                          <td className="p-3">{r.results === 0 ? <span className="bg-[#F4E7B5] px-1.5 py-0.5 text-xs font-semibold">Sans réponse</span> : r.results}</td>
+                          <td className="p-3">{r.results === 0 ? <span className="bg-[#F6CF4E] px-1.5 py-0.5 text-xs font-semibold">Sans réponse</span> : r.results}</td>
                           <td className="p-3 text-right"><button type="button" onClick={() => { setFeatDraft(r.query.slice(0, 140)); setFeatError(''); }} className="whitespace-nowrap text-stone-500 underline underline-offset-4 hover:text-stone-900">Choisir</button></td>
                         </tr>
                       ))}

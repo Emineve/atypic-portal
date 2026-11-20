@@ -205,7 +205,7 @@ export default function Contacts({ token }: { token: string }) {
                     </span>
                     <span className="flex-none text-right text-xs text-stone-500">
                       {day(c.last_at)}
-                      {c.has_alert && <span className="mt-1 block rounded-full bg-[#F4E7B5] px-2 py-0.5 text-stone-800">alerte</span>}
+                      {c.has_alert && <span className="mt-1 block rounded-full bg-[#F6CF4E] px-2 py-0.5 text-stone-800">alerte</span>}
                     </span>
                   </button>
                 </li>

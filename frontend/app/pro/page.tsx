@@ -130,7 +130,7 @@ export default function ProPage() {
           <ol className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
             {HOW.map(([t, d], i) => (
               <li key={t} className="border-t-2 border-stone-900 pt-5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F4E7B5] text-sm font-medium text-stone-900">{i + 1}</span>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6CF4E] text-sm font-medium text-stone-900">{i + 1}</span>
                 <h3 className="mt-4 font-serif text-2xl text-stone-900">{t}</h3>
                 <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{d}</p>
               </li>

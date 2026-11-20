@@ -103,7 +103,7 @@ function Marked({ text, query }: { text: string; query: string }) {
     <>
       {text.split(/(\s+)/).map((part, i) =>
         roots.some((r) => plain(part).replace(/^[^a-z0-9]+/, '').startsWith(r)) ? (
-          <mark key={i} className="bg-[#F4E7B5] text-inherit">{part}</mark>
+          <mark key={i} className="bg-[#F6CF4E] text-inherit">{part}</mark>
         ) : (
           part
         ),
@@ -283,7 +283,7 @@ export default function GuideSearch() {
               <ul className="mt-3 flex flex-wrap gap-2">
                 {suggestions.map((ex) => (
                   <li key={ex}>
-                    <button type="button" onClick={() => setQ(ex)} className="rounded-full border border-stone-300 bg-white px-4 py-2 text-left text-[15px] leading-snug text-stone-800 transition hover:border-stone-900 hover:bg-[#F4E7B5]">
+                    <button type="button" onClick={() => setQ(ex)} className="rounded-full border border-stone-300 bg-white px-4 py-2 text-left text-[15px] leading-snug text-stone-800 transition hover:border-stone-900 hover:bg-[#F6CF4E]">
                       {typo(ex)}
                     </button>
                   </li>

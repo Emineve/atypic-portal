@@ -8,9 +8,21 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Les gris du site passent d'une teinte chaude à une teinte neutre
+      // Les gris du site sont des bruns très doux, accordés au fond crème
       colors: {
-        stone: colors.zinc,
+        stone: {
+          50: '#FBF8F1',
+          100: '#F4EEE1',
+          200: '#E9DFCB',
+          300: '#D9CCB3',
+          400: '#A89C88',
+          500: '#74695A',
+          600: '#5A5043',
+          700: '#433B31',
+          800: '#2E2820',
+          900: '#211C15',
+          950: '#15110C',
+        },
       },
       fontFamily: {
         logo: ['var(--font-logo)', 'system-ui', 'sans-serif'],
