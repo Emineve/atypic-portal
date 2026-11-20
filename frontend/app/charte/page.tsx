@@ -1,5 +1,5 @@
 import Crumbs from '../Crumbs';
-import { typo } from '../../lib/typo';
+import FaqDeck, { type FaqGroup } from './FaqDeck';
 import SiteHeader from '../SiteHeader';
 
 export const metadata = {
@@ -9,10 +9,8 @@ export const metadata = {
   alternates: { canonical: '/charte' },
 };
 
-type Item = { q: string; a: string; points?: string[]; table?: { lead?: string; head: [string, string, string]; rows: [string, string, string][] } };
-type Group = { id: string; title: string; items: Item[] };
 
-const groups: Group[] = [
+const groups: FaqGroup[] = [
   {
     id: 'selection',
     title: 'La sélection des biens',
@@ -200,74 +198,9 @@ export default function ChartePage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
-        <div className="max-w-4xl pb-8">
-        <ol>
-          {groups.map((g, i) => (
-            <li key={g.id} id={g.id} className="grid md:grid-cols-[5rem_1fr] gap-x-6 border-t border-stone-200 py-10 md:py-14 scroll-mt-20">
-              <span className="font-serif text-xl text-stone-400 md:pt-2" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <div>
-                <h2 className="mt-2 md:mt-0 font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900">{g.title}</h2>
-                <div className="mt-8 divide-y divide-stone-200 border-y border-stone-200">
-                  {g.items.map((it) => (
-                    <details key={it.q} className="group py-5">
-                      <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-serif text-xl text-stone-900">
-                        {typo(it.q)}
-                        <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
-                      </summary>
-                      <p className="mt-3 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{typo(it.a)}</p>
-                      {it.table && (
-                        <>
-                          {/* Téléphone : une fiche par cas. Écran large : un vrai tableau. */}
-                          <ul className="mt-4 space-y-3 sm:hidden">
-                            {it.table.rows.map((r) => (
-                              <li key={r[0]} className="rounded-[14px] border border-stone-200 bg-white p-4">
-                                <p className="font-serif text-lg leading-snug text-stone-900">{typo(`${it.table!.lead || ''}${r[0]}`)}</p>
-                                <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[1]}</p>
-                                <p className="mt-0.5 text-stone-900">{typo(r[1])}</p>
-                                <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[2]}</p>
-                                <p className="mt-0.5 text-stone-600">{typo(r[2])}</p>
-                              </li>
-                            ))}
-                          </ul>
-                          <div className="mt-5 hidden sm:block overflow-hidden rounded-[14px] border border-stone-200 bg-white">
-                            <table className="w-full text-left text-[15px] leading-snug">
-                              <thead>
-                                <tr className="text-[10px] uppercase tracking-widest text-stone-500">
-                                  {it.table.head.map((h) => (
-                                    <th key={h} className="px-5 py-3 font-normal">{h}</th>
-                                  ))}
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {it.table.rows.map((r) => (
-                                  <tr key={r[0]} className="border-t border-stone-200 align-top">
-                                    <td className="px-5 py-3.5 text-stone-900">{typo(r[0])}</td>
-                                    <td className="px-5 py-3.5 font-medium text-stone-900">{typo(r[1])}</td>
-                                    <td className="px-5 py-3.5 text-stone-600">{typo(r[2])}</td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </>
-                      )}
-                      {it.points && (
-                        <ul className="mt-3 max-w-2xl space-y-2 text-lg font-light leading-relaxed text-stone-600">
-                          {it.points.map((pt) => (
-                            <li key={pt} className="flex gap-2"><span aria-hidden="true">·</span><span>{typo(pt)}</span></li>
-                          ))}
-                        </ul>
-                      )}
-                    </details>
-                  ))}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
+        <div className="max-w-5xl pb-8">
+          <FaqDeck groups={groups} />
+        </div>
       </main>
 
                 <div className="h-16" />
