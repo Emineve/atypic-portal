@@ -178,6 +178,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       setAlertOpen(true);
       window.history.replaceState(null, '', window.location.pathname);
     }
+    // Lien « Lancer ma recherche » du mode d'emploi (/?criteres=1) : la recherche complète s'ouvre
+    if (params.get('criteres') === '1') {
+      setShowFilters(true);
+      window.history.replaceState(null, '', window.location.pathname);
+    }
     // Lien « Mes favoris » du menu des autres pages (/?favoris=1)
     if (params.get('favoris') === '1') {
       setOnlyFavs(true);

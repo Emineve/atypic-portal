@@ -14,7 +14,7 @@ const STEPS: { title: string; text: string; link: string; href: string }[] = [
     title: 'Cherchez large',
     text: 'Un atelier peut être un loft, une maison se cacher au fond d’une cour. Commencez par le lieu et le budget, affinez ensuite : avec trop de critères, le bon bien ne s’affiche jamais.',
     link: 'Lancer ma recherche',
-    href: '/',
+    href: '/?criteres=1',
   },
   {
     title: 'Créez votre alerte',
