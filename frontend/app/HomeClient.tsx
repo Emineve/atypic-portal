@@ -628,7 +628,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <div className="relative flex-1">
             <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
-              type="text"
+              type="search"
+              name="recherche-lieu"
               inputMode="search"
               enterKeyHint="search"
               autoComplete="off"
@@ -650,7 +651,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               }}
               id="recherche-lieu"
               placeholder="Ville, code postal, quartier…"
-              className="w-full h-14 pl-12 pr-14 sm:pr-44 rounded-[10px] bg-white border border-stone-200 text-base focus:outline-none focus:border-stone-900 shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
+              className="no-autofill-tint appearance-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden w-full h-14 pl-12 pr-14 sm:pr-44 rounded-[10px] bg-white border border-stone-200 text-base focus:outline-none focus:border-stone-900 shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
               aria-label="Rechercher un lieu"
               role="combobox"
               aria-expanded={showSuggestions}

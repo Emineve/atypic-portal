@@ -58,3 +58,15 @@ body {
   .fav-hint-cursor { animation: none; left: 86%; top: 17%; }
   .fav-hint-heart { animation: none; fill: #dc2626; stroke: #dc2626; }
 }
+
+/* Recherche de lieu : le navigateur ne teinte pas le champ en jaune quand il propose de le remplir */
+.no-autofill-tint:-webkit-autofill,
+.no-autofill-tint:-webkit-autofill:hover,
+.no-autofill-tint:-webkit-autofill:focus,
+.no-autofill-tint:autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  -webkit-text-fill-color: #1c1917;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
