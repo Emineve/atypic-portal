@@ -58,111 +58,124 @@ export default function Simulator() {
 
   const total = principal + interest + insTotal || 1;
 
-  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans font-normal tabular-nums [word-spacing:0] text-2xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
-  const label = 'block text-xs uppercase tracking-widest text-stone-500';
+  const box = 'no-autofill-tint h-14 w-full rounded-[10px] border border-stone-300 bg-white pl-4 pr-10 font-sans text-xl tabular-nums [word-spacing:0] text-stone-900 placeholder:text-stone-300 focus:border-stone-900 focus:outline-none';
+  const label = 'block text-sm font-medium text-stone-900';
+  const more = 'cursor-pointer list-none text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 [&::-webkit-details-marker]:hidden';
 
   return (
     <div>
-    <div className="rounded-[14px] border border-stone-200 bg-white p-6 md:p-8 shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)]">
-      <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+    <div className="rounded-[14px] border border-stone-200 bg-white p-5 md:p-8 shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)]">
+      <div className="grid grid-cols-2 gap-3 md:gap-5">
         <label className={label}>
-          Prix du bien (€)
-          <input inputMode="numeric" value={price} onChange={(e) => setPrice(group(e.target.value))} className={field} placeholder="800 000" />
+          Prix du bien
+          <span className="relative mt-2 block">
+            <input inputMode="numeric" value={price} onChange={(e) => setPrice(group(e.target.value))} className={box} placeholder="800 000" />
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-stone-500">€</span>
+          </span>
         </label>
         <label className={label}>
-          Apport (€)
-          <input inputMode="numeric" value={down} onChange={(e) => setDown(group(e.target.value))} className={field} placeholder="160 000" />
-        </label>
-        <div>
-          <span className={label}>Durée</span>
-          <div className="mt-2 flex gap-6 pb-2">
-            {RATES.byYears.map((o) => (
-              <button
-                key={o.years}
-                type="button"
-                onClick={() => pickYears(o.years)}
-                aria-pressed={years === o.years}
-                className={`font-sans font-normal text-2xl underline-offset-8 transition ${years === o.years ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-400 hover:text-stone-900'}`}
-              >
-                {o.years} ans
-              </button>
-            ))}
-          </div>
-        </div>
-        <label className={label}>
-          Taux, hors assurance (%)
-          <input inputMode="decimal" value={rate} onChange={(e) => setRate(e.target.value)} className={field} />
-        </label>
-        <label className={label}>
-          Assurance (% du capital par an)
-          <input inputMode="decimal" value={insurance} onChange={(e) => setInsurance(e.target.value)} className={field} />
+          Apport
+          <span className="relative mt-2 block">
+            <input inputMode="numeric" value={down} onChange={(e) => setDown(group(e.target.value))} className={box} placeholder="160 000" />
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-stone-500">€</span>
+          </span>
         </label>
       </div>
 
-      <div className="mt-10 border-t border-stone-200 pt-8" aria-live="polite">
-        <h2 className="font-serif text-2xl text-stone-900">Votre mensualité</h2>
-        {principal <= 0 ? (
-          <p className="mt-3 text-stone-600">Indiquez le prix du bien et votre apport : votre mensualité s&apos;affiche ici.</p>
-        ) : (
-        <>
-        <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="font-sans font-light tabular-nums text-5xl md:text-6xl leading-none tracking-tight text-stone-900">{eur(monthlyAll)}</span>
-          <span className="text-stone-500">par mois, assurance comprise</span>
-        </p>
-
-        <div className="mt-6 flex h-3 w-full overflow-hidden" aria-hidden="true">
-          <span className="bg-stone-900" style={{ width: `${(principal / total) * 100}%` }} />
-          <span className="bg-stone-400" style={{ width: `${(interest / total) * 100}%` }} />
-          <span className="bg-[#F4E7B5] border border-stone-900" style={{ width: `${(insTotal / total) * 100}%` }} />
+      <div className="mt-5">
+        <span className={label}>Durée</span>
+        <div className="mt-2 grid grid-cols-3 gap-2 md:gap-3" role="group" aria-label="Durée du prêt">
+          {RATES.byYears.map((o) => (
+            <button
+              key={o.years}
+              type="button"
+              onClick={() => pickYears(o.years)}
+              aria-pressed={years === o.years}
+              className={`h-12 rounded-full border text-base transition ${
+                years === o.years
+                  ? 'border-[#F4E7B5] bg-[#F4E7B5] font-medium text-stone-900'
+                  : 'border-stone-300 bg-white text-stone-700 hover:border-stone-900'
+              }`}
+            >
+              {o.years} ans
+            </button>
+          ))}
         </div>
+      </div>
 
-        {/* Chaque ligne : le libellé à gauche, le montant à droite, sur la même ligne quel que soit l'écran */}
-        <dl className="mt-2 divide-y divide-stone-200 border-b border-stone-200 text-stone-700">
-          <div className="flex items-baseline justify-between gap-4 py-3.5">
-            <dt className="flex items-baseline gap-2.5">
-              <span className="h-2.5 w-2.5 flex-none bg-stone-900" aria-hidden="true" />
-              Montant emprunté
-            </dt>
-            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(principal)}</dd>
-          </div>
-          <div className="flex items-baseline justify-between gap-4 py-3.5">
-            <dt className="flex items-baseline gap-2.5">
-              <span className="h-2.5 w-2.5 flex-none bg-stone-400" aria-hidden="true" />
-              Intérêts sur {years} ans
-            </dt>
-            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(interest)}</dd>
-          </div>
-          <div className="flex items-baseline justify-between gap-4 py-3.5">
-            <dt className="flex items-baseline gap-2.5">
-              <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
-              <span>
-                Assurance sur {years} ans
-                <span className="block text-sm text-stone-500">soit {eur(insMonthly)} par mois</span>
-              </span>
-            </dt>
-            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(insTotal)}</dd>
-          </div>
-          <div className="flex items-baseline justify-between gap-4 py-4">
-            <dt className="pl-5 font-medium text-stone-900">Montant total à rembourser</dt>
-            <dd className="font-sans font-normal tabular-nums text-2xl text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
-          </div>
-          <div className="flex items-baseline justify-between gap-4 py-3.5">
-            <dt className="pl-5">
-              Revenus mensuels conseillés
-              <span className="block text-sm text-stone-500">environ, pour 35 % d&apos;endettement</span>
-            </dt>
-            <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur(income)}</dd>
-          </div>
-        </dl>
-        <p className="mt-5 text-sm text-stone-700 leading-relaxed">
-          Ce n&apos;est qu&apos;une projection, à ajuster : le taux, l&apos;assurance et la durée dépendent du profil de chaque acquéreur (âge, revenus, apport, situation). Modifiez les chiffres ci-dessus pour vous en approcher.
-        </p>
-        <p className="mt-3 text-xs text-stone-500 leading-relaxed">
-          Taux de {pct(num(rate))} % sur {years} ans. Assurance estimée à {pct(num(insurance))} % du capital emprunté par an : elle va d&apos;environ 0,10 % à 25 ans à 0,47 % à 55 ans pour un non-fumeur (moyennes indicatives Meilleurtaux, 2026). Revenus calculés pour un endettement de 35 %, assurance comprise.
-        </p>
-        </>
+      <div className="mt-6 rounded-[14px] bg-stone-100 px-5 py-5 md:px-7 md:py-6" aria-live="polite">
+        {principal <= 0 ? (
+          <p className="text-stone-600">Indiquez le prix du bien et votre apport : votre mensualité s&apos;affiche ici.</p>
+        ) : (
+          <>
+            <p className="text-sm text-stone-600">Votre mensualité</p>
+            <p className="mt-1 font-sans text-5xl font-light tabular-nums leading-none tracking-tight text-stone-900 md:text-6xl">{eur(monthlyAll)}</p>
+            <p className="mt-2 text-sm text-stone-600">
+              par mois sur {years} ans, à {pct(num(rate))}&nbsp;%, assurance comprise
+            </p>
+          </>
         )}
       </div>
+
+      {principal > 0 && (
+        <details className="group mt-5">
+          <summary className={more}>Voir le détail</summary>
+          <div className="mt-4 flex h-3 w-full overflow-hidden rounded-full" aria-hidden="true">
+            <span className="bg-stone-900" style={{ width: `${(principal / total) * 100}%` }} />
+            <span className="bg-stone-400" style={{ width: `${(interest / total) * 100}%` }} />
+            <span className="bg-[#F4E7B5]" style={{ width: `${(insTotal / total) * 100}%` }} />
+          </div>
+          <dl className="mt-2 divide-y divide-stone-200 text-stone-700">
+            {[
+              ['bg-stone-900', 'Montant emprunté', eur(principal)],
+              ['bg-stone-400', `Intérêts sur ${years} ans`, eur(interest)],
+              ['bg-[#F4E7B5] border border-stone-400', `Assurance sur ${years} ans`, eur(insTotal)],
+            ].map(([dot, t, v]) => (
+              <div key={t} className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="flex items-baseline gap-2.5">
+                  <span className={`h-2.5 w-2.5 flex-none rounded-full ${dot}`} aria-hidden="true" />
+                  {t}
+                </dt>
+                <dd className="font-sans tabular-nums text-stone-900 whitespace-nowrap">{v}</dd>
+              </div>
+            ))}
+            <div className="flex items-baseline justify-between gap-4 py-3">
+              <dt className="pl-5 font-medium text-stone-900">Total à rembourser</dt>
+              <dd className="font-sans font-medium tabular-nums text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
+            </div>
+            <div className="flex items-baseline justify-between gap-4 py-3">
+              <dt className="pl-5">Revenus mensuels conseillés</dt>
+              <dd className="font-sans tabular-nums text-stone-900 whitespace-nowrap">{eur(income)}</dd>
+            </div>
+          </dl>
+          <p className="mt-3 text-xs text-stone-500 leading-relaxed">
+            Revenus calculés pour un endettement de 35 %, assurance comprise. Ce n&apos;est qu&apos;une projection : le taux, l&apos;assurance et la durée dépendent du profil de chaque acquéreur.
+          </p>
+        </details>
+      )}
+
+      <details className="group mt-4">
+        <summary className={more}>Ajuster le taux et l&apos;assurance</summary>
+        <div className="mt-4 grid grid-cols-2 gap-3 md:gap-5">
+          <label className={label}>
+            Taux, hors assurance
+            <span className="relative mt-2 block">
+              <input inputMode="decimal" value={rate} onChange={(e) => setRate(e.target.value)} className={box} />
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-stone-500">%</span>
+            </span>
+          </label>
+          <label className={label}>
+            Assurance, par an
+            <span className="relative mt-2 block">
+              <input inputMode="decimal" value={insurance} onChange={(e) => setInsurance(e.target.value)} className={box} />
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-stone-500">%</span>
+            </span>
+          </label>
+        </div>
+        <p className="mt-3 text-xs text-stone-500 leading-relaxed">
+          L&apos;assurance s&apos;exprime en pourcentage du capital emprunté : elle va d&apos;environ 0,10 % à 25 ans à 0,47 % à 55 ans pour un non-fumeur (moyennes indicatives Meilleurtaux, 2026).
+        </p>
+      </details>
     </div>
     <BrokerRequest price={num(price)} down={num(down)} years={years} monthly={monthlyAll} />
     </div>
