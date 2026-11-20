@@ -1054,7 +1054,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                       <div>
                         <p className="mt-4 text-xs text-stone-400">{item.source_agency}</p>
                         <div className="mt-3 pt-4 border-t border-stone-200 flex items-center justify-between gap-3">
-                          <span className="text-xl font-medium tracking-tight font-serif">{price}</span>
+                          <span className="text-xl font-medium tracking-tight font-sans tabular-nums">{price}</span>
                           <span className="inline-flex items-center gap-1 py-2 text-[15px] font-medium text-stone-900 underline underline-offset-4 group-hover:text-stone-600 transition">
                             Voir le bien
                             <ArrowUpRight className="w-3.5 h-3.5" />

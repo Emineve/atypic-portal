@@ -96,7 +96,7 @@ export default function CollectionPage({
                     </p>
                   )}
                   <div className={`${hideAgency && !item.source_id ? 'mt-6' : 'mt-3'} pt-4 border-t border-stone-100 flex items-center justify-between`}>
-                    <span className="text-xl font-medium tracking-tight font-serif">
+                    <span className="text-xl font-medium tracking-tight font-sans tabular-nums">
                       {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price)}
                     </span>
                     <Link href={`/biens/${item.id}`} className="inline-flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 hover:text-stone-600 transition">

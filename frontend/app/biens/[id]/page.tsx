@@ -280,7 +280,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </ul>
             )}
 
-            <p className="mt-5 font-serif text-3xl text-stone-900 lg:hidden">{price}</p>
+            <p className="mt-5 font-sans font-medium tabular-nums text-3xl text-stone-900 lg:hidden">{price}</p>
             {plans.length > 0 && (
               <div className="lg:hidden mt-1">
                 <PlanDownload listingId={item.id} plans={plans} title={item.title} variant="link" />
@@ -342,7 +342,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
 
                 <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="font-serif text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</span>
+                  <span className="font-sans font-medium tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</span>
                   <span className="text-sm text-stone-500">montant estimé du projet, hors travaux</span>
                 </p>
 
@@ -361,14 +361,14 @@ export default async function ListingPage({ params }: { params: { id: string } }
                         <span className="block text-sm text-stone-500">{feesLabel}</span>
                       </span>
                     </dt>
-                    <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
+                    <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
                   </div>
                   <div className="flex items-center justify-between gap-4 py-3.5">
                     <dt className="flex items-center gap-2.5">
                       <span className="h-2.5 w-2.5 flex-none bg-[#F4E7B5] border border-stone-900" aria-hidden="true" />
                       <span>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></span>
                     </dt>
-                    <dd className="font-serif text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
+                    <dd className="font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                   </div>
                 </dl>
 
@@ -394,7 +394,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
                 {monthly > 0 && (
                   <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="font-serif text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
+                    <span className="font-sans font-medium tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
                       <span className="font-sans text-3xl text-stone-400" aria-label="environ">≈</span> {eur0(monthly)}
                     </span>
                     <span className="text-sm text-stone-500">par mois, hors crédit</span>
@@ -418,7 +418,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                           {costParts.length > 1 && <span className={`h-2.5 w-2.5 flex-none ${COST_DOT[i]}`} aria-hidden="true" />}
                           {c.label}
                         </dt>
-                        <dd className="text-right font-serif text-lg text-stone-900 whitespace-nowrap">
+                        <dd className="text-right font-sans font-medium tabular-nums text-lg text-stone-900 whitespace-nowrap">
                           {c.value} <span className="font-sans text-sm text-stone-500">par an</span>
                           {c.sub && <span className="block font-sans text-sm text-stone-500">{c.sub}</span>}
                         </dd>
@@ -521,7 +521,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 <div className="min-w-0 sm:p-4">
                   <p className="text-xs uppercase tracking-widest text-stone-500">{r.city}{r.surface_sqm ? ` · ${r.surface_sqm} m²` : ''}</p>
                   <p className="mt-1 font-serif text-stone-900 leading-snug">{r.title}</p>
-                  <p className="mt-1 font-serif text-lg text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
+                  <p className="mt-1 font-sans font-medium tabular-nums text-lg text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
                 </div>
               </Link>
             ))}
