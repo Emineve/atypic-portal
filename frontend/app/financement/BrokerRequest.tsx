@@ -46,7 +46,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
   const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full disabled:opacity-60';
 
   return (
-    <section aria-live="polite" className={`mt-6 rounded-[14px] border bg-white p-6 md:p-8 ${status === 'done' ? 'border-stone-900' : 'border-stone-200'}`}>
+    <section aria-live="polite" className={`mt-6 rounded-[14px] border bg-white p-6 md:p-8 shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)] ${status === 'done' ? 'border-stone-900' : 'border-stone-200'}`}>
       <div className="flex items-start justify-between gap-6">
         <div className="max-w-xl">
           {status === 'done' ? (
