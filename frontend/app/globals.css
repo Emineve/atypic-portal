@@ -70,3 +70,16 @@ body {
   background-color: #ffffff !important;
   background-image: none !important;
 }
+
+/* Tous les champs du site : le remplissage automatique du navigateur ne les teinte plus (ni jaune, ni bleu).
+   L'ombre intérieure blanche couvre la teinte ; la transition très longue l'empêche d'apparaître là où le fond n'est pas blanc. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  -webkit-text-fill-color: #1c1917;
+  transition: background-color 99999s ease-in-out 0s;
+}
