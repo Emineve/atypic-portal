@@ -7,15 +7,38 @@ export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_TYPE = 'image/png';
 export const OG_SIGNATURE = 'Curateur de biens atypiques';
 
-// Police chargée chez Google, réduite aux seuls caractères utiles
-async function loadFont(family: string, axes: string, text: string): Promise<ArrayBuffer> {
-  const url = `https://fonts.googleapis.com/css2?family=${family}:${axes}&text=${encodeURIComponent(text)}`;
-  const css = await (await fetch(url)).text();
-  const match = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/);
-  if (!match) throw new Error(`Police introuvable : ${family}`);
-  const res = await fetch(match[1]);
-  if (!res.ok) throw new Error(`Police non chargée : ${family}`);
-  return res.arrayBuffer();
+// Polices chargées chez Google : une seule fois par police, avec plusieurs essais en cas de coupure réseau
+const fontCache = new Map<string, Promise<ArrayBuffer>>();
+
+async function fetchRetry(url: string, tries = 4): Promise<Response> {
+  let last: unknown;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (res.ok) return res;
+      last = new Error(`Réponse ${res.status}`);
+    } catch (e) {
+      last = e;
+    }
+    await new Promise((r) => setTimeout(r, 400 * (i + 1)));
+  }
+  throw last;
+}
+
+function loadFont(family: string, axes: string): Promise<ArrayBuffer> {
+  const key = `${family}:${axes}`;
+  let font = fontCache.get(key);
+  if (!font) {
+    font = (async () => {
+      const css = await (await fetchRetry(`https://fonts.googleapis.com/css2?family=${key}`)).text();
+      const match = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/);
+      if (!match) throw new Error(`Police introuvable : ${family}`);
+      return (await fetchRetry(match[1])).arrayBuffer();
+    })();
+    font.catch(() => fontCache.delete(key));
+    fontCache.set(key, font);
+  }
+  return font;
 }
 
 function Words({ text, italic }: { text: string; italic?: boolean }) {
@@ -41,10 +64,10 @@ function Words({ text, italic }: { text: string; italic?: boolean }) {
 export async function shareImage(title: string, accent = '') {
   const full = `${title} ${accent}`;
   const [logo, sans, serif, serifItalic] = await Promise.all([
-    loadFont('Poppins', 'wght@600', 'loftissime.'),
-    loadFont('DM+Sans', 'wght@400', OG_SIGNATURE),
-    loadFont('Newsreader', 'opsz,wght@72,400', full),
-    loadFont('Newsreader', 'ital,opsz,wght@1,72,400', full),
+    loadFont('Poppins', 'wght@600'),
+    loadFont('DM+Sans', 'wght@400'),
+    loadFont('Newsreader', 'opsz,wght@72,400'),
+    loadFont('Newsreader', 'ital,opsz,wght@1,72,400'),
   ]);
   // Un titre long passe dans une taille en dessous pour tenir sur trois lignes au plus
   const long = full.length > 62;
