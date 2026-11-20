@@ -577,9 +577,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             <ArrowLeft className="w-4 h-4" />
             Tous les biens
           </button>
-          <h1 className="mt-4 font-serif text-3xl md:text-4xl text-stone-900">Mes favoris</h1>
+          <h1 className="sr-only">Mes favoris</h1>
           {visible.length > 0 && (
-            <p className="mt-2 text-sm text-stone-500 leading-relaxed">
+            <p className="mt-4 text-sm text-stone-500 leading-relaxed">
               {visible.length > 1
                 ? `${visible.length} biens · Laissez vos coordonnées une seule fois, chaque agence vous rappelle.`
                 : '1 bien · Laissez vos coordonnées, l’agence vous rappelle.'}
