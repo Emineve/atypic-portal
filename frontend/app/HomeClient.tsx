@@ -931,7 +931,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-5">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
               {visible.length > 0 && (
-                <p className="font-serif text-xl text-stone-900">
+                <p className="font-sans text-lg text-stone-900">
                   {visible.length} {visible.length > 1 ? 'biens' : 'bien'}
                   {searchActive ? '' : ' à vendre'}
                 </p>
