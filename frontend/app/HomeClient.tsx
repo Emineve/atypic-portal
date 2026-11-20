@@ -24,6 +24,7 @@ import { trackEvent } from '../lib/track';
 // Passer à false quand la base contiendra de vraies annonces d'agences
 const DEMO_MODE = true;
 import { readSeen, clearSeen } from '../lib/seen';
+import { readContacted } from '../lib/contacted';
 import { SEEN_BADGE } from './SeenMark';
 
 const FAVORITES_KEY = 'singulier:favorites';
@@ -224,8 +225,13 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
   // Biens déjà consultés (mémorisés dans le navigateur), relus à chaque retour sur la page
   const [seen, setSeen] = useState<string[]>([]);
+  // Biens pour lesquels une demande est déjà partie : on ne propose pas de la renvoyer
+  const [contacted, setContacted] = useState<string[]>([]);
   useEffect(() => {
-    const load = () => setSeen(readSeen().map((x) => x.id));
+    const load = () => {
+      setSeen(readSeen().map((x) => x.id));
+      setContacted(readContacted());
+    };
     load();
     window.addEventListener('pageshow', load);
     return () => window.removeEventListener('pageshow', load);
@@ -489,6 +495,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         .slice(0, 12),
     [seen, favorites, listings]
   );
+
+  // Favoris pour lesquels aucune demande n'est encore partie
+  const pending = onlyFavs ? visible.filter((v) => !contacted.includes(v.id)) : visible;
 
   const anythingActive = activeFilters > 0 || query.trim() !== '' || places.length > 0 || onlyFavs || sort !== 'selection';
 
@@ -1001,7 +1010,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                       <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-medium text-stone-900 shadow-sm">{item.atypic_category}</span>
-                      {seen.includes(item.id) && <span className={SEEN_BADGE}>Déjà vu</span>}
+                      {contacted.includes(item.id) ? (
+                        <span className={SEEN_BADGE}>Demande envoyée</span>
+                      ) : (
+                        seen.includes(item.id) && <span className={SEEN_BADGE}>Déjà vu</span>
+                      )}
                     </div>
                     <div className="p-6 flex flex-1 flex-col justify-between">
                       <div>
@@ -1066,20 +1079,32 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           </div>
         )}
 
-        {/* Favoris : le bouton de contact suit la liste des favoris, pour qu'on sache de quels biens il parle */}
+        {/* Favoris : le bouton de contact suit la liste, et ne propose que les biens sans demande déjà envoyée */}
         {onlyFavs && !loading && !errorMessage && visible.length > 0 && (
           <div className="mt-10 flex flex-col items-center gap-3 text-center">
-            <button
-              type="button"
-              onClick={() => setFavContactOpen(true)}
-              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-8 text-[15px] font-medium text-white transition hover:bg-stone-800 sm:w-auto"
-            >
-              <Send className="w-4 h-4" />
-              <span>{visible.length > 1 ? `Ces ${visible.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
-            </button>
-            <p className="text-sm text-stone-500">
-              {visible.length > 1 ? 'Vos coordonnées une seule fois, chaque agence vous rappelle.' : 'Laissez vos coordonnées, l’agence vous rappelle.'}
-            </p>
+            {pending.length > 0 ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setFavContactOpen(true)}
+                  className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-8 text-[15px] font-medium text-white transition hover:bg-stone-800 sm:w-auto"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>{pending.length > 1 ? `Ces ${pending.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
+                </button>
+                <p className="text-sm text-stone-500">
+                  {pending.length > 1 ? 'Vos coordonnées une seule fois, chaque agence vous rappelle.' : 'Laissez vos coordonnées, l’agence vous rappelle.'}
+                  {pending.length < visible.length && (
+                    <> {visible.length - pending.length > 1 ? `Demande déjà envoyée pour ${visible.length - pending.length} autres biens.` : 'Demande déjà envoyée pour 1 autre bien.'}</>
+                  )}
+                </p>
+              </>
+            ) : (
+              <p className="inline-flex items-center gap-2 rounded-full bg-[#F6CF4E] px-5 py-3 text-[15px] font-medium text-stone-900">
+                <Check className="w-4 h-4" />
+                {visible.length > 1 ? 'Demande envoyée pour ces biens : les agences vous rappellent.' : 'Demande envoyée : l’agence vous rappelle.'}
+              </p>
+            )}
           </div>
         )}
 
@@ -1167,7 +1192,14 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         </div>
       )}
 
-      <FavoritesContact open={favContactOpen} onClose={() => setFavContactOpen(false)} items={visible} />
+      <FavoritesContact
+        open={favContactOpen}
+        onClose={() => {
+          setFavContactOpen(false);
+          setContacted(readContacted()); // les demandes parties ne sont plus proposées
+        }}
+        items={pending}
+      />
 
       <AlertDialog
         open={alertOpen}

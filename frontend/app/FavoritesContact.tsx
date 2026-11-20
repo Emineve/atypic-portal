@@ -1,5 +1,6 @@
 'use client';
 
+import { markContacted } from '../lib/contacted';
 import { useEffect, useState } from 'react';
 import { X, Check, Send } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
@@ -20,10 +21,12 @@ const MAX_ITEMS = 12;
 export default function FavoritesContact({
   open,
   onClose,
+  onSent,
   items,
 }: {
   open: boolean;
   onClose: () => void;
+  onSent?: () => void; // des demandes viennent de partir : la page se met à jour
   items: FavItem[];
 }) {
   const [selected, setSelected] = useState<string[]>([]);
@@ -76,6 +79,7 @@ export default function FavoritesContact({
       .filter(Boolean)
       .join(' ');
     let ok = 0;
+    const done: string[] = [];
     for (const id of selected) {
       try {
         const { data, error } = await getSupabase().rpc('submit_lead', {
@@ -86,12 +90,13 @@ export default function FavoritesContact({
           p_message: message,
           p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
         });
-        if (!error && data === true) ok += 1;
+        if (!error && data === true) { ok += 1; done.push(id); }
       } catch {
         /* on continue avec les biens suivants */
       }
     }
     setSent(ok);
+    if (done.length > 0) { markContacted(done); onSent?.(); }
     if (ok > 0) saveVisitor({ name, email, phone: tel });
     setStatus(ok > 0 ? 'done' : 'error');
   }

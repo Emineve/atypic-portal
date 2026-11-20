@@ -1,5 +1,6 @@
 'use client';
 
+import { markContacted } from '../../../lib/contacted';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
@@ -143,7 +144,7 @@ export default function ContactForm({
             : ['Demande d’information.', message.trim() ? `Message : ${message.trim()}` : null].filter(Boolean).join(' '),
         p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
       });
-      if (!error && data === true) saveVisitor({ name, email, phone: tel });
+      if (!error && data === true) { saveVisitor({ name, email, phone: tel }); markContacted([listingId]); }
       setStatus(!error && data === true ? 'done' : 'error');
     } catch {
       setStatus('error');
