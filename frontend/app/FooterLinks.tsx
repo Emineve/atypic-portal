@@ -52,7 +52,6 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
           <li><a href="/qui-sommes-nous" className={link}>Pourquoi Loftissime</a></li>
           <li><a href="/mode-d-emploi" className={link}>Mode d&apos;emploi</a></li>
           <li><a href="/alerte" className={link}>Mes alertes</a></li>
-          <li><a href="/inspiration" className={link}>Inspiration</a></li>
           <li><a href="/guide" className={link}>État des lieux</a></li>
           <li><a href="/financement" className={link}>Financement</a></li>
           <li><a href="/charte" className={link}>Questions fréquentes</a></li>

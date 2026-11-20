@@ -3,7 +3,7 @@
 import { blackButtonOnScreen } from '../lib/blackButton';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Plus, BookOpen, Calculator, Compass, Feather, Heart, Info, Lightbulb, Menu, X } from 'lucide-react';
+import { ArrowLeft, Plus, BookOpen, Calculator, Compass, Feather, Heart, Info, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import ModeEmploiBack from './ModeEmploiBack';
 
@@ -11,7 +11,6 @@ const FAVORITES_KEY = 'singulier:favorites';
 
 const LINKS = [
   { href: '/guide', label: 'État des lieux', sub: 'Ce qu’il faut savoir avant d’acheter', Icon: BookOpen },
-  { href: '/inspiration', label: 'Inspiration', sub: 'Un architecte à la une', Icon: Lightbulb },
   { href: '/financement', label: 'Financement', sub: 'Estimer ma mensualité', Icon: Calculator },
   { href: '/mode-d-emploi', label: 'Mode d’emploi', sub: 'Du premier clic à la visite', Icon: Compass },
   { href: '/qui-sommes-nous', label: 'Pourquoi Loftissime', sub: '', Icon: Feather },

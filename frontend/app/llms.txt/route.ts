@@ -54,7 +54,6 @@ export async function GET() {
     `- [Mode d’emploi : du premier clic à la visite](${SITE_URL}/mode-d-emploi)`,
     `- [Questions fréquentes : sélection des biens, fonctionnement, classement](${SITE_URL}/charte)`,
     `- [Agences : diffuser ses annonces sur Loftissime](${SITE_URL}/pro)`,
-    `- [Inspiration : un architecte à la une](${SITE_URL}/inspiration)`,
     `- [État des lieux : ce qu’il faut savoir avant d’acheter un bien atypique](${SITE_URL}/guide)`,
     '',
     '## État des lieux : le guide de l’acheteur',

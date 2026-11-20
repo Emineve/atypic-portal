@@ -3,7 +3,7 @@
 import { blackButtonOnScreen } from '../lib/blackButton';
 import Logo from './Logo';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Lightbulb, Calculator, Compass, Feather, Info } from 'lucide-react';
+import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertPhrase from './AlertPhrase';
@@ -572,7 +572,6 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               </button>
               {[
                 { href: '/guide', label: 'État des lieux', sub: 'Ce qu’il faut savoir avant d’acheter', Icon: BookOpen },
-                { href: '/inspiration', label: 'Inspiration', sub: 'Un architecte à la une', Icon: Lightbulb },
                 { href: '/financement', label: 'Financement', sub: 'Estimer ma mensualité', Icon: Calculator },
                 { href: '/mode-d-emploi', label: 'Mode d’emploi', sub: 'Du premier clic à la visite', Icon: Compass },
                 { href: '/qui-sommes-nous', label: 'Pourquoi Loftissime', sub: '', Icon: Feather },

@@ -38,12 +38,6 @@ const ARTICLES: { title: string; text: string; href?: string; link?: string }[] 
     link: 'Lire la rubrique',
   },
   {
-    title: 'On choisit mieux ce qu’on sait imaginer.',
-    text: 'Un grand volume brut intimide autant qu’il attire. Inspiration montre ce que des architectes en ont fait. Pour nourrir votre projet, ou simplement pour rêver.',
-    href: '/inspiration',
-    link: 'Découvrir Inspiration',
-  },
-  {
     title: 'Ici, le banal n’a pas sa place.',
     text: 'Ni prix minimum, ni surface minimum. Une seule condition : avoir ce que les autres n’ont pas. Une autre vie avant, un volume, un dehors, une situation rare, une signature, une histoire.',
     href: '/charte',

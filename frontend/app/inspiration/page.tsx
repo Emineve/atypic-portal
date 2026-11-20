@@ -12,6 +12,8 @@ export const metadata = {
   title: 'Inspiration · Loftissime',
   description: 'Un architecte à la une, et tous ceux déjà présentés : des intérieurs à la vision singulière, pour nourrir votre imagination.',
   alternates: { canonical: '/inspiration' },
+  // Rubrique masquée en attendant l'architecte partenaire : hors menu, hors moteurs
+  robots: { index: false, follow: false },
 };
 
 type Project = {
