@@ -97,7 +97,7 @@ export default function PlanDownload({
         className={
           variant === 'link'
             ? 'inline-flex items-center gap-2 py-2 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-400 hover:decoration-stone-900'
-            : 'w-full h-12 inline-flex items-center justify-center gap-2 border border-stone-900 bg-white text-stone-900 text-xs font-semibold uppercase tracking-wider hover:bg-stone-900 hover:text-white transition'
+            : 'w-full h-12 inline-flex items-center justify-center gap-2 border border-stone-900 bg-white text-stone-900 text-[15px] font-medium hover:rounded-full bg-stone-900 hover:text-white transition'
         }
       >
         <Download className="w-4 h-4 flex-none" strokeWidth={variant === 'link' ? 1.5 : 2} />
@@ -144,7 +144,7 @@ export default function PlanDownload({
                   {status === 'error' && <p className="text-sm text-red-700">L&apos;envoi n&apos;a pas abouti. Vérifiez vos coordonnées et réessayez.</p>}
                 </div>
                 <div className="border-t border-stone-200 p-4 shrink-0">
-                  <button type="submit" disabled={status === 'sending'} className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-[10px]">
+                  <button type="submit" disabled={status === 'sending'} className="w-full h-12 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full">
                     {status === 'sending' ? 'Un instant…' : 'Voir le plan'}
                   </button>
                   <p className="mt-2 text-center text-xs text-stone-500">

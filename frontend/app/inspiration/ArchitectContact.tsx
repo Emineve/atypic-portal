@@ -53,7 +53,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
         onClick={() => setOpen(true)}
         className={
           className ||
-          'inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4'
+          'inline-flex items-center gap-1.5 text-[15px] font-medium text-stone-900 underline underline-offset-4'
         }
       >
         Contacter {name}
@@ -75,7 +75,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
               <button
                 type="button"
                 onClick={close}
-                className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition rounded-[10px]"
+                className="mt-9 bg-stone-900 text-white text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
               >
                 Poursuivre ma visite
               </button>
@@ -114,7 +114,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-[10px]"
+                  className="w-full h-12 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
                 >
                   {status === 'sending' ? 'Envoi…' : 'Envoyer'}
                 </button>

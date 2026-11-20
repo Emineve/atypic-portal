@@ -895,7 +895,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               <button
                 type="button"
                 onClick={() => setShowFilters(false)}
-                className="w-full h-12 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-[10px]"
+                className="w-full h-12 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
               >
                 {visible.length > 1 ? `Voir les ${visible.length} biens` : visible.length === 1 ? 'Voir le bien' : 'Aucun bien ne correspond'}
               </button>
@@ -935,7 +935,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 <button
                   type="button"
                   onClick={() => openAlert('recherche')}
-                  className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-medium text-stone-900 underline underline-offset-4"
                 >
                   <Bell className="w-3.5 h-3.5 flex-none" />
                   Créer mon alerte
@@ -998,7 +998,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               <button
                 type="button"
                 onClick={() => openAlert('empty')}
-                className="mt-6 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 hover:bg-stone-800 transition rounded-[10px]"
+                className="mt-6 bg-stone-900 text-white text-[15px] font-medium px-6 py-3.5 hover:bg-stone-800 transition rounded-full"
               >
                 Créer mon alerte
               </button>
@@ -1044,7 +1044,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         <p className="mt-4 text-xs text-stone-400">{item.source_agency}</p>
                         <div className="mt-3 pt-4 border-t border-stone-200 flex items-center justify-between gap-3">
                           <span className="text-xl font-medium tracking-tight font-serif">{price}</span>
-                          <span className="inline-flex items-center gap-1 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover:text-stone-600 transition">
+                          <span className="inline-flex items-center gap-1 py-2 text-[15px] font-medium text-stone-900 underline underline-offset-4 group-hover:text-stone-600 transition">
                             Voir le bien
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </span>
@@ -1072,7 +1072,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     <span className="flex-1 font-serif text-base leading-snug text-stone-900">
                       <AlertPhrase />
                     </span>
-                    <span className="flex-none text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4 group-hover/alert:text-stone-600">
+                    <span className="flex-none text-[15px] font-medium text-stone-900 underline underline-offset-4 group-hover/alert:text-stone-600">
                       Créer mon alerte →
                     </span>
                   </button>
@@ -1107,7 +1107,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               <button
                 type="button"
                 onClick={() => openAlert('pied')}
-                className="inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+                className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition"
               >
                 Créer mon alerte
               </button>
@@ -1139,7 +1139,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <button
             type="button"
             onClick={() => setFavContactOpen(true)}
-            className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-6 h-14 rounded-full shadow-lg hover:bg-stone-800 transition"
+            className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900 text-white text-[15px] font-medium px-6 h-14 rounded-full shadow-lg hover:bg-stone-800 transition"
           >
             <Send className="w-4 h-4" />
             <span>{visible.length > 1 ? `Ces ${visible.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>

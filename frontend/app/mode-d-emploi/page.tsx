@@ -1,3 +1,4 @@
+import AlertBand, { ALERT_BUTTON } from '../AlertBand';
 import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
@@ -27,13 +28,19 @@ export default function ModeEmploiPage() {
       <main className="max-w-6xl mx-auto px-6">
         <div className="max-w-5xl pb-24">
         <ModeEmploiSteps />
-        <p className="mt-12 md:mt-16 text-sm text-stone-500">
-          Envie de savoir pourquoi ce site existe ?{' '}
-          <Link href="/qui-sommes-nous" className="underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
-            Pourquoi Loftissime
+        <AlertBand
+          title="Vous savez comment ça marche. Reste à trouver le vôtre."
+          extra={
+            <Link href="/qui-sommes-nous" className="text-sm text-stone-600 underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
+              Pourquoi Loftissime
+            </Link>
+          }
+          className="mt-14 md:mt-20"
+        >
+          <Link href="/?alerte=1" className={ALERT_BUTTON}>
+            Créer mon alerte
           </Link>
-          .
-        </p>
+        </AlertBand>
       </div>
       </main>
     </div>

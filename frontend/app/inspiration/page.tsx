@@ -91,7 +91,7 @@ export default async function InspirationPage() {
                   href={featured.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 underline underline-offset-4"
+                  className="inline-flex items-center gap-1.5 text-[15px] font-medium text-stone-900 underline underline-offset-4"
                 >
                   Son site
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -131,7 +131,7 @@ export default async function InspirationPage() {
                     <p className="mt-4 text-xs uppercase tracking-widest text-stone-500">{a.city || 'Architecte'}</p>
                     <h3 className="mt-1 font-serif text-xl text-stone-900 group-hover:underline underline-offset-4">{a.name}</h3>
                     {a.tagline && <p className="mt-2 text-sm text-stone-500">{a.tagline}</p>}
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-900">
+                    <span className="mt-3 inline-flex items-center gap-1 text-[15px] font-medium text-stone-900">
                       Son portrait
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </span>
@@ -146,7 +146,7 @@ export default async function InspirationPage() {
       <section className="max-w-2xl mx-auto px-6 py-16 text-center">
         <Link
           href="/"
-          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px]"
+          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
         >
           Découvrez les biens à visiter
         </Link>

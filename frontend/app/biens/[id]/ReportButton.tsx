@@ -81,7 +81,7 @@ export default function ReportButton({ listingId }: { listingId: string }) {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="flex-1 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-4 py-2.5 hover:bg-stone-800 transition disabled:opacity-50 rounded-[10px]"
+          className="flex-1 bg-stone-900 text-white text-[15px] font-medium px-4 py-2.5 hover:bg-stone-800 transition disabled:opacity-50 rounded-full"
         >
           {status === 'sending' ? 'Envoi…' : 'Envoyer'}
         </button>

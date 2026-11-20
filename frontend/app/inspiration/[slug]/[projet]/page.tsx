@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center gap-1.5 px-6 border border-stone-900 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:bg-stone-900 hover:text-white transition rounded-[10px]"
+            className="inline-flex h-12 items-center justify-center gap-1.5 px-6 border border-stone-900 text-[15px] font-medium text-stone-900 hover:bg-stone-900 hover:text-white transition rounded-full"
           >
             Le projet chez l&apos;architecte
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -96,7 +96,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
         )}
         <Link
           href={`/architectes/${a.slug}`}
-          className="inline-flex h-12 items-center justify-center px-6 rounded-[10px] border border-stone-300 text-xs font-semibold uppercase tracking-wider text-stone-700 hover:border-stone-900 transition"
+          className="inline-flex h-12 items-center justify-center px-6 rounded-full border border-stone-300 text-[15px] font-medium text-stone-700 hover:border-stone-900 transition"
         >
           Le portrait de {a.name}
         </Link>
@@ -106,7 +106,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
         <div className="max-w-2xl mx-auto px-6 py-14 text-center">
           <Link
             href={p.sale ? `/categorie/${slugify(p.sale)}` : '/'}
-            className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px]"
+            className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
           >
             {p.sale ? `Découvrez les biens « ${p.sale} » à visiter` : 'Découvrez les biens à visiter'}
           </Link>

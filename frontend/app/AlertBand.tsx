@@ -1,6 +1,6 @@
 // Invitation à créer une alerte, la même partout : un titre à gauche, le bouton à droite, entre deux filets.
 export const ALERT_BUTTON =
-  'inline-flex h-12 flex-none items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition';
+  'inline-flex h-12 flex-none items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition';
 
 export default function AlertBand({ title, children, extra, className = '' }: { title: React.ReactNode; children: React.ReactNode; extra?: React.ReactNode; className?: string }) {
   return (

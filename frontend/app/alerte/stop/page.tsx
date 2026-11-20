@@ -48,7 +48,7 @@ export default function StopAlertPage() {
             </p>
             <Link
               href="/"
-              className="mt-9 inline-block bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition rounded-[10px]"
+              className="mt-9 inline-block bg-stone-900 text-white text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
             >
               Voir les biens
             </Link>
@@ -70,7 +70,7 @@ export default function StopAlertPage() {
               type="button"
               onClick={stop}
               disabled={!token || status === 'sending'}
-              className="mt-9 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider px-9 py-4 hover:bg-stone-800 transition disabled:opacity-50 rounded-[10px]"
+              className="mt-9 bg-stone-900 text-white text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition disabled:opacity-50 rounded-full"
             >
               {status === 'sending' ? 'Un instant…' : 'Arrêter cette alerte'}
             </button>

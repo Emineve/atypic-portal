@@ -43,7 +43,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
 
   const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-serif text-xl text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
   const label = 'block text-xs uppercase tracking-widest text-stone-500';
-  const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition rounded-[10px] disabled:opacity-60';
+  const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full disabled:opacity-60';
 
   return (
     <section aria-live="polite" className={`mt-6 rounded-[14px] border bg-white p-6 md:p-8 ${status === 'done' ? 'border-stone-900' : 'border-stone-200'}`}>

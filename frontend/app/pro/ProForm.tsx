@@ -82,7 +82,7 @@ export default function ProForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full sm:w-auto sm:min-w-[16rem] sm:px-10 h-12 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-50"
+        className="w-full sm:w-auto sm:min-w-[16rem] sm:px-10 h-12 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50"
       >
         {status === 'sending' ? 'Envoi…' : 'Envoyer'}
       </button>

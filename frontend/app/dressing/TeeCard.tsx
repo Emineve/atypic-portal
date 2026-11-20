@@ -105,7 +105,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu' }: { name: 
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-[10px] bg-stone-900 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-stone-800 disabled:opacity-60 sm:w-auto sm:min-w-[16rem] sm:px-10"
+              className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-full bg-stone-900 text-[15px] font-medium text-white transition hover:bg-stone-800 disabled:opacity-60 sm:w-auto sm:min-w-[16rem] sm:px-10"
             >
               {status === 'sending' ? 'Envoi…' : 'Me prévenir'}
             </button>
@@ -119,7 +119,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu' }: { name: 
           <button
             type="button"
             onClick={() => setAsked(true)}
-            className="mt-7 inline-flex h-12 w-full items-center justify-center rounded-[10px] bg-stone-900 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-stone-800 sm:w-auto sm:min-w-[16rem] sm:px-10"
+            className="mt-7 inline-flex h-12 w-full items-center justify-center rounded-full bg-stone-900 text-[15px] font-medium text-white transition hover:bg-stone-800 sm:w-auto sm:min-w-[16rem] sm:px-10"
           >
             Je le veux
           </button>

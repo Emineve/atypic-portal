@@ -21,7 +21,7 @@ export default function NotFound() {
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <Link
             href="/"
-            className="inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition"
+            className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition"
           >
             Voir tous les biens
           </Link>

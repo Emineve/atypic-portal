@@ -23,7 +23,7 @@ type Alert = {
 };
 
 const eur = (n: number) => `${Number(n).toLocaleString('fr-FR')} €`;
-const btn = 'inline-flex h-12 items-center px-8 rounded-[10px] bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-stone-800 transition disabled:opacity-60';
+const btn = 'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-60';
 const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
 
 // Les critères d'une alerte, en clair
