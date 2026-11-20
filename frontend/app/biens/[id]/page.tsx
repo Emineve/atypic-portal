@@ -486,8 +486,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
         <aside className="min-w-0">
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
           <div className="hidden lg:block px-1 pb-2">
-            <p className="font-sans text-[2.5rem] font-medium leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap">
-              {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum)} €
+            <p className="font-sans text-[2.5rem] font-medium leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap [word-spacing:0.14em]">
+              {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum).replace(/[\u202f\u00a0]/g, '\u00a0')}{'\u00a0'}€
             </p>
           </div>
           {/* Sur mobile, le contact est placé juste après la présentation (voir plus haut) */}
