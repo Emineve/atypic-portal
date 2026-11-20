@@ -121,15 +121,9 @@ export default function ContreVisitePage() {
           <section key={s.anchor} id={s.anchor} className="mt-14 md:mt-20 scroll-mt-24">
             <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">{s.name}</h2>
             <p className="mt-2 text-stone-600">{s.intro}</p>
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 rounded-[14px] border border-stone-200 bg-white px-5 py-4">
-              <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-stone-100 text-[10px] uppercase tracking-wider text-stone-500">Logo</span>
-              <p className="min-w-[14rem] flex-1">
-                <span className="block text-xs uppercase tracking-widest text-stone-500">La parole à notre partenaire</span>
-                <span className="mt-1 block font-serif text-xl text-stone-900">Votre société</span>
-                <span className="block text-sm text-stone-600">Votre nom, {s.who.toLowerCase()} · votre ville</span>
-              </p>
-              <span className={`inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 ${link}`}>Découvrir Votre société →</span>
-            </div>
+            <p className="mt-3 text-sm text-stone-500">
+              Avec <span className="font-medium text-stone-900">Votre nom</span>, {s.who.toLowerCase()} · Votre société
+            </p>
             <ul className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-6">
               {s.videos.map((q) => (
                 <li key={q}>
