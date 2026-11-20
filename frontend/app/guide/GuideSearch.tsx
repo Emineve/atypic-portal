@@ -195,7 +195,7 @@ export default function GuideSearch() {
           input.current?.blur();
         }}
       >
-        <label htmlFor="question" className="sr-only">Posez votre question</label>
+        <label htmlFor="question" className="sr-only">Posez-nous une question, un expert vous répond</label>
         {/* Une barre de moteur de recherche : arrondie, blanche, avec ses suggestions qui s'ouvrent dessous dans le même cadre */}
         <div className="rounded-[28px] border border-stone-300 bg-white shadow-[0_2px_12px_rgba(28,25,23,0.08)] transition focus-within:border-stone-900 focus-within:shadow-[0_6px_24px_rgba(28,25,23,0.14)]">
           <div className="flex h-14 md:h-16 items-center gap-3 pl-5 pr-2">
@@ -213,8 +213,8 @@ export default function GuideSearch() {
               onKeyDown={(e) => {
                 if (e.key === 'Escape') clear();
               }}
-              placeholder="Posez votre question"
-              className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base md:text-lg text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
+              placeholder="Posez-nous une question, un expert vous répond"
+              className="h-full w-full min-w-0 text-ellipsis border-0 bg-transparent p-0 text-base md:text-lg text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
             />
             {q !== '' && (
               <button type="button" onClick={clear} aria-label="Effacer la question" className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-stone-400 transition hover:bg-stone-100 hover:text-stone-900">
