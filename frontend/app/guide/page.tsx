@@ -64,6 +64,7 @@ export default async function GuideIndex() {
                 <li key={r.anchor}>
                   <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group inline-flex items-baseline gap-2 text-base font-medium md:text-xl text-stone-900">
                     <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
+                    <span className="text-sm font-normal tabular-nums text-stone-500">{articles.filter((x) => x.category === r.name).length}</span>
                   </a>
                 </li>
               ))}
