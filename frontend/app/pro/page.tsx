@@ -145,7 +145,7 @@ export default function ProPage() {
             Vos futurs acquéreurs <span className="italic text-stone-500">sont ici.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-            Ils ne cherchent pas un nombre de pièces : ils cherchent un volume, une lumière, une histoire. Trois profils, trois façons d&apos;arriver jusqu&apos;à vous.
+            Trois profils d&apos;acheteurs, tous à la recherche d&apos;atypique.
           </p>
           <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
             {VISITORS.map((v) => (
