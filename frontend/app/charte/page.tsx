@@ -5,12 +5,34 @@ import SiteHeader from '../SiteHeader';
 export const metadata = {
   title: 'Questions fréquentes · Loftissime',
   description:
-    'Questions fréquentes sur Loftissime : les biens diffusés, le fonctionnement du site et le classement des annonces.',
+    'Questions fréquentes sur Loftissime : acheter un bien atypique, les biens diffusés, le fonctionnement du site, vos demandes et le classement des annonces.',
   alternates: { canonical: '/charte' },
 };
 
 
 const groups: FaqGroup[] = [
+  {
+    id: 'acheter',
+    title: 'Acheter un bien atypique',
+    items: [
+      {
+        q: 'Que vérifier avant d’acheter un loft, un atelier ou un souplex ?',
+        a: 'Trois points reviennent presque toujours : la destination du bien (est-il officiellement un logement ?), ce que permet le règlement de copropriété, et la surface réellement comptée, notamment sous les mezzanines et en sous-sol. La rubrique État des lieux traite ces questions une par une, avec la liste de ce qu’il faut demander avant de signer.',
+      },
+      {
+        q: 'Un bien atypique se finance-t-il comme un autre ?',
+        a: 'Oui, dans la grande majorité des cas, par un crédit immobilier classique. La banque regarde surtout deux choses : que le bien soit bien un logement dans ses papiers (un ancien atelier ou un ancien commerce doit avoir changé de destination) et qu’il puisse se revendre. Une péniche fait exception : ce n’est pas un immeuble, et son financement suit d’autres règles. La page Financement vous permet d’estimer votre mensualité.',
+      },
+      {
+        q: 'Pourquoi passer par une agence pour ce type de bien ?',
+        a: 'Parce qu’un bien atypique ne se compare à aucun autre : son prix, ses papiers et ses contraintes demandent quelqu’un qui connaît le dossier. La personne chargée de la vente a visité le bien, réuni les documents et sait répondre aux questions qu’un appartement classique ne pose pas. C’est pourquoi toutes les annonces de Loftissime sont portées par une agence.',
+      },
+      {
+        q: 'Les lieux de la page Inspiration sont-ils à vendre ?',
+        a: 'Non. Ce sont des réalisations d’architectes, présentées pour nourrir votre imagination. Vous pouvez écrire à l’architecte depuis sa page. Les biens à vendre, eux, se trouvent dans la recherche.',
+      },
+    ],
+  },
   {
     id: 'selection',
     title: 'La sélection des biens',
@@ -89,9 +111,43 @@ const groups: FaqGroup[] = [
         q: 'D’où viennent les annonces ?',
         a: 'Toutes les annonces proviennent d’agences immobilières. Chacune indique l’agence d’origine et renvoie vers l’annonce publiée sur son site, seule à faire foi pour le prix et la disponibilité.',
       },
-            {
+      {
+        q: 'Pourquoi un bien que j’avais repéré a-t-il disparu ?',
+        a: 'Le plus souvent parce qu’il est vendu, sous offre, ou que le vendeur l’a retiré du marché : l’agence retire alors son annonce, et nous aussi. Si votre recherche tient toujours, une alerte vous préviendra du prochain bien du même genre.',
+      },
+      {
+        q: 'Pourquoi le même bien apparaît-il chez deux agences ?',
+        a: 'Un vendeur peut confier son bien à plusieurs agences. Chacune publie alors sa propre annonce, parfois avec des photos ou un prix différents. Vous êtes libre de contacter celle de votre choix.',
+      },
+      {
+        q: 'Il n’y a aucun bien dans ma ville, que faire ?',
+        a: 'Les biens atypiques sont rares par nature, et il n’y en a pas partout en permanence. Loftissime couvre toute la France : créez une alerte sur votre secteur, et vous serez prévenu(e) dès qu’un bien y arrive.',
+      },
+      {
         q: 'Un particulier peut-il diffuser une annonce ?',
         a: 'Non. La diffusion d’annonces est exclusivement réservée aux agences immobilières. Loftissime est intimement convaincu que la vente d’un bien atypique doit être accompagnée par l’expertise d’une agence.',
+      },
+    ],
+  },
+  {
+    id: 'demandes',
+    title: 'Vos demandes et vos favoris',
+    items: [
+      {
+        q: 'Que se passe-t-il quand je demande à être rappelé(e) ?',
+        a: 'Votre demande est transmise à l’agence chargée du bien, avec vos coordonnées et la référence de l’annonce. C’est votre contact à l’agence qui vous rappelle. Le délai dépend de l’agence : si vous êtes pressé(e), son numéro figure sur l’annonce.',
+      },
+      {
+        q: 'Passer par Loftissime change-t-il le prix ou les honoraires ?',
+        a: 'Non. Le prix est celui fixé par l’agence, honoraires inclus, le même que sur son propre site. Loftissime ne vous facture rien et ne perçoit aucune commission sur les ventes.',
+      },
+      {
+        q: 'Faut-il créer un compte ?',
+        a: 'Non. Il n’y a ni compte ni mot de passe sur Loftissime. Rien n’est demandé pour consulter les annonces ou garder des favoris, et une adresse e-mail suffit pour créer une alerte.',
+      },
+      {
+        q: 'Mes favoris sont-ils conservés ?',
+        a: 'Oui, sur l’appareil que vous utilisez : ils sont enregistrés dans votre navigateur, pas chez nous. Vous les retrouvez à chaque visite depuis le même téléphone ou le même ordinateur, mais pas d’un appareil à l’autre, et ils disparaissent si vous effacez vos données de navigation.',
       },
     ],
   },
