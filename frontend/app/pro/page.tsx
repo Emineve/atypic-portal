@@ -106,11 +106,10 @@ export default function ProPage() {
           <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
             Nous vous mettons en relation directe avec des acheteurs qualifiés.
           </p>
-          <p className="mt-7 flex flex-wrap items-baseline gap-x-5 gap-y-2">
+          <p className="mt-3">
             <a href="#rejoindre" className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
               Diffuser mes annonces →
             </a>
-            <span className="text-sm text-stone-500">Gratuit pendant le lancement · Sans engagement</span>
           </p>
         </div>
       </header>
