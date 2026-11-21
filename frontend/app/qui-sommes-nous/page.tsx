@@ -64,7 +64,7 @@ export default function ManifestoPage() {
           Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-stone-600 text-base md:text-lg font-light leading-relaxed">
-          Tous les biens atypiques à vendre, sur un seul site. Partout en France, toutes agences réunies, sans préférence. Et vous, accompagné jusqu&apos;à la visite, pour ne pas passer à côté du bien qui vous ressemble.
+          Tous les biens atypiques à vendre, toutes agences réunies, sur un seul site.
         </p>
       </header>
 

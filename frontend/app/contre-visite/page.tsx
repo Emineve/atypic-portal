@@ -80,7 +80,7 @@ export default function ContreVisitePage() {
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <div className="max-w-4xl">
           <Crumbs items={[{ label: 'État des lieux', href: '/guide' }, { label: 'Contre-visite' }]} />
-          <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+          <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
             Contre-visite. <span className="italic text-stone-500">Une question, un spécialiste, une minute.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">

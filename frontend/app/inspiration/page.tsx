@@ -61,10 +61,10 @@ export default async function InspirationPage() {
         <>
           <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">
             <Crumbs items={[{ label: 'Inspiration' }]} />
-            <p className="max-w-4xl mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+            <p className="max-w-4xl mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
               Des idées pour <span className="italic text-stone-500">habiter autrement.</span>
             </p>
-            <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
               Un architecte à la une, et ses réalisations pour nourrir votre projet.
             </p>
           </div>

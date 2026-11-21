@@ -23,10 +23,10 @@ export default async function ArchitectsPage() {
 
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <Crumbs items={[{ label: 'Inspiration', href: '/inspiration' }, { label: 'Architectes' }]} />
-        <h1 className="mt-6 max-w-4xl text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+        <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Des architectes <span className="italic text-stone-500">qui sortent de l&apos;ordinaire.</span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">Des portraits éditoriaux, non sponsorisés.</p>
+        <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">Des portraits éditoriaux, non sponsorisés.</p>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-24">

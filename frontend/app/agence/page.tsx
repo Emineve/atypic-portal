@@ -40,11 +40,11 @@ export default async function AgenciesPage() {
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <div className="max-w-3xl">
         <Crumbs items={[{ label: 'Agences' }]} />
-        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+        <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Confiez votre recherche <span className="italic text-stone-500">à qui vous voulez.</span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Ouvrez la page d&apos;une agence, puis partagez vos critères avec elle. Recommencez avec autant d&apos;agences que vous le souhaitez : rien ne part sans vous.
+        <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
+          Choisissez une agence, partagez vos critères. Rien ne part sans vous.
         </p>
       </div>
       </header>

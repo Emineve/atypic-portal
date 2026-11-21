@@ -191,7 +191,7 @@ export default function ChartePage() {
           Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
-          Les biens que nous diffusons, la façon dont le site fonctionne, l&apos;ordre des annonces, et ce que deviennent vos coordonnées.
+          Nos biens, notre fonctionnement, vos coordonnées.
         </p>
       </header>
 

@@ -46,11 +46,11 @@ export default async function GuideIndex() {
 
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <Crumbs items={[{ label: 'État des lieux' }]} />
-        <h1 className="max-w-4xl mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+        <h1 className="max-w-4xl mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>
-        <p className="mt-8 max-w-2xl text-stone-600 text-lg font-light leading-relaxed">
-          Un souplex, un loft, une péniche ne s&apos;achètent pas comme un appartement classique. Posez-nous votre question : la réponse est dans nos articles, avec les vérifications à faire avant de signer. Et si elle n&apos;y est pas encore, nous vous répondons.
+        <p className="mt-5 max-w-2xl text-stone-600 text-base md:text-lg font-light leading-relaxed">
+          Posez votre question, un expert vous répond.
         </p>
         <GuideSearch />
       </header>

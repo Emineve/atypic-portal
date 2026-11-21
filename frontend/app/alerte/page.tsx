@@ -16,7 +16,7 @@ export default function AlertsPage() {
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <div className="max-w-3xl">
         <Crumbs items={[{ label: 'Mes alertes' }]} />
-        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+        <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Toutes vos alertes, <span className="italic text-stone-500">au même endroit.</span>
         </h1>
       </div>

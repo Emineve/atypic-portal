@@ -29,10 +29,10 @@ export default function ContreVisitePartners() {
       <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
         <p className="inline-block rounded-full bg-[#F6CF4E] px-3 py-1 text-xs text-stone-800">Présentation aux partenaires · exemples</p>
         <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">Contre-visite</p>
-        <h1 className="mt-4 max-w-4xl text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+        <h1 className="mt-4 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Une question, un spécialiste, <span className="italic text-stone-500">une minute.</span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+        <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
           Contre-visite est la série vidéo de Loftissime, le site qui réunit les biens atypiques de toutes les agences. Des professionnels y répondent aux questions que se posent les acheteurs avant de signer. Voici où votre réponse apparaît.
         </p>
       </header>
