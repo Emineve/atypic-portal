@@ -222,7 +222,7 @@ const groups: FaqGroup[] = [
           head: ['Donnée', 'Conservée', 'Ensuite'],
           rows: [
             ['Votre alerte', 'Tant qu’elle est active', 'Supprimée trente jours après son arrêt'],
-            ['Vos demandes de contact, de courtier ou de contact', 'Douze mois', 'Supprimées automatiquement'],
+            ['Vos demandes de contact ou de courtier', 'Douze mois', 'Supprimées automatiquement'],
             ['Vos questions et vos demandes de tee-shirt', 'Douze mois', 'Supprimées automatiquement'],
             ['Les mesures de fréquentation, qui ne permettent pas de vous identifier', 'Vingt-cinq mois au plus', 'Supprimées automatiquement'],
           ],
