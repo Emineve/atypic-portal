@@ -15,19 +15,19 @@ export const metadata = {
 // L'offre, en trois piliers
 const PILLARS: { title: string; lead: string; points: string[] }[] = [
   {
-    title: 'Visibilité',
+    title: 'Des contacts qualifiés',
+    lead: 'Des acheteurs qui cherchent de l’atypique, rien d’autre.',
+    points: ['Mise en relation directe, sans intermédiaire', 'Votre nom et votre téléphone sur chaque annonce', 'Un bilan de diffusion par bien, pour votre vendeur'],
+  },
+  {
+    title: 'Plus de visibilité',
     lead: 'Vos biens ne sont plus noyés dans les résultats.',
     points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page à votre nom, avec tous vos biens'],
   },
   {
-    title: 'Simplicité',
+    title: 'Zéro saisie',
     lead: 'Vous ne changez rien à vos habitudes.',
     points: ['Passerelle avec votre logiciel de diffusion', 'Mise à jour automatique', 'Rien à ressaisir'],
-  },
-  {
-    title: 'Qualité',
-    lead: 'Des contacts directs, et de quoi rendre compte à vos vendeurs.',
-    points: ['Contacts directs, sans intermédiaire', 'Votre nom et votre téléphone sur chaque annonce', 'Un bilan de diffusion par bien, pour votre vendeur'],
   },
 ];
 
