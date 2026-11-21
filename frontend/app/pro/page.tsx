@@ -3,7 +3,7 @@ import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import BuyerFigure, { type BuyerKind } from './BuyerFigure';
 import ProForm from './ProForm';
-import ProSteps, { type Promise5 } from './ProSteps';
+import { typo } from '../../lib/typo';
 import logiciels from './logiciels.png';
 export const metadata = {
   title: 'Agences : présentez vos biens atypiques · Loftissime',
@@ -12,20 +12,66 @@ export const metadata = {
   alternates: { canonical: '/pro' },
 };
 
-// Cinq promesses faites aux agences, dans le même ton que « Pourquoi Loftissime ».
-const PROMISES: Promise5[] = [
+// Trois repères chiffrés, tous vérifiables : rien d'inventé.
+const FACTS: [string, string][] = [
+  ['100 %', 'de biens atypiques, rien d’autre'],
+  ['0', 'saisie : vos annonces arrivent seules'],
+  ['0 €', 'pendant toute la phase de lancement'],
+];
+
+// L'offre, en trois piliers
+const PILLARS: { title: string; lead: string; points: string[] }[] = [
   {
-    title: 'Des acheteurs qualifiés.',
-    text: 'Sur Loftissime, on ne cherche que de l’atypique. Vos biens ne sont plus noyés entre deux trois-pièces : ils sont vus par des acheteurs qui veulent exactement cela. Ceux qui ont créé une alerte sont prévenus dès la mise en ligne.',
-  },
-  {
-    title: 'Des contacts directs.',
-    text: 'Votre agence, votre négociateur et son téléphone sur chaque annonce. L’acheteur vous appelle, vous écrit ou demande à être rappelé : la demande arrive chez vous, sans intermédiaire.',
-  },
-  {
-    title: 'Une vitrine qui valorise vos mandats.',
-    text: 'Seuls les biens atypiques sont publiés. Vos mandats les plus rares ont enfin leur vitrine, et vous avez un argument de plus face à un vendeur.',
+    title: 'Visibilité',
+    lead: 'Vos biens devant des acheteurs qui ne cherchent que cela.',
     points: [
+      'Un site où l’on ne trouve que de l’atypique',
+      'Envoi en alerte aux acheteurs dès la mise en ligne',
+      'Une page à votre nom, avec tous vos biens',
+      'Aucune mise en avant payante : classement par date',
+    ],
+  },
+  {
+    title: 'Simplicité',
+    lead: 'Vous ne changez rien à vos habitudes.',
+    points: [
+      'Passerelle avec votre logiciel de diffusion',
+      'Publication et mise à jour automatiques',
+      'Un bien vendu est retiré tout seul',
+      'Rien à installer, rien à ressaisir',
+    ],
+  },
+  {
+    title: 'Qualité',
+    lead: 'Des contacts directs, et de quoi rendre compte à vos vendeurs.',
+    points: [
+      'Votre agence, votre nom et votre téléphone sur chaque annonce',
+      'Appels et demandes de rappel arrivent chez vous, sans intermédiaire',
+      'Un bilan de diffusion par bien, à remettre à votre vendeur',
+      'Les coordonnées des acheteurs ne sont jamais revendues',
+    ],
+  },
+];
+
+// Les questions des agences
+const QUESTIONS: { q: string; a: string; steps?: [string, string][]; kinds?: [string, string][]; software?: boolean }[] = [
+  {
+    q: 'Comment ça marche ?',
+    a: 'Nous nous occupons de tout, en trois temps.',
+    steps: [
+      ['Vous nous écrivez', 'Le nom de votre agence et un e-mail suffisent. Nous vous rappelons.'],
+      ['Nous branchons vos annonces', 'Une passerelle avec votre logiciel de diffusion. Rien à installer.'],
+      ['Les contacts arrivent chez vous', 'Les acheteurs en alerte sont prévenus, chaque demande vous parvient directement.'],
+    ],
+  },
+  {
+    q: 'Combien ça coûte ?',
+    a: 'Rien pendant toute la phase de lancement : aucun frais, aucun engagement. Toute évolution des conditions vous sera annoncée à l’avance, et vous restez libre d’arrêter.',
+  },
+  {
+    q: 'Quels biens sont publiés ?',
+    a: 'Seulement les biens atypiques. Un appartement classique, même très beau ou très cher, n’est pas publié : le prix et l’adresse ne comptent pas.',
+    kinds: [
       ['Une autre vie avant', 'loft, atelier d’artiste, ancienne usine, péniche'],
       ['Un volume', 'grande hauteur, mezzanine, verrière, duplex'],
       ['Un dehors en ville', 'terrasse, toit-terrasse, jardin, patio'],
@@ -33,25 +79,15 @@ const PROMISES: Promise5[] = [
       ['Une signature', 'maison d’architecte, immeuble remarquable'],
       ['Une histoire', 'hôtel particulier, bien ancien resté dans son jus'],
     ],
-    note: 'Un appartement classique, même très beau ou très cher, n’est pas publié. Le prix et l’adresse ne comptent pas.',
   },
   {
-    title: 'Zéro saisie.',
-    text: 'Une passerelle avec votre logiciel de diffusion : vos annonces se publient et se mettent à jour seules. Un bien vendu est retiré. Vous ne changez rien à vos habitudes.',
+    q: 'Avec quels logiciels ?',
+    a: 'Des passerelles sont prévues avec les principaux logiciels de diffusion. Dites-nous le vôtre : nous vous confirmons la mise en place.',
     software: true,
   },
   {
-    title: 'Gratuit pendant le lancement.',
-    text: 'Aucun frais, aucun engagement pendant toute la phase de lancement. Toute évolution des conditions vous sera annoncée à l’avance : vous restez libre d’arrêter.',
-  },
-  {
-    title: 'Comment ça marche ?',
-    text: 'Nous nous occupons de tout, en trois temps.',
-    points: [
-      ['1. Vous nous écrivez', 'Le nom de votre agence et un e-mail suffisent. Nous vous rappelons.'],
-      ['2. Nous branchons vos annonces', 'Une passerelle avec votre logiciel de diffusion. Rien à installer.'],
-      ['3. Les contacts arrivent chez vous', 'Les acheteurs en alerte sont prévenus, chaque demande vous parvient directement.'],
-    ],
+    q: 'Comment les contacts me parviennent-ils ?',
+    a: 'L’acheteur vous appelle au numéro affiché sur l’annonce, ou demande à être rappelé : sa demande vous est transmise directement. Loftissime ne s’intercale pas dans la relation.',
   },
 ];
 
@@ -85,27 +121,55 @@ export default function ProPage() {
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-10 md:pb-12">
         <div className="max-w-4xl">
-        <Crumbs items={[{ label: 'Espace pro' }]} />
-        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
-          Vendez vos biens atypiques <span className="italic text-stone-500">à ceux qui les cherchent.</span>
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
-          Loftissime réunit les acheteurs de lofts, d&apos;ateliers d&apos;artistes et de toits-terrasses. Vos annonces y trouvent leur public, et chaque contact vous revient directement.
-        </p>
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a href="#rejoindre" className={btn}>Diffuser mes annonces</a>
-          <span className="text-sm text-stone-500">Gratuit pendant le lancement · Sans engagement</span>
+          <Crumbs items={[{ label: 'Espace pro' }]} />
+          <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
+            Plus de contacts sur vos biens atypiques, <span className="text-stone-500">sans rien changer à vos habitudes.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
+            Un site entièrement consacré aux biens atypiques. Vos annonces y sont publiées automatiquement, envoyées en alerte aux acheteurs, et chaque contact arrive directement chez vous.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a href="#rejoindre" className={btn}>Diffuser mes annonces</a>
+            <span className="text-sm text-stone-500">Gratuit pendant le lancement · Sans engagement</span>
+          </div>
+          <dl className="mt-10 grid grid-cols-3 gap-3 md:gap-5">
+            {FACTS.map(([n, t]) => (
+              <div key={t} className="rounded-[14px] bg-[#F6CF4E] px-3.5 py-4 md:px-6 md:py-5">
+                <dt className="whitespace-nowrap font-sans text-2xl font-light leading-none text-stone-900 md:text-5xl">{n}</dt>
+                <dd className="mt-2 text-[13px] leading-snug text-stone-800 md:text-[15px]">{typo(t)}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-      </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
-        <div className="max-w-4xl pb-24">
-        <div className="mb-14 md:mb-24">
-          <ProSteps promises={PROMISES} softwareSrc={logiciels.src} />
-        </div>
+        <div className="pb-24">
+        <section className="border-t border-stone-200 py-12 md:py-16">
+          <h2 className={h2}>Ce que vous y gagnez</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3 md:gap-5">
+            {PILLARS.map((p) => (
+              <div key={p.title} className="rounded-[20px] border border-stone-200 bg-white p-6 md:p-7">
+                <h3 className="font-serif text-2xl text-stone-900">{p.title}</h3>
+                <p className="mt-2 text-[15px] leading-snug text-stone-600">{typo(p.lead)}</p>
+                <ul className="mt-5 space-y-3">
+                  {p.points.map((t) => (
+                    <li key={t} className="flex items-start gap-3 text-[15px] leading-snug text-stone-900">
+                      <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F6CF4E]">
+                        <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                      </span>
+                      {typo(t)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="border-t border-stone-200 py-12 md:py-16">
           <h2 className={h2}>
@@ -121,6 +185,50 @@ export default function ProPage() {
                 <h3 className="mt-4 font-serif text-2xl text-stone-900">{v.title}</h3>
                 <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{v.text}</p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-t border-stone-200 py-12 md:py-16">
+          <h2 className={h2}>Vos questions</h2>
+          <div className="mt-8 max-w-3xl space-y-2.5">
+            {QUESTIONS.map((it) => (
+              <details key={it.q} name="pro-faq" className="group rounded-[14px] border border-stone-200 bg-white px-5 transition open:shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)] hover:border-stone-300 md:px-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-medium text-stone-900 md:text-[17px] [&::-webkit-details-marker]:hidden">
+                  {typo(it.q)}
+                  <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-stone-100 text-xl leading-none text-stone-600 transition-transform group-open:rotate-45 group-open:bg-[#F6CF4E] group-open:text-stone-900" aria-hidden="true">+</span>
+                </summary>
+                <div className="pb-5">
+                  <p className="max-w-2xl text-base leading-relaxed text-stone-600">{typo(it.a)}</p>
+                  {it.steps && (
+                    <ol className="mt-4 max-w-2xl space-y-3">
+                      {it.steps.map(([t, d], i) => (
+                        <li key={t} className="flex items-start gap-3">
+                          <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#F6CF4E] text-sm font-medium text-stone-900">{i + 1}</span>
+                          <span>
+                            <span className="block text-[15px] font-medium text-stone-900">{typo(t)}</span>
+                            <span className="block text-sm leading-snug text-stone-600">{typo(d)}</span>
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+                  {it.kinds && (
+                    <ul className="mt-4 grid max-w-2xl gap-x-10 gap-y-3 sm:grid-cols-2">
+                      {it.kinds.map(([t, d]) => (
+                        <li key={t} className="border-t border-stone-200 pt-3">
+                          <p className="text-[15px] font-medium text-stone-900">{typo(t)}</p>
+                          <p className="mt-0.5 text-sm leading-snug text-stone-500">{typo(d)}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {it.software && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={logiciels.src} alt="Hektor, AC3, Ubiflow, Netty, Apimo" className="mt-4 w-full max-w-md" />
+                  )}
+                </div>
+              </details>
             ))}
           </div>
         </section>

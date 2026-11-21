@@ -21,10 +21,9 @@ import FilterPanel from './FilterPanel';
 import { Filters, EMPTY_FILTERS, passesFilters, countActive, availableTypes } from './filters';
 import { trackEvent } from '../lib/track';
 
-// Passer à false quand la base contiendra de vraies annonces d'agences
-const DEMO_MODE = true;
 import { readSeen, clearSeen } from '../lib/seen';
 import { readContacted } from '../lib/contacted';
+import DemoBand from './DemoBand';
 import { hasAlertFor } from '../lib/alertPlaces';
 import { SEEN_BADGE } from './SeenMark';
 
@@ -516,11 +515,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <Tracker />
-      {DEMO_MODE && (
-        <div className="bg-stone-900 text-stone-100 text-center text-xs tracking-wide py-2 px-4">
-          <span className="sm:hidden">Version de démonstration · annonces à titre d'exemple</span>
-          <span className="hidden sm:inline">Version de démonstration : annonces et photos issues de sites d'agences, présentées à titre d'exemple. Chaque fiche renvoie vers l'annonce d'origine.</span>        </div>
-      )}
+      <DemoBand />
 
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
