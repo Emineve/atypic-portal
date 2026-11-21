@@ -73,7 +73,7 @@ export default function ProForm() {
       </div>
       <div>
         <label htmlFor="p-msg" className={label}>Message (facultatif)</label>
-        <textarea id="p-msg" rows={4} className={field} maxLength={2000} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Parlez-nous de votre catalogue de biens atypiques." />
+        <textarea id="p-msg" rows={3} className={field} maxLength={2000} value={message} onChange={(e) => setMessage(e.target.value)} />
       </div>
       <div className="hidden" aria-hidden="true">
         <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
