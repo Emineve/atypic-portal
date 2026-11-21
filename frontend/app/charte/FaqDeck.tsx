@@ -1,6 +1,14 @@
 'use client';
 
 import { typo } from '../../lib/typo';
+import { KeyRound, Gem, Compass, Heart, ArrowDownUp, Lock } from 'lucide-react';
+
+// Un petit picto par rubrique, devant son lien dans le sommaire
+const ICONS: Record<string, typeof KeyRound> = { acheter: KeyRound, selection: Gem, fonctionnement: Compass, demandes: Heart, classement: ArrowDownUp, donnees: Lock };
+function Icon({ id }: { id: string }) {
+  const I = ICONS[id] || Compass;
+  return <I className="h-4 w-4 flex-none text-stone-500" strokeWidth={1.5} aria-hidden="true" />;
+}
 
 // Les questions fréquentes : un sommaire en liens, puis toutes les rubriques l'une sous l'autre.
 export type FaqItem = { q: string; a: string; points?: string[]; table?: { lead?: string; head: [string, string, string]; rows: [string, string, string][] } };
@@ -62,11 +70,12 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
     <div className="max-w-3xl">
       {/* Sommaire : les rubriques en liens, qui passent à la ligne. Rien à faire défiler de côté. */}
       <nav aria-label="Rubriques">
-        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+        <ul className="flex flex-wrap gap-x-7 gap-y-2.5">
           {groups.map((g) => (
             <li key={g.id}>
-              <a href={`#${g.id}`} className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 transition">
-                {g.title}
+              <a href={`#${g.id}`} className="group inline-flex items-center gap-2.5 text-[15px] font-medium text-stone-900">
+                <Icon id={g.id} />
+                <span className="underline underline-offset-4 decoration-stone-300 transition">{g.title}</span>
               </a>
             </li>
           ))}
