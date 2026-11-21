@@ -1,13 +1,10 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
 import { typo } from '../../lib/typo';
 
-// Les questions fréquentes : une recherche, des rubriques en pastilles, une seule réponse ouverte à la fois.
+// Les questions fréquentes : un sommaire en liens, puis toutes les rubriques l'une sous l'autre.
 export type FaqItem = { q: string; a: string; points?: string[]; table?: { lead?: string; head: [string, string, string]; rows: [string, string, string][] } };
 export type FaqGroup = { id: string; title: string; items: FaqItem[] };
-
-const plain = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
 function Answer({ it }: { it: FaqItem }) {
   return (
@@ -61,97 +58,44 @@ function Answer({ it }: { it: FaqItem }) {
 }
 
 export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
-  const [active, setActive] = useState(0);
-  const [query, setQuery] = useState('');
-
-  // Un lien du type /charte#donnees ouvre directement la bonne rubrique
-  useEffect(() => {
-    const open = () => {
-      const i = groups.findIndex((g) => g.id === window.location.hash.slice(1));
-      if (i >= 0) setActive(i);
-    };
-    open();
-    window.addEventListener('hashchange', open);
-    return () => window.removeEventListener('hashchange', open);
-  }, [groups]);
-
-  // Recherche : dans toutes les rubriques à la fois, tous les mots saisis doivent s'y trouver
-  const words = plain(query).split(/\s+/).filter((w) => w.length > 1);
-  const searching = words.length > 0;
-  const found = useMemo(
-    () =>
-      searching
-        ? groups.flatMap((g) =>
-            g.items
-              .filter((it) => {
-                const hay = plain([it.q, it.a, ...(it.points || []), ...(it.table ? it.table.rows.flat() : [])].join(' '));
-                return words.every((w) => hay.includes(w));
-              })
-              .map((it) => ({ it, rubric: g.title }))
-          )
-        : [],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [query, groups]
-  );
-
-  const g = groups[active];
-  const list = searching ? found : g.items.map((it) => ({ it, rubric: '' }));
-
   return (
     <div className="max-w-3xl">
-      {/* Recherche masquée pour le moment : il suffit de réafficher le champ pour la remettre */}
-      {!searching && (
-        <div className="-mx-6 flex gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:px-0" role="tablist" aria-label="Rubriques">
-          {groups.map((x, i) => (
-            <button
-              key={x.id}
-              type="button"
-              role="tab"
-              aria-selected={i === active}
-              onClick={() => setActive(i)}
-              className={`h-10 flex-none whitespace-nowrap rounded-full border px-4 text-sm transition ${
-                i === active
-                  ? 'border-[#F6CF4E] bg-[#F6CF4E] font-medium text-stone-900'
-                  : 'border-stone-300 bg-white text-stone-700 hover:border-stone-900 hover:text-stone-900'
-              }`}
-            >
-              {x.title}
-            </button>
+      {/* Sommaire : les rubriques en liens, qui passent à la ligne. Rien à faire défiler de côté. */}
+      <nav aria-label="Rubriques">
+        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          {groups.map((g) => (
+            <li key={g.id}>
+              <a href={`#${g.id}`} className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 transition">
+                {g.title}
+              </a>
+            </li>
           ))}
-        </div>
-      )}
+        </ul>
+      </nav>
 
-      <h2 className="sr-only">{searching ? 'Résultats de la recherche' : g.title}</h2>
-      {searching && (
-        <p className="mt-5 text-sm text-stone-500" aria-live="polite">
-          {found.length === 0
-            ? 'Aucune question ne correspond. Essayez un autre mot.'
-            : found.length === 1
-            ? '1 question correspond.'
-            : `${found.length} questions correspondent.`}
-        </p>
-      )}
-
-      <div key={searching ? 'recherche' : g.id} id={g.id} className="mt-5 space-y-2.5">
-        {list.map(({ it, rubric }) => (
-          <details
-            key={it.q}
-            name="faq"
-            className="group rounded-[14px] border border-stone-200 bg-white px-5 transition open:shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)] hover:border-stone-300 md:px-6"
-          >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-medium text-stone-900 md:text-[17px] [&::-webkit-details-marker]:hidden">
-              <span>
-                {rubric && <span className="mb-0.5 block text-xs font-normal text-stone-500">{rubric}</span>}
-                {typo(it.q)}
-              </span>
-              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-stone-100 text-xl leading-none text-stone-600 transition-transform group-open:rotate-45 group-open:bg-[#F6CF4E] group-open:text-stone-900" aria-hidden="true">+</span>
-            </summary>
-            <div className="pb-5">
-              <Answer it={it} />
-            </div>
-          </details>
-        ))}
-      </div>
+      {/* Toutes les rubriques l'une sous l'autre, chacune avec ses questions ; une seule réponse ouverte à la fois */}
+      {groups.map((g) => (
+        <section key={g.id} id={g.id} className="mt-12 scroll-mt-24">
+          <h2 className="font-serif text-2xl text-stone-900 md:text-3xl">{g.title}</h2>
+          <div className="mt-4 space-y-2.5">
+            {g.items.map((it) => (
+              <details
+                key={it.q}
+                name="faq"
+                className="group rounded-[14px] border border-stone-200 bg-white px-5 transition open:shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)] hover:border-stone-300 md:px-6"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-medium text-stone-900 md:text-[17px] [&::-webkit-details-marker]:hidden">
+                  <span>{typo(it.q)}</span>
+                  <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-stone-100 text-xl leading-none text-stone-600 transition-transform group-open:rotate-45 group-open:bg-[#F6CF4E] group-open:text-stone-900" aria-hidden="true">+</span>
+                </summary>
+                <div className="pb-5">
+                  <Answer it={it} />
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }
