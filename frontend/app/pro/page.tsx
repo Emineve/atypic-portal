@@ -13,20 +13,17 @@ export const metadata = {
 };
 
 // L'offre, en trois piliers
-const PILLARS: { title: string; lead: string; points: string[] }[] = [
+const PILLARS: { title: string; points: string[] }[] = [
   {
     title: 'Des contacts qualifiés',
-    lead: 'Des acheteurs qui cherchent de l’atypique, rien d’autre.',
     points: ['Mise en relation directe, sans intermédiaire', 'Votre nom et votre téléphone sur chaque annonce', 'Un bilan de diffusion par bien, pour votre vendeur'],
   },
   {
     title: 'Plus de visibilité',
-    lead: 'Vos biens ne sont plus noyés dans les résultats.',
     points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page dédiée à votre agence, avec tous vos biens atypiques à la vente'],
   },
   {
     title: 'Zéro saisie',
-    lead: 'Vous ne changez rien à vos habitudes.',
     points: ['Passerelle avec votre logiciel de diffusion', 'Mise à jour automatique', 'Rien à ressaisir'],
   },
 ];
@@ -113,7 +110,6 @@ export default function ProPage() {
             {PILLARS.map((p) => (
               <div key={p.title} className="rounded-[20px] border border-stone-200 bg-white p-6 md:p-7">
                 <h3 className="font-serif text-2xl text-stone-900">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-snug text-stone-600">{typo(p.lead)}</p>
                 <ul className="mt-5 space-y-3">
                   {p.points.map((t) => (
                     <li key={t} className="flex items-start gap-3 text-[15px] leading-snug text-stone-900">
