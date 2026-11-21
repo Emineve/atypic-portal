@@ -14,7 +14,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
   const link = 'text-stone-300 hover:text-white underline-offset-4 hover:underline decoration-[#F6CF4E]';
   const title = 'text-xs uppercase tracking-widest text-stone-500';
   return (
-    <div className="bg-stone-900 text-white">
+    <div data-dark-footer className="bg-stone-900 text-white">
       <div className="max-w-6xl mx-auto px-6 pt-14 pb-8 md:pt-20">
         <div className="grid gap-y-12 md:grid-cols-[1.3fr_2fr] md:gap-x-16">
           <div>

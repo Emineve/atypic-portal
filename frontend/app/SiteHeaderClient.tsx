@@ -32,6 +32,7 @@ export default function SiteHeaderClient({
   const [open, setOpen] = useState(false);
   const [favs, setFavs] = useState(0);
   const [fab, setFab] = useState(false);
+  const [fabOnDark, setFabOnDark] = useState(false); // le bouton passe au-dessus du pied de page sombre
 
   // « + Nouvelle alerte » : apparaît en bas de l'écran une fois la page entamée, s'efface à l'approche du pied de page
   useEffect(() => {
@@ -40,7 +41,10 @@ export default function SiteHeaderClient({
       const y = window.scrollY;
       const left = document.documentElement.scrollHeight - y - window.innerHeight;
       // Pas deux invitations à la fois : il s'efface dès qu'un bloc « Créer mon alerte » de la page est à l'écran
-      setFab(y > 500 && left > 500 && !blackButtonOnScreen());
+      setFab(y > 500 && left > 80 && !blackButtonOnScreen());
+      // Au-dessus du pied de page sombre, le bouton passe en blanc pour rester lisible
+      const dark = document.querySelector('[data-dark-footer]');
+      setFabOnDark(Boolean(dark && dark.getBoundingClientRect().top < window.innerHeight - 44));
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -87,7 +91,12 @@ export default function SiteHeaderClient({
 
       {alert && fab && !open && (
         <div data-fab className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none" style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}>
-          <a href="/?alerte=1" className="pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-white text-sm font-medium shadow-lg hover:bg-stone-800 transition">
+          <a
+            href="/?alerte=1"
+            className={`pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full text-sm font-medium shadow-lg transition ${
+              fabOnDark ? 'bg-white text-stone-900 hover:bg-stone-100' : 'bg-stone-900 text-white hover:bg-stone-800'
+            }`}
+          >
             <Plus className="w-4 h-4" strokeWidth={2} />
             Nouvelle alerte
           </a>
