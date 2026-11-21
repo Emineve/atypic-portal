@@ -279,7 +279,7 @@ export default function GuideSearch() {
           </div>
           {suggestions.length > 0 && (
             <div className="mt-5">
-              <p className="text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées' : 'Les questions que les acheteurs nous posent'}</p>
+              <p className="text-xs uppercase tracking-widest text-stone-500">Dernières questions posées par les acheteurs</p>
               <ul className="mt-3 space-y-1.5">
                 {suggestions.map((ex) => (
                   <li key={ex}>
