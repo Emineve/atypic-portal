@@ -1114,8 +1114,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 </p>
               </>
             ) : (
-              <p className="inline-flex items-center gap-2 text-sm text-stone-600">
-                <Check className="w-4 h-4 flex-none" />
+              <p className="text-sm text-stone-600">
                 {visible.length > 1 ? 'Demande envoyée pour ces biens : les agences vous rappellent.' : 'Demande envoyée : l’agence vous rappelle.'}
               </p>
             )}
