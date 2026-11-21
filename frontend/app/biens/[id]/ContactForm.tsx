@@ -326,7 +326,7 @@ export default function ContactForm({
           )}
 
           <div>
-            <label className={fieldLabel} htmlFor="c-name">Nom</label>
+            <label className={fieldLabel} htmlFor="c-name">Nom *</label>
             <input id="c-name" name="name" autoComplete="name" placeholder="Prénom et nom" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           {tab === 'tel' && (
@@ -336,7 +336,7 @@ export default function ContactForm({
             </div>
           )}
           <div>
-            <label className={fieldLabel} htmlFor="c-email">E-mail</label>
+            <label className={fieldLabel} htmlFor="c-email">E-mail *</label>
             <input id="c-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="vous@exemple.fr" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
 

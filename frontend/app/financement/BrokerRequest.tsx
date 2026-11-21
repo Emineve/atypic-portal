@@ -121,11 +121,11 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
         <form onSubmit={onSubmit} className="mt-8">
           <div className="grid sm:grid-cols-3 gap-x-8 gap-y-6">
             <label className={label}>
-              Prénom et nom
+              Prénom et nom *
               <input required minLength={2} maxLength={120} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className={field} autoFocus />
             </label>
             <label className={label}>
-              E-mail
+              E-mail *
               <input required type="email" inputMode="email" autoComplete="email" maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} className={field} placeholder="vous@exemple.fr" />
             </label>
             <label className={label}>

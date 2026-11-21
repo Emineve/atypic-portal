@@ -159,9 +159,9 @@ export default function FavoritesContact({
 
               <div className="space-y-2">
                 <label className="sr-only" htmlFor="fc-name">Nom</label>
-                <input id="fc-name" required minLength={2} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom" className={field} />
+                <input id="fc-name" required minLength={2} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom *" className={field} />
                 <label className="sr-only" htmlFor="fc-email">E-mail</label>
-                <input id="fc-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" className={field} />
+                <input id="fc-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail *" className={field} />
                 <label className="sr-only" htmlFor="fc-tel">Téléphone</label>
                 <input id="fc-tel" type="tel" autoComplete="tel" value={formatPhone(tel)} onChange={(e) => setTel(formatPhone(e.target.value))} placeholder="Téléphone" className={field} />
                 <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />

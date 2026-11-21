@@ -89,11 +89,11 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
               <p className="mt-2 text-sm text-stone-600">Laissez vos coordonnées et votre message : Loftissime le lui transmet.</p>
               <form onSubmit={onSubmit} className="mt-6 space-y-4">
                 <div>
-                  <label htmlFor="ac-name" className={label}>Votre nom</label>
+                  <label htmlFor="ac-name" className={label}>Votre nom *</label>
                   <input id="ac-name" className={field} required minLength={2} maxLength={120} autoComplete="name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                 </div>
                 <div>
-                  <label htmlFor="ac-email" className={label}>E-mail</label>
+                  <label htmlFor="ac-email" className={label}>E-mail *</label>
                   <input id="ac-email" type="email" className={field} required maxLength={200} autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
@@ -101,7 +101,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
                   <input id="ac-phone" type="tel" className={field} maxLength={40} autoComplete="tel" value={formatPhone(phone)} onChange={(e) => setPhone(formatPhone(e.target.value))} />
                 </div>
                 <div>
-                  <label htmlFor="ac-msg" className={label}>Votre message</label>
+                  <label htmlFor="ac-msg" className={label}>Votre message *</label>
                   <textarea id="ac-msg" rows={4} className={field} required minLength={2} maxLength={2000} value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
                 <div className="hidden" aria-hidden="true">

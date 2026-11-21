@@ -54,12 +54,12 @@ export default function ProForm() {
     <p className="mt-4 text-lg font-light text-stone-600">Laissez-nous vos coordonnées : nous vous recontactons rapidement pour mettre vos annonces en ligne.</p>
     <form onSubmit={onSubmit} className="mt-8 max-w-2xl rounded-[14px] border border-stone-200 bg-white p-6 md:p-8 space-y-6 text-left">
       <div>
-        <label htmlFor="p-agency" className={label}>Agence</label>
+        <label htmlFor="p-agency" className={label}>Agence *</label>
         <input id="p-agency" className={field} required minLength={2} maxLength={160} value={agency} onChange={(e) => setAgency(e.target.value)} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="p-name" className={label}>Votre nom</label>
+          <label htmlFor="p-name" className={label}>Votre nom *</label>
           <input id="p-name" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
@@ -68,7 +68,7 @@ export default function ProForm() {
         </div>
       </div>
       <div>
-        <label htmlFor="p-email" className={label}>Email professionnel</label>
+        <label htmlFor="p-email" className={label}>Email professionnel *</label>
         <input id="p-email" type="email" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div>

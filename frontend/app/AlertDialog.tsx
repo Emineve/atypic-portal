@@ -598,7 +598,7 @@ export default function AlertDialog({
                           aria-label="Votre nom"
                           value={shareName}
                           onChange={(e) => setShareName(e.target.value)}
-                          placeholder="Nom"
+                          placeholder="Nom *"
                           className={`${field} mb-2`}
                         />
                         <input
@@ -703,7 +703,7 @@ export default function AlertDialog({
                               aria-label="Votre nom"
                               value={shareName}
                               onChange={(e) => setShareName(e.target.value)}
-                              placeholder="Nom"
+                              placeholder="Nom *"
                               className={`${field} mt-3`}
                             />
                             <input
@@ -744,7 +744,7 @@ export default function AlertDialog({
                   aria-label="Votre email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Votre email"
+                  placeholder="Votre email *"
                   className={`${field} sm:flex-1`}
                 />
                 <button
