@@ -15,8 +15,8 @@ export const metadata = {
 // Le manifeste : une conviction par article, quelques lignes pour la tenir, parfois un lien pour agir.
 const ARTICLES: { title: string; text: string; href?: string; link?: string }[] = [
   {
-    title: 'On ne tombe pas amoureux d’un nombre de pièces.',
-    text: 'On tombe amoureux d’une verrière, de quatre mètres sous plafond, d’une lumière à cinq heures du soir. C’est cela que nous montrons en premier.',
+    title: 'On ne choisit pas un bien pour son nombre de pièces.',
+    text: 'On le choisit pour une verrière, quatre mètres sous plafond, une lumière à cinq heures du soir. C’est cela que nous montrons en premier.',
     href: '/',
     link: 'Voir tous les biens',
   },
