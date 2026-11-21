@@ -162,8 +162,8 @@ export default function FavoritesContact({
                 <input id="fc-name" required minLength={2} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom" className={field} />
                 <label className="sr-only" htmlFor="fc-email">E-mail</label>
                 <input id="fc-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" className={field} />
-                <label className="sr-only" htmlFor="fc-tel">Téléphone (facultatif)</label>
-                <input id="fc-tel" type="tel" autoComplete="tel" value={formatPhone(tel)} onChange={(e) => setTel(formatPhone(e.target.value))} placeholder="Téléphone (facultatif)" className={field} />
+                <label className="sr-only" htmlFor="fc-tel">Téléphone</label>
+                <input id="fc-tel" type="tel" autoComplete="tel" value={formatPhone(tel)} onChange={(e) => setTel(formatPhone(e.target.value))} placeholder="Téléphone" className={field} />
                 <input type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} className="hidden" aria-hidden="true" />
               </div>
               {status === 'error' && <p className="text-sm text-red-700">L&apos;envoi n&apos;a pas abouti. Vérifiez vos coordonnées et réessayez.</p>}

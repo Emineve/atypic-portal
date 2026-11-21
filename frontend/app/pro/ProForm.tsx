@@ -63,7 +63,7 @@ export default function ProForm() {
           <input id="p-name" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="p-phone" className={label}>Téléphone (facultatif)</label>
+          <label htmlFor="p-phone" className={label}>Téléphone</label>
           <input id="p-phone" type="tel" className={field} maxLength={40} value={formatPhone(phone)} onChange={(e) => setPhone(formatPhone(e.target.value))} />
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function ProForm() {
         <input id="p-email" type="email" className={field} required maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div>
-        <label htmlFor="p-msg" className={label}>Message (facultatif)</label>
+        <label htmlFor="p-msg" className={label}>Message</label>
         <textarea id="p-msg" rows={3} className={field} maxLength={2000} value={message} onChange={(e) => setMessage(e.target.value)} />
       </div>
       <div className="hidden" aria-hidden="true">

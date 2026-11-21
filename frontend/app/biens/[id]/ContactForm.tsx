@@ -331,7 +331,7 @@ export default function ContactForm({
           </div>
           {tab === 'tel' && (
             <div>
-              <label className={fieldLabel} htmlFor="c-phone">Téléphone (facultatif)</label>
+              <label className={fieldLabel} htmlFor="c-phone">Téléphone</label>
               <input id="c-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="06 12 34 56 78" className={field} maxLength={40} value={formatPhone(tel)} onChange={(e) => setTel(formatPhone(e.target.value))} />
             </div>
           )}

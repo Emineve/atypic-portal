@@ -129,7 +129,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
               <input required type="email" inputMode="email" autoComplete="email" maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} className={field} placeholder="vous@exemple.fr" />
             </label>
             <label className={label}>
-              Téléphone (facultatif)
+              Téléphone
               <input type="tel" inputMode="tel" autoComplete="tel" maxLength={40} value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} className={field} placeholder="06 12 34 56 78" />
             </label>
           </div>

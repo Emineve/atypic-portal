@@ -97,7 +97,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
                   <input id="ac-email" type="email" className={field} required maxLength={200} autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
-                  <label htmlFor="ac-phone" className={label}>Téléphone (facultatif)</label>
+                  <label htmlFor="ac-phone" className={label}>Téléphone</label>
                   <input id="ac-phone" type="tel" className={field} maxLength={40} autoComplete="tel" value={formatPhone(phone)} onChange={(e) => setPhone(formatPhone(e.target.value))} />
                 </div>
                 <div>

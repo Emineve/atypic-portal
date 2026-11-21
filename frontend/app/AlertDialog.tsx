@@ -606,10 +606,10 @@ export default function AlertDialog({
                           minLength={9}
                           maxLength={20}
                           autoComplete="tel"
-                          aria-label="Votre téléphone (facultatif)"
+                          aria-label="Votre téléphone"
                           value={formatPhone(sharePhone)}
                           onChange={(e) => setSharePhone(formatPhone(e.target.value))}
-                          placeholder="Téléphone (facultatif)"
+                          placeholder="Téléphone"
                           className={`${field} mb-2`}
                         />
                       </>
@@ -711,10 +711,10 @@ export default function AlertDialog({
                               minLength={9}
                               maxLength={20}
                               autoComplete="tel"
-                              aria-label="Votre téléphone (facultatif)"
+                              aria-label="Votre téléphone"
                               value={formatPhone(sharePhone)}
                               onChange={(e) => setSharePhone(formatPhone(e.target.value))}
-                              placeholder="Téléphone (facultatif)"
+                              placeholder="Téléphone"
                               className={`${field} mt-2`}
                             />
                             <p className="mt-2 text-xs text-stone-500 leading-relaxed">
