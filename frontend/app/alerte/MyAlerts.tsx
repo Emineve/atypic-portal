@@ -152,8 +152,8 @@ export default function MyAlerts() {
           : 'Recevez par e-mail le lien pour modifier ou arrêter vos alertes.'}
       </p>
       {sent === 'done' ? (
-        <p className="mt-8 font-serif text-2xl text-stone-900">
-          C’est envoyé. <span className="italic text-stone-500">Si une alerte existe à cette adresse, le lien arrive dans votre boîte.</span>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-stone-900">
+          <span className="font-medium">C’est envoyé.</span> Si des alertes sont enregistrées à cette adresse, vous recevez le lien par e-mail.
         </p>
       ) : (
         <form onSubmit={ask} className="mt-6 max-w-xl">
