@@ -148,17 +148,16 @@ export default function MyAlerts() {
     <>
       <p className="text-lg font-light leading-relaxed text-stone-600">
         {state === 'invalid' && token
-          ? 'Ce lien n’est plus valable. Indiquez votre e-mail : nous vous envoyons un nouveau lien vers vos alertes.'
-          : 'Indiquez l’e-mail de votre alerte : nous vous envoyons un lien pour retrouver vos alertes, les arrêter ou en créer une nouvelle.'}
+          ? 'Ce lien n’est plus valable. Indiquez votre e-mail, nous vous en envoyons un nouveau.'
+          : 'Indiquez votre e-mail, nous vous envoyons le lien.'}
       </p>
       {sent === 'done' ? (
         <p className="mt-8 font-serif text-2xl text-stone-900">
           C’est envoyé. <span className="italic text-stone-500">Si une alerte existe à cette adresse, le lien arrive dans votre boîte.</span>
         </p>
       ) : (
-        <form onSubmit={ask} className="mt-8 flex flex-wrap items-end gap-x-5 gap-y-4">
-          <label className="block min-w-0 flex-1 basis-64 text-xs uppercase tracking-widest text-stone-500">
-            Votre e-mail
+        <form onSubmit={ask} className="mt-6 max-w-xl">
+          <div className="flex h-14 items-center gap-3 rounded-full border border-stone-300 bg-white pl-6 pr-2 transition focus-within:border-stone-900">
             <input
               required
               type="email"
@@ -166,13 +165,22 @@ export default function MyAlerts() {
               maxLength={200}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans text-lg normal-case tracking-normal text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-0"
+              placeholder="Votre e-mail"
+              aria-label="Votre e-mail"
+              className="no-autofill-tint h-full min-w-0 flex-1 border-0 bg-transparent p-0 text-base text-stone-900 placeholder:text-stone-500 focus:outline-none focus:ring-0"
             />
-          </label>
-          <button type="submit" disabled={sent === 'sending'} className={btn}>
-            {sent === 'sending' ? 'Envoi…' : 'Recevoir le lien'}
-          </button>
-          {sent === 'error' && <p className="basis-full text-sm text-red-700">L’envoi n’a pas fonctionné. Vérifiez votre e-mail et réessayez.</p>}
+            <button
+              type="submit"
+              disabled={sent === 'sending'}
+              aria-label="Recevoir le lien"
+              className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-800 disabled:opacity-50"
+            >
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+          {sent === 'error' && <p className="mt-3 text-sm text-red-700">L’envoi n’a pas fonctionné. Vérifiez votre e-mail et réessayez.</p>}
         </form>
       )}
       <p className="mt-10">
