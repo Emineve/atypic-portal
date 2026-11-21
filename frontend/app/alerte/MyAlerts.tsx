@@ -149,7 +149,7 @@ export default function MyAlerts() {
       <p className="text-lg font-light leading-relaxed text-stone-600">
         {state === 'invalid' && token
           ? 'Ce lien n’est plus valable. Indiquez votre e-mail, nous vous en envoyons un nouveau.'
-          : 'Indiquez votre e-mail, nous vous envoyons le lien.'}
+          : 'Recevez par e-mail le lien pour modifier ou arrêter vos alertes.'}
       </p>
       {sent === 'done' ? (
         <p className="mt-8 font-serif text-2xl text-stone-900">
