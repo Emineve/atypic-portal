@@ -25,6 +25,7 @@ import { trackEvent } from '../lib/track';
 const DEMO_MODE = true;
 import { readSeen, clearSeen } from '../lib/seen';
 import { readContacted } from '../lib/contacted';
+import { hasAlertFor } from '../lib/alertPlaces';
 import { SEEN_BADGE } from './SeenMark';
 
 const FAVORITES_KEY = 'singulier:favorites';
@@ -283,6 +284,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
   // Ville à préremplir dans l'alerte quand on vient de « Aucun bien à … »
   const [alertCity, setAlertCity] = useState<string | null>(null);
+  const [geoAlerted, setGeoAlerted] = useState(false); // une alerte existe déjà pour la ville trouvée autour de soi
   function openAlert(source: string, city?: string | null) {
     setAlertCity(city || null);
     setAlertSource(source);
@@ -400,7 +402,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             (pc ? cities.find((p) => p.search.split(' ').includes(pc)) : undefined) ||
             cities.find((p) => normalize(p.value) === normalize(city));
           if (!found) {
-            setGeoCity(/^75/.test(pc) ? `Paris ${Number(pc.slice(3))}e` : city);
+            const here = /^75/.test(pc) ? `Paris ${Number(pc.slice(3))}e` : city;
+            setGeoCity(here);
+            setGeoAlerted(hasAlertFor(here));
             setGeo('none');
             return;
           }
@@ -719,7 +723,10 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           {geo === 'error' && (
             <p className="mt-2 text-xs text-stone-500">Impossible de vous localiser. Saisissez une ville ou un code postal.</p>
           )}
-          {geo === 'none' && (
+          {geo === 'none' && geoAlerted && (
+            <p className="mt-2 text-sm text-stone-600">Aucun bien en ligne à {geoCity} pour le moment. Votre alerte est active : vous serez prévenu(e).</p>
+          )}
+          {geo === 'none' && !geoAlerted && (
             <p className="mt-2 text-sm text-stone-600">
               Aucun bien en ligne à {geoCity} pour le moment.{' '}
               <button
@@ -1215,7 +1222,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
 
       <AlertDialog
         open={alertOpen}
-        onClose={() => setAlertOpen(false)}
+        onClose={() => {
+          setAlertOpen(false);
+          // L'alerte vient d'être créée pour la ville trouvée autour de soi : l'invitation disparaît
+          if (geo === 'none' && hasAlertFor(geoCity)) setGeo('idle');
+        }}
         source={alertSource}
         suggestions={citySuggestions}
         initial={{ filters, location: alertCity || (places.find((p) => p.kind === 'city') || places[0])?.city || query.trim() }}
