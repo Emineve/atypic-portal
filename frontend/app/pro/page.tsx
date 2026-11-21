@@ -44,6 +44,15 @@ const PROMISES: Promise5[] = [
     title: 'Gratuit pendant le lancement.',
     text: 'Aucun frais, aucun engagement pendant toute la phase de lancement. Toute évolution des conditions vous sera annoncée à l’avance : vous restez libre d’arrêter.',
   },
+  {
+    title: 'Comment ça marche ?',
+    text: 'Nous nous occupons de tout, en trois temps.',
+    points: [
+      ['1. Vous nous écrivez', 'Le nom de votre agence et un e-mail suffisent. Nous vous rappelons.'],
+      ['2. Nous branchons vos annonces', 'Une passerelle avec votre logiciel de diffusion. Rien à installer.'],
+      ['3. Les contacts arrivent chez vous', 'Les acheteurs en alerte sont prévenus, chaque demande vous parvient directement.'],
+    ],
+  },
 ];
 
 // Qui sont les acheteurs du site : trois portraits, sans chiffres.
@@ -63,13 +72,6 @@ const VISITORS: { title: string; text: string; kind: BuyerKind }[] = [
     title: 'L’amoureux d’architecture',
     text: 'Architecture, design, décoration : il sait ce qu’est une verrière d’atelier ou une belle hauteur sous plafond. Il ne visite pas par hasard, et vous ne perdez pas votre temps.',
   },
-];
-
-// La mise en route, en trois temps
-const HOW: [string, string][] = [
-  ['Vous nous écrivez.', 'Le nom de votre agence et un e-mail suffisent. Nous vous rappelons pour faire le point sur vos biens atypiques.'],
-  ['Nous branchons vos annonces.', 'Une passerelle avec votre logiciel de diffusion, mise en place par nos soins. Vous n’avez rien à installer.'],
-  ['Les contacts arrivent chez vous.', 'Vos biens sont en ligne, les acheteurs en alerte sont prévenus, et chaque demande vous parvient directement.'],
 ];
 
 export default function ProPage() {
@@ -121,21 +123,6 @@ export default function ProPage() {
               </div>
             ))}
           </div>
-        </section>
-
-        <section className="border-t border-stone-200 py-12 md:py-16">
-          <h2 className={h2}>
-            Comment ça marche. <span className="italic text-stone-500">Nous nous occupons de tout.</span>
-          </h2>
-          <ol className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
-            {HOW.map(([t, d], i) => (
-              <li key={t} className="border-t-2 border-stone-900 pt-5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6CF4E] text-sm font-medium text-stone-900">{i + 1}</span>
-                <h3 className="mt-4 font-serif text-2xl text-stone-900">{t}</h3>
-                <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{d}</p>
-              </li>
-            ))}
-          </ol>
         </section>
 
         <section id="rejoindre" className="border-t border-stone-200 pt-12 md:pt-16 scroll-mt-20">
