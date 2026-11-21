@@ -6,7 +6,7 @@ import MenuPanel from './MenuPanel';
 import AlertBand, { ALERT_BUTTON } from './AlertBand';
 import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, Send, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
+import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertPhrase from './AlertPhrase';
@@ -1103,7 +1103,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   onClick={() => setFavContactOpen(true)}
                   className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-8 text-[15px] font-medium text-white transition hover:bg-stone-800 sm:w-auto"
                 >
-                  <Send className="w-4 h-4" />
+                  <ThumbsUp className="w-4 h-4" />
                   <span>{pending.length > 1 ? `Ces ${pending.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
                 </button>
                 <p className="text-sm text-stone-500">
