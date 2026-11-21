@@ -106,10 +106,15 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
       </div>
 
       {status !== 'done' && !open && (
-        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
-          <button type="button" onClick={() => setOpen(true)} className={btn}>Être contacté(e)</button>
-          <span className="text-sm text-stone-500">Gratuit · Sans engagement</span>
-        </div>
+        <p className="mt-6">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
+          >
+            Être contacté(e) →
+          </button>
+        </p>
       )}
 
       {status !== 'done' && open && (
