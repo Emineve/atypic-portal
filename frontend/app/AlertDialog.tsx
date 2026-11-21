@@ -83,7 +83,7 @@ function Step({
     <section>
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         {n && <span className="font-sans text-2xl font-light leading-none text-stone-300">{n}</span>}
-        <h3 className="font-serif text-xl text-stone-900">{title}</h3>
+        <h3 className="text-[17px] font-semibold text-stone-900">{title}</h3>
         {hint && <span className="text-xs text-stone-500">{hint}</span>}
       </div>
       <div className="mt-4">{children}</div>

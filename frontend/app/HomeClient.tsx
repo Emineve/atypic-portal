@@ -820,7 +820,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             <div className="flex-1 overflow-y-auto">
               {/* Rappel de la recherche en cours : lieux choisis et mot saisi */}
               <div className="px-6 py-5 border-b border-stone-200">
-                <p className="text-xs uppercase tracking-widest text-stone-500">Localisation</p>
+                <p className="text-[17px] font-semibold text-stone-900">Localisation</p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   {places.map((p) => (
                     <span key={p.kind + p.city + p.value} className="inline-flex items-center h-8 pl-3.5 rounded-full bg-[#F6CF4E] text-stone-900 text-[13px] font-semibold">

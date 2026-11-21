@@ -59,7 +59,7 @@ export function Section({
           onClick={onToggle}
           aria-expanded={open}
           aria-controls={`fp-${id}`}
-          className="flex h-14 flex-1 items-center gap-2 text-left text-base font-medium text-stone-900"
+          className="flex h-14 flex-1 items-center gap-2 text-left text-[17px] font-semibold text-stone-900"
         >
           {title}
           {active && <span className="h-2 w-2 rounded-full bg-[#E0B21F]" aria-label="actif" />}
