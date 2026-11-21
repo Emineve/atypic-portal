@@ -12,44 +12,22 @@ export const metadata = {
   alternates: { canonical: '/pro' },
 };
 
-// Trois repères chiffrés, tous vérifiables : rien d'inventé.
-const FACTS: [string, string][] = [
-  ['100 %', 'de biens atypiques, rien d’autre'],
-  ['0', 'saisie : vos annonces arrivent seules'],
-  ['0 €', 'pendant toute la phase de lancement'],
-];
-
 // L'offre, en trois piliers
 const PILLARS: { title: string; lead: string; points: string[] }[] = [
   {
     title: 'Visibilité',
     lead: 'Vos biens devant des acheteurs qui ne cherchent que cela.',
-    points: [
-      'Un site où l’on ne trouve que de l’atypique',
-      'Envoi en alerte aux acheteurs dès la mise en ligne',
-      'Une page à votre nom, avec tous vos biens',
-      'Aucune mise en avant payante : classement par date',
-    ],
+    points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page à votre nom, avec tous vos biens'],
   },
   {
     title: 'Simplicité',
     lead: 'Vous ne changez rien à vos habitudes.',
-    points: [
-      'Passerelle avec votre logiciel de diffusion',
-      'Publication et mise à jour automatiques',
-      'Un bien vendu est retiré tout seul',
-      'Rien à installer, rien à ressaisir',
-    ],
+    points: ['Passerelle avec votre logiciel de diffusion', 'Mise à jour automatique', 'Rien à ressaisir'],
   },
   {
     title: 'Qualité',
     lead: 'Des contacts directs, et de quoi rendre compte à vos vendeurs.',
-    points: [
-      'Votre agence, votre nom et votre téléphone sur chaque annonce',
-      'Appels et demandes de rappel arrivent chez vous, sans intermédiaire',
-      'Un bilan de diffusion par bien, à remettre à votre vendeur',
-      'Les coordonnées des acheteurs ne sont jamais revendues',
-    ],
+    points: ['Contacts directs, sans intermédiaire', 'Votre nom et votre téléphone sur chaque annonce', 'Un bilan de diffusion par bien, pour votre vendeur'],
   },
 ];
 
@@ -111,8 +89,6 @@ const VISITORS: { title: string; text: string; kind: BuyerKind }[] = [
 ];
 
 export default function ProPage() {
-  const btn =
-    'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition';
   const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
   const h2 = 'font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900';
   return (
@@ -130,18 +106,12 @@ export default function ProPage() {
           <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
             Un site entièrement consacré aux biens atypiques. Vos annonces y sont publiées automatiquement, envoyées en alerte aux acheteurs, et chaque contact arrive directement chez vous.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <a href="#rejoindre" className={btn}>Diffuser mes annonces</a>
+          <p className="mt-7 flex flex-wrap items-baseline gap-x-5 gap-y-2">
+            <a href="#rejoindre" className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
+              Diffuser mes annonces →
+            </a>
             <span className="text-sm text-stone-500">Gratuit pendant le lancement · Sans engagement</span>
-          </div>
-          <dl className="mt-10 grid grid-cols-3 gap-3 md:gap-5">
-            {FACTS.map(([n, t]) => (
-              <div key={t} className="rounded-[14px] bg-[#F6CF4E] px-3.5 py-4 md:px-6 md:py-5">
-                <dt className="whitespace-nowrap font-sans text-2xl font-light leading-none text-stone-900 md:text-5xl">{n}</dt>
-                <dd className="mt-2 text-[13px] leading-snug text-stone-800 md:text-[15px]">{typo(t)}</dd>
-              </div>
-            ))}
-          </dl>
+          </p>
         </div>
       </header>
 
