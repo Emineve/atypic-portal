@@ -23,7 +23,7 @@ import { Filters, EMPTY_FILTERS, passesFilters, countActive, availableTypes } fr
 import { trackEvent } from '../lib/track';
 
 import { readSeen, clearSeen } from '../lib/seen';
-import { readContacted } from '../lib/contacted';
+import { readContacted, purgeContactedFavorites } from '../lib/contacted';
 import DemoBand from './DemoBand';
 import { hasAlertFor } from '../lib/alertPlaces';
 import { SEEN_BADGE } from './SeenMark';
@@ -212,16 +212,20 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
   const [savedSearch, setSavedSearch] = useState<string | null>(null); // recherche déjà enregistrée en alerte
 
   // Favoris mémorisés dans le navigateur
-  useEffect(() => {
+  function loadFavorites() {
     try {
-      const raw = localStorage.getItem(FAVORITES_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) setFavorites(parsed.filter((x) => typeof x === 'string'));
-      }
+      purgeContactedFavorites();
+      const parsed = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]');
+      if (Array.isArray(parsed)) setFavorites(parsed.filter((x) => typeof x === 'string'));
     } catch {
       /* stockage indisponible : les favoris fonctionnent le temps de la visite */
     }
+  }
+  useEffect(() => {
+    loadFavorites();
+    window.addEventListener('pageshow', loadFavorites);
+    return () => window.removeEventListener('pageshow', loadFavorites);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Biens déjà consultés (mémorisés dans le navigateur), relus à chaque retour sur la page
@@ -1210,7 +1214,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         open={favContactOpen}
         onClose={() => {
           setFavContactOpen(false);
-          setContacted(readContacted()); // les demandes parties ne sont plus proposées
+          setContacted(readContacted());
+          loadFavorites(); // les biens dont la demande est partie quittent les favoris
         }}
         items={pending}
       />
