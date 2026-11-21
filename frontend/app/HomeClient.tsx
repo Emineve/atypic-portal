@@ -281,7 +281,10 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  function openAlert(source: string) {
+  // Ville à préremplir dans l'alerte quand on vient de « Aucun bien à … »
+  const [alertCity, setAlertCity] = useState<string | null>(null);
+  function openAlert(source: string, city?: string | null) {
+    setAlertCity(city || null);
     setAlertSource(source);
     setAlertOpen(true);
   }
@@ -717,7 +720,16 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
             <p className="mt-2 text-xs text-stone-500">Impossible de vous localiser. Saisissez une ville ou un code postal.</p>
           )}
           {geo === 'none' && (
-            <p className="mt-2 text-xs text-stone-500">Aucun bien en ligne à {geoCity} pour le moment. Créez une alerte pour être prévenu(e).</p>
+            <p className="mt-2 text-sm text-stone-600">
+              Aucun bien en ligne à {geoCity} pour le moment.{' '}
+              <button
+                type="button"
+                onClick={() => openAlert('autour-de-moi', geoCity)}
+                className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition"
+              >
+                Créer une alerte pour {geoCity}
+              </button>
+            </p>
           )}
         </div>
 
@@ -1206,7 +1218,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         onClose={() => setAlertOpen(false)}
         source={alertSource}
         suggestions={citySuggestions}
-        initial={{ filters, location: (places.find((p) => p.kind === 'city') || places[0])?.city || query.trim() }}
+        initial={{ filters, location: alertCity || (places.find((p) => p.kind === 'city') || places[0])?.city || query.trim() }}
         countMatches={countAlertMatches}
         onShowMatches={showAlertMatches}
         types={typeOptions}
