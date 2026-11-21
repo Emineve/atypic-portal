@@ -283,7 +283,7 @@ export default function GuideSearch() {
               <ul className="mt-3 space-y-1.5">
                 {suggestions.map((ex) => (
                   <li key={ex}>
-                    <button type="button" onClick={() => setQ(ex)} className="py-1 text-left text-[15px] leading-snug text-stone-900 underline underline-offset-4 decoration-stone-300 transition hover:decoration-stone-900">
+                    <button type="button" onClick={() => setQ(ex)} className="py-1 text-left text-[15px] italic leading-snug text-stone-900 underline underline-offset-4 decoration-stone-300 transition hover:decoration-stone-900">
                       {typo(ex)}
                     </button>
                   </li>
