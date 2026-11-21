@@ -35,8 +35,8 @@ const STEPS: { title: string; text: string; link: string; href: string }[] = [
     href: '/',
   },
   {
-    title: 'Faites-vous rappeler',
-    text: 'Un bien rare se visite dans les premiers jours. Laissez votre numéro depuis sa fiche, ou demandez à être rappelé pour tous vos favoris d’un seul geste.',
+    title: 'Faites-vous recontacter',
+    text: 'Un bien rare se visite dans les premiers jours. Laissez vos coordonnées depuis sa fiche, ou demandez à être recontacté pour tous vos favoris d’un seul geste.',
     link: 'Trouver un bien à visiter',
     href: '/',
   },

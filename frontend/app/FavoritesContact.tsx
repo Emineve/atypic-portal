@@ -73,7 +73,7 @@ export default function FavoritesContact({
     if (selected.length === 0) return;
     setStatus('sending');
     const message = [
-      'Souhaite être rappelé pour programmer une visite.',
+      'Souhaite être recontacté pour programmer une visite.',
       selected.length > 1 ? `Demande groupée depuis ses favoris (${selected.length} biens).` : null,
     ]
       .filter(Boolean)
@@ -105,11 +105,11 @@ export default function FavoritesContact({
   const field = 'rounded-[10px] w-full h-12 border border-stone-300 bg-white px-3 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-900';
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center" role="dialog" aria-modal="true" aria-label="Être rappelé(e) pour mes favoris">
+    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center" role="dialog" aria-modal="true" aria-label="Être recontacté(e) pour mes favoris">
       <div className="absolute inset-0 bg-stone-900/40" onClick={onClose} />
       <div className="relative w-full md:max-w-lg max-h-[92vh] bg-white flex flex-col shadow-xl">
         <div className={`flex items-center px-6 h-16 shrink-0 ${status === 'done' ? 'justify-end' : 'justify-between border-b border-stone-200'}`}>
-          {status !== 'done' && <h2 className="font-serif text-xl text-stone-900">Être rappelé(e) pour ces biens</h2>}
+          {status !== 'done' && <h2 className="font-serif text-xl text-stone-900">Être recontacté(e) pour ces biens</h2>}
           <button type="button" onClick={onClose} aria-label="Fermer" className="h-11 w-11 -mr-3 flex items-center justify-center text-stone-600 hover:text-stone-900">
             <X className="w-5 h-5" />
           </button>

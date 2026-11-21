@@ -97,7 +97,7 @@ const groups: FaqGroup[] = [
       },
       {
         q: 'Comment contacter la personne en charge d’un bien ?',
-        a: 'Chaque annonce affiche l’agence, le nom de votre contact et son téléphone. Vous pouvez l’appeler directement ou demander à être rappelé.',
+        a: 'Chaque annonce affiche l’agence, le nom de votre contact et son téléphone. Vous pouvez l’appeler directement ou demander à être recontacté.',
       },
       {
         q: 'Loftissime contacte-t-il les vendeurs ou les acheteurs ?',
@@ -134,8 +134,8 @@ const groups: FaqGroup[] = [
     title: 'Vos demandes et vos favoris',
     items: [
       {
-        q: 'Que se passe-t-il quand je demande à être rappelé(e) ?',
-        a: 'Votre demande est transmise à l’agence chargée du bien, avec vos coordonnées et la référence de l’annonce. C’est votre contact à l’agence qui vous rappelle. Le délai dépend de l’agence : si vous êtes pressé(e), son numéro figure sur l’annonce.',
+        q: 'Que se passe-t-il quand je demande à être recontacté(e) ?',
+        a: 'Votre demande est transmise à l’agence chargée du bien, avec vos coordonnées et la référence de l’annonce. C’est votre contact à l’agence qui vous recontacte. Le délai dépend de l’agence : si vous êtes pressé(e), son numéro figure sur l’annonce.',
       },
       {
         q: 'Passer par Loftissime change-t-il le prix ou les honoraires ?',
@@ -192,10 +192,10 @@ const groups: FaqGroup[] = [
           lead: 'Vous ',
           head: ['Vous…', 'Vos coordonnées vont à', 'Pour'],
           rows: [
-            ['demandez à être rappelé au sujet d’un bien', 'L’agence et le négociateur chargés de ce bien', 'Vous rappeler au sujet de ce bien'],
-            ['demandez à être rappelé pour plusieurs favoris', 'L’agence de chacun de ces biens', 'Vous rappeler au sujet de ces biens'],
+            ['demandez à être recontacté au sujet d’un bien', 'L’agence et le négociateur chargés de ce bien', 'Vous recontacter au sujet de ce bien'],
+            ['demandez à être recontacté pour plusieurs favoris', 'L’agence de chacun de ces biens', 'Vous recontacter au sujet de ces biens'],
             ['confiez votre recherche à une agence', 'Cette agence, et elle seule', 'Vous proposer les biens qui correspondent'],
-            ['demandez un courtier', 'Le courtier, avec le bien et la simulation', 'Étudier votre financement et vous rappeler'],
+            ['demandez un courtier', 'Le courtier, avec le bien et la simulation', 'Étudier votre financement et vous recontacter'],
             ['écrivez à un architecte depuis Inspiration', 'Cet architecte', 'Répondre à votre message'],
             ['créez une alerte', 'Personne', 'Vous envoyer les nouveaux biens qui correspondent'],
             ['posez une question dans État des lieux', 'Personne', 'Vous prévenir quand la réponse paraît'],
@@ -222,7 +222,7 @@ const groups: FaqGroup[] = [
           head: ['Donnée', 'Conservée', 'Ensuite'],
           rows: [
             ['Votre alerte', 'Tant qu’elle est active', 'Supprimée trente jours après son arrêt'],
-            ['Vos demandes de rappel, de courtier ou de contact', 'Douze mois', 'Supprimées automatiquement'],
+            ['Vos demandes de contact, de courtier ou de contact', 'Douze mois', 'Supprimées automatiquement'],
             ['Vos questions et vos demandes de tee-shirt', 'Douze mois', 'Supprimées automatiquement'],
             ['Les mesures de fréquentation, qui ne permettent pas de vous identifier', 'Vingt-cinq mois au plus', 'Supprimées automatiquement'],
           ],

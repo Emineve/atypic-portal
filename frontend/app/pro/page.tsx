@@ -53,7 +53,7 @@ const QUESTIONS: { q: string; a: string; steps?: [string, string][]; kinds?: [st
   },
   {
     q: 'Comment les contacts me parviennent-ils ?',
-    a: 'L’acheteur vous appelle au numéro affiché sur l’annonce, ou demande à être rappelé : sa demande vous est transmise directement. Loftissime ne s’intercale pas dans la relation.',
+    a: 'L’acheteur vous appelle au numéro affiché sur l’annonce, ou demande à être recontacté : sa demande vous est transmise directement. Loftissime ne s’intercale pas dans la relation.',
   },
 ];
 
@@ -62,7 +62,7 @@ const VISITORS: { title: string; text: string; kind: BuyerKind }[] = [
   {
     kind: 'decide',
     title: 'L’acheteur décidé',
-    text: 'Projet, budget, calendrier : il est prêt. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être rappelé dès qu’un bien lui plaît. C’est votre contact le plus sérieux.',
+    text: 'Projet, budget, calendrier : il est prêt. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être recontacté dès qu’un bien lui plaît. C’est votre contact le plus sérieux.',
   },
   {
     kind: 'reveur',

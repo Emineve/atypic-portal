@@ -142,7 +142,7 @@ export default function ContactForm({
         p_phone: tel || null,
         p_message:
           tab === 'tel'
-            ? 'Souhaite être rappelé.'
+            ? 'Souhaite être recontacté.'
             : ['Demande d’information.', message.trim() ? `Message : ${message.trim()}` : null].filter(Boolean).join(' '),
         p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
       });
@@ -203,13 +203,13 @@ export default function ContactForm({
             </div>
           )}
 
-          {/* Deux onglets discrets pour le formulaire : être rappelé, ou écrire */}
+          {/* Deux onglets discrets pour le formulaire : être recontacté, ou écrire */}
           {status === 'done' ? (
             <div className="mt-3 border-t border-stone-200" />
           ) : (
           <div className="mt-3 pt-5 border-t border-stone-200 flex gap-6 border-b" role="tablist" aria-label="Votre demande">
             {([
-              ['tel', 'Être rappelé(e)'],
+              ['tel', 'Être recontacté(e)'],
               ['msg', 'Écrire un message'],
             ] as const).map(([key, label]) => (
               <button
@@ -355,7 +355,7 @@ export default function ContactForm({
             className="!mt-7 w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
           >
             {status !== 'sending' && tab === 'tel' && <Phone className="w-4 h-4" />}
-            {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être rappelé(e)' : 'Envoyer mon message'}
+            {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être recontacté(e)' : 'Envoyer mon message'}
           </button>
           <p className="text-xs text-stone-500 leading-relaxed text-center">
             Vos coordonnées sont transmises uniquement à l&apos;agence en charge du bien.

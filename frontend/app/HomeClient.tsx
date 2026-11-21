@@ -597,8 +597,8 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           {visible.length > 0 && (
             <p className="mt-4 text-sm text-stone-500 leading-relaxed">
               {visible.length > 1
-                ? `${visible.length} biens · Laissez vos coordonnées une seule fois, chaque agence vous rappelle.`
-                : '1 bien · Laissez vos coordonnées, l’agence vous rappelle.'}
+                ? `${visible.length} biens · Laissez vos coordonnées une seule fois, chaque agence vous recontacte.`
+                : '1 bien · Laissez vos coordonnées, l’agence vous recontacte.'}
             </p>
           )}
         </header>
@@ -1112,7 +1112,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   <span>{pending.length > 1 ? `Ces ${pending.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
                 </button>
                 <p className="text-sm text-stone-500">
-                  {pending.length > 1 ? 'Vos coordonnées une seule fois, chaque agence vous rappelle.' : 'Laissez vos coordonnées, l’agence vous rappelle.'}
+                  {pending.length > 1 ? 'Vos coordonnées une seule fois, chaque agence vous recontacte.' : 'Laissez vos coordonnées, l’agence vous recontacte.'}
                   {pending.length < visible.length && (
                     <> {visible.length - pending.length > 1 ? `Demande déjà envoyée pour ${visible.length - pending.length} autres biens.` : 'Demande déjà envoyée pour 1 autre bien.'}</>
                   )}
@@ -1120,7 +1120,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               </>
             ) : (
               <p className="text-sm text-stone-600">
-                {visible.length > 1 ? 'Demande envoyée pour ces biens : les agences vous rappellent.' : 'Demande envoyée : l’agence vous rappelle.'}
+                {visible.length > 1 ? 'Demande envoyée pour ces biens : les agences vous recontactent.' : 'Demande envoyée : l’agence vous recontacte.'}
               </p>
             )}
           </div>

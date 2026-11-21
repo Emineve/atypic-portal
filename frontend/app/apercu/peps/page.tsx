@@ -163,7 +163,7 @@ function Mock({ t, l }: { t: Theme; l: L | null }) {
 
         {/* Bouton */}
         <div className="mt-5 flex h-12 items-center justify-center rounded-full text-[15px] font-medium" style={{ background: t.button, color: t.buttonInk }}>
-          Être rappelé(e)
+          Être recontacté(e)
         </div>
       </div>
     </div>

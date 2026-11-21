@@ -4,7 +4,7 @@ import { blackButtonOnScreen } from '../../../lib/blackButton';
 import { useEffect, useState } from 'react';
 import { PhoneIncoming } from 'lucide-react';
 
-// Bouton flottant en bas d'écran sur mobile, dans le même esprit que « Créer mon alerte » sur l'accueil : demande de rappel uniquement.
+// Bouton flottant en bas d'écran sur mobile, dans le même esprit que « Créer mon alerte » sur l'accueil : demande de contact uniquement.
 export default function StickyContact() {
   const [hidden, setHidden] = useState(true);
 
@@ -37,7 +37,7 @@ export default function StickyContact() {
         className="pointer-events-auto h-12 px-6 rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-[15px] font-medium shadow-lg transition bg-stone-900 text-white active:bg-stone-700"
       >
         <PhoneIncoming className="w-4 h-4 flex-none" />
-        Être rappelé(e)
+        Être recontacté(e)
       </a>
     </div>
   );

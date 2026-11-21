@@ -88,7 +88,7 @@ export default async function BilanPage({ params }: { params: { token: string } 
     ['Mises en favori', r.favorites, 'Acheteurs qui ont gardé le bien de côté.'],
     ['Clics vers l’annonce de l’agence', r.clicks, 'Visiteurs partis lire l’annonce sur le site de l’agence.'],
     ['Clics sur le téléphone', r.phone, 'Visiteurs qui ont touché le numéro de l’agence pour l’appeler.'],
-    ['Demandes de rappel', r.leads, 'Formulaires de contact envoyés à l’agence.'],
+    ['Demandes de contact', r.leads, 'Formulaires de contact envoyés à l’agence.'],
     ['Alertes envoyées', r.alerts_sent, 'E-mails partis vers des acheteurs dont l’alerte correspond.'],
   ];
 
@@ -138,7 +138,7 @@ export default async function BilanPage({ params }: { params: { token: string } 
           <Tile value={r.alerts_sent} label="Acheteurs prévenus" hint="par e-mail, dès la mise en ligne" />
           <Tile value={r.views} label="Vues de la fiche" hint={`${plural(r.visitors, 'visiteur', 'visiteurs')} · ${num(r.views_7d)} sur 7 jours`} />
           <Tile value={r.favorites} label="Mises en favori" hint="bien gardé de côté" />
-          <Tile value={contacts} label="Contacts" hint={`${plural(r.leads, 'demande de rappel', 'demandes de rappel')} · ${plural(r.phone, 'clic téléphone', 'clics téléphone')}`} />
+          <Tile value={contacts} label="Contacts" hint={`${plural(r.leads, 'demande de contact', 'demandes de contact')} · ${plural(r.phone, 'clic téléphone', 'clics téléphone')}`} />
         </section>
 
         {/* Ce que les autres portails ne montrent pas : les acheteurs qui attendent ce type de bien */}

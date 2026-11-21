@@ -18,7 +18,7 @@ export default function Page() {
       <h2>Données collectées</h2>
       <ul>
         <li>
-          <strong>Demande de rappel sur un bien, ou sur plusieurs biens mis en favoris</strong> : nom, email, téléphone (facultatif), message. Finalité :
+          <strong>Demande de contact sur un bien, ou sur plusieurs biens mis en favoris</strong> : nom, email, téléphone (facultatif), message. Finalité :
           transmettre votre demande à l'agence chargée du bien. Base légale : votre consentement.
         </li>
         <li>
@@ -70,7 +70,7 @@ export default function Page() {
       <h2>Durées de conservation</h2>
       <ul>
         <li>Alertes : jusqu'à ce que vous arrêtiez l'alerte, puis 30 jours.</li>
-        <li>Demandes de rappel, recherches confiées, demandes de courtier, messages aux architectes, questions, tee-shirts demandés : 12 mois.</li>
+        <li>Demandes de contact, recherches confiées, demandes de courtier, messages aux architectes, questions, tee-shirts demandés : 12 mois.</li>
         <li>Mesure d'audience : 25 mois maximum.</li>
       </ul>
       <p>Passé ces délais, les données sont supprimées automatiquement, chaque nuit.</p>
