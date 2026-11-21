@@ -1,4 +1,4 @@
-import AlertBand, { ALERT_BUTTON } from '../../AlertBand';
+import SmartAlert from '../../SmartAlert';
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -216,21 +216,14 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           </section>
         )}
 
-        <AlertBand
-          title="Ne passez pas à côté de votre prochain coup de cœur."
-          className="mt-12"
-          extra={
-            a.listingsLink && !a.listingsLink.href.includes('alerte') ? (
-              <Link href={a.listingsLink.href} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
-                {a.listingsLink.label}
-              </Link>
-            ) : undefined
-          }
-        >
-          <Link href="/?alerte=1" className={ALERT_BUTTON}>
-            Créer mon alerte
-          </Link>
-        </AlertBand>
+        {a.listingsLink && !a.listingsLink.href.includes('alerte') && (
+          <p className="mt-12">
+            <Link href={a.listingsLink.href} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
+              {a.listingsLink.label}
+            </Link>
+          </p>
+        )}
+        <SmartAlert className="mt-8" />
 
         <section className="mt-10 border-b border-stone-200 pb-6">
           <p className="font-serif text-xl text-stone-900">Cet article peut servir à quelqu&apos;un ?</p>

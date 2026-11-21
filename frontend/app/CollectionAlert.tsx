@@ -1,8 +1,7 @@
 'use client';
 
-import AlertBand, { ALERT_BUTTON } from './AlertBand';
+import SmartAlert from './SmartAlert';
 import { useState } from 'react';
-import AlertPhrase from './AlertPhrase';
 import AlertDialog from './AlertDialog';
 
 // Encart « Créer mon alerte » des pages par ville et par catégorie.
@@ -49,11 +48,7 @@ export default function CollectionAlert({
   }
   return (
     <>
-      <AlertBand title={<AlertPhrase />} className="mt-14">
-        <button type="button" onClick={() => setOpen(true)} className={ALERT_BUTTON}>
-          Créer mon alerte
-        </button>
-      </AlertBand>
+      <SmartAlert signal tick={open} onOpen={() => setOpen(true)} className="mt-14" />
       {dialog}
     </>
   );

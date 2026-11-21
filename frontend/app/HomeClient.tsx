@@ -4,6 +4,7 @@ import { blackButtonOnScreen } from '../lib/blackButton';
 import Logo from './Logo';
 import MenuPanel from './MenuPanel';
 import AlertBand, { ALERT_BUTTON } from './AlertBand';
+import SmartAlert from './SmartAlert';
 import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
@@ -1182,13 +1183,13 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       </main>
 
       <footer ref={footerRef} className="border-t border-stone-200 bg-white">
-        <div className="border-b border-stone-200 bg-[#FDFBF7] px-6 py-10 md:py-14">
-          <AlertBand title="Le bien que vous cherchez n’est peut-être pas encore en ligne." className="max-w-6xl mx-auto">
-            <button type="button" onClick={() => openAlert('pied')} className={ALERT_BUTTON}>
-              Créer mon alerte
-            </button>
-          </AlertBand>
-        </div>
+        <SmartAlert
+          signal={searchActive}
+          tick={`${alertOpen}-${favorites.length}-${contacted.length}-${seen.length}`}
+          onOpen={() => openAlert('pied')}
+          wrapperClassName="border-b border-stone-200 bg-[#FDFBF7] px-6 py-10 md:py-14"
+          className="max-w-6xl mx-auto"
+        />
         <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
       </footer>
 

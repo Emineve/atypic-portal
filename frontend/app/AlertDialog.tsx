@@ -1,6 +1,7 @@
 'use client';
 
 import { markAlertPlaces } from '../lib/alertPlaces';
+import { markAlertCreated } from '../lib/intent';
 import { useEffect, useState } from 'react';
 import { X, Check, MapPin } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
@@ -357,7 +358,7 @@ export default function AlertDialog({
         }
       }
       setAlertCreated(ok);
-      if (ok) markAlertPlaces(finalLocations);
+      if (ok) { markAlertPlaces(finalLocations); markAlertCreated(); }
       // Recherche transmise aux agences cochées (cinq au maximum). Page agence : le partage part même si l'alerte n'a pas pu être créée.
       let sharedOk = false;
       if ((ok || shareWith) && share && agencySel.length > 0) {

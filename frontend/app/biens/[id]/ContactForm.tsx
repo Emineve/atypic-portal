@@ -1,6 +1,7 @@
 'use client';
 
 import { markContacted } from '../../../lib/contacted';
+import { markAlertCreated } from '../../../lib/intent';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { readVisitor, saveVisitor } from '../../../lib/visitor';
@@ -101,6 +102,7 @@ export default function ContactForm({
         p_source: 'apres-demande',
       });
       setAlertLimit(Boolean(error && error.message.includes('alert_limit')));
+      if (!error && data === true) markAlertCreated();
       setAlertStatus(!error && data === true ? 'done' : 'error');
     } catch {
       setAlertStatus('error');

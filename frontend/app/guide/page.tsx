@@ -1,4 +1,4 @@
-import AlertBand, { ALERT_BUTTON } from '../AlertBand';
+import SmartAlert from '../SmartAlert';
 import Crumbs from '../Crumbs';
 import GuideSearch from './GuideSearch';
 import { typo } from '../../lib/typo';
@@ -159,11 +159,7 @@ export default async function GuideIndex() {
           Ces articles donnent une information générale. Ils ne remplacent ni le conseil d&apos;un notaire, ni l&apos;avis d&apos;un professionnel du bâtiment sur un bien donné.
         </p>
 
-        <AlertBand title="Les biens rares partent vite. Soyez le premier informé." className="mt-14 md:mt-20">
-          <Link href="/?alerte=1" className={ALERT_BUTTON}>
-            Créer mon alerte
-          </Link>
-        </AlertBand>
+        <SmartAlert className="mt-14 md:mt-20" />
       </main>
     </div>
   );

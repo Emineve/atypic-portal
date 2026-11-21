@@ -1,4 +1,4 @@
-import AlertBand, { ALERT_BUTTON } from '../AlertBand';
+import SmartAlert from '../SmartAlert';
 import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import { typo } from '../../lib/typo';
@@ -98,18 +98,7 @@ export default function ManifestoPage() {
           ))}
         </ol>
 
-        <AlertBand
-          className="mt-10 md:mt-14"
-          title={
-            <>
-              Un bien qui a du caractère en donne à ceux qui l&apos;habitent. <span className="italic">Trouvons le vôtre.</span>
-            </>
-          }
-        >
-          <Link href="/?alerte=1" className={ALERT_BUTTON}>
-            Créer mon alerte
-          </Link>
-        </AlertBand>
+        <SmartAlert className="mt-10 md:mt-14" />
       </div>
       </main>
     </div>

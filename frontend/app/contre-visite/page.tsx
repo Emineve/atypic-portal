@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Play } from 'lucide-react';
 import SiteHeader from '../SiteHeader';
 import Crumbs from '../Crumbs';
-import AlertBand, { ALERT_BUTTON } from '../AlertBand';
+import SmartAlert from '../SmartAlert';
 import { Bust } from '../partenaires/contre-visite/Mockups';
 
 export const metadata = {
@@ -136,11 +136,7 @@ export default function ContreVisitePage() {
           </section>
         ))}
 
-        <AlertBand title="Les biens rares partent vite. Soyez le premier informé." className="mt-14 md:mt-20">
-          <Link href="/?alerte=1" className={ALERT_BUTTON}>
-            Créer mon alerte
-          </Link>
-        </AlertBand>
+        <SmartAlert className="mt-14 md:mt-20" />
 
         <p className="mt-8 text-sm text-stone-500">
           Aperçu de la page avant tournage : les questions sont données en exemple, les vidéos seront tournées avec nos partenaires.
