@@ -22,7 +22,7 @@ const PILLARS: { title: string; lead: string; points: string[] }[] = [
   {
     title: 'Plus de visibilité',
     lead: 'Vos biens ne sont plus noyés dans les résultats.',
-    points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page à votre nom, avec tous vos biens'],
+    points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page dédiée à votre agence, avec tous vos biens atypiques à la vente'],
   },
   {
     title: 'Zéro saisie',
