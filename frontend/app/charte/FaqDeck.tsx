@@ -99,17 +99,9 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
 
   return (
     <div className="max-w-3xl">
-      <input
-        type="search"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Rechercher une question"
-        aria-label="Rechercher une question"
-        className="no-autofill-tint h-12 w-full rounded-full border border-stone-300 bg-white px-5 text-base text-stone-900 placeholder:text-stone-500 focus:border-stone-900 focus:outline-none"
-      />
-
+      {/* Recherche masquée pour le moment : il suffit de réafficher le champ pour la remettre */}
       {!searching && (
-        <div className="-mx-6 mt-5 flex gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:px-0" role="tablist" aria-label="Rubriques">
+        <div className="-mx-6 flex gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:px-0" role="tablist" aria-label="Rubriques">
           {groups.map((x, i) => (
             <button
               key={x.id}
