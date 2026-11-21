@@ -11,7 +11,7 @@ import { typo } from '../../lib/typo';
 // Le mode d'emploi, une étape à la fois : un titre, deux phrases, un lien pour le faire tout de suite.
 const STEPS: { title: string; text: string; link: string; href: string }[] = [
   {
-    title: 'Cherchez large',
+    title: 'Voyez large',
     text: 'Un atelier peut être un loft, une maison se cacher au fond d’une cour. Commencez par le lieu et le budget, affinez ensuite : avec trop de critères, le bon bien ne s’affiche jamais.',
     link: 'Lancer ma recherche',
     href: '/?criteres=1',
