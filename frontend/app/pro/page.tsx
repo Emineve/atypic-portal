@@ -34,15 +34,6 @@ const PILLARS: { title: string; lead: string; points: string[] }[] = [
 // Les questions des agences
 const QUESTIONS: { q: string; a: string; steps?: [string, string][]; kinds?: [string, string][]; software?: boolean }[] = [
   {
-    q: 'Comment ça marche ?',
-    a: 'Nous nous occupons de tout, en trois temps.',
-    steps: [
-      ['Vous nous écrivez', 'Le nom de votre agence et un e-mail suffisent. Nous vous rappelons.'],
-      ['Nous branchons vos annonces', 'Une passerelle avec votre logiciel de diffusion. Rien à installer.'],
-      ['Les contacts arrivent chez vous', 'Les acheteurs en alerte sont prévenus, chaque demande vous parvient directement.'],
-    ],
-  },
-  {
     q: 'Combien ça coûte ?',
     a: 'Rien pendant toute la phase de lancement : aucun frais, aucun engagement. Toute évolution des conditions vous sera annoncée à l’avance, et vous restez libre d’arrêter.',
   },
