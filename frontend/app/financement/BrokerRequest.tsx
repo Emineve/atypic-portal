@@ -33,8 +33,8 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
     try {
       const { data, error } = await getSupabase().rpc('submit_financing_request', {
         p_name: name,
-        p_phone: phone,
-        p_email: email || null,
+        p_phone: phone || null,
+        p_email: email,
         p_listing: listing,
         p_price: price > 0 ? Math.round(price) : null,
         p_down: price > 0 ? Math.round(down) : null,
@@ -65,7 +65,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
               </span>
               <div>
                 <h2 className="font-serif text-2xl md:text-3xl tracking-tight text-stone-900">Votre demande est bien envoyée.</h2>
-                <p className="mt-2 text-stone-600 leading-relaxed">Un courtier vous rappelle très vite pour étudier votre projet.</p>
+                <p className="mt-2 text-stone-600 leading-relaxed">Un courtier vous recontacte très vite pour étudier votre projet.</p>
               </div>
             </div>
           ) : (
@@ -74,7 +74,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
                 {listing ? 'Faites étudier le financement de ce bien.' : 'Faites étudier votre projet par un courtier.'}
               </h2>
               <p className="mt-3 text-stone-600 leading-relaxed">
-                Laissez vos coordonnées, un courtier vous rappelle.
+                Laissez vos coordonnées, un courtier vous recontacte.
               </p>
               <ul className="mt-4 space-y-2.5 text-[15px] leading-snug text-stone-800">
                 {[
@@ -125,23 +125,22 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
               <input required minLength={2} maxLength={120} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className={field} autoFocus />
             </label>
             <label className={label}>
-              Téléphone
-              <input required type="tel" inputMode="tel" autoComplete="tel" maxLength={40} value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} className={field} placeholder="06 12 34 56 78" />
+              E-mail
+              <input required type="email" inputMode="email" autoComplete="email" maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} className={field} placeholder="vous@exemple.fr" />
             </label>
             <label className={label}>
-              E-mail (facultatif)
-              <input type="email" autoComplete="email" maxLength={200} value={email} onChange={(e) => setEmail(e.target.value)} className={field} />
+              Téléphone (facultatif)
+              <input type="tel" inputMode="tel" autoComplete="tel" maxLength={40} value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} className={field} placeholder="06 12 34 56 78" />
             </label>
           </div>
-          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <div className="mt-8">
             <button type="submit" disabled={status === 'sending'} className={btn}>
               {status === 'sending' ? 'Envoi…' : 'Envoyer ma demande'}
             </button>
-            <span className="text-sm text-stone-500">Gratuit · Sans engagement</span>
           </div>
-          {status === 'error' && <p className="mt-4 text-sm text-red-700">L&apos;envoi n&apos;a pas fonctionné. Vérifiez votre téléphone et réessayez.</p>}
+          {status === 'error' && <p className="mt-4 text-sm text-red-700">L&apos;envoi n&apos;a pas fonctionné. Vérifiez votre e-mail et réessayez.</p>}
           <p className="mt-4 text-xs text-stone-500 leading-relaxed">
-            En envoyant, vous acceptez que vos coordonnées{price > 0 ? ' et votre simulation' : ''} soient transmises à un courtier, qui vous rappelle au sujet de votre financement.{' '}
+            En envoyant, vous acceptez que vos coordonnées{price > 0 ? ' et votre simulation' : ''} soient transmises à un courtier, qui vous recontacte au sujet de votre financement.{' '}
             <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">Confidentialité</a>
           </p>
         </form>

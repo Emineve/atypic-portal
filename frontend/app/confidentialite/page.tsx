@@ -18,11 +18,11 @@ export default function Page() {
       <h2>Données collectées</h2>
       <ul>
         <li>
-          <strong>Demande de rappel sur un bien, ou sur plusieurs biens mis en favoris</strong> : nom, email, téléphone, message. Finalité :
+          <strong>Demande de rappel sur un bien, ou sur plusieurs biens mis en favoris</strong> : nom, email, téléphone (facultatif), message. Finalité :
           transmettre votre demande à l'agence chargée du bien. Base légale : votre consentement.
         </li>
         <li>
-          <strong>Recherche confiée à une agence</strong> : nom, email, téléphone, critères de votre recherche. Finalité : transmettre votre
+          <strong>Recherche confiée à une agence</strong> : nom, email, téléphone (facultatif), critères de votre recherche. Finalité : transmettre votre
           recherche à l'agence que vous avez choisie. Base légale : votre consentement.
         </li>
         <li>
@@ -30,7 +30,7 @@ export default function Page() {
           qu'un bien correspondant arrive sur le marché. Base légale : votre consentement, retirable à tout moment.
         </li>
         <li>
-          <strong>Demande de courtier</strong> : nom, téléphone, email (facultatif), bien et simulation concernés. Finalité : vous mettre en
+          <strong>Demande de courtier</strong> : nom, email, téléphone (facultatif), bien et simulation concernés. Finalité : vous mettre en
           relation avec un courtier en crédit. Base légale : votre consentement.
         </li>
         <li>

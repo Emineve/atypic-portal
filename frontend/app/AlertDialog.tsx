@@ -603,14 +603,13 @@ export default function AlertDialog({
                         />
                         <input
                           type="tel"
-                          required
                           minLength={9}
                           maxLength={20}
                           autoComplete="tel"
-                          aria-label="Votre téléphone"
+                          aria-label="Votre téléphone (facultatif)"
                           value={formatPhone(sharePhone)}
                           onChange={(e) => setSharePhone(formatPhone(e.target.value))}
-                          placeholder="Téléphone"
+                          placeholder="Téléphone (facultatif)"
                           className={`${field} mb-2`}
                         />
                       </>
@@ -709,14 +708,13 @@ export default function AlertDialog({
                             />
                             <input
                               type="tel"
-                              required
                               minLength={9}
                               maxLength={20}
                               autoComplete="tel"
-                              aria-label="Votre téléphone"
+                              aria-label="Votre téléphone (facultatif)"
                               value={formatPhone(sharePhone)}
                               onChange={(e) => setSharePhone(formatPhone(e.target.value))}
-                              placeholder="Téléphone"
+                              placeholder="Téléphone (facultatif)"
                               className={`${field} mt-2`}
                             />
                             <p className="mt-2 text-xs text-stone-500 leading-relaxed">
