@@ -8,7 +8,7 @@ import logiciels from './logiciels.png';
 export const metadata = {
   title: 'Agences : présentez vos biens atypiques · Loftissime',
   description:
-    'Diffusez vos biens atypiques auprès d’acheteurs qui ne cherchent que cela. Contacts directs, mise à jour automatique, gratuit pendant le lancement.',
+    'Plus de contacts sur vos biens atypiques, auprès d’acheteurs qui ne cherchent que ça. Contacts directs, mise à jour automatique, gratuit pendant le lancement.',
   alternates: { canonical: '/pro' },
 };
 
@@ -16,7 +16,7 @@ export const metadata = {
 const PILLARS: { title: string; lead: string; points: string[] }[] = [
   {
     title: 'Visibilité',
-    lead: 'Vos biens devant des acheteurs qui ne cherchent que cela.',
+    lead: 'Vos biens ne sont plus noyés dans les résultats.',
     points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page à votre nom, avec tous vos biens'],
   },
   {
@@ -101,10 +101,10 @@ export default function ProPage() {
         <div className="max-w-4xl">
           <Crumbs items={[{ label: 'Espace pro' }]} />
           <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-            Plus de contacts sur vos biens atypiques, <span className="text-stone-500">sans rien changer à vos habitudes.</span>
+            Plus de contacts sur vos biens atypiques, <span className="text-stone-500">auprès d&apos;acheteurs qui ne cherchent que ça.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
-            Un site entièrement consacré aux biens atypiques. Vos annonces y sont publiées automatiquement, envoyées en alerte aux acheteurs, et chaque contact arrive directement chez vous.
+            Sur un portail généraliste, vos lofts et vos ateliers sont noyés entre deux trois-pièces. Ici, on ne publie que de l&apos;atypique : vos annonces arrivent seules, partent en alerte, et chaque contact vous revient en direct.
           </p>
           <p className="mt-7 flex flex-wrap items-baseline gap-x-5 gap-y-2">
             <a href="#rejoindre" className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
