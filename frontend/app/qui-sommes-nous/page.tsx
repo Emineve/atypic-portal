@@ -81,7 +81,12 @@ export default function ManifestoPage() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h2 className="mt-3 font-serif text-2xl md:text-[1.75rem] tracking-tight leading-[1.15] text-stone-900 [text-wrap:balance]">{typo(a.title)}</h2>
-                <p className="mt-3 flex-1 text-base font-light leading-relaxed text-stone-600">{typo(a.text)}</p>
+                <p className="mt-3 flex-1 text-base font-light leading-relaxed text-stone-600">
+                  {/* Le nom de la rubrique est en italique, pour qu'on comprenne que c'est un titre */}
+                  {typo(a.text)
+                    .split('État des lieux')
+                    .flatMap((part, k) => (k === 0 ? [part] : [<em key={k} className="font-normal text-stone-900">État des lieux</em>, part]))}
+                </p>
                 {a.link && (
                   <span className={`mt-5 self-start ${link}`}>
                     {typo(a.link)}

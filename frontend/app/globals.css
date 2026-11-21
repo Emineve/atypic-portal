@@ -99,6 +99,6 @@ button.underline:active,
 summary.underline:hover,
 .group:hover .underline,
 .group:active .underline {
-  text-decoration-color: #F6CF4E;
+  text-decoration-color: #F6CF4E !important;
   text-decoration-thickness: 2px;
 }
