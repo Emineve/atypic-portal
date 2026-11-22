@@ -1,3 +1,5 @@
+import { EXAMPLES } from '../../lib/guide-examples';
+import { searchGuide } from '../../lib/guide-search';
 import SmartAlert from '../SmartAlert';
 import Crumbs from '../Crumbs';
 import GuideSearch from './GuideSearch';
@@ -38,6 +40,13 @@ export default async function GuideIndex() {
   const topped = top ? articles.find((a) => a.slug === top.slug) : undefined;
   const first = topped || articles[0];
   const rest = articles.filter((a) => a !== first);
+  // Pour chaque question d'exemple : la rubrique et le temps de lecture de l'article qui y répond
+  const exampleMeta: Record<string, string> = {};
+  for (const ex of EXAMPLES) {
+    const hit = searchGuide(ex, 1)[0];
+    const art = hit ? articles.find((a) => a.slug === hit.slug) : undefined;
+    if (art) exampleMeta[ex] = `${art.category} · ${art.readMinutes} min`;
+  }
   const firstLabel = topped ? (top!.period === 'today' ? 'Le plus lu aujourd’hui' : 'Le plus lu cette semaine') : 'À la une';
   const videos = publishedVideos();
   return (
@@ -49,7 +58,7 @@ export default async function GuideIndex() {
         <h1 className="max-w-4xl mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>
-        <GuideSearch />
+        <GuideSearch meta={exampleMeta} />
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">

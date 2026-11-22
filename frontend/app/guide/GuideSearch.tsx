@@ -7,85 +7,18 @@ import { ArrowRight, Search, X } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import type { GuideHit } from '../../lib/guide-search';
 import { typo } from '../../lib/typo';
+import { EXAMPLES } from '../../lib/guide-examples';
 
-const EXAMPLES = [
-  'Puis-je installer une clim sans autorisation ?',
-  'Peut-on faire du feu dans une cheminée à Paris ?',
-  'La mezzanine compte-t-elle dans la surface ?',
-  'La terrasse est-elle à moi ?',
-  'Comment négocier le prix ?',
-  'Peut-on louer un bien classé G ?',
-  'À quoi m’engage une offre d’achat ?',
-  'Un souplex est-il un vrai logement ?',
-  'Peut-on vivre toute l’année sur une péniche ?',
-  'La vue peut-elle disparaître ?',
-  'Qui paie l’ascenseur au dernier étage ?',
-  'Un loft est-il bruyant ?',
-  'Peut-on habiter un ancien local commercial ?',
-  'Faut-il un permis pour une véranda ?',
-  'Quelle hauteur sous plafond pour une mezzanine ?',
-  'Peut-on diviser un grand appartement en deux ?',
-  'Combien d’apport pour un bien atypique ?',
-  'Que peut porter une terrasse ?',
-  'Peut-on acheter à deux sans être mariés ?',
-  'La cave compte-t-elle dans la surface ?',
-  'Comment connaître les prix de vente du quartier ?',
-  'Un rez-de-chaussée sur cour est-il sombre ?',
-  'Peut-on réunir des chambres de service ?',
-  'Faut-il visiter avec un architecte ?',
-  'Une ancienne loge de gardien est-elle un vrai lot ?',
-  'Peut-on installer un jacuzzi sur une terrasse ?',
-  'Indivision ou société pour acheter à plusieurs ?',
-  'Peut-on vendre une cave séparément ?',
-  'Peut-on utiliser la cour d’un rez-de-chaussée ?',
-  'Le couloir des chambres de service m’appartient-il ?',
-  'Comment évaluer le bruit pendant une visite ?',
-  'Qu’est-ce que le droit d’eau d’un moulin ?',
-  'Acheter atypique, est-ce plus risqué ?',
-  'Un voisin peut-il construire devant ma vue ?',
-  'Pourquoi 1,80 mètre de hauteur compte-t-il ?',
-  'Peut-on transformer un garage en logement ?',
-  'Qui entretient une voie privée ?',
-  'Peut-on installer un ascenseur dans un vieil immeuble ?',
-  'Les meilleurs biens se vendent-ils sans annonce ?',
-  'Quelles conditions suspensives prévoir ?',
-  'Comment assurer un bien atypique ?',
-  'Combien de temps dure une recherche ?',
-  'Un bien atypique se revend-il bien ?',
-  'Peut-on surélever sa maison ?',
-  'Peut-on racheter les combles au-dessus de chez soi ?',
-  'Peut-on louer son appartement en Airbnb à Paris ?',
-  'Peut-on travailler chez soi dans un immeuble bourgeois ?',
-  'Y a-t-il de l’amiante dans les anciens ateliers ?',
-  'Peut-on abattre un mur porteur ?',
-  'Faut-il une autorisation pour créer une mezzanine ?',
-  'Peut-on habiter une ancienne église ?',
-  'Combien coûte l’entretien d’un hôtel particulier ?',
-  'Qui paie la toiture au dernier étage ?',
-  'Peut-on modifier une maison d’architecte ?',
-  'Faut-il ramoner une cheminée ?',
-  'Sur quoi s’appuyer pour négocier un bien rare ?',
-  'Une offre d’achat peut-elle être retirée ?',
-  'Quelles questions poser pendant une visite ?',
-  'Un souplex est-il humide ?',
-  'Un ancien commerce peut-il devenir un loft ?',
-  'Que risque-t-on avec des travaux non déclarés ?',
-  'Où amarrer une péniche ?',
-  'Les combles comptent-ils dans la surface ?',
-  'Un toit-terrasse est-il privatif ?',
-  'Comment lire le DPE d’un loft ?',
-  'La banque prête-t-elle pour une péniche ?',
-  'Que vérifier dans un duplex réuni ?',
-  'Comment lire les charges de copropriété ?',
-  'Le plomb est-il dangereux dans un logement ancien ?',
-  'Peut-on mettre une piscine sur un toit ?',
-  'Un dernier étage est-il plus chaud en été ?',
-  'Peut-on exercer une profession libérale chez soi ?',
-  'Combien de jours peut-on louer sa résidence principale ?',
-  'Quel délai de rétractation après un compromis ?',
-  'Un moulin est-il inondable ?',
-  'Comment estimer un bien qui ne ressemble à aucun autre ?',
-];
+// Date d'une vraie question, dite simplement : « aujourd'hui », « hier », « le 19 novembre »
+function publishedLabel(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const day = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const diff = Math.round((day(new Date()) - day(d)) / 86400000);
+  if (diff <= 0) return 'publiée aujourd’hui';
+  if (diff === 1) return 'publiée hier';
+  return `publiée le ${d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`;
+}
 
 const btn = 'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-60';
 const link = 'inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
@@ -114,7 +47,7 @@ function Marked({ text, query }: { text: string; query: string }) {
 
 // L'acheteur pose sa question : la réponse s'affiche pendant qu'il écrit, tirée de nos articles.
 // Sans réponse, il peut laisser sa question et son e-mail pour être prévenu quand l'article paraît.
-export default function GuideSearch() {
+export default function GuideSearch({ meta = {} }: { meta?: Record<string, string> }) {
   const [q, setQ] = useState('');
   // Les suggestions tournent : un tirage différent à chaque visite
   const [pool, setPool] = useState(EXAMPLES);
@@ -129,13 +62,18 @@ export default function GuideSearch() {
   // Les vraies questions des visiteurs, validées une à une dans le back-office.
   // À partir de quatre, elles remplacent nos exemples, les plus récentes d'abord.
   const [real, setReal] = useState<string[]>([]);
+  const [realDates, setRealDates] = useState<Record<string, string>>({});
   useEffect(() => {
     let off = false;
     (async () => {
       try {
         const { data } = await getSupabase().rpc('featured_guide_questions');
-        const list = Array.isArray(data) ? (data as { question: string }[]).map((r) => r.question).filter(Boolean) : [];
-        if (!off && list.length >= 4) setReal(list);
+        const rows = Array.isArray(data) ? (data as { question: string; created_at?: string }[]).filter((r) => r.question) : [];
+        const list = rows.map((r) => r.question);
+        if (!off && list.length >= 4) {
+          setReal(list);
+          setRealDates(Object.fromEntries(rows.map((r) => [r.question, r.created_at ? publishedLabel(r.created_at) : ''])));
+        }
       } catch {
         /* sans réponse, on garde nos exemples */
       }
@@ -279,13 +217,17 @@ export default function GuideSearch() {
           </div>
           {suggestions.length > 0 && (
             <div className="mt-5">
-              <p className="text-xs uppercase tracking-widest text-stone-500">Dernières questions posées par les acheteurs</p>
+              {/* Intitulé exact : « dernières questions » seulement quand ce sont celles des visiteurs */}
+              <p className="text-xs uppercase tracking-widest text-stone-500">{real.length ? 'Dernières questions posées par les acheteurs' : 'Les questions qui reviennent le plus'}</p>
               <ul className="mt-3 space-y-1.5">
                 {suggestions.map((ex) => (
                   <li key={ex}>
                     <button type="button" onClick={() => setQ(ex)} className="py-1 text-left text-[15px] italic leading-snug text-stone-900 underline underline-offset-4 decoration-stone-300 transition hover:decoration-stone-900">
                       {typo(ex)}
                     </button>
+                    {(real.length ? realDates[ex] : meta[ex]) && (
+                      <span className="ml-2 whitespace-nowrap text-[13px] text-stone-500">({real.length ? realDates[ex] : meta[ex]})</span>
+                    )}
                   </li>
                 ))}
               </ul>
