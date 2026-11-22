@@ -14,6 +14,7 @@ const COLORS = [
   { name: 'Bleu', value: '#6C9BD9' },
   { name: 'Rouge', value: '#E2665A' },
   { name: 'Vert', value: '#5FAE86' },
+  { name: 'Jaune', value: '#F6CF4E' },
   { name: 'Blanc', value: '#ffffff' },
 ];
 

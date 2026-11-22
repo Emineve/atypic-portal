@@ -39,11 +39,11 @@ export default function DressingPage() {
           pitch="Deux mots, en noir. Une formule de politesse, et une façon d’habiter."
         />
         <TeeCard
-          first="Rouge"
+          first="Jaune"
           name="Le regard"
-          words={['l.']}
+          words={['o']}
           mark
-          pitch="Le « l. » de Loftissime, dont le point vous regarde. Pour ceux qui ont l’œil."
+          pitch="Le « o » de Loftissime, celui de l’icône du site. Il vous regarde. Pour ceux qui ont l’œil."
         />
       </div>
       </main>
