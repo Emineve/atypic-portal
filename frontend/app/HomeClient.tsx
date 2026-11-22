@@ -657,7 +657,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       <section className="max-w-7xl mx-auto px-6 pb-8">
         <div className="max-w-3xl mx-auto flex gap-2">
           <div className="relative flex-1">
-            <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-stone-500" />
+            <Search className="w-5 h-5 absolute left-6 top-1/2 -translate-y-1/2 text-stone-500" />
             <input
               type="search"
               name="recherche-lieu"
@@ -682,7 +682,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               }}
               id="recherche-lieu"
               placeholder="Ville, code postal, quartier…"
-              className="no-autofill-tint appearance-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden w-full h-14 pl-12 pr-14 sm:pr-44 rounded-[10px] bg-white border border-stone-200 text-base focus:outline-none focus:border-stone-900 shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
+              className="no-autofill-tint appearance-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden w-full h-14 md:h-16 pl-14 pr-14 sm:pr-44 rounded-full bg-white border border-stone-200 text-base md:text-lg focus:outline-none focus:border-stone-900 shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
               aria-label="Rechercher un lieu"
               role="combobox"
               aria-expanded={showSuggestions}
@@ -695,7 +695,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 onClick={locateMe}
                 disabled={geo === 'loading'}
                 aria-label="Chercher autour de moi"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-11 px-3 inline-flex items-center gap-1.5 text-sm text-stone-600 hover:text-stone-900 disabled:opacity-60"
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-11 px-3 inline-flex items-center gap-1.5 text-sm text-stone-600 hover:text-stone-900 disabled:opacity-60"
               >
                 <LocateFixed className={`w-5 h-5 flex-none ${geo === 'loading' ? 'animate-pulse' : ''}`} />
                 <span className="hidden sm:inline">{geo === 'loading' ? 'Localisation…' : 'Autour de moi'}</span>
@@ -707,7 +707,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => setQuery('')}
                 aria-label="Effacer la saisie"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-11 w-11 flex items-center justify-center text-stone-500 hover:text-stone-900"
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-11 w-11 flex items-center justify-center rounded-full text-stone-500 hover:text-stone-900"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -716,7 +716,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               <ul
                 id="suggestions-lieux"
                 role="listbox"
-                className="absolute left-0 right-0 top-full z-40 mt-1 rounded-[10px] overflow-hidden border border-stone-300 bg-white shadow-lg text-left"
+                className="absolute left-0 right-0 top-full z-40 mt-2 rounded-[14px] overflow-hidden border border-stone-300 bg-white shadow-lg text-left"
               >
                 {placeMatches.map((p, i) => (
                   <li key={p.kind + p.city + p.value} role="option" aria-selected={i === 0}>
@@ -748,7 +748,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           <button
             type="button"
             onClick={() => setShowFilters(true)}
-            className="relative h-14 w-14 flex-none rounded-[10px] border border-stone-200 bg-white inline-flex items-center justify-center hover:border-stone-900 transition shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
+            className="relative h-14 w-14 md:h-16 md:w-16 flex-none rounded-full border border-stone-200 bg-white inline-flex items-center justify-center hover:border-stone-900 transition shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
             aria-haspopup="dialog"
             aria-label={activeFilters > 0 ? `Critères (${activeFilters})` : 'Critères'}
             title="Critères"

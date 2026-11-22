@@ -186,9 +186,9 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
         }}
       >
         <label htmlFor="question" className="sr-only">Posez-nous une question, un expert vous répond</label>
-        {/* Même barre que la recherche de l'accueil ; les questions d'exemple sont des pastilles à toucher, dessous */}
+        {/* Une barre de recherche en pilule, la même que sur l'accueil ; les questions d'exemple sont des pastilles à toucher, dessous */}
         <div>
-          <div className="flex h-14 items-center gap-3 rounded-[10px] border border-stone-200 bg-white pl-4 pr-2 shadow-[0_1px_2px_rgba(28,25,23,0.05)] transition focus-within:border-stone-900">
+          <div className="flex h-14 md:h-16 items-center gap-3 rounded-full border border-stone-200 bg-white pl-6 pr-2 shadow-[0_1px_2px_rgba(28,25,23,0.05)] transition focus-within:border-stone-900">
             <Search className="h-5 w-5 flex-none text-stone-500" strokeWidth={1.75} />
             <input
               ref={input}
@@ -204,14 +204,14 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
                 if (e.key === 'Escape') clear();
               }}
               placeholder="Posez-nous une question, un expert vous répond"
-              className="h-full w-full min-w-0 text-ellipsis border-0 bg-transparent p-0 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
+              className="h-full w-full min-w-0 text-ellipsis border-0 bg-transparent p-0 text-base md:text-lg text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
             />
             {q !== '' && (
-              <button type="button" onClick={clear} aria-label="Effacer la question" className="flex h-10 w-10 flex-none items-center justify-center rounded-[8px] text-stone-500 transition hover:bg-stone-100 hover:text-stone-900">
+              <button type="button" onClick={clear} aria-label="Effacer la question" className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-stone-500 transition hover:bg-stone-100 hover:text-stone-900">
                 <X className="h-5 w-5" strokeWidth={1.5} />
               </button>
             )}
-            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 flex-none items-center justify-center rounded-[8px] bg-stone-900 text-white transition hover:bg-stone-700">
+            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 md:h-12 md:w-12 flex-none items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700">
               <ArrowRight className="h-5 w-5" strokeWidth={1.75} />
             </button>
           </div>
