@@ -503,7 +503,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
       <FicheBar
         price={price}
-        summary={[item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', item.rooms ? `${item.rooms} ${Number(item.rooms) > 1 ? 'pièces' : 'pièce'}` : '', item.city].filter(Boolean).join(' · ')}
+        summary={[item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', item.city].filter(Boolean).join(' · ')}
         phone={item.contact_phone}
       />
       <FavoriteAlertToast city={item.city} price={Number(item.price)} />

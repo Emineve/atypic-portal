@@ -11,7 +11,13 @@ export default function FicheBar({ price, summary, phone }: { price: string; sum
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    const update = () => setShown(window.scrollY > 560);
+    // Cachée tant que le formulaire de contact est à l'écran : son propre bouton suffit
+    const update = () => {
+      const form = document.getElementById('contact');
+      const r = form && form.offsetParent !== null ? form.getBoundingClientRect() : null;
+      const formOnScreen = Boolean(r && r.top < window.innerHeight - 80 && r.bottom > 80);
+      setShown(window.scrollY > 560 && !formOnScreen);
+    };
     update();
     window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
