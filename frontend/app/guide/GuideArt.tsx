@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train';
 
 const INK = '#1c1917';
 const SUN = '#F6CF4E';
@@ -1299,7 +1299,92 @@ function Cave() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise, rdc: Rdc, chambres: Chambres, bruit: Bruit, division: Division, moulin: Moulin, loge: Loge, spa: Spa, plusieurs: Plusieurs, cave: Cave };
+// Rubrique « Insolite » : un avion posé dans les bois
+function Avion() {
+  const tree = (x: number, h: number) => (
+    <g key={x}>
+      <path d={`M${x} 420 v-${h * 0.35}`} {...line} />
+      <path d={`M${x - 46} ${420 - h * 0.3} L${x} ${420 - h} L${x + 46} ${420 - h * 0.3} Z`} fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+    </g>
+  );
+  return (
+    <>
+      <path d="M0 420 H1200" {...line} />
+      {[90, 190, 1010, 1110].map((x, i) => tree(x, i % 2 ? 250 : 320))}
+      {/* fuselage sur ses supports */}
+      <path d="M300 250 Q300 210 360 206 H820 Q900 206 960 250 Q900 300 820 300 H360 Q300 296 300 250 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M318 222 L250 130 H300 L390 206" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M560 300 L470 372 H540 L690 300" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {[420, 480, 540, 600, 660, 720, 780].map((x) => (
+        <rect key={x} x={x} y={232} width={30} height={30} rx={8} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      <path d="M870 232 Q905 236 925 252" {...thin} />
+      <path d="M400 300 v120 M800 300 v120" {...line} />
+      {/* l'escalier qui en fait une maison */}
+      <path d="M690 300 L760 420 M716 300 L786 420 M704 324 h26 M718 348 h26 M732 372 h26 M746 396 h26" {...thin} />
+      <Plant x={860} y={394} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : une maison creusée sous le désert
+function Souterrain() {
+  return (
+    <>
+      {/* le sol, et le désert au-dessus */}
+      <rect x={0} y={170} width={1200} height={330} fill={SHADE} />
+      <path d="M0 170 H1200" {...line} />
+      <circle cx={1040} cy={84} r={38} fill={PAPER} stroke={INK} strokeWidth={3} />
+      <path d="M180 170 q40 -44 90 0 M700 170 q50 -56 110 0" {...line} />
+      {/* bouches d'aération */}
+      <path d="M430 170 v-44 h26 v44 M930 170 v-34 h26 v34" {...line} />
+      {/* l'escalier qui descend */}
+      <path d="M110 170 h40 v40 h40 v40 h40 v40 h40 v40 h40" {...line} />
+      {/* les pièces creusées */}
+      <path d="M310 420 V290 Q310 240 370 240 H560 Q620 240 620 290 V420 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M700 420 V300 Q700 250 760 250 H980 Q1040 250 1040 300 V420 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* le passage entre les deux pièces */}
+      <rect x={618} y={340} width={84} height={80} fill={PAPER} />
+      <path d="M620 340 H700" {...line} />
+      <path d="M270 420 H1080" {...line} />
+      <Sofa x={370} y={420} />
+      <Lamp x={560} y={240} />
+      <rect x={770} y={372} width={170} height={48} rx={6} fill={SUN} stroke={INK} strokeWidth={2} />
+      <rect x={770} y={350} width={50} height={22} rx={6} fill={PAPER} stroke={INK} strokeWidth={2} />
+      <Plant x={1000} y={394} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : habiter le train
+function Train() {
+  return (
+    <>
+      {/* voie */}
+      <path d="M0 400 H1200 M0 424 H1200" {...line} />
+      {[60, 180, 300, 420, 540, 660, 780, 900, 1020, 1140].map((x) => (
+        <path key={x} d={`M${x} 400 v24`} {...thin} />
+      ))}
+      {/* voiture */}
+      <path d="M150 150 H960 Q1070 150 1090 260 V350 H150 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M150 300 H1090" stroke={INK} strokeWidth={3} />
+      <rect x={150} y={300} width={940} height={14} fill={SUN} stroke={INK} strokeWidth={2} />
+      {[220, 400, 580, 760].map((x) => (
+        <rect key={x} x={x} y={190} width={130} height={80} rx={10} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      <path d="M940 190 H1010 Q1050 200 1060 260 H940 Z" fill={SUN} stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+      {/* roues */}
+      {[260, 360, 880, 980].map((x) => (
+        <circle key={x} cx={x} cy={372} r={26} fill={PAPER} stroke={INK} strokeWidth={3} />
+      ))}
+      {/* une vie dans un sac à dos, derrière une vitre */}
+      <path d="M440 270 v-40 q0 -22 26 -22 q26 0 26 22 v40 Z" fill={PAPER} stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+      <path d="M452 208 q14 -18 28 0 M448 244 h36" {...thin} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise, rdc: Rdc, chambres: Chambres, bruit: Bruit, division: Division, moulin: Moulin, loge: Loge, spa: Spa, plusieurs: Plusieurs, cave: Cave, avion: Avion, souterrain: Souterrain, train: Train };
 
 // fit « meet » : le dessin entier reste visible (article à la une) ; « slice » : il remplit le cadre, quitte à être rogné
 export default function GuideArt({ art, className = '', fit = 'slice' }: { art: GuideArtKey; className?: string; fit?: 'slice' | 'meet' }) {

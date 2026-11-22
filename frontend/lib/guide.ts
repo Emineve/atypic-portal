@@ -10,6 +10,7 @@ export const GUIDE_RUBRICS = [
   { name: 'Surfaces et travaux', anchor: 'technique', intro: 'Ce qui est compté, ce qui a été transformé, ce que le bien consomme.' },
   { name: 'Copropriété', anchor: 'copropriete', intro: 'Les règles de l’immeuble et ce qu’il coûte à vivre.' },
   { name: 'Financement', anchor: 'financement', intro: 'Le crédit, l’assurance, le dossier.' },
+  { name: 'Insolite', anchor: 'insolite', intro: 'Pour ceux qui ne veulent pas habiter comme tout le monde.' },
 ] as const;
 export type GuideRubric = (typeof GUIDE_RUBRICS)[number]['name'];
 
@@ -21,7 +22,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -5498,6 +5499,174 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'MySweetImmo, « Observatoire des charges de copropriété 2026 : Foncia annonce une baisse des charges »', url: 'https://www.mysweetimmo.com/2026/04/07/charges-de-copropriete-ce-qui-a-baisse-et-ce-qui-a-augmente-en-2025/' },
     ],
     listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'vivre-dans-un-avion-de-ligne',
+    art: 'avion',
+    title: 'Il a posé un avion de ligne dans les bois, et il y vit',
+    description:
+      'En Oregon, un ingénieur à la retraite habite un Boeing 727 installé sur son terrain. Ce que la presse en a raconté, ce que cela coûte, et ce que la règle dirait en France.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Pour ceux qui ne veulent pas habiter comme tout le monde, il y a le loft, la péniche, l’atelier. Et puis il y a Bruce Campbell, ingénieur électricien à la retraite, qui a choisi un Boeing 727. L’avion est posé au milieu des arbres, près de Portland, dans l’Oregon. Plusieurs médias américains l’ont visité.',
+    takeaways: [
+      'L’avion a été acheté à une entreprise de récupération pour 100 000 dollars, selon le Smithsonian Magazine.',
+      'Son transport et son installation ont coûté environ 120 000 dollars de plus.',
+      'À l’intérieur : un futon, un bureau, un lavabo, des toilettes, et un sol transparent qui laisse voir la structure.',
+      'En France, poser un fuselage sur un terrain ne dispense d’aucune règle d’urbanisme.',
+    ],
+    sections: [
+      {
+        title: 'Comment un avion arrive-t-il dans une forêt ?',
+        paragraphs: [
+          'Le Smithsonian Magazine raconte que le projet remonte à la fin des années 1990. L’appareil, retiré du service, a été acheté 100 000 dollars à un ferrailleur. Il a fallu ensuite le transporter jusqu’à un terrain boisé d’environ quatre hectares, à Hillsboro : une opération qui a coûté à peu près 120 000 dollars, soit davantage que l’avion lui-même.',
+          'Le total approche donc 220 000 dollars, sans compter des années de travaux.',
+        ],
+      },
+      {
+        title: 'À quoi ressemble la vie à bord ?',
+        paragraphs: [
+          'Les sièges des passagers ont été retirés. Le reportage photo de CBS News, publié en 2014, montre un futon, un poste de travail avec un ordinateur, un lavabo et des toilettes en état de marche. Le plancher d’origine a été remplacé par des panneaux transparents, qui laissent voir les entrailles de l’appareil.',
+          'Le résultat ne cherche pas à ressembler à une maison. Il reste un avion, habité.',
+        ],
+      },
+      {
+        title: 'Pourquoi un avion plutôt qu’une maison ?',
+        paragraphs: [
+          'Deux raisons reviennent dans les articles : une passion ancienne pour l’aéronautique, et l’idée qu’il est absurde d’envoyer à la casse des appareils encore solides. Leur carlingue ferait, à ses yeux, un abri plus durable qu’on ne le croit, rapporte le Smithsonian Magazine.',
+          'Le Smithsonian Magazine rapporte aussi les limites du projet : des retards, un chantier jamais tout à fait terminé, et l’envie d’en lancer un second ailleurs.',
+        ],
+      },
+      {
+        title: 'Et en France, pourrait-on le faire ?',
+        paragraphs: [
+          'Un avion posé sur un terrain pour y habiter est, aux yeux de l’urbanisme, une construction. Il faut donc un terrain où l’habitation est autorisée et une autorisation de la mairie, comme pour une maison. En règle générale, un terrain agricole ou naturel ne s’y prête pas.',
+          'Avant tout projet de ce genre, demandez un certificat d’urbanisme : il vous dit par écrit ce qui est possible sur la parcelle. Restent le raccordement à l’eau et à l’électricité, l’assainissement, et l’assurance, qu’il faudra convaincre.',
+          'Le plus proche de cet esprit, parmi les biens qui se vendent réellement : les lieux qui ont eu une autre vie avant de devenir des logements.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien coûte un avion de ligne réformé ?', a: 'Celui de cette histoire a été acheté 100 000 dollars à un ferrailleur, selon le Smithsonian Magazine. Son transport et son installation ont coûté environ 120 000 dollars de plus.' },
+      { q: 'Peut-on habiter un avion en France ?', a: 'Rien ne l’interdit par principe, mais c’est une construction comme une autre : il faut un terrain constructible et une autorisation d’urbanisme. Commencez par demander un certificat d’urbanisme à la mairie.' },
+    ],
+    sources: [
+      { label: 'Smithsonian Magazine, « Looking for a New Place to Live? This Man Chose an Airplane »', url: 'https://www.smithsonianmag.com/arts-culture/looking-new-place-live-man-chose-airplane-180951889/' },
+      { label: 'CBS News, « Portland man lives in a Boeing 727 », 10 juin 2014', url: 'https://www.cbsnews.com/pictures/portland-man-lives-in-a-boeing-727' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'coober-pedy-la-ville-ou-l-on-vit-sous-terre',
+    art: 'souterrain',
+    title: 'Coober Pedy, la ville où l’on habite sous terre',
+    description:
+      'Dans le désert australien, une ville minière vit en grande partie dans des maisons creusées dans la roche. Pourquoi, comment, à quel prix, et ce qu’il en est des troglodytes en France.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'À Coober Pedy, dans le sud de l’Australie, on ne monte pas chez soi : on y descend. Cette ville d’environ 2 500 habitants, née de la découverte de l’opale en 1915, vit pour une bonne part dans la roche. La presse y retourne régulièrement, à chaque vague de chaleur.',
+    takeaways: [
+      'Environ 60 % des habitants vivent dans des logements creusés, selon Slate et The Week.',
+      'Dehors, l’été dépasse 50 °C. Sous terre, la température reste autour de 23 °C toute l’année.',
+      'Les maisons sont enterrées à quatre mètres au moins, pour que le plafond tienne.',
+      'En France, l’habitat troglodytique existe, mais un logement doit recevoir la lumière du jour.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi vivre sous terre ?',
+        paragraphs: [
+          'Pour la température. Slate, qui s’appuie sur un reportage de la BBC, donne les chiffres : jusqu’à 52 °C dehors en été, deux ou trois degrés en hiver, et environ 23 °C sous terre en toute saison. La roche fait ce qu’une climatisation ferait ailleurs, sans rien consommer.',
+          'Les premiers mineurs logeaient sur place, dans les galeries. L’habitude est restée.',
+        ],
+      },
+      {
+        title: 'Comment creuse-t-on une maison ?',
+        paragraphs: [
+          'Dans le grès, d’abord à la pioche et à la pelle, raconte The Week. Les logements sont installés à quatre mètres de profondeur au minimum. En surface, il ne reste que des monticules de terre, des tuyaux et des bouches d’aération.',
+          'La ville ne s’est pas arrêtée aux logements : on y trouve sous terre une église, un hôtel, une librairie, un bar avec son billard.',
+        ],
+      },
+      {
+        title: 'Combien cela coûte-t-il ?',
+        paragraphs: [
+          'Slate cite un ordre de grandeur : environ 24 000 euros pour une maison de trois chambres, contre 415 000 euros en moyenne à Adélaïde, la grande ville la plus proche, à 850 kilomètres. L’écart dit autant l’isolement que le mode de construction.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'L’habitat troglodytique n’a rien d’exotique : le val de Loire et le Saumurois en comptent de nombreux, creusés dans le tuffeau, et certains se vendent.',
+          'Deux points sont à regarder de près. La lumière et l’air, d’abord : pour être un logement décent, la pièce principale doit être éclairée par la lumière du jour et ventilée. L’humidité ensuite, ennemie de tout ce qui est enterré, et la stabilité de la roche, qu’un professionnel doit avoir examinée.',
+          'C’est la même logique que pour un souplex : ce qui est sous le sol peut être un vrai logement, à condition de le vérifier.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Fait-il vraiment frais sous terre ?', a: 'À Coober Pedy, la température souterraine reste autour de 23 °C alors que l’été dépasse 50 °C en surface, selon les chiffres repris par Slate.' },
+      { q: 'Peut-on acheter une maison troglodytique en France ?', a: 'Oui, il s’en vend, surtout dans le val de Loire. Vérifiez la lumière naturelle, la ventilation, l’humidité et la stabilité de la roche avant de vous engager.' },
+    ],
+    sources: [
+      { label: 'Slate, « Coober Pedy, le village australien où les habitants vivent sous terre »', url: 'https://www.slate.fr/story/251755/coober-pedy-village-australie-habitants-vivent-sous-terre-mine-opale-maisons-troglodytes-echapper-chaleur' },
+      { label: 'The Week, « Coober Pedy: inside the Australian town where people live underground », 22 août 2023', url: 'https://theweek.com/news/world-news/962095/coober-pedy-australian-town-people-live-underground' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'habiter-nulle-part-vivre-dans-les-trains',
+    art: 'train',
+    title: 'Habiter nulle part : l’étudiante qui vivait dans les trains',
+    description:
+      'En 2015, une étudiante allemande a rendu son appartement pour vivre avec un abonnement de train illimité. Ce que la presse en a raconté, et ce que cela suppose de ne plus avoir d’adresse.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Ne pas habiter comme tout le monde, cela peut vouloir dire ne plus habiter du tout. En 2015, la presse allemande puis américaine a raconté l’histoire de Leonie Müller, 23 ans, étudiante, qui avait remplacé son loyer par un abonnement de train.',
+    takeaways: [
+      'Le point de départ : un différend avec son propriétaire, rapporte le Washington Post.',
+      'L’abonnement, valable sur tous les trains du pays, lui coûtait environ 380 dollars par mois, contre 450 dollars de loyer.',
+      'Toute sa vie tenait dans un sac à dos : des vêtements, une tablette, ses cours, une trousse de toilette.',
+      'Sans logement, la question n’est plus le toit, mais l’adresse.',
+    ],
+    sections: [
+      {
+        title: 'Comment vit-on dans un train ?',
+        paragraphs: [
+          'D’après les articles de l’époque, elle travaillait ses cours à bord, se lavait les cheveux dans les toilettes du train, et passait d’une ville à l’autre au gré des amis et de la famille à visiter. Elle tenait un blog, et faisait de cette expérience le sujet de son mémoire.',
+          'Le calcul était simple : l’abonnement coûtait un peu moins que le loyer qu’elle venait de quitter.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que cela change vraiment ?',
+        paragraphs: [
+          'Ce que ces récits montrent, au-delà de l’anecdote, c’est qu’un logement n’est pas seulement un abri. C’est un endroit où poser ses affaires, recevoir son courrier, dormir sans dépendre de quelqu’un. Les récits le relèvent d’ailleurs : elle logeait régulièrement chez des amis ou dans sa famille.',
+          'Les articles décrivent une expérience en cours, menée le temps des études, pas un choix arrêté pour la vie.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'On peut voyager sans cesse, mais on ne peut pas se passer d’adresse : pour une banque, un employeur, les impôts ou l’assurance maladie, il en faut une. Quand on n’a pas de domicile stable, la loi prévoit une domiciliation auprès du centre communal d’action sociale ou d’un organisme agréé.',
+          'Pour ceux que le mouvement attire sans vouloir renoncer à un chez-soi, il existe un entre-deux qui s’achète et se revend : la péniche.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Est-ce moins cher que de louer ?', a: 'Dans son cas, oui, de peu : environ 380 dollars par mois pour l’abonnement, contre 450 dollars de loyer, selon le Washington Post. Mais elle dormait souvent chez des proches.' },
+      { q: 'Peut-on vivre sans adresse en France ?', a: 'Pas durablement : une adresse est demandée pour presque toutes les démarches. Une domiciliation est possible auprès du centre communal d’action sociale ou d’un organisme agréé.' },
+    ],
+    sources: [
+      { label: 'The Washington Post, repris par le New Zealand Herald, « German student chooses to live on trains rather than pay rent »', url: 'https://nzherald.co.nz/business/german-student-chooses-to-live-on-trains-rather-than-pay-rent/QAHLPRUR7YMCRKWQKO7EAW23ZY' },
+      { label: 'Web Urbanist, « Home-Free Living: German Woman Trades in Rent for Train Ticket », 6 septembre 2015', url: 'https://weburbanist.com/2015/09/06/home-free-living-german-woman-trades-in-rent-for-train-ticket/' },
+    ],
+    listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
   },
 ];
 
