@@ -11,7 +11,7 @@ export default function HeaderLinks() {
   return (
     <nav aria-label="Navigation principale" className="hidden lg:flex items-center gap-7">
       {LINKS.map((l) => (
-        <Link key={l.href} href={l.href} className="text-sm font-medium normal-case tracking-normal text-stone-700 transition hover:text-stone-900">
+        <Link key={l.href} href={l.href} className="text-sm font-medium normal-case tracking-normal text-stone-700 hover:text-stone-900 bg-[linear-gradient(transparent_62%,#F6CF4E_62%)] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_100%] hover:bg-[length:100%_100%] active:bg-[length:100%_100%] focus-visible:bg-[length:100%_100%]">
           {l.label}
         </Link>
       ))}
