@@ -23,7 +23,7 @@ import { Filters, EMPTY_FILTERS, passesFilters, countActive, availableTypes } fr
 import { trackEvent } from '../lib/track';
 
 import { readSeen, clearSeen } from '../lib/seen';
-import { readContacted, purgeContactedFavorites } from '../lib/contacted';
+import { readContacted, purgeContactedFavorites, unmarkContacted } from '../lib/contacted';
 import DemoBand from './DemoBand';
 import { hasAlertFor } from '../lib/alertPlaces';
 import { SEEN_BADGE } from './SeenMark';
@@ -281,7 +281,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
     } catch {
       /* ignoré */
     }
-    if (adding) trackEvent('favorite', id);
+    if (adding) {
+      trackEvent('favorite', id);
+      unmarkContacted(id);
+      setContacted((prev) => prev.filter((x) => x !== id));
+    }
   }
 
   function resetAll() {
