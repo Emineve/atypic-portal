@@ -163,7 +163,7 @@ function isNew(date: string | null) {
   return Date.now() - new Date(date).getTime() < NEW_DAYS * 86400000;
 }
 
-export default function HomeClient({ initialListings, newArticles = 0, heroArt = null, stories = [], eyeCard = null, orderSeed = 0 }: { initialListings: Listing[]; newArticles?: number; heroArt?: ReactNode; stories?: ReactNode[]; eyeCard?: ReactNode; orderSeed?: number }) {
+export default function HomeClient({ initialListings, newArticles = 0, stories = [], eyeCard = null, orderSeed = 0 }: { initialListings: Listing[]; newArticles?: number; stories?: ReactNode[]; eyeCard?: ReactNode; orderSeed?: number }) {
   const listings = initialListings;
   const typeOptions = useMemo(() => availableTypes(listings), [listings]);
   const loading = false;
@@ -664,11 +664,11 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
         </header>
       ) : (
       <>
-      <div className="max-w-7xl mx-auto px-6 pt-10 md:pt-14 pb-8 grid items-stretch gap-x-10 lg:grid-cols-[1.2fr_1fr]">
-        <div className="flex min-w-0 flex-col justify-center lg:py-6">
-        <header className="pb-8 md:pb-10 text-center lg:text-left"><HeroTitle /></header>
+      <div className="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-8">
+        <div>
+        <header className="pb-8 md:pb-10 text-center"><HeroTitle /></header>
         <section>
-        <div className="max-w-3xl mx-auto lg:mx-0 flex gap-2">
+        <div className="max-w-3xl mx-auto flex gap-2">
           <div className="relative flex-1">
             <Search className="w-5 h-5 absolute left-6 top-1/2 -translate-y-1/2 text-stone-500" />
             <input
@@ -775,7 +775,7 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
           </button>
         </div>
 
-        <div className="max-w-3xl mx-auto lg:mx-0 text-left" aria-live="polite">
+        <div className="max-w-3xl mx-auto text-left" aria-live="polite">
           {geo === 'denied' && (
             <p className="mt-2 text-xs text-stone-500">La localisation est refusée sur cet appareil. Saisissez une ville ou un code postal.</p>
           )}
@@ -800,7 +800,7 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
         </div>
 
         {(places.length > 0 || (searchActive && !onlyFavs)) && (
-          <div className="max-w-3xl mx-auto lg:mx-0 mt-3 flex flex-wrap items-center gap-2" aria-live="polite">
+          <div className="max-w-3xl mx-auto mt-3 flex flex-wrap items-center gap-2" aria-live="polite">
             {places.map((p) => (
               <span
                 key={p.kind + p.city + p.value}
@@ -837,7 +837,7 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
         )}
 
         {anythingActive && activeFilters + places.length + (query.trim() !== '' ? 1 : 0) > 1 && (
-          <div className="mt-4 text-center lg:text-left">
+          <div className="mt-4 text-center">
             <button
               type="button"
               onClick={resetAll}
@@ -850,7 +850,6 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
 
       </section>
         </div>
-        {heroArt && <div className="hidden lg:flex items-center rounded-[14px] bg-[#F6CF4E] overflow-hidden" aria-hidden="true">{heroArt}</div>}
       </div>
       </>
       )}
