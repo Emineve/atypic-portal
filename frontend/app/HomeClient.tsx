@@ -757,8 +757,8 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
             onClick={() => setShowFilters(true)}
             className="relative h-14 w-14 md:h-16 md:w-16 flex-none rounded-full border border-stone-200 bg-white inline-flex items-center justify-center hover:border-stone-900 transition shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
             aria-haspopup="dialog"
-            aria-label={activeFilters > 0 ? `Critères (${activeFilters})` : 'Critères'}
-            title="Critères"
+            aria-label={activeFilters > 0 ? `Mes critères (${activeFilters})` : 'Mes critères'}
+            title="Mes critères"
           >
             <SlidersHorizontal className="w-5 h-5" />
             {activeFilters > 0 && (
@@ -847,11 +847,11 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
       )}
 
       {showFilters && (
-        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Critères">
+        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Mes critères">
           <div className="absolute inset-0 bg-stone-900/40" onClick={() => setShowFilters(false)} />
           <div className="absolute right-0 top-0 h-full w-full md:max-w-md bg-white flex flex-col shadow-xl">
             <div className="flex items-center justify-between px-6 h-16 border-b border-stone-200 shrink-0">
-              <h2 className="font-serif text-xl text-stone-900">Critères</h2>
+              <h2 className="font-serif text-xl text-stone-900">Mes critères</h2>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
