@@ -26,7 +26,7 @@ export default function FinancementPage() {
           <BackLink className="mb-8 flex sm:hidden" />
           <Crumbs items={[{ label: 'Financement' }]} />
           <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-            Votre coup de cœur, <span className="text-stone-500">financé.</span>
+            Votre coup de cœur, <span className="italic text-stone-500">financé.</span>
           </h1>
           <p className="mt-4 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
             Estimez votre mensualité, puis faites étudier votre projet par un courtier.

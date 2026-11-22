@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { getSupabase } from '../../../lib/supabase';
+import { FIELD, LABEL } from '../../../lib/form';
 
 const REASONS: [string, string][] = [
   ['inexact', 'Information inexacte (prix, surface…)'],
@@ -40,7 +41,7 @@ export default function ReportButton({ listingId }: { listingId: string }) {
     return <p className="text-xs text-stone-500 text-center">Merci, votre signalement est enregistré.</p>;
   }
 
-  const field = 'rounded-[10px] w-full border border-stone-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-stone-900';
+  const field = FIELD;
 
   if (!open) {
     return (
@@ -58,7 +59,7 @@ export default function ReportButton({ listingId }: { listingId: string }) {
     <form onSubmit={onSubmit} className="rounded-[14px] border border-stone-200 bg-white p-4 space-y-3">
       <h2 className="font-serif text-base text-stone-900">Signaler cette annonce</h2>
       <div>
-        <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-reason">Motif</label>
+        <label className={LABEL} htmlFor="r-reason">Motif</label>
         <select id="r-reason" className={field} value={reason} onChange={(e) => setReason(e.target.value)}>
           {REASONS.map(([v, l]) => (
             <option key={v} value={v}>{l}</option>
@@ -66,11 +67,11 @@ export default function ReportButton({ listingId }: { listingId: string }) {
         </select>
       </div>
       <div>
-        <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-msg">Précisions (facultatif)</label>
+        <label className={LABEL} htmlFor="r-msg">Précisions</label>
         <textarea id="r-msg" rows={3} maxLength={1000} className={field} value={message} onChange={(e) => setMessage(e.target.value)} />
       </div>
       <div>
-        <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1" htmlFor="r-email">Votre email (facultatif)</label>
+        <label className={LABEL} htmlFor="r-email">E-mail</label>
         <input id="r-email" type="email" maxLength={200} className={field} value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="hidden" aria-hidden="true">

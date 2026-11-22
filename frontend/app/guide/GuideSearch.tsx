@@ -8,6 +8,7 @@ import { getSupabase } from '../../lib/supabase';
 import type { GuideHit } from '../../lib/guide-search';
 import { typo } from '../../lib/typo';
 import { EXAMPLES } from '../../lib/guide-examples';
+import { FIELD, LABEL } from '../../lib/form';
 
 // Date d'une vraie question, dite simplement : « aujourd'hui », « hier », « le 19 novembre »
 function publishedLabel(iso: string): string {
@@ -283,8 +284,8 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
               <form onSubmit={send} className={empty ? 'mt-5' : ''}>
                 {!empty && <p className="text-stone-600 leading-relaxed">Laissez-nous votre e-mail : nous vous écrivons dès que la réponse à « {asked} » est en ligne.</p>}
                 <div className="mt-4 flex flex-wrap items-end gap-x-5 gap-y-4">
-                  <label className="block min-w-0 flex-1 basis-64 text-xs uppercase tracking-widest text-stone-500">
-                    Votre e-mail
+                  <label className={`min-w-0 flex-1 basis-64 ${LABEL}`}>
+                    E-mail *
                     <input
                       required
                       type="email"
@@ -292,7 +293,7 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
                       maxLength={200}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans text-lg normal-case tracking-normal text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-0"
+                      className={FIELD}
                     />
                   </label>
                   <button type="submit" disabled={status === 'sending'} className={btn}>

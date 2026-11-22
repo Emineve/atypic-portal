@@ -5,6 +5,7 @@ import { useState } from 'react';
 import TeeShirt from '../TeeShirt';
 import { typo } from '../../lib/typo';
 import { getSupabase } from '../../lib/supabase';
+import { FIELD, LABEL } from '../../lib/form';
 
 const SIZES = ['S', 'M', 'L', 'XL'];
 
@@ -66,8 +67,8 @@ export default function TeeCard({ name, pitch }: { name: string; pitch: string }
             <p className="text-base leading-relaxed text-stone-700">
               Bien vu, la taille {size} vous irait très bien. Il n&apos;est pas encore en stock : laissez votre e-mail, nous vous prévenons dès qu&apos;il arrive.
             </p>
-            <label className="mt-5 block text-xs uppercase tracking-widest text-stone-500">
-              Votre e-mail
+            <label className={`mt-5 ${LABEL}`}>
+              E-mail *
               <input
                 required
                 type="email"
@@ -76,7 +77,7 @@ export default function TeeCard({ name, pitch }: { name: string; pitch: string }
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 autoFocus
-                className="mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans text-lg normal-case tracking-normal text-stone-900 focus:border-stone-900 focus:outline-none focus:ring-0"
+                className={FIELD}
               />
             </label>
             <button

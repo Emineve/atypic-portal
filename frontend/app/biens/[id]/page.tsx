@@ -435,17 +435,17 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <p className="text-xs uppercase tracking-widest text-stone-500">La copropriété</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {item.copro_lots ? (
-                        <span className="inline-flex items-center h-9 px-4 rounded-full bg-[#F6CF4E] text-sm text-stone-900">
+                        <span className="inline-flex items-center h-9 px-4 rounded-full border border-stone-300 text-sm text-stone-700">
                           {item.copro_lots} {Number(item.copro_lots) > 1 ? 'lots' : 'lot'}
                         </span>
                       ) : null}
                       {chargesLevel ? (
-                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F6CF4E] text-sm text-stone-900">
+                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full border border-stone-300 text-sm text-stone-700">
                           {chargesLevel}
                         </span>
                       ) : null}
                       {item.copro_procedure ? (
-                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full bg-[#F6CF4E] text-sm text-stone-900">
+                        <span className="inline-flex items-center min-h-[2.25rem] px-4 py-1.5 rounded-full border border-stone-300 text-sm text-stone-700">
                           {/^aucune/i.test(String(item.copro_procedure)) ? 'Aucune procédure en cours' : item.copro_procedure}
                         </span>
                       ) : null}
@@ -521,8 +521,8 @@ export default async function ListingPage({ params }: { params: { id: string } }
           {/* Sur téléphone : une vignette, le titre et le prix sur une ligne. À partir de la tablette : trois cartes. */}
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
             {related.map((r) => (
-              <Link key={r.id} href={`/biens/${r.id}`} className="group flex items-center gap-4 sm:block sm:border sm:border-stone-300 sm:hover:shadow-lg sm:transition">
-                <div className="w-28 flex-none aspect-[4/3] bg-stone-100 overflow-hidden sm:w-auto">
+              <Link key={r.id} href={`/biens/${r.id}`} className="group flex items-center gap-4 overflow-hidden sm:block sm:rounded-[14px] sm:border sm:border-stone-200 sm:bg-white sm:hover:border-stone-900 sm:transition-colors">
+                <div className="w-28 flex-none aspect-[4/3] bg-stone-100 overflow-hidden rounded-[10px] sm:w-auto sm:rounded-none">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={r.cover_image_url} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>

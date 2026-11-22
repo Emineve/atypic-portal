@@ -56,7 +56,13 @@ export default async function InspirationPage() {
       <SiteHeader />
 
       {!featured ? (
-        <p className="text-center py-24 text-stone-500">Bientôt le premier architecte à la une.</p>
+        <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-24">
+          <Crumbs items={[{ label: 'Inspiration' }]} />
+          <h1 className="max-w-4xl mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
+            Des idées pour <span className="italic text-stone-500">habiter autrement.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">Bientôt le premier architecte à la une.</p>
+        </div>
       ) : (
         <>
           <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-6">
