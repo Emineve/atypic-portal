@@ -7,7 +7,7 @@ import AlertBand, { ALERT_BUTTON } from './AlertBand';
 import SmartAlert from './SmartAlert';
 import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
-import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowUpRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
+import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
 import AlertPhrase from './AlertPhrase';
@@ -1083,7 +1083,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                           <span className="min-w-0 text-[11px] leading-snug text-stone-500">{agencyLine(item.source_agency)}</span>
                           <span className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900 transition">
                             Voir le bien
-                            <ArrowUpRight className="w-3.5 h-3.5" />
+                            <ArrowRight className="w-3.5 h-3.5" />
                           </span>
                         </div>
                       </div>

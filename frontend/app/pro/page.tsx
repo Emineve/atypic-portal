@@ -62,17 +62,17 @@ const VISITORS: { title: string; text: string; kind: BuyerKind }[] = [
   {
     kind: 'decide',
     title: 'L’acheteur décidé',
-    text: 'Projet, budget, calendrier : il est prêt. Il veut voir d’un coup tous les biens atypiques du marché, crée son alerte et demande à être recontacté dès qu’un bien lui plaît. C’est votre contact le plus sérieux.',
+    text: 'Projet, budget, calendrier : il est prêt à visiter.',
   },
   {
     kind: 'reveur',
     title: 'Le rêveur',
-    text: 'Il n’achète pas encore. Il regarde, met en favori, revient. C’est votre acquéreur de demain, et le jour où il se décide, il connaît déjà votre agence.',
+    text: 'Il regarde, met en favori, revient : votre acquéreur de demain.',
   },
   {
     kind: 'architecture',
     title: 'L’amoureux d’architecture',
-    text: 'Architecture, design, décoration : il sait ce qu’est une verrière d’atelier ou une belle hauteur sous plafond. Il ne visite pas par hasard, et vous ne perdez pas votre temps.',
+    text: 'Il sait ce qu’il vient voir, et ne visite pas par hasard.',
   },
 ];
 
@@ -134,12 +134,14 @@ export default function ProPage() {
           <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
             Trois profils d&apos;acheteurs, tous à la recherche d&apos;atypique.
           </p>
-          <div className="mt-10 grid md:grid-cols-3 gap-x-10 gap-y-8">
+          <div className="mt-8 grid md:grid-cols-3 gap-x-10">
             {VISITORS.map((v) => (
-              <div key={v.title} className="border-t border-stone-200 pt-5">
-                <BuyerFigure kind={v.kind} className="h-24 w-24 -ml-3" />
-                <h3 className="mt-4 font-serif text-2xl text-stone-900">{v.title}</h3>
-                <p className="mt-3 text-base font-light leading-relaxed text-stone-600">{v.text}</p>
+              <div key={v.title} className="flex items-center gap-4 border-t border-stone-200 py-4">
+                <BuyerFigure kind={v.kind} className="h-16 w-16 flex-none -ml-2" />
+                <div>
+                  <h3 className="font-serif text-xl text-stone-900">{v.title}</h3>
+                  <p className="mt-1 text-[15px] leading-snug text-stone-600">{v.text}</p>
+                </div>
               </div>
             ))}
           </div>

@@ -9,6 +9,7 @@ import { Phone, Check, X, Bell, Send } from 'lucide-react';
 import { getSupabase } from '../../../lib/supabase';
 import { whatsappLink, WHATSAPP_ICON_PATH } from './whatsapp';
 import { formatPhone } from '../../../lib/phone';
+import { FIELD, LABEL } from '../../../lib/form';
 
 function sessionId() {
   try {
@@ -153,8 +154,8 @@ export default function ContactForm({
     }
   }
 
-  const field = 'w-full h-10 border-0 border-b border-stone-300 bg-transparent px-0 text-base text-stone-900 placeholder:text-stone-300 rounded-none focus:outline-none focus:ring-0 focus:border-stone-900 transition-colors';
-  const fieldLabel = 'block text-xs uppercase tracking-widest text-stone-500';
+  const field = FIELD;
+  const fieldLabel = LABEL;
   // Une agence sans interlocuteur nommé : son nom n'est affiché qu'une fois
   const person = contactName && contactName.trim().toLowerCase() !== agency.trim().toLowerCase() ? contactName.trim() : '';
 
@@ -317,11 +318,11 @@ export default function ContactForm({
           )}
         </>
       ) : (
-        <form onSubmit={onSubmit} className="mt-6 space-y-5">
+        <form onSubmit={onSubmit} className="mt-6 space-y-4">
           {tab === 'msg' && (
             <div>
               <label className={fieldLabel} htmlFor="c-msg">Votre message</label>
-              <textarea id="c-msg" rows={5} className="mt-2 w-full border border-stone-300 bg-white px-3 py-2.5 text-base leading-relaxed rounded-none placeholder:text-stone-300 focus:outline-none focus:border-stone-900" maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
+              <textarea id="c-msg" rows={5} className={`${FIELD} leading-relaxed`} maxLength={1800} value={message} onChange={(e) => setMessage(e.target.value)} />
             </div>
           )}
 

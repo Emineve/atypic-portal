@@ -1,7 +1,7 @@
 import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import ArchitectContact from './ArchitectContact';
 import PhotoMosaic from '../biens/[id]/PhotoMosaic';
@@ -96,7 +96,7 @@ export default async function InspirationPage() {
                   className="inline-flex items-center gap-1.5 text-[15px] font-medium text-stone-900 underline underline-offset-4"
                 >
                   Son site
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               )}
               <ArchitectContact slug={featured.slug} name={featured.name} />
@@ -135,7 +135,7 @@ export default async function InspirationPage() {
                     {a.tagline && <p className="mt-2 text-sm text-stone-500">{a.tagline}</p>}
                     <span className="mt-3 inline-flex items-center gap-1 text-[15px] font-medium text-stone-900">
                       Son portrait
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </Link>
                 );

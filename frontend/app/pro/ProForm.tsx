@@ -4,6 +4,7 @@ import Done from '../Done';
 import { useState } from 'react';
 import { getSupabase } from '../../lib/supabase';
 import { formatPhone } from '../../lib/phone';
+import { FIELD, LABEL } from '../../lib/form';
 
 export default function ProForm() {
   const [agency, setAgency] = useState('');
@@ -43,8 +44,8 @@ export default function ProForm() {
     );
   }
 
-  const field = 'mt-1 w-full rounded-[10px] border border-stone-300 bg-white px-3 py-3 font-sans text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-900 focus:ring-0';
-  const label = 'block text-xs uppercase tracking-wider text-stone-500 mb-1';
+  const field = FIELD;
+  const label = LABEL;
 
   return (
     <>

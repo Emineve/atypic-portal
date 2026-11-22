@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { getSupabase } from '../../lib/supabase';
 import { formatPhone } from '../../lib/phone';
+import { FIELD, LABEL } from '../../lib/form';
 
 type Props = { price: number; down: number; years: number; monthly: number };
 
@@ -48,8 +49,8 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
     }
   }
 
-  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans text-lg text-stone-900 focus:outline-none focus:border-stone-900 focus:ring-0';
-  const label = 'block text-xs uppercase tracking-widest text-stone-500';
+  const field = FIELD;
+  const label = LABEL;
   const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full disabled:opacity-60';
 
   return (
@@ -119,7 +120,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
 
       {status !== 'done' && open && (
         <form onSubmit={onSubmit} className="mt-8">
-          <div className="grid sm:grid-cols-3 gap-x-8 gap-y-6">
+          <div className="grid sm:grid-cols-3 gap-x-4 gap-y-4">
             <label className={label}>
               Prénom et nom *
               <input required minLength={2} maxLength={120} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className={field} autoFocus />

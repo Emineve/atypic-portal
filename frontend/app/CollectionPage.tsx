@@ -2,7 +2,7 @@ import { agencyLine } from '../lib/agencyLine';
 import Crumbs from './Crumbs';
 import SiteHeader from './SiteHeader';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SITE_URL } from '../lib/site';
 import Tracker from './Tracker';
 import CollectionAlert from './CollectionAlert';
@@ -104,7 +104,7 @@ export default function CollectionPage({
                     </span>
                     <Link href={`/biens/${item.id}`} className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
                       Voir le bien
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>

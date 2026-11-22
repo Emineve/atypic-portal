@@ -2,7 +2,7 @@ import SmartAlert from '../../SmartAlert';
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowUpRight, Check, Search } from 'lucide-react';
+import { ArrowRight, Check, Search } from 'lucide-react';
 import GuideArt from '../GuideArt';
 import ChecklistShare from '../ChecklistShare';
 import Checklist from '../Checklist';
@@ -239,7 +239,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
               <li key={s.url}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-stone-700 underline underline-offset-4 decoration-stone-300 hover:text-stone-900">
                   {typo(s.label)}
-                  <ArrowUpRight className="ml-1 inline-block w-3.5 h-3.5 align-[-2px]" />
+                  <ArrowRight className="ml-1 inline-block w-3.5 h-3.5 align-[-2px]" />
                 </a>
               </li>
             ))}

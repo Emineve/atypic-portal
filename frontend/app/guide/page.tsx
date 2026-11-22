@@ -4,7 +4,7 @@ import GuideSearch from './GuideSearch';
 import { typo } from '../../lib/typo';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import GuideArt from './GuideArt';
 import { getSupabase } from '../../lib/supabase';
 import SpecialistVideoCard from './SpecialistVideoCard';
@@ -85,7 +85,7 @@ export default async function GuideIndex() {
               <p className="mt-4 text-stone-600 leading-relaxed">{typo(first.description)}</p>
               <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900">
                 Lire l&apos;article
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </div>
           </Link>

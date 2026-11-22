@@ -3,7 +3,7 @@ import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import { typo } from '../../lib/typo';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata = {
   title: 'Pourquoi Loftissime',
@@ -90,7 +90,7 @@ export default function ManifestoPage() {
                 {a.link && (
                   <span className={`mt-5 self-start ${link}`}>
                     {typo(a.link)}
-                    <ArrowUpRight className="ml-1.5 inline-block w-4 h-4 align-[-3px]" />
+                    <ArrowRight className="ml-1.5 inline-block w-4 h-4 align-[-3px]" />
                   </span>
                 )}
               </Link>
