@@ -71,7 +71,7 @@ const CATEGORIES = [
 ];
 
 const SORTS = [
-  { value: 'selection', label: 'En rotation' },
+  { value: 'selection', label: 'Par défaut' },
   { value: 'recent', label: 'Les plus récents' },
   { value: 'price_desc', label: 'Prix décroissant' },
   { value: 'price_asc', label: 'Prix croissant' },
