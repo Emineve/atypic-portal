@@ -120,7 +120,7 @@ export default function LocationPicker({
   return (
     <div>
       <div className="relative">
-        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none" />
+        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-500 pointer-events-none" />
         <input
           type="text"
           inputMode="search"
@@ -160,7 +160,7 @@ export default function LocationPicker({
                   onClick={() => add(p.value)}
                   className={`w-full min-h-[44px] px-3 py-2 flex items-center gap-2 text-left text-sm text-stone-900 hover:bg-stone-100 ${i === 0 ? 'bg-stone-50' : ''}`}
                 >
-                  <MapPin className="w-4 h-4 flex-none text-stone-400" />
+                  <MapPin className="w-4 h-4 flex-none text-stone-500" />
                   {p.label}
                 </button>
               </li>

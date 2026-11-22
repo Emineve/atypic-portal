@@ -51,7 +51,7 @@ export default function Checklist({ slug, items }: { slug: string; items: string
                     </svg>
                   )}
                 </span>
-                <span className={on ? 'text-stone-400 line-through decoration-stone-300' : 'text-stone-700'}>{typo(it)}</span>
+                <span className={on ? 'text-stone-500 line-through decoration-stone-300' : 'text-stone-700'}>{typo(it)}</span>
               </button>
             </li>
           );

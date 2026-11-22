@@ -58,7 +58,7 @@ export default function ManifestoPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-8 md:pb-10">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">
         <Crumbs items={[{ label: 'Pourquoi Loftissime' }]} />
         <h1 className="mt-5 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Pour ceux qui ne veulent pas habiter <span className="italic text-stone-500">comme tout le monde.</span>
@@ -77,7 +77,7 @@ export default function ManifestoPage() {
                 href={a.href || '/'}
                 className="group flex w-full flex-col rounded-[20px] border border-stone-200 bg-white p-6 md:p-8 transition hover:border-stone-300 hover:shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)]"
               >
-                <span className="block font-sans text-xs font-semibold tracking-widest text-stone-400" aria-hidden="true">
+                <span className="block font-sans text-xs font-semibold tracking-widest text-stone-500" aria-hidden="true">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h2 className="mt-3 font-serif text-2xl md:text-[1.75rem] tracking-tight leading-[1.15] text-stone-900 [text-wrap:balance]">{typo(a.title)}</h2>

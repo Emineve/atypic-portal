@@ -113,7 +113,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
         </Link>
       </section>
 
-      <p className="max-w-2xl mx-auto px-6 pb-16 text-center text-xs text-stone-400">
+      <p className="max-w-2xl mx-auto px-6 pb-16 text-center text-xs text-stone-500">
         Portrait éditorial, non sponsorisé. Photographies : © {a.name} et ses photographes.
       </p>
     </div>

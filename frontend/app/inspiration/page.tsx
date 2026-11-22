@@ -56,10 +56,10 @@ export default async function InspirationPage() {
       <SiteHeader />
 
       {!featured ? (
-        <p className="text-center py-24 text-stone-400">Bientôt le premier architecte à la une.</p>
+        <p className="text-center py-24 text-stone-500">Bientôt le premier architecte à la une.</p>
       ) : (
         <>
-          <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-8 md:pb-6">
+          <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-6">
             <Crumbs items={[{ label: 'Inspiration' }]} />
             <p className="max-w-4xl mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
               Des idées pour <span className="italic text-stone-500">habiter autrement.</span>
@@ -102,7 +102,7 @@ export default async function InspirationPage() {
               <ArchitectContact slug={featured.slug} name={featured.name} />
             </div>
             {photos.length > 0 && (
-              <p className="mt-10 text-xs text-stone-400">
+              <p className="mt-10 text-xs text-stone-500">
                 Portrait éditorial, non sponsorisé. Photographies : © {featured.name} et ses photographes.
               </p>
             )}

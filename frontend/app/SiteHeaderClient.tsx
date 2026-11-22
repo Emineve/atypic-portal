@@ -1,5 +1,6 @@
 'use client';
 
+import HeaderLinks from './HeaderLinks';
 import DemoBand from './DemoBand';
 import { blackButtonOnScreen } from '../lib/blackButton';
 import { useEffect, useState } from 'react';
@@ -67,7 +68,10 @@ export default function SiteHeaderClient({
       <DemoBand />
       <nav className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className={`${wide ? 'max-w-7xl' : 'max-w-6xl'} mx-auto px-6 h-16 flex items-center justify-between gap-4`}>
-          <Logo />
+          <div className="flex items-center gap-10">
+            <Logo />
+            <HeaderLinks />
+          </div>
           <div className="flex items-center gap-4 sm:gap-6">
             <ModeEmploiBack />
             {back ??

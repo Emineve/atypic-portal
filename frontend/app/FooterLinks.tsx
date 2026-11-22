@@ -22,12 +22,12 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
               loftissime.
             </a>
             <p className="mt-4 font-serif text-xl text-[#F6CF4E]">Curateur de biens atypiques</p>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-400">
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-500">
               Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte : tous les biens atypiques, réunis sur un seul site.
             </p>
             <div className="mt-7 flex gap-2" aria-hidden="true">
               {SOCIALS.map((s) => (
-                <span key={s.name} title={`${s.name} (bientôt)`} className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 text-stone-400">
+                <span key={s.name} title={`${s.name} (bientôt)`} className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 text-stone-500">
                   <s.icon className="h-4 w-4" />
                 </span>
               ))}

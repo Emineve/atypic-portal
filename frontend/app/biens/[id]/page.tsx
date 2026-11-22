@@ -140,6 +140,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
     : 0;
   // Honoraires : la phrase de l'annonce si elle le dit, sinon le réglage de l'agence (back-office)
   const { data: agencyPayer } = await getSupabase().rpc('agency_fees_payer', { p_source: item.source_agency });
+  // Date de mise en ligne, affichée le premier mois seulement : au-delà, elle desservirait le bien
+  const onlineDays = item.first_seen_at ? Math.floor((Date.now() - new Date(item.first_seen_at).getTime()) / 86400000) : null;
+  const onlineSince = onlineDays === null || onlineDays < 0 || onlineDays > 30
+    ? null
+    : onlineDays === 0 ? 'En ligne depuis aujourd’hui' : onlineDays === 1 ? 'En ligne depuis hier' : `En ligne depuis ${onlineDays} jours`;
   const feesPayer: 'vendeur' | 'acquereur' | null = /acqu[ée]reur/i.test(item.fees_text || '')
     ? 'acquereur'
     : /vendeur/i.test(item.fees_text || '')
@@ -234,7 +239,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   {agencyCount > 1 ? `Voir ses ${agencyCount} biens sur Loftissime` : 'Voir sa page sur Loftissime'}
                 </span>
               </span>
-              <ChevronRight className="w-5 h-5 flex-none text-stone-400 group-hover:text-stone-900 transition" />
+              <ChevronRight className="w-5 h-5 flex-none text-stone-500 group-hover:text-stone-900 transition" />
             </Link>
           </div>
   );
@@ -267,6 +272,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
               <MapPin className="w-5 h-5 flex-none text-stone-500" strokeWidth={1.5} aria-hidden="true" />
               {item.district ? `${item.district}, ` : ''}{item.city}
             </p>
+            {onlineSince && <p className="mt-1.5 text-sm text-stone-500">{onlineSince}</p>}
 
             {item.atypic_tags?.length > 0 && (
               <ul className="mt-4 flex flex-wrap gap-2" aria-label="Atouts du bien">
@@ -286,27 +292,27 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 <dl className="mt-5 grid grid-cols-3 gap-x-4 gap-y-5 border-t border-stone-200 pt-5 md:grid-cols-4 lg:mt-0 lg:border-0 lg:pt-0">
                   {facts.map(([label, value, Icon]) => (
                     <div key={label} className="flex items-start gap-3">
-                      <Icon className="mt-1 hidden w-5 h-5 flex-none text-stone-400 md:block" strokeWidth={1.5} aria-hidden="true" />
+                      <Icon className="mt-1 hidden w-5 h-5 flex-none text-stone-500 md:block" strokeWidth={1.5} aria-hidden="true" />
                       <div className="min-w-0">
-                        <dt className="text-[11px] uppercase tracking-wider text-stone-500">{label}</dt>
+                        <dt className="text-xs uppercase tracking-wider text-stone-500">{label}</dt>
                         <dd className="mt-0.5 font-sans text-[15px] font-medium leading-snug text-stone-900 md:text-lg">{value}</dd>
                       </div>
                     </div>
                   ))}
                   {item.dpe_class && (
                     <div className="flex items-start gap-3">
-                      <Zap className="mt-1 hidden w-5 h-5 flex-none text-stone-400 md:block" strokeWidth={1.5} aria-hidden="true" />
+                      <Zap className="mt-1 hidden w-5 h-5 flex-none text-stone-500 md:block" strokeWidth={1.5} aria-hidden="true" />
                       <div className="min-w-0">
-                        <dt className="text-[11px] uppercase tracking-wider text-stone-500">Énergie</dt>
+                        <dt className="text-xs uppercase tracking-wider text-stone-500">Énergie</dt>
                         <dd className="mt-1.5"><EnergyPill kind="dpe" value={item.dpe_class} bare /></dd>
                       </div>
                     </div>
                   )}
                   {item.ges_class && (
                     <div className="flex items-start gap-3">
-                      <Leaf className="mt-1 hidden w-5 h-5 flex-none text-stone-400 md:block" strokeWidth={1.5} aria-hidden="true" />
+                      <Leaf className="mt-1 hidden w-5 h-5 flex-none text-stone-500 md:block" strokeWidth={1.5} aria-hidden="true" />
                       <div className="min-w-0">
-                        <dt className="text-[11px] uppercase tracking-wider text-stone-500">Climat</dt>
+                        <dt className="text-xs uppercase tracking-wider text-stone-500">Climat</dt>
                         <dd className="mt-1.5"><EnergyPill kind="ges" value={item.ges_class} bare /></dd>
                       </div>
                     </div>
@@ -391,7 +397,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 {monthly > 0 && (
                   <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <span className="font-sans font-light tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
-                      <span className="font-sans text-3xl text-stone-400" aria-label="environ">≈</span> {eur0(monthly)}
+                      <span className="font-sans text-3xl text-stone-500" aria-label="environ">≈</span> {eur0(monthly)}
                     </span>
                     <span className="text-sm text-stone-500">par mois, hors crédit</span>
                   </p>

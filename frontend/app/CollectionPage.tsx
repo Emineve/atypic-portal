@@ -53,7 +53,7 @@ export default function CollectionPage({
       <Tracker />
       <SiteHeader wide />
 
-      <header className="max-w-7xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-7xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
         <Crumbs items={hideAgency ? [{ label: 'Agences', href: '/agence' }, { label: title }] : [{ label: alert?.location || alert?.category || title }]} />
         <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{title}</h1>
         <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-stone-600">{intro}</p>
@@ -82,7 +82,7 @@ export default function CollectionPage({
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>
                     <p className="mb-2 flex items-baseline justify-between gap-3">
-                      <span className="text-xs text-stone-400 uppercase tracking-wider">{item.city}{item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}</span>
+                      <span className="text-xs text-stone-500 uppercase tracking-wider">{item.city}{item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}</span>
                       <span className="flex-none whitespace-nowrap text-lg font-medium tracking-tight font-sans tabular-nums text-stone-900">
                         {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
                       </span>
@@ -99,7 +99,7 @@ export default function CollectionPage({
                     )}
                   </div>
                   <div className="mt-6 flex items-end justify-between gap-4">
-                    <span className="min-w-0 text-[11px] leading-snug text-stone-500">
+                    <span className="min-w-0 text-xs leading-snug text-stone-500">
                       {[hideAgency ? null : agencyLine(item.source_agency), item.source_id ? `Réf. ${item.source_id}` : null].filter(Boolean).join(' · ')}
                     </span>
                     <Link href={`/biens/${item.id}`} className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">

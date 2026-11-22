@@ -21,7 +21,7 @@ export default function FinancementPage() {
       {/* Sur téléphone, le retour à l'annonce passe sous l'en-tête, qui n'a pas la place de l'accueillir */}
       <SiteHeader back={<BackLink className="hidden sm:inline-flex" />} />
 
-      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-7 md:pb-9">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-7 md:pb-9">
         <div className="max-w-3xl">
           <BackLink className="mb-8 flex sm:hidden" />
           <Crumbs items={[{ label: 'Financement' }]} />
@@ -35,14 +35,16 @@ export default function FinancementPage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
-        <div className="max-w-3xl pb-20 space-y-12">
+        {/* Grand écran : le simulateur à gauche, les taux et les repères à droite */}
+        <div className="pb-20 grid gap-12 lg:grid-cols-2 lg:gap-14 lg:items-start">
         <div id="simulateur" className="scroll-mt-24">
           <Simulator />
         </div>
+        <div className="space-y-10">
 
         <section>
           <h2 className="font-serif text-2xl text-stone-900">Les taux du mois</h2>
-          <div className="mt-5 overflow-hidden rounded-[14px] border border-stone-200 bg-white shadow-[0_10px_28px_-16px_rgba(28,25,23,0.25)]">
+          <div className="mt-5 overflow-hidden rounded-[14px] border border-stone-200 bg-white">
             <table className="w-full table-fixed text-center">
               <thead>
                 <tr className="text-xs uppercase tracking-widest text-stone-500">
@@ -86,6 +88,7 @@ export default function FinancementPage() {
             engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
           </p>
         </section>
+        </div>
       </div>
       </main>
     </div>

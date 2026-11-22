@@ -73,7 +73,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
               type="button"
               onClick={() => setSize(s)}
               aria-pressed={size === s}
-              className={`font-sans text-xl underline-offset-8 transition ${size === s ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-400 hover:text-stone-900'}`}
+              className={`font-sans text-xl underline-offset-8 transition ${size === s ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-500 hover:text-stone-900'}`}
             >
               {s}
             </button>
@@ -105,8 +105,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
             <button
               type="submit"
               disabled={status === 'sending'}
-              style={{ backgroundColor: color.value }}
-              className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-full border border-stone-900 text-[15px] font-medium text-stone-900 transition hover:opacity-85 disabled:opacity-60 sm:w-auto sm:min-w-[16rem] sm:px-10"
+              className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-full bg-stone-900 text-[15px] font-medium text-white transition hover:bg-stone-800 disabled:opacity-60 sm:w-auto sm:min-w-[16rem] sm:px-10"
             >
               {status === 'sending' ? 'Envoi…' : 'Me prévenir'}
             </button>
@@ -120,8 +119,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
           <button
             type="button"
             onClick={() => setAsked(true)}
-            style={{ backgroundColor: color.value }}
-            className="mt-7 inline-flex h-12 w-full items-center justify-center rounded-full border border-stone-900 text-[15px] font-medium text-stone-900 transition hover:opacity-85 sm:w-auto sm:min-w-[16rem] sm:px-10"
+            className="mt-7 inline-flex h-12 w-full items-center justify-center rounded-full bg-stone-900 text-[15px] font-medium text-white transition hover:bg-stone-800 sm:w-auto sm:min-w-[16rem] sm:px-10"
           >
             Je le veux
           </button>

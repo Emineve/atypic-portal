@@ -89,7 +89,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
       {status === 'error' && (
         <p className={`mt-2 text-xs ${dark ? 'text-red-300' : 'text-red-700'}`}>{limit ? <>Vous avez déjà dix alertes actives avec cet e-mail. Arrêtez-en une depuis <a href="/alerte" className="underline underline-offset-2">Mes alertes</a> pour en créer une nouvelle.</> : <>L&apos;alerte n&apos;a pas pu être créée. Vérifiez votre e-mail et réessayez.</>}</p>
       )}
-      <p className={`mt-2 text-xs ${dark ? 'text-stone-400' : 'text-stone-500'}`}>
+      <p className={`mt-2 text-xs ${dark ? 'text-stone-500' : 'text-stone-500'}`}>
         En créant l&apos;alerte, vous acceptez de recevoir ces e-mails. Arrêt possible à tout moment.
       </p>
     </form>
@@ -204,7 +204,7 @@ export function FavoriteAlertToast({ city, price }: Props) {
         )}
         {state === 'form' && (
           <div className="px-4 py-4">
-            <button type="button" onClick={close} aria-label="Fermer" className="absolute top-0 right-0 h-10 w-10 flex items-center justify-center text-stone-400 hover:text-white">
+            <button type="button" onClick={close} aria-label="Fermer" className="absolute top-0 right-0 h-10 w-10 flex items-center justify-center text-stone-500 hover:text-white">
               <X className="w-4 h-4" />
             </button>
             <p className="pr-8 text-sm text-stone-200">

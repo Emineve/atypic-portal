@@ -113,7 +113,7 @@ export default function MenuPanel({
           </div>
           {groups.map((g) => (
             <div key={g.title} className="mt-6">
-              <p className="px-2 pb-1 text-xs uppercase tracking-widest text-stone-400">{g.title}</p>
+              <p className="px-2 pb-1 text-xs uppercase tracking-widest text-stone-500">{g.title}</p>
               {g.items.map((item) => (
                 <Row key={item.href} item={item} />
               ))}

@@ -7,7 +7,7 @@ export default function LegalPage({ title, children, hideBanner }: { title: stri
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
       <main className="max-w-6xl mx-auto px-6">
-        <div className="max-w-3xl pt-12 md:pt-20 pb-24">
+        <div className="max-w-3xl pt-8 md:pt-12 pb-24">
         <Crumbs items={[{ label: title }]} className="mb-8" />
         {!LEGAL_READY && !hideBanner && (
           <p className="mb-8 rounded-[10px] border border-stone-300 bg-stone-50 text-xs text-stone-600 p-3 leading-relaxed">

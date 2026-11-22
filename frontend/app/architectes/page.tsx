@@ -21,7 +21,7 @@ export default async function ArchitectsPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
         <Crumbs items={[{ label: 'Inspiration', href: '/inspiration' }, { label: 'Architectes' }]} />
         <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Des architectes <span className="italic text-stone-500">qui sortent de l&apos;ordinaire.</span>
@@ -31,7 +31,7 @@ export default async function ArchitectsPage() {
 
       <main className="max-w-6xl mx-auto px-6 pb-24">
         {rows.length === 0 ? (
-          <p className="text-center py-16 text-stone-400">Bientôt les premiers portraits.</p>
+          <p className="text-center py-16 text-stone-500">Bientôt les premiers portraits.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {rows.map((a) => (

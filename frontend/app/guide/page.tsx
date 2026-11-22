@@ -70,7 +70,7 @@ export default async function GuideIndex() {
         )}
 
         {first && (
-          <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 rounded-[14px] overflow-hidden bg-white border border-stone-900 shadow-[6px_6px_0_0_#1c1917] hover:shadow-[10px_10px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+          <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 rounded-[14px] overflow-hidden bg-white border border-stone-200 hover:border-stone-900 transition-colors">
             <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F6CF4E] flex items-center">
               <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
@@ -131,7 +131,7 @@ export default async function GuideIndex() {
               <ul className="mt-8 hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {items.map((a) => (
                   <li key={a.slug}>
-                    <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col rounded-[14px] overflow-hidden bg-white border border-stone-900 hover:shadow-[6px_6px_0_0_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                    <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col rounded-[14px] overflow-hidden bg-white border border-stone-200 hover:border-stone-900 transition-colors">
                       <div className="overflow-hidden border-b border-stone-900">
                         <GuideArt art={a.art} className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
                       </div>

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { markSeen, readSeen } from '../lib/seen';
 
 export const SEEN_BADGE =
-  'absolute left-3 bottom-3 rounded-full bg-stone-900/70 px-2.5 py-1 text-[11px] font-medium leading-none text-white backdrop-blur-sm';
+  'absolute left-3 bottom-3 rounded-full bg-stone-900/70 px-2.5 py-1 text-xs font-medium leading-none text-white backdrop-blur-sm';
 
 // Sur la fiche : mémorise que ce bien a été consulté
 export function MarkSeen({ id }: { id: string }) {

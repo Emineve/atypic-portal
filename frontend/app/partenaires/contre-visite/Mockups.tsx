@@ -21,9 +21,9 @@ export function Shot({ children, ratio = 'aspect-[9/16]', question = QUESTION, r
       <Bust className="absolute bottom-0 left-1/2 h-[62%] -translate-x-1/2" />
       <p className="absolute inset-x-0 top-0 bg-gradient-to-b from-black/60 to-transparent px-4 pb-8 pt-4 font-serif text-[15px] leading-snug text-white">{question}</p>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-4 pt-10">
-        <p className="inline-block rounded bg-[#F6CF4E] px-1.5 py-0.5 text-[11px] font-semibold text-stone-900">{quote}</p>
+        <p className="inline-block rounded bg-[#F6CF4E] px-1.5 py-0.5 text-xs font-semibold text-stone-900">{quote}</p>
         <p className="mt-2 text-[12px] font-semibold text-white">Votre nom</p>
-        <p className="text-[11px] text-white/80">{role}</p>
+        <p className="text-xs text-white/80">{role}</p>
       </div>
       {children}
     </div>
@@ -42,7 +42,7 @@ export function Phone({ label, note, handle }: { label: string; note: string; ha
               <Send className="h-5 w-5" strokeWidth={1.75} />
             </div>
           </Shot>
-          <div className="bg-stone-900 px-3 py-2.5 text-[11px] leading-snug text-white/90">
+          <div className="bg-stone-900 px-3 py-2.5 text-xs leading-snug text-white/90">
             <span className="font-semibold">{handle}</span> Contre-visite : une question, un spécialiste, une minute.
           </div>
         </div>

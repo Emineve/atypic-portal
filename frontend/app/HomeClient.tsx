@@ -5,6 +5,9 @@ import Logo from './Logo';
 import MenuPanel from './MenuPanel';
 import AlertBand, { ALERT_BUTTON } from './AlertBand';
 import SmartAlert from './SmartAlert';
+import HeaderLinks from './HeaderLinks';
+import FavoritesByMail from './FavoritesByMail';
+import { previousVisit } from '../lib/lastVisit';
 import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
@@ -194,6 +197,18 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
     }
     // Lien « Mes favoris » du menu des autres pages (/?favoris=1)
     if (params.get('favoris') === '1') {
+      // Lien reçu par e-mail (/?favoris=1&f=…) : ces biens rejoignent les favoris de cet appareil
+      const sent = (params.get('f') || '').split(',').filter((x) => /^[0-9a-f-]{36}$/i.test(x)).slice(0, 20);
+      if (sent.length > 0) {
+        try {
+          const cur = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]');
+          const known = new Set(listings.map((l) => l.id));
+          const merged = Array.from(new Set([...(Array.isArray(cur) ? cur : []), ...sent.filter((x) => known.has(x))]));
+          localStorage.setItem(FAVORITES_KEY, JSON.stringify(merged));
+        } catch {
+          /* stockage indisponible : la liste s'ouvre sans eux */
+        }
+      }
       setOnlyFavs(true);
       window.history.replaceState(null, '', window.location.pathname);
     }
@@ -240,6 +255,15 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
     load();
     window.addEventListener('pageshow', load);
     return () => window.removeEventListener('pageshow', load);
+  }, []);
+
+  // Biens arrivés depuis la visite précédente (date gardée dans le navigateur)
+  const [newSince, setNewSince] = useState(0);
+  useEffect(() => {
+    const prev = previousVisit();
+    if (!prev) return;
+    setNewSince(listings.filter((l) => l.first_seen_at && new Date(l.first_seen_at).getTime() > prev).length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Retour depuis une fiche : la liste se replace sur le bien que l'on venait d'ouvrir
@@ -552,6 +576,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           >
             <Logo tagline={false} />
           </div>
+          <div className="mr-auto ml-10">
+            <HeaderLinks />
+          </div>
 
           <div className="flex items-center gap-5 md:gap-8 text-xs uppercase tracking-widest font-medium text-stone-900">
             <ModeEmploiBack />
@@ -630,7 +657,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       <section className="max-w-7xl mx-auto px-6 pb-8">
         <div className="max-w-3xl mx-auto flex gap-2">
           <div className="relative flex-1">
-            <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
+            <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-stone-500" />
             <input
               type="search"
               name="recherche-lieu"
@@ -680,7 +707,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => setQuery('')}
                 aria-label="Effacer la saisie"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-11 w-11 flex items-center justify-center text-stone-400 hover:text-stone-900"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-11 w-11 flex items-center justify-center text-stone-500 hover:text-stone-900"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -699,7 +726,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                       onClick={() => addPlace(p)}
                       className={`w-full min-h-[52px] px-4 py-2 flex items-center gap-3 text-left hover:bg-stone-100 ${i === 0 ? 'bg-stone-50' : ''}`}
                     >
-                      <MapPin className="w-4 h-4 flex-none text-stone-400" />
+                      <MapPin className="w-4 h-4 flex-none text-stone-500" />
                       <span className="flex-1 min-w-0">
                         <span className="block text-base text-stone-900 truncate">{p.value}</span>
                         {p.sub && <span className="block text-xs text-stone-500 truncate">{p.sub}</span>}
@@ -728,7 +755,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
           >
             <SlidersHorizontal className="w-5 h-5" />
             {activeFilters > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#F6CF4E] px-1 text-[11px] font-semibold text-stone-900">
+              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#F6CF4E] px-1 text-xs font-semibold text-stone-900">
                 {activeFilters}
               </span>
             )}
@@ -874,7 +901,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   )}
                 </div>
                 <div className="relative mt-3">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-500" />
                   <input
                     type="text"
                     value={panelQuery}
@@ -967,6 +994,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   {searchActive ? '' : ' à vendre'}
                 </p>
               )}
+              {!searchActive && newSince > 0 && (
+                <p className="font-sans text-sm font-medium text-stone-900">
+                  {newSince > 1 ? `${newSince} nouveaux biens` : '1 nouveau bien'} depuis votre dernière visite
+                </p>
+              )}
             </div>
             {!onlyFavs && visible.length > 1 && (
             <label className="relative ml-auto inline-flex items-baseline gap-1.5 text-sm text-stone-500 cursor-pointer">
@@ -991,11 +1023,11 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         )}
 
         {loading ? (
-          <div className="text-center py-20 text-stone-400">Chargement des biens…</div>
+          <div className="text-center py-20 text-stone-500">Chargement des biens…</div>
         ) : errorMessage ? (
           <div className="text-center py-20 max-w-xl mx-auto">
             <p className="text-stone-700">Impossible de charger les biens pour le moment.</p>
-            <p className="mt-3 text-xs text-stone-400 font-mono break-words">{errorMessage}</p>
+            <p className="mt-3 text-xs text-stone-500 font-mono break-words">{errorMessage}</p>
           </div>
         ) : visible.length === 0 ? (
           onlyFavs && favorites.length === 0 && recent.length > 0 ? (
@@ -1057,7 +1089,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     <div className="p-6 flex flex-1 flex-col justify-between">
                       <div>
                         <p className="mb-2 flex items-baseline justify-between gap-3">
-                          <span className="text-xs text-stone-400 uppercase tracking-wider">
+                          <span className="text-xs text-stone-500 uppercase tracking-wider">
                             {item.city}
                             {item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}
                             {isNew(item.first_seen_at) && <span className="text-stone-900"> · Nouveauté</span>}
@@ -1077,7 +1109,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                       </div>
                       <div>
                         <div className="mt-6 flex items-end justify-between gap-4">
-                          <span className="min-w-0 text-[11px] leading-snug text-stone-500">{agencyLine(item.source_agency)}</span>
+                          <span className="min-w-0 text-xs leading-snug text-stone-500">{agencyLine(item.source_agency)}</span>
                           <span className="inline-flex flex-none items-center gap-1 text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 group-hover:decoration-stone-900 transition">
                             Voir le bien
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -1142,6 +1174,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                 {visible.length > 1 ? 'Demande envoyée pour ces biens : les agences vous recontactent.' : 'Demande envoyée : l’agence vous recontacte.'}
               </p>
             )}
+            <div className="mt-3 flex w-full justify-center">
+              <FavoritesByMail ids={visible.map((v) => v.id)} />
+            </div>
           </div>
         )}
 
@@ -1167,7 +1202,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                   <a href={`/biens/${item.id}`} className="flex min-w-0 flex-1 items-center gap-4" aria-label={item.title}>
                     <img src={item.cover_image_url} alt="" loading="lazy" className="h-20 w-24 flex-none rounded-[10px] object-cover bg-stone-100" />
                     <span className="min-w-0">
-                      <span className="block text-[11px] uppercase tracking-wider text-stone-400">
+                      <span className="block text-xs uppercase tracking-wider text-stone-500">
                         {item.city}
                         {item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}
                       </span>

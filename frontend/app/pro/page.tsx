@@ -85,7 +85,7 @@ export default function ProPage() {
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>
 
-      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-10 md:pb-12">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-12">
         <div className="max-w-4xl">
           <Crumbs items={[{ label: 'Espace pro' }]} />
           <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">

@@ -62,9 +62,9 @@ function Thumb({ who, big = false }: { who: string; big?: boolean }) {
       </span>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-4 pt-10">
         <p className="text-[12px] font-semibold text-white">Votre nom</p>
-        <p className="text-[11px] text-white/80">{who} · Votre société</p>
+        <p className="text-xs text-white/80">{who} · Votre société</p>
       </div>
-      <span className="absolute left-3 top-3 rounded-full bg-black/50 px-2 py-0.5 text-[11px] text-white">1 min</span>
+      <span className="absolute left-3 top-3 rounded-full bg-black/50 px-2 py-0.5 text-xs text-white">1 min</span>
     </div>
   );
 }
@@ -77,7 +77,7 @@ export default function ContreVisitePage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
         <div className="max-w-4xl">
           <Crumbs items={[{ label: 'État des lieux', href: '/guide' }, { label: 'Contre-visite' }]} />
           <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">

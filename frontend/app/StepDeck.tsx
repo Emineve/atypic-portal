@@ -49,7 +49,7 @@ export default function StepDeck({
                   {i + 1}
                 </span>
                 <span className={`flex-1 font-serif text-xl leading-tight tracking-tight md:text-2xl ${open ? 'text-stone-900' : 'text-stone-600'}`}>{s.title}</span>
-                {!open && <span className="flex-none text-2xl leading-none text-stone-400" aria-hidden="true">+</span>}
+                {!open && <span className="flex-none text-2xl leading-none text-stone-500" aria-hidden="true">+</span>}
               </button>
               {open && (
                 <div id={`deck-${i}`} className="px-5 pb-6 md:pl-[4.75rem] md:pr-8">

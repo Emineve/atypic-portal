@@ -26,7 +26,7 @@ export default function ContreVisitePartners() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader alert={false} />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
         <p className="inline-block rounded-full bg-[#F6CF4E] px-3 py-1 text-xs text-stone-800">Présentation aux partenaires · exemples</p>
         <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">Contre-visite</p>
         <h1 className="mt-4 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
@@ -41,7 +41,7 @@ export default function ContreVisitePartners() {
         <ol className="grid gap-4 md:grid-cols-3">
           {POINTS.map((p, i) => (
             <li key={p.title} className="rounded-[20px] border border-stone-200 bg-white p-6 md:p-8">
-              <span className="block text-xs font-semibold tracking-widest text-stone-400" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span className="block text-xs font-semibold tracking-widest text-stone-500" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
               <h2 className="mt-3 font-serif text-2xl leading-snug text-stone-900">{p.title}</h2>
               <p className="mt-3 font-light leading-relaxed text-stone-600">{p.text}</p>
             </li>

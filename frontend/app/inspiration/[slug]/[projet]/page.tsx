@@ -58,7 +58,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14 [&>*]:max-w-3xl">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14 [&>*]:max-w-3xl">
         <Crumbs items={[{ label: 'Inspiration', href: '/inspiration' }, { label: a.name, href: `/architectes/${a.slug}` }, { label: p.kind || 'Projet' }]} />
         <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">{p.title}</h1>
         {facts && <p className="mt-4 text-stone-500 font-light text-lg">{facts}</p>}
@@ -110,7 +110,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
           >
             {p.sale ? `Découvrez les biens « ${p.sale} » à visiter` : 'Découvrez les biens à visiter'}
           </Link>
-          <p className="mt-10 text-xs text-stone-400">
+          <p className="mt-10 text-xs text-stone-500">
             Sélection éditoriale, non sponsorisée. Photographies : © {a.name} et ses photographes.
           </p>
         </div>

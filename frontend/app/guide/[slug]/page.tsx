@@ -87,7 +87,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(crumbLd) }} />
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12">
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">
           <Link href="/" className="hover:text-stone-900">Accueil</Link>
           {' › '}
@@ -101,12 +101,12 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <div className="mt-5">
           <ArticleShare url={url} title={a.title} label={false} />
         </div>
-        <div className="mt-8 md:mt-10 md:max-w-3xl overflow-hidden rounded-[14px] border border-stone-900 shadow-[6px_6px_0_0_#1c1917]">
+        <div className="mt-8 md:mt-10 md:max-w-3xl overflow-hidden rounded-[14px] border border-stone-200">
           <GuideArt art={a.art} className="block w-full aspect-[16/9] md:aspect-[12/5]" />
         </div>
       </header>
 
-      <article className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-20 [&>*]:max-w-3xl">
+      <article className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-20 [&>*]:max-w-3xl">
         <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{typo(a.intro)}</p>
 
         <section className="mt-8 rounded-[14px] bg-[#F6CF4E] p-6" aria-label="À retenir">
@@ -163,7 +163,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
               <details key={f.q} id={passageAnchor(f.q)} className="group py-5 scroll-mt-24">
                 <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 text-lg font-medium text-stone-900">
                   {typo(f.q)}
-                  <span className="text-stone-400 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
+                  <span className="text-stone-500 group-open:rotate-45 transition-transform text-2xl leading-none" aria-hidden="true">+</span>
                 </summary>
                 <p className="mt-3 text-stone-700 leading-relaxed">{typo(f.a)}</p>
               </details>
@@ -177,7 +177,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <form action="/guide" method="get" className="mt-12" role="search">
           <label className="block font-serif text-2xl text-stone-900" htmlFor="autre-question">Une autre question ?</label>
           <div className="mt-4 flex h-14 items-center gap-3 rounded-full border border-stone-300 bg-white pl-5 pr-2 shadow-[0_2px_12px_rgba(28,25,23,0.08)] transition focus-within:border-stone-900">
-            <Search className="h-5 w-5 flex-none text-stone-400" strokeWidth={1.75} />
+            <Search className="h-5 w-5 flex-none text-stone-500" strokeWidth={1.75} />
             <input
               id="autre-question"
               name="q"
@@ -244,7 +244,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
               </li>
             ))}
           </ul>
-          <p className="mt-6 text-xs text-stone-400 leading-relaxed">
+          <p className="mt-6 text-xs text-stone-500 leading-relaxed">
             Cet article donne une information générale, à jour à la date indiquée. Il ne constitue pas un conseil juridique et ne remplace ni l&apos;avis d&apos;un notaire, ni celui d&apos;un professionnel du bâtiment sur un bien donné.
           </p>
         </section>

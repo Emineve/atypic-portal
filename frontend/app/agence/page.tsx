@@ -37,7 +37,7 @@ export default async function AgenciesPage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
         <div className="max-w-3xl">
         <Crumbs items={[{ label: 'Agences' }]} />
         <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
@@ -67,7 +67,7 @@ export default async function AgenciesPage() {
                   <li key={name}>
                     <Link href={`/agence/${slugify(name)}`} className="group flex items-center justify-between gap-4 py-4">
                       <span className="text-lg font-medium text-stone-900">{name}</span>
-                      <ArrowRight className="w-4 h-4 flex-none text-stone-400 group-hover:text-stone-900 transition" />
+                      <ArrowRight className="w-4 h-4 flex-none text-stone-500 group-hover:text-stone-900 transition" />
                     </Link>
                   </li>
                 ))}

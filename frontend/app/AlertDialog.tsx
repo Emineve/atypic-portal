@@ -474,7 +474,7 @@ export default function AlertDialog({
               </div>
             )}
             {!ALERT_EMAILS_LIVE && (
-              <p className="mt-7 text-xs text-stone-400">Version de démonstration : aucun email n'est encore envoyé.</p>
+              <p className="mt-7 text-xs text-stone-500">Version de démonstration : aucun email n'est encore envoyé.</p>
             )}
             <button
               type="button"
@@ -631,7 +631,7 @@ export default function AlertDialog({
                             Bientôt disponible : laissez votre numéro pour être parmi les premiers. En attendant, vos alertes arrivent par e-mail.
                           </span>
                         </span>
-                        <span className={`flex-none text-2xl leading-none text-stone-400 transition-transform ${wantWhatsapp ? 'rotate-45' : ''}`} aria-hidden="true">+</span>
+                        <span className={`flex-none text-2xl leading-none text-stone-500 transition-transform ${wantWhatsapp ? 'rotate-45' : ''}`} aria-hidden="true">+</span>
                       </button>
                       {wantWhatsapp && (
                         <>
@@ -664,7 +664,7 @@ export default function AlertDialog({
                               Elles vous recontactent, y compris pour des biens qui ne sont pas encore en ligne. {MAX_AGENCIES} agences au maximum.
                             </span>
                           </span>
-                          <span className={`flex-none text-2xl leading-none text-stone-400 transition-transform ${share ? 'rotate-45' : ''}`} aria-hidden="true">+</span>
+                          <span className={`flex-none text-2xl leading-none text-stone-500 transition-transform ${share ? 'rotate-45' : ''}`} aria-hidden="true">+</span>
                         </button>
                         {share && (
                           <>

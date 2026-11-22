@@ -241,7 +241,7 @@ export default function ChartePage() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-7 md:pb-9">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-7 md:pb-9">
         <Crumbs items={[{ label: 'Questions fréquentes' }]} />
         <h1 className="mt-5 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Tout ce que vous voulez savoir, <span className="italic text-stone-500">sans détour.</span>

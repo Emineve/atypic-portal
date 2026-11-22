@@ -74,7 +74,7 @@ export function Section({
           </button>
         )}
         <button type="button" onClick={onToggle} tabIndex={-1} aria-hidden="true" className="flex h-14 w-6 flex-none items-center justify-end">
-          <ChevronDown className={`w-5 h-5 text-stone-400 transition-transform ${open ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`w-5 h-5 text-stone-500 transition-transform ${open ? 'rotate-180' : ''}`} />
         </button>
       </div>
       {open && (

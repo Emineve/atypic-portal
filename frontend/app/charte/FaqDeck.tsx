@@ -25,9 +25,9 @@ function Answer({ it }: { it: FaqItem }) {
               {it.table.rows.map((r) => (
                 <li key={r[0]} className="rounded-[14px] border border-stone-200 bg-white p-4">
                   <p className="font-medium leading-snug text-stone-900">{typo(`${it.table!.lead || ''}${r[0]}`)}</p>
-                  <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[1]}</p>
+                  <p className="mt-3 text-xs uppercase tracking-widest text-stone-500">{it.table!.head[1]}</p>
                   <p className="mt-0.5 text-stone-900">{typo(r[1])}</p>
-                  <p className="mt-3 text-[10px] uppercase tracking-widest text-stone-500">{it.table!.head[2]}</p>
+                  <p className="mt-3 text-xs uppercase tracking-widest text-stone-500">{it.table!.head[2]}</p>
                   <p className="mt-0.5 text-stone-600">{typo(r[2])}</p>
                 </li>
               ))}
@@ -35,7 +35,7 @@ function Answer({ it }: { it: FaqItem }) {
             <div className="mt-5 hidden sm:block overflow-hidden rounded-[14px] border border-stone-200 bg-white">
               <table className="w-full text-left text-[15px] leading-snug">
                 <thead>
-                  <tr className="text-[10px] uppercase tracking-widest text-stone-500">
+                  <tr className="text-xs uppercase tracking-widest text-stone-500">
                     {it.table.head.map((h) => (
                       <th key={h} className="px-5 py-3 font-normal">{h}</th>
                     ))}
@@ -67,10 +67,10 @@ function Answer({ it }: { it: FaqItem }) {
 
 export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
   return (
-    <div className="max-w-3xl">
-      {/* Sommaire : les rubriques en liens, qui passent à la ligne. Rien à faire défiler de côté. */}
-      <nav aria-label="Rubriques">
-        <ul className="flex flex-wrap gap-x-7 gap-y-2.5">
+    <div className="lg:grid lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-14 lg:items-start">
+      {/* Sommaire : les rubriques en liens. Sur grand écran, il reste affiché à gauche pendant la lecture. */}
+      <nav aria-label="Rubriques" className="lg:sticky lg:top-24">
+        <ul className="flex flex-wrap gap-x-7 gap-y-2.5 lg:flex-col">
           {groups.map((g) => (
             <li key={g.id}>
               <a href={`#${g.id}`} className="group inline-flex items-center gap-2.5 text-[15px] font-medium text-stone-900">
@@ -82,6 +82,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
         </ul>
       </nav>
 
+      <div className="max-w-3xl lg:-mt-12">
       {/* Toutes les rubriques l'une sous l'autre, chacune avec ses questions ; une seule réponse ouverte à la fois */}
       {groups.map((g) => (
         <section key={g.id} id={g.id} className="mt-12 scroll-mt-24">
@@ -105,6 +106,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
           </div>
         </section>
       ))}
+      </div>
     </div>
   );
 }
