@@ -41,6 +41,521 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'compromis-ou-promesse-de-vente-quelle-difference',
+    art: 'balance',
+    title: 'Compromis ou promesse de vente : ce qui change pour l’acheteur',
+    description:
+      'Promesse unilatérale ou compromis : qui s’engage à quoi, somme versée à la signature, délai de rétractation de dix jours, conditions suspensives. Les différences à connaître avant de signer.',
+    category: 'Visite et négociation',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 6,
+    intro:
+      'Votre offre est acceptée. Avant la vente elle-même, vous allez signer un avant-contrat, et l’on vous parlera de « compromis » ou de « promesse » comme si c’était la même chose. Ce n’est pas le cas. Les deux fixent le prix et les conditions, mais ils n’engagent pas les mêmes personnes de la même façon. Pour un bien atypique, où il reste souvent des pièces à réunir, autant savoir lequel vous signez.',
+    takeaways: [
+      'Dans une promesse unilatérale, seul le vendeur s’engage à vendre : vous avez une option d’achat pendant un délai fixé.',
+      'Dans un compromis, vendeur et acheteur s’engagent tous les deux dès la signature.',
+      'Dans les deux cas, vous disposez de dix jours pour vous rétracter, sans avoir à vous justifier.',
+      'La somme versée à la signature vous est rendue si une condition suspensive ne se réalise pas.',
+    ],
+    sections: [
+      {
+        title: 'Qui s’engage à quoi ?',
+        paragraphs: [
+          'Dans la promesse unilatérale de vente, le vendeur vous réserve son bien à un prix donné, pendant un délai fixé dans l’acte. Pendant ce délai, il ne peut ni le proposer ni le vendre à quelqu’un d’autre. Vous, vous avez une option : acheter, ou ne pas acheter.',
+          'Dans le compromis, appelé aussi promesse synallagmatique, chacun s’engage : le vendeur à vendre, vous à acheter, au prix et aux conditions écrits.',
+        ],
+      },
+      {
+        title: 'Quelle somme verse-t-on à la signature ?',
+        paragraphs: [
+          'Pour une promesse unilatérale, on parle d’indemnité d’immobilisation : c’est le prix de l’exclusivité que le vendeur vous accorde. Elle se situe en pratique entre 5 % et 10 % du prix.',
+          'Pour un compromis, on parle de dépôt de garantie, en général 10 % du prix. Dans les deux cas, la somme est confiée au notaire, qui la conserve sur un compte séquestre, et elle vient en déduction du prix le jour de la vente.',
+        ],
+      },
+      {
+        title: 'Et si vous changez d’avis ?',
+        paragraphs: [
+          'La loi vous donne dix jours pour vous rétracter. Le délai court à partir du lendemain de la première présentation de la lettre recommandée qui vous notifie l’acte. Il suffit d’envoyer à votre tour une lettre recommandée avec accusé de réception. La somme versée vous est alors rendue.',
+          'Passé ce délai, si vous renoncez sans raison légitime, le vendeur conserve la somme versée. Le vendeur, lui, n’a pas de droit de rétractation.',
+        ],
+      },
+      {
+        title: 'À quoi servent les conditions suspensives ?',
+        paragraphs: [
+          'Elles disent à quelles conditions la vente se fera. Si l’une d’elles ne se réalise pas, par exemple un refus de prêt, l’avant-contrat tombe et la somme versée vous est intégralement rendue.',
+          'Pour un bien transformé, c’est dans l’avant-contrat que s’écrivent les conditions propres au bien : autorisations de travaux, statut de logement d’un ancien local, titre de la terrasse. Ce qui n’y figure pas ne vous protège pas.',
+        ],
+      },
+      {
+        title: 'Lequel signe-t-on en pratique ?',
+        paragraphs: [
+          'Cela dépend des usages. Le compromis est souvent signé à l’agence ; la promesse unilatérale, plutôt chez le notaire, ce qui est fréquent à Paris. Une promesse unilatérale signée sans notaire doit être enregistrée auprès de l’administration fiscale dans les dix jours qui suivent son acceptation, faute de quoi elle est nulle.',
+          'Dans les deux cas, vous pouvez demander que votre propre notaire relise l’acte avant la signature. Cela ne coûte pas plus cher : les deux notaires se partagent les mêmes émoluments.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer l’avant-contrat',
+      items: [
+        'Le dossier de diagnostics est annexé, et les diagnostics sont en cours de validité.',
+        'Pour un lot de copropriété : règlement, procès-verbaux d’assemblée générale et relevé de charges vous ont été remis.',
+        'Le délai pour obtenir votre prêt est réaliste : la loi impose un mois au minimum, comptez-en plutôt deux.',
+        'Les conditions propres au bien sont écrites noir sur blanc.',
+        'La date prévue pour la vente est indiquée.',
+        'Votre notaire a relu le projet.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Le vendeur peut-il se rétracter ?',
+        a: 'Non, sauf si l’acte prévoit une clause qui le lui permet. Son engagement est définitif dès la signature.',
+      },
+      {
+        q: 'Que devient la somme versée si la banque refuse le prêt ?',
+        a: 'Elle vous est rendue en totalité, à condition que vous ayez demandé un prêt conforme à ce qui est écrit dans l’avant-contrat : montant, durée, taux maximal.',
+      },
+      {
+        q: 'Peut-on signer à distance ?',
+        a: 'Oui, chez le notaire, par acte authentique électronique ou par procuration. Une promesse unilatérale signée électroniquement sans notaire ne peut pas être enregistrée : elle est nulle.',
+      },
+    ],
+    sources: [
+      {
+        label: 'Service-Public.fr, « Promesse de vente d’un logement existant : promesse unilatérale ou compromis »',
+        url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F2965',
+      },
+      {
+        label: 'Notaires de France, « La promesse de vente et le compromis de vente »',
+        url: 'https://www.notaires.fr/fr/immobilier-fiscalit%C3%A9/achat-et-vente-les-%C3%A9tapes/la-promesse-de-vente-et-le-compromis-de-vente',
+      },
+    ],
+  },
+  {
+    slug: 'de-l-offre-aux-cles-les-etapes-d-un-achat',
+    art: 'temps',
+    title: 'De l’offre aux clés : les étapes d’un achat, et ce qui les ralentit',
+    description:
+      'Offre acceptée, avant-contrat, délai de rétractation, prêt, droit de préemption de la mairie, signature chez le notaire : le calendrier d’un achat immobilier et ce qui l’allonge pour un bien atypique.',
+    category: 'Visite et négociation',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 5,
+    intro:
+      'Entre le jour où le vendeur dit oui et celui où l’on vous remet les clés, il se passe en général trois à quatre mois. Ce délai n’est pas de la lenteur : chaque étape répond à une règle. Les connaître permet de donner congé de son logement au bon moment, et de repérer ce qui, pour un bien atypique, peut faire glisser le calendrier.',
+    takeaways: [
+      'Comptez deux à quatre semaines entre l’offre acceptée et l’avant-contrat, puis environ trois mois jusqu’à la vente.',
+      'Trois délais courent en parallèle après l’avant-contrat : votre rétractation, votre prêt, la réponse de la mairie.',
+      'Les clés sont remises le jour de la signature chez le notaire, pas avant.',
+      'Pour un bien transformé, ce sont les documents manquants qui allongent le plus le calendrier.',
+    ],
+    sections: [
+      {
+        title: 'De l’offre à l’avant-contrat : que se passe-t-il ?',
+        paragraphs: [
+          'Le notaire ou l’agence réunit les pièces : titre de propriété, diagnostics, documents de la copropriété. C’est le moment où l’on découvre ce qui manque. Deux à quatre semaines sont habituelles.',
+          'Pour un atelier, un ancien local ou un bien agrandi, demandez dès l’offre les autorisations de travaux. Un vendeur qui doit les retrouver, ou les régulariser, peut retarder la signature de plusieurs semaines.',
+        ],
+      },
+      {
+        title: 'Après la signature : quels délais courent ?',
+        list: [
+          'Votre délai de rétractation : dix jours à partir du lendemain de la notification de l’acte.',
+          'Le délai pour obtenir votre prêt : celui écrit dans l’avant-contrat, un mois au minimum, le plus souvent autour de deux.',
+          'La réponse de la mairie : dans les secteurs où elle dispose d’un droit de préemption, elle a deux mois pour dire si elle souhaite acheter à votre place. Elle y renonce dans l’immense majorité des cas, mais le notaire doit attendre sa réponse ou la fin du délai.',
+        ],
+      },
+      {
+        title: 'Que fait le notaire pendant ce temps ?',
+        paragraphs: [
+          'Il vérifie que le vendeur est bien propriétaire et que le bien n’est grevé d’aucune hypothèque qui empêcherait la vente, interroge le syndic sur les sommes dues, demande les documents d’urbanisme. Aucune de ces démarches ne dépend de vous, mais toutes prennent quelques semaines.',
+        ],
+      },
+      {
+        title: 'Le jour de la vente : comment cela se passe-t-il ?',
+        paragraphs: [
+          'Quelques jours avant, le notaire vous indique la somme à virer : le prix, les frais, moins ce que vous avez déjà versé. La banque lui adresse directement le montant du prêt.',
+          'Le jour dit, il lit l’acte, chacun signe, et le vendeur vous remet les clés. Revisitez le bien le matin même ou la veille : il doit être dans l’état où vous l’avez vu, vidé de ce qui devait l’être.',
+        ],
+      },
+      {
+        title: 'Peut-on aller plus vite ?',
+        paragraphs: [
+          'Un peu. Un achat sans prêt supprime un délai, et un dossier complet dès l’offre en raccourcit un autre. Mais le délai de la mairie ne se négocie pas : descendre sous deux mois et demi entre l’avant-contrat et la vente reste rare.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Pour tenir le calendrier',
+      items: [
+        'Déposez votre demande de prêt dans les jours qui suivent l’avant-contrat.',
+        'Gardez la preuve de chaque demande : la banque, la date, le montant.',
+        'Souscrivez l’assurance du bien pour le jour de la vente : le notaire vous demandera l’attestation.',
+        'Ne donnez congé de votre logement qu’une fois le prêt accordé.',
+        'Prévenez votre notaire de toute date à ne pas dépasser.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on entrer dans les lieux avant la vente ?',
+        a: 'C’est possible si le vendeur l’accepte, par une convention écrite, mais c’est risqué pour les deux parties : en cas de sinistre ou d’échec de la vente, la situation est difficile à dénouer. La plupart des notaires le déconseillent.',
+      },
+      {
+        q: 'Que se passe-t-il si le prêt n’est pas accordé à temps ?',
+        a: 'Prévenez le notaire avant la date limite. Le vendeur peut accepter de prolonger le délai par un avenant. Sans accord, et si vous prouvez un refus de prêt, la condition suspensive joue et la somme versée vous est rendue.',
+      },
+      {
+        q: 'Quand reçoit-on le titre de propriété ?',
+        a: 'Plusieurs mois après la vente, le temps que l’acte soit publié. Le jour de la signature, le notaire vous remet une attestation qui suffit pour toutes vos démarches.',
+      },
+    ],
+    sources: [
+      {
+        label: 'Service-Public.fr, « Promesse de vente d’un logement existant : promesse unilatérale ou compromis »',
+        url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F2965',
+      },
+      {
+        label: 'Notaires de France, « La promesse de vente et le compromis de vente »',
+        url: 'https://www.notaires.fr/fr/immobilier-fiscalit%C3%A9/achat-et-vente-les-%C3%A9tapes/la-promesse-de-vente-et-le-compromis-de-vente',
+      },
+    ],
+  },
+  {
+    slug: 'contre-visite-ce-qu-on-regarde-la-deuxieme-fois',
+    art: 'visite',
+    title: 'La contre-visite : ce qu’on regarde la deuxième fois',
+    description:
+      'Autre heure, autre lumière, mètre en main : comment préparer la deuxième visite d’un bien atypique, quoi vérifier, qui emmener et quels documents demander avant de faire une offre.',
+    category: 'Visite et négociation',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'La première visite sert à savoir si le lieu vous plaît. La seconde sert à savoir si vous pouvez y vivre. Entre les deux, le coup de cœur a eu le temps de retomber un peu, et c’est tant mieux : vous revenez avec des questions. Pour un bien atypique, c’est la visite qui compte.',
+    takeaways: [
+      'Revenez à une autre heure : la lumière, le bruit et la chaleur changent tout dans un grand volume.',
+      'Venez avec un mètre, le plan et vos meubles en tête.',
+      'Ouvrez, allumez, faites couler : ce que l’on n’a pas osé toucher la première fois.',
+      'Repartez avec les documents, pas seulement avec une impression.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi revenir à une autre heure ?',
+        paragraphs: [
+          'Une verrière orientée à l’ouest est un bonheur à dix heures et une serre à dix-sept. Un rez-de-chaussée sur cour est calme le samedi et sonore le mardi, quand l’atelier voisin travaille. Si vous avez vu le bien le matin, revenez en fin de journée, et inversement.',
+          'Restez un moment sans parler, fenêtres fermées puis ouvertes. On entend alors l’immeuble : l’ascenseur, la chaufferie, les voisins du dessus.',
+        ],
+      },
+      {
+        title: 'Que mesurer ?',
+        list: [
+          'La hauteur sous plafond, partout où elle change : sous la mezzanine, sous les poutres, dans les combles.',
+          'La largeur de l’escalier et des portes : un canapé ou un piano doivent pouvoir entrer.',
+          'Les pièces dont vous doutez : une chambre annoncée peut ne pas accueillir un lit double et une armoire.',
+          'L’emplacement des arrivées d’eau et des évacuations, si vous pensez déplacer la cuisine ou la salle de bains.',
+        ],
+      },
+      {
+        title: 'Que faut-il oser toucher ?',
+        list: [
+          'Les fenêtres et les châssis de verrière : s’ouvrent-ils, ferment-ils, y a-t-il des traces d’eau au pied ?',
+          'Les robinets, la chasse d’eau, la pression sous la douche.',
+          'Le tableau électrique et quelques prises.',
+          'Les radiateurs ou le plancher chauffant, en demandant à les voir fonctionner.',
+          'Les placards, la cave, le local à vélos : tout ce qui est vendu avec le bien.',
+        ],
+      },
+      {
+        title: 'Qui emmener ?',
+        paragraphs: [
+          'Quelqu’un qui n’a pas vu le bien, et qui ne cherche pas à vous faire plaisir. Si des travaux sont prévus, un architecte ou un entrepreneur : une heure sur place vaut mieux que dix devis sur photos.',
+          'Prévenez l’agence. Un négociateur préfère un acheteur qui vient accompagné à un acheteur qui se rétracte.',
+        ],
+      },
+      {
+        title: 'Avec quoi repartir ?',
+        paragraphs: [
+          'Avec les documents que vous n’aviez pas : diagnostics, procès-verbaux des dernières assemblées générales, relevé de charges, taxe foncière, autorisations des travaux réalisés. Si l’un d’eux tarde, notez-le : c’est une condition à écrire dans votre offre.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Dans votre sac',
+      items: [
+        'Un mètre, ou un télémètre laser.',
+        'Le plan, imprimé, et un crayon.',
+        'La liste de vos questions restées sans réponse.',
+        'Les dimensions de vos meubles les plus encombrants.',
+        'Un téléphone chargé, pour photographier ce que vous voudrez revoir.',
+      ],
+    },
+    faq: [
+      {
+        q: 'L’agence peut-elle refuser une deuxième visite ?',
+        a: 'Rien ne l’y oblige, mais c’est très rare : une contre-visite est le signe d’un acheteur sérieux. Si le bien est très demandé, proposez un créneau rapproché.',
+      },
+      {
+        q: 'Peut-on faire une offre sans contre-visite ?',
+        a: 'Oui, et sur un bien rare la rapidité compte. Écrivez alors dans votre offre les conditions qui vous protègent, et faites la contre-visite avant de signer l’avant-contrat.',
+      },
+      {
+        q: 'Combien de temps prévoir ?',
+        a: 'Une heure au moins. Si le négociateur est pressé, dites-le en prenant le rendez-vous.',
+      },
+    ],
+    sources: [
+      {
+        label: 'Service-Public.fr, « Promesse de vente d’un logement existant : promesse unilatérale ou compromis » (documents et diagnostics à fournir par le vendeur)',
+        url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F2965',
+      },
+    ],
+  },
+  {
+    slug: 'estimation-en-ligne-d-un-bien-atypique',
+    art: 'expertise',
+    title: 'Estimation en ligne : pourquoi elle se trompe sur un bien atypique',
+    description:
+      'Les estimateurs en ligne partent du prix moyen au mètre carré du quartier. Hauteur, verrière, terrasse, surface non comptée : ce qu’ils ne voient pas, et comment se faire une idée plus juste.',
+    category: 'Marché',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Vous entrez une adresse, une surface, un nombre de pièces, et un prix s’affiche en quelques secondes. Pour un trois-pièces au troisième étage d’un immeuble comme les autres, l’ordre de grandeur est souvent bon. Pour un atelier sous verrière ou un duplex avec terrasse, il peut être très loin du compte, dans un sens comme dans l’autre. Cela tient à la façon dont ces outils calculent.',
+    takeaways: [
+      'Un estimateur en ligne part des ventes passées autour de l’adresse et d’un prix moyen au mètre carré.',
+      'Il ne voit ni la hauteur, ni la lumière, ni le plan, ni l’état du bien.',
+      'Plus un bien est rare, moins il existe de ventes comparables, et moins la moyenne veut dire quelque chose.',
+      'Le résultat est un point de départ pour la discussion, pas un prix.',
+    ],
+    sections: [
+      {
+        title: 'Comment un estimateur calcule-t-il ?',
+        paragraphs: [
+          'Il part des ventes enregistrées dans le secteur, que l’administration publie, et en tire un prix au mètre carré. Il l’ajuste ensuite selon ce que vous déclarez : étage, ascenseur, nombre de pièces, parfois l’état général.',
+          'C’est une moyenne corrigée. Elle fonctionne quand le bien ressemble à ceux qui se sont vendus autour.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qu’il ne voit pas ?',
+        list: [
+          'La hauteur sous plafond et le volume : deux biens de même surface peuvent n’avoir rien de commun.',
+          'La lumière, la vue, le calme d’une cour.',
+          'Une terrasse ou un jardin, surtout quand il s’agit d’un droit de jouissance et non d’une propriété.',
+          'Les surfaces qui ne sont pas comptées par la loi Carrez mais que l’on utilise : mezzanine basse, souplex.',
+          'La qualité d’une rénovation, ou au contraire l’ampleur des travaux à prévoir.',
+        ],
+      },
+      {
+        title: 'Dans quel sens se trompe-t-il ?',
+        paragraphs: [
+          'Dans les deux. Il sous-estime souvent un bien dont la valeur tient à ce qui ne se mesure pas : un atelier d’artiste, un dernier étage avec terrasse. Il peut surestimer un bien dont une partie de la surface est en sous-sol ou sous faible hauteur, parce qu’il applique à toute la surface le prix des étages.',
+        ],
+      },
+      {
+        title: 'Comment se faire une idée plus juste ?',
+        list: [
+          'Consultez les ventes réelles de la rue et de l’immeuble, en regardant chaque vente et non la moyenne.',
+          'Cherchez des biens du même genre, quitte à élargir au quartier voisin : un loft se compare à un loft.',
+          'Raisonnez par morceaux : la surface principale, puis ce que valent la terrasse, la hauteur, le sous-sol.',
+          'Demandez à l’agence sur quelles ventes elle s’est appuyée pour fixer le prix.',
+        ],
+      },
+      {
+        title: 'Et la banque ?',
+        paragraphs: [
+          'Elle se fait sa propre idée, parfois en envoyant un expert. Si son estimation est inférieure au prix convenu, elle peut prêter moins que prévu. Pour un bien très singulier, c’est une raison de plus de parler du bien à votre banque ou à votre courtier avant de faire une offre.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Faut-il montrer une estimation en ligne au vendeur pour négocier ?',
+        a: 'Seule, elle pèse peu : le vendeur vous répondra que son bien ne ressemble à aucun autre, et il n’aura pas tort. Des ventes précises et des devis de travaux portent davantage.',
+      },
+      {
+        q: 'Les ventes réelles sont-elles accessibles à tous ?',
+        a: 'Oui. L’administration publie les ventes des cinq dernières années, avec l’adresse, la date, le prix et la surface. Elles ne disent rien de l’état du bien ni de ses particularités.',
+      },
+      {
+        q: 'Une agence estime-t-elle mieux ?',
+        a: 'Elle a visité le bien, ce qu’aucun outil ne fait. Une agence qui vend régulièrement ce type de biens dispose aussi de ventes comparables que les bases publiques ne permettent pas d’identifier comme telles.',
+      },
+    ],
+    sources: [
+      { label: 'Demandes de valeurs foncières : les ventes immobilières publiées par l’administration', url: 'https://app.dvf.etalab.gouv.fr/' },
+    ],
+  },
+  {
+    slug: 'frais-de-notaire-ce-qu-ils-contiennent',
+    art: 'credit',
+    title: 'Frais de notaire : ce qu’ils contiennent vraiment',
+    description:
+      'Droits de mutation, rémunération du notaire, débours : de quoi sont faits les frais de notaire dans l’ancien, sur quelle base ils sont calculés et ce qui a changé avec la hausse votée par les départements.',
+    category: 'Financement',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 5,
+    intro:
+      'On les appelle frais de notaire, et c’est un faux ami : pour l’essentiel, ce sont des taxes. Dans l’ancien, ils représentent de l’ordre de 7 à 8 % du prix, à payer le jour de la vente et que la banque finance rarement. Mieux vaut savoir de quoi ils sont faits, et sur quelle base ils sont calculés.',
+    takeaways: [
+      'Dans l’ancien, comptez de l’ordre de 7 à 8 % du prix. La plus grande part revient au département, à la commune et à l’État.',
+      'La rémunération du notaire est fixée par un barème national : elle n’est qu’une petite partie du total.',
+      'Depuis 2025, les départements peuvent relever leur taxe d’un demi-point. La plupart l’ont fait, dont Paris.',
+      'Cette hausse ne s’applique pas à ceux qui achètent leur première résidence principale.',
+    ],
+    sections: [
+      {
+        title: 'De quoi sont-ils faits ?',
+        list: [
+          'Les droits de mutation : une taxe perçue par le département, la commune et l’État. C’est de loin la plus grande part.',
+          'La rémunération du notaire, appelée émoluments : elle suit un barème national, proportionnel au prix.',
+          'Les débours : ce que le notaire avance pour vous, documents d’urbanisme, état hypothécaire, interrogation du syndic.',
+          'La contribution de sécurité immobilière, due à l’État pour la publication de la vente.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui a changé ?',
+        paragraphs: [
+          'La part du département était plafonnée à 4,5 % du prix. Depuis le 1er avril 2025, et jusqu’au 30 avril 2028, les départements peuvent la porter à 5 %. Chaque conseil départemental en décide.',
+          'Avec la part de la commune et celle de l’État, les droits de mutation passent ainsi d’environ 5,8 % à environ 6,3 % du prix là où la hausse a été votée.',
+          'Elle ne vous concerne pas si vous achetez votre résidence principale sans avoir été propriétaire de votre résidence principale au cours des deux années précédentes.',
+        ],
+      },
+      {
+        title: 'Sur quel montant sont-ils calculés ?',
+        paragraphs: [
+          'Sur le prix du bien. Deux éléments peuvent en être retirés. Les honoraires d’agence, quand ils sont à la charge de l’acquéreur : ils ne font pas partie du prix payé au vendeur. Et les meubles vendus avec le bien, cuisine équipée ou électroménager par exemple, à condition qu’ils soient listés et estimés à leur valeur réelle.',
+          'L’économie reste modeste, et une valeur de mobilier manifestement gonflée expose à un redressement.',
+        ],
+      },
+      {
+        title: 'Quand et comment les paie-t-on ?',
+        paragraphs: [
+          'Le jour de la vente, par virement au notaire, en même temps que le prix. Le notaire demande une provision un peu supérieure au montant attendu ; il vous restitue le trop-perçu quelques mois plus tard, avec le décompte définitif.',
+          'Les banques financent rarement ces frais : c’est en général à votre apport de les couvrir.',
+        ],
+      },
+      {
+        title: 'Et pour un bien neuf ?',
+        paragraphs: [
+          'Les frais sont plus bas, de l’ordre de 2 à 3 % du prix, parce que la vente est soumise à la TVA et non aux mêmes droits de mutation. Attention : un bien ancien entièrement rénové reste, sauf exception, un bien ancien.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Peut-on négocier les frais de notaire ?',
+        a: 'Les taxes, non. Sur sa rémunération, le notaire peut consentir une remise encadrée par la réglementation, sur la part du prix qui dépasse un certain montant. Il doit alors l’appliquer à tous ses clients.',
+      },
+      {
+        q: 'Prendre deux notaires coûte-t-il plus cher ?',
+        a: 'Non. Le notaire du vendeur et le vôtre se partagent la même rémunération.',
+      },
+      {
+        q: 'Comment savoir si mon département applique la hausse ?',
+        a: 'Demandez-le à votre notaire : il vous remet de toute façon un décompte détaillé avant la vente.',
+      },
+    ],
+    sources: [
+      {
+        label: 'Service-Public.fr, « Ventes immobilières : les frais de notaire augmentent dans certains départements »',
+        url: 'https://www.service-public.gouv.fr/particuliers/actualites/A18183',
+      },
+      {
+        label: 'Notaires de France, « Vente immobilière et augmentation des droits de mutation à titre onéreux »',
+        url: 'https://www.notaires.fr/fr/actualites/vente-immobiliere-et-augmentation-des-droits-de-mutation-titre-onereux',
+      },
+    ],
+  },
+  {
+    slug: 'pret-relais-acheter-avant-d-avoir-vendu',
+    art: 'revendre',
+    title: 'Prêt relais : acheter avant d’avoir vendu',
+    description:
+      'Montant, durée, intérêts, que se passe-t-il si la vente tarde : comment fonctionne un prêt relais, et pourquoi il demande plus de prudence quand le bien à vendre ou à acheter est atypique.',
+    category: 'Financement',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 5,
+    intro:
+      'Le bien que vous cherchiez depuis deux ans vient d’apparaître, et le vôtre n’est pas encore vendu. Le prêt relais existe pour cela : la banque vous avance une partie de la valeur de votre logement actuel, le temps de le vendre. C’est une solution utile et un engagement réel, car l’avance doit être remboursée quoi qu’il arrive.',
+    takeaways: [
+      'La banque avance en général 50 à 70 % de la valeur du bien à vendre, diminuée du crédit qui reste à rembourser dessus.',
+      'Le prêt dure un à deux ans. Il doit être remboursé à l’échéance, même si le bien n’est pas vendu.',
+      'Selon la formule, les intérêts se paient chaque mois ou en une fois à la fin.',
+      'Tout repose sur l’estimation du bien à vendre : c’est elle qu’il faut faire avec prudence.',
+    ],
+    sections: [
+      {
+        title: 'Comment cela fonctionne-t-il ?',
+        paragraphs: [
+          'La banque estime le bien que vous vendez et vous en avance une partie. Cette somme sert d’apport pour le nouvel achat, complétée le plus souvent par un prêt classique. Le jour où votre bien est vendu, le prix sert à rembourser le relais en une fois.',
+          'Si vous avez déjà signé un compromis avec un acheteur, la banque accepte d’avancer une part plus importante : le prix est connu, et le risque plus faible.',
+        ],
+      },
+      {
+        title: 'Combien coûte-t-il ?',
+        paragraphs: [
+          'Deux formules existent. Dans la première, vous payez chaque mois les intérêts et l’assurance, et vous remboursez le capital à la vente. Dans la seconde, vous ne payez chaque mois que l’assurance : les intérêts s’accumulent et sont réglés à la fin, avec le capital.',
+          'La seconde allège vos mensualités pendant la période où vous portez deux logements. Elle coûte plus cher, et d’autant plus que la vente tarde.',
+        ],
+      },
+      {
+        title: 'Et si le bien ne se vend pas à temps ?',
+        paragraphs: [
+          'La banque peut exiger le remboursement à l’échéance : aucune prolongation n’est automatique. Au cas par cas, elle peut accorder quelques mois de plus si une vente est en cours, ou transformer le relais en prêt de longue durée si vos revenus le permettent.',
+          'Dans les faits, la plupart des vendeurs pressés baissent leur prix. C’est pourquoi le montant du relais doit être calculé sur un prix auquel le bien se vendra à coup sûr, pas sur celui que l’on espère.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui change quand le bien à vendre est atypique ?',
+        paragraphs: [
+          'Son prix est plus difficile à estimer, et son délai de vente plus difficile à prévoir : il plaît beaucoup à peu de monde. La banque en tient compte et retient souvent une valeur prudente.',
+          'Faites estimer le bien par deux professionnels qui vendent ce type de biens, et demandez-leur combien de temps les ventes comparables ont demandé.',
+        ],
+      },
+      {
+        title: 'Y a-t-il d’autres solutions ?',
+        list: [
+          'Vendre d’abord, en négociant avec votre acheteur une date de vente éloignée, le temps de trouver.',
+          'Acheter avec une date de signature lointaine, si le vendeur n’est pas pressé.',
+          'Louer quelques mois entre les deux : c’est un déménagement de plus, mais aucune dette à porter.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer un prêt relais',
+      items: [
+        'Le bien à vendre a été estimé par au moins deux professionnels.',
+        'Vous connaissez le coût total si la vente a lieu au bout de six mois, d’un an, de deux ans.',
+        'Vous savez ce que prévoit le contrat à l’échéance.',
+        'Vos mensualités restent supportables pendant toute la durée du relais.',
+        'Votre bien est en vente, au bon prix, dès le premier jour.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Peut-on rembourser le relais avant l’échéance ?',
+        a: 'Oui, et c’est le principe : dès que votre bien est vendu, le relais est remboursé en totalité.',
+      },
+      {
+        q: 'Que devient l’argent si le bien se vend plus cher que prévu ?',
+        a: 'Le surplus vous revient. Vous pouvez l’utiliser pour rembourser par anticipation une partie de votre prêt classique.',
+      },
+      {
+        q: 'La banque peut-elle refuser un prêt relais ?',
+        a: 'Oui. Elle regarde vos revenus, le crédit qui reste sur le bien à vendre et la facilité avec laquelle ce bien se vendra.',
+      },
+    ],
+    sources: [
+      {
+        label: 'Les clés de la banque (Fédération bancaire française), « Le prêt relais immobilier »',
+        url: 'https://www.lesclesdelabanque.com/particulier/pret-relais-immobilier/',
+      },
+    ],
+  },
+  {
     slug: 'acheter-une-ancienne-loge-de-gardien',
     art: 'loge',
     title: 'Ancienne loge de gardien : petit bien, grand dossier',
