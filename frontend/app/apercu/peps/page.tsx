@@ -98,7 +98,7 @@ function Mock({ t, l }: { t: Theme; l: L | null }) {
       {/* Titre */}
       <div className="px-5 pb-7 pt-8 text-center" style={{ background: t.hero, color: heroInk }}>
         <p className="font-serif text-[1.7rem] leading-[1.12] tracking-tight [text-wrap:balance]">
-          Tous les biens atypiques des meilleures agences,{' '}
+          Tous les biens atypiques à vendre,{' '}
           <span
             className="[box-decoration-break:clone] [-webkit-box-decoration-break:clone]"
             style={t.hero ? { color: t.mark } : { background: `linear-gradient(transparent 62%, ${t.mark} 62%)` }}
