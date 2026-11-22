@@ -44,7 +44,7 @@ export default function FicheBar({ price, summary, phone }: { price: string; sum
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-6">
         <div className="min-w-0">
-          <p className="font-sans text-lg font-medium leading-tight tabular-nums text-stone-900 whitespace-nowrap md:text-xl">{price}</p>
+          <p className="font-serif text-xl leading-tight lining-nums text-stone-900 whitespace-nowrap md:text-2xl">{price}</p>
           <p className="truncate text-[13px] leading-tight text-stone-500">{summary}</p>
         </div>
         <div className="flex flex-none items-center gap-2">

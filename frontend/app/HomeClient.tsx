@@ -1108,7 +1108,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
                             <Surface sqm={item.surface_sqm} />
                             {isNew(item.first_seen_at) && <span className="text-stone-900"> · Nouveauté</span>}
                           </span>
-                          <span className="flex-none whitespace-nowrap text-lg font-medium tracking-tight font-sans tabular-nums text-stone-900">{price.replace(/[\u202f\u00a0]/g, '\u00a0')}</span>
+                          <span className="flex-none whitespace-nowrap text-xl tracking-tight font-serif lining-nums text-stone-900">{price.replace(/[\u202f\u00a0]/g, '\u00a0')}</span>
                         </p>
                         <h2 className="font-serif text-2xl leading-tight text-stone-900 line-clamp-3">{item.title}</h2>
                         {item.atypic_tags && item.atypic_tags.length > 0 && (
@@ -1224,7 +1224,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
                         <Surface sqm={item.surface_sqm} />
                       </span>
                       <span className="mt-0.5 block font-serif text-lg leading-tight text-stone-900 line-clamp-2">{item.title}</span>
-                      <span className="mt-1 block text-sm font-medium font-sans tabular-nums text-stone-900">
+                      <span className="mt-1 block text-base font-serif lining-nums text-stone-900">
                         {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
                       </span>
                     </span>

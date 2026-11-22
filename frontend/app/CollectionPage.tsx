@@ -84,7 +84,7 @@ export default function CollectionPage({
                   <div>
                     <p className="mb-2 flex items-baseline justify-between gap-3">
                       <span className="text-xs text-stone-500 uppercase tracking-widest">{item.city}<Surface sqm={item.surface_sqm} /></span>
-                      <span className="flex-none whitespace-nowrap text-lg font-medium tracking-tight font-sans tabular-nums text-stone-900">
+                      <span className="flex-none whitespace-nowrap text-xl tracking-tight font-serif lining-nums text-stone-900">
                         {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
                       </span>
                     </p>

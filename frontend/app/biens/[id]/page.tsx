@@ -529,7 +529,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                 <div className="min-w-0 sm:p-4">
                   <p className="text-xs uppercase tracking-widest text-stone-500">{r.city}<Surface sqm={r.surface_sqm} /></p>
                   <p className="mt-1 font-serif text-stone-900 leading-snug">{r.title}</p>
-                  <p className="mt-1 font-sans font-normal tabular-nums text-lg text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
+                  <p className="mt-1 font-serif lining-nums text-xl text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
                 </div>
               </Link>
             ))}
