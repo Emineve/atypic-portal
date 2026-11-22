@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#F6CF4E"/>
-  <circle cx="32" cy="32" r="20" fill="#211C15"/>
-  <circle cx="38" cy="28" r="9" fill="#ffffff"/>
+  <style>
+    .o { fill: #211C15 } .p { fill: #ffffff }
+    @media (prefers-color-scheme: dark) { .o { fill: #ffffff } .p { fill: #211C15 } }
+  </style>
+  <circle class="o" cx="32" cy="32" r="30"/>
+  <circle class="p" cx="40.5" cy="26.5" r="13"/>
 </svg>

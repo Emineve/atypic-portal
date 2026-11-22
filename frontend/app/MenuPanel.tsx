@@ -23,7 +23,7 @@ function Row({ item }: { item: Item }) {
       <ChevronRight className="h-4 w-4 flex-none text-stone-300" strokeWidth={1.5} />
     </>
   );
-  const cls = 'flex w-full items-center gap-4 rounded-[12px] px-2 py-2.5 text-left transition hover:bg-stone-50';
+  const cls = 'flex w-full items-center gap-4 rounded-[10px] px-2 py-2.5 text-left transition hover:bg-stone-50';
   return item.onClick ? (
     <button type="button" onClick={item.onClick} className={cls}>
       {inner}

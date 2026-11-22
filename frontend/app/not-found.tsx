@@ -14,10 +14,10 @@ export default function NotFound() {
         <div className="max-w-4xl pt-8 md:pt-12 pb-24">
         <EyeO size={72} closed />
         <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Page introuvable</p>
-        <h1 className="mt-6 text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.02]">
+        <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Ce bien n&apos;est plus en ligne, <span className="italic text-stone-500">ou cette page n&apos;existe pas.</span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+        <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
           Un bien vendu est retiré du site. Les autres vous attendent, et une alerte vous préviendra du prochain.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">

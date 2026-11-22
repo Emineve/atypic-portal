@@ -40,7 +40,7 @@ export default function ContreVisitePartners() {
       <main className="max-w-6xl mx-auto px-6 pb-24">
         <ol className="grid gap-4 md:grid-cols-3">
           {POINTS.map((p, i) => (
-            <li key={p.title} className="rounded-[20px] border border-stone-200 bg-white p-6 md:p-8">
+            <li key={p.title} className="rounded-[14px] border border-stone-200 bg-white p-6 md:p-8">
               <span className="block text-xs font-semibold tracking-widest text-stone-500" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
               <h2 className="mt-3 font-serif text-2xl leading-snug text-stone-900">{p.title}</h2>
               <p className="mt-3 font-light leading-relaxed text-stone-600">{p.text}</p>

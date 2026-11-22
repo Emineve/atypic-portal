@@ -18,7 +18,7 @@ export function DpeChip({ value }: { value: string | null | undefined }) {
   const i = LETTERS.indexOf(c);
   return (
        <span
-      className="inline-flex items-stretch overflow-hidden rounded-full text-xs font-semibold uppercase tracking-wider leading-none"
+      className="inline-flex items-stretch overflow-hidden rounded-full text-xs font-semibold uppercase tracking-widest leading-none"
       title={`Classe énergie (DPE) : ${c}`}
     >
       <span className="bg-white text-stone-600 pl-2 pr-1 py-[3px]">DPE</span>
@@ -101,7 +101,7 @@ export function EnergyPill({ kind, value, bare = false }: { kind: 'dpe' | 'ges';
   }
   return (
     <span
-      className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500"
+      className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-stone-500"
       title={kind === 'dpe' ? `Classe énergie (DPE) : ${c}` : `Classe climat (GES) : ${c}`}
     >
       {kind === 'dpe' ? 'DPE' : 'GES'}

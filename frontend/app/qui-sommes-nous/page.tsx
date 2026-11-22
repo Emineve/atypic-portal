@@ -75,7 +75,7 @@ export default function ManifestoPage() {
             <li key={a.title} className="flex">
               <Link
                 href={a.href || '/'}
-                className="group flex w-full flex-col rounded-[20px] border border-stone-200 bg-white p-6 md:p-8 transition hover:border-stone-300 hover:shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)]"
+                className="group flex w-full flex-col rounded-[14px] border border-stone-200 bg-white p-6 md:p-8 transition hover:border-stone-300 hover:shadow-[0_14px_36px_-16px_rgba(28,25,23,0.28)]"
               >
                 <span className="block font-sans text-xs font-semibold tracking-widest text-stone-500" aria-hidden="true">
                   {String(i + 1).padStart(2, '0')}

@@ -129,7 +129,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
               <p key={p} className="mt-4 text-stone-700 leading-relaxed">{typo(p)}</p>
             ))}
             {s.list && (
-              <ul className="mt-4 space-y-2.5 list-disc pl-5 text-stone-700 leading-relaxed marker:text-stone-400">
+              <ul className="mt-4 space-y-2.5 list-disc pl-5 text-stone-700 leading-relaxed marker:text-stone-500">
                 {s.list.map((li) => (
                   <li key={li}>{typo(li)}</li>
                 ))}

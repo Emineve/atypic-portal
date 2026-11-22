@@ -1,4 +1,5 @@
 import { agencyLine } from '../lib/agencyLine';
+import Surface from './Surface';
 import Crumbs from './Crumbs';
 import SiteHeader from './SiteHeader';
 import Link from 'next/link';
@@ -82,7 +83,7 @@ export default function CollectionPage({
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>
                     <p className="mb-2 flex items-baseline justify-between gap-3">
-                      <span className="text-xs text-stone-500 uppercase tracking-wider">{item.city}{item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}</span>
+                      <span className="text-xs text-stone-500 uppercase tracking-widest">{item.city}<Surface sqm={item.surface_sqm} /></span>
                       <span className="flex-none whitespace-nowrap text-lg font-medium tracking-tight font-sans tabular-nums text-stone-900">
                         {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price).replace(/[\u202f\u00a0]/g, '\u00a0')}
                       </span>

@@ -100,7 +100,7 @@ export default function ContreVisitePage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-24">
-        <section className="rounded-[20px] border border-stone-200 bg-white p-5 md:p-8 sm:grid sm:grid-cols-[15rem_1fr] sm:items-center sm:gap-10">
+        <section className="rounded-[14px] border border-stone-200 bg-white p-5 md:p-8 sm:grid sm:grid-cols-[15rem_1fr] sm:items-center sm:gap-10">
           <div className="mx-auto w-full max-w-[15rem]">
             <Thumb who={first.who} big />
           </div>

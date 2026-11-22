@@ -11,6 +11,7 @@ import { previousVisit } from '../lib/lastVisit';
 import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment, ReactNode } from 'react';
 import { blink } from './EyeO';
+import Surface from './Surface';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
@@ -639,7 +640,7 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
           <button
             type="button"
             onClick={() => setOnlyFavs(false)}
-            className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-stone-500 hover:text-stone-900 transition"
+            className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition"
           >
             <ArrowLeft className="w-4 h-4" />
             Tous les biens
@@ -834,7 +835,7 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
             <button
               type="button"
               onClick={resetAll}
-              className="text-xs uppercase tracking-wider text-stone-500 hover:text-stone-900 transition"
+              className="text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition"
             >
               Tout réinitialiser
             </button>
@@ -1095,17 +1096,9 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
                     <div className="p-6 flex flex-1 flex-col justify-between">
                       <div>
                         <p className="mb-2 flex items-baseline justify-between gap-3">
-                          <span className="text-xs text-stone-500 uppercase tracking-wider">
+                          <span className="text-xs text-stone-500 uppercase tracking-widest">
                             {item.city}
-                            {item.surface_sqm ? (
-                              <span className="ml-2.5 inline-flex items-center gap-1 align-middle text-stone-900 normal-case tracking-normal" aria-label={`${Math.round(item.surface_sqm)} mètres carrés`}>
-                                <span className="h-2.5 w-px bg-stone-900" />
-                                <span className="h-px w-3 bg-stone-900" />
-                                <span className="font-sans tabular-nums">{Math.round(item.surface_sqm)} m²</span>
-                                <span className="h-px w-3 bg-stone-900" />
-                                <span className="h-2.5 w-px bg-stone-900" />
-                              </span>
-                            ) : null}
+                            <Surface sqm={item.surface_sqm} />
                             {isNew(item.first_seen_at) && <span className="text-stone-900"> · Nouveauté</span>}
                           </span>
                           <span className="flex-none whitespace-nowrap text-lg font-medium tracking-tight font-sans tabular-nums text-stone-900">{price.replace(/[\u202f\u00a0]/g, '\u00a0')}</span>
@@ -1219,9 +1212,9 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
                   <a href={`/biens/${item.id}`} className="flex min-w-0 flex-1 items-center gap-4" aria-label={item.title}>
                     <img src={item.cover_image_url} alt="" loading="lazy" className="h-20 w-24 flex-none rounded-[10px] object-cover bg-stone-100" />
                     <span className="min-w-0">
-                      <span className="block text-xs uppercase tracking-wider text-stone-500">
+                      <span className="block text-xs uppercase tracking-widest text-stone-500">
                         {item.city}
-                        {item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}
+                        <Surface sqm={item.surface_sqm} />
                       </span>
                       <span className="mt-0.5 block font-serif text-lg leading-tight text-stone-900 line-clamp-2">{item.title}</span>
                       <span className="mt-1 block text-sm font-medium font-sans tabular-nums text-stone-900">

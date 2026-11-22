@@ -1,4 +1,5 @@
 import SiteHeader from '../../SiteHeader';
+import Surface from '../../Surface';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BedDouble, Home, Layers, LayoutGrid, MapPin, Ruler, ChevronRight, Bath, Zap, Leaf, Calculator } from 'lucide-react';
@@ -294,7 +295,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <div key={label} className="flex items-start gap-3">
                       <Icon className="mt-1 hidden w-5 h-5 flex-none text-stone-500 md:block" strokeWidth={1.5} aria-hidden="true" />
                       <div className="min-w-0">
-                        <dt className="text-xs uppercase tracking-wider text-stone-500">{label}</dt>
+                        <dt className="text-xs uppercase tracking-widest text-stone-500">{label}</dt>
                         <dd className="mt-0.5 font-sans text-[15px] font-medium leading-snug text-stone-900 md:text-lg">{value}</dd>
                       </div>
                     </div>
@@ -303,7 +304,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <div className="flex items-start gap-3">
                       <Zap className="mt-1 hidden w-5 h-5 flex-none text-stone-500 md:block" strokeWidth={1.5} aria-hidden="true" />
                       <div className="min-w-0">
-                        <dt className="text-xs uppercase tracking-wider text-stone-500">Énergie</dt>
+                        <dt className="text-xs uppercase tracking-widest text-stone-500">Énergie</dt>
                         <dd className="mt-1.5"><EnergyPill kind="dpe" value={item.dpe_class} bare /></dd>
                       </div>
                     </div>
@@ -312,7 +313,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                     <div className="flex items-start gap-3">
                       <Leaf className="mt-1 hidden w-5 h-5 flex-none text-stone-500 md:block" strokeWidth={1.5} aria-hidden="true" />
                       <div className="min-w-0">
-                        <dt className="text-xs uppercase tracking-wider text-stone-500">Climat</dt>
+                        <dt className="text-xs uppercase tracking-widest text-stone-500">Climat</dt>
                         <dd className="mt-1.5"><EnergyPill kind="ges" value={item.ges_class} bare /></dd>
                       </div>
                     </div>
@@ -526,7 +527,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   <img src={r.cover_image_url} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="min-w-0 sm:p-4">
-                  <p className="text-xs uppercase tracking-widest text-stone-500">{r.city}{r.surface_sqm ? ` · ${r.surface_sqm} m²` : ''}</p>
+                  <p className="text-xs uppercase tracking-widest text-stone-500">{r.city}<Surface sqm={r.surface_sqm} /></p>
                   <p className="mt-1 font-serif text-stone-900 leading-snug">{r.title}</p>
                   <p className="mt-1 font-sans font-normal tabular-nums text-lg text-stone-900 sm:mt-2">{fmt(Number(r.price))}</p>
                 </div>

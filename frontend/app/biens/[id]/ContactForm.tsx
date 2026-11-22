@@ -243,7 +243,7 @@ export default function ContactForm({
           {confirmOpen && createPortal(
             <div className="fixed inset-0 z-[80] flex items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Demande envoyée">
               <div className="absolute inset-0 bg-stone-900/60" onClick={() => setConfirmOpen(false)} />
-              <div className="relative w-full max-w-sm max-h-full overflow-y-auto rounded-[20px] bg-white shadow-2xl px-7 pt-12 pb-7 text-center">
+              <div className="relative w-full max-w-sm max-h-full overflow-y-auto rounded-[14px] bg-white shadow-2xl px-7 pt-12 pb-7 text-center">
                 <button
                   type="button"
                   onClick={() => setConfirmOpen(false)}

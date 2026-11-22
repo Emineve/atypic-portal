@@ -10,7 +10,7 @@ export function StoryCard({ slug, title, art }: { slug: string; title: string; a
       <Link href={`/guide/${slug}`} className="flex flex-1 flex-col" aria-label={`Insolite : ${title}`}>
         <GuideArt art={art} className="w-full aspect-[3/2] sm:aspect-[4/3]" />
         <div className="p-6 flex flex-1 flex-col">
-          <p className="text-xs uppercase tracking-wider text-stone-900">Insolite</p>
+          <p className="text-xs uppercase tracking-widest text-stone-900">Insolite</p>
           <h2 className="mt-2 font-serif text-2xl leading-tight text-stone-900">{title}</h2>
           <p className="mt-auto pt-6">
             <span className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-900/40 group-hover:decoration-stone-900 transition">Lire l’histoire →</span>

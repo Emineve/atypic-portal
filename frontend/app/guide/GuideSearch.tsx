@@ -246,7 +246,7 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
             </p>
             <ol className="mt-3 space-y-4">
               {hits.map((h, i) => (
-                <li key={h.slug} className={`rounded-[20px] border bg-white p-6 md:p-7 ${i === 0 ? 'border-stone-900' : 'border-stone-200'}`}>
+                <li key={h.slug} className={`rounded-[14px] border bg-white p-6 md:p-7 ${i === 0 ? 'border-stone-900' : 'border-stone-200'}`}>
                   <p className="text-xs uppercase tracking-widest text-stone-500">{h.category}</p>
                   <h2 className="mt-2 font-serif text-2xl leading-snug text-stone-900">{typo(h.heading)}</h2>
                   {h.excerpt && (
@@ -267,7 +267,7 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
         )}
 
         {hits !== null && status !== 'done' && (
-          <div className={empty ? 'mt-8 rounded-[20px] border border-stone-900 bg-white p-6 md:p-8' : 'mt-6'}>
+          <div className={empty ? 'mt-8 rounded-[14px] border border-stone-900 bg-white p-6 md:p-8' : 'mt-6'}>
             {empty && (
               <>
                 <h2 className="font-serif text-2xl text-stone-900">Nous n’avons pas encore écrit sur cette question.</h2>
@@ -310,7 +310,7 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
         )}
 
         {status === 'done' && (
-          <Done title="Votre question est bien envoyée." className="mt-8 rounded-[20px] border border-stone-900 bg-white p-6 md:p-8">
+          <Done title="Votre question est bien envoyée." className="mt-8 rounded-[14px] border border-stone-900 bg-white p-6 md:p-8">
             Nous vous écrivons dès que la réponse est en ligne.
           </Done>
         )}

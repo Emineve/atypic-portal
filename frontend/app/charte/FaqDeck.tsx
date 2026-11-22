@@ -100,7 +100,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
   return (
     <div className="lg:grid lg:grid-cols-[19rem_minmax(0,1fr)] lg:gap-12 lg:items-start">
       {/* Sommaire : les rubriques en liens. Sur grand écran, il reste affiché à gauche pendant la lecture. */}
-      <nav aria-label="Rubriques" className="lg:sticky lg:top-24">
+      <nav aria-label="Rubriques" className="max-w-sm lg:max-w-none lg:sticky lg:top-24">
         <ul className="flex flex-col gap-1">
           {groups.map((g) => {
             const on = active === g.id;
@@ -110,7 +110,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
                   href={`#${g.id}`}
                   onClick={(e) => go(e, g.id)}
                   aria-current={on ? 'true' : undefined}
-                  className={`group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-[15px] transition-colors ${on ? 'bg-white font-medium text-stone-900' : 'text-stone-600 hover:text-stone-900'}`}
+                  className={`group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-[15px] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${on ? 'bg-white font-medium text-stone-900' : 'text-stone-600 hover:text-stone-900'}`}
                 >
                   <Icon id={g.id} active={on} />
                   <span className="flex-1">{g.title}</span>

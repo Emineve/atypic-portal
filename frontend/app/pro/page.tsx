@@ -108,7 +108,7 @@ export default function ProPage() {
           <h2 className={h2}>Ce que vous y gagnez</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3 md:gap-5">
             {PILLARS.map((p) => (
-              <div key={p.title} className="rounded-[20px] border border-stone-200 bg-white p-6 md:p-7">
+              <div key={p.title} className="rounded-[14px] border border-stone-200 bg-white p-6 md:p-7">
                 <h3 className="font-serif text-2xl text-stone-900">{p.title}</h3>
                 <ul className="mt-5 space-y-3">
                   {p.points.map((t) => (

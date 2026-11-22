@@ -89,7 +89,7 @@ export default async function GuideIndex() {
               </p>
               <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">{typo(first.title)}</h2>
               <p className="mt-4 text-stone-600 leading-relaxed">{typo(first.description)}</p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900">
+              <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-stone-900">
                 Lire l&apos;article
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </span>
