@@ -10,7 +10,7 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-// Page de travail, cachée : trois pistes pour donner au site un caractère plus atypique, à juger sur pièces.
+// Page de travail, cachée : six pistes pour donner au site un caractère plus atypique, à juger sur pièces.
 // Rien de ce qui est montré ici n'est en place sur le site.
 
 interface L {
@@ -59,6 +59,52 @@ function Card({ l, wide = false }: { l?: L; wide?: boolean }) {
   );
 }
 
+// Piste 4 : la photo prend la forme d'une ouverture (arche de verrière, hublot, pente de toit)
+function Shaped({ l, shape, label }: { l?: L; shape: 'arche' | 'hublot' | 'pente'; label: string }) {
+  const frame =
+    shape === 'arche' ? 'aspect-[4/5] rounded-t-[999px] rounded-b-[14px]' :
+    shape === 'hublot' ? 'aspect-square rounded-full' :
+    'aspect-[4/5] rounded-[14px] [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]';
+  return (
+    <article>
+      <div className={`${frame} overflow-hidden bg-stone-200`}>
+        {l?.cover_image_url && <img src={l.cover_image_url} alt="" className="h-full w-full object-cover" />}
+      </div>
+      <p className="mt-4 text-xs uppercase tracking-wider text-stone-500">{label}</p>
+      <p className="mt-1 font-serif text-xl leading-tight line-clamp-2">{l?.title || 'Atelier d’artiste en triplex'}</p>
+      <p className="mt-1 font-sans text-base font-medium tabular-nums">{eur(Number(l?.price || 1250000))}</p>
+    </article>
+  );
+}
+
+// Piste 5 : une cote, comme sur un plan d'architecte
+function Cote({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <div className="flex items-center gap-2 text-stone-900">
+        <span className="h-4 w-px bg-stone-900" />
+        <span className="h-px flex-1 bg-stone-900" />
+        <span className="font-sans text-2xl font-medium tabular-nums whitespace-nowrap">{value}</span>
+        <span className="h-px flex-1 bg-stone-900" />
+        <span className="h-4 w-px bg-stone-900" />
+      </div>
+      <p className="mt-2 text-center text-xs uppercase tracking-wider text-stone-500">{label}</p>
+    </div>
+  );
+}
+
+// Un mur et une porte, en guise de filet entre deux parties de page
+function Mur() {
+  return (
+    <svg viewBox="0 0 1200 70" className="w-full h-10 md:h-14" aria-hidden="true">
+      <path d="M0 60 H420 M520 60 H1200" fill="none" stroke="#211C15" strokeWidth="5" />
+      <path d="M420 60 V10" fill="none" stroke="#211C15" strokeWidth="2" />
+      <path d="M420 10 Q520 10 520 60" fill="none" stroke="#211C15" strokeWidth="2" strokeDasharray="6 6" />
+      <path d="M760 60 V44 M900 60 V44 M760 52 H900" fill="none" stroke="#211C15" strokeWidth="2" />
+    </svg>
+  );
+}
+
 function Piste({ n, title, children, what }: { n: string; title: string; what: string; children: React.ReactNode }) {
   return (
     <section className="max-w-6xl mx-auto px-6 py-12 md:py-16 border-t border-stone-200">
@@ -80,7 +126,7 @@ export default async function DecalePage() {
           Un site plus décalé, <span className="italic text-stone-500">sans perdre en tenue.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-base md:text-lg text-stone-600">
-          Trois pistes à juger sur pièces. Elles se cumulent ou se prennent séparément. Le site actuel n’a pas changé.
+          Six pistes à juger sur pièces. Elles se cumulent ou se prennent séparément. Le site actuel n’a pas changé.
         </p>
         <p className="mt-4"><Link href="/" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-[#F6CF4E]">Revenir au site →</Link></p>
       </header>
@@ -153,6 +199,55 @@ export default async function DecalePage() {
           <Card l={ls[0]} />
         </div>
         <p className="mt-3 text-sm text-stone-600">Les photos sont celles d’annonces du site, reprises ici pour l’exemple.</p>
+      </Piste>
+
+      <Piste n="4" title="Des fenêtres à la place des cadres" what="La photo prend la forme d’une ouverture : l’arche d’une verrière pour un atelier, un hublot pour une péniche, la pente d’un toit pour un dernier étage. Chaque famille de biens a la sienne.">
+        <div className="grid gap-8 sm:grid-cols-3 items-end">
+          <Shaped l={ls[0]} shape="arche" label="Loft & Atelier" />
+          <Shaped l={ls[1]} shape="hublot" label="Péniche" />
+          <Shaped l={ls[2]} shape="pente" label="Rooftop & Vue" />
+        </div>
+        <p className="mt-6 text-sm text-stone-600">À réserver à quelques endroits : les pages de catégorie, le haut d’une fiche. Sur toute la liste, ce serait trop, et la photo de l’agence serait rognée.</p>
+      </Piste>
+
+      <Piste n="5" title="Les cotes d’un plan" what="Les chiffres d’un bien s’affichent comme sur un plan d’architecte, entre deux traits. Et les parties de page se séparent par un mur et une porte, plutôt que par un filet gris.">
+        <div className="rounded-[14px] border border-stone-200 bg-white p-8 md:p-10">
+          <div className="grid gap-8 sm:grid-cols-3">
+            <Cote value="110 m²" label="Surface" />
+            <Cote value="4,20 m" label="Hauteur sous plafond" />
+            <Cote value="3 niveaux" label="Triplex" />
+          </div>
+        </div>
+        <p className="mt-3 text-sm text-stone-600">Le bloc de caractéristiques d’une fiche.</p>
+        <div className="mt-10"><Mur /></div>
+        <p className="mt-3 text-sm text-stone-600">Un séparateur de page : un mur, une porte, une fenêtre.</p>
+      </Piste>
+
+      <Piste n="6" title="Des mots qui jouent" what="La typographie fait un pas de côté, une seule fois par page : un mot qui penche, des « o » qui regardent dans les noms de catégories.">
+        <div className="rounded-[14px] border border-stone-200 bg-white p-8 md:p-12">
+          <p className="font-serif text-[2rem] md:text-[3.4rem] tracking-tight leading-[1.1] text-stone-900 text-center [text-wrap:balance]">
+            Tous les biens{' '}
+            <span className="inline-block italic -rotate-6 translate-y-[0.06em] [background:linear-gradient(transparent_62%,#F6CF4E_62%)] px-[0.08em]">atypiques</span>{' '}
+            des meilleures agences, réunis sur un seul site.
+          </p>
+        </div>
+        <p className="mt-3 text-sm text-stone-600">Le titre de l’accueil : un seul mot sort du rang, celui qui le dit.</p>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {[
+            ['L', 1, 'ft & Atelier'],
+            ['R', 2, 'ftop & Vue'],
+            ['Bateau & Pénich', 0, 'e'],
+          ].map(([before, eyes, after]) => (
+            <div key={String(before)} className="rounded-[14px] border border-stone-200 bg-white p-8 min-h-[150px] flex items-center justify-center">
+              <span className="font-logo font-semibold tracking-tight text-3xl md:text-4xl text-stone-900 whitespace-nowrap">
+                {before}
+                {Array.from({ length: Number(eyes) }, (_, i) => <EyeO key={i} letter />)}
+                {after}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-sm text-stone-600">Les noms de catégories : chaque « o » devient un œil. « Rooftop » en a deux, et vous regarde. Là où il n’y a pas de « o », rien ne change.</p>
       </Piste>
 
       <footer className="max-w-6xl mx-auto px-6 py-12 border-t border-stone-200">
