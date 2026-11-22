@@ -1,11 +1,10 @@
 import Link from 'next/link';
 
-// Les quatre entrées principales, visibles dans l'en-tête sur grand écran. Le reste est dans le menu.
+// Les trois entrées principales, côté acheteur (l'espace pro reste dans le pied de page), visibles dans l'en-tête sur grand écran. Le reste est dans le menu.
 const LINKS = [
   { href: '/', label: 'Acheter' },
   { href: '/guide', label: 'État des lieux' },
   { href: '/financement', label: 'Financement' },
-  { href: '/pro', label: 'Espace pro' },
 ];
 
 export default function HeaderLinks() {
