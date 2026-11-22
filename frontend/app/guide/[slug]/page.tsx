@@ -227,10 +227,10 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         {a.stayLink && (
           <p className="mt-4 text-sm text-stone-600">
             Pour essayer une nuit :{' '}
-            <a href={stayUrl(a.stayLink.href)} target="_blank" rel="sponsored nofollow noopener" className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
+            <a href={a.stayLink.affiliate ? stayUrl(a.stayLink.href) : a.stayLink.href} target="_blank" rel={a.stayLink.affiliate ? 'sponsored nofollow noopener' : 'noopener'} className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
               {a.stayLink.label} ↗
             </a>
-            {STAY_PAID && <span className="text-stone-500"> (lien rémunéré)</span>}
+            {STAY_PAID && a.stayLink.affiliate && <span className="text-stone-500"> (lien rémunéré)</span>}
           </p>
         )}
         <SmartAlert className="mt-8" />

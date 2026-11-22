@@ -36,7 +36,7 @@ export interface GuideArticle {
   faq: { q: string; a: string }[];
   sources: { label: string; url: string }[];
   listingsLink?: { label: string; href: string }; // vers les annonces du type de bien concerné
-  stayLink?: { label: string; href: string }; // rubrique Insolite : où passer une nuit dans un lieu du même genre
+  stayLink?: { label: string; href: string; affiliate?: boolean }; // rubrique Insolite : où passer une nuit dans un lieu du même genre
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
@@ -5725,6 +5725,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Brut, « Le quotidien des derniers gardiens de phare en France », 2 septembre 2019', url: 'https://www.brut.media/fr/news/le-quotidien-des-derniers-gardiens-de-phare-en-france-6725765e-7271-4921-8c87-d4f56f2c347d' },
     ],
     listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+    stayLink: { label: 'Dormir dans la maison des gardiens, sur l’île Vierge', href: 'https://www.abers-tourisme.com/phares-de-lile-vierge/la-maison-des-gardiens-de-phare-ecogite-dexception/' },
   },
   {
     slug: 'deux-ans-dans-un-arbre',
@@ -5781,7 +5782,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'The Guardian, repris par Inkl, « Experience: I lived in a tree for two years »', url: 'https://www.inkl.com/news/experience-i-lived-in-a-tree-for-two-years' },
     ],
     listingsLink: { label: 'Voir les derniers étages et rooftops', href: '/categorie/rooftop-vue' },
-    stayLink: { label: 'Dormir dans une cabane dans les arbres', href: 'https://www.abracadaroom.com/fr/nuit-insolite-cabane-dans-les-arbres/' },
+    stayLink: { label: 'Dormir dans une cabane dans les arbres', href: 'https://www.abracadaroom.com/fr/nuit-insolite-cabane-dans-les-arbres/', affiliate: true },
   },
   {
     slug: 'une-chapelle-en-ruine-devenue-maison',
@@ -6118,7 +6119,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Reporterre, « Vivre sous un dôme, un habitat alternatif méconnu »', url: 'https://reporterre.net/Vivre-sous-un-dome-un-habitat-alternatif-meconnu' },
     ],
     listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
-    stayLink: { label: 'Dormir dans une bulle', href: 'https://www.abracadaroom.com/fr/nuit-insolite-bulle/' },
+    stayLink: { label: 'Dormir dans une bulle', href: 'https://www.abracadaroom.com/fr/nuit-insolite-bulle/', affiliate: true },
   },
   {
     slug: 'vivre-dans-la-roche-les-maisons-troglodytes',
@@ -6238,6 +6239,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'RTBF, « Envie de prendre de la hauteur ? Découvrez un logement insolite dans Une brique dans le ventre », 25 janvier 2025', url: 'https://www.rtbf.be/article/envie-de-prendre-de-la-hauteur-decouvrez-un-logement-insolite-dans-une-brique-dans-le-ventre-11494444' },
     ],
     listingsLink: { label: 'Voir les derniers étages et rooftops', href: '/categorie/rooftop-vue' },
+    stayLink: { label: 'Dormir dans le château d’eau de Montzen', href: 'https://www.lesdomsdalfred.be/fr/akwadom' },
   },
   {
     slug: 'une-maison-en-conteneurs-maritimes',
@@ -6344,7 +6346,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'RTBF, « Vivre dans une yourte, oui, mais avec électricité, eau courante et wifi », 15 juillet 2015', url: 'https://www.rtbf.be/article/vivre-dans-une-yourte-oui-mais-avec-electricite-eau-courante-et-wifi-9032727' },
     ],
     listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
-    stayLink: { label: 'Dormir dans une yourte', href: 'https://www.abracadaroom.com/fr/nuit-insolite-yourte/' },
+    stayLink: { label: 'Dormir dans une yourte', href: 'https://www.abracadaroom.com/fr/nuit-insolite-yourte/', affiliate: true },
   },
   {
     slug: 'vivre-en-van-l-envers-du-decor',
@@ -6570,7 +6572,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Reporterre, « Ils vivent dans une tiny house, et ils sont heureux », 28 juillet 2017', url: 'https://reporterre.net/VIDEO-Ils-vivent-dans-une-tiny-house-et-ils-sont-heureux' },
     ],
     listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
-    stayLink: { label: 'Dormir dans une tiny house', href: 'https://www.abracadaroom.com/fr/nuit-insolite-tiny-house/' },
+    stayLink: { label: 'Dormir dans une tiny house', href: 'https://www.abracadaroom.com/fr/nuit-insolite-tiny-house/', affiliate: true },
   },
   {
     slug: 'la-maison-bulle-de-chartreuse',
@@ -6629,6 +6631,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'The Connexion, « US-French couple breathe life into 1960s bubble house », 15 décembre 2023', url: 'https://www.connexionfrance.com/practical/us-french-couple-breathe-life-into-1960s-bubble-house/611356' },
     ],
     listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+    stayLink: { label: 'Dormir dans la maison bulle', href: 'https://www.chartreuse-tourisme.com/offres/balcon-de-belledonne-sainte-marie-du-mont-fr-5342813/' },
   },
   {
     slug: 'vivre-dans-un-moulin-l-eau-sous-le-plancher',
@@ -6690,6 +6693,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'The Connexion, « See inside our 13th-Century watermill home in the south of France », 10 septembre 2024', url: 'https://www.connexionfrance.com/practical/photos-see-inside-our-13th-century-watermill-home-in-the-south-of-france/670528' },
     ],
     listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+    stayLink: { label: 'Dormir au moulin de Latreille', href: 'https://www.moulindelatreille.com/fr/' },
   },
   {
     slug: 'habiter-sur-la-seine',
@@ -6794,6 +6798,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'The Connexion, « Sleep in a 100-year-old railway carriage at a former Brittany station », 20 janvier 2026', url: 'https://www.connexionfrance.com/magazine/sleep-in-a-100-year-old-railway-carriage-at-a-former-brittany-station/756671' },
     ],
     listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+    stayLink: { label: 'Dormir dans le wagon-lit de Guiscriff', href: 'https://www.lagaredeguiscriff.com/hebergements/train-couchettes/' },
   },
   {
     slug: 'schoonschip-le-quartier-flottant-d-amsterdam',
@@ -6850,7 +6855,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Dwell, « Like-Minded Neighbors Build an Energy-Independent Floating Community in Amsterdam »', url: 'https://www.dwell.com/article/schoonschip-space-and-matter-68a51264' },
     ],
     listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
-    stayLink: { label: 'Dormir dans une cabane sur l’eau', href: 'https://www.abracadaroom.com/fr/nuit-insolite-cabane-sur-leau/' },
+    stayLink: { label: 'Dormir dans une cabane sur l’eau', href: 'https://www.abracadaroom.com/fr/nuit-insolite-cabane-sur-leau/', affiliate: true },
   },
   {
     slug: 'habiter-une-ancienne-ecole',
@@ -6903,6 +6908,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'The Connexion, « Couple transform old village school into quirky French home », 7 août 2024', url: 'https://www.connexionfrance.com/magazine/photos-couple-transform-old-village-school-into-quirky-french-home/665874' },
     ],
     listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+    stayLink: { label: 'Dormir dans l’école de Châtelaudren', href: 'https://www.larecreationbretagne.fr/fr' },
   },
   {
     slug: 'un-hameau-entier-pour-26-000-euros',
