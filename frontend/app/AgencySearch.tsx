@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Send } from 'lucide-react';
 import AlertDialog from './AlertDialog';
 import { readVisitor } from '../lib/visitor';
 
@@ -23,20 +22,17 @@ export default function AgencySearch({ agency }: { agency: string }) {
 
   return (
     <>
-      <div className="mt-7 flex flex-col items-start">
+      {/* Un lien sous la phrase d'introduction, comme sur les autres pages : pas de gros bouton */}
+      <p className="mt-3">
         <button
           type="button"
           onClick={openDialog}
           aria-label={label}
-          className="inline-flex h-12 items-center justify-center gap-2.5 whitespace-nowrap bg-stone-900 px-7 text-[15px] font-medium text-white hover:bg-stone-800 transition rounded-full"
+          className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 transition"
         >
-          <Send className="w-4 h-4 flex-none" />
-          Partager ma recherche
+          Confier ma recherche à cette agence →
         </button>
-        <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone-500">
-          Décrivez ce que vous cherchez à {agency} : l&apos;agence vous recontacte dès qu&apos;un bien correspond, y compris avant sa mise en ligne.
-        </p>
-      </div>
+      </p>
 
       <AlertDialog
         open={open}
