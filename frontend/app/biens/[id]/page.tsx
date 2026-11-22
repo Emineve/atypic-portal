@@ -276,44 +276,44 @@ export default async function ListingPage({ params }: { params: { id: string } }
               </ul>
             )}
 
-            <p className="mt-5 font-sans font-normal tabular-nums text-3xl text-stone-900 lg:hidden">{price}</p>
-            {plans.length > 0 && (
-              <div className="lg:hidden mt-1">
-                <PlanDownload listingId={item.id} plans={plans} title={item.title} variant="link" />
+            {/* Prix (sur téléphone) et fiche technique, réunis dans une même carte */}
+            <div className="mt-6 rounded-[14px] border border-stone-200 bg-white p-5 md:p-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 lg:hidden">
+                <p className="font-sans font-normal tabular-nums text-3xl text-stone-900">{price}</p>
+                {plans.length > 0 && <PlanDownload listingId={item.id} plans={plans} title={item.title} variant="link" />}
               </div>
-            )}
-
-            {facts.length > 0 && (
-              <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-6 border-y border-stone-200 py-6">
-                {facts.map(([label, value, Icon]) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <Icon className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                    <div className="min-w-0">
-                      <dt className="text-xs uppercase tracking-widest text-stone-500">{label}</dt>
-                      <dd className="mt-0.5 font-sans text-lg font-medium leading-snug text-stone-900">{value}</dd>
+              {(facts.length > 0 || item.dpe_class || item.ges_class) && (
+                <dl className="mt-5 grid grid-cols-3 gap-x-4 gap-y-5 border-t border-stone-200 pt-5 md:grid-cols-4 lg:mt-0 lg:border-0 lg:pt-0">
+                  {facts.map(([label, value, Icon]) => (
+                    <div key={label} className="flex items-start gap-3">
+                      <Icon className="mt-1 hidden w-5 h-5 flex-none text-stone-400 md:block" strokeWidth={1.5} aria-hidden="true" />
+                      <div className="min-w-0">
+                        <dt className="text-[11px] uppercase tracking-wider text-stone-500">{label}</dt>
+                        <dd className="mt-0.5 font-sans text-[15px] font-medium leading-snug text-stone-900 md:text-lg">{value}</dd>
+                      </div>
                     </div>
-                  </div>
-                ))}
-                {item.dpe_class && (
-                  <div className="flex items-start gap-3">
-                    <Zap className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                    <div className="min-w-0">
-                      <dt className="text-xs uppercase tracking-widest text-stone-500">Énergie (DPE)</dt>
-                      <dd className="mt-1.5"><EnergyPill kind="dpe" value={item.dpe_class} bare /></dd>
+                  ))}
+                  {item.dpe_class && (
+                    <div className="flex items-start gap-3">
+                      <Zap className="mt-1 hidden w-5 h-5 flex-none text-stone-400 md:block" strokeWidth={1.5} aria-hidden="true" />
+                      <div className="min-w-0">
+                        <dt className="text-[11px] uppercase tracking-wider text-stone-500">Énergie</dt>
+                        <dd className="mt-1.5"><EnergyPill kind="dpe" value={item.dpe_class} bare /></dd>
+                      </div>
                     </div>
-                  </div>
-                )}
-                {item.ges_class && (
-                  <div className="flex items-start gap-3">
-                    <Leaf className="mt-1 w-5 h-5 flex-none text-stone-400" strokeWidth={1.5} aria-hidden="true" />
-                    <div className="min-w-0">
-                      <dt className="text-xs uppercase tracking-widest text-stone-500">Climat (GES)</dt>
-                      <dd className="mt-1.5"><EnergyPill kind="ges" value={item.ges_class} bare /></dd>
+                  )}
+                  {item.ges_class && (
+                    <div className="flex items-start gap-3">
+                      <Leaf className="mt-1 hidden w-5 h-5 flex-none text-stone-400 md:block" strokeWidth={1.5} aria-hidden="true" />
+                      <div className="min-w-0">
+                        <dt className="text-[11px] uppercase tracking-wider text-stone-500">Climat</dt>
+                        <dd className="mt-1.5"><EnergyPill kind="ges" value={item.ges_class} bare /></dd>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </dl>
-            )}
+                  )}
+                </dl>
+              )}
+            </div>
 
             <Description text={item.short_description || ''} />
 
