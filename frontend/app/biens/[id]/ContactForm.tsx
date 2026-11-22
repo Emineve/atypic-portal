@@ -273,10 +273,7 @@ export default function ContactForm({
                     {/* Deux actions, deux vrais boutons : l'alerte en jaune, la recherche confiée en contour */}
                     <div className="mt-4 space-y-2.5">
                       {alertStatus === 'done' ? (
-                        <p className="flex h-12 items-center justify-center gap-2 rounded-full bg-stone-100 text-[15px] text-stone-700">
-                          <Check className="w-4 h-4 flex-none" />
-                          Alerte créée
-                        </p>
+                        <p className="py-1 text-[15px] text-stone-700">Alerte créée : vous serez prévenu(e) par e-mail.</p>
                       ) : (
                         <button type="button" onClick={createAlert} disabled={alertStatus === 'sending'} className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#F6CF4E] text-[15px] font-medium text-stone-900 transition hover:bg-[#EFC234] disabled:opacity-60">
                           <Bell className="w-4 h-4 flex-none" strokeWidth={1.75} />
@@ -284,10 +281,7 @@ export default function ContactForm({
                         </button>
                       )}
                       {shareStatus === 'done' ? (
-                        <p className="flex min-h-12 items-center justify-center gap-2 rounded-full bg-stone-100 px-5 py-2 text-center text-[15px] leading-snug text-stone-700">
-                          <Check className="w-4 h-4 flex-none" />
-                          Recherche confiée à l&apos;agence
-                        </p>
+                        <p className="py-1 text-[15px] text-stone-700">Recherche confiée à l&apos;agence.</p>
                       ) : (
                         <button type="button" onClick={shareCriteria} disabled={shareStatus === 'sending'} className="flex h-12 w-full items-center justify-center gap-2 rounded-full border border-stone-900 text-[15px] font-medium text-stone-900 transition hover:bg-stone-900 hover:text-white disabled:opacity-60">
                           <Send className="w-4 h-4 flex-none" strokeWidth={1.75} />
