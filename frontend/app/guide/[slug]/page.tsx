@@ -1,4 +1,5 @@
 import SmartAlert from '../../SmartAlert';
+import { STAY_PAID, stayUrl } from '../../../lib/stay';
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -221,6 +222,15 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
             <Link href={a.listingsLink.href} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
               {a.listingsLink.label}
             </Link>
+          </p>
+        )}
+        {a.stayLink && (
+          <p className="mt-4 text-sm text-stone-600">
+            Pour essayer une nuit :{' '}
+            <a href={stayUrl(a.stayLink.href)} target="_blank" rel="sponsored nofollow noopener" className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
+              {a.stayLink.label} ↗
+            </a>
+            {STAY_PAID && <span className="text-stone-500"> (lien rémunéré)</span>}
           </p>
         )}
         <SmartAlert className="mt-8" />

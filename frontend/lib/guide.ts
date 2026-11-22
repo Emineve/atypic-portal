@@ -36,6 +36,7 @@ export interface GuideArticle {
   faq: { q: string; a: string }[];
   sources: { label: string; url: string }[];
   listingsLink?: { label: string; href: string }; // vers les annonces du type de bien concerné
+  stayLink?: { label: string; href: string }; // rubrique Insolite : où passer une nuit dans un lieu du même genre
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
@@ -5780,6 +5781,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'The Guardian, repris par Inkl, « Experience: I lived in a tree for two years »', url: 'https://www.inkl.com/news/experience-i-lived-in-a-tree-for-two-years' },
     ],
     listingsLink: { label: 'Voir les derniers étages et rooftops', href: '/categorie/rooftop-vue' },
+    stayLink: { label: 'Dormir dans une cabane dans les arbres', href: 'https://www.abracadaroom.com/fr/nuit-insolite-cabane-dans-les-arbres/' },
   },
   {
     slug: 'une-chapelle-en-ruine-devenue-maison',
@@ -6116,6 +6118,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Reporterre, « Vivre sous un dôme, un habitat alternatif méconnu »', url: 'https://reporterre.net/Vivre-sous-un-dome-un-habitat-alternatif-meconnu' },
     ],
     listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+    stayLink: { label: 'Dormir dans une bulle', href: 'https://www.abracadaroom.com/fr/nuit-insolite-bulle/' },
   },
   {
     slug: 'vivre-dans-la-roche-les-maisons-troglodytes',
@@ -6341,6 +6344,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'RTBF, « Vivre dans une yourte, oui, mais avec électricité, eau courante et wifi », 15 juillet 2015', url: 'https://www.rtbf.be/article/vivre-dans-une-yourte-oui-mais-avec-electricite-eau-courante-et-wifi-9032727' },
     ],
     listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+    stayLink: { label: 'Dormir dans une yourte', href: 'https://www.abracadaroom.com/fr/nuit-insolite-yourte/' },
   },
   {
     slug: 'vivre-en-van-l-envers-du-decor',
@@ -6566,6 +6570,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Reporterre, « Ils vivent dans une tiny house, et ils sont heureux », 28 juillet 2017', url: 'https://reporterre.net/VIDEO-Ils-vivent-dans-une-tiny-house-et-ils-sont-heureux' },
     ],
     listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+    stayLink: { label: 'Dormir dans une tiny house', href: 'https://www.abracadaroom.com/fr/nuit-insolite-tiny-house/' },
   },
   {
     slug: 'la-maison-bulle-de-chartreuse',
@@ -6845,6 +6850,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Dwell, « Like-Minded Neighbors Build an Energy-Independent Floating Community in Amsterdam »', url: 'https://www.dwell.com/article/schoonschip-space-and-matter-68a51264' },
     ],
     listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
+    stayLink: { label: 'Dormir dans une cabane sur l’eau', href: 'https://www.abracadaroom.com/fr/nuit-insolite-cabane-sur-leau/' },
   },
   {
     slug: 'habiter-une-ancienne-ecole',
