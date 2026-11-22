@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { CATEGORY_LIST, slugify, cityHub } from '../lib/catalog';
+import EyeO from './EyeO';
 
 // Réseaux sociaux : affichés sans lien pour l'instant (comptes à créer)
 const SOCIALS = [
@@ -18,8 +19,8 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
       <div className="max-w-6xl mx-auto px-6 pt-14 pb-8 md:pt-20">
         <div className="grid gap-y-12 md:grid-cols-[1.3fr_2fr] md:gap-x-16">
           <div>
-            <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white">
-              loftissime.
+            <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white whitespace-nowrap">
+              l<EyeO letter ink="#ffffff" iris="#211C15" />ftissime.
             </a>
             <p className="mt-4 font-serif text-xl text-[#F6CF4E]">Curateur de biens atypiques</p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-500">

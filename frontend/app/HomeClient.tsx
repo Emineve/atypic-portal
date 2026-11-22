@@ -9,7 +9,8 @@ import HeaderLinks from './HeaderLinks';
 import FavoritesByMail from './FavoritesByMail';
 import { previousVisit } from '../lib/lastVisit';
 import { agencyLine } from '../lib/agencyLine';
-import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
+import { useState, useEffect, useMemo, useRef, Fragment, ReactNode } from 'react';
+import { blink } from './EyeO';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
 import { saveVisitor } from '../lib/visitor';
@@ -160,7 +161,7 @@ function isNew(date: string | null) {
   return Date.now() - new Date(date).getTime() < NEW_DAYS * 86400000;
 }
 
-export default function HomeClient({ initialListings, newArticles = 0 }: { initialListings: Listing[]; newArticles?: number }) {
+export default function HomeClient({ initialListings, newArticles = 0, heroArt = null, stories = [], eyeCard = null }: { initialListings: Listing[]; newArticles?: number; heroArt?: ReactNode; stories?: ReactNode[]; eyeCard?: ReactNode }) {
   const listings = initialListings;
   const typeOptions = useMemo(() => availableTypes(listings), [listings]);
   const loading = false;
@@ -306,6 +307,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
       /* ignoré */
     }
     if (adding) {
+      blink(); // l'œil du logo cligne
       trackEvent('favorite', id);
       unmarkContacted(id);
       setContacted((prev) => prev.filter((x) => x !== id));
@@ -505,6 +507,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
     });
   }, [listings, filters, onlyFavs, favorites, query, places, sort]);
 
+  // Les histoires Insolite se glissent dans la liste complète, pas dans les favoris ni dans une courte sélection
+  const storyOn = !onlyFavs && stories.length > 0 && visible.length >= 6;
+
   // Après la création d'une alerte : biens déjà en ligne qui y répondent (mêmes règles que la recherche)
   function alertPlaces(locations: string[]): Place[] {
     return locations
@@ -650,8 +655,9 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
         </header>
       ) : (
       <>
-      <header className="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-8 md:pb-12 text-center">
-                <HeroTitle />
+      <header className="max-w-7xl mx-auto px-6 pt-10 md:pt-14 pb-8 md:pb-10 grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
+        <div className="text-center lg:text-left"><HeroTitle /></div>
+        {heroArt && <div className="hidden lg:flex self-stretch items-center rounded-[14px] bg-[#F6CF4E] overflow-hidden" aria-hidden="true">{heroArt}</div>}
       </header>
 
       <section className="max-w-7xl mx-auto px-6 pb-8">
@@ -1091,7 +1097,15 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                         <p className="mb-2 flex items-baseline justify-between gap-3">
                           <span className="text-xs text-stone-500 uppercase tracking-wider">
                             {item.city}
-                            {item.surface_sqm ? ` · ${Math.round(item.surface_sqm)} m²` : ''}
+                            {item.surface_sqm ? (
+                              <span className="ml-2.5 inline-flex items-center gap-1 align-middle text-stone-900 normal-case tracking-normal" aria-label={`${Math.round(item.surface_sqm)} mètres carrés`}>
+                                <span className="h-2.5 w-px bg-stone-900" />
+                                <span className="h-px w-3 bg-stone-900" />
+                                <span className="font-sans tabular-nums">{Math.round(item.surface_sqm)} m²</span>
+                                <span className="h-px w-3 bg-stone-900" />
+                                <span className="h-2.5 w-px bg-stone-900" />
+                              </span>
+                            ) : null}
                             {isNew(item.first_seen_at) && <span className="text-stone-900"> · Nouveauté</span>}
                           </span>
                           <span className="flex-none whitespace-nowrap text-lg font-medium tracking-tight font-sans tabular-nums text-stone-900">{price.replace(/[\u202f\u00a0]/g, '\u00a0')}</span>
@@ -1128,7 +1142,10 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     <Heart className={`w-5 h-5 ${fav ? 'fill-red-600 text-red-600' : 'text-stone-700'}`} />
                   </button>
                 </article>
-                {index === 5 && visible.length > 6 && !onlyFavs && (
+                {storyOn && index === 1 && stories[0]}
+                {storyOn && index === 7 && eyeCard}
+                {storyOn && index > 7 && (index - 7) % 9 === 0 && stories[((index - 7) / 9) % stories.length]}
+                {index === (storyOn ? 4 : 5) && visible.length > 6 && !onlyFavs && (
                   <button
                     type="button"
                     onClick={() => openAlert('liste')}
