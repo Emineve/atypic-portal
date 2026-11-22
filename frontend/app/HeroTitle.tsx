@@ -7,7 +7,7 @@ export default function HeroTitle() {
         <span className="italic text-stone-900 [background:linear-gradient(transparent_62%,#F6CF4E_62%)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">réunis sur un seul site</span>.
       </h1>
       <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg font-light text-stone-600">
-        Lofts, ateliers d’artistes, toits-terrasses : ici, le banal n’a pas sa place.
+        Ici, le banal n’a pas sa place.
       </p>
     </>
   );
