@@ -2,20 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { typo } from '../../lib/typo';
-import { KeyRound, Gem, Compass, Heart, ArrowDownUp, Lock } from 'lucide-react';
-
-// Un petit picto par rubrique, devant son lien dans le sommaire
-const ICONS: Record<string, typeof KeyRound> = { acheter: KeyRound, selection: Gem, fonctionnement: Compass, demandes: Heart, classement: ArrowDownUp, donnees: Lock };
-function Icon({ id, active }: { id: string; active: boolean }) {
-  const I = ICONS[id] || Compass;
-  // Le picto vit dans un rond : jaune pour la rubrique en cours de lecture
-  return (
-    <span className={`flex h-8 w-8 flex-none items-center justify-center rounded-full transition-colors ${active ? 'bg-[#F6CF4E] text-stone-900' : 'bg-stone-100 text-stone-500 group-hover:bg-stone-200'}`} aria-hidden="true">
-      <I className="h-4 w-4" strokeWidth={1.5} />
-    </span>
-  );
-}
-
 // Les questions fréquentes : un sommaire en liens, puis toutes les rubriques l'une sous l'autre.
 export type FaqItem = { q: string; a: string; points?: string[]; table?: { lead?: string; head: [string, string, string]; rows: [string, string, string][] } };
 export type FaqGroup = { id: string; title: string; items: FaqItem[] };
@@ -100,21 +86,22 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
   return (
     <div className="lg:grid lg:grid-cols-[19rem_minmax(0,1fr)] lg:gap-12 lg:items-start">
       {/* Sommaire : les rubriques en liens. Sur grand écran, il reste affiché à gauche pendant la lecture. */}
-      <nav aria-label="Rubriques" className="max-w-sm lg:max-w-none lg:sticky lg:top-24">
-        <ul className="flex flex-col gap-1">
+      <nav aria-label="Rubriques" className="lg:sticky lg:top-24">
+        {/* Même sommaire que les rubriques d'État des lieux : une ligne par rubrique, le nombre de questions au bout.
+            Le trait jaune vient au survol, au toucher, et reste sous la rubrique en cours de lecture. */}
+        <ul className="grid grid-cols-1 gap-x-10 border-t border-stone-900 sm:grid-cols-2 lg:grid-cols-1">
           {groups.map((g) => {
             const on = active === g.id;
             return (
-              <li key={g.id}>
+              <li key={g.id} className="border-b border-stone-200">
                 <a
                   href={`#${g.id}`}
                   onClick={(e) => go(e, g.id)}
                   aria-current={on ? 'true' : undefined}
-                  className={`group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-[15px] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${on ? 'bg-white font-medium text-stone-900' : 'text-stone-600 hover:text-stone-900'}`}
+                  className="group flex items-baseline justify-between gap-4 py-3.5 focus:outline-none"
                 >
-                  <Icon id={g.id} active={on} />
-                  <span className="flex-1">{g.title}</span>
-                  <span className={`text-xs tabular-nums ${on ? 'text-stone-900' : 'text-stone-500'}`}>{g.items.length}</span>
+                  <span className={`font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(transparent_62%,#F6CF4E_62%)] bg-no-repeat transition-[background-size] duration-300 ${on ? 'bg-[length:100%_100%]' : 'bg-[length:0%_100%] group-hover:bg-[length:100%_100%] group-active:bg-[length:100%_100%] group-focus-visible:bg-[length:100%_100%]'}`}>{g.title}</span>
+                  <span className={`font-sans text-sm tabular-nums transition ${on ? 'text-stone-900' : 'text-stone-500 group-hover:text-stone-900'}`}>{g.items.length}</span>
                 </a>
               </li>
             );

@@ -69,8 +69,8 @@ export default async function GuideIndex() {
             <ul className="mt-4 grid grid-cols-1 gap-x-10 border-t border-stone-900 sm:grid-cols-2 lg:grid-cols-4">
               {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
                 <li key={r.anchor} className="border-b border-stone-200">
-                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group flex items-baseline justify-between gap-4 py-3.5">
-                    <span className="font-serif text-xl leading-tight text-stone-900 [background:linear-gradient(transparent_62%,#F6CF4E_62%)]">{r.name}</span>
+                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group flex items-baseline justify-between gap-4 py-3.5 focus:outline-none">
+                    <span className="font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(transparent_62%,#F6CF4E_62%)] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_100%] group-hover:bg-[length:100%_100%] group-active:bg-[length:100%_100%] group-focus-visible:bg-[length:100%_100%]">{r.name}</span>
                     <span className="font-sans text-sm tabular-nums text-stone-500 group-hover:text-stone-900 transition">{articles.filter((x) => x.category === r.name).length}</span>
                   </a>
                 </li>
