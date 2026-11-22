@@ -15,12 +15,13 @@ const COLORS = [
   { name: 'Noir', value: '#211C15' },
 ];
 
-// Le tee-shirt à l'œil se décline selon la direction du regard
+// Le tee-shirt à l'œil se décline selon la direction du regard, et chaque regard a son caractère
 const GAZES: { key: Gaze; name: string }[] = [
-  { key: 'droite', name: 'À droite' },
-  { key: 'gauche', name: 'À gauche' },
-  { key: 'haut', name: 'En l’air' },
-  { key: 'clin', name: 'Clin d’œil' },
+  { key: 'droite', name: 'Curieux' },
+  { key: 'haut', name: 'Tête en l’air' },
+  { key: 'gauche', name: 'Nostalgique' },
+  { key: 'bas', name: 'Terre à terre' },
+  { key: 'clin', name: 'Complice' },
 ];
 
 export default function TeeCard({ name, words, pitch, first = 'Blanc', mark = false }: { name: string; words: string[]; pitch: string; first?: string; mark?: boolean }) {
@@ -75,7 +76,7 @@ export default function TeeCard({ name, words, pitch, first = 'Blanc', mark = fa
 
         {mark && (
           <>
-            <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Regard : {gazeName}</p>
+            <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Caractère : {gazeName}</p>
             <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
               {GAZES.map((g) => (
                 <button
@@ -109,7 +110,7 @@ export default function TeeCard({ name, words, pitch, first = 'Blanc', mark = fa
 
         {status === 'done' ? (
           <Done title="Votre demande est bien envoyée." className="mt-7">
-            {name}{mark ? `, regard ${gazeName.toLowerCase()}` : ''}, {color.name.toLowerCase()}, taille {size}. Nous vous écrivons dès qu&apos;il est en stock.
+            {name}{mark ? `, ${gazeName.toLowerCase()}` : ''}, {color.name.toLowerCase()}, taille {size}. Nous vous écrivons dès qu&apos;il est en stock.
           </Done>
         ) : asked ? (
           <form onSubmit={send} className="mt-7">

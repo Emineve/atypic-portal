@@ -42,7 +42,7 @@ export default function DressingPage() {
           name="Le regard"
           words={['o']}
           mark
-          pitch="Le « o » de Loftissime, celui du logo. Choisissez où il regarde : à droite, à gauche, en l’air, ou en clin d’œil."
+          pitch="Le « o » de Loftissime, celui du logo. Selon où il regarde, il change de caractère : curieux, tête en l’air, nostalgique, terre à terre ou complice."
         />
       </div>
       </main>

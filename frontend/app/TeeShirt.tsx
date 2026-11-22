@@ -1,12 +1,13 @@
 // Tee-shirt dessiné pour Loftissime, en noir ou en blanc : quelques mots dans la police du logo, ou le « o » à l'œil.
 // Simple aperçu, rien n'est encore en vente.
 // « mark » : à la place des mots, l'œil de l'icône du site ; « gaze » dit où il regarde.
-export type Gaze = 'droite' | 'gauche' | 'haut' | 'clin';
+export type Gaze = 'droite' | 'gauche' | 'haut' | 'bas' | 'clin';
 
 const PUPIL: Record<Exclude<Gaze, 'clin'>, [number, number]> = {
-  droite: [109, 98],
-  gauche: [91, 98],
-  haut: [100, 92],
+  droite: [106.5, 93],
+  gauche: [93.5, 93],
+  haut: [100, 88.5],
+  bas: [100, 103.5],
 };
 
 export default function TeeShirt({ words, color = '#ffffff', className = '', mark = false, gaze = 'droite' }: { words: string[]; color?: string; className?: string; mark?: boolean; gaze?: Gaze }) {
@@ -27,11 +28,11 @@ export default function TeeShirt({ words, color = '#ffffff', className = '', mar
       <path d="M84 20 Q100 44 116 20" fill="none" stroke={dark ? '#ffffff' : '#1c1917'} strokeWidth="1.5" />
       {mark && (
         <g>
-          <circle cx="100" cy="104" r="30" fill={ink} />
+          <circle cx="100" cy="96" r="19" fill={ink} />
           {gaze === 'clin' ? (
-            <path d="M82 107 Q100 120 118 107" fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" />
+            <path d="M88.5 98 Q100 106.5 111.5 98" fill="none" stroke={color} strokeWidth="3.4" strokeLinecap="round" />
           ) : (
-            <circle cx={PUPIL[gaze][0]} cy={PUPIL[gaze][1]} r="13.5" fill={color} />
+            <circle cx={PUPIL[gaze][0]} cy={PUPIL[gaze][1]} r="8" fill={color} />
           )}
         </g>
       )}
