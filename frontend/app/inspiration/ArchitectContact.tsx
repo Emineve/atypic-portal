@@ -66,7 +66,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
           <div className="absolute inset-0 bg-stone-900/60" onClick={close} />
           {status === 'done' ? (
             <div className="relative w-full max-w-md bg-[#FDFBF7] shadow-2xl px-8 py-12 text-center">
-              <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-white flex items-center justify-center">
+              <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-[#FBF5E9] flex items-center justify-center">
                 <Check className="w-8 h-8" />
               </span>
               <h2 className="mt-7 font-serif text-3xl text-stone-900 leading-tight">C&apos;est envoyé.</h2>
@@ -76,7 +76,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
               <button
                 type="button"
                 onClick={close}
-                className="mt-9 bg-stone-900 text-white text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
+                className="mt-9 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
               >
                 Poursuivre ma visite
               </button>
@@ -115,7 +115,7 @@ export default function ArchitectContact({ slug, name, className }: { slug: stri
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full h-12 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
+                  className="w-full h-12 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
                 >
                   {status === 'sending' ? 'Envoi…' : 'Envoyer'}
                 </button>

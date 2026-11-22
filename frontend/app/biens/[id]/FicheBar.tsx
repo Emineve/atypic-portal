@@ -63,7 +63,7 @@ export default function FicheBar({ price, summary, phone }: { price: string; sum
             type="button"
             onClick={goToContact}
             tabIndex={shown ? 0 : -1}
-            className="inline-flex h-10 items-center rounded-full bg-stone-900 px-4 text-sm font-medium text-white transition hover:bg-stone-800 sm:px-5"
+            className="inline-flex h-10 items-center rounded-full bg-stone-900 px-4 text-sm font-medium text-[#FBF5E9] transition hover:bg-stone-800 sm:px-5"
           >
             Être recontacté(e)
           </button>

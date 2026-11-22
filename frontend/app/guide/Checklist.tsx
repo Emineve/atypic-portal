@@ -44,7 +44,7 @@ export default function Checklist({ slug, items }: { slug: string; items: string
                 onClick={() => toggle(it)}
                 className="group flex w-full items-start gap-3 py-1.5 text-left leading-relaxed"
               >
-                <span className={`mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-[5px] border transition ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-900 bg-white group-hover:bg-stone-100'}`} aria-hidden="true">
+                <span className={`mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-[5px] border transition ${on ? 'border-stone-900 bg-stone-900 text-[#FBF5E9]' : 'border-stone-900 bg-white group-hover:bg-stone-100'}`} aria-hidden="true">
                   {on && (
                     <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 6 9 17l-5-5" />

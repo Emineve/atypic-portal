@@ -232,7 +232,7 @@ export default function ContactForm({
       {status === 'done' ? (
         <>
           <div className="mt-5 flex items-start gap-3">
-            <span className="mt-0.5 h-7 w-7 flex-none rounded-full bg-stone-900 text-white flex items-center justify-center">
+            <span className="mt-0.5 h-7 w-7 flex-none rounded-full bg-stone-900 text-[#FBF5E9] flex items-center justify-center">
               <Check className="w-4 h-4" />
             </span>
             <div>
@@ -252,7 +252,7 @@ export default function ContactForm({
                 >
                   <X className="w-5 h-5" />
                 </button>
-                <span className="mx-auto h-12 w-12 rounded-full bg-stone-900 text-white flex items-center justify-center">
+                <span className="mx-auto h-12 w-12 rounded-full bg-stone-900 text-[#FBF5E9] flex items-center justify-center">
                   <Check className="w-6 h-6" />
                 </span>
                 <h2 className="mt-5 font-serif text-3xl text-stone-900 leading-tight">Demande envoyée.</h2>
@@ -344,7 +344,7 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="!mt-7 w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
+            className="!mt-7 w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
           >
             {status !== 'sending' && tab === 'tel' && <Phone className="w-4 h-4" />}
             {status === 'sending' ? 'Envoi…' : tab === 'tel' ? 'Être recontacté(e)' : 'Envoyer mon message'}

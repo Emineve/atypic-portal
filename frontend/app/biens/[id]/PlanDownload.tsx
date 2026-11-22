@@ -144,7 +144,7 @@ export default function PlanDownload({
                   {status === 'error' && <p className="text-sm text-red-700">L&apos;envoi n&apos;a pas abouti. Vérifiez vos coordonnées et réessayez.</p>}
                 </div>
                 <div className="border-t border-stone-200 p-4 shrink-0">
-                  <button type="submit" disabled={status === 'sending'} className="w-full h-12 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full">
+                  <button type="submit" disabled={status === 'sending'} className="w-full h-12 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full">
                     {status === 'sending' ? 'Un instant…' : 'Voir le plan'}
                   </button>
                   <p className="mt-2 text-center text-xs text-stone-500">

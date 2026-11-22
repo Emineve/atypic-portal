@@ -100,7 +100,7 @@ export default function SiteHeaderClient({
           <a
             href="/?alerte=1"
             className={`pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full text-sm font-medium shadow-lg transition ${
-              fabOnDark ? 'bg-white text-stone-900 hover:bg-stone-100' : 'bg-stone-900 text-white hover:bg-stone-800'
+              fabOnDark ? 'bg-white text-stone-900 hover:bg-stone-100' : 'bg-stone-900 text-[#FBF5E9] hover:bg-stone-800'
             }`}
           >
             <Plus className="w-4 h-4" strokeWidth={2} />

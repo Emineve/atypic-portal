@@ -107,7 +107,7 @@ export default async function ArchitectPage({ params }: { params: { slug: string
       <section className="max-w-2xl mx-auto px-6 pb-16 text-center">
         <Link
           href="/"
-          className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
+          className="inline-flex h-12 items-center px-8 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
         >
           Découvrez les biens à visiter
         </Link>

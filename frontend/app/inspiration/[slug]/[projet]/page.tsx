@@ -106,7 +106,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
         <div className="max-w-2xl mx-auto px-6 py-14 text-center">
           <Link
             href={p.sale ? `/categorie/${slugify(p.sale)}` : '/'}
-            className="inline-flex h-12 items-center px-8 bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
+            className="inline-flex h-12 items-center px-8 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
           >
             {p.sale ? `Découvrez les biens « ${p.sale} » à visiter` : 'Découvrez les biens à visiter'}
           </Link>

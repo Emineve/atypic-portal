@@ -42,7 +42,7 @@ export function Phone({ label, note, handle }: { label: string; note: string; ha
               <Send className="h-5 w-5" strokeWidth={1.75} />
             </div>
           </Shot>
-          <div className="bg-stone-900 px-3 py-2.5 text-xs leading-snug text-white/90">
+          <div className="bg-stone-900 px-3 py-2.5 text-xs leading-snug text-[#FBF5E9]/90">
             <span className="font-semibold">{handle}</span> Contre-visite : une question, un spécialiste, une minute.
           </div>
         </div>
@@ -64,7 +64,7 @@ export function FeedPost({ label, note, text }: { label: string; note: string; t
       </figcaption>
       <div className="rounded-[14px] border border-stone-200 bg-white p-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-sm font-semibold text-white">l.</span>
+          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-sm font-semibold text-[#FBF5E9]">l.</span>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-stone-900">Loftissime</p>
             <p className="text-xs text-stone-500">Tous les biens atypiques, réunis sur un seul site</p>
@@ -115,7 +115,7 @@ export function Channel({ className = 'mt-8', grid = 'grid-cols-2 sm:grid-cols-3
     <div className={`${className} overflow-hidden rounded-[14px] border border-stone-200 bg-white`}>
             <div className="h-20 bg-[#F6CF4E] md:h-28" />
             <div className="flex items-center gap-4 px-5 py-5 md:px-8">
-              <span className="-mt-12 flex h-16 w-16 flex-none items-center justify-center rounded-full border-4 border-white bg-stone-900 text-xl font-semibold text-white md:h-20 md:w-20">l.</span>
+              <span className="-mt-12 flex h-16 w-16 flex-none items-center justify-center rounded-full border-4 border-white bg-stone-900 text-xl font-semibold text-[#FBF5E9] md:h-20 md:w-20">l.</span>
               <div>
                 <p className="font-serif text-2xl text-stone-900">Loftissime</p>
                 <p className="text-sm text-stone-500">Tous les biens atypiques, réunis sur un seul site</p>

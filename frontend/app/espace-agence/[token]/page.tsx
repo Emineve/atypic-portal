@@ -100,7 +100,7 @@ export default async function EspaceAgence({
               aria-current={p === days ? 'true' : undefined}
               className={`h-10 px-4 inline-flex items-center text-sm border transition ${
                 p === days
-                  ? 'bg-stone-900 border-stone-900 text-white'
+                  ? 'bg-stone-900 border-stone-900 text-[#FBF5E9]'
                   : 'bg-white border-stone-300 text-stone-700 hover:border-stone-900'
               }`}
             >

@@ -21,7 +21,7 @@ function publishedLabel(iso: string): string {
   return `publiée le ${d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`;
 }
 
-const btn = 'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-white text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-60';
+const btn = 'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-60';
 const link = 'inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
 
 const plain = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -212,7 +212,7 @@ export default function GuideSearch({ meta = {} }: { meta?: Record<string, strin
                 <X className="h-5 w-5" strokeWidth={1.5} />
               </button>
             )}
-            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 md:h-12 md:w-12 flex-none items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700">
+            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 md:h-12 md:w-12 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FBF5E9] transition hover:bg-stone-700">
               <ArrowRight className="h-5 w-5" strokeWidth={1.75} />
             </button>
           </div>

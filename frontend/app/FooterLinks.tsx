@@ -11,10 +11,10 @@ const SOCIALS = [
 
 export default function FooterLinks({ cities }: { cities: string[] }) {
   const hubs = Array.from(new Set(cities.filter(Boolean).map((c) => cityHub(c)))).sort();
-  const link = 'text-stone-300 hover:text-white underline-offset-4 hover:underline decoration-[#F6CF4E]';
+  const link = 'text-stone-300 hover:text-[#FBF5E9] underline-offset-4 hover:underline decoration-[#F6CF4E]';
   const title = 'text-xs uppercase tracking-widest text-stone-500';
   return (
-    <div data-dark-footer className="bg-stone-900 text-white">
+    <div data-dark-footer className="bg-stone-900 text-[#FBF5E9]">
       <div className="max-w-6xl mx-auto px-6 pt-14 pb-20 md:pt-20 md:pb-8">
         <div className="grid gap-y-12 md:grid-cols-[1.3fr_2fr] md:gap-x-16">
           <div>
@@ -70,7 +70,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
 
         <div className="mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 rounded-[14px] border border-stone-700 px-6 py-5">
           <p className="text-sm text-stone-300">
-            <span className="font-medium text-white">Vous êtes une agence ?</span> Diffusez vos biens atypiques, gratuitement pendant le lancement.
+            <span className="font-medium text-[#FBF5E9]">Vous êtes une agence ?</span> Diffusez vos biens atypiques, gratuitement pendant le lancement.
           </p>
           <a href="/pro" className="text-sm font-medium text-[#F6CF4E] underline underline-offset-4 decoration-[#F6CF4E]/40 hover:decoration-[#F6CF4E]">
             Espace pro →
@@ -79,9 +79,9 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
 
         <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-stone-500" aria-label="Informations légales">
           <span>© Loftissime</span>
-          <a href="/mentions-legales" className="hover:text-white">Mentions légales</a>
-          <a href="/confidentialite" className="hover:text-white">Confidentialité</a>
-          <a href="/cgu" className="hover:text-white">Conditions d&apos;utilisation</a>
+          <a href="/mentions-legales" className="hover:text-[#FBF5E9]">Mentions légales</a>
+          <a href="/confidentialite" className="hover:text-[#FBF5E9]">Confidentialité</a>
+          <a href="/cgu" className="hover:text-[#FBF5E9]">Conditions d&apos;utilisation</a>
         </nav>
       </div>
     </div>
