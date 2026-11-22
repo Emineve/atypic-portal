@@ -19,10 +19,12 @@ export default function BackLink({ id }: { id: string }) {
           } catch {
             fromList = false;
           }
-          sessionStorage.setItem(RETURN_KEY, id);
           if (fromList && window.history.length > 1) {
             e.preventDefault();
             window.history.back();
+          } else {
+            // l'accueil s'ouvre : il se placera sur ce bien, une seule fois
+            sessionStorage.setItem(RETURN_KEY, id);
           }
         } catch {
           /* stockage indisponible : le lien ouvre simplement l'accueil */

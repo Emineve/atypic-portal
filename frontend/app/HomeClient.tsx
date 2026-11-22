@@ -1039,14 +1039,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               return (
                 <Fragment key={item.id}>
                 <article id={`bien-${item.id}`} className="group relative flex scroll-mt-28 flex-col rounded-[14px] border border-stone-200 bg-white overflow-hidden hover:shadow-lg transition-all duration-300">
-                  <a
-                    href={`/biens/${item.id}`}
-                    onClick={() => {
-                      try { sessionStorage.setItem('loftissime:retour', item.id); } catch { /* ignoré */ }
-                    }}
-                    className="flex flex-1 flex-col"
-                    aria-label={item.title}
-                  >
+                  <a href={`/biens/${item.id}`} className="flex flex-1 flex-col" aria-label={item.title}>
                     <div className="relative aspect-[3/2] sm:aspect-[4/3] w-full bg-stone-100 overflow-hidden">
                       <img
                         src={item.cover_image_url}
