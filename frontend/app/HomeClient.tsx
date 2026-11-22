@@ -71,7 +71,8 @@ const CATEGORIES = [
 ];
 
 const SORTS = [
-  { value: 'selection', label: 'Les plus récents' },
+  { value: 'selection', label: 'En rotation' },
+  { value: 'recent', label: 'Les plus récents' },
   { value: 'price_desc', label: 'Prix décroissant' },
   { value: 'price_asc', label: 'Prix croissant' },
   { value: 'surface_desc', label: 'Surface décroissante' },
@@ -162,7 +163,7 @@ function isNew(date: string | null) {
   return Date.now() - new Date(date).getTime() < NEW_DAYS * 86400000;
 }
 
-export default function HomeClient({ initialListings, newArticles = 0, heroArt = null, stories = [], eyeCard = null }: { initialListings: Listing[]; newArticles?: number; heroArt?: ReactNode; stories?: ReactNode[]; eyeCard?: ReactNode }) {
+export default function HomeClient({ initialListings, newArticles = 0, heroArt = null, stories = [], eyeCard = null, orderSeed = 0 }: { initialListings: Listing[]; newArticles?: number; heroArt?: ReactNode; stories?: ReactNode[]; eyeCard?: ReactNode; orderSeed?: number }) {
   const listings = initialListings;
   const typeOptions = useMemo(() => availableTypes(listings), [listings]);
   const loading = false;
@@ -494,6 +495,12 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
 
     const time = (d: string | null) => (d ? new Date(d).getTime() : 0);
     const num = (v: number | null) => (v === null || v === undefined ? 0 : Number(v));
+    // Rang tiré au sort, stable pendant la visite : même graine, même ordre
+    const rank = (id: string) => {
+      let h = (orderSeed ^ 0x811c9dc5) >>> 0;
+      for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 0x01000193) >>> 0;
+      return h;
+    };
 
     return [...filtered].sort((a, b) => {
       switch (sort) {
@@ -502,11 +509,12 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
         case 'recent': return time(b.first_seen_at) - time(a.first_seen_at);
         case 'surface_desc': return num(b.surface_sqm) - num(a.surface_sqm);
         case 'surface_asc': return num(a.surface_sqm) - num(b.surface_sqm);
-        // Par défaut : du plus récent au plus ancien. Aucune annonce n'est mise en avant.
-        default: return time(b.first_seen_at) - time(a.first_seen_at);
+        // Par défaut : en rotation. L'ordre est tiré au sort à chaque visite, pour que chaque annonce ait sa
+        // chance en haut de page et que le visiteur ne voie pas toujours les mêmes. Aucune n'est mise en avant.
+        default: return rank(a.id) - rank(b.id);
       }
     });
-  }, [listings, filters, onlyFavs, favorites, query, places, sort]);
+  }, [listings, filters, onlyFavs, favorites, query, places, sort, orderSeed]);
 
   // Les histoires Insolite se glissent dans la liste complète, pas dans les favoris ni dans une courte sélection
   const storyOn = !onlyFavs && stories.length > 0 && visible.length >= 6;

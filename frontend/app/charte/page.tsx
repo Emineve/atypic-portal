@@ -157,11 +157,11 @@ const groups: FaqGroup[] = [
     items: [
       {
         q: 'Dans quel ordre les biens apparaissent-ils ?',
-        a: 'Du plus récent au plus ancien : le dernier bien arrivé est le premier affiché. C’est le seul ordre que nous décidons.',
+        a: 'En rotation : l’ordre est tiré au sort à chaque visite. Chaque annonce a ainsi sa chance en haut de page, et vous ne voyez pas toujours les mêmes. Aucune n’est placée devant une autre par nos soins.',
       },
       {
         q: 'Puis-je classer les biens autrement ?',
-        a: 'Oui, comme bon vous semble : par prix ou par surface, et en filtrant par lieu, budget, type de bien ou caractéristiques. Le tri et les filtres donnent le même résultat pour tous les visiteurs.',
+        a: 'Oui, comme bon vous semble : du plus récent au plus ancien, par prix ou par surface, et en filtrant par lieu, budget, type de bien ou caractéristiques. Ces tris et ces filtres donnent le même résultat pour tous les visiteurs.',
       },
       {
         q: 'Une agence peut-elle payer pour être mieux classée ?',

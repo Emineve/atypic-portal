@@ -51,6 +51,7 @@ export default async function Page() {
         heroArt={<GuideArt art={heroArt} fit="meet" className="w-full h-auto" />}
         stories={stories.map((a) => <StoryCard key={a.slug} slug={a.slug} title={a.title} art={a.art} />)}
         eyeCard={<EyeCard />}
+        orderSeed={Math.floor(Math.random() * 2147483647)}
       />
     </>
   );
