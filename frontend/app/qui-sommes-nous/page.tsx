@@ -1,5 +1,4 @@
 import SmartAlert from '../SmartAlert';
-import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import { typo } from '../../lib/typo';
 import Link from 'next/link';
@@ -97,9 +96,8 @@ export default function ManifestoPage() {
 
       {/* L'ouverture : la phrase du site, en grand, sous le regard du logo */}
       <header className="bg-[#211C15] text-white">
-        <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-14 md:pb-20">
-          <Crumbs items={[{ label: 'Pourquoi Loftissime' }]} dark />
-          <div className="mt-10 md:mt-14 flex flex-col gap-8 md:flex-row md:items-end md:gap-14">
+        <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-14 md:pb-20">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:gap-14">
             <div className="flex-none"><EyeO size={132} ink="#F6CF4E" iris="#211C15" /></div>
             <h1 className="font-serif text-[2.6rem] md:text-7xl tracking-tight leading-[1.02] [text-wrap:balance]">
               Pour ceux qui ne veulent pas habiter{' '}
