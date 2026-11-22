@@ -125,9 +125,10 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
       <div className="max-w-3xl lg:-mt-12">
       {/* Toutes les rubriques l'une sous l'autre, chacune avec ses questions ; une seule réponse ouverte à la fois */}
       {groups.map((g) => (
-        <section key={g.id} id={g.id} className="mt-12 scroll-mt-24">
-          <h2 className="font-serif text-2xl text-stone-900 md:text-3xl">{g.title}</h2>
-          <div className="mt-4 space-y-2.5">
+        <section key={g.id} id={g.id} className="mt-12 scroll-mt-24 lg:mt-10 lg:border-t lg:border-stone-200 lg:pt-10 lg:first:mt-12 lg:first:border-0 lg:first:pt-0">
+          {/* Grand écran : le sommaire de gauche dit déjà la rubrique en cours, le titre n'est gardé que pour les lecteurs d'écran */}
+          <h2 className="font-serif text-2xl text-stone-900 md:text-3xl lg:sr-only">{g.title}</h2>
+          <div className="mt-4 space-y-2.5 lg:mt-0">
             {g.items.map((it) => (
               <details
                 key={it.q}
