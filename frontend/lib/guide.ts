@@ -22,7 +22,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van' | 'bunker' | 'prison' | 'tiny' | 'bulle' | 'wagon'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van' | 'bunker' | 'prison' | 'tiny' | 'bulle' | 'wagon' | 'flottant' | 'ecole' | 'hameau' | 'chateau' | 'etroite'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -6789,6 +6789,271 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'The Connexion, « Sleep in a 100-year-old railway carriage at a former Brittany station », 20 janvier 2026', url: 'https://www.connexionfrance.com/magazine/sleep-in-a-100-year-old-railway-carriage-at-a-former-brittany-station/756671' },
     ],
     listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'schoonschip-le-quartier-flottant-d-amsterdam',
+    art: 'flottant',
+    title: 'Trente maisons sur l’eau : le quartier flottant d’Amsterdam',
+    description:
+      'À Amsterdam, un groupe d’amis a mis plus de dix ans à bâtir un quartier flottant de trente maisons. L’énergie partagée, la vie collective et les limites du modèle, d’après Positive News et Dwell.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Ce ne sont pas des péniches, mais des maisons, posées sur l’eau d’un canal au nord d’Amsterdam et reliées par des passerelles de bois. Le quartier s’appelle Schoonschip. Positive News et Dwell racontent comment une bande d’amis en a fait un petit village de trente foyers.',
+    takeaways: [
+      'Trente maisons flottantes, environ 120 adultes et 40 enfants.',
+      'Plus de dix ans entre l’idée et l’emménagement, début 2019.',
+      'Chaque maison produit de l’électricité, et les voisins se partagent le surplus.',
+      'Le coût et le temps du projet le rendent difficile à reproduire à prix abordable.',
+    ],
+    sections: [
+      {
+        title: 'Comment naît un quartier sur l’eau ?',
+        paragraphs: [
+          'Lentement. Positive News fait remonter le projet à une productrice de télévision qui tournait une série sur l’habitat durable. Entre amis d’abord, puis avec des urbanistes, des architectes et une levée de fonds, il a fallu plus d’une décennie. Les premières maisons, préfabriquées, ont été mises à l’eau fin 2018.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qu’on y partage ?',
+        paragraphs: [
+          'L’énergie, d’abord : des panneaux solaires sur chaque toit, et un réseau qui fait circuler l’électricité d’une maison à l’autre. Des voitures électriques et des vélos, ensuite. Et du temps : une maison commune, des jardins flottants entretenus par des volontaires, une baignade hebdomadaire, toute l’année.',
+          'Rien n’est obligatoire, précise le journal, mais beaucoup de tâches reposent sur la bonne volonté.',
+        ],
+      },
+      {
+        title: 'Quelles sont les limites ?',
+        paragraphs: [
+          'Le prix et la durée. Les habitants eux-mêmes reconnaissent que le modèle est difficile à rendre abordable en ville. Et vivre sur l’eau avec quarante enfants demande une attention de tous les instants.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'Les maisons flottantes restent rares. Sur un fleuve ou un canal, on n’est pas propriétaire de l’eau : l’emplacement relève d’une autorisation, payante et limitée dans le temps. C’est la règle qui s’applique déjà aux péniches-logements.',
+          'Pour qui veut vivre sur l’eau sans attendre dix ans, la péniche reste la voie la plus simple.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Une maison flottante est-elle une péniche ?', a: 'Non. Elle est conçue comme une maison, sans moteur, posée sur un flotteur. Mais son emplacement obéit aux mêmes règles que celui d’un bateau-logement.' },
+      { q: 'Combien de personnes vivent à Schoonschip ?', a: 'Environ 120 adultes et 40 enfants, dans trente maisons, selon Positive News.' },
+    ],
+    sources: [
+      { label: 'Positive News, « Amsterdam’s floating eco-community is a model for modern living », 5 juin 2023', url: 'https://www.positive.news/?p=435886' },
+      { label: 'Dwell, « Like-Minded Neighbors Build an Energy-Independent Floating Community in Amsterdam »', url: 'https://www.dwell.com/article/schoonschip-space-and-matter-68a51264' },
+    ],
+    listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
+  },
+  {
+    slug: 'habiter-une-ancienne-ecole',
+    art: 'ecole',
+    title: 'Habiter une école : 600 m² et des fenêtres trop hautes',
+    description:
+      'En Bretagne, une école de 1892 fermée en 2008 est devenue une maison et des chambres d’hôtes. Ce que raconte The Connexion, et ce qu’une ancienne école a de particulier pour un acheteur.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'À Châtelaudren, dans les Côtes-d’Armor, l’école Sainte-Anne a accueilli jusqu’à 140 élèves, de 1892 à 2008. Un couple venu de Bordeaux s’y est installé en 2020, raconte The Connexion, pour y vivre et y recevoir des hôtes.',
+    takeaways: [
+      'Un bâtiment de 600 m², avec un grand grenier encore brut.',
+      'L’escalier, la rampe et le parquet usé par des générations d’élèves ont été gardés.',
+      'Les fenêtres des salles de classe sont placées plus haut que dans une maison.',
+      'À moins de 500 mètres d’une chapelle ancienne, tout changement de façade passe par les Bâtiments de France.',
+    ],
+    sections: [
+      {
+        title: 'Qu’est-ce qu’une école a de différent ?',
+        paragraphs: [
+          'Les volumes. Des plafonds hauts, de grandes fenêtres, de larges couloirs : tout ce qu’un acheteur d’atypique recherche. Avec un détail que The Connexion relève : dans les anciennes classes, les fenêtres commencent plus haut, pour que les élèves ne regardent pas dehors. Assis, on voit le ciel, pas la rue.',
+        ],
+      },
+      {
+        title: 'Comment l’ont-ils aménagée ?',
+        paragraphs: [
+          'En jouant le jeu. Les chambres portent des noms de matières, le mobilier a été chiné, et les marques sur le parquet sont restées. Le couple a acheté juste avant la pandémie, emménagé à la fin de l’été 2020 et ouvert au début de 2021. Il a même organisé des retrouvailles d’anciens élèves.',
+          'Avant eux, une première personne avait commencé les travaux. Le bâtiment était ensuite resté vide trois ans.',
+        ],
+      },
+      {
+        title: 'Que vérifier avant d’acheter une école ?',
+        list: [
+          'Le changement de destination : une école n’est pas un logement tant que la mairie ne l’a pas autorisé.',
+          'La proximité d’un monument protégé, qui soumet les travaux extérieurs à un avis.',
+          'Le chauffage : de grands volumes et de grandes vitres coûtent cher à tenir au chaud.',
+          'L’amiante et le plomb, fréquents dans les bâtiments publics anciens.',
+          'La cour : est-elle vendue avec le bâtiment, et peut-on y construire ?',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Les communes vendent-elles leurs anciennes écoles ?', a: 'Oui, quand elles n’en ont plus l’usage. Ce sont des ventes ordinaires, parfois précédées d’un appel à projets.' },
+      { q: 'Faut-il une autorisation pour habiter une ancienne école ?', a: 'Oui : le passage d’un équipement public à un logement est un changement de destination, à faire autoriser par la mairie.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « Couple transform old village school into quirky French home », 7 août 2024', url: 'https://www.connexionfrance.com/magazine/photos-couple-transform-old-village-school-into-quirky-french-home/665874' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'un-hameau-entier-pour-26-000-euros',
+    art: 'hameau',
+    title: 'Un hameau entier pour 26 000 euros',
+    description:
+      'Dans la Manche, un couple a acheté un hameau abandonné : six maisons, deux granges, un four à pain. Le prix, l’état des lieux et la suite, d’après The Connexion.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Six maisons, deux granges, un atelier, un puits, un pressoir à cidre, un four à pain et deux hectares : le tout pour 26 000 euros. C’est ce qu’un couple de paysagistes britanniques a acheté en 2019 dans la Manche, rapporte The Connexion. Le prix dit vrai, et il ne dit pas tout.',
+    takeaways: [
+      'Une première maison achetée 12 000 euros, puis le reste du hameau pour 14 000.',
+      'Personne n’y vivait depuis une trentaine d’années ; la plupart des bâtiments étaient en ruine.',
+      'Le couple dit avoir fait lui-même presque tous les travaux.',
+      'Trois ans plus tard, une partie des maisons restait à reprendre, et une cagnotte finançait la suite.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi si peu cher ?',
+        paragraphs: [
+          'Parce que ce sont des ruines, loin de tout. Dans les campagnes qui se sont vidées, des ensembles entiers se vendent au prix d’une voiture. Ce que l’on paie ensuite, c’est le temps et les matériaux.',
+        ],
+      },
+      {
+        title: 'Par où commence-t-on ?',
+        paragraphs: [
+          'Par dégager. The Connexion décrit des mois passés à couper la végétation et à retirer les ajouts récents pour retrouver les murs d’origine. Le couple a refait une toiture, sans expérience de couvreur, et s’est logé dans un ancien camion aménagé en attendant.',
+          'Le projet : un gîte et des hébergements légers pour accueillir des visiteurs.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui a été dur ?',
+        paragraphs: [
+          'L’isolement et la longueur de l’hiver, la langue, et l’argent : les économies n’ont pas suffi. Le couple parle aussi d’un sentiment de responsabilité envers des bâtiments qui avaient tenu des siècles.',
+        ],
+      },
+      {
+        title: 'Que vérifier avant d’acheter une ruine ?',
+        list: [
+          'Ce que le plan d’urbanisme permet : une ruine ne se reconstruit pas toujours, surtout hors des zones constructibles.',
+          'L’eau, l’électricité et l’assainissement : les amener peut coûter plus que l’achat.',
+          'L’accès : chemin privé, servitude, entretien.',
+          'Le coût des toitures, premier poste et premier urgent.',
+          'Votre temps disponible : un chantier fait soi-même se compte en années.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on vraiment acheter un hameau pour le prix d’une voiture ?', a: 'Oui, quand il est en ruine et isolé. Celui-ci a coûté 26 000 euros en 2019, selon The Connexion, avant des années de travaux.' },
+      { q: 'A-t-on le droit de reconstruire une ruine ?', a: 'Pas toujours. Cela dépend du plan d’urbanisme et de ce qu’il reste des murs. Demandez un certificat d’urbanisme avant d’acheter.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « From a rented caravan in UK to buying entire French hamlet for €26,000 », 2 août 2022', url: 'https://www.connexionfrance.com/practical/from-a-rented-caravan-in-uk-to-buying-entire-french-hamlet-for-26000/149153' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'restaurer-un-chateau-en-ruine',
+    art: 'chateau',
+    title: 'Ils cherchaient un pied-à-terre, ils ont acheté un château en ruine',
+    description:
+      'En Ariège, une famille australienne restaure depuis 2013 le château de Gudanes, classé monument historique. Le chantier et son financement, d’après The Connexion.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Le toit était tombé, entraînant par endroits cinq niveaux de planchers. C’est dans cet état qu’une famille australienne a acheté le château de Gudanes, en Ariège, après l’avoir vu sur internet. Elle cherchait un petit pied-à-terre. The Connexion a raconté ce chantier commencé fin 2013 et toujours en cours neuf ans plus tard.',
+    takeaways: [
+      'Un château du XVIIIe siècle, classé monument historique, sur près de cinq hectares.',
+      'Le chantier est mené par des artisans habilités à travailler sur un monument classé.',
+      'Il est financé par un salaire, par des séjours payants et par la vente d’un livre.',
+      'Depuis 2018, les parties restaurées accueillent des visiteurs.',
+    ],
+    sections: [
+      {
+        title: 'Par où commence-t-on ?',
+        paragraphs: [
+          'Par déblayer. Avant de restaurer, il a fallu sortir les gravats, démolir ce qui ne pouvait pas être sauvé, puis refaire les toitures et les planchers, sur des centaines de mètres carrés. Sur un monument classé, chaque étape est validée, et confiée à des entreprises qui en ont l’habitude.',
+          'La famille s’est fait aider par un chef de projet bilingue pour les démarches.',
+        ],
+      },
+      {
+        title: 'Comment finance-t-on cela ?',
+        paragraphs: [
+          'En faisant du chantier une histoire. The Connexion explique qu’un blog, puis les réseaux sociaux, ont réuni plusieurs centaines de milliers d’abonnés. Les séjours de quelques nuits, les ateliers et un livre vendu à plus de dix mille exemplaires paient une partie des travaux. Le reste vient du salaire de l’un des deux, resté travailler en Australie.',
+        ],
+      },
+      {
+        title: 'Et acheter un monument historique ?',
+        list: [
+          'Les travaux sont soumis à autorisation et suivis par les services de l’État.',
+          'Des aides et un régime fiscal particulier existent, en contrepartie d’obligations : renseignez-vous avant d’acheter, pas après.',
+          'Le prix d’achat est la plus petite ligne du budget.',
+          'Un projet d’accueil du public change la nature du lieu : sécurité, accessibilité, assurance.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Un château en ruine coûte-t-il cher ?', a: 'À l’achat, souvent moins qu’un appartement en ville. C’est la restauration qui se compte en années et en centaines de milliers d’euros.' },
+      { q: 'Peut-on faire les travaux soi-même dans un monument classé ?', a: 'Les travaux doivent être autorisés et sont contrôlés. Ils sont en pratique confiés à des professionnels qualifiés.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « We wanted a small bolthole but bought a ruined French chateau », 5 août 2022', url: 'https://www.connexionfrance.com/news/photos-we-wanted-a-small-bolthole-but-bought-a-ruined-french-chateau/244599' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'la-maison-la-plus-etroite-du-monde',
+    art: 'etroite',
+    title: 'Soixante-douze centimètres de large : la maison de Varsovie',
+    description:
+      'À Varsovie, un architecte a glissé une maison dans une fente entre deux immeubles. Ses dimensions, son statut, d’après Dezeen, et ce que la loi française appelle un logement.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Entre deux immeubles du centre de Varsovie, il restait un vide de moins d’un mètre et demi. L’architecte Jakub Szczesny y a installé une maison, conçue avec l’écrivain Etgar Keret, dont elle porte le nom. Dezeen en a donné les mesures : 72 centimètres au plus étroit, 122 au plus large.',
+    takeaways: [
+      'Une maison de plan triangulaire, posée sur pilotis, où l’on entre par dessous.',
+      'Tout le mobilier a été fait sur mesure.',
+      'Elle a été présentée comme une installation artistique, pas comme un logement.',
+      'Elle accueille des écrivains de passage, pour de courts séjours.',
+    ],
+    sections: [
+      {
+        title: 'Peut-on vraiment y vivre ?',
+        paragraphs: [
+          'On peut y dormir, y travailler, s’y laver et y cuisiner : selon Dezeen, la maison est complète. Mais elle a été pensée pour une personne seule, pour quelques jours ou quelques semaines, comme un refuge pour écrire.',
+        ],
+      },
+      {
+        title: 'Pourquoi une « installation » ?',
+        paragraphs: [
+          'Parce qu’elle ne respecte pas les règles d’un logement, et que ce statut a permis de la construire. Le projet a été soutenu par la ville et par une fondation d’art, pour une durée d’abord limitée.',
+        ],
+      },
+      {
+        title: 'Et en France, où commence un logement ?',
+        paragraphs: [
+          'La loi fixe un minimum. Pour être loué, un logement doit offrir au moins une pièce principale de 9 m² avec 2,20 mètres sous plafond, ou un volume de 20 m³. Il lui faut la lumière du jour, une ouverture sur l’extérieur, de l’eau, un chauffage.',
+          'Ces seuils comptent aussi pour un acheteur. Une chambre de bonne, une loge ou un local trop petit pour être loué ne vaut pas le prix d’un studio, même à la même adresse. Vérifiez la surface et la hauteur, mètre en main.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Quelle est la largeur de la maison la plus étroite ?', a: 'La Keret House de Varsovie mesure 72 centimètres au plus étroit et 122 au plus large, selon Dezeen.' },
+      { q: 'Quelle est la surface minimale d’un logement en France ?', a: 'Pour être loué, il doit comporter une pièce principale d’au moins 9 m² avec 2,20 mètres de hauteur, ou un volume habitable de 20 m³.' },
+    ],
+    sources: [
+      { label: 'Dezeen, « World’s narrowest house by Jakub Szczesny », 31 octobre 2012', url: 'https://www.dezeen.com/2012/10/31/worlds-narrowest-house-by-jakub-szczesny/' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
   },
 ];
 
