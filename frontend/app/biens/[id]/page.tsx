@@ -6,6 +6,7 @@ import { getSupabase } from '../../../lib/supabase';
 import { SITE_URL } from '../../../lib/site';
 import { slugify, cityHub } from '../../../lib/catalog';
 import ContactForm from './ContactForm';
+import BackLink from './BackLink';
 import ReportButton from './ReportButton';
 import PhotoMosaic from './PhotoMosaic';
 import Description from './Description';
@@ -246,13 +247,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">
-          <Link href="/" className="hover:text-stone-900">Accueil</Link>
-          {hubName && hubUrl && (
-            <>
-              {' › '}
-              <Link href={hubUrl} className="hover:text-stone-900">{hubName}</Link>
-            </>
-          )}
+          <BackLink id={item.id} />
         </nav>
         <ShareButtons
           url={`${SITE_URL}/biens/${item.id}`}

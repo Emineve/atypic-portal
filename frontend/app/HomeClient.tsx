@@ -242,6 +242,21 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
     return () => window.removeEventListener('pageshow', load);
   }, []);
 
+  // Retour depuis une fiche : la liste se replace sur le bien que l'on venait d'ouvrir
+  useEffect(() => {
+    if (loading) return;
+    let id: string | null = null;
+    try {
+      id = sessionStorage.getItem('loftissime:retour');
+      sessionStorage.removeItem('loftissime:retour');
+    } catch {
+      /* ignoré */
+    }
+    if (!id) return;
+    const el = document.getElementById(`bien-${id}`);
+    if (el && window.scrollY < 200) el.scrollIntoView({ block: 'center' });
+  }, [loading]);
+
   // Panneau de filtres : on bloque le défilement de la page derrière, Échap le ferme
   useEffect(() => {
     if (!showFilters) return;
@@ -1019,8 +1034,15 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
               const price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(item.price);
               return (
                 <Fragment key={item.id}>
-                <article className="group relative flex flex-col rounded-[14px] border border-stone-200 bg-white overflow-hidden hover:shadow-lg transition-all duration-300">
-                  <a href={`/biens/${item.id}`} className="flex flex-1 flex-col" aria-label={item.title}>
+                <article id={`bien-${item.id}`} className="group relative flex scroll-mt-28 flex-col rounded-[14px] border border-stone-200 bg-white overflow-hidden hover:shadow-lg transition-all duration-300">
+                  <a
+                    href={`/biens/${item.id}`}
+                    onClick={() => {
+                      try { sessionStorage.setItem('loftissime:retour', item.id); } catch { /* ignoré */ }
+                    }}
+                    className="flex flex-1 flex-col"
+                    aria-label={item.title}
+                  >
                     <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
                       <img
                         src={item.cover_image_url}
