@@ -30,7 +30,7 @@ async function getListings(): Promise<L[]> {
       .select('id,title,city,price,surface_sqm,cover_image_url,atypic_category')
       .eq('is_active', true)
       .not('cover_image_url', 'is', null)
-      .order('created_at', { ascending: false })
+      .order('first_seen_at', { ascending: false })
       .limit(5);
     return (data as L[]) || [];
   } catch {
