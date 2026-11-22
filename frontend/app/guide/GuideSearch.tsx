@@ -238,7 +238,7 @@ export default function GuideSearch() {
   const suggestions = q.trim().length >= 3 ? [] : (real.length ? real : pool).filter((ex) => plain(ex).includes(typed)).slice(0, 4);
 
   return (
-    <section className="mt-10 md:mt-12 max-w-3xl" aria-label="Poser une question">
+    <section className="mt-6 md:mt-8 max-w-3xl" aria-label="Poser une question">
       <form
         role="search"
         onSubmit={(e) => {

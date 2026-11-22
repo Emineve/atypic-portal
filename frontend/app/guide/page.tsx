@@ -44,14 +44,11 @@ export default async function GuideIndex() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-10 md:pb-14">
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">
         <Crumbs items={[{ label: 'État des lieux' }]} />
         <h1 className="max-w-4xl mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
         </h1>
-        <p className="mt-5 max-w-2xl text-stone-600 text-base md:text-lg font-light leading-relaxed">
-          Posez votre question, un expert vous répond.
-        </p>
         <GuideSearch />
       </header>
 
