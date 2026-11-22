@@ -128,7 +128,7 @@ export default async function DecalePage() {
         <p className="mt-5 max-w-2xl text-base md:text-lg text-stone-600">
           Six pistes à juger sur pièces. Elles se cumulent ou se prennent séparément. Le site actuel n’a pas changé.
         </p>
-        <p className="mt-4"><Link href="/" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-[#F6CF4E]">Revenir au site →</Link></p>
+        <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2"><Link href="/apercu/decale/pages" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-[#F6CF4E]">Voir les pistes posées sur de vraies pages →</Link><Link href="/" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-[#F6CF4E]">Revenir au site →</Link></p>
       </header>
 
       <Piste n="1" title="L’œil comme personnage" what="Le « o » du logo regarde. Il suit le curseur, cligne quand on ajoute un favori, se ferme sur la page d’erreur. C’est déjà notre icône et notre tee-shirt.">
