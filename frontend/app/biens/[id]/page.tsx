@@ -358,20 +358,20 @@ export default async function ListingPage({ params }: { params: { id: string } }
                         <span className="block text-sm text-stone-500">{feesLabel}</span>
                       </span>
                     </dt>
-                    <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
+                    <dd className="font-serif lining-nums tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(priceNum)}</dd>
                   </div>
                   <div className="flex items-center justify-between gap-4 py-3.5">
                     <dt className="flex items-center gap-2.5">
                       <span>Frais de notaire estimés <span className="text-stone-500 whitespace-nowrap">(≈ 8 %)</span></span>
                     </dt>
-                    <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
+                    <dd className="font-serif lining-nums tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                   </div>
                   <div className="!border-t-0 mt-2 flex items-center justify-between gap-4 rounded-[10px] bg-[#F6CF4E] px-4 py-3.5">
                     <dt className="whitespace-nowrap font-medium text-stone-900">
                       Total estimé
                       <span className="block text-sm font-normal text-stone-700">Hors travaux</span>
                     </dt>
-                    <dd className="font-sans font-medium tabular-nums text-xl sm:text-2xl text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
+                    <dd className="font-serif lining-nums tabular-nums text-xl sm:text-2xl text-stone-900 whitespace-nowrap">{eur0(projectTotal)}</dd>
                   </div>
                 </dl>
 
@@ -397,7 +397,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
 
                 {monthly > 0 && (
                   <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="font-sans font-light tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
+                    <span className="font-serif lining-nums tabular-nums text-4xl md:text-5xl leading-none text-stone-900 whitespace-nowrap">
                       <span className="font-sans text-3xl text-stone-500" aria-label="environ">≈</span> {eur0(monthly)}
                     </span>
                     <span className="text-sm text-stone-500">par mois, hors crédit</span>
@@ -421,7 +421,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                           {costParts.length > 1 && <span className={`h-2.5 w-2.5 flex-none ${COST_DOT[i]}`} aria-hidden="true" />}
                           {c.label}
                         </dt>
-                        <dd className="text-right font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">
+                        <dd className="text-right font-serif lining-nums tabular-nums text-lg text-stone-900 whitespace-nowrap">
                           {c.value} <span className="font-sans text-sm text-stone-500">par an</span>
                           {c.sub && <span className="block font-sans text-sm text-stone-500">{c.sub}</span>}
                         </dd>

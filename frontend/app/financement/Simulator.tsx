@@ -109,7 +109,7 @@ export default function Simulator() {
         ) : (
           <>
             <p className="text-sm text-stone-600">Votre mensualité</p>
-            <p className="mt-1 font-sans text-5xl font-light tabular-nums leading-none tracking-tight text-stone-900 md:text-6xl">{eur(monthlyAll)}</p>
+            <p className="mt-1 font-serif text-5xl lining-nums tabular-nums leading-none tracking-tight text-stone-900 md:text-6xl">{eur(monthlyAll)}</p>
             <p className="mt-2 text-sm text-stone-600">
               par mois sur {years} ans, à {pct(num(rate))}&nbsp;%, assurance comprise
             </p>
@@ -136,16 +136,16 @@ export default function Simulator() {
                   <span className={`h-2.5 w-2.5 flex-none rounded-full ${dot}`} aria-hidden="true" />
                   {t}
                 </dt>
-                <dd className="font-sans tabular-nums text-stone-900 whitespace-nowrap">{v}</dd>
+                <dd className="font-serif lining-nums tabular-nums text-stone-900 whitespace-nowrap">{v}</dd>
               </div>
             ))}
             <div className="flex items-baseline justify-between gap-4 py-3">
               <dt className="pl-5 font-medium text-stone-900">Total à rembourser</dt>
-              <dd className="font-sans font-medium tabular-nums text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
+              <dd className="font-serif lining-nums tabular-nums text-stone-900 whitespace-nowrap">{eur(principal + interest + insTotal)}</dd>
             </div>
             <div className="flex items-baseline justify-between gap-4 py-3">
               <dt className="pl-5">Revenus mensuels conseillés</dt>
-              <dd className="font-sans tabular-nums text-stone-900 whitespace-nowrap">{eur(income)}</dd>
+              <dd className="font-serif lining-nums tabular-nums text-stone-900 whitespace-nowrap">{eur(income)}</dd>
             </div>
           </dl>
           <p className="mt-3 text-xs text-stone-500 leading-relaxed">

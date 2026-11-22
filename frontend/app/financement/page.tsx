@@ -59,7 +59,7 @@ export default function FinancementPage() {
                   <tr key={t.label} className={`border-t border-stone-200 ${i === RATES.tiers.length - 1 ? 'bg-[#F6CF4E]' : ''}`}>
                     <th scope="row" className="px-4 py-4 text-left text-sm font-medium leading-snug text-stone-900 md:px-6 md:text-base">{t.label}</th>
                     {t.rates.map((r, j) => (
-                      <td key={j} className="px-1 py-4 font-sans text-base font-light tabular-nums [word-spacing:0] text-stone-900 whitespace-nowrap md:text-2xl">{pct(r)}&nbsp;%</td>
+                      <td key={j} className="px-1 py-4 font-serif text-base lining-nums tabular-nums [word-spacing:0] text-stone-900 whitespace-nowrap md:text-2xl">{pct(r)}&nbsp;%</td>
                     ))}
                   </tr>
                 ))}
