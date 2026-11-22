@@ -65,12 +65,13 @@ export default async function GuideIndex() {
         {rest.length > 0 && (
           <nav className="mb-10 md:mb-14" aria-label="Rubriques">
             <p className="text-xs uppercase tracking-widest text-stone-500">Les rubriques</p>
-            <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-2">
+            {/* Un sommaire : chaque rubrique sur sa ligne, son nombre d'articles au bout */}
+            <ul className="mt-4 grid grid-cols-1 gap-x-10 border-t border-stone-900 sm:grid-cols-2 lg:grid-cols-4">
               {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
-                <li key={r.anchor}>
-                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group inline-flex items-baseline gap-2 text-base font-medium md:text-xl text-stone-900">
-                    <span className="underline underline-offset-[6px] decoration-stone-300 group-hover:decoration-stone-900 transition">{r.name}</span>
-                    <span className="text-sm font-normal tabular-nums text-stone-500">{articles.filter((x) => x.category === r.name).length}</span>
+                <li key={r.anchor} className="border-b border-stone-200">
+                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group flex items-baseline justify-between gap-4 py-3.5">
+                    <span className="font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(transparent_62%,#F6CF4E_62%)] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-[background-size] duration-300">{r.name}</span>
+                    <span className="font-sans text-sm tabular-nums text-stone-500 group-hover:text-stone-900 transition">{articles.filter((x) => x.category === r.name).length}</span>
                   </a>
                 </li>
               ))}
