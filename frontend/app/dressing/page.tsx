@@ -4,7 +4,7 @@ import TeeCard from './TeeCard';
 
 export const metadata = {
   title: 'Le dressing · Loftissime',
-  description: 'Les phrases de Loftissime, bientôt à porter : trois tee-shirts en préparation pour ceux qui ne veulent pas habiter comme tout le monde.',
+  description: 'Le tee-shirt Loftissime, bientôt à porter : blanc, avec le mot « atypiques » souligné de jaune. Pour ceux qui ne veulent pas habiter comme tout le monde.',
   alternates: { canonical: '/dressing' },
 };
 
@@ -20,29 +20,16 @@ export default function DressingPage() {
           Dans tout bien qui se respecte, <span className="italic text-stone-500">il y a un dressing.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
-          Trois tee-shirts, en noir ou en blanc, pas encore en vente. Dites-nous lequel vous fait envie.
+          Un tee-shirt, blanc, pas encore en vente. Dites-nous s’il vous fait envie.
         </p>
       </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
-        <div className="pb-24 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="pb-24 max-w-4xl">
         <TeeCard
-          name="Le superlatif"
-          words={['loftisssssime.']}
-          pitch="Le nom, sur une ligne. -issime : le plus haut degré, à étirer autant qu’on veut."
-        />
-        <TeeCard
-          first="Noir"
-          name="Le singulier"
-          words={['singulièrement', 'vôtre.']}
-          pitch="Deux mots. Une formule de politesse, et une façon d’habiter."
-        />
-        <TeeCard
-          name="Le regard"
-          words={['o']}
-          mark
-          pitch="Le « o » de Loftissime, celui du logo. Selon où il regarde, il change de caractère : curieux, tête en l’air, nostalgique, terre à terre ou complice."
+          name="L’atypique"
+          pitch="Blanc, avec un seul mot : atypiques, qui penche sur son trait jaune. Celui du titre du site."
         />
       </div>
       </main>

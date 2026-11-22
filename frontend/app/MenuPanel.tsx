@@ -71,7 +71,7 @@ export default function MenuPanel({
         { href: '/qui-sommes-nous', label: 'Pourquoi Loftissime', sub: 'Ce que nous défendons', Icon: Feather },
         { href: '/mode-d-emploi', label: 'Mode d’emploi', sub: 'Du premier clic à la visite', Icon: Compass },
         { href: '/charte', label: 'Questions fréquentes', sub: 'Nos réponses, sans détour', Icon: Info },
-        { href: '/dressing', label: 'Le dressing', sub: 'Les tee-shirts Loftissime', Icon: Shirt },
+        { href: '/dressing', label: 'Le dressing', sub: 'Le tee-shirt Loftissime', Icon: Shirt },
       ],
     },
   ];
