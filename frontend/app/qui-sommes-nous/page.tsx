@@ -58,11 +58,8 @@ export default function ManifestoPage() {
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">
         <h1 className="max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-          Chercher un bien atypique, <span className="italic text-stone-500">sans chercher partout.</span>
+          Pourquoi Loftissime, <span className="italic text-stone-500">en six convictions.</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-stone-600 text-base md:text-lg font-light leading-relaxed">
-          Tous les biens atypiques à vendre, toutes agences réunies, sur un seul site.
-        </p>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-24">
