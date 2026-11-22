@@ -5,7 +5,8 @@ import { Phone } from 'lucide-react';
 
 // Barre de fiche : une fois le haut de la fiche dépassé, elle prend la place de l'en-tête et rappelle
 // l'essentiel (prix, surface, lieu) avec les deux façons de joindre l'agence. Elle remplace l'ancien
-// bouton flottant « Être recontacté(e) ».
+// bouton flottant « Être recontacté(e) ». Sur grand écran elle n'apparaît pas : la colonne de droite,
+// avec le prix et le contact, reste déjà visible pendant le défilement.
 export default function FicheBar({ price, summary, phone }: { price: string; summary: string; phone?: string | null }) {
   const [shown, setShown] = useState(false);
 
@@ -33,7 +34,7 @@ export default function FicheBar({ price, summary, phone }: { price: string; sum
     <div
       data-fab
       aria-hidden={!shown}
-      className={`fixed inset-x-0 top-0 z-[55] border-b border-stone-200 bg-white transition-transform duration-300 ${shown ? 'translate-y-0' : '-translate-y-full'}`}
+      className={`lg:hidden fixed inset-x-0 top-0 z-[55] border-b border-stone-200 bg-white transition-transform duration-300 ${shown ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-6">
         <div className="min-w-0">
