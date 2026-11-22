@@ -313,6 +313,12 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   )}
                 </dl>
               )}
+              {/* Mention imposée pour les logements classés F ou G (art. R126-24 du Code de la construction et de l'habitation) */}
+              {(item.dpe_class === 'F' || item.dpe_class === 'G') && (
+                <p className="mt-4 border-t border-stone-200 pt-4 text-sm text-stone-700">
+                  Logement à consommation énergétique excessive : classe {item.dpe_class}.
+                </p>
+              )}
             </div>
 
             <Description text={item.short_description || ''} />
