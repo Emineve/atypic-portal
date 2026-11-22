@@ -1144,8 +1144,8 @@ export default function HomeClient({ initialListings, newArticles = 0, heroArt =
                     <Heart className={`w-5 h-5 ${fav ? 'fill-red-600 text-red-600' : 'text-stone-700'}`} />
                   </button>
                 </article>
-                {storyOn && index === 1 && stories[0]}
-                {storyOn && index === 7 && eyeCard}
+                {storyOn && index === 1 && eyeCard}
+                {storyOn && index === 7 && stories[0]}
                 {storyOn && index > 7 && (index - 7) % 9 === 0 && stories[((index - 7) / 9) % stories.length]}
                 {index === (storyOn ? 4 : 5) && visible.length > 6 && !onlyFavs && (
                   <button
