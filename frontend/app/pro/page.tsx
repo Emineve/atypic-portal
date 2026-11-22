@@ -8,7 +8,7 @@ import logiciels from './logiciels.png';
 export const metadata = {
   title: 'Agences : présentez vos biens atypiques · Loftissime',
   description:
-    'Plus de contacts sur vos biens atypiques, auprès d’acheteurs qui ne cherchent que ça. Contacts directs, mise à jour automatique, gratuit pendant le lancement.',
+    'Plus de contacts qualifiés sur vos biens atypiques. Contacts directs, mise à jour automatique, gratuit pendant le lancement.',
   alternates: { canonical: '/pro' },
 };
 
@@ -89,10 +89,10 @@ export default function ProPage() {
         <div className="max-w-4xl">
           <Crumbs items={[{ label: 'Espace pro' }]} />
           <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-            Plus de contacts sur vos biens atypiques, <span className="text-stone-500">auprès d&apos;acheteurs qui ne cherchent que ça.</span>
+            Plus de contacts qualifiés <span className="italic text-stone-500">sur vos biens atypiques.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
-            Nous vous mettons en relation directe avec des acheteurs qualifiés.
+            Nous vous mettons en relation directe avec des acheteurs qui ne cherchent que de l’atypique.
           </p>
           <p className="mt-3">
             <a href="#rejoindre" className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
