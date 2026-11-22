@@ -7,7 +7,7 @@ export default function HeroTitle() {
         Chercher un bien atypique, <span className="italic text-stone-500">sans chercher partout.</span>
       </h1>
       <p className="mt-4 text-base md:text-lg font-light leading-relaxed text-stone-600 [text-wrap:balance]">
-        Tous les biens atypiques à vendre, toutes agences réunies, sur un seul site.
+        Lofts, ateliers d’artistes, toits-terrasses, maisons d’architecte : les agences présentent ici ceux qu’elles ont à vendre.
       </p>
     </>
   );
