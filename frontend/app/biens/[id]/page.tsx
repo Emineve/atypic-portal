@@ -12,7 +12,7 @@ import PhotoMosaic from './PhotoMosaic';
 import Description from './Description';
 import PlanDownload from './PlanDownload';
 import { FavoriteAlertToast } from './AlertInvite';
-import StickyContact from './StickyContact';
+import FicheBar from './FicheBar';
 import ShareButtons from './ShareButtons';
 import Tracker from '../../Tracker';
 import { MarkSeen } from '../../SeenMark';
@@ -487,7 +487,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             </p>
           </div>
           {/* Sur mobile, le contact est placé juste après la présentation (voir plus haut) */}
-          <div className="hidden lg:block space-y-4">
+          <div id="contact-desktop" className="hidden lg:block space-y-4 scroll-mt-24">
             <PlanDownload listingId={item.id} plans={plans} title={item.title} />
             <ContactForm listingId={item.id} agency={item.source_agency} phone={item.contact_phone} contactName={item.contact_name} title={item.title} reference={item.source_id} city={item.city} price={Number(item.price)} hasPlan={plans.length > 0} />
           </div>
@@ -501,7 +501,11 @@ export default async function ListingPage({ params }: { params: { id: string } }
         </aside>
       </main>
 
-            <StickyContact />
+      <FicheBar
+        price={price}
+        summary={[item.surface_sqm ? `${Math.round(Number(item.surface_sqm))} m²` : '', item.rooms ? `${item.rooms} ${Number(item.rooms) > 1 ? 'pièces' : 'pièce'}` : '', item.city].filter(Boolean).join(' · ')}
+        phone={item.contact_phone}
+      />
       <FavoriteAlertToast city={item.city} price={Number(item.price)} />
 
       {related.length > 0 && hubName && hubUrl && (
