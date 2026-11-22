@@ -1,13 +1,19 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { typo } from '../../lib/typo';
 import { KeyRound, Gem, Compass, Heart, ArrowDownUp, Lock } from 'lucide-react';
 
 // Un petit picto par rubrique, devant son lien dans le sommaire
 const ICONS: Record<string, typeof KeyRound> = { acheter: KeyRound, selection: Gem, fonctionnement: Compass, demandes: Heart, classement: ArrowDownUp, donnees: Lock };
-function Icon({ id }: { id: string }) {
+function Icon({ id, active }: { id: string; active: boolean }) {
   const I = ICONS[id] || Compass;
-  return <I className="h-4 w-4 flex-none text-stone-500" strokeWidth={1.5} aria-hidden="true" />;
+  // Le picto vit dans un rond : jaune pour la rubrique en cours de lecture
+  return (
+    <span className={`flex h-8 w-8 flex-none items-center justify-center rounded-full transition-colors ${active ? 'bg-[#F6CF4E] text-stone-900' : 'bg-stone-100 text-stone-500 group-hover:bg-stone-200'}`} aria-hidden="true">
+      <I className="h-4 w-4" strokeWidth={1.5} />
+    </span>
+  );
 }
 
 // Les questions fréquentes : un sommaire en liens, puis toutes les rubriques l'une sous l'autre.
@@ -66,19 +72,53 @@ function Answer({ it }: { it: FaqItem }) {
 }
 
 export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
+  // Rubrique en cours de lecture : celle dont le titre a passé le haut de l'écran en dernier
+  const [active, setActive] = useState(groups[0]?.id || '');
+  useEffect(() => {
+    const update = () => {
+      let current = groups[0]?.id || '';
+      for (const g of groups) {
+        const el = document.getElementById(g.id);
+        if (el && el.getBoundingClientRect().top < 180) current = g.id;
+      }
+      setActive(current);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, [groups]);
+
+  // Clic sur une rubrique : on y glisse en douceur, sans saut
+  function go(e: React.MouseEvent, id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.history.replaceState(null, '', `#${id}`);
+  }
+
   return (
-    <div className="lg:grid lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-14 lg:items-start">
+    <div className="lg:grid lg:grid-cols-[19rem_minmax(0,1fr)] lg:gap-12 lg:items-start">
       {/* Sommaire : les rubriques en liens. Sur grand écran, il reste affiché à gauche pendant la lecture. */}
       <nav aria-label="Rubriques" className="lg:sticky lg:top-24">
-        <ul className="flex flex-wrap gap-x-7 gap-y-2.5 lg:flex-col">
-          {groups.map((g) => (
-            <li key={g.id}>
-              <a href={`#${g.id}`} className="group inline-flex items-center gap-2.5 text-[15px] font-medium text-stone-900">
-                <Icon id={g.id} />
-                <span className="underline underline-offset-4 decoration-stone-300 transition">{g.title}</span>
-              </a>
-            </li>
-          ))}
+        <ul className="flex flex-col gap-1">
+          {groups.map((g) => {
+            const on = active === g.id;
+            return (
+              <li key={g.id}>
+                <a
+                  href={`#${g.id}`}
+                  onClick={(e) => go(e, g.id)}
+                  aria-current={on ? 'true' : undefined}
+                  className={`group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-[15px] transition-colors ${on ? 'bg-white font-medium text-stone-900' : 'text-stone-600 hover:text-stone-900'}`}
+                >
+                  <Icon id={g.id} active={on} />
+                  <span className="flex-1">{g.title}</span>
+                  <span className={`text-xs tabular-nums ${on ? 'text-stone-900' : 'text-stone-500'}`}>{g.items.length}</span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
 
