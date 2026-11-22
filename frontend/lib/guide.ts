@@ -22,7 +22,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -6116,6 +6116,290 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Reporterre, « Vivre sous un dôme, un habitat alternatif méconnu »', url: 'https://reporterre.net/Vivre-sous-un-dome-un-habitat-alternatif-meconnu' },
     ],
     listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'vivre-dans-la-roche-les-maisons-troglodytes',
+    art: 'troglo',
+    title: 'Dix-huit degrés toute l’année : vivre dans la roche',
+    description:
+      'À La Roche-Guyon comme à Amboise, des habitants vivent dans des maisons creusées dans la falaise. La fraîcheur, l’humidité, les prix, d’après Reporterre et Brut, et ce qu’il faut vérifier avant d’acheter.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Pas besoin d’aller en Australie pour habiter sous terre. À soixante kilomètres de Paris, le village de La Roche-Guyon compte environ 250 cavités creusées dans la craie, dont certaines sont des maisons. Reporterre y est allé un été de canicule. Brut, de son côté, a filmé un couple installé dans la roche à Amboise.',
+    takeaways: [
+      'La température reste entre 17 et 20 °C toute l’année, sans climatisation.',
+      'L’ennemi, c’est l’humidité : il faut ventiler et déshumidifier en permanence.',
+      'À Amboise, un couple a acheté moins de 50 000 euros, et dépensé à peu près autant en travaux.',
+      'Avant d’acheter, faites vérifier la stabilité de la roche et lisez l’état des risques.',
+    ],
+    sections: [
+      {
+        title: 'Fait-il vraiment frais l’été ?',
+        paragraphs: [
+          'Oui, et c’est ce qui a remis ces maisons à la mode. À La Roche-Guyon, Reporterre relève de 18 à 20 °C à l’intérieur quand il fait 35 °C dehors. Un habitant, retraité, y vit depuis 2006 et n’a presque pas de facture d’énergie.',
+          'L’hiver, la roche rend la chaleur accumulée. À Amboise, Brut indique environ 17 °C sans chauffage, et 19 à 20 °C avec un poêle à bois, pour huit stères par hiver.',
+        ],
+      },
+      {
+        title: 'Et l’humidité ?',
+        paragraphs: [
+          'C’est la contrepartie. L’un des habitants rencontrés par Reporterre a installé deux ventilations mécaniques, un déshumidificateur et un brasseur d’air. Un autre retire sept à huit litres d’eau par jour à la belle saison. Sans cela, les tissus, les livres et le cuir s’abîment.',
+          'Le couple d’Amboise fait la même remarque : ce logement convient mieux à quelqu’un qui est souvent sur place, parce qu’il faut aérer tous les jours.',
+        ],
+      },
+      {
+        title: 'Est-ce sombre ?',
+        paragraphs: [
+          'Pas forcément. Une maison troglodyte n’a qu’une façade, mais si elle est au sud et largement vitrée, elle est lumineuse. Les acheteurs le savent : selon l’agent immobilier interrogé par Reporterre, ils demandent une entrée plein sud.',
+        ],
+      },
+      {
+        title: 'Combien cela coûte-t-il ?',
+        paragraphs: [
+          'Moins qu’une maison, à l’achat. À Amboise, moins de 50 000 euros, puis un an et demi de travaux faits par les propriétaires pour une somme équivalente. À La Roche-Guyon, un commerçant du village cité par Reporterre parle de cavités passées d’environ 15 000 à 80 000 euros. Les plus belles maisons troglodytes atteignent plusieurs centaines de milliers d’euros.',
+          'Les travaux, surtout la ventilation, pèsent lourd. Et tout le monde n’en veut pas : beaucoup d’acheteurs préfèrent une maison ancienne aux murs épais, avec un jardin.',
+        ],
+      },
+      {
+        title: 'Que vérifier avant d’acheter ?',
+        list: [
+          'La stabilité de la voûte et de la falaise, par un spécialiste : des blocs se détachent parfois.',
+          'L’état des risques remis par le vendeur, qui signale les cavités souterraines et les mouvements de terrain connus.',
+          'Que le bien est bien un logement aux yeux de la mairie, et pas une cave ou une dépendance.',
+          'La lumière du jour et la ventilation dans chaque pièce de vie.',
+          'L’assurance : demandez un devis avant de signer.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Quelle température fait-il dans une maison troglodyte ?', a: 'Entre 17 et 20 °C toute l’année, selon les habitants rencontrés par Reporterre et Brut, grâce à l’inertie de la roche.' },
+      { q: 'Une maison troglodyte est-elle humide ?', a: 'Oui si elle n’est pas ventilée. Les habitants s’équipent de ventilations mécaniques et de déshumidificateurs, et aèrent tous les jours.' },
+    ],
+    sources: [
+      { label: 'Reporterre, « Face à la chaleur, ils vivent dans des grottes »', url: 'https://reporterre.net/Face-a-la-chaleur-ils-vivent-dans-des-grottes' },
+      { label: 'Brut, « Mélanie et Florent vivent dans une maison creusée dans la roche », 24 juillet 2020', url: 'https://www.brut.media/fr/nature/melanie-et-florent-vivent-dans-une-maison-creusee-dans-la-roche-82e35536-e9a6-4280-ad72-44804995d683' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'habiter-un-chateau-d-eau',
+    art: 'chateaudeau',
+    title: 'Habiter un château d’eau : six étages, une pièce par niveau',
+    description:
+      'En Belgique, deux anciens châteaux d’eau sont devenus des logements. Trente mètres de haut, une pièce par étage, le séjour au sommet : ce qu’en disent New Atlas et la RTBF.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Un château d’eau ne sert plus à rien le jour où le réseau n’a plus besoin de lui. Il reste une tour, souvent bien placée, avec la plus belle vue du village. En Belgique, deux d’entre eux ont été transformés en logements, racontent New Atlas et la RTBF.',
+    takeaways: [
+      'À Steenokkerzeel, une tour d’environ trente mètres est devenue une maison de six niveaux.',
+      'On y vit à l’envers : les chambres en bas, le séjour en haut, la terrasse au sommet.',
+      'Près d’Aubel, un autre château d’eau, acheté aux enchères, abrite une chambre d’hôtes dans l’ancien réservoir.',
+      'Le plan est imposé par la tour : peu de surface par étage, beaucoup d’escaliers.',
+    ],
+    sections: [
+      {
+        title: 'Comment habite-t-on une tour ?',
+        paragraphs: [
+          'En empilant les pièces. New Atlas décrit la maison de Steenokkerzeel, en Flandre : un garage au sol, puis les locaux techniques, une chambre d’amis et un bureau, une salle de bain, la chambre des propriétaires, et tout en haut le séjour, la cuisine et une terrasse panoramique. Environ 450 m² au total.',
+          'La tour, bâtie entre 1938 et 1941, a servi jusque dans les années 1990. Le chantier, confié à un studio de design belge, a commencé en 2008. Il a fallu remplacer des colonnes de béton abîmées et agrandir les fenêtres du dernier étage.',
+        ],
+      },
+      {
+        title: 'Que devient le réservoir ?',
+        paragraphs: [
+          'La meilleure pièce. Près d’Aubel, la RTBF a visité un château d’eau acheté aux enchères en 2017, alors que l’eau s’infiltrait partout. Le réservoir est devenu l’espace de vie, on monte par l’escalier central en béton, vieux de plus d’un siècle, et le sommet porte une terrasse à dix-sept mètres du sol.',
+          'Le mobilier a dû être dessiné sur mesure : dans une tour ronde, aucun meuble du commerce ne se plaque contre un mur.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'Des communes vendent de temps en temps un château d’eau désaffecté, souvent pour une somme modeste. Le prix d’achat dit peu de chose du projet.',
+          'Il faut d’abord que la mairie autorise sa transformation en logement. Il faut ensuite percer des fenêtres dans une structure en béton, isoler, créer un escalier aux normes, amener les réseaux. Et accepter de vivre sur de petits plateaux reliés par des marches.',
+          'La vue, la hauteur et la lumière sont les mêmes au dernier étage d’un immeuble, avec un ascenseur.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on acheter un château d’eau ?', a: 'Oui, quand une commune ou un syndicat des eaux en vend un qui ne sert plus. Vérifiez avant tout que sa transformation en logement est autorisée.' },
+      { q: 'Quelle surface offre un château d’eau ?', a: 'Celui de Steenokkerzeel, haut d’une trentaine de mètres, offre environ 450 m² sur six niveaux, selon New Atlas. Chaque étage reste petit.' },
+    ],
+    sources: [
+      { label: 'New Atlas, « Chateau d’eau », 18 avril 2012', url: 'https://newatlas.com/chateau-deau/22202' },
+      { label: 'RTBF, « Envie de prendre de la hauteur ? Découvrez un logement insolite dans Une brique dans le ventre », 25 janvier 2025', url: 'https://www.rtbf.be/article/envie-de-prendre-de-la-hauteur-decouvrez-un-logement-insolite-dans-une-brique-dans-le-ventre-11494444' },
+    ],
+    listingsLink: { label: 'Voir les derniers étages et rooftops', href: '/categorie/rooftop-vue' },
+  },
+  {
+    slug: 'une-maison-en-conteneurs-maritimes',
+    art: 'conteneur',
+    title: 'Six conteneurs, 145 m² : une maison près de Besançon',
+    description:
+      'Un couple a construit sa maison avec six conteneurs maritimes. Le budget, le calendrier, le permis et les réticences du village, d’après The Connexion.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'La maison en conteneurs a la réputation d’être rapide et bon marché. The Connexion a suivi un couple qui en a bâti une à Franois, près de Besançon, et donne les chiffres. Ils racontent autre chose : une vraie maison, avec un vrai permis et un vrai budget.',
+    takeaways: [
+      'Six conteneurs, livrés pour 18 000 euros, pour 145 m² habitables.',
+      'Budget : 110 000 euros de terrain et 150 000 euros de construction.',
+      'Du terrain à l’emménagement : moins de deux ans, dont neuf mois de chantier.',
+      'Le permis de construire est le même que pour une maison en parpaings.',
+    ],
+    sections: [
+      {
+        title: 'Combien de temps cela prend-il ?',
+        paragraphs: [
+          'Le terrain a été acheté en juillet 2019, le permis obtenu en janvier 2020, les conteneurs livrés en juillet 2020, et le couple a emménagé en avril 2021. Il a fait lui-même l’essentiel des travaux, sauf les fondations et l’étanchéité. L’un des deux travaille dans le bâtiment, ce qui compte dans ce calendrier.',
+        ],
+      },
+      {
+        title: 'Est-ce vraiment moins cher ?',
+        paragraphs: [
+          'Les boîtes elles-mêmes ne coûtent presque rien : 18 000 euros sur 150 000. Tout le reste est le prix d’une maison : les fondations, la découpe de l’acier, trois tonnes de métal ont été retirées, l’isolation par l’extérieur, la toiture, le bardage en bois, les réseaux.',
+          'L’économie vient surtout du travail fourni par les propriétaires.',
+        ],
+      },
+      {
+        title: 'Comment la mairie l’a-t-elle pris ?',
+        paragraphs: [
+          'Avec méfiance. The Connexion rapporte que le village se montrait sceptique devant des conteneurs et un toit plat, et qu’il a fallu convaincre. La démarche a été la même que pour n’importe quelle construction, sans procédure allégée.',
+        ],
+      },
+      {
+        title: 'Que retenir si le projet vous tente ?',
+        list: [
+          'Un permis de construire est nécessaire, et le plan d’urbanisme peut imposer une forme de toit ou un aspect de façade.',
+          'Une étude thermique est indispensable : l’acier conduit le froid comme le chaud.',
+          'Le prix des conteneurs est une petite part du budget.',
+          'La revente d’une maison très typée prend plus de temps : pensez-y dès la conception.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien coûte une maison en conteneurs ?', a: 'Celle de cette histoire a coûté 150 000 euros hors terrain pour 145 m², en grande partie construite par ses propriétaires, selon The Connexion.' },
+      { q: 'Faut-il un permis de construire pour une maison en conteneurs ?', a: 'Oui. Les règles sont celles de toute construction neuve.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « Couple build French home out of old shipping containers », 19 juillet 2024', url: 'https://www.connexionfrance.com/news/photos-couple-build-french-home-out-of-old-shipping-containers/654770' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'vivre-dans-une-yourte-avec-le-confort',
+    art: 'yourte',
+    title: 'Une yourte avec lave-vaisselle et double vitrage',
+    description:
+      'En Belgique, un couple a quitté son appartement pour une yourte tout équipée. Ce que raconte la RTBF, et la question qui décide de tout en France : le terrain.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'On imagine la yourte comme un retour à la bougie. Celle que la RTBF a visitée dans le Hainaut, en 2015, a l’eau courante, l’électricité, internet, un lave-vaisselle et des portes-fenêtres à double vitrage. Ses occupants avaient quitté un appartement à Bruxelles deux ans plus tôt.',
+    takeaways: [
+      'Une pièce ronde, avec cuisine, salon, bureau et mezzanine, éclairée par le sommet.',
+      'Le couple voulait un logement payé comptant, sans emprunt.',
+      'La yourte n’est pas l’habitat léger le moins cher au mètre carré, disent-ils eux-mêmes.',
+      'En France, tout dépend du terrain où on l’installe.',
+    ],
+    sections: [
+      {
+        title: 'Est-ce confortable en hiver ?',
+        paragraphs: [
+          'Selon son occupant, qui fabrique lui-même des yourtes, on peut y maintenir 24 °C même quand il gèle. En revanche, la chaleur ne reste pas : la température baisse d’environ un degré par heure une fois le chauffage coupé. Une toile isolée ne garde pas la chaleur comme un mur.',
+        ],
+      },
+      {
+        title: 'Pourquoi ce choix ?',
+        paragraphs: [
+          'Pour ne rien devoir à une banque, et pour pouvoir partir : une yourte se démonte et se remonte ailleurs. La RTBF note aussi un effet inattendu. Le couple entend parfois qu’il n’est pas assez rustique, comme si le confort trahissait l’idée.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'Une yourte habitée toute l’année est une résidence démontable. La loi l’admet comme logement permanent, mais seulement sur des terrains que le plan d’urbanisme a prévus pour cela, ou sur un terrain constructible, avec une autorisation.',
+          'Dans un jardin, à côté d’une maison, une déclaration en mairie suffit le plus souvent pour une petite surface. Dans un pré ou un bois, c’est en général refusé.',
+          'Autre conséquence à connaître : une yourte ne se finance pas par un crédit immobilier, et elle ne prend pas de valeur comme un bien bâti. C’est le terrain qui en a.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on vivre dans une yourte toute l’année ?', a: 'Oui, sur un terrain où c’est autorisé. Renseignez-vous en mairie avant d’acheter le terrain ou la yourte.' },
+      { q: 'Une yourte tient-elle chaud ?', a: 'Elle se chauffe vite, mais se refroidit vite : environ un degré par heure sans chauffage, selon le fabricant interrogé par la RTBF.' },
+    ],
+    sources: [
+      { label: 'RTBF, « Vivre dans une yourte, oui, mais avec électricité, eau courante et wifi », 15 juillet 2015', url: 'https://www.rtbf.be/article/vivre-dans-une-yourte-oui-mais-avec-electricite-eau-courante-et-wifi-9032727' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'vivre-en-van-l-envers-du-decor',
+    art: 'van',
+    title: 'Vivre en van : le jardin infini, et le reste',
+    description:
+      'Des saisonniers, des indépendants, des retraités ont fait d’un fourgon leur logement. Tendance Ouest et le magazine Beside racontent la liberté, et ce que les photos ne montrent pas.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Sur les réseaux, la vie en van ressemble à un lever de soleil permanent. Deux reportages donnent une image plus complète : celui de Tendance Ouest, en 2018, auprès de jeunes Français, et celui du magazine québécois Beside, dans un grand rassemblement de nomades en Arizona.',
+    takeaways: [
+      'Certains travaillent l’hiver en station pour rouler le reste de l’année ; d’autres travaillent depuis leur fourgon.',
+      'L’équipement type : un lit, un coin cuisine, des panneaux solaires, une réserve d’eau.',
+      'Les difficultés reviennent partout : le froid, la pluie, les pannes, et trouver où dormir.',
+      'Pour beaucoup, aux États-Unis, ce n’est pas un choix mais une solution faute de mieux.',
+    ],
+    sections: [
+      {
+        title: 'De quoi vit-on sur la route ?',
+        paragraphs: [
+          'Tendance Ouest décrit deux manières de faire. Un couple de saisonniers enchaîne les semaines très chargées l’hiver, en station de ski, pour être libre ensuite. Un autre couple a quitté son appartement et un emploi stable pour travailler à distance, avec un gros forfait internet pour seul bureau.',
+          'Le logement, lui, tient en quelques mètres carrés : un lit, une table, de quoi cuisiner, parfois une douche, une réserve d’eau de 170 litres dans l’un des fourgons.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui est dur ?',
+        paragraphs: [
+          'Les jours de pluie à deux dans un fourgon, les douches froides, les nuits d’hiver, la panne qui immobilise à la fois la voiture et la maison. Et le stationnement : il arrive de chercher pendant des heures un endroit où s’arrêter.',
+          'Beside insiste sur le regard des autres. Des occupants de véhicules disent être traités comme des marginaux, réveillés la nuit, verbalisés plutôt qu’aidés.',
+        ],
+      },
+      {
+        title: 'Est-ce toujours un choix ?',
+        paragraphs: [
+          'Non, et c’est l’apport du reportage de Beside. Au rassemblement de Quartzsite, en Arizona, on croise des retraités aux petites pensions, des personnes seules après un deuil ou un divorce, des salariés qui dorment dans leur voiture. Un anthropologue qui étudie le sujet rappelle qu’un véhicule n’est pas gratuit : essence, assurance, immatriculation, amendes.',
+          'Le journaliste conclut qu’il ne renoncerait pas à sa maison. Ce mode de vie est enviable quand on peut en sortir.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'Un véhicule n’est pas un logement. Il faut tout de même une adresse pour ses papiers, ses impôts et sa couverture santé : on peut se faire domicilier, auprès d’un proche ou d’un organisme.',
+          'Le stationnement est réglementé par chaque commune, et dormir au même endroit plusieurs nuits de suite est souvent interdit.',
+          'Enfin, un fourgon perd de la valeur chaque année, là où un logement en garde. Beaucoup de ceux qui partent conservent un bien, ou comptent en racheter un.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on vivre toute l’année dans un van en France ?', a: 'Rien ne l’interdit, mais il faut une adresse de domiciliation, respecter les règles de stationnement de chaque commune, et prévoir l’hiver.' },
+      { q: 'Vivre en van coûte-t-il moins cher qu’un loyer ?', a: 'Il n’y a pas de loyer, mais il reste le carburant, l’assurance, l’entretien, les pannes et la perte de valeur du véhicule.' },
+    ],
+    sources: [
+      { label: 'Tendance Ouest, « Ils vivent en van et leur jardin est infini », 8 novembre 2018', url: 'https://www.tendanceouest.com/actualite-299791-ils-vivent-en-van-et-leur-jardin-est-infini' },
+      { label: 'Beside, « The Real Vanlife »', url: 'https://beside.media/stories/the-real-vanlife/' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
   },
 ];
 
