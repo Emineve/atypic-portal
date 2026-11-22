@@ -41,12 +41,8 @@ export default function StepDeck({
                 onClick={() => onStep(i)}
                 className="flex w-full items-center gap-4 px-5 py-4 text-left md:px-6"
               >
-                <span
-                  className={`flex h-9 w-9 flex-none items-center justify-center rounded-full text-sm font-medium transition ${
-                    open ? 'bg-[#F6CF4E] text-stone-900' : 'bg-stone-100 text-stone-500'
-                  }`}
-                >
-                  {i + 1}
+                <span className={`w-9 flex-none font-sans text-sm tabular-nums transition ${open ? 'text-stone-900' : 'text-stone-500'}`}>
+                  {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className={`flex-1 font-serif text-xl leading-tight tracking-tight md:text-2xl ${open ? 'text-stone-900' : 'text-stone-600'}`}>{s.title}</span>
                 {!open && <span className="flex-none text-2xl leading-none text-stone-500" aria-hidden="true">+</span>}

@@ -1,5 +1,5 @@
-// Le tee-shirt Loftissime : blanc, avec le mot « atypiques » qui penche sur son trait jaune,
-// comme dans le titre de l'accueil. Simple aperçu, rien n'est encore en vente.
+// Le tee-shirt Loftissime : blanc, avec le mot « atypiques » en italique, souligné d'un trait jaune.
+// Simple aperçu, rien n'est encore en vente.
 export default function TeeShirt({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 200" className={className} role="img" aria-label="Tee-shirt blanc, le mot « atypiques » souligné de jaune">
@@ -11,12 +11,10 @@ export default function TeeShirt({ className = '' }: { className?: string }) {
         strokeLinejoin="round"
       />
       <path d="M84 20 Q100 44 116 20" fill="none" stroke="#1c1917" strokeWidth="1.5" />
-      <g transform="rotate(-6 100 100)">
-        <rect x="70" y="97" width="60" height="8" fill="#F6CF4E" />
-        <text x="100" y="103" textAnchor="middle" className="font-serif" fontStyle="italic" fontSize="16" letterSpacing="-0.3" fill="#1c1917">
-          atypiques
-        </text>
-      </g>
+      <rect x="70" y="106" width="60" height="2.5" fill="#F6CF4E" />
+      <text x="100" y="102" textAnchor="middle" className="font-serif" fontStyle="italic" fontSize="16" letterSpacing="-0.3" fill="#1c1917">
+        atypiques
+      </text>
     </svg>
   );
 }

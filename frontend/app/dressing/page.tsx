@@ -29,7 +29,7 @@ export default function DressingPage() {
         <div className="pb-24 max-w-4xl">
         <TeeCard
           name="L’atypique"
-          pitch="Blanc, avec un seul mot : atypiques, qui penche sur son trait jaune. Celui du titre du site."
+          pitch="Blanc, avec un seul mot : atypiques, en italique, souligné d’un trait jaune."
         />
       </div>
       </main>

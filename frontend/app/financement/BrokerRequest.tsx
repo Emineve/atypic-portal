@@ -77,18 +77,13 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
               <p className="mt-3 text-stone-600 leading-relaxed">
                 Laissez vos coordonnées, un courtier vous recontacte.
               </p>
-              <ul className="mt-4 space-y-2.5 text-[15px] leading-snug text-stone-800">
+              <ul className="mt-5 border-t border-stone-900 text-[15px] leading-snug text-stone-800">
                 {[
                   'Vous savez ce que vous pouvez emprunter avant de faire une offre.',
                   'Il met les banques en concurrence pour vous.',
                   'Il défend votre dossier, y compris pour un bien atypique.',
                 ].map((t) => (
-                  <li key={t} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F6CF4E]">
-                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="#1c1917" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M20 6 9 17l-5-5" />
-                      </svg>
-                    </span>
+                  <li key={t} className="border-b border-stone-200 py-2.5">
                     {t}
                   </li>
                 ))}
