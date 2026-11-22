@@ -1,4 +1,4 @@
-import Crumbs from '../Crumbs';
+import EyeO from '../EyeO';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import BuyerFigure, { type BuyerKind } from './BuyerFigure';
@@ -13,17 +13,17 @@ export const metadata = {
 };
 
 // L'offre, en trois piliers
-const PILLARS: { title: string; points: string[] }[] = [
+const PILLARS: { title: string; mark: string; points: string[] }[] = [
   {
-    title: 'Des contacts qualifiés',
+    title: 'Des contacts qualifiés', mark: 'qualifiés',
     points: ['Mise en relation directe, sans intermédiaire', 'Votre nom et votre téléphone sur chaque annonce', 'Un bilan de diffusion par bien, pour votre vendeur'],
   },
   {
-    title: 'Plus de visibilité',
+    title: 'Plus de visibilité', mark: 'visibilité',
     points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page dédiée à votre agence, avec tous vos biens atypiques à la vente'],
   },
   {
-    title: 'Zéro saisie',
+    title: 'Zéro saisie', mark: 'Zéro',
     points: ['Passerelle avec votre logiciel de diffusion', 'Mise à jour automatique', 'Rien à ressaisir'],
   },
 ];
@@ -85,69 +85,82 @@ export default function ProPage() {
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>
 
-      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-12">
-        <div className="max-w-4xl">
-          <Crumbs items={[{ label: 'Espace pro' }]} />
-          <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-            Plus de contacts qualifiés <span className="italic text-stone-500">sur vos biens atypiques.</span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
-            Nous vous mettons en relation directe avec des acheteurs qui ne cherchent que de l’atypique.
-          </p>
-          <p className="mt-3">
-            <a href="#rejoindre" className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
-              Diffuser mes annonces →
-            </a>
-          </p>
+      {/* L'ouverture : la promesse, en grand, sous le regard du logo */}
+      <header className="bg-[#211C15] text-white">
+        <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-14 md:pb-20">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:gap-14">
+            <div className="flex-none"><EyeO size={132} ink="#F6CF4E" iris="#211C15" /></div>
+            <div>
+              <h1 className="font-serif text-[2.6rem] md:text-7xl tracking-tight leading-[1.02] [text-wrap:balance]">
+                Plus de contacts qualifiés{' '}
+                <span className="inline-block italic text-[#F6CF4E] -rotate-2">sur vos biens atypiques.</span>
+              </h1>
+              <p className="mt-7 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-300">
+                Nous vous mettons en relation directe avec des acheteurs qui ne cherchent que de l’atypique.
+              </p>
+              <p className="mt-4">
+                <a href="#rejoindre" className="text-base font-medium text-[#F6CF4E] underline underline-offset-4 decoration-[#F6CF4E]/50 hover:decoration-[#F6CF4E] transition">
+                  Diffuser mes annonces →
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
         <div className="pb-24">
-        <section className="border-t border-stone-200 py-12 md:py-16">
+        {/* Ce que l'agence y gagne : trois promesses numérotées, sans cartes */}
+        <section className="py-14 md:py-20">
           <h2 className={h2}>Ce que vous y gagnez</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-3 md:gap-5">
-            {PILLARS.map((p) => (
-              <div key={p.title} className="rounded-[14px] border border-stone-200 bg-white p-6 md:p-7">
-                <h3 className="font-serif text-2xl text-stone-900">{p.title}</h3>
-                <ul className="mt-5 space-y-3">
-                  {p.points.map((t) => (
-                    <li key={t} className="flex items-start gap-3 text-[15px] leading-snug text-stone-900">
-                      <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F6CF4E]">
-                        <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M20 6 9 17l-5-5" />
-                        </svg>
-                      </span>
-                      {typo(t)}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="mt-10 grid gap-x-12 gap-y-12 md:grid-cols-3">
+            {PILLARS.map((p, i) => {
+              const [before, after] = p.title.split(p.mark);
+              return (
+                <div key={p.title}>
+                  <span className="block font-serif italic text-5xl md:text-6xl leading-none text-[#F6CF4E]" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-3 font-serif text-3xl leading-tight text-stone-900">
+                    {before}
+                    <span className={`inline-block italic ${i % 2 ? 'rotate-2' : '-rotate-3'} px-[0.1em] bg-[linear-gradient(transparent_58%,#F6CF4E_58%)]`}>{p.mark}</span>
+                    {after}
+                  </h3>
+                  <ul className="mt-5 border-t border-stone-900">
+                    {p.points.map((t) => (
+                      <li key={t} className="border-b border-stone-200 py-3 text-base leading-snug text-stone-700">
+                        {typo(t)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        <section className="border-t border-stone-200 py-12 md:py-16">
+        {/* Les acheteurs du site : trois portraits, sur fond jaune */}
+        <section className="rounded-[14px] bg-[#F6CF4E] px-6 py-12 md:px-12 md:py-16">
           <h2 className={h2}>
-            Vos futurs acquéreurs <span className="italic text-stone-500">sont ici.</span>
+            Vos futurs acquéreurs <span className="inline-block italic -rotate-2">sont ici.</span>
           </h2>
-          <p className="mt-5 max-w-2xl text-lg font-light leading-relaxed text-stone-600">
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-900">
             Trois profils d&apos;acheteurs, tous à la recherche d&apos;atypique.
           </p>
-          <div className="mt-8 grid md:grid-cols-3 gap-x-10">
+          <div className="mt-10 grid gap-y-8 md:grid-cols-3 md:gap-x-10">
             {VISITORS.map((v) => (
-              <div key={v.title} className="flex items-center gap-4 border-t border-stone-200 py-4">
-                <BuyerFigure kind={v.kind} className="h-16 w-16 flex-none -ml-2" />
-                <div>
-                  <h3 className="font-serif text-xl text-stone-900">{v.title}</h3>
-                  <p className="mt-1 text-[15px] leading-snug text-stone-600">{v.text}</p>
+              <div key={v.title}>
+                <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#FDFBF7]">
+                  <BuyerFigure kind={v.kind} className="h-20 w-20" />
                 </div>
+                <h3 className="mt-4 font-serif text-2xl text-stone-900">{v.title}</h3>
+                <p className="mt-1 text-base leading-snug text-stone-900">{v.text}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="border-t border-stone-200 py-12 md:py-16">
+        <section className="py-14 md:py-20">
           <h2 className={h2}>Vos questions</h2>
           <div className="mt-8 max-w-3xl space-y-2.5">
             {QUESTIONS.map((it) => (
