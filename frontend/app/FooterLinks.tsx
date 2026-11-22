@@ -18,10 +18,10 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
       <div className="max-w-6xl mx-auto px-6 pt-14 pb-20 md:pt-20 md:pb-8">
         <div className="grid gap-y-12 md:grid-cols-[1.3fr_2fr] md:gap-x-16">
           <div>
-            <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white whitespace-nowrap">
+            <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-[#FBF5E9] whitespace-nowrap">
               loftissime.
             </a>
-            <p className="mt-5 font-serif text-xl md:text-2xl leading-none text-white">
+            <p className="mt-5 font-serif text-xl md:text-2xl leading-none text-[#FBF5E9]">
               Curateur de biens{' '}
               <span className="italic text-stone-400">atypiques</span>
             </p>
