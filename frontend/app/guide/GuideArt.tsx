@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome';
 
 const INK = '#1c1917';
 const SUN = '#F6CF4E';
@@ -1384,7 +1384,206 @@ function Train() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise, rdc: Rdc, chambres: Chambres, bruit: Bruit, division: Division, moulin: Moulin, loge: Loge, spa: Spa, plusieurs: Plusieurs, cave: Cave, avion: Avion, souterrain: Souterrain, train: Train };
+// Rubrique « Insolite » : un phare en mer
+function Phare() {
+  return (
+    <>
+      <path d="M0 420 H1200" {...line} />
+      <path d="M60 452 q30 -16 60 0 t60 0 M860 456 q30 -16 60 0 t60 0 t60 0 M300 470 q30 -16 60 0 t60 0" {...thin} />
+      {/* le socle */}
+      <path d="M430 420 V372 H770 V420" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M470 372 V330 H730 V372" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* la tour */}
+      <path d="M540 330 L562 130 H638 L660 330 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M548 262 H652 M555 196 H645" {...thin} />
+      {[230, 296].map((y) => (
+        <rect key={y} x={588} y={y - 14} width={24} height={30} rx={12} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      <rect x={588} y={152} width={24} height={30} rx={12} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* la lanterne */}
+      <path d="M548 130 H652" {...line} />
+      <rect x={572} y={84} width={56} height={46} fill={SUN} stroke={INK} strokeWidth={3} />
+      <path d="M600 84 v46" {...thin} />
+      <path d="M564 84 Q600 40 636 84 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M600 52 v-18" {...line} />
+      {/* le faisceau */}
+      <path d="M640 100 L900 60 M640 112 L900 130 M560 100 L300 60 M560 112 L300 130" {...dash} />
+      {/* la barque de la relève */}
+      <path d="M150 420 q10 22 40 22 h60 q30 0 40 -22 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : une plateforme en haut d'un grand arbre
+function Arbre() {
+  return (
+    <>
+      <path d="M0 440 H1200" {...line} />
+      {/* le tronc */}
+      <path d="M560 440 L576 40 H624 L640 440 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M590 420 V300 M612 260 V120" {...thin} />
+      {/* les branches */}
+      {[90, 150, 330, 390].map((y, i) => (
+        <g key={y}>
+          <path d={`M${578 + i} ${y} Q480 ${y - 10} 400 ${y + 26}`} {...line} />
+          <path d={`M${622 - i} ${y} Q720 ${y - 10} 800 ${y + 26}`} {...line} />
+        </g>
+      ))}
+      {/* la plateforme et sa bâche */}
+      <path d="M470 236 H730" {...line} />
+      <path d="M486 236 L560 282 M714 236 L640 282" {...thin} />
+      <path d="M480 236 L600 150 L720 236 Z" fill={SUN} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* la corde et le seau de ravitaillement */}
+      <path d="M700 236 V392" {...dash} />
+      <path d="M684 392 h32 l-5 30 h-22 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* les arbres voisins, plus petits */}
+      {[160, 260, 950, 1050].map((x, i) => (
+        <g key={x}>
+          <path d={`M${x} 440 v-70`} {...line} />
+          <path d={`M${x - 40} 380 L${x} ${i % 2 ? 230 : 180} L${x + 40} 380 Z`} fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+        </g>
+      ))}
+    </>
+  );
+}
+
+// Rubrique « Insolite » : un silo enterré, vu en coupe
+function Silo() {
+  return (
+    <>
+      <path d="M0 150 H1200" {...line} />
+      <Plant x={220} y={124} />
+      {/* la trappe et l'escalier */}
+      <path d="M420 150 v-26 h90 v26" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M465 150 V220" {...dash} />
+      {/* le centre de contrôle, devenu logement */}
+      <path d="M340 220 H600 Q620 220 620 240 V330 H340 Q320 330 320 310 V240 Q320 220 340 220 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <Sofa x={360} y={300} />
+      <rect x={470} y={246} width={60} height={36} rx={4} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* le tunnel */}
+      <path d="M620 262 H720 M620 306 H720" {...line} />
+      {/* le puits du missile */}
+      <path d="M720 150 V470 H880 V150" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M720 150 H700 M880 150 H900" {...line} />
+      <path d="M720 230 H880 M720 310 H880 M720 390 H880" {...thin} />
+      <path d="M800 170 V450" {...dash} />
+      {/* cote de profondeur */}
+      <path d="M940 150 V470 M928 150 h24 M928 470 h24" {...thin} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : une île, une maison, une éolienne
+function Ile() {
+  return (
+    <>
+      <path d="M0 400 H1200" {...line} />
+      <path d="M80 432 q30 -16 60 0 t60 0 M940 436 q30 -16 60 0 t60 0 M480 462 q30 -16 60 0 t60 0 t60 0" {...thin} />
+      {/* l'île */}
+      <path d="M260 400 Q330 300 520 290 Q760 280 900 340 Q950 366 960 400 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* la ferme */}
+      <path d="M470 300 V246 L530 206 L590 246 V298" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <rect x={516} y={258} width={28} height={40} fill={SUN} stroke={INK} strokeWidth={2} />
+      <path d="M590 262 H690 V294 L590 298 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M590 262 L610 240 H690 V262" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* l'éolienne */}
+      <path d="M800 320 V180" {...line} />
+      <path d="M800 180 L800 130 M800 180 L844 204 M800 180 L756 204" {...line} />
+      <circle cx={800} cy={180} r={7} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* les moutons */}
+      {[360, 410].map((x) => (
+        <g key={x}>
+          <ellipse cx={x} cy={352} rx={18} ry={11} fill={PAPER} stroke={INK} strokeWidth={2} />
+          <path d={`M${x - 8} 362 v10 M${x + 8} 362 v10`} {...thin} />
+        </g>
+      ))}
+      {/* le bateau, seul lien avec le continent */}
+      <path d="M90 400 q10 22 40 22 h50 q30 0 40 -22 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M150 400 V340 L196 388 H150" fill={SUN} stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : une cabane sur les rochers, face à la mer
+function Cabane() {
+  return (
+    <>
+      <path d="M0 430 H520" {...line} />
+      <path d="M40 458 q30 -16 60 0 t60 0 t60 0 M300 470 q30 -16 60 0 t60 0" {...thin} />
+      {/* les rochers */}
+      <path d="M460 470 L520 400 L600 380 L680 330 H980 L1060 370 L1140 380 L1200 430 V470 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M600 380 L640 420 M1060 370 L1030 420" {...thin} />
+      {/* la cabane */}
+      <path d="M720 330 V200 L960 170 V330 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M704 204 L976 168" {...line} />
+      {/* la baie coulissante */}
+      <rect x={740} y={236} width={120} height={94} fill={SUN} stroke={INK} strokeWidth={3} />
+      <path d="M800 236 v94" {...thin} />
+      {/* la mezzanine */}
+      <path d="M876 250 H960 M890 250 v80 M890 276 h-14 M890 302 h-14" {...thin} />
+      {/* cote : douze mètres carrés */}
+      <path d="M720 110 H960 M720 98 v24 M960 98 v24" {...thin} />
+      {/* le soleil */}
+      <circle cx={220} cy={150} r={44} fill={SUN} stroke={INK} strokeWidth={3} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : un paquebot
+function Paquebot() {
+  return (
+    <>
+      <path d="M0 400 H1200" {...line} />
+      <path d="M60 434 q30 -16 60 0 t60 0 M980 438 q30 -16 60 0 t60 0 M500 462 q30 -16 60 0 t60 0 t60 0" {...thin} />
+      {/* la coque */}
+      <path d="M200 320 H1040 L980 400 H270 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M232 356 H1012" {...thin} />
+      {Array.from({ length: 14 }, (_, i) => 300 + i * 48).map((x) => (
+        <circle key={x} cx={x} cy={338} r={7} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      {/* les ponts */}
+      <path d="M300 320 V270 H940 V320" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M360 270 V226 H860 V270" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {Array.from({ length: 12 }, (_, i) => 330 + i * 50).map((x) => (
+        <rect key={x} x={x} y={284} width={26} height={22} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      {Array.from({ length: 9 }, (_, i) => 390 + i * 50).map((x) => (
+        <rect key={x} x={x} y={238} width={26} height={20} fill={SHADE} stroke={INK} strokeWidth={2} />
+      ))}
+      {/* les cheminées */}
+      <path d="M520 226 V160 H580 V226 M660 226 V172 H720 V226" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M520 180 H580 M660 192 H720" {...thin} />
+      <path d="M550 150 q10 -26 40 -30 M690 162 q10 -26 40 -30" {...dash} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : un dôme géodésique
+function Dome() {
+  return (
+    <>
+      <path d="M0 420 H1200" {...line} />
+      {/* la demi-sphère */}
+      <path d="M340 420 Q340 160 600 160 Q860 160 860 420 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* les triangles */}
+      <path d="M340 420 L420 300 L500 420 L600 300 L700 420 L780 300 L860 420" {...thin} />
+      <path d="M420 300 H780 M372 300 L420 300 M780 300 L828 300" {...thin} />
+      <path d="M420 300 L500 196 L600 300 L700 196 L780 300" {...thin} />
+      <path d="M500 196 H700 M500 196 L600 160 L700 196" {...thin} />
+      {/* la baie au sud */}
+      <path d="M500 420 L600 300 L700 420 Z" fill={SUN} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* le conduit du poêle */}
+      <path d="M740 232 V150 M728 150 h24" {...line} />
+      <path d="M740 138 q10 -24 36 -28" {...dash} />
+      <Plant x={250} y={394} />
+      <Plant x={940} y={394} />
+      {/* le soleil */}
+      <circle cx={1050} cy={130} r={40} fill={SUN} stroke={INK} strokeWidth={3} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise, rdc: Rdc, chambres: Chambres, bruit: Bruit, division: Division, moulin: Moulin, loge: Loge, spa: Spa, plusieurs: Plusieurs, cave: Cave, avion: Avion, souterrain: Souterrain, train: Train, phare: Phare, arbre: Arbre, silo: Silo, ile: Ile, cabane: Cabane, paquebot: Paquebot, dome: Dome };
 
 // fit « meet » : le dessin entier reste visible (article à la une) ; « slice » : il remplit le cadre, quitte à être rogné
 export default function GuideArt({ art, className = '', fit = 'slice' }: { art: GuideArtKey; className?: string; fit?: 'slice' | 'meet' }) {

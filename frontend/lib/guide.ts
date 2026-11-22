@@ -22,7 +22,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -5667,6 +5667,455 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Web Urbanist, « Home-Free Living: German Woman Trades in Rent for Train Ticket », 6 septembre 2015', url: 'https://weburbanist.com/2015/09/06/home-free-living-german-woman-trades-in-rent-for-train-ticket/' },
     ],
     listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
+  },
+  {
+    slug: 'cordouan-le-dernier-phare-habite-de-france',
+    art: 'phare',
+    title: 'Cordouan, le dernier phare habité de France',
+    description:
+      'Au large de l’estuaire de la Gironde, des gardiens se relaient encore dans un phare de 1611. Leur quotidien, d’après la presse, et ce qu’il faut savoir avant de rêver d’un phare à soi.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Habiter un phare : l’idée fait rêver à peu près tout le monde. En France, il n’en reste qu’un où des hommes vivent encore, Cordouan, planté en mer devant Le Verdon-sur-Mer. Reporterre et Brut y ont passé du temps.',
+    takeaways: [
+      'Cordouan a été achevé en 1611 : c’est le plus vieux phare d’Europe encore en service, classé monument historique et inscrit au patrimoine mondial depuis 2021.',
+      'Les gardiens s’y relaient par deux, quinze jours sur place, quinze jours à terre.',
+      'Ils ne s’occupent plus de la lumière, automatisée, mais du bâtiment et des visiteurs.',
+      'En France, les phares en service appartiennent à l’État : on n’en achète pas.',
+    ],
+    sections: [
+      {
+        title: 'Qui vit dans le phare, et à quel rythme ?',
+        paragraphs: [
+          'Reporterre décrit une équipe de quatre à six gardiens, employés par le syndicat qui gère le site. Ils travaillent en binômes, relevés tous les quinze jours, été comme hiver. Brut précise que chacun a sa chambre dans la tour.',
+          'La vie n’y suit pas l’horloge mais la marée : on n’accède au phare qu’à marée basse. Le reste du temps, il est coupé de la terre.',
+        ],
+      },
+      {
+        title: 'Que fait un gardien quand le feu s’allume tout seul ?',
+        paragraphs: [
+          'Depuis les années 1990, le signal lumineux, visible à près de quarante kilomètres, est entretenu par une équipe des Phares et Balises. Les gardiens, eux, veillent sur la tour de 67 mètres : ménage, cuivres à astiquer, planchers à cirer, petites réparations.',
+          'Ils accueillent aussi le public, environ 24 000 visiteurs par an selon Reporterre, et participent au suivi de la faune et de la flore du plateau rocheux qui entoure le phare.',
+        ],
+      },
+      {
+        title: 'Est-ce une vie de solitude ?',
+        paragraphs: [
+          'Moins qu’on ne l’imagine. L’été, les visiteurs se succèdent. L’hiver, des ouvriers viennent travailler sur le monument. Et les gardiens ne sont jamais seuls dans la tour. Ce que les reportages montrent, c’est plutôt une vie réglée, entre deux marées, dans un bâtiment qui demande des soins constants.',
+        ],
+      },
+      {
+        title: 'Et acheter un phare, c’est possible ?',
+        paragraphs: [
+          'En France, les phares en service appartiennent à l’État. Ce qui se vend parfois, rarement, ce sont d’anciens bâtiments de signalisation : une maison de gardien, un sémaphore désaffecté.',
+          'Deux réalités à garder en tête. Le bord de mer est très protégé : on n’y agrandit pas, on n’y construit presque rien. Et un bâtiment de ce genre est souvent classé ou inscrit, ce qui encadre les travaux. C’est un bien de caractère au sens plein, avec les obligations qui vont avec.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Reste-t-il des gardiens de phare en France ?', a: 'Cordouan est le dernier phare habité du pays, selon Reporterre et Brut. Ses gardiens entretiennent le monument et accueillent les visiteurs ; la lumière, elle, est automatisée.' },
+      { q: 'Peut-on acheter un phare ?', a: 'Pas un phare en service : ils appartiennent à l’État. D’anciens bâtiments de signalisation sont parfois vendus, avec de fortes contraintes liées au littoral et, souvent, à leur protection au titre des monuments historiques.' },
+    ],
+    sources: [
+      { label: 'Reporterre, « Au rythme de l’océan, la vie des derniers gardiens de phare »', url: 'https://reporterre.net/Au-rythme-de-l-ocean-la-vie-des-derniers-gardiens-de-phare' },
+      { label: 'Brut, « Le quotidien des derniers gardiens de phare en France », 2 septembre 2019', url: 'https://www.brut.media/fr/news/le-quotidien-des-derniers-gardiens-de-phare-en-france-6725765e-7271-4921-8c87-d4f56f2c347d' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'deux-ans-dans-un-arbre',
+    art: 'arbre',
+    title: 'Deux ans dans un séquoia, à quarante mètres du sol',
+    description:
+      'En Californie, un jeune homme a vécu plus de deux ans dans un arbre pour empêcher son abattage. Ce que raconte The Guardian, et ce que vaut une cabane perchée aux yeux de la règle.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Il y a ceux qui construisent une cabane dans un arbre pour y dormir le week-end. Et il y a Nate Madsen, monté dans un séquoia de Californie en octobre 1998, à vingt-cinq ans, pour n’en redescendre que deux ans plus tard. Il a raconté son histoire au Guardian.',
+    takeaways: [
+      'L’arbre mesurait une soixantaine de mètres de haut. Il s’est installé vers quarante mètres.',
+      'Il y est resté un peu plus de deux ans, dont plus de six mois sans toucher le sol.',
+      'Il voulait empêcher la coupe d’une forêt ancienne. L’entreprise a fini par renoncer.',
+      'En France, une cabane dans un arbre est une construction, soumise aux règles d’urbanisme.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi monter dans un arbre ?',
+        paragraphs: [
+          'Pour le garder debout. The Guardian rapporte qu’une société forestière s’apprêtait à abattre une forêt ancienne du comté de Humboldt, dont un bosquet de séquoias qu’il connaissait bien. Occuper l’arbre, c’était empêcher qu’on le coupe.',
+        ],
+      },
+      {
+        title: 'Comment vit-on là-haut ?',
+        paragraphs: [
+          'Avec une corde, une plateforme et l’aide des autres. Des proches et des habitants lui apportaient des vivres, hissés au bout d’une ficelle. Il avait un téléphone, et un ordinateur portable pour terminer ses études.',
+          'Le récit n’enjolive rien : le froid aux pieds, la pluie, et les tempêtes qui faisaient osciller la cime de plusieurs mètres, au point qu’il a fini par s’installer plus bas, sur une plateforme mieux abritée.',
+        ],
+      },
+      {
+        title: 'Comment cela s’est-il terminé ?',
+        paragraphs: [
+          'L’entreprise a abandonné son projet de coupe, et il est redescendu en octobre 2000. Le Guardian précise que l’arbre est toujours là, et que lui-même a ensuite acheté une parcelle de forêt pour la protéger.',
+        ],
+      },
+      {
+        title: 'Et une cabane dans les arbres, en France ?',
+        paragraphs: [
+          'Une cabane perchée n’échappe pas à l’urbanisme parce qu’elle ne touche pas le sol. C’est une construction : selon sa surface et sa hauteur, il faut une déclaration ou un permis, et le terrain doit s’y prêter.',
+          'Y dormir quelques nuits et y habiter à l’année ne sont pas la même chose. Une résidence principale suppose un terrain où l’habitation est autorisée, de l’eau, un assainissement, et un assureur qui accepte le risque.',
+          'Ce goût de la hauteur et de la vue se retrouve, de façon plus simple à vivre, dans un dernier étage ou sous une verrière.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on vivre dans une cabane dans les arbres à l’année ?', a: 'Seulement si le terrain autorise l’habitation et si la cabane a été déclarée ou autorisée. Sinon, c’est un abri de loisir, pas un logement.' },
+      { q: 'Faut-il une autorisation pour construire une cabane perchée ?', a: 'Oui dans la plupart des cas : une déclaration préalable ou un permis, selon sa surface et sa hauteur. Renseignez-vous en mairie avant de commencer.' },
+    ],
+    sources: [
+      { label: 'The Guardian, repris par Inkl, « Experience: I lived in a tree for two years »', url: 'https://www.inkl.com/news/experience-i-lived-in-a-tree-for-two-years' },
+    ],
+    listingsLink: { label: 'Voir les derniers étages et rooftops', href: '/categorie/rooftop-vue' },
+  },
+  {
+    slug: 'une-chapelle-en-ruine-devenue-maison',
+    art: 'eglise',
+    title: 'Une chapelle en ruine achetée 45 000 euros, et trois ans de travaux',
+    description:
+      'En Dordogne, une chapelle de 1860 réduite à trois murs est devenue une maison. Le budget, les délais et les surprises, d’après The Connexion, et ce qu’il faut vérifier avant d’acheter un édifice religieux.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Les annonces de chapelles à vendre font toujours leur effet : un prix modeste, des pierres, une histoire. The Connexion a suivi l’une de ces aventures jusqu’au bout, à Loubès-Bernac, en Dordogne. Elle dit bien ce que le prix d’achat ne dit pas.',
+    takeaways: [
+      'Prix d’achat : 45 000 euros, pour trois murs encore debout. Le toit était tombé depuis une quarantaine d’années.',
+      'Le chantier, prévu sur dix-huit mois, en a duré trente-six.',
+      'Le budget de travaux, fixé à 100 000 euros, a été dépassé : environ 150 000 euros au total, achat compris.',
+      'Avant d’acheter un édifice religieux, vérifiez qu’il peut légalement devenir un logement.',
+    ],
+    sections: [
+      {
+        title: 'Dans quel état était la chapelle ?',
+        paragraphs: [
+          'Presque une ruine. Selon The Connexion, il restait trois murs d’une chapelle protestante construite vers 1860. La pluie avait emporté le mortier. Les précédents propriétaires avaient déjà obtenu un permis pour en faire une maison de deux chambres.',
+          'L’acheteur a pris une précaution utile : il a fait dépendre la vente de l’obtention du permis pour le projet qu’il voulait, plus grand.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui a pris trois ans ?',
+        paragraphs: [
+          'Presque tout. Les murs restants ont dû être démontés puis remontés, à l’exception d’une partie de la façade, après traitement contre l’humidité. Le propriétaire, ingénieur mais pas maçon, a fait venir une équipe. Il a appris le vitrail pour réaliser lui-même les fenêtres.',
+          'Le journal raconte aussi un hiver passé sous la tente, sur le chantier, par grand froid. Le chantier s’est achevé en 2014.',
+        ],
+      },
+      {
+        title: 'Qu’est-elle devenue ?',
+        paragraphs: [
+          'Une maison de trois chambres, louée comme gîte. L’ancienne nef sert de salon, ouvert sur une cuisine et une salle à manger, avec de grandes portes vitrées.',
+        ],
+      },
+      {
+        title: 'Que vérifier avant d’acheter une chapelle ?',
+        list: [
+          'Qu’elle n’est plus affectée au culte : une église doit avoir été désaffectée avant d’être vendue.',
+          'Que le changement de destination en logement est autorisé par la mairie, et ne pas signer sans cette certitude.',
+          'Si elle est classée ou inscrite : les travaux seront encadrés, et parfois aidés.',
+          'L’état de la toiture et des maçonneries, avec un professionnel : c’est là que part le budget.',
+          'L’eau, l’électricité et l’assainissement, souvent absents.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Une chapelle se vend-elle vraiment si peu cher ?', a: 'À l’achat, parfois. Celle de cette histoire a coûté 45 000 euros, mais environ 150 000 euros au total une fois les travaux faits, selon The Connexion.' },
+      { q: 'Peut-on transformer une église en logement ?', a: 'Oui, si elle a été désaffectée et si la mairie autorise le changement de destination. Faites-en une condition de la vente.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « Converting a religious French ruin into a high-end home », 22 août 2023', url: 'https://www.connexionfrance.com/practical/a-once-in-a-lifetime-experience-converting-a-religious-french-ruin-into-a-high-end-home/188452' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'vivre-dans-un-silo-a-missiles',
+    art: 'silo',
+    title: 'Un architecte s’est installé dans un silo à missiles',
+    description:
+      'Dans l’État de New York, un architecte australien a acheté un silo de la guerre froide et l’a rendu habitable. Ce qu’en raconte Houzz : le prix, les travaux, et la vie sans fenêtre.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Cinquante-six mètres de profondeur, seize de diamètre, des portes blindées : ce n’est pas le descriptif d’un loft, mais celui d’un silo à missiles construit au début des années 1960 dans le nord de l’État de New York. Un architecte de Sydney, Alexander Michael, l’a acheté en 1996. Houzz l’a visité.',
+    takeaways: [
+      'Prix d’achat : 160 000 dollars en 1996, puis plus de 300 000 dollars de restauration, selon Houzz.',
+      'On vit dans l’ancien centre de contrôle, neuf mètres sous terre. La console de lancement est restée.',
+      'Aucune lumière naturelle : des écrans montrent la surface, une vingtaine d’horloges donnent l’heure.',
+      'En France, un local sans lumière du jour n’est pas un logement.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi acheter un silo ?',
+        paragraphs: [
+          'Ces silos ont été bâtis en pleine crise de Cuba et abandonnés vers 1964. Celui-ci dormait depuis trente ans quand il a été vendu. Houzz décrit un chantier de passionné : remettre le lieu dans son état d’origine, tout en y ajoutant une cuisine, des chambres et un séjour.',
+        ],
+      },
+      {
+        title: 'Qu’a-t-il fallu réparer ?',
+        paragraphs: [
+          'L’eau et la rouille avaient tout attaqué. Il a fallu décaper et repeindre quatre portes blindées, refaire la plomberie, retrouver dans une casse les vérins qui les manœuvrent. Personne ne savait plus comment le lieu avait été conçu.',
+          'Les murs courbes, en béton, renvoyaient le froid et l’écho. Ils ont été tendus de tissu matelassé, ce qui a réglé les deux problèmes à la fois.',
+        ],
+      },
+      {
+        title: 'Comment vit-on sans fenêtre ?',
+        paragraphs: [
+          'Avec des repères. Houzz mentionne des écrans reliés à la surface et une vingtaine d’horloges pour ne pas perdre la notion du temps. À l’arrivée, la ventilation tourne une heure et demie pour renouveler l’air.',
+          'Le propriétaire n’y habite pas à l’année : il partage son temps avec l’Australie. Et il assure ne pas s’y sentir enfermé, tant le volume est grand.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'D’anciens ouvrages militaires se vendent de temps en temps : un fort, une casemate, un abri. Ils attirent pour les mêmes raisons, l’épaisseur des murs et l’histoire.',
+          'Mais un logement doit recevoir la lumière du jour et être ventilé. Un espace enterré sans ouverture peut devenir une cave, un atelier, une salle de musique, pas une pièce de vie. Ajoutez l’humidité, la question du changement de destination, et celle de l’assurance.',
+          'C’est le même raisonnement, à une autre échelle, que pour un souplex : ce qui est sous terre doit prouver qu’il est habitable.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien coûte un silo à missiles ?', a: 'Celui-ci a été acheté 160 000 dollars en 1996, et sa restauration a coûté plus de 300 000 dollars, selon Houzz.' },
+      { q: 'Peut-on habiter un abri enterré en France ?', a: 'Pas s’il n’a ni lumière du jour ni ventilation : ces deux conditions font partie de la définition d’un logement décent.' },
+    ],
+    sources: [
+      { label: 'Houzz, « Australian Architect Makes Himself at Home in a Missile Silo », 8 avril 2015', url: 'https://www.houzz.com.au/magazine/usa-houzz-australian-architect-makes-himself-at-home-in-a-missile-silo-stsetivw-vs~46871268' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'vivre-sur-une-ile-de-l-archipel-de-molene',
+    art: 'ile',
+    title: 'Vivre sur une île presque déserte, au large du Finistère',
+    description:
+      'Sur l’île de Quéménès, dans l’archipel de Molène, une famille fait vivre une ferme et des chambres d’hôtes. L’eau, l’énergie, les revenus, d’après Reporterre, et pourquoi ces îles ne s’achètent pas.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Une île pour soi : un kilomètre de long, trois cents mètres de large, la mer d’Iroise tout autour. Quéménès, dans l’archipel de Molène, n’est pas à vendre et ne le sera pas. Mais une famille y vit et y travaille, et Reporterre a raconté comment.',
+    takeaways: [
+      'L’île, d’environ 26 hectares, appartient au Conservatoire du littoral depuis 2003.',
+      'Une famille s’y est installée en 2008 pour tenir la ferme et accueillir des hôtes.',
+      'L’électricité vient du vent et du soleil, l’eau d’un puits et de la pluie.',
+      'En France, les îles de ce genre sont protégées : on peut y vivre par mission, pas les acheter.',
+    ],
+    sections: [
+      {
+        title: 'De quoi vit-on sur une île ?',
+        paragraphs: [
+          'De plusieurs choses à la fois. Reporterre, en 2013, décrit une ferme qui produit des pommes de terre, élève des moutons d’Ouessant et récolte des algues, et des chambres d’hôtes qui représentent la moitié du chiffre d’affaires. L’ensemble permet de dégager deux salaires.',
+          'Environ quatre cents personnes séjournaient alors sur l’île chaque saison.',
+        ],
+      },
+      {
+        title: 'Et l’eau, l’électricité ?',
+        paragraphs: [
+          'Rien ne vient du continent. Une petite éolienne, des panneaux solaires et des batteries fournissent l’électricité. L’eau provient d’un ancien puits et de la pluie, stockée et filtrée. Le journal donne un chiffre parlant : une quarantaine de litres par personne et par jour, contre cent cinquante en moyenne en France.',
+          'Les toilettes sont sèches, et les eaux usées sont épurées par des plantes.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui est difficile ?',
+        paragraphs: [
+          'La dépendance au bateau, pour les courses comme pour le courrier, dans des eaux où les courants et les récifs ne pardonnent pas. L’école, suivie en partie à distance. Et des soucis très terrestres : les lapins, qui ravagent les cultures.',
+          'Sur l’îlot voisin du Ledenez, raconte Bateaux.com, d’anciennes cabanes de goémoniers ont été restaurées en refuge de mer, sans douche ni eau potable, avec des panneaux solaires et un bassin qui recueille la pluie.',
+        ],
+      },
+      {
+        title: 'Peut-on acheter une île en France ?',
+        paragraphs: [
+          'Très rarement. Beaucoup appartiennent au Conservatoire du littoral, dont le rôle est précisément de les soustraire à la vente pour les protéger. Celles qui restent privées sont peu nombreuses, et le littoral y est aussi protégé qu’ailleurs : on n’y construit pas.',
+          'L’envie d’eau et d’horizon trouve en ville une réponse plus accessible : un logement au bord de l’eau, ou sur l’eau.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on s’installer sur une île du Conservatoire du littoral ?', a: 'Pas librement. Sur Quéménès, la famille installée depuis 2008 gère la ferme et l’accueil pour le compte du Conservatoire, selon Reporterre.' },
+      { q: 'Une île peut-elle être autonome en eau et en énergie ?', a: 'Celle-ci l’est, avec une éolienne, des panneaux solaires, un puits et l’eau de pluie, au prix d’une consommation très réduite.' },
+    ],
+    sources: [
+      { label: 'Reporterre, « Kemenez, l’île bretonne qui cultive », 19 novembre 2013', url: 'https://reporterre.net/Kemenez-l-ile-bretonne-qui-cultive' },
+      { label: 'Bateaux.com, « Vivre sur une île déserte, c’est possible dans l’archipel de Molène », 8 septembre 2017', url: 'https://www.bateaux.com/article/26465/vivre-une-ile-deserte-c-possible-l-archipel-de-molene' },
+    ],
+    listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
+  },
+  {
+    slug: 'douze-metres-carres-face-a-la-mer',
+    art: 'cabane',
+    title: 'Douze mètres carrés face à la mer, en sachant qu’elle les reprendra',
+    description:
+      'Dans le Cotentin, un architecte a rénové une cabane de pêcheur de 12 m² accrochée aux rochers. Ce qu’en dit Tendance Ouest, et ce que le recul du littoral change pour un acheteur.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'À Fermanville, dans la Manche, une cabane de pêcheur des années 1950 tient sur les rochers, le long du sentier des douaniers. Douze mètres carrés. L’architecte Guillaume Aubry l’a entièrement refaite, raconte Tendance Ouest, en acceptant une idée que peu d’acheteurs regardent en face : un jour, la mer la reprendra.',
+    takeaways: [
+      'Au départ : des parpaings sous une tôle, sans isolation, sans eau ni électricité.',
+      'C’est parce que la cabane existait déjà qu’elle a pu être rénovée, dans un secteur très protégé.',
+      'Tout tient en 12 m² : cuisine, douche, toilettes, et un couchage en mezzanine.',
+      'Avant d’acheter au bord de l’eau, regardez ce que dit l’état des risques sur le recul du littoral.',
+    ],
+    sections: [
+      {
+        title: 'Comment loge-t-on tout dans 12 m² ?',
+        paragraphs: [
+          'En empilant. Tendance Ouest décrit une cuisine compacte enroulée autour d’un bloc qui cache les toilettes, une douche vitrée dans le même volume, et un lit en mezzanine auquel on monte par une échelle. De grandes baies coulissantes ouvrent sur la mer.',
+          'Peu de matériaux, peu d’objets, tous utiles.',
+        ],
+      },
+      {
+        title: 'Pourquoi a-t-on pu rénover ici ?',
+        paragraphs: [
+          'Parce qu’il y avait déjà quelque chose. Sur ce littoral, on ne construit pas. Mais un bâtiment existant peut être remis en état : c’est l’existence de la cabane qui a permis d’obtenir les autorisations, rapporte le journal.',
+        ],
+      },
+      {
+        title: 'Et la mer ?',
+        paragraphs: [
+          'Elle est à quelques mètres. La cabane subit les tempêtes et les grandes marées, et le trait de côte bouge. L’architecte le sait et l’accepte : le lieu n’est pas fait pour durer toujours. C’est une façon d’habiter le littoral qui tranche avec l’envie habituelle de bâtir pour des générations.',
+        ],
+      },
+      {
+        title: 'Que regarder avant d’acheter au bord de l’eau ?',
+        list: [
+          'L’état des risques remis par le vendeur : il doit mentionner les risques connus, et dans certaines communes le recul du trait de côte.',
+          'Ce que le plan d’urbanisme autorise : sur le littoral, agrandir est le plus souvent impossible.',
+          'Les travaux déjà faits : ont-ils été autorisés ?',
+          'L’assurance : demandez un devis avant de signer, pas après.',
+          'L’accès, l’eau, l’électricité et l’assainissement.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on construire une cabane au bord de la mer ?', a: 'En règle générale, non : le littoral est protégé. Un bâtiment qui existe déjà peut en revanche être rénové, avec autorisation.' },
+      { q: 'Comment savoir si un bien est menacé par la mer ?', a: 'Lisez l’état des risques fourni par le vendeur et interrogez la mairie : certaines communes sont répertoriées pour le recul de leur littoral.' },
+    ],
+    sources: [
+      { label: 'Tendance Ouest, « En Normandie, il vit dans une cabane de 12 m² face à la mer en acceptant qu’elle disparaisse sous l’eau un jour », 5 août 2026', url: 'https://www.tendanceouest.com/actualite-441539-insolite-en-normandie-il-vit-dans-une-cabane-de-12m2-face-a-la-mer-en-acceptant-qu-elle-disparaisse-sous-l-eau-un-jour' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'vivre-a-l-annee-sur-un-paquebot',
+    art: 'paquebot',
+    title: 'Ils ont tout vendu pour vivre sur un paquebot',
+    description:
+      'Des retraités, mais pas seulement, ont remplacé leur logement par une cabine de croisière à l’année. Les chiffres qu’ils avancent, et ce que l’on garde forcément à terre.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Plus de loyer, plus de ménage, plus de courses : une cabine, et le monde qui défile. Quelques personnes ont fait de la croisière leur adresse. Le site Supercar Blondie en a rassemblé six portraits en 2025. Les montants qu’ils annoncent surprennent ; ils demandent aussi à être lus de près.',
+    takeaways: [
+      'Une retraitée californienne de 77 ans a tout vendu pour embarquer sur un navire résidentiel.',
+      'Une autre passagère annonce environ 1 000 dollars par mois pour une cabine, repas compris.',
+      'Un couple dit avoir fait trente-six croisières en huit mois pour moins de 10 000 dollars.',
+      'Ces chiffres viennent des intéressés eux-mêmes : ils ne disent pas tout ce que l’on paie encore à terre.',
+    ],
+    sections: [
+      {
+        title: 'Qui fait ce choix ?',
+        paragraphs: [
+          'Des retraités, le plus souvent, et quelques trentenaires. Parmi les portraits rassemblés : une femme de 77 ans installée sur un navire conçu pour des résidents à l’année, un couple du Tennessee qui loue sa maison pour financer ses traversées, et un homme présenté comme vivant à bord depuis plus de vingt ans.',
+        ],
+      },
+      {
+        title: 'Est-ce vraiment moins cher qu’un logement ?',
+        paragraphs: [
+          'Sur le papier, parfois. Les sommes citées vont d’une quarantaine de dollars par jour à un millier par mois, repas et ménage compris. Comparé au loyer d’une grande ville américaine, l’écart existe.',
+          'Mais ce sont des déclarations, pas des comptes. Elles ne disent rien des assurances, des soins, des escales, des billets d’avion, ni des tarifs, qui changent d’une saison à l’autre. Et certains ont gardé un bien à terre, qu’ils louent.',
+        ],
+      },
+      {
+        title: 'Et vu de France ?',
+        paragraphs: [
+          'Vivre en mer ne fait pas disparaître la terre. Il faut toujours une adresse pour sa banque, ses impôts et sa couverture santé, et un endroit où revenir.',
+          'Il existe une manière plus durable d’habiter sur l’eau sans quitter la ville : la péniche. C’est un bateau, mais avec une adresse, un emplacement et des règles précises.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien coûte une année sur un paquebot ?', a: 'Les personnes citées par Supercar Blondie avancent des montants très variables, autour de 1 000 dollars par mois pour l’une d’elles. Ce sont leurs propres chiffres, et ils ne comprennent pas les dépenses à terre.' },
+      { q: 'Peut-on vraiment ne plus avoir de logement ?', a: 'On peut ne plus en occuper, mais une adresse reste nécessaire pour presque toutes les démarches.' },
+    ],
+    sources: [
+      { label: 'Supercar Blondie, « 6 former landlubbers who abandoned life on land for cruise ship living », 5 septembre 2025', url: 'https://supercarblondie.com/people-who-abandoned-life-on-land-for-cruise-ship-living' },
+    ],
+    listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
+  },
+  {
+    slug: 'vivre-sous-un-dome',
+    art: 'dome',
+    title: 'Vivre sous un dôme, hiver compris',
+    description:
+      'Dans le Morbihan, un constructeur de dômes géodésiques habite ce qu’il fabrique. Le coût, le montage, le chauffage, d’après Reporterre, et le point qui fâche : le terrain.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Une demi-sphère faite de triangles, sans un seul poteau au milieu : le dôme géodésique vient de l’architecte américain Buckminster Fuller. En France, quelques-uns en ont fait leur maison. Reporterre a rencontré l’un d’eux à Saint-Dolay, dans le Morbihan, où il vit sous un dôme qu’il a construit.',
+    takeaways: [
+      'Un dôme démontable coûte environ 10 000 euros et se monte en un ou deux jours, selon le constructeur.',
+      'Démonté, il tient dans un camion.',
+      'Isolé à la laine de mouton, orienté au sud, il se chauffe avec peu.',
+      'La vraie difficulté n’est pas la construction, mais le terrain où on a le droit de le poser.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi une sphère ?',
+        paragraphs: [
+          'Parce que le triangle ne se déforme pas. Les barres se croisent et répartissent les efforts, si bien que la structure tient sans pilier. L’intérieur est entièrement libre, avec peu de matière pour beaucoup de volume.',
+        ],
+      },
+      {
+        title: 'Est-ce habitable en hiver ?',
+        paragraphs: [
+          'Celui que décrit Reporterre a passé quatre hivers dans des dômes. Une grande baie au sud capte le soleil, la laine de mouton isole, et une lame d’air entre l’isolant et la toile évacue l’humidité. La toile de couverture dure de quinze à vingt-cinq ans.',
+          'Le reste suit la même logique : toilettes sèches, eaux usées épurées par des roseaux, un poêle pour le chauffage.',
+        ],
+      },
+      {
+        title: 'Où a-t-on le droit de le poser ?',
+        paragraphs: [
+          'C’est là que tout se joue. Dans un jardin, autour d’une maison, cela ne pose guère de difficulté. Dans un champ, une forêt ou sur un terrain non constructible, les mairies refusent le plus souvent, constate Reporterre.',
+          'La loi reconnaît depuis 2014 les résidences démontables comme un habitat permanent possible, mais seulement sur des terrains que le plan d’urbanisme a prévus pour cela. Ils sont rares. Avant d’acheter un terrain pour ce projet, demandez un certificat d’urbanisme.',
+        ],
+      },
+      {
+        title: 'Et pour qui veut du volume sans poteau ?',
+        paragraphs: [
+          'Le plaisir du dôme, un grand espace d’un seul tenant, se retrouve dans des biens qui s’achètent sans bataille administrative : un loft, un ancien atelier, une ancienne usine.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien coûte un dôme habitable ?', a: 'Environ 10 000 euros pour un dôme démontable, selon le constructeur interrogé par Reporterre, sans le terrain ni les aménagements.' },
+      { q: 'Peut-on installer un dôme sur un terrain non constructible ?', a: 'En règle générale, non. Les résidences démontables ne sont admises que dans des secteurs prévus par le plan d’urbanisme. Renseignez-vous en mairie avant d’acheter.' },
+    ],
+    sources: [
+      { label: 'Reporterre, « Vivre sous un dôme, un habitat alternatif méconnu »', url: 'https://reporterre.net/Vivre-sous-un-dome-un-habitat-alternatif-meconnu' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
   },
 ];
 
