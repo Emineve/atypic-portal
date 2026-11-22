@@ -81,7 +81,7 @@ export default function FinancementPage() {
               <li>Le taux d&apos;usure, plafond légal assurance et frais compris, est de {pct(RATES.usury.rate)} % pour les {RATES.usury.label}.</li>
             </ul>
           </details>
-          <p className="mt-5 text-xs text-stone-400 leading-relaxed">
+          <p className="mt-5 text-sm text-stone-600 leading-relaxed">
             Simulation indicative, sans valeur contractuelle : elle ne constitue ni une offre de prêt ni un conseil en financement. Un crédit vous
             engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
           </p>
