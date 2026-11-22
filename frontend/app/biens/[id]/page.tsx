@@ -535,7 +535,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             ))}
           </div>
           <p className="mt-6 text-sm">
-            <Link href={hubUrl} className="text-stone-700 underline underline-offset-4 hover:text-stone-900">Voir tous les biens à {hubName}</Link>
+            <Link href={hubUrl} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">Voir tous les biens à {hubName} →</Link>
           </p>
         </section>
       )}

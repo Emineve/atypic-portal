@@ -768,8 +768,8 @@ export default function AlertDialog({
               )}
               <p className="mt-2 text-xs text-stone-500 leading-relaxed">
                 {shareWith
-                  ? 'Gratuit et sans engagement. '
-                  : 'Gratuit. En créant votre alerte, vous acceptez de recevoir par e-mail les nouveaux biens correspondant à cette recherche. Arrêt possible à tout moment. '}
+                  ? 'Votre recherche est transmise uniquement à cette agence. '
+                  : 'En créant votre alerte, vous acceptez de recevoir par e-mail les nouveaux biens correspondant à cette recherche. Arrêt possible à tout moment. '}
                 <a href="/confidentialite" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-stone-900">
                   Vos données et vos droits
                 </a>

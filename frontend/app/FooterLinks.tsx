@@ -16,7 +16,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
   const title = 'text-xs uppercase tracking-widest text-stone-500';
   return (
     <div data-dark-footer className="bg-stone-900 text-white">
-      <div className="max-w-6xl mx-auto px-6 pt-14 pb-8 md:pt-20">
+      <div className="max-w-6xl mx-auto px-6 pt-14 pb-20 md:pt-20 md:pb-8">
         <div className="grid gap-y-12 md:grid-cols-[1.3fr_2fr] md:gap-x-16">
           <div>
             <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white whitespace-nowrap">
