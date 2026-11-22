@@ -24,7 +24,7 @@ export default function ProForm() {
         p_agency: agency,
         p_name: name,
         p_email: email,
-        p_phone: phone || null,
+        p_phone: phone,
         p_message: message || null,
         p_consent: true, // l'envoi vaut accord, la phrase sous le bouton le précise
       });
@@ -64,8 +64,8 @@ export default function ProForm() {
           <input id="p-name" className={field} required minLength={2} maxLength={120} value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="p-phone" className={label}>Téléphone</label>
-          <input id="p-phone" type="tel" className={field} maxLength={40} value={formatPhone(phone)} onChange={(e) => setPhone(formatPhone(e.target.value))} />
+          <label htmlFor="p-phone" className={label}>Téléphone *</label>
+          <input id="p-phone" type="tel" autoComplete="tel" className={field} required minLength={10} maxLength={40} value={formatPhone(phone)} onChange={(e) => setPhone(formatPhone(e.target.value))} />
         </div>
       </div>
       <div>
