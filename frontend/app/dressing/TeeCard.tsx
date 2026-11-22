@@ -2,7 +2,7 @@
 
 import Done from '../Done';
 import { useState } from 'react';
-import TeeShirt from '../TeeShirt';
+import TeeShirt, { Gaze } from '../TeeShirt';
 import { typo } from '../../lib/typo';
 import { getSupabase } from '../../lib/supabase';
 
@@ -11,16 +11,23 @@ const SIZES = ['S', 'M', 'L', 'XL'];
 // Fiche d'un tee-shirt, présentée comme dans une boutique. Rien n'est encore en vente :
 // le bouton le dit clairement au lieu d'ouvrir un paiement.
 const COLORS = [
-  { name: 'Bleu', value: '#6C9BD9' },
-  { name: 'Rouge', value: '#E2665A' },
-  { name: 'Vert', value: '#5FAE86' },
-  { name: 'Jaune', value: '#F6CF4E' },
   { name: 'Blanc', value: '#ffffff' },
+  { name: 'Noir', value: '#211C15' },
 ];
 
-export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = false }: { name: string; words: string[]; pitch: string; first?: string; mark?: boolean }) {
+// Le tee-shirt à l'œil se décline selon la direction du regard
+const GAZES: { key: Gaze; name: string }[] = [
+  { key: 'droite', name: 'À droite' },
+  { key: 'gauche', name: 'À gauche' },
+  { key: 'haut', name: 'En l’air' },
+  { key: 'clin', name: 'Clin d’œil' },
+];
+
+export default function TeeCard({ name, words, pitch, first = 'Blanc', mark = false }: { name: string; words: string[]; pitch: string; first?: string; mark?: boolean }) {
   const [color, setColor] = useState(COLORS.find((c) => c.name === first) || COLORS[0]);
   const [size, setSize] = useState('M');
+  const [gaze, setGaze] = useState<Gaze>('droite');
+  const gazeName = GAZES.find((g) => g.key === gaze)?.name || '';
   const [asked, setAsked] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
@@ -31,7 +38,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
     try {
       const { data, error } = await getSupabase().rpc('submit_tee_request', {
         p_email: email,
-        p_model: name,
+        p_model: mark ? `${name} (${gazeName.toLowerCase()})` : name,
         p_color: color.name,
         p_size: size,
         p_consent: true, // l'envoi vaut accord, la phrase sous le bouton le précise
@@ -44,7 +51,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
   return (
     <article className="flex flex-col rounded-[14px] overflow-hidden border border-stone-300 bg-white">
       <div className="flex items-center justify-center bg-[#F6CF4E] py-8">
-        <TeeShirt words={words} color={color.value} mark={mark} className="h-64 w-64 md:h-72 md:w-72" />
+        <TeeShirt words={words} color={color.value} mark={mark} gaze={gaze} className="h-64 w-64 md:h-72 md:w-72" />
       </div>
       <div className="flex flex-1 flex-col p-6 md:p-8">
         <p className="text-xs uppercase tracking-widest text-stone-500">Tee-shirt · Bientôt disponible</p>
@@ -66,6 +73,25 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
           ))}
         </div>
 
+        {mark && (
+          <>
+            <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Regard : {gazeName}</p>
+            <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
+              {GAZES.map((g) => (
+                <button
+                  key={g.key}
+                  type="button"
+                  onClick={() => setGaze(g.key)}
+                  aria-pressed={gaze === g.key}
+                  className={`text-[15px] underline-offset-8 transition ${gaze === g.key ? 'text-stone-900 underline decoration-stone-900 decoration-2' : 'text-stone-500 hover:text-stone-900'}`}
+                >
+                  {g.name}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+
         <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Taille</p>
         <div className="mt-2 flex gap-5">
           {SIZES.map((s) => (
@@ -83,7 +109,7 @@ export default function TeeCard({ name, words, pitch, first = 'Bleu', mark = fal
 
         {status === 'done' ? (
           <Done title="Votre demande est bien envoyée." className="mt-7">
-            {name}, {color.name.toLowerCase()}, taille {size}. Nous vous écrivons dès qu&apos;il est en stock.
+            {name}{mark ? `, regard ${gazeName.toLowerCase()}` : ''}, {color.name.toLowerCase()}, taille {size}. Nous vous écrivons dès qu&apos;il est en stock.
           </Done>
         ) : asked ? (
           <form onSubmit={send} className="mt-7">

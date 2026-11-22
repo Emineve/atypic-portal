@@ -22,7 +22,10 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
             <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white whitespace-nowrap">
               l<EyeO letter ink="#ffffff" iris="#211C15" />ftissime.
             </a>
-            <p className="mt-4 font-serif text-xl text-[#F6CF4E]">Curateur de biens atypiques</p>
+            <p className="mt-5 font-serif text-xl md:text-2xl leading-none text-white">
+              Curateur de biens{' '}
+              <span className="inline-block italic -rotate-6 translate-y-[0.04em] text-[#F6CF4E]">atypiques</span>
+            </p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-500">
               Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte : tous les biens atypiques, réunis sur un seul site.
             </p>

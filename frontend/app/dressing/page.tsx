@@ -20,7 +20,7 @@ export default function DressingPage() {
           Dans tout bien qui se respecte, <span className="italic text-stone-500">il y a un dressing.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
-          Trois tee-shirts, pas encore en vente. Dites-nous lequel vous fait envie.
+          Trois tee-shirts, en noir ou en blanc, pas encore en vente. Dites-nous lequel vous fait envie.
         </p>
       </div>
       </header>
@@ -30,20 +30,19 @@ export default function DressingPage() {
         <TeeCard
           name="Le superlatif"
           words={['loftisssssime.']}
-          pitch="Le nom, sur une ligne, en noir. -issime : le plus haut degré, à étirer autant qu’on veut."
+          pitch="Le nom, sur une ligne. -issime : le plus haut degré, à étirer autant qu’on veut."
         />
         <TeeCard
-          first="Blanc"
+          first="Noir"
           name="Le singulier"
           words={['singulièrement', 'vôtre.']}
-          pitch="Deux mots, en noir. Une formule de politesse, et une façon d’habiter."
+          pitch="Deux mots. Une formule de politesse, et une façon d’habiter."
         />
         <TeeCard
-          first="Jaune"
           name="Le regard"
           words={['o']}
           mark
-          pitch="Le « o » de Loftissime, celui de l’icône du site. Il vous regarde. Pour ceux qui ont l’œil."
+          pitch="Le « o » de Loftissime, celui du logo. Choisissez où il regarde : à droite, à gauche, en l’air, ou en clin d’œil."
         />
       </div>
       </main>
