@@ -43,7 +43,7 @@ export default function ProForm() {
     );
   }
 
-  const field = 'placeholder:text-stone-300 mt-1 w-full border-0 border-b border-stone-300 bg-transparent px-0 pb-2 pt-1 font-sans text-lg text-stone-900 rounded-none focus:outline-none focus:border-stone-900 focus:ring-0';
+  const field = 'mt-1 w-full rounded-[10px] border border-stone-300 bg-white px-3 py-3 font-sans text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-900 focus:ring-0';
   const label = 'block text-xs uppercase tracking-wider text-stone-500 mb-1';
 
   return (
@@ -52,7 +52,7 @@ export default function ProForm() {
       Diffusez vos biens atypiques. <span className="italic text-stone-500">Dès maintenant.</span>
     </h2>
     <p className="mt-4 text-lg font-light text-stone-600">Laissez-nous vos coordonnées : nous vous recontactons rapidement pour mettre vos annonces en ligne.</p>
-    <form onSubmit={onSubmit} className="mt-8 max-w-2xl rounded-[14px] border border-stone-200 bg-white p-6 md:p-8 space-y-6 text-left">
+    <form onSubmit={onSubmit} className="mt-8 max-w-2xl rounded-[14px] border border-stone-200 bg-white p-6 md:p-8 space-y-4 text-left">
       <div>
         <label htmlFor="p-agency" className={label}>Agence *</label>
         <input id="p-agency" className={field} required minLength={2} maxLength={160} value={agency} onChange={(e) => setAgency(e.target.value)} />

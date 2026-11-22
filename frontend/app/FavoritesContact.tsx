@@ -78,23 +78,22 @@ export default function FavoritesContact({
     ]
       .filter(Boolean)
       .join(' ');
-    let ok = 0;
-    const done: string[] = [];
-    for (const id of selected) {
-      try {
-        const { data, error } = await getSupabase().rpc('submit_lead', {
-          p_listing: id,
-          p_name: name,
-          p_email: email,
-          p_phone: tel || null,
-          p_message: message,
-          p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
-        });
-        if (!error && data === true) { ok += 1; done.push(id); }
-      } catch {
-        /* on continue avec les biens suivants */
-      }
+    // Un seul appel : chaque agence reçoit sa demande, l'acheteur un seul e-mail récapitulatif
+    let done: string[] = [];
+    try {
+      const { data, error } = await getSupabase().rpc('submit_leads', {
+        p_listings: selected,
+        p_name: name,
+        p_email: email,
+        p_phone: tel || null,
+        p_message: message,
+        p_consent: true, // l'envoi de la demande vaut accord, la phrase sous le bouton le précise
+      });
+      if (!error && Array.isArray(data)) done = data.filter((x) => typeof x === 'string');
+    } catch {
+      /* rien n'est parti : le message d'erreur s'affiche */
     }
+    const ok = done.length;
     setSent(ok);
     if (done.length > 0) { markContacted(done); onSent?.(); }
     if (ok > 0) saveVisitor({ name, email, phone: tel });
