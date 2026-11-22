@@ -286,7 +286,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
             {/* Prix (sur téléphone) et fiche technique, réunis dans une même carte */}
             <div className="mt-6 rounded-[14px] border border-stone-200 bg-white p-5 md:p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 lg:hidden">
-                <p className="font-sans font-normal tabular-nums text-3xl text-stone-900">{price}</p>
+                <p className="font-serif lining-nums text-3xl text-stone-900">{price}</p>
                 {plans.length > 0 && <PlanDownload listingId={item.id} plans={plans} title={item.title} variant="link" />}
               </div>
               {(facts.length > 0 || item.dpe_class || item.ges_class) && (
@@ -489,7 +489,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
         <aside className="min-w-0">
           <div className="space-y-4 lg:[@media(min-height:760px)]:sticky lg:[@media(min-height:760px)]:top-20">
           <div className="hidden lg:block px-1 pb-2">
-            <p className="font-sans text-[2.5rem] font-light leading-none tracking-tight tabular-nums text-stone-900 whitespace-nowrap">
+            <p className="font-serif text-[2.75rem] leading-none tracking-tight lining-nums text-stone-900 whitespace-nowrap">
               {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(priceNum).replace(/[\u202f\u00a0]/g, '\u00a0')}{'\u00a0'}€
             </p>
           </div>
