@@ -22,7 +22,7 @@ export interface GuideSection {
 
 export interface GuideArticle {
   slug: string;
-  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van'; // illustration en tête d'article
+  art: 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van' | 'bunker' | 'prison' | 'tiny' | 'bulle' | 'wagon'; // illustration en tête d'article
   title: string;
   description: string; // résumé pour Google et les réseaux (150 à 160 caractères)
   category: GuideRubric;
@@ -6400,6 +6400,395 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Beside, « The Real Vanlife »', url: 'https://beside.media/stories/the-real-vanlife/' },
     ],
     listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'un-bunker-de-400-m2-sous-le-terrain',
+    art: 'bunker',
+    title: 'Ils achètent un terrain, et trouvent dessous un bunker de 400 m²',
+    description:
+      'Dans le Finistère, un couple a découvert sous son terrain un bunker de 1943 à vingt-quatre pièces, et l’a rendu habitable. Ce que raconte The Connexion, et ce que cela dit de ce qu’on achète avec un terrain.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'À Saint-Pabu, à quelques mètres d’une plage du Finistère, un couple achète en 2017 un terrain pour 35 000 euros. Sous la terre et les ronces, il y avait un bunker allemand de 1943 : environ 400 m² sur deux niveaux, vingt-quatre pièces, dont une partie à douze mètres de profondeur. The Connexion a raconté la suite.',
+    takeaways: [
+      'Le bunker avait été remblayé et camouflé : ils ne l’ont découvert qu’après l’achat.',
+      'Le dégager a demandé huit personnes à temps plein pendant deux mois.',
+      'Dix-huit mois de travaux, pour en faire un hébergement loué depuis 2022.',
+      'Avec un terrain, on achète aussi ce qu’il y a dessous.',
+    ],
+    sections: [
+      {
+        title: 'À quoi servait ce bunker ?',
+        paragraphs: [
+          'Selon The Connexion, il logeait des officiers de l’armée allemande, qui y prenaient des décisions pour toute la côte nord du Finistère. On y trouvait une salle des cartes, une salle des transmissions, un centre opérationnel, un dortoir.',
+        ],
+      },
+      {
+        title: 'Qu’en ont-ils fait ?',
+        paragraphs: [
+          'Un lieu où l’on dort. L’ancienne salle des cartes est devenue le salon, la salle des transmissions une chambre. Il y a une cuisine et deux salles de bains. Le décor joue la carte de l’époque : téléphones anciens, meubles métalliques, photos.',
+          'Le couple n’en était pas à son premier : il avait déjà restauré, dans son jardin, un petit bunker de défense antiaérienne.',
+        ],
+      },
+      {
+        title: 'Peut-on y habiter ?',
+        paragraphs: [
+          'Y dormir une nuit, oui, et c’est ce que propose le lieu. Y vivre est autre chose. Un logement doit recevoir la lumière du jour et être ventilé naturellement dans ses pièces principales. Des pièces enterrées, sans fenêtre, n’en sont pas.',
+          'C’est la même limite que pour un sous-sol ou une cave aménagée : l’usage est possible, le statut de logement ne l’est pas toujours.',
+        ],
+      },
+      {
+        title: 'Que vérifier quand on achète un terrain ?',
+        list: [
+          'Ce qu’il y a dessous : cavités, anciens ouvrages, remblais. L’état des risques et la mairie renseignent sur ce qui est connu.',
+          'L’histoire du lieu, auprès des voisins et des archives locales.',
+          'Ce que le plan d’urbanisme permet d’y faire, par un certificat d’urbanisme.',
+          'Sur le littoral, les règles propres au bord de mer, très restrictives.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'À qui appartient un bunker situé sous un terrain privé ?', a: 'En règle générale, au propriétaire du terrain : la propriété du sol emporte celle du dessous. Faites-le confirmer par un notaire.' },
+      { q: 'Peut-on transformer un bunker en logement ?', a: 'En hébergement de passage, parfois. En logement à l’année, rarement : il faut de la lumière du jour, une ventilation et une autorisation de la mairie.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « See inside: French couple renovates war bunker into accommodation », 2 septembre 2022', url: 'https://www.connexionfrance.com/magazine/see-inside-french-couple-renovates-war-bunker-into-accommodation/105321' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'une-prison-transformee-en-logements',
+    art: 'prison',
+    title: 'À Grasse, une prison de 1857 transformée en studios',
+    description:
+      'L’ancienne maison d’arrêt de Grasse, fermée en 1992, devait devenir une résidence étudiante de 77 logements. Le projet, d’après The Connexion, et ce qu’il faut regarder quand on achète dans un bâtiment reconverti.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Habiter une cellule, mais par choix. À Grasse, dans les Alpes-Maritimes, l’ancienne maison d’arrêt, ouverte en 1857 et fermée en 1992, a fait l’objet d’un projet de résidence étudiante. The Connexion l’a présenté en mai 2023 comme une première en France.',
+    takeaways: [
+      'Le bâtiment, d’environ 1 700 m², était vide depuis trente ans.',
+      'Le projet prévoyait 77 studios de 14 à 23 m², dans la prison et dans un bâtiment neuf voisin.',
+      'Les portes des cellules et les garde-corps devaient être conservés.',
+      'Budget annoncé : 4,5 millions d’euros, sur fonds privés.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi une prison se prête-t-elle au logement ?',
+        paragraphs: [
+          'Parce qu’elle est déjà découpée en petites pièces, autour de coursives. Transformer des cellules en studios demande moins de bouleversements que de cloisonner une halle. Ce qui manque, c’est la lumière : les fenêtres d’une prison sont faites pour ne pas voir dehors.',
+        ],
+      },
+      {
+        title: 'Que disait le projet ?',
+        paragraphs: [
+          'Selon The Connexion, une société de promotion l’a porté avec la mairie et l’architecte des Bâtiments de France. Les travaux devaient durer de dix-huit à vingt-quatre mois, pour une ouverture annoncée fin 2024, avec des espaces communs pour les étudiants.',
+          'Avant cela, le bâtiment avait été acheté en 2017 par un couple qui voulait y créer des jeux d’évasion. Nous n’avons pas vérifié où en est la résidence aujourd’hui.',
+        ],
+      },
+      {
+        title: 'Et acheter dans un bâtiment reconverti ?',
+        paragraphs: [
+          'Prison, couvent, école, usine, hôpital : les reconversions donnent des logements que l’on ne trouve nulle part ailleurs, des hauteurs, des murs épais, une histoire. Elles posent aussi des questions précises.',
+        ],
+        list: [
+          'Le changement de destination a-t-il été autorisé, et le logement est-il bien déclaré comme tel ?',
+          'Le bâtiment est-il protégé ? Les travaux à venir en dépendront.',
+          'La copropriété est-elle récente ? Regardez le règlement, les charges prévues et les travaux votés.',
+          'La lumière, l’isolation et le bruit entre logements : ce sont les points faibles habituels.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on vivre dans une ancienne prison ?', a: 'Oui, quand elle a été reconvertie avec les autorisations nécessaires. À Grasse, le projet présenté en 2023 prévoyait 77 studios pour étudiants.' },
+      { q: 'Un bâtiment reconverti est-il un bon achat ?', a: 'Cela dépend de la qualité de la reconversion. Vérifiez les autorisations, la copropriété et les performances du logement avant de vous engager.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « France first as ex-jail set to transform into student accommodation », 19 mai 2023', url: 'https://www.connexionfrance.com/news/france-first-as-ex-jail-set-to-transform-into-student-accommodation/186988' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
+    slug: 'vingt-metres-carres-sur-roues-la-tiny-house',
+    art: 'tiny',
+    title: 'Vingt mètres carrés sur roues : la tiny house à l’épreuve du terrain',
+    description:
+      'Un jeune couple vit dans une maison de 20 m² posée sur une remorque. Reporterre raconte le quotidien, et le maire qui leur a demandé de partir.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Une vraie maison, en bois, avec une cuisine, une salle d’eau et un lit en mezzanine, mais de vingt mètres carrés et montée sur une remorque. En 2017, Reporterre a rencontré en Normandie un couple de 23 ans qui y vivait depuis un an. Ils en étaient déjà à leur deuxième emplacement.',
+    takeaways: [
+      'Surface : 20,2 m². Fabrication : environ deux mois chez un constructeur.',
+      'Le premier emplacement a dû être quitté : la commune ne prévoyait pas ce type d’habitat.',
+      'Le second est une ferme, en échange d’un coup de main au potager.',
+      'La maison est mobile, mais il faut un véhicule puissant, et parfois un permis particulier.',
+    ],
+    sections: [
+      {
+        title: 'Comment vit-on à deux dans 20 m² ?',
+        paragraphs: [
+          'En rangeant. Le couple cite la promiscuité et l’obligation de tenir le lieu en ordre comme les vraies contraintes. L’eau et l’électricité viennent de la ferme qui les accueille ; ils voudraient à terme produire leur électricité. Les toilettes sont sèches.',
+        ],
+      },
+      {
+        title: 'Où a-t-on le droit de la poser ?',
+        paragraphs: [
+          'C’est toute la question. Reporterre rapporte qu’un premier maire leur a fait quitter sa commune au bout de quelques mois. La loi reconnaît les habitats légers, mais c’est le plan d’urbanisme de chaque commune qui décide où ils sont admis.',
+          'Avant de commander une tiny house, il faut donc avoir trouvé le terrain, et en avoir parlé à la mairie.',
+        ],
+      },
+      {
+        title: 'Est-elle vraiment mobile ?',
+        paragraphs: [
+          'Moins qu’une caravane. Le journal rappelle qu’il faut un véhicule tracteur assez puissant et, au-delà d’un certain poids, un permis adapté. On la déplace pour déménager, pas pour partir en week-end.',
+        ],
+      },
+      {
+        title: 'Et pour un acheteur ?',
+        paragraphs: [
+          'Une tiny house n’est pas un bien immobilier. Elle ne se finance pas comme un logement, ne se revend pas comme un logement, et perd de la valeur avec le temps. Le goût du petit et du bien pensé se retrouve dans un studio ou un atelier bien dessiné, qui reste un patrimoine.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on vivre toute l’année dans une tiny house ?', a: 'Oui, si la commune l’admet sur le terrain choisi. Le plan d’urbanisme fait référence : interrogez la mairie avant tout.' },
+      { q: 'Faut-il un permis spécial pour déplacer une tiny house ?', a: 'Selon son poids, oui. Reporterre évoque le seuil de 3,5 tonnes pour la remorque.' },
+    ],
+    sources: [
+      { label: 'Reporterre, « Ils vivent dans une tiny house, et ils sont heureux », 28 juillet 2017', url: 'https://reporterre.net/VIDEO-Ils-vivent-dans-une-tiny-house-et-ils-sont-heureux' },
+    ],
+    listingsLink: { label: 'Voir les biens atypiques à vendre', href: '/' },
+  },
+  {
+    slug: 'la-maison-bulle-de-chartreuse',
+    art: 'bulle',
+    title: 'La maison bulle de 1966 qui ne voulait pas être isolée',
+    description:
+      'En Isère, à 1 200 mètres d’altitude, un couple restaure une maison bulle des années 1960. Ce que raconte The Connexion sur le béton, le froid et les erreurs des précédents propriétaires.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Pas un angle droit. Dans les années 1960, quelques architectes ont construit des maisons en forme de bulles, en projetant du béton sur une armature de fers courbés. L’une d’elles, dessinée par Claude Costy et Pascal Häusermann en 1966, se trouve en Isère, à 1 200 mètres d’altitude, face à la chaîne de Belledonne. The Connexion a suivi sa restauration.',
+    takeaways: [
+      'Une pièce principale d’environ 50 m², et de petites bulles annexes.',
+      'Le bâtiment porte le label « Architecture contemporaine remarquable » depuis 2003.',
+      'Les précédents propriétaires l’avaient emballé dans du PVC pour l’isoler, sans succès.',
+      'Les propriétaires actuels visent une maison habitable neuf mois par an.',
+    ],
+    sections: [
+      {
+        title: 'Comment construit-on une bulle ?',
+        paragraphs: [
+          'Sans coffrage. On courbe des barres de métal, on les couvre d’un treillis, puis d’une fine couche de béton. La forme est libre, la matière est économe, et la maison épouse le terrain : ici, un balcon et un bassin ont été taillés dans la pente.',
+        ],
+      },
+      {
+        title: 'Pourquoi est-ce si difficile à vivre ?',
+        paragraphs: [
+          'Parce qu’un voile de béton mince n’isole pas. The Connexion y voit l’une des raisons pour lesquelles ce courant s’est éteint. La maison, d’abord pensée comme restaurant puis utilisée pour les loisirs, n’avait pas été conçue pour l’hiver en montagne.',
+          'Vernis, peinture, puis une enveloppe complète en PVC : les tentatives passées ont abîmé la structure sans la rendre habitable à l’année.',
+        ],
+      },
+      {
+        title: 'Que font les propriétaires actuels ?',
+        paragraphs: [
+          'Ils l’ont trouvée sur un site d’annonces et y travaillent depuis 2021. Ils ont retiré l’isolation extérieure, choisi des matériaux naturels, et pris conseil auprès de l’architecte d’origine, alors âgée de 92 ans. La première phase, la bulle principale, est terminée.',
+          'La maison est louée à la belle saison, et les revenus financent la suite du chantier.',
+        ],
+      },
+      {
+        title: 'Et acheter une maison d’architecte ?',
+        list: [
+          'Un label ou une protection valorise le bien, et encadre ce que l’on peut y changer.',
+          'Les techniques expérimentales vieillissent mal : faites examiner la structure et l’étanchéité par un spécialiste.',
+          'Le diagnostic énergétique sera souvent mauvais, et les solutions classiques d’isolation ne s’appliquent pas toujours.',
+          'Les archives de l’architecte, quand elles existent, sont précieuses pour restaurer sans dénaturer.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on vivre toute l’année dans une maison bulle ?', a: 'Cela dépend de son isolation et de son climat. Celle-ci, en altitude, est restaurée pour être habitable neuf mois par an, selon The Connexion.' },
+      { q: 'Que signifie le label « Architecture contemporaine remarquable » ?', a: 'Il signale un bâtiment récent d’intérêt architectural. Les travaux importants doivent être déclarés aux services de l’État.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « US-French couple breathe life into 1960s bubble house », 15 décembre 2023', url: 'https://www.connexionfrance.com/practical/us-french-couple-breathe-life-into-1960s-bubble-house/611356' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'vivre-dans-un-moulin-l-eau-sous-le-plancher',
+    art: 'moulin',
+    title: 'Vivre dans un moulin, avec la rivière sous le plancher',
+    description:
+      'Dans le Lot et le Lot-et-Garonne, deux couples habitent d’anciens moulins à eau. Le charme, le chauffage, le niveau de la rivière : ce qu’en rapporte The Connexion.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 4,
+    intro:
+      'Dans le salon, une vitre au sol laisse voir l’eau qui passe. C’est l’un des deux moulins que The Connexion a visités dans le Sud-Ouest : une ancienne minoterie du Lot-et-Garonne, habitée depuis 2021, et un moulin bâti par des moines en 1247, dans le Lot, acheté en 1991.',
+    takeaways: [
+      'Un moulin se rénove sur des décennies, souvent par plusieurs propriétaires successifs.',
+      'Les murs de pierre et l’eau toute proche rendent le chauffage long à faire effet.',
+      'Le niveau de la rivière se surveille en permanence.',
+      'L’un des deux produit de l’électricité avec la force de l’eau.',
+    ],
+    sections: [
+      {
+        title: 'Combien de temps faut-il pour en faire une maison ?',
+        paragraphs: [
+          'Longtemps. La minoterie de Cauzac a tourné jusqu’aux années 1970. Un premier propriétaire l’achète en 1997, alors que les sols sont en terre battue, et y travaille une vingtaine d’années sans finir. Un couple prend le relais en 2015. Les occupants actuels arrivent en 2021, dans une maison enfin aboutie.',
+          'Dans le Lot, le moulin acheté en 1991 était habitable, mais très sommaire. L’intérieur a été entièrement refait au fil des ans, sans toucher à l’extérieur.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui reste du moulin ?',
+        paragraphs: [
+          'Ce qui fait son prix. À Cauzac, la grande salle a gardé une meule, la trémie, des restes de turbines, et deux voûtes sous le plancher. Dans le Lot, la rivière fait encore tourner une installation qui produit du courant.',
+        ],
+      },
+      {
+        title: 'Et l’eau, justement ?',
+        paragraphs: [
+          'Elle est la raison d’être du lieu et son principal souci. À Cauzac, il n’y a pas eu d’inondation depuis 2021, mais la rivière est montée presque jusqu’au bord. La maison est protégée par un déversoir et par sa position, un peu au-dessus des prés.',
+          'Dans le Lot, les propriétaires disent surveiller le niveau de près, et constatent que le dérèglement du climat rend cette veille plus lourde.',
+          'Autre effet : le froid. Malgré l’isolation et les poêles, la pierre et l’eau sous le bâtiment ralentissent la montée en température.',
+        ],
+      },
+      {
+        title: 'Que vérifier avant d’acheter un moulin ?',
+        list: [
+          'Le risque d’inondation : lisez l’état des risques et demandez l’historique des crues.',
+          'Le droit d’eau attaché au moulin, et les obligations d’entretien du cours d’eau et des ouvrages.',
+          'L’état des vannes, du bief et du déversoir, avec un professionnel.',
+          'L’assurance : faites établir un devis avant de signer.',
+          'L’humidité des murs et des planchers bas.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Un moulin est-il toujours en zone inondable ?', a: 'Souvent, puisqu’il est construit sur l’eau. L’état des risques remis par le vendeur l’indique, et la mairie peut préciser l’historique.' },
+      { q: 'Peut-on produire de l’électricité avec son moulin ?', a: 'C’est possible quand le moulin dispose d’un droit d’eau qui le permet. L’un des deux moulins visités par The Connexion le fait.' },
+    ],
+    sources: [
+      { label: 'The Connexion, « Unusual French properties: Mill owners can see water below their feet », 20 avril 2023', url: 'https://www.connexionfrance.com/article/Practical/Property/Unusual-French-properties-Mill-owners-can-see-water-below-their-feet' },
+      { label: 'The Connexion, « See inside our 13th-Century watermill home in the south of France », 10 septembre 2024', url: 'https://www.connexionfrance.com/practical/photos-see-inside-our-13th-century-watermill-home-in-the-south-of-france/670528' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
+  },
+  {
+    slug: 'habiter-sur-la-seine',
+    art: 'peniche',
+    title: 'Habiter le « 21e arrondissement » : la vie sur la Seine',
+    description:
+      'Environ 250 péniches servent de logement à Paris. Une famille face à la gare d’Austerlitz, une locataire à Neuilly : ce que racontent la Ville de Paris et The Connexion.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Paris compte vingt arrondissements, et un fleuve. La Ville recense environ 250 propriétaires de péniches, et présente l’un de ces foyers sur son site : une famille de quatre, face à la gare d’Austerlitz. The Connexion, de son côté, a publié le récit d’une locataire installée à Neuilly-sur-Seine.',
+    takeaways: [
+      'Une péniche peut offrir 180 m² et une terrasse en plein Paris.',
+      'Ou un studio de 25 m² dans l’ancienne timonerie, loué 950 euros par mois charges comprises.',
+      'Depuis les Jeux de 2024, les péniches parisiennes sont raccordées au tout-à-l’égout.',
+      'Le froid, les fuites et l’entretien reviennent dans tous les récits.',
+    ],
+    sections: [
+      {
+        title: 'À quoi ressemble le quotidien ?',
+        paragraphs: [
+          'À une vie de village. La page de la Ville décrit des voisins qui se gardent les clés, une terrasse dont on profite une bonne partie de l’année, et des livreurs qui cherchent l’adresse. À Neuilly, la locataire parle des canards qui nichent à bord et des cormorans.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui est difficile ?',
+        paragraphs: [
+          'L’hiver. La Ville cite les canalisations qui gèlent, les fuites, la grêle, le bois qui travaille. Dans le studio de Neuilly, la cuisine n’est pas chauffée et les plafonds sont bas. The Connexion ajoute qu’un bateau demande de savoir bricoler, ou d’avoir un propriétaire qui s’en charge.',
+        ],
+      },
+      {
+        title: 'Et acheter une péniche ?',
+        paragraphs: [
+          'Une péniche est un bateau, pas un immeuble. Trois points changent tout par rapport à un appartement.',
+        ],
+        list: [
+          'L’emplacement ne vous appartient pas : il fait l’objet d’une autorisation d’occupation, payante et à durée limitée.',
+          'La coque doit être contrôlée régulièrement, en cale sèche, et ces frais sont à votre charge.',
+          'Le financement et l’assurance ne sont pas ceux d’un logement classique.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien y a-t-il de péniches habitées à Paris ?', a: 'La Ville de Paris évoque environ 250 propriétaires de péniches.' },
+      { q: 'Achète-t-on l’emplacement avec la péniche ?', a: 'Non. L’emplacement relève d’une autorisation d’occupation du domaine public, distincte du bateau.' },
+    ],
+    sources: [
+      { label: 'Ville de Paris, « J’habite dans le 21e arrondissement de Paris ! », mis à jour le 3 juin 2025', url: 'https://www.paris.fr/pages/j-habite-dans-le-21e-arrondissement-de-paris-31257' },
+      { label: 'The Connexion, « I live in a houseboat in Paris », 16 janvier 2024', url: 'https://www.connexionfrance.com/magazine/i-live-in-a-houseboat-in-paris/677205' },
+    ],
+    listingsLink: { label: 'Voir les péniches à vendre', href: '/categorie/peniche' },
+  },
+  {
+    slug: 'un-wagon-pour-maison',
+    art: 'wagon',
+    title: 'Un wagon de 130 ans pour salon',
+    description:
+      'En Tasmanie, une famille transforme une voiture de chemin de fer en pièce de vie. En Bretagne, un wagon-lit de 1926 accueille des dormeurs dans une ancienne gare. Ce qu’en disent ABC et The Connexion.',
+    category: 'Insolite',
+    published: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 3,
+    intro:
+      'Un wagon ne roule plus, mais il reste une pièce toute faite : longue, étroite, pleine de fenêtres. En Tasmanie, une famille en restaure un pour y vivre, raconte la chaîne ABC. Dans le Morbihan, un wagon-lit centenaire a retrouvé des voyageurs, rapporte The Connexion.',
+    takeaways: [
+      'Le wagon tasmanien a été obtenu contre des travaux de jardinage, pas contre de l’argent.',
+      'Pendant son transport par camion, des morceaux sont tombés sur la route.',
+      'Il servira de salon, de cuisine et de salle de bain ; les chambres seront dans un conteneur.',
+      'En Bretagne, un wagon-lit de 1926 loge jusqu’à onze personnes dans une gare fermée depuis 1967.',
+    ],
+    sections: [
+      {
+        title: 'Comment fait-on une maison d’un wagon ?',
+        paragraphs: [
+          'Par le toit. ABC décrit un chantier mené le soir, après le travail : la toiture déposée, décapée, étanchée, un mur remplacé, deux fenêtres d’origine sauvées, un poêle à bois installé. Le wagon, long de près de treize mètres, était très abîmé.',
+          'Le plus dur n’est pas le chantier. La famille cherche encore le terrain où poser l’ensemble, et redoutait que la commune lui demande de déplacer le wagon.',
+        ],
+      },
+      {
+        title: 'Et le wagon breton ?',
+        paragraphs: [
+          'Il dort à Guiscriff, dans une gare qui a vu passer des voyageurs de 1896 à 1967 et qu’une association a rachetée. Il n’en a été construit que quatorze, et il en reste deux. Celui-ci a servi de poste de commandement pendant la guerre, puis de logement pour des cheminots sur les chantiers.',
+          'Restauré, isolé et chauffé, il a gardé ses lavabos d’angle, ses lampes de lecture et ses boiseries.',
+        ],
+      },
+      {
+        title: 'Et en France, pour y habiter ?',
+        paragraphs: [
+          'Un wagon posé sur un terrain est une construction comme une autre : il lui faut une autorisation, et un terrain où l’on a le droit de construire. Les deux histoires le montrent : celui qui sert à dormir quelques nuits a trouvé sa place, celui qui doit devenir une maison cherche encore la sienne.',
+          'Les gares, maisons de garde-barrière et bâtiments ferroviaires désaffectés, eux, se vendent comme des maisons, avec une histoire en plus.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on installer un wagon dans son jardin ?', a: 'Il faut une autorisation d’urbanisme, comme pour toute construction, et respecter les règles de la commune.' },
+      { q: 'Où dormir dans un wagon en France ?', a: 'Entre autres à Guiscriff, dans le Morbihan, où un wagon-lit de 1926 a été restauré dans l’ancienne gare, selon The Connexion.' },
+    ],
+    sources: [
+      { label: 'ABC News, repris par Inkl, « From train to tiny house: Tasmanian family transforming 130yo carriage into a modern home »', url: 'https://www.inkl.com/news/from-train-to-tiny-house-tasmanian-family-transforming-130yo-carriage-into-a-modern-home' },
+      { label: 'The Connexion, « Sleep in a 100-year-old railway carriage at a former Brittany station », 20 janvier 2026', url: 'https://www.connexionfrance.com/magazine/sleep-in-a-100-year-old-railway-carriage-at-a-former-brittany-station/756671' },
+    ],
+    listingsLink: { label: 'Voir les biens de caractère à vendre', href: '/categorie/biens-de-caractere' },
   },
 ];
 

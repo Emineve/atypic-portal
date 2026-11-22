@@ -1,7 +1,7 @@
 // Illustrations de « L'état des lieux » : des coupes d'architecte dessinées pour Loftissime.
 // Dessins originaux (aucune photo, aucun droit à demander), aux couleurs du site.
 
-export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van';
+export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van' | 'bunker' | 'prison' | 'tiny' | 'bulle' | 'wagon';
 
 const INK = '#1c1917';
 const SUN = '#F6CF4E';
@@ -1721,7 +1721,148 @@ function Van() {
   );
 }
 
-const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise, rdc: Rdc, chambres: Chambres, bruit: Bruit, division: Division, moulin: Moulin, loge: Loge, spa: Spa, plusieurs: Plusieurs, cave: Cave, avion: Avion, souterrain: Souterrain, train: Train, phare: Phare, arbre: Arbre, silo: Silo, ile: Ile, cabane: Cabane, paquebot: Paquebot, dome: Dome, troglo: Troglo, chateaudeau: ChateauDeau, conteneur: Conteneur, yourte: Yourte, van: Van };
+// Rubrique « Insolite » : un bunker sous un terrain, vu en coupe
+function Bunker() {
+  return (
+    <>
+      <path d="M0 190 H1200" {...line} />
+      <path d="M60 222 q30 -16 60 0 t60 0" {...thin} />
+      <Plant x={330} y={164} />
+      <Plant x={900} y={164} />
+      {/* l'entrée */}
+      <path d="M520 190 V150 H600 V190" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M560 190 V250" {...dash} />
+      {/* le béton */}
+      <path d="M380 250 H860 V450 H380 Z" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* les pièces, sur deux niveaux */}
+      {[0, 1, 2, 3].map((i) => (
+        <rect key={`a${i}`} x={404 + i * 110} y={270} width={96} height={70} fill={i === 1 ? SUN : PAPER} stroke={INK} strokeWidth={2} />
+      ))}
+      {[0, 1, 2, 3].map((i) => (
+        <rect key={`b${i}`} x={404 + i * 110} y={360} width={96} height={70} fill={i === 2 ? SUN : PAPER} stroke={INK} strokeWidth={2} />
+      ))}
+      {/* cote de profondeur */}
+      <path d="M940 190 V450 M928 190 h24 M928 450 h24" {...thin} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : une prison devenue logements
+function Prison() {
+  return (
+    <>
+      <path d="M0 430 H1200" {...line} />
+      {/* le bâtiment */}
+      <path d="M300 430 V170 H900 V430 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M280 170 H920" {...line} />
+      <path d="M300 256 H900 M300 342 H900" {...thin} />
+      {/* les fenêtres : à gauche les barreaux, à droite les logements */}
+      {[0, 1, 2].map((r) =>
+        [0, 1, 2, 3, 4, 5, 6].map((c) => {
+          const x = 330 + c * 80;
+          const y = 192 + r * 86;
+          const barred = c < 3;
+          return (
+            <g key={`${r}-${c}`}>
+              <rect x={x} y={y} width={44} height={44} fill={barred ? SHADE : SUN} stroke={INK} strokeWidth={2} />
+              {barred && <path d={`M${x + 15} ${y} v44 M${x + 29} ${y} v44`} {...thin} />}
+            </g>
+          );
+        }),
+      )}
+      {/* la porte */}
+      <path d="M570 430 V370 Q600 340 630 370 V430" fill={SHADE} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* le mur d'enceinte, ouvert */}
+      <path d="M120 430 V320 H240 M960 320 H1080 V430" {...line} />
+      <Plant x={200} y={404} />
+      <Plant x={1010} y={404} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : une tiny house sur sa remorque
+function Tiny() {
+  return (
+    <>
+      <path d="M0 430 H1200" {...line} />
+      {/* la remorque */}
+      <path d="M380 380 H820 M820 380 H900 M900 372 v16" {...line} />
+      {[500, 580].map((x) => (
+        <g key={x}>
+          <circle cx={x} cy={400} r={30} fill={PAPER} stroke={INK} strokeWidth={3} />
+          <circle cx={x} cy={400} r={10} fill={SHADE} stroke={INK} strokeWidth={2} />
+        </g>
+      ))}
+      {/* la maison */}
+      <path d="M400 380 V210 L610 130 L800 190 V380 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M384 216 L610 128 L816 194" {...line} />
+      <rect x={440} y={250} width={90} height={70} fill={SUN} stroke={INK} strokeWidth={3} />
+      <path d="M485 250 v70" {...thin} />
+      <rect x={690} y={260} width={64} height={120} fill={SUN} stroke={INK} strokeWidth={3} />
+      <rect x={580} y={176} width={60} height={40} fill={SUN} stroke={INK} strokeWidth={2} />
+      {/* les marches */}
+      <path d="M690 380 v24 h64 v-24" {...thin} />
+      {/* cote : vingt mètres carrés */}
+      <path d="M400 90 H800 M400 78 v24 M800 78 v24" {...thin} />
+      <Plant x={260} y={404} />
+      <Plant x={1000} y={404} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : une maison bulle à flanc de montagne
+function Bulle() {
+  return (
+    <>
+      {/* la montagne */}
+      <path d="M0 430 L260 400 L520 420 L900 380 L1200 400" {...line} />
+      <path d="M700 250 L860 110 L960 200 L1060 140 L1200 260" {...thin} />
+      {/* les bulles */}
+      <path d="M360 412 Q340 250 520 240 Q700 250 690 404 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M660 400 Q660 310 740 306 Q820 310 818 388 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M250 402 Q250 336 310 334 Q370 336 372 410 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      {/* les hublots */}
+      <ellipse cx={520} cy={330} rx={70} ry={46} fill={SUN} stroke={INK} strokeWidth={3} />
+      <path d="M520 284 v92 M450 330 h140" {...thin} />
+      <circle cx={740} cy={352} r={24} fill={SUN} stroke={INK} strokeWidth={3} />
+      <circle cx={310} cy={372} r={16} fill={SUN} stroke={INK} strokeWidth={2} />
+      <circle cx={180} cy={130} r={44} fill={SUN} stroke={INK} strokeWidth={3} />
+    </>
+  );
+}
+
+// Rubrique « Insolite » : un wagon posé sur un bout de voie
+function Wagon() {
+  return (
+    <>
+      <path d="M0 430 H1200" {...line} />
+      {/* la voie */}
+      <path d="M200 416 H1000" {...line} />
+      {Array.from({ length: 14 }, (_, i) => 220 + i * 58).map((x) => (
+        <path key={x} d={`M${x} 416 v14`} {...thin} />
+      ))}
+      {/* la caisse */}
+      <path d="M260 370 V230 Q260 200 300 196 H900 Q940 200 940 230 V370 Z" fill={PAPER} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <path d="M260 330 H940" {...thin} />
+      {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+        <rect key={i} x={330 + i * 80} y={236} width={50} height={64} rx={6} fill={SUN} stroke={INK} strokeWidth={2} />
+      ))}
+      <rect x={280} y={236} width={34} height={134} fill={SHADE} stroke={INK} strokeWidth={2} />
+      {/* les bogies */}
+      {[340, 420, 780, 860].map((x) => (
+        <circle key={x} cx={x} cy={392} r={24} fill={PAPER} stroke={INK} strokeWidth={3} />
+      ))}
+      {/* le poêle */}
+      <path d="M820 196 V130 M808 130 h24" {...line} />
+      <path d="M820 118 q10 -22 36 -26" {...dash} />
+      {/* les marches et la plante : on n'en repart plus */}
+      <path d="M280 370 h-40 v22 h-30 v24" {...thin} />
+      <Plant x={150} y={404} />
+    </>
+  );
+}
+
+const ART: Record<GuideArtKey, () => JSX.Element> = { souplex: Souplex, loft: Loft, plans: Plans, peniche: Peniche, mezzanine: Mezzanine, visite: Visite, terrasse: Terrasse, dpe: Dpe, credit: Credit, duplex: Duplex, charges: Charges, marche: Marche, negociation: Negociation, ventes: Ventes, offre: Offre, annonce: Annonce, horsmarche: HorsMarche, temps: Temps, revendre: Revendre, atypique: Atypique, mur: Mur, monument: Monument, architecte: Architecte, clim: Clim, verriere: Verriere, eglise: Eglise, atelier: Atelier, meuble: Meuble, amiante: Amiante, bureau: Bureau, cheminee: Cheminee, assurance: Assurance, conditions: Conditions, hotel: Hotel, dernieretage: DernierEtage, chauffage: Chauffage, surelever: Surelever, plateforme: Plateforme, balance: Balance, vue: Vue, hauteur: Hauteur, garage: Garage, veranda: Veranda, voieprivee: VoiePrivee, ascenseur: Ascenseur, expertise: Expertise, rdc: Rdc, chambres: Chambres, bruit: Bruit, division: Division, moulin: Moulin, loge: Loge, spa: Spa, plusieurs: Plusieurs, cave: Cave, avion: Avion, souterrain: Souterrain, train: Train, phare: Phare, arbre: Arbre, silo: Silo, ile: Ile, cabane: Cabane, paquebot: Paquebot, dome: Dome, troglo: Troglo, chateaudeau: ChateauDeau, conteneur: Conteneur, yourte: Yourte, van: Van, bunker: Bunker, prison: Prison, tiny: Tiny, bulle: Bulle, wagon: Wagon };
 
 // fit « meet » : le dessin entier reste visible (article à la une) ; « slice » : il remplit le cadre, quitte à être rogné
 export default function GuideArt({ art, className = '', fit = 'slice' }: { art: GuideArtKey; className?: string; fit?: 'slice' | 'meet' }) {
