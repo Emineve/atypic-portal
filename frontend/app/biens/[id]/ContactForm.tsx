@@ -263,38 +263,35 @@ export default function ContactForm({
                     <p className="text-xs uppercase tracking-widest text-stone-500">Et les prochains ?</p>
                     <p className="mt-1.5 font-medium leading-snug text-stone-900">Recevez les biens qui ressemblent à celui-ci, dès leur mise en ligne.</p>
                     <ul className="mt-3 flex flex-wrap gap-2" aria-label="Critères de l’alerte">
-                      {city && <li className="rounded-full bg-[#F6CF4E] px-3 py-1 text-[13px] text-stone-900">{city}</li>}
+                      {city && <li className="rounded-full border border-stone-300 px-3 py-1 text-[13px] text-stone-700">{city}</li>}
                       {alertBudget ? (
-                        <li className="rounded-full bg-[#F6CF4E] px-3 py-1 text-[13px] text-stone-900 whitespace-nowrap">
+                        <li className="rounded-full border border-stone-300 px-3 py-1 text-[13px] text-stone-700 whitespace-nowrap">
                           Jusqu&apos;à {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(alertBudget).replace(/[\u202f\u00a0]/g, '\u00a0')}&nbsp;€
                         </li>
                       ) : null}
                     </ul>
-                    <div className="mt-4 border-y border-stone-200 divide-y divide-stone-200">
+                    {/* Deux actions, deux vrais boutons : l'alerte en jaune, la recherche confiée en contour */}
+                    <div className="mt-4 space-y-2.5">
                       {alertStatus === 'done' ? (
-                        <p className="flex items-center gap-3 py-4 text-stone-600">
+                        <p className="flex h-12 items-center justify-center gap-2 rounded-full bg-stone-100 text-[15px] text-stone-700">
                           <Check className="w-4 h-4 flex-none" />
                           Alerte créée
                         </p>
                       ) : (
-                        <button type="button" onClick={createAlert} disabled={alertStatus === 'sending'} className="w-full flex items-center gap-3 py-4 text-left text-stone-900 disabled:opacity-60">
-                          <Bell className="w-4 h-4 flex-none text-stone-500" strokeWidth={1.5} />
-                          <span className="flex-1 underline underline-offset-4 decoration-stone-300">
-                            {alertStatus === 'sending' ? 'Un instant…' : 'Me prévenir par e-mail'}
-                          </span>
+                        <button type="button" onClick={createAlert} disabled={alertStatus === 'sending'} className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#F6CF4E] text-[15px] font-medium text-stone-900 transition hover:bg-[#EFC234] disabled:opacity-60">
+                          <Bell className="w-4 h-4 flex-none" strokeWidth={1.75} />
+                          {alertStatus === 'sending' ? 'Un instant…' : 'Me prévenir par e-mail'}
                         </button>
                       )}
                       {shareStatus === 'done' ? (
-                        <p className="flex items-center gap-3 py-4 text-stone-600">
+                        <p className="flex min-h-12 items-center justify-center gap-2 rounded-full bg-stone-100 px-5 py-2 text-center text-[15px] leading-snug text-stone-700">
                           <Check className="w-4 h-4 flex-none" />
-                          Recherche confiée à {agency}
+                          Recherche confiée à l&apos;agence
                         </p>
                       ) : (
-                        <button type="button" onClick={shareCriteria} disabled={shareStatus === 'sending'} className="w-full flex items-center gap-3 py-4 text-left text-stone-900 disabled:opacity-60">
-                          <Send className="w-4 h-4 flex-none text-stone-500" strokeWidth={1.5} />
-                          <span className="flex-1 underline underline-offset-4 decoration-stone-300">
-                            {shareStatus === 'sending' ? 'Un instant…' : `Confier aussi ma recherche à ${agency}`}
-                          </span>
+                        <button type="button" onClick={shareCriteria} disabled={shareStatus === 'sending'} className="flex h-12 w-full items-center justify-center gap-2 rounded-full border border-stone-900 text-[15px] font-medium text-stone-900 transition hover:bg-stone-900 hover:text-white disabled:opacity-60">
+                          <Send className="w-4 h-4 flex-none" strokeWidth={1.75} />
+                          {shareStatus === 'sending' ? 'Un instant…' : 'Confier ma recherche à l’agence'}
                         </button>
                       )}
                     </div>
