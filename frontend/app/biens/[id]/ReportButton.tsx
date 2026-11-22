@@ -47,7 +47,7 @@ export default function ReportButton({ listingId }: { listingId: string }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="w-full text-center text-xs text-stone-400 underline underline-offset-4 hover:text-stone-900 transition"
+        className="w-full text-center text-sm text-stone-600 underline underline-offset-4 decoration-stone-300 hover:text-stone-900 transition"
       >
         Signaler cette annonce
       </button>

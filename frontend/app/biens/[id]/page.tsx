@@ -337,16 +337,9 @@ export default async function ListingPage({ params }: { params: { id: string } }
               <section id="prix" className="mt-10 rounded-[14px] border border-stone-300 bg-white p-6 scroll-mt-24">
                 <h2 className="font-serif text-2xl text-stone-900">Le prix en détail</h2>
 
-                {/* Part du prix et des frais de notaire dans le projet */}
-                <div className="mt-5 flex h-2.5 w-full overflow-hidden" aria-hidden="true">
-                  <span className="bg-stone-900" style={{ width: `${(priceNum / (priceNum + notary)) * 100}%` }} />
-                  <span className="bg-[#F6CF4E] border border-stone-900" style={{ width: `${(notary / (priceNum + notary)) * 100}%` }} />
-                </div>
-
                 <dl className="mt-2 divide-y divide-stone-200 text-stone-700">
                   <div className="flex items-start justify-between gap-4 py-3.5">
                     <dt className="flex items-start gap-2.5">
-                      <span className="mt-1.5 h-2.5 w-2.5 flex-none bg-stone-900" aria-hidden="true" />
                       <span>
                         Prix du bien
                         <span className="block text-sm text-stone-500">{feesLabel}</span>
@@ -356,8 +349,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
                   </div>
                   <div className="flex items-center justify-between gap-4 py-3.5">
                     <dt className="flex items-center gap-2.5">
-                      <span className="h-2.5 w-2.5 flex-none bg-[#F6CF4E] border border-stone-900" aria-hidden="true" />
-                      <span>Frais de notaire estimés <span className="text-stone-400 whitespace-nowrap">(≈ 8 %)</span></span>
+                      <span>Frais de notaire estimés <span className="text-stone-500 whitespace-nowrap">(≈ 8 %)</span></span>
                     </dt>
                     <dd className="font-sans font-normal tabular-nums text-lg text-stone-900 whitespace-nowrap">{eur0(notary)}</dd>
                   </div>

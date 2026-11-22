@@ -1047,7 +1047,7 @@ export default function HomeClient({ initialListings, newArticles = 0 }: { initi
                     className="flex flex-1 flex-col"
                     aria-label={item.title}
                   >
-                    <div className="relative aspect-[4/3] w-full bg-stone-100 overflow-hidden">
+                    <div className="relative aspect-[3/2] sm:aspect-[4/3] w-full bg-stone-100 overflow-hidden">
                       <img
                         src={item.cover_image_url}
                         alt={item.title}
