@@ -668,7 +668,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
         <div>
         <header className="pb-8 md:pb-10 text-center"><HeroTitle /></header>
         <section>
-        <div className="max-w-3xl mx-auto flex gap-2">
+        <div className="max-w-5xl mx-auto flex gap-2">
           <div className="relative flex-1">
             <Search className="w-5 h-5 absolute left-6 top-1/2 -translate-y-1/2 text-stone-500" />
             <input
@@ -775,7 +775,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
           </button>
         </div>
 
-        <div className="max-w-3xl mx-auto text-left" aria-live="polite">
+        <div className="max-w-5xl mx-auto text-left" aria-live="polite">
           {geo === 'denied' && (
             <p className="mt-2 text-xs text-stone-500">La localisation est refusée sur cet appareil. Saisissez une ville ou un code postal.</p>
           )}
@@ -800,7 +800,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
         </div>
 
         {(places.length > 0 || (searchActive && !onlyFavs)) && (
-          <div className="max-w-3xl mx-auto mt-3 flex flex-wrap items-center gap-2" aria-live="polite">
+          <div className="max-w-5xl mx-auto mt-3 flex flex-wrap items-center gap-2" aria-live="polite">
             {places.map((p) => (
               <span
                 key={p.kind + p.city + p.value}
@@ -1003,10 +1003,9 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
         {!loading && !errorMessage && !onlyFavs && (
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-5">
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-              {visible.length > 0 && (
+              {searchActive && visible.length > 0 && (
                 <p className="hidden sm:block font-sans text-sm text-stone-500">
                   {visible.length} {visible.length > 1 ? 'biens' : 'bien'}
-                  {searchActive ? '' : ' à vendre'}
                 </p>
               )}
               {!searchActive && newSince > 0 && (
