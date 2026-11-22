@@ -10,7 +10,6 @@ import FavoritesByMail from './FavoritesByMail';
 import { previousVisit } from '../lib/lastVisit';
 import { agencyLine } from '../lib/agencyLine';
 import { useState, useEffect, useMemo, useRef, Fragment, ReactNode } from 'react';
-import { blink } from './EyeO';
 import Surface from './Surface';
 import { Menu, Plus, BookOpen, Heart, Search, SlidersHorizontal, X, Bell, MapPin, ThumbsUp, ArrowLeft, ArrowRight, Check, LocateFixed, ChevronDown, Calculator, Compass, Feather, Info } from 'lucide-react';
 import FavoritesContact from './FavoritesContact';
@@ -163,7 +162,7 @@ function isNew(date: string | null) {
   return Date.now() - new Date(date).getTime() < NEW_DAYS * 86400000;
 }
 
-export default function HomeClient({ initialListings, newArticles = 0, stories = [], eyeCard = null, orderSeed = 0 }: { initialListings: Listing[]; newArticles?: number; stories?: ReactNode[]; eyeCard?: ReactNode; orderSeed?: number }) {
+export default function HomeClient({ initialListings, newArticles = 0, stories = [], orderSeed = 0 }: { initialListings: Listing[]; newArticles?: number; stories?: ReactNode[]; orderSeed?: number }) {
   const listings = initialListings;
   const typeOptions = useMemo(() => availableTypes(listings), [listings]);
   const loading = false;
@@ -309,7 +308,6 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
       /* ignoré */
     }
     if (adding) {
-      blink(); // l'œil du logo cligne
       trackEvent('favorite', id);
       unmarkContacted(id);
       setContacted((prev) => prev.filter((x) => x !== id));
@@ -1142,9 +1140,8 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
                     <Heart className={`w-5 h-5 ${fav ? 'fill-red-600 text-red-600' : 'text-stone-700'}`} />
                   </button>
                 </article>
-                {storyOn && index === 1 && eyeCard}
-                {storyOn && index === 7 && stories[0]}
-                {storyOn && index > 7 && (index - 7) % 9 === 0 && stories[((index - 7) / 9) % stories.length]}
+                {storyOn && index === 1 && stories[0]}
+                {storyOn && index > 1 && (index - 1) % 9 === 0 && stories[((index - 1) / 9) % stories.length]}
                 {index === (storyOn ? 4 : 5) && visible.length > 6 && !onlyFavs && (
                   <button
                     type="button"

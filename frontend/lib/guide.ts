@@ -10,7 +10,7 @@ export const GUIDE_RUBRICS = [
   { name: 'Surfaces et travaux', anchor: 'technique', intro: 'Ce qui est compté, ce qui a été transformé, ce que le bien consomme.' },
   { name: 'Copropriété', anchor: 'copropriete', intro: 'Les règles de l’immeuble et ce qu’il coûte à vivre.' },
   { name: 'Financement', anchor: 'financement', intro: 'Le crédit, l’assurance, le dossier.' },
-  { name: 'Insolite', anchor: 'insolite', intro: 'Pour ceux qui ne veulent pas habiter comme tout le monde.' },
+  { name: 'Insolite', anchor: 'insolite', intro: 'Avion, phare, château d’eau : ils ont choisi d’habiter ailleurs.' },
 ] as const;
 export type GuideRubric = (typeof GUIDE_RUBRICS)[number]['name'];
 
@@ -6027,7 +6027,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
     updated: '2026-11-22',
     readMinutes: 4,
     intro:
-      'Pour ceux qui ne veulent pas habiter comme tout le monde, il y a le loft, la péniche, l’atelier. Et puis il y a Bruce Campbell, ingénieur électricien à la retraite, qui a choisi un Boeing 727. L’avion est posé au milieu des arbres, près de Portland, dans l’Oregon. Plusieurs médias américains l’ont visité.',
+      'Quand on veut habiter autrement, il y a le loft, la péniche, l’atelier. Et puis il y a Bruce Campbell, ingénieur électricien à la retraite, qui a choisi un Boeing 727. L’avion est posé au milieu des arbres, près de Portland, dans l’Oregon. Plusieurs médias américains l’ont visité.',
     takeaways: [
       'L’avion a été acheté à une entreprise de récupération pour 100 000 dollars, selon le Smithsonian Magazine.',
       'Son transport et son installation ont coûté environ 120 000 dollars de plus.',

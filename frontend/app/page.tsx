@@ -2,7 +2,7 @@ import { getSupabase } from '../lib/supabase';
 import { SITE_URL } from '../lib/site';
 import HomeClient, { Listing } from './HomeClient';
 import { articlesCount, publishedArticles } from '../lib/guide';
-import { StoryCard, EyeCard } from './StoryCards';
+import { StoryCard } from './StoryCards';
 
 // Page rendue côté serveur : les annonces sont dans le HTML (lisible par Google)
 export const dynamic = 'force-dynamic';
@@ -46,7 +46,6 @@ export default async function Page() {
         initialListings={listings}
         newArticles={articlesCount()}
         stories={stories.map((a) => <StoryCard key={a.slug} slug={a.slug} title={a.title} art={a.art} />)}
-        eyeCard={<EyeCard />}
         orderSeed={Math.floor(Math.random() * 2147483647)}
       />
     </>

@@ -4,7 +4,7 @@ import TeeCard from './TeeCard';
 
 export const metadata = {
   title: 'Le dressing · Loftissime',
-  description: 'Le tee-shirt Loftissime, bientôt à porter : blanc, avec le mot « atypiques » souligné de jaune. Pour ceux qui ne veulent pas habiter comme tout le monde.',
+  description: 'Le tee-shirt Loftissime, bientôt à porter : blanc, avec le mot « atypiques » souligné de jaune.',
   alternates: { canonical: '/dressing' },
 };
 

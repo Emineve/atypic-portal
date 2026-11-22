@@ -1,7 +1,6 @@
 'use client';
 
 import { unmarkContacted } from '../../../lib/contacted';
-import { blink } from '../../EyeO';
 import { useEffect, useState } from 'react';
 import { Heart } from 'lucide-react';
 import { trackEvent } from '../../../lib/track';
@@ -37,7 +36,6 @@ export default function FavoriteButton({ listingId }: { listingId: string }) {
       /* stockage indisponible : le favori fonctionne le temps de la visite */
     }
     if (adding) {
-      blink(); // l'œil du logo cligne
       unmarkContacted(listingId);
       trackEvent('favorite', listingId);
       // La fiche propose alors, en une ligne discrète, de recevoir les biens similaires

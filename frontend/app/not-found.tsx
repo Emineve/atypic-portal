@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import SiteHeader from './SiteHeader';
-import EyeO from './EyeO';
 
 export const metadata = { title: 'Page introuvable · Loftissime', robots: { index: false } };
 
@@ -12,8 +11,7 @@ export default function NotFound() {
       <SiteHeader />
       <main className="max-w-6xl mx-auto px-6">
         <div className="max-w-4xl pt-8 md:pt-12 pb-24">
-        <EyeO size={72} closed />
-        <p className="mt-6 text-xs uppercase tracking-widest text-stone-500">Page introuvable</p>
+        <p className="text-xs uppercase tracking-widest text-stone-500">Page introuvable</p>
         <h1 className="mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           Ce bien n&apos;est plus en ligne, <span className="italic text-stone-500">ou cette page n&apos;existe pas.</span>
         </h1>

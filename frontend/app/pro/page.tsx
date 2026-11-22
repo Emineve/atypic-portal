@@ -1,4 +1,4 @@
-import EyeO from '../EyeO';
+import Crumbs from '../Crumbs';
 import SiteHeader from '../SiteHeader';
 import Link from 'next/link';
 import BuyerFigure, { type BuyerKind } from './BuyerFigure';
@@ -13,17 +13,17 @@ export const metadata = {
 };
 
 // L'offre, en trois piliers
-const PILLARS: { title: string; mark: string; points: string[] }[] = [
+const PILLARS: { title: string; points: string[] }[] = [
   {
-    title: 'Des contacts qualifiés', mark: 'qualifiés',
+    title: 'Des contacts qualifiés',
     points: ['Mise en relation directe, sans intermédiaire', 'Votre nom et votre téléphone sur chaque annonce', 'Un bilan de diffusion par bien, pour votre vendeur'],
   },
   {
-    title: 'Plus de visibilité', mark: 'visibilité',
+    title: 'Plus de visibilité',
     points: ['Un site où l’on ne trouve que de l’atypique', 'Envoi en alerte dès la mise en ligne', 'Une page dédiée à votre agence, avec tous vos biens atypiques à la vente'],
   },
   {
-    title: 'Zéro saisie', mark: 'Zéro',
+    title: 'Zéro saisie',
     points: ['Passerelle avec votre logiciel de diffusion', 'Mise à jour automatique', 'Rien à ressaisir'],
   },
 ];
@@ -78,89 +78,70 @@ const VISITORS: { title: string; text: string; kind: BuyerKind }[] = [
 
 export default function ProPage() {
   const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
-  const h2 = 'font-serif text-3xl md:text-5xl tracking-tight leading-[1.1] text-stone-900';
+  const h2 = 'font-serif text-3xl md:text-4xl tracking-tight leading-[1.1] text-stone-900';
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader alert={false}>
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>
 
-      {/* L'ouverture : la promesse, en grand, sous le regard du logo */}
-      <header className="bg-[#211C15] text-white">
-        <div className="max-w-6xl mx-auto px-6 pt-12 md:pt-20 pb-14 md:pb-20">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:gap-14">
-            <div className="flex-none"><EyeO size={132} ink="#F6CF4E" iris="#211C15" /></div>
-            <div>
-              <h1 className="font-serif text-[2.6rem] md:text-7xl tracking-tight leading-[1.02] [text-wrap:balance]">
-                Plus de contacts qualifiés{' '}
-                <span className="inline-block italic text-[#F6CF4E] -rotate-2">sur vos biens atypiques.</span>
-              </h1>
-              <p className="mt-7 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-300">
-                Nous vous mettons en relation directe avec des acheteurs qui ne cherchent que de l’atypique.
-              </p>
-              <p className="mt-4">
-                <a href="#rejoindre" className="text-base font-medium text-[#F6CF4E] underline underline-offset-4 decoration-[#F6CF4E]/50 hover:decoration-[#F6CF4E] transition">
-                  Diffuser mes annonces →
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-12">
+        <Crumbs items={[{ label: 'Espace pro' }]} />
+        <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
+          Plus de contacts qualifiés <span className="italic text-stone-500">sur vos biens atypiques.</span>
+        </h1>
+        <p className="mt-5 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
+          Nous vous mettons en relation directe avec des acheteurs qui ne cherchent que de l’atypique.
+        </p>
+        <p className="mt-3">
+          <a href="#rejoindre" className="text-base font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
+            Diffuser mes annonces →
+          </a>
+        </p>
       </header>
 
       <main className="max-w-6xl mx-auto px-6">
         <div className="pb-24">
-        {/* Ce que l'agence y gagne : trois promesses numérotées, sans cartes */}
-        <section className="py-14 md:py-20">
-          <h2 className={h2}>Ce que vous y gagnez</h2>
-          <div className="mt-10 grid gap-x-12 gap-y-12 md:grid-cols-3">
-            {PILLARS.map((p, i) => {
-              const [before, after] = p.title.split(p.mark);
-              return (
-                <div key={p.title}>
-                  <span className="block font-serif italic text-5xl md:text-6xl leading-none text-[#F6CF4E]" aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-3 font-serif text-3xl leading-tight text-stone-900">
-                    {before}
-                    <span className={`inline-block italic ${i % 2 ? 'rotate-2' : '-rotate-3'} px-[0.1em] bg-[linear-gradient(transparent_58%,#F6CF4E_58%)]`}>{p.mark}</span>
-                    {after}
-                  </h3>
-                  <ul className="mt-5 border-t border-stone-900">
-                    {p.points.map((t) => (
-                      <li key={t} className="border-b border-stone-200 py-3 text-base leading-snug text-stone-700">
-                        {typo(t)}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Les acheteurs du site : trois portraits, sur fond jaune */}
-        <section className="rounded-[14px] bg-[#F6CF4E] px-6 py-12 md:px-12 md:py-16">
-          <h2 className={h2}>
-            Vos futurs acquéreurs <span className="inline-block italic -rotate-2">sont ici.</span>
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-900">
-            Trois profils d&apos;acheteurs, tous à la recherche d&apos;atypique.
-          </p>
-          <div className="mt-10 grid gap-y-8 md:grid-cols-3 md:gap-x-10">
-            {VISITORS.map((v) => (
-              <div key={v.title}>
-                <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#FDFBF7]">
-                  <BuyerFigure kind={v.kind} className="h-20 w-20" />
-                </div>
-                <h3 className="mt-4 font-serif text-2xl text-stone-900">{v.title}</h3>
-                <p className="mt-1 text-base leading-snug text-stone-900">{v.text}</p>
+        {/* Ce que l'agence y gagne : trois colonnes, comme un sommaire */}
+        <section>
+          <p className="text-xs uppercase tracking-widest text-stone-500">Ce que vous y gagnez</p>
+          <div className="mt-4 grid gap-x-10 gap-y-10 md:grid-cols-3">
+            {PILLARS.map((p, i) => (
+              <div key={p.title} className="border-t border-stone-900 pt-4">
+                <p className="font-sans text-sm tabular-nums text-stone-500" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
+                <h2 className="mt-2 font-serif text-2xl md:text-3xl leading-tight text-stone-900">{p.title}</h2>
+                <ul className="mt-4">
+                  {p.points.map((t) => (
+                    <li key={t} className="border-t border-stone-200 py-3 text-base leading-snug text-stone-700">
+                      {typo(t)}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="py-14 md:py-20">
+        {/* Les acheteurs du site : trois portraits au trait */}
+        <section className="mt-12 md:mt-16">
+          <h2 className={h2}>
+            Vos futurs acquéreurs <span className="italic text-stone-500">sont ici.</span>
+          </h2>
+          <p className="mt-3 max-w-2xl text-stone-600">Trois profils d&apos;acheteurs, tous à la recherche d&apos;atypique.</p>
+          <div className="mt-8 grid md:grid-cols-3 gap-x-10 border-t border-stone-900">
+            {VISITORS.map((v) => (
+              <div key={v.title} className="flex items-center gap-4 border-b border-stone-200 py-5">
+                <BuyerFigure kind={v.kind} className="h-16 w-16 flex-none -ml-2" />
+                <div>
+                  <h3 className="font-serif text-xl text-stone-900">{v.title}</h3>
+                  <p className="mt-1 text-[15px] leading-snug text-stone-600">{v.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12 md:mt-16 pb-12 md:pb-16">
           <h2 className={h2}>Vos questions</h2>
           <div className="mt-8 max-w-3xl space-y-2.5">
             {QUESTIONS.map((it) => (

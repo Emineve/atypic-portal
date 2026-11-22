@@ -1,5 +1,4 @@
 // Silhouettes dessinées pour Loftissime : une par profil d'acheteur. Trait fin, un seul accessoire.
-// La tête est l'œil du logo, et chacun regarde ce qui l'occupe.
 export type BuyerKind = 'decide' | 'reveur' | 'architecture';
 
 const INK = '#1c1917';
@@ -16,14 +15,9 @@ function Coat({ x }: { x: number }) {
   );
 }
 
-// La tête : le « o » du logo, la pupille tournée vers (dx, dy)
-function Head({ x, y, dx, dy }: { x: number; y: number; dx: number; dy: number }) {
-  return (
-    <>
-      <circle cx={x} cy={y} r="5.6" fill={INK} stroke="none" />
-      <circle cx={x + dx} cy={y + dy} r="2.4" fill="#fff" stroke="none" />
-    </>
-  );
+// La tête : un simple cercle au trait
+function Head({ x, y }: { x: number; y: number; dx?: number; dy?: number }) {
+  return <circle cx={x} cy={y} r="5.2" fill="#fff" />;
 }
 
 export default function BuyerFigure({ kind, className = '' }: { kind: BuyerKind; className?: string }) {

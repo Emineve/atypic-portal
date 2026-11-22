@@ -1,6 +1,5 @@
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { CATEGORY_LIST, slugify, cityHub } from '../lib/catalog';
-import EyeO from './EyeO';
 
 // Réseaux sociaux : affichés sans lien pour l'instant (comptes à créer)
 const SOCIALS = [
@@ -20,11 +19,11 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
         <div className="grid gap-y-12 md:grid-cols-[1.3fr_2fr] md:gap-x-16">
           <div>
             <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-white whitespace-nowrap">
-              l<EyeO letter ink="#ffffff" iris="#211C15" />ftissime.
+              loftissime.
             </a>
             <p className="mt-5 font-serif text-xl md:text-2xl leading-none text-white">
               Curateur de biens{' '}
-              <span className="inline-block italic -rotate-6 translate-y-[0.04em] text-[#F6CF4E]">atypiques</span>
+              <span className="italic text-stone-400">atypiques</span>
             </p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-500">
               Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte : tous les biens atypiques, réunis sur un seul site.
