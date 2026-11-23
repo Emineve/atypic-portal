@@ -67,7 +67,7 @@ export function FeedPost({ label, note, text }: { label: string; note: string; t
           <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-sm font-semibold text-[#FBF5E9]">l.</span>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-stone-900">Loftissime</p>
-            <p className="text-xs text-stone-500">Tous les biens atypiques, réunis sur un seul site</p>
+            <p className="text-xs text-stone-500">Les biens atypiques, sur un seul site</p>
           </div>
         </div>
         <p className="mt-3 text-sm leading-relaxed text-stone-700">{text}</p>
@@ -118,7 +118,7 @@ export function Channel({ className = 'mt-8', grid = 'grid-cols-2 sm:grid-cols-3
               <span className="-mt-12 flex h-16 w-16 flex-none items-center justify-center rounded-full border-4 border-white bg-stone-900 text-xl font-semibold text-[#FBF5E9] md:h-20 md:w-20">l.</span>
               <div>
                 <p className="font-serif text-2xl text-stone-900">Loftissime</p>
-                <p className="text-sm text-stone-500">Tous les biens atypiques, réunis sur un seul site</p>
+                <p className="text-sm text-stone-500">Les biens atypiques, sur un seul site</p>
               </div>
             </div>
             <div className="border-t border-stone-200 px-5 py-6 md:px-8">

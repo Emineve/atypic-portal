@@ -26,7 +26,7 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
               <span className="italic text-stone-400">atypiques</span>
             </p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-500">
-              Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte : tous les biens atypiques, réunis sur un seul site.
+              Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte à vendre : un seul site pour les trouver.
             </p>
             <div className="mt-7 flex gap-2" aria-hidden="true">
               {SOCIALS.map((s) => (

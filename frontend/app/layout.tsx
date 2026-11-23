@@ -24,7 +24,7 @@ const ORG_DESCRIPTION =
 // Aperçu de partage (WhatsApp, SMS, réseaux) : la signature et la promesse du site
 const SHARE_TITLE = 'Loftissime · Curateur de biens atypiques';
 const SHARE_DESCRIPTION =
-  'Tous les biens atypiques, réunis sur un seul site : lofts, ateliers d’artistes, rooftops, derniers étages.';
+  'Lofts, ateliers d’artistes, toits-terrasses, biens de caractère à vendre : un seul site pour les trouver.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
