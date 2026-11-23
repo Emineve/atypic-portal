@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 // Brouillon du premier numéro de la lettre « Avant-première ». Page cachée, rien n'a été envoyé.
-// Les quatre biens sont réels, relevés le 23 novembre 2026 sur le site de chaque agence :
+// Les trois biens sont réels (Paris intra-muros), relevés le 23 novembre 2026 sur le site de chaque agence :
 // la phrase est la nôtre, le lien mène à l'annonce de l'agence, aucune photo n'est reprise.
 // L'ouverture attend la vidéo et le bien en avant-première.
 
@@ -23,16 +23,6 @@ const BIENS: { mesure: string; quoi: string; ville: string; surface: string; phr
     prix: '1 200 000 €',
     agence: 'Les Enfants Rouges',
     href: 'https://www.agencedesenfantsrouges.com/paris-iv-st-merri-appartement-en-rdc-sur-cour-charmante-et-souplex-aux-volumes-exceptionnels/',
-  },
-  {
-    mesure: '166 m²',
-    quoi: 'sous verrière',
-    ville: 'Le Bourget',
-    surface: '500 m²',
-    phrase: 'Un ancien garage automobile devenu loft : une nef centrale sous verrière zénithale, 226 m² de terrasses, six chambres.',
-    prix: '1 980 000 €',
-    agence: 'Architectures Immobilier',
-    href: 'https://www.architectures-immobilier.com/fiches/46_59707271/architecture-transformee-1968-2000-15-min-du-centre-de-paris.html',
   },
   {
     mesure: '4 m',
@@ -66,7 +56,7 @@ export default function Numero1() {
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
       <p className="bg-stone-900 px-6 py-2 text-center text-xs tracking-wide text-[#FBF5E9]">
-        Brouillon à valider : rien n’a été envoyé. Les quatre biens sont réels, l’ouverture attend la vidéo.
+        Brouillon à valider : rien n’a été envoyé. Les trois biens sont réels, l’ouverture attend la vidéo.
       </p>
 
       <main className="max-w-2xl mx-auto px-6 py-10 md:py-14">
@@ -74,7 +64,7 @@ export default function Numero1() {
           <div className="border-b border-stone-200 bg-stone-50 px-6 py-3">
             <p className="text-[13px] font-semibold text-stone-900">Avant-première, par Loftissime</p>
             <p className="text-[13px] text-stone-900">4,47 m sous plafond, et un bien que personne n’a vu</p>
-            <p className="truncate text-[13px] text-stone-500">La visite de la semaine, puis quatre biens repérés en Île-de-France.</p>
+            <p className="truncate text-[13px] text-stone-500">La visite de la semaine, puis trois biens repérés dans Paris.</p>
           </div>
 
           {/* L'ouverture : la vidéo, à venir */}
@@ -97,7 +87,7 @@ export default function Numero1() {
 
           <div className="bg-[#FBF5E9] px-6 pb-8 md:px-10">
             {/* Repérés cette semaine */}
-            <p className={`pt-7 ${CAPS}`}>Déjà en ligne · repérés cette semaine en Île-de-France</p>
+            <p className={`pt-7 ${CAPS}`}>Déjà en ligne · repérés cette semaine à Paris</p>
             <ol className="mt-3 border-t border-stone-900">
               {BIENS.map((b, i) => (
                 <li key={b.href} className="grid grid-cols-[2rem_1fr] gap-x-3 border-b border-stone-300 py-6">
