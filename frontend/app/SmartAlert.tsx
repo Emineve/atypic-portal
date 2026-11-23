@@ -39,7 +39,7 @@ export default function SmartAlert({
 
   if (!show) return <>{fallback}</>;
   const band = (
-    <AlertBand title="Le moyen le plus sûr de ne passer à côté d’aucun bien." extra={extra} className={className}>
+    <AlertBand title="Soyez le premier à recevoir les annonces de biens atypiques." extra={extra} className={className}>
       {onOpen ? (
         <button type="button" onClick={onOpen} className={ALERT_BUTTON}>
           Créer mon alerte

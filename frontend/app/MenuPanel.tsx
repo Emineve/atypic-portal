@@ -80,7 +80,7 @@ export default function MenuPanel({
     <>
       <span>
         <span className="block font-serif text-2xl leading-tight text-stone-900">Créer une alerte</span>
-        <span className="mt-0.5 block text-sm text-stone-700">Soyez prévenu dès qu’un bien paraît</span>
+        <span className="mt-0.5 block text-sm text-stone-700">Soyez le premier à recevoir les annonces de biens atypiques.</span>
       </span>
       <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FBF5E9]">
         <ArrowRight className="h-4 w-4" />
