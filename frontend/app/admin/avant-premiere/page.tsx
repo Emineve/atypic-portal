@@ -1,0 +1,341 @@
+'use client';
+
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { getSupabase } from '../../../lib/supabase';
+
+// Même clé que la page d'administration : on se connecte d'abord sur /admin
+const KEY = 'singulier:admin-token';
+
+type Item = {
+  id?: string;
+  rubrique: string;
+  issue_no: number | null;
+  status: string;
+  mesure: string | null;
+  mesure_detail: string | null;
+  phrase: string | null;
+  bien: string | null;
+  lieu: string | null;
+  surface: string | null;
+  prix: number | null;
+  usage_note: string | null;
+  agency_name: string | null;
+  agency_url: string | null;
+  agency_site: string | null;
+  agency_email: string | null;
+  agency_phone: string | null;
+  contact_name: string | null;
+  source: string | null;
+  exclusive: boolean | null;
+  seen_on: string | null;
+  checked_on: string | null;
+  contacted_on: string | null;
+  answered_on: string | null;
+  photos: string;
+  online_date: string | null;
+  shoot_date: string | null;
+  video: string | null;
+  video_url: string | null;
+  notes: string | null;
+};
+
+const RUBRIQUES: [string, string][] = [
+  ['avant_premiere', 'Avant-première (vidéo)'],
+  ['deja_en_ligne', 'Déjà en ligne'],
+  ['petit_prix', 'Petit prix'],
+];
+const STATUTS: [string, string][] = [
+  ['repere', 'Repéré'],
+  ['retenu', 'Retenu'],
+  ['agence_contactee', 'Agence contactée'],
+  ['accord', 'Accord reçu'],
+  ['refus', 'Refus'],
+  ['publie', 'Publié'],
+  ['ecarte', 'Écarté'],
+  ['vendu', 'Vendu'],
+];
+const PHOTOS: [string, string][] = [
+  ['non_demande', 'Non demandées'],
+  ['demande', 'Demandées'],
+  ['accorde', 'Accordées'],
+  ['refuse', 'Refusées'],
+];
+const VIDEO: [string, string][] = [
+  ['', 'Sans objet'],
+  ['a_tourner', 'À tourner'],
+  ['tournee', 'Tournée'],
+  ['montee', 'Montée'],
+  ['en_ligne', 'En ligne'],
+];
+
+const EMPTY: Item = {
+  rubrique: 'deja_en_ligne', issue_no: null, status: 'repere', mesure: '', mesure_detail: '', phrase: '', bien: '', lieu: '',
+  surface: '', prix: null, usage_note: '', agency_name: '', agency_url: '', agency_site: '', agency_email: '', agency_phone: '',
+  contact_name: '', source: '', exclusive: null, seen_on: null, checked_on: null, contacted_on: null, answered_on: null,
+  photos: 'non_demande', online_date: null, shoot_date: null, video: null, video_url: '', notes: '',
+};
+
+const label = (list: [string, string][], v: string | null) => list.find((x) => x[0] === (v || ''))?.[1] || '';
+const euros = (n: number | null) => (n == null ? '' : n.toLocaleString('fr-FR') + ' €');
+
+export default function AdminAvantPremiere() {
+  const [token, setToken] = useState<string | null>(null);
+  const [items, setItems] = useState<Item[] | null>(null);
+  const [error, setError] = useState('');
+  const [edit, setEdit] = useState<Item | null>(null);
+  const [filter, setFilter] = useState('tous');
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    try {
+      setToken(sessionStorage.getItem(KEY) || '');
+    } catch {
+      setToken('');
+    }
+  }, []);
+
+  const load = useCallback(async (t: string) => {
+    setError('');
+    const { data, error: e } = await getSupabase().rpc('admin_letter_items', { p_token: t });
+    if (e) {
+      setError('Accès refusé ou erreur. Reconnectez-vous sur la page Administration.');
+      setItems(null);
+      return;
+    }
+    setItems(Array.isArray(data) ? (data as Item[]) : []);
+  }, []);
+
+  useEffect(() => {
+    if (token) load(token);
+  }, [token, load]);
+
+  const issues = useMemo(() => {
+    const s = new Set<number>();
+    (items || []).forEach((i) => i.issue_no != null && s.add(i.issue_no));
+    return Array.from(s).sort((a, b) => a - b);
+  }, [items]);
+
+  const shown = useMemo(() => {
+    const list = items || [];
+    if (filter === 'tous') return list;
+    if (filter === 'reserve') return list.filter((i) => i.issue_no == null && !['ecarte', 'vendu', 'refus'].includes(i.status));
+    if (filter === 'relance') return list.filter((i) => i.status === 'agence_contactee' || i.photos === 'demande');
+    if (filter.startsWith('n')) return list.filter((i) => i.issue_no === Number(filter.slice(1)));
+    return list;
+  }, [items, filter]);
+
+  async function save() {
+    if (!token || !edit) return;
+    setSaving(true);
+    const clean: Record<string, unknown> = { ...edit };
+    // Les champs vides partent en « non renseigné », pas en texte vide
+    Object.keys(clean).forEach((k) => {
+      if (clean[k] === '') clean[k] = null;
+    });
+    const { error: e } = await getSupabase().rpc('admin_save_letter_item', { p_token: token, p_item: clean });
+    setSaving(false);
+    if (e) {
+      setError('Enregistrement impossible : ' + e.message);
+      return;
+    }
+    setEdit(null);
+    load(token);
+  }
+
+  async function remove() {
+    if (!token || !edit?.id) return;
+    if (!window.confirm('Supprimer ce bien du suivi ? Cette action est définitive.')) return;
+    await getSupabase().rpc('admin_delete_letter_item', { p_token: token, p_id: edit.id });
+    setEdit(null);
+    load(token);
+  }
+
+  const input = 'h-10 w-full border border-stone-300 bg-white px-3 text-sm focus:outline-none focus:border-stone-900';
+  const lab = 'block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1';
+  const set = (k: keyof Item, v: unknown) => setEdit((e) => (e ? { ...e, [k]: v } : e));
+  const txt = (k: keyof Item, title: string, type = 'text', ph = '') => (
+    <label className="block">
+      <span className={lab}>{title}</span>
+      <input
+        className={input}
+        type={type}
+        placeholder={ph}
+        value={(edit?.[k] as string | number | null) ?? ''}
+        onChange={(e) => set(k, type === 'number' ? (e.target.value === '' ? null : Number(e.target.value)) : e.target.value)}
+      />
+    </label>
+  );
+  const sel = (k: keyof Item, title: string, list: [string, string][]) => (
+    <label className="block">
+      <span className={lab}>{title}</span>
+      <select className={input} value={(edit?.[k] as string | null) ?? ''} onChange={(e) => set(k, e.target.value || null)}>
+        {list.map(([v, l]) => (
+          <option key={v} value={v}>{l}</option>
+        ))}
+      </select>
+    </label>
+  );
+
+  if (token === null) return null;
+
+  const chips: [string, string][] = [
+    ['tous', 'Tous'],
+    ...issues.map((n) => [`n${n}`, `N° ${n}`] as [string, string]),
+    ['reserve', 'En réserve'],
+    ['relance', 'En attente de réponse'],
+  ];
+
+  return (
+    <main className="min-h-screen bg-stone-50 text-stone-900">
+      <div className="border-b border-stone-200 bg-white">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <h1 className="font-serif text-xl">Avant-première</h1>
+          {token && items && (
+            <button onClick={() => setEdit({ ...EMPTY })} className="h-10 px-4 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
+              Ajouter un bien
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {!token && (
+          <p className="text-sm text-stone-600">
+            Connectez-vous d&apos;abord sur la page <a href="/admin" className="underline">Administration</a>, puis revenez ici.
+          </p>
+        )}
+        {error && <p className="mb-4 text-sm text-red-700">{error}</p>}
+
+        {items && !edit && (
+          <>
+            <p className="text-sm text-stone-600">
+              Les biens de la lettre et leur agence : où en est le contact, l&apos;accord pour les photos, la vidéo.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {chips.map(([v, l]) => (
+                <button
+                  key={v}
+                  onClick={() => setFilter(v)}
+                  className={`h-9 px-3 text-xs border ${filter === v ? 'bg-stone-900 text-white border-stone-900' : 'bg-white border-stone-300 text-stone-700'}`}
+                >
+                  {l}
+                </button>
+              ))}
+            </div>
+
+            <ul className="mt-5 border border-stone-200 bg-white divide-y divide-stone-200">
+              {shown.map((i) => (
+                <li key={i.id}>
+                  <button onClick={() => setEdit({ ...EMPTY, ...i })} className="w-full text-left px-4 py-3 hover:bg-stone-50">
+                    <span className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      <span className="font-serif text-lg">
+                        {i.mesure} <span className="italic text-stone-500">{i.mesure_detail}</span>
+                      </span>
+                      <span className="text-sm tabular-nums">{euros(i.prix)}</span>
+                    </span>
+                    <span className="mt-1 block text-sm text-stone-600">
+                      {[i.lieu, i.surface, i.agency_name].filter(Boolean).join(', ')}
+                    </span>
+                    <span className="mt-2 flex flex-wrap gap-2 text-[11px]">
+                      <span className="px-2 py-0.5 bg-stone-900 text-white">{label(STATUTS, i.status)}</span>
+                      <span className="px-2 py-0.5 border border-stone-300">{label(RUBRIQUES, i.rubrique)}</span>
+                      {i.issue_no != null && <span className="px-2 py-0.5 border border-stone-300">N° {i.issue_no}</span>}
+                      <span className="px-2 py-0.5 border border-stone-300">Photos : {label(PHOTOS, i.photos).toLowerCase()}</span>
+                      {!i.agency_url && <span className="px-2 py-0.5 bg-[#F6CF4E]">Lien agence manquant</span>}
+                      {!i.agency_email && <span className="px-2 py-0.5 bg-[#F6CF4E]">E-mail manquant</span>}
+                      {i.usage_note && <span className="px-2 py-0.5 border border-stone-300">{i.usage_note}</span>}
+                    </span>
+                  </button>
+                </li>
+              ))}
+              {shown.length === 0 && <li className="px-4 py-8 text-center text-sm text-stone-500">Aucun bien dans cette vue.</li>}
+            </ul>
+          </>
+        )}
+
+        {edit && (
+          <div className="max-w-3xl">
+            <button onClick={() => setEdit(null)} className="text-sm underline underline-offset-4 text-stone-600">Retour à la liste</button>
+
+            <h2 className="mt-6 font-serif text-lg">Dans la lettre</h2>
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
+              {sel('rubrique', 'Rubrique', RUBRIQUES)}
+              {txt('issue_no', 'Numéro prévu', 'number', 'vide = en réserve')}
+              {sel('status', 'Statut', STATUTS)}
+            </div>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {txt('mesure', 'La mesure', 'text', '6 m')}
+              {txt('mesure_detail', 'Ce qu’elle mesure', 'text', 'sous plafond')}
+            </div>
+            <label className="mt-3 block">
+              <span className={lab}>Notre phrase</span>
+              <textarea className={`${input} h-20 py-2`} value={edit.phrase ?? ''} onChange={(e) => set('phrase', e.target.value)} />
+            </label>
+
+            <h2 className="mt-8 font-serif text-lg">Le bien</h2>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {txt('bien', 'Description en une ligne')}
+              {txt('lieu', 'Arrondissement, quartier')}
+              {txt('surface', 'Surface')}
+              {txt('prix', 'Prix en euros', 'number')}
+              {txt('usage_note', 'À signaler au lecteur', 'text', 'usage mixte, à transformer…')}
+              {txt('source', 'Repéré sur')}
+              {txt('seen_on', 'Repéré le', 'date')}
+              {txt('checked_on', 'Disponibilité vérifiée le', 'date')}
+            </div>
+
+            <h2 className="mt-8 font-serif text-lg">L’agence</h2>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {txt('agency_name', 'Nom de l’agence')}
+              {txt('contact_name', 'Interlocuteur')}
+              {txt('agency_url', 'Lien de l’annonce chez l’agence', 'url')}
+              {txt('agency_site', 'Site de l’agence', 'url')}
+              {txt('agency_email', 'E-mail', 'email')}
+              {txt('agency_phone', 'Téléphone', 'tel')}
+              {txt('contacted_on', 'Contactée le', 'date')}
+              {txt('answered_on', 'Réponse reçue le', 'date')}
+              {sel('photos', 'Photos', PHOTOS)}
+              <label className="block">
+                <span className={lab}>Exclusivité</span>
+                <select
+                  className={input}
+                  value={edit.exclusive == null ? '' : edit.exclusive ? 'oui' : 'non'}
+                  onChange={(e) => set('exclusive', e.target.value === '' ? null : e.target.value === 'oui')}
+                >
+                  <option value="">Non renseigné</option>
+                  <option value="oui">Oui</option>
+                  <option value="non">Non, plusieurs agences</option>
+                </select>
+              </label>
+            </div>
+
+            <h2 className="mt-8 font-serif text-lg">La vidéo (avant-première)</h2>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {sel('video', 'État de la vidéo', VIDEO)}
+              {txt('shoot_date', 'Tournage le', 'date')}
+              {txt('online_date', 'Mise en ligne par l’agence le', 'date')}
+              {txt('video_url', 'Lien de la vidéo', 'url')}
+            </div>
+
+            <label className="mt-8 block">
+              <span className={lab}>Notes</span>
+              <textarea className={`${input} h-24 py-2`} value={edit.notes ?? ''} onChange={(e) => set('notes', e.target.value)} />
+            </label>
+
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <button onClick={save} disabled={saving} className="h-11 px-6 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider disabled:opacity-40">
+                {saving ? 'Enregistrement…' : 'Enregistrer'}
+              </button>
+              {edit.agency_url && (
+                <a href={edit.agency_url} target="_blank" rel="noreferrer" className="text-sm underline underline-offset-4">Voir l’annonce</a>
+              )}
+              {edit.id && (
+                <button onClick={remove} className="text-sm underline underline-offset-4 text-red-700">Supprimer</button>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
