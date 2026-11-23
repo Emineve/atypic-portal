@@ -4,7 +4,7 @@ import TeeCard from './TeeCard';
 
 export const metadata = {
   title: 'Le dressing · Loftissime',
-  description: 'Le tee-shirt Loftissime, bientôt à porter : blanc, avec le mot « atypiques » souligné de jaune.',
+  description: 'Le tee-shirt Loftissime, bientôt à porter : blanc, avec le logo du site.',
   alternates: { canonical: '/dressing' },
 };
 
@@ -28,8 +28,8 @@ export default function DressingPage() {
       <main className="max-w-6xl mx-auto px-6">
         <div className="pb-24 max-w-4xl">
         <TeeCard
-          name="L’atypique"
-          pitch="Blanc, avec un seul mot : atypiques, en italique, souligné d’un trait jaune."
+          name="Le Loftissime"
+          pitch="Blanc, avec le logo du site sur la poitrine, et rien d’autre."
         />
       </div>
       </main>
