@@ -161,8 +161,8 @@ function Etage({ n, label = true }: { n: number; label?: boolean }) {
   const floors = Math.max(1, Math.min(14, Math.round(n) + 1)); // rez-de-chaussée compris
   const y0 = H - 22;
   const fh = Math.min(18, 150 / floors);
-  const x = 62;
-  const w = 76;
+  const x = 40;
+  const w = 66;
   const top = y0 - floors * fh;
   return (
     <>
@@ -176,8 +176,8 @@ function Etage({ n, label = true }: { n: number; label?: boolean }) {
       {/* le garde-corps de la terrasse */}
       <path d={`M${x} ${top - 7}H${x + w}M${x} ${top}v-7M${x + w} ${top}v-7M${x + w / 3} ${top}v-7M${x + (2 * w) / 3} ${top}v-7`} stroke={INK} strokeWidth={1.2} />
       <path d={`M10 ${y0}H${W - 10}`} stroke={INK} strokeWidth={1.6} />
-      <Person x={36} y={y0} k={fh / 2.9} />
-      {label && <text x={x + w + 12} y={top + fh / 2 + 5} fontFamily="Georgia, serif" fontSize={15} fill={INK}>{Math.round(n)}e</text>}
+      <Person x={24} y={y0} k={fh / 2.9} />
+      {label && <text x={x + w + 12} y={top + fh / 2 + 5} fontFamily="Georgia, serif" fontSize={15} fill={INK}>{Math.round(n)}e étage</text>}
     </>
   );
 }
