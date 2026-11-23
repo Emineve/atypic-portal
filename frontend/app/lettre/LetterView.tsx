@@ -1,7 +1,7 @@
 import GuideArt from '../guide/GuideArt';
 import Mesure from './Mesure';
 
-// La lettre « Avant-première », telle qu'elle se lit : la même vue sert à l'aperçu du back-office et à la page d'archive.
+// La lettre « loftissime. », telle qu'elle se lit : la même vue sert à l'aperçu du back-office et à la page d'archive.
 
 export type LetterItem = {
   id?: string;
@@ -25,7 +25,6 @@ export type LetterContent = {
   sous_titre?: string;
   articles?: { slug: string; rubrique: string }[];
   carte?: { on?: boolean; nom?: string; texte?: string; signature?: string; lien?: string };
-  expert?: { on?: boolean; role?: string; question?: string; texte?: string; signature?: string; lien?: string };
   question?: { on?: boolean; titre?: string; titre_italique?: string; choix?: string[] };
 };
 
@@ -151,25 +150,15 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
         </section>
       )}
 
-      {/* Carte blanche et le point de l'expert */}
-      {(c.carte?.on || c.expert?.on) && (
+      {/* L'œil de l'architecte */}
+      {c.carte?.on && (
         <section className="px-6 pt-2 sm:px-10">
           {c.carte?.on && (
             <div className="border-b border-[#D9CFBC] py-5">
-              <h2 className="font-serif text-[22px] leading-tight">Carte blanche, <span className="italic text-[#74695A]"><Blank v={c.carte.nom} ph="le nom de l’architecte" draft={draft} />.</span></h2>
+              <h2 className="font-serif text-[22px] leading-tight">L’œil de l’architecte, <span className="italic text-[#74695A]"><Blank v={c.carte.nom} ph="le nom de l’architecte" draft={draft} />.</span></h2>
               <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed"><Blank v={c.carte.texte} ph="Un lieu, un détail ou un projet choisi, en cinq lignes écrites de sa main." draft={draft} /></p>
               <p className="mt-2 text-[13px] text-[#74695A]">
                 {c.carte.lien && c.carte.signature ? <a href={c.carte.lien} target="_blank" rel="noreferrer" className="underline underline-offset-4">{c.carte.signature}</a> : <Blank v={c.carte.signature} ph="Son agence, avec un lien vers son site" draft={draft} />}
-              </p>
-            </div>
-          )}
-          {c.expert?.on && (
-            <div className="border-b border-[#D9CFBC] py-5">
-              <h2 className="font-serif text-[22px] leading-tight">{c.expert.role || 'Le point du notaire'}, <span className="italic text-[#74695A]"><Blank v={c.expert.question} ph="la question de la semaine" draft={draft} />.</span></h2>
-              <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed"><Blank v={c.expert.texte} ph="Sa réponse en trois lignes, avec ses mots." draft={draft} /></p>
-              <p className="mt-2 text-[13px] text-[#74695A]">
-                <Blank v={c.expert.signature} ph="Sa signature, telle qu’elle la valide" draft={draft} />
-                {c.expert.lien && <> · <a href={c.expert.lien} className="text-[#211C15] underline underline-offset-4">Lire l’article complet</a></>}
               </p>
             </div>
           )}
@@ -192,7 +181,7 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
       <footer className="px-6 pb-8 pt-7 sm:px-10">
         <div className="grid grid-cols-2 border-l border-t border-[#211C15] sm:grid-cols-[34%_14%_26%_26%]">
           {[
-            ['Lettre', 'Avant-première'],
+            ['Lettre', 'loftissime.'],
             ['Numéro', String(issue.numero)],
             ['Date', dateLettre(issue.date_parution, false)],
             ['Périmètre', 'Paris'],

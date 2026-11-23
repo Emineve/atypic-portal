@@ -22,11 +22,10 @@ const EMPTY_CONTENT: LetterContent = {
   ouverture: { on: true },
   sous_titre: 'Chaque bien est résumé par ce qu’il a de plus singulier. La silhouette fait 1,75 m.',
   articles: [
-    { slug: '', rubrique: 'À lire avant de visiter le premier' },
-    { slug: '', rubrique: 'L’histoire de la semaine' },
+    { slug: '', rubrique: 'Avant de signer' },
+    { slug: '', rubrique: 'Habiter autrement' },
   ],
   carte: { on: false },
-  expert: { on: false, role: 'Le point du notaire' },
   question: { on: true, titre: 'La semaine prochaine,', titre_italique: 'vous aimeriez voir quoi ?', choix: ['Un loft', 'Un atelier', 'Une terrasse', 'Une péniche', 'Surprenez-moi'] },
 };
 
@@ -200,7 +199,7 @@ export default function IssueEditor({ token, items, reload }: { token: string; i
             </select>
           </label>
           <button onClick={newIssue} className="h-10 px-3 border border-stone-300 bg-white text-xs">Nouveau numéro</button>
-          <a href={`/apercu/avant-premiere/numero-${issue.numero}`} target="_blank" rel="noreferrer" className="h-10 leading-10 text-sm underline underline-offset-4">Voir la page sur le site</a>
+          <a href={`/lettre/numero-${issue.numero}`} target="_blank" rel="noreferrer" className="h-10 leading-10 text-sm underline underline-offset-4">Voir la page sur le site</a>
         </div>
 
         <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -323,7 +322,7 @@ export default function IssueEditor({ token, items, reload }: { token: string; i
           </div>
         ))}
 
-        <h2 className="mt-9 font-serif text-lg">Carte blanche à un architecte</h2>
+        <h2 className="mt-9 font-serif text-lg">L’œil de l’architecte</h2>
         <div className="mt-2">
           <Toggle title="Afficher la rubrique" on={!!c.carte?.on} onChange={(v) => setC({ carte: { ...c.carte, on: v } })} />
         </div>
@@ -338,32 +337,6 @@ export default function IssueEditor({ token, items, reload }: { token: string; i
             </div>
             <div className="mt-3">
               <Field title="Lien vers son site" type="url" value={c.carte.lien} onChange={(v) => setC({ carte: { ...c.carte, lien: v } })} />
-            </div>
-          </>
-        )}
-
-        <h2 className="mt-9 font-serif text-lg">Le point du notaire ou du courtier</h2>
-        <div className="mt-2">
-          <Toggle title="Afficher la rubrique" on={!!c.expert?.on} onChange={(v) => setC({ expert: { ...c.expert, on: v } })} />
-        </div>
-        {c.expert?.on && (
-          <>
-            <div className="mt-3 grid gap-3 md:grid-cols-2">
-              <label className="block">
-                <span className={lab}>Qui parle</span>
-                <select className={input} value={c.expert.role || 'Le point du notaire'} onChange={(e) => setC({ expert: { ...c.expert, role: e.target.value } })}>
-                  <option>Le point du notaire</option>
-                  <option>Le point du courtier</option>
-                </select>
-              </label>
-              <Field title="La question de la semaine" value={c.expert.question} onChange={(v) => setC({ expert: { ...c.expert, question: v } })} />
-            </div>
-            <div className="mt-3">
-              <Field title="Sa réponse, avec ses mots" area value={c.expert.texte} onChange={(v) => setC({ expert: { ...c.expert, texte: v } })} />
-            </div>
-            <div className="mt-3 grid gap-3 md:grid-cols-2">
-              <Field title="Signature, telle qu’il ou elle la valide" value={c.expert.signature} onChange={(v) => setC({ expert: { ...c.expert, signature: v } })} />
-              <Field title="Lien vers l’article complet" value={c.expert.lien} ph="/guide/…" onChange={(v) => setC({ expert: { ...c.expert, lien: v } })} />
             </div>
           </>
         )}

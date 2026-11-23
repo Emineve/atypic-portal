@@ -9,6 +9,14 @@ import { ArrowLeft, Plus, Menu } from 'lucide-react';
 import Logo from './Logo';
 import MenuPanel from './MenuPanel';
 import ModeEmploiBack from './ModeEmploiBack';
+import { useSiteMode } from './SiteMode';
+
+const LETTER_LINKS = [
+  { href: '/lettre', label: 'La lettre' },
+  { href: '/guide', label: 'État des lieux' },
+];
+const LETTER_LINK =
+  'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
 
 const FAVORITES_KEY = 'singulier:favorites';
 
@@ -62,6 +70,35 @@ export default function SiteHeaderClient({
       setFavs(0);
     }
   }, [open]);
+
+  const mode = useSiteMode();
+  // Mode lettre : trois entrées, pas de menu, pas d'alerte
+  if (mode === 'lettre')
+    return (
+      <>
+        <DemoBand />
+        <nav aria-label="Navigation principale" className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
+          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-10">
+              <Logo />
+              <div className="hidden sm:flex items-center gap-7">
+                {LETTER_LINKS.map((l) => (
+                  <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
+                ))}
+              </div>
+            </div>
+            <a href="/#recevoir" className="text-sm font-medium text-stone-900 whitespace-nowrap bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] bg-no-repeat bg-[length:100%_2px] pb-[3px]">
+              Recevoir la lettre
+            </a>
+          </div>
+          <div className="sm:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-7">
+            {LETTER_LINKS.map((l) => (
+              <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
+            ))}
+          </div>
+        </nav>
+      </>
+    );
 
   return (
     <>

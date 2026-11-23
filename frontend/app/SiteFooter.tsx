@@ -1,6 +1,7 @@
 import { getSupabase } from '../lib/supabase';
 import FooterLinks from './FooterLinks';
 import FooterGate from './FooterGate';
+import LetterFooter from './lettre/LetterFooter';
 
 // Pied de page commun à toutes les pages publiques (l'accueil garde le sien, plus complet).
 export default async function SiteFooter() {
@@ -12,7 +13,7 @@ export default async function SiteFooter() {
     cities = [];
   }
   return (
-    <FooterGate>
+    <FooterGate lettre={<LetterFooter />}>
       <footer className="border-t border-stone-200 bg-white">
         <FooterLinks cities={cities} />
       </footer>

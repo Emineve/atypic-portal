@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import AlertBand, { ALERT_BUTTON } from './AlertBand';
+import { useSiteMode } from './SiteMode';
+import LetterSignup from './lettre/LetterSignup';
 import { hasAlert, isSearching } from '../lib/intent';
 
 // La carte « Créer une alerte », affichée au bon moment : quand le visiteur a montré qu'il cherche
@@ -37,6 +39,12 @@ export default function SmartAlert({
     };
   }, [signal, tick]);
 
+  const mode = useSiteMode();
+  // En mode lettre, l'invitation n'est plus l'alerte mais l'inscription à la lettre
+  if (mode === 'lettre') {
+    const signup = <LetterSignup variant="band" source="article" className={className} />;
+    return wrapperClassName ? <div className={wrapperClassName}>{signup}</div> : signup;
+  }
   if (!show) return <>{fallback}</>;
   const band = (
     <AlertBand title="Soyez le premier à recevoir les annonces de biens atypiques." extra={extra} className={className}>

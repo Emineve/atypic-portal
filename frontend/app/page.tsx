@@ -3,6 +3,8 @@ import { SITE_URL } from '../lib/site';
 import HomeClient, { Listing } from './HomeClient';
 import { articlesCount, publishedArticles } from '../lib/guide';
 import { StoryCard } from './StoryCards';
+import { getSiteMode } from '../lib/siteMode';
+import LetterHome from './lettre/LetterHome';
 
 // Page rendue côté serveur : les annonces sont dans le HTML (lisible par Google)
 export const dynamic = 'force-dynamic';
@@ -21,6 +23,9 @@ async function getListings(): Promise<Listing[]> {
 }
 
 export default async function Page() {
+  // Mode lettre : l'accueil présente la lettre, les annonces restent en coulisses
+  if ((await getSiteMode()) === 'lettre') return <LetterHome />;
+
   const listings = await getListings();
 
   // Les histoires Insolite qui se glissent dans la liste : elles tournent chaque jour

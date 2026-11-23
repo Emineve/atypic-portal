@@ -92,6 +92,27 @@ export default function AdminAvantPremiere() {
   const [saving, setSaving] = useState(false);
   // Deux vues : le numéro tel qu'il paraîtra, ou le suivi des biens et des agences
   const [view, setView] = useState<'numero' | 'biens'>('numero');
+  // Le visage du site : portail d'annonces ou lettre seule
+  const [mode, setMode] = useState<'portail' | 'lettre' | null>(null);
+
+  useEffect(() => {
+    getSupabase().rpc('site_mode').then(({ data }) => setMode(data === 'lettre' ? 'lettre' : 'portail'));
+  }, []);
+
+  async function switchMode() {
+    if (!token || !mode) return;
+    const next = mode === 'lettre' ? 'portail' : 'lettre';
+    const msg = next === 'lettre'
+      ? 'Passer le site en mode lettre ? L’accueil présentera la lettre ; les annonces, les alertes, le financement, l’espace pro et les autres rubriques seront cachés.'
+      : 'Revenir au mode portail ? L’accueil montrera de nouveau les annonces et toutes les rubriques reviendront.';
+    if (!window.confirm(msg)) return;
+    const { data, error: e } = await getSupabase().rpc('admin_set_site_mode', { p_token: token, p_mode: next });
+    if (e) {
+      setError('Le mode du site n’a pas pu être changé.');
+      return;
+    }
+    setMode(data === 'lettre' ? 'lettre' : 'portail');
+  }
 
   useEffect(() => {
     try {
@@ -196,7 +217,7 @@ export default function AdminAvantPremiere() {
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <div className="border-b border-stone-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <h1 className="font-serif text-xl">Avant-première</h1>
+          <h1 className="font-serif text-xl">La lettre</h1>
           {token && items && view === 'biens' && (
             <button onClick={() => setEdit({ ...EMPTY })} className="h-10 px-4 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
               Ajouter un bien
@@ -212,6 +233,21 @@ export default function AdminAvantPremiere() {
           </p>
         )}
         {error && <p className="mb-4 text-sm text-red-700">{error}</p>}
+
+        {items && !edit && mode && (
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border border-stone-200 bg-white px-4 py-3 text-sm">
+            <span>
+              Le site est en <strong>{mode === 'lettre' ? 'mode lettre' : 'mode portail'}</strong>.{' '}
+              <span className="text-stone-600">{mode === 'lettre' ? 'Les annonces et les autres rubriques sont cachées.' : 'La lettre existe mais n’est pas dans le menu.'} Le changement prend une minute.</span>
+            </span>
+            <span className="flex items-center gap-5">
+              <a href="/apercu/accueil" target="_blank" rel="noreferrer" className="underline underline-offset-4">Voir l’accueil du mode lettre</a>
+              <button onClick={switchMode} className="h-9 px-3 border border-stone-900 text-xs font-semibold uppercase tracking-wider">
+                {mode === 'lettre' ? 'Revenir au portail' : 'Passer en mode lettre'}
+              </button>
+            </span>
+          </div>
+        )}
 
         {items && !edit && (
           <div className="mb-6 flex gap-2">

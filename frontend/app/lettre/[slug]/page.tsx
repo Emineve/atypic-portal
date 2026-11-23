@@ -1,35 +1,27 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '../../../SiteHeader';
-import LetterView, { dateLettre, type LetterIssue, type LetterItem } from '../../../lettre/LetterView';
-import { lettreArticles } from '../../../../lib/lettre';
-import { getSupabase } from '../../../../lib/supabase';
+import SiteHeader from '../../SiteHeader';
+import LetterView, { dateLettre } from '../LetterView';
+import LetterSignup from '../LetterSignup';
+import { getIssue, lettreArticles } from '../../../lib/lettre';
 
 // Un numéro de la lettre, lu depuis le back-office : une modification y apparaît ici en une minute au plus.
 export const revalidate = 60;
 
-async function load(slug: string): Promise<{ issue: LetterIssue; items: LetterItem[] } | null> {
-  const n = Number((slug.match(/^numero-(\d+)$/) || [])[1]);
-  if (!n) return null;
-  try {
-    const { data } = await getSupabase().rpc('letter_public', { p_numero: n });
-    const d = data as { issue: LetterIssue | null; items: LetterItem[] } | null;
-    return d && d.issue ? { issue: d.issue, items: d.items || [] } : null;
-  } catch {
-    return null;
-  }
-}
+const numero = (slug: string) => Number((slug.match(/^numero-(\d+)$/) || [])[1]) || 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const d = await load(params.slug);
+  const d = await getIssue(numero(params.slug));
   return {
-    title: d ? `Avant-première n° ${d.issue.numero}${d.issue.titre ? ` : ${d.issue.titre}` : ''} · Loftissime` : 'Avant-première · Loftissime',
-    robots: { index: false, follow: false },
+    title: d ? `La lettre n° ${d.issue.numero}${d.issue.titre ? ` : ${d.issue.titre}` : ''} · loftissime.` : 'La lettre · loftissime.',
+    description: d?.issue.resume || undefined,
+    // Un numéro pas encore paru n'est qu'une maquette : il ne doit pas être repris ailleurs
+    robots: d && !d.issue.paru ? { index: false, follow: false } : undefined,
   };
 }
 
 export default async function Numero({ params }: { params: { slug: string } }) {
-  const d = await load(params.slug);
+  const d = await getIssue(numero(params.slug));
   if (!d) notFound();
   const { issue, items } = d;
   return (
@@ -37,13 +29,16 @@ export default async function Numero({ params }: { params: { slug: string } }) {
       <SiteHeader />
       <div className="mx-auto max-w-[600px] pb-16 pt-8">
         <p className="px-6 text-sm text-stone-600 sm:px-0">
-          <Link href="/apercu/avant-premiere" className="underline underline-offset-4">Tous les numéros</Link>
+          <Link href="/lettre" className="underline underline-offset-4">Tous les numéros</Link>
           <span className="mx-2">/</span>
           N° {issue.numero}{issue.date_parution ? `, ${dateLettre(issue.date_parution)}` : ''}
           {!issue.paru && <span className="mt-1 block text-stone-500">Maquette, pas encore envoyée.</span>}
         </p>
         <div className="mt-6">
           <LetterView issue={issue} items={items} articles={lettreArticles(issue.content)} />
+        </div>
+        <div className="mt-10 px-6 sm:px-0">
+          <LetterSignup variant="band" source="numero" />
         </div>
       </div>
     </div>

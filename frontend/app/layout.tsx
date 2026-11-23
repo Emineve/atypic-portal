@@ -4,6 +4,8 @@ import SiteFooter from './SiteFooter';
 import BackToTop from './BackToTop';
 import './globals.css';
 import { SITE_URL, SITE_NAME } from '../lib/site';
+import { getSiteMode } from '../lib/siteMode';
+import { SiteModeProvider } from './SiteMode';
 
 // Police du logo, chargée une fois pour tout le site
 const logoFont = Poppins({ subsets: ['latin'], weight: ['600'], variable: '--font-logo', display: 'swap' });
@@ -26,7 +28,22 @@ const SHARE_TITLE = 'Loftissime · Curateur de biens atypiques';
 const SHARE_DESCRIPTION =
   'Lofts, ateliers d’artistes, toits-terrasses, biens de caractère à vendre : un seul site pour les trouver.';
 
-export const metadata: Metadata = {
+// En mode lettre, le site se présente comme la lettre, pas comme un site d'annonces
+const LETTER_TITLE = 'loftissime. · La lettre de l’immobilier atypique parisien';
+const LETTER_DESCRIPTION = 'Chaque jeudi, quelques biens atypiques repérés à Paris, chacun résumé par ce qu’il a de plus singulier : une verrière, une terrasse, une hauteur sous plafond.';
+
+export async function generateMetadata(): Promise<Metadata> {
+  if ((await getSiteMode()) !== 'lettre') return BASE_METADATA;
+  return {
+    ...BASE_METADATA,
+    title: LETTER_TITLE,
+    description: LETTER_DESCRIPTION,
+    openGraph: { ...BASE_METADATA.openGraph, title: LETTER_TITLE, description: LETTER_DESCRIPTION },
+    twitter: { ...BASE_METADATA.twitter, title: LETTER_TITLE, description: LETTER_DESCRIPTION },
+  };
+}
+
+const BASE_METADATA: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
@@ -73,14 +90,17 @@ const siteLd = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const mode = await getSiteMode();
   return (
     <html lang="fr" className={`${logoFont.variable} ${sansFont.variable} ${serifFont.variable}`}>
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd).replace(/</g, '\\u003c') }} />
-        {children}
-        <BackToTop />
-        <SiteFooter />
+        <SiteModeProvider mode={mode}>
+          {children}
+          <BackToTop />
+          <SiteFooter />
+        </SiteModeProvider>
       </body>
     </html>
   );
