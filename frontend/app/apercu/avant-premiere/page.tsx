@@ -3,11 +3,11 @@ import GuideArt from '../../guide/GuideArt';
 import { GUIDE_ARTICLES } from '../../../lib/guide';
 
 export const metadata = {
-  title: 'Aperçu : Off Market, la lettre · Loftissime',
+  title: 'Aperçu : Avant-première, la lettre · Loftissime',
   robots: { index: false, follow: false },
 };
 
-// Page de travail, cachée : « Off Market », la lettre de Loftissime.
+// Page de travail, cachée : « Avant-première », la lettre de Loftissime.
 // La vidéo d'un bien pas encore en ligne est au centre ; les autres rubriques sont celles du site.
 // Biens, prix et objet de mail sont inventés pour la maquette ; les photos sont des emplacements.
 
@@ -47,7 +47,7 @@ function Bloc({ rubrique, site, children }: { rubrique: string; site: string; ch
   );
 }
 
-export default function OffMarketPreview() {
+export default function AvantPremierePreview() {
   const insolite = GUIDE_ARTICLES.find((a) => a.category === 'Insolite');
   const guide = GUIDE_ARTICLES.find((a) => a.category === 'Visite et négociation');
   return (
@@ -58,9 +58,9 @@ export default function OffMarketPreview() {
       </p>
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">
-        <p className="text-xs uppercase tracking-widest text-stone-500">La lettre de Loftissime</p>
+        <p className="text-xs uppercase tracking-widest text-stone-500">La lettre · maquette</p>
         <h1 className="mt-4 max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-          Off Market, <span className="italic text-stone-500">un bien avant tout le monde.</span>
+          Avant-première, <span className="italic text-stone-500">la lettre de Loftissime.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-stone-600 text-base md:text-lg font-light leading-relaxed">
           Au centre, la vidéo d’un bien qui n’est pas encore en ligne. Autour, les rubriques du site. La colonne de droite dit ce que chaque partie devient sur Loftissime.
@@ -71,7 +71,7 @@ export default function OffMarketPreview() {
         <div className="overflow-hidden rounded-[14px] border border-stone-300 bg-white">
           {/* La ligne de boîte de réception */}
           <div className="border-b border-stone-200 bg-stone-50 px-6 py-3">
-            <p className="text-[13px] font-semibold text-stone-900">Off Market, par Loftissime</p>
+            <p className="text-[13px] font-semibold text-stone-900">Avant-première, par Loftissime</p>
             <p className="text-[13px] text-stone-900">6 m de hauteur sous plafond, pas encore en ligne</p>
             <p className="truncate text-[13px] text-stone-500">La visite de la semaine, en une minute, avant sa mise en ligne.</p>
           </div>
@@ -82,7 +82,7 @@ export default function OffMarketPreview() {
               <span className="font-logo font-semibold lowercase tracking-tight text-lg leading-none">loftissime.</span>
               <span className="text-[11px] uppercase tracking-widest text-stone-400">N° 1 · jeudi 26 novembre</span>
             </div>
-            <p className="mt-8 font-serif text-5xl md:text-6xl italic leading-none">Off Market</p>
+            <p className="mt-8 font-serif text-5xl md:text-6xl italic leading-none">Avant-première</p>
             <div className="mt-3 flex items-center gap-1"><span className="h-3 w-px bg-stone-400" /><span className="h-px flex-1 bg-stone-400" /><span className="h-3 w-px bg-stone-400" /></div>
             <p className="mt-3 text-[11px] uppercase tracking-widest text-stone-400">Un bien que vous ne trouverez pas encore en ligne</p>
 
@@ -158,7 +158,7 @@ export default function OffMarketPreview() {
             </Bloc>
 
             <div className="border-t border-stone-300 pt-5 text-center text-[11px] leading-relaxed text-stone-500">
-              Off Market, la lettre de Loftissime · Curateur de biens atypiques · loftissime.fr
+              Avant-première, la lettre de Loftissime · Curateur de biens atypiques · loftissime.fr
               <br />
               Vous recevez cette lettre parce que vous vous y êtes inscrit. Se désinscrire
             </div>
