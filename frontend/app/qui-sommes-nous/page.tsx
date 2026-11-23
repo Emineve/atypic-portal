@@ -86,7 +86,7 @@ export default function ManifestoPage() {
                 <Link href={a.href} className="group grid gap-x-10 gap-y-3 py-7 md:grid-cols-[3rem_1fr_1fr] md:py-9 focus:outline-none">
                   <span className="font-sans text-sm tabular-nums text-stone-500" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                   <h2 className="font-serif text-2xl md:text-3xl leading-[1.15] tracking-tight text-stone-900 [text-wrap:balance]">
-                    <span className="bg-[linear-gradient(transparent_62%,#F6CF4E_62%)] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_100%] group-hover:bg-[length:100%_100%] group-focus-visible:bg-[length:100%_100%]">{typo(a.title)}</span>
+                    <span className="bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_2px] group-hover:bg-[length:100%_2px] group-focus-visible:bg-[length:100%_2px]">{typo(a.title)}</span>
                   </h2>
                   <div>
                     <p className="text-base leading-relaxed text-stone-600">

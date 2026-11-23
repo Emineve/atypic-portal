@@ -100,7 +100,7 @@ export default function FaqDeck({ groups }: { groups: FaqGroup[] }) {
                   aria-current={on ? 'true' : undefined}
                   className="group flex items-baseline justify-between gap-4 py-3.5 focus:outline-none"
                 >
-                  <span className={`font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(transparent_62%,#F6CF4E_62%)] bg-no-repeat transition-[background-size] duration-300 ${on ? 'bg-[length:100%_100%]' : 'bg-[length:0%_100%] group-hover:bg-[length:100%_100%] group-active:bg-[length:100%_100%] group-focus-visible:bg-[length:100%_100%]'}`}>{g.title}</span>
+                  <span className={`font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size] duration-300 ${on ? 'bg-[length:100%_2px]' : 'bg-[length:0%_2px] group-hover:bg-[length:100%_2px] group-active:bg-[length:100%_2px] group-focus-visible:bg-[length:100%_2px]'}`}>{g.title}</span>
                   <span className={`font-sans text-sm tabular-nums transition ${on ? 'text-stone-900' : 'text-stone-500 group-hover:text-stone-900'}`}>{g.items.length}</span>
                 </a>
               </li>

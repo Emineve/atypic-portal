@@ -70,7 +70,7 @@ export default async function GuideIndex() {
               {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
                 <li key={r.anchor} className="border-b border-stone-200">
                   <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group flex items-baseline justify-between gap-4 py-3.5 focus:outline-none">
-                    <span className="font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(transparent_62%,#F6CF4E_62%)] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_100%] group-hover:bg-[length:100%_100%] group-active:bg-[length:100%_100%] group-focus-visible:bg-[length:100%_100%]">{r.name}</span>
+                    <span className="font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_2px] group-hover:bg-[length:100%_2px] group-active:bg-[length:100%_2px] group-focus-visible:bg-[length:100%_2px]">{r.name}</span>
                     <span className="font-sans text-sm tabular-nums text-stone-500 group-hover:text-stone-900 transition">{articles.filter((x) => x.category === r.name).length}</span>
                   </a>
                 </li>
