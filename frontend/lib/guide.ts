@@ -41,6 +41,185 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'faux-rib-notaire-fraude-au-virement',
+    art: 'credit',
+    title: 'Faux RIB du notaire : la fraude au virement pendant un achat, et comment réagir',
+    description:
+      'Un courriel imite votre notaire et vous envoie un RIB qui n’est pas le sien. Comment la fraude se déroule, comment vérifier un RIB avant de payer, que faire si le virement est parti.',
+    category: 'Financement',
+    published: '2026-11-23',
+    updated: '2026-11-23',
+    readMinutes: 5,
+    intro:
+      'Un achat immobilier fait circuler de grosses sommes par virement : la somme versée à la promesse, puis le solde le jour de la vente. Il fait aussi circuler beaucoup de courriels, entre l’agence, le notaire, la banque et parfois des artisans. C’est dans cet intervalle que se glisse la fraude au faux RIB. Un seul réflexe suffit presque toujours à l’éviter.',
+    takeaways: [
+      'Le fraudeur se fait passer par courriel pour le notaire, ou pour un artisan, et envoie un RIB qui n’est pas le leur.',
+      'Avant tout virement vers un RIB reçu par courriel, appelez le destinataire à son numéro habituel, jamais à celui qui figure dans le message.',
+      'Si le virement est parti, prévenez votre banque immédiatement : c’est elle qui peut tenter de le bloquer ou de rappeler les fonds.',
+      'Gardez toutes les preuves et déposez plainte.',
+    ],
+    sections: [
+      {
+        title: 'Comment la fraude se déroule-t-elle ?',
+        paragraphs: [
+          'Le fraudeur commence le plus souvent par pirater une messagerie : la vôtre, ou celle d’un de vos interlocuteurs. Il y repère un paiement à venir. Puis il envoie un courriel qui imite celui du notaire ou de l’artisan, avec un RIB à son profit.',
+          'Le message est crédible parce qu’il tombe au bon moment et reprend les vrais détails du dossier : l’adresse du bien, le montant, la date de signature.',
+        ],
+      },
+      {
+        title: 'Pourquoi un achat atypique y est-il exposé ?',
+        paragraphs: [
+          'Ni plus ni moins qu’un autre achat, mais il multiplie souvent les interlocuteurs : architecte, artisans pour des devis, diagnostiqueur, courtier. Chaque nouveau RIB reçu par courriel est une occasion pour un fraudeur. La règle vaut pour tous, pas seulement pour le notaire.',
+        ],
+      },
+      {
+        title: 'Comment vérifier un RIB avant de payer ?',
+        paragraphs: [
+          'Dès qu’un RIB que vous n’avez jamais utilisé arrive par courriel, appelez son expéditeur pour le faire confirmer. Utilisez le numéro que vous connaissez déjà, ou celui que vous trouvez par vous-même, pas celui du message.',
+        ],
+        list: [
+          'Méfiez-vous d’un courriel qui annonce un « changement de coordonnées bancaires » à quelques jours d’une signature.',
+          'Relisez l’adresse de l’expéditeur lettre par lettre.',
+          'Le plus sûr reste de vous faire remettre le RIB en main propre, à l’étude, lors d’un rendez-vous.',
+        ],
+      },
+      {
+        title: 'Que faire si le virement est parti ?',
+        paragraphs: [
+          'Chaque heure compte. Voici les étapes, dans l’ordre.',
+        ],
+        list: [
+          'Appelez votre banque immédiatement. Demandez-lui de suspendre le virement ou de réclamer le retour des fonds.',
+          'Prévenez la personne dont l’identité a été utilisée. Sa messagerie est probablement piratée, et d’autres clients sont exposés.',
+          'Vérifiez votre propre messagerie : règles de transfert ou de filtrage que vous n’avez pas créées, connexions inconnues. Faites-en des captures d’écran, supprimez-les, puis changez votre mot de passe.',
+          'Conservez les preuves : le courriel reçu, le RIB, votre relevé de compte.',
+          'Déposez plainte au commissariat ou à la gendarmerie, ou par courrier au procureur de la République.',
+        ],
+      },
+      {
+        title: 'Qui peut vous aider ?',
+        paragraphs: [
+          'La plateforme publique Cybermalveillance.gouv.fr propose une assistance aux victimes. Prévenez aussi votre notaire : la date de signature devra peut-être être revue.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant chaque virement',
+      items: [
+        'Le RIB vient d’une source que j’ai vérifiée par téléphone, à un numéro que je connaissais déjà.',
+        'Le nom du titulaire du compte correspond à celui que j’attends.',
+        'Aucun message ne m’a demandé de changer de RIB à la dernière minute.',
+        'J’ai le numéro direct de ma banque sous la main, au cas où.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Un notaire peut-il changer de RIB juste avant la signature ?',
+        a: 'C’est très inhabituel. Considérez tout message de ce type comme suspect, et appelez l’étude avant toute chose.',
+      },
+      {
+        q: 'La banque récupère-t-elle toujours les fonds ?',
+        a: 'Non. Elle peut tenter de bloquer le virement ou de rappeler les fonds, sans garantie. Plus vous la prévenez tôt, plus elle a de chances d’y parvenir.',
+      },
+      {
+        q: 'Faut-il porter plainte même si la somme est revenue ?',
+        a: 'Oui : la plainte signale la fraude, et elle peut vous être demandée par la banque.',
+      },
+    ],
+    sources: [
+      { label: 'Institut national de la consommation, avec Cybermalveillance.gouv.fr, « Fraude au virement ou faux RIB : que faire ? »', url: 'https://www.inc-conso.fr/content/fraude-au-virement-ou-faux-rib-que-faire-avec-cybermalveillancegouvfr' },
+    ],
+  },
+  {
+    slug: 'confort-d-ete-dpe-verriere-toits',
+    art: 'verriere',
+    title: 'Confort d’été : ce que le DPE dit d’un bien sous verrière ou sous les toits',
+    description:
+      'Bon, moyen ou insuffisant : le DPE note aussi le confort d’été, à part de la lettre. Ce que mesure cet indicateur, pourquoi verrières et fenêtres de toit le dégradent, quoi vérifier en visite.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-23',
+    updated: '2026-11-23',
+    readMinutes: 5,
+    intro:
+      'On lit le DPE pour sa lettre. Elle parle d’énergie consommée et d’émissions, pas de la température qu’il fera chez vous en juillet. Pour cela, le rapport contient un autre indicateur, moins regardé : le confort d’été. Sous une verrière, sous un toit ou derrière de grandes baies, c’est lui qu’il faut chercher.',
+    takeaways: [
+      'Le DPE comporte depuis le 1er juillet 2021 un indicateur de confort d’été, noté bon, moyen ou insuffisant.',
+      'Il est présenté à part des deux étiquettes énergie et climat : un bien peut être bien classé et inconfortable l’été.',
+      'Il évalue le confort sans climatisation : seuls les brasseurs d’air sont pris en compte parmi les équipements.',
+      'Une baie sans protection solaire suffit à le dégrader, et les fenêtres de toit ne bénéficient d’aucune exception.',
+    ],
+    sections: [
+      {
+        title: 'Que mesure l’indicateur de confort d’été ?',
+        paragraphs: [
+          'Il dit si le logement reste vivable par forte chaleur, sans recourir à la climatisation. Le ministère chargé de l’écologie précise que seul le confort « passif » est évalué : les appareils qui consomment de l’énergie pour refroidir ne comptent pas, à l’exception des brasseurs d’air.',
+          'Le résultat tient en un mot : bon, moyen ou insuffisant. Le rapport indique aussi ce qui joue en faveur du logement et ce qui permettrait de l’améliorer.',
+        ],
+      },
+      {
+        title: 'Pourquoi une bonne étiquette ne garantit-elle rien ?',
+        paragraphs: [
+          'Les lettres de A à G reposent sur l’énergie consommée et sur les émissions de gaz à effet de serre. Le confort d’été est un indicateur distinct, affiché à côté. Un bien récemment isolé peut donc afficher une bonne lettre et un confort d’été insuffisant.',
+          'Une climatisation installée ne change pas cet indicateur. Elle rend le bien vivable, mais le rapport juge le logement sans elle.',
+        ],
+      },
+      {
+        title: 'Pourquoi verrières et fenêtres de toit sont-elles pénalisées ?',
+        paragraphs: [
+          'L’indicateur regarde de près les protections solaires : volets, stores extérieurs, brise-soleil. Selon la notice du ministère, il est dégradé dès qu’une baie en est dépourvue.',
+          'Une exception existe pour les petites baies orientées au sud, à l’est ou à l’ouest : moins de 0,7 m², et moins de 10 % de la surface vitrée totale. Elle ne s’applique pas aux fenêtres de toit. Une verrière d’atelier ou une série de fenêtres de toit sans store extérieur pèse donc directement sur le résultat.',
+        ],
+      },
+      {
+        title: 'Que regarder pendant la visite ?',
+        paragraphs: [
+          'Le rapport donne un mot ; la visite donne le reste. Si vous le pouvez, revenez un après-midi de beau temps.',
+        ],
+        list: [
+          'Chaque verrière, baie ou fenêtre de toit a-t-elle une protection, et se trouve-t-elle à l’extérieur du vitrage ?',
+          'Peut-on ouvrir des deux côtés du logement pour faire circuler l’air la nuit ?',
+          'La toiture ou la verrière a-t-elle été refaite, et avec quel vitrage ?',
+          'Comment les occupants vivent-ils l’été : pièces inutilisées, ventilateurs, climatisation ?',
+        ],
+      },
+      {
+        title: 'Et si la solution passe par un store ou une climatisation ?',
+        paragraphs: [
+          'Un store extérieur ou une climatisation modifient l’aspect de l’immeuble. Vérifiez ce que la copropriété autorise avant de faire une offre.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de faire une offre',
+      items: [
+        'J’ai lu la ligne « confort d’été » du DPE, pas seulement la lettre.',
+        'J’ai noté quelles baies n’ont pas de protection solaire.',
+        'Je sais si le logement peut être ventilé de part en part.',
+        'J’ai demandé comment les occupants passent l’été.',
+        'Si je compte poser un store extérieur ou une climatisation, j’ai vérifié ce que la copropriété permet.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Le confort d’été change-t-il la lettre du DPE ?',
+        a: 'Il est présenté comme un indicateur distinct des deux étiquettes énergie et climat.',
+      },
+      {
+        q: 'Une climatisation améliore-t-elle l’indicateur ?',
+        a: 'Non. Il évalue le logement sans système de refroidissement, à l’exception des brasseurs d’air.',
+      },
+      {
+        q: 'Depuis quand le DPE note-t-il le confort d’été ?',
+        a: 'Depuis le 1er juillet 2021. Les DPE plus anciens ne comportent pas cet indicateur.',
+      },
+    ],
+    sources: [
+      { label: 'Ministère chargé de l’écologie, « Diagnostic de performance énergétique - DPE »', url: 'https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe' },
+      { label: 'Ministère chargé de l’écologie, notice explicative de l’arrêté du 8 octobre 2021 relatif au DPE', url: 'https://www.ecologie.gouv.fr/sites/default/files/notice_explicative_DPE_arrete_8_octobre_2021_calcul_etablissement.pdf' },
+    ],
+    listingsLink: { label: 'Voir les lofts et ateliers à vendre', href: '/categorie/loft-atelier' },
+  },
+  {
     slug: 'compromis-ou-promesse-de-vente-quelle-difference',
     art: 'balance',
     title: 'Compromis ou promesse de vente : ce qui change pour l’acheteur',
