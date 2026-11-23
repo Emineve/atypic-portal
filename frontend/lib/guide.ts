@@ -5073,6 +5073,13 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
         ],
       },
       {
+        title: 'Les charges ont-elles été revues ?',
+        paragraphs: [
+          'Les charges d’un lot ont été calculées pour son usage d’origine. Quand un local devient un logement, la copropriété peut revoir leur répartition, par un vote en assemblée générale.',
+          'Demandez si cette révision a eu lieu, ou si elle est à l’ordre du jour d’une prochaine assemblée. Dans le second cas, les charges annoncées par le vendeur peuvent changer après votre achat.',
+        ],
+      },
+      {
         title: 'Et les impôts ?',
         paragraphs: [
           'Le propriétaire doit déclarer le changement au service des impôts fonciers dans les 90 jours qui suivent sa réalisation. La taxe foncière est alors recalculée sur la base d’un logement. Une taxe d’aménagement peut être due pour la transformation.',
@@ -5691,6 +5698,14 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
           'De nouveaux changements sont annoncés pour le 1er janvier 2027.',
         ],
       },
+      {
+        title: 'Et si le DPE se révèle faux après l’achat ?',
+        paragraphs: [
+          'Depuis le 1er juillet 2021, le DPE est opposable : l’acheteur peut se prévaloir de son contenu, comme pour les autres diagnostics. Seules les recommandations de travaux gardent une valeur indicative.',
+          'Si un nouveau diagnostic montre une étiquette nettement moins bonne que celle annoncée, la responsabilité du vendeur ou du diagnostiqueur peut être recherchée. L’issue dépend de chaque dossier.',
+          'Conservez l’annonce, le DPE remis à la vente et vos échanges écrits, faites réaliser un nouveau DPE par un autre diagnostiqueur, puis consultez un avocat ou votre notaire avant toute démarche.',
+        ],
+      },
     ],
     checklist: {
       title: 'À demander et à regarder',
@@ -5783,6 +5798,13 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
         paragraphs: [
           'Elle dépend surtout de votre âge et de votre santé. À titre indicatif, les moyennes relevées en 2026 par un courtier vont d’environ 0,10 % du capital emprunté par an à 25 ans à 0,47 % à 55 ans, pour un non-fumeur.',
           'Vous n’êtes pas tenu de prendre l’assurance de la banque : vous pouvez en choisir une autre, à garanties équivalentes.',
+        ],
+      },
+      {
+        title: 'Et pour un local à transformer ou un bien où l’on travaille ?',
+        paragraphs: [
+          'Tant que le changement de destination n’est pas obtenu, vous achetez un local d’activité, pas un logement. Certaines banques attendent l’autorisation d’urbanisme, ou au moins son dépôt, avant de s’engager. La promesse de vente peut prévoir l’obtention de cette autorisation comme condition suspensive, en plus de la condition de prêt.',
+          'Si vous comptez vivre et travailler dans le bien, dites-le à la banque dès le départ : la part professionnelle peut être financée séparément, et le règlement de copropriété doit admettre les deux usages.',
         ],
       },
       {
