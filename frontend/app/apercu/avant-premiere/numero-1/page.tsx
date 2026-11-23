@@ -86,12 +86,13 @@ export default function Numero1() {
             <p className="mt-8 font-serif text-5xl md:text-6xl italic leading-none">Avant-première</p>
             <div className="mt-3 flex items-center gap-1"><span className="h-3 w-px bg-stone-400" /><span className="h-px flex-1 bg-stone-400" /><span className="h-3 w-px bg-stone-400" /></div>
             <p className="mt-3 text-[11px] uppercase tracking-widest text-stone-400">Un bien que vous ne trouverez pas encore en ligne</p>
+            <p className="mt-1 text-[11px] uppercase tracking-widest text-stone-400">Cette semaine avec <span className="text-[#FBF5E9]">l’agence invitée</span> · une seule par numéro</p>
             <div className="mt-6 flex aspect-video flex-col items-center justify-center gap-3 rounded-[10px] border border-dashed border-stone-500">
               <span className="flex h-14 w-14 items-center justify-center rounded-full border border-[#FBF5E9]"><span className="ml-1 h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-[#FBF5E9]" /></span>
               <span className="text-[11px] uppercase tracking-widest text-stone-400">La vidéo vient ici</span>
             </div>
             <p className="mt-6 font-serif text-3xl leading-[1.1] text-stone-400">La mesure du bien, <span className="italic">sa ville, son prix.</span></p>
-            <p className="mt-2 text-[13px] leading-relaxed text-stone-400">À compléter avec le bien filmé : une mesure en titre, deux lignes, la date de mise en ligne, le bouton « Regarder la visite ».</p>
+            <p className="mt-2 text-[13px] leading-relaxed text-stone-400">À compléter avec le bien filmé : une mesure en titre, deux lignes, la date de mise en ligne, le nom de l’agence invitée, le bouton « Regarder la visite ».</p>
           </div>
 
           <div className="bg-[#FBF5E9] px-6 pb-8 md:px-10">
