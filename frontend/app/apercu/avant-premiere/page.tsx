@@ -1,6 +1,20 @@
 import Link from 'next/link';
 import SiteHeader from '../../SiteHeader';
-import { LETTRES, dateLettre } from '../../../lib/lettres';
+import { dateLettre } from '../../lettre/LetterView';
+import { getSupabase } from '../../../lib/supabase';
+
+export const revalidate = 60;
+
+type Row = { numero: number; date_parution: string | null; titre: string | null; resume: string | null; paru: boolean };
+
+async function numeros(): Promise<Row[]> {
+  try {
+    const { data } = await getSupabase().rpc('letter_list_public');
+    return Array.isArray(data) ? (data as Row[]) : [];
+  } catch {
+    return [];
+  }
+}
 
 export const metadata = {
   title: 'Avant-première, la lettre de Loftissime',
@@ -16,8 +30,8 @@ const CONTENU: [string, string][] = [
   ['À lire', 'Un article pour acheter en connaissance de cause, et une histoire de lieu insolite.'],
 ];
 
-export default function LettreIndex() {
-  const lettres = [...LETTRES].sort((a, b) => b.numero - a.numero);
+export default async function LettreIndex() {
+  const lettres = await numeros();
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
@@ -36,10 +50,10 @@ export default function LettreIndex() {
           <ul className="mt-3 border-t border-stone-900">
             {lettres.map((l) => (
               <li key={l.numero} className="border-b border-stone-200">
-                <Link href={`/apercu/avant-premiere/${l.slug}`} className="group grid gap-x-8 gap-y-2 py-6 md:grid-cols-[9rem_1fr_auto] md:items-baseline">
+                <Link href={`/apercu/avant-premiere/numero-${l.numero}`} className="group grid gap-x-8 gap-y-2 py-6 md:grid-cols-[9rem_1fr_auto] md:items-baseline">
                   <span className="text-sm text-stone-500">
                     N° {l.numero}
-                    <span className="block">{dateLettre(l.date)}</span>
+                    <span className="block">{dateLettre(l.date_parution)}</span>
                   </span>
                   <span>
                     <span className="font-serif text-2xl md:text-3xl text-stone-900 bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-no-repeat bg-[position:0_100%] pb-[3px] bg-[length:0%_2px] group-hover:bg-[length:100%_2px] transition-[background-size]">

@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getSupabase } from '../../../lib/supabase';
+import IssueEditor, { type FullItem } from './IssueEditor';
+import { KINDS } from '../../lettre/Mesure';
 
 // Même clé que la page d'administration : on se connecte d'abord sur /admin
 const KEY = 'singulier:admin-token';
@@ -37,6 +39,9 @@ type Item = {
   video: string | null;
   video_url: string | null;
   notes: string | null;
+  kind: string;
+  valeur: number | null;
+  ordre: number | null;
 };
 
 const RUBRIQUES: [string, string][] = [
@@ -72,7 +77,7 @@ const EMPTY: Item = {
   rubrique: 'deja_en_ligne', issue_no: null, status: 'repere', mesure: '', mesure_detail: '', phrase: '', bien: '', lieu: '',
   surface: '', prix: null, usage_note: '', agency_name: '', agency_url: '', agency_site: '', agency_email: '', agency_phone: '',
   contact_name: '', source: '', exclusive: null, seen_on: null, checked_on: null, contacted_on: null, answered_on: null,
-  photos: 'non_demande', online_date: null, shoot_date: null, video: null, video_url: '', notes: '',
+  photos: 'non_demande', online_date: null, shoot_date: null, video: null, video_url: '', notes: '', kind: 'hauteur', valeur: null, ordre: null,
 };
 
 const label = (list: [string, string][], v: string | null) => list.find((x) => x[0] === (v || ''))?.[1] || '';
@@ -85,6 +90,8 @@ export default function AdminAvantPremiere() {
   const [edit, setEdit] = useState<Item | null>(null);
   const [filter, setFilter] = useState('tous');
   const [saving, setSaving] = useState(false);
+  // Deux vues : le numéro tel qu'il paraîtra, ou le suivi des biens et des agences
+  const [view, setView] = useState<'numero' | 'biens'>('numero');
 
   useEffect(() => {
     try {
@@ -190,7 +197,7 @@ export default function AdminAvantPremiere() {
       <div className="border-b border-stone-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <h1 className="font-serif text-xl">Avant-première</h1>
-          {token && items && (
+          {token && items && view === 'biens' && (
             <button onClick={() => setEdit({ ...EMPTY })} className="h-10 px-4 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
               Ajouter un bien
             </button>
@@ -198,7 +205,7 @@ export default function AdminAvantPremiere() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className={`${view === 'numero' ? 'max-w-[1400px]' : 'max-w-6xl'} mx-auto px-6 py-8`}>
         {!token && (
           <p className="text-sm text-stone-600">
             Connectez-vous d&apos;abord sur la page <a href="/admin" className="underline">Administration</a>, puis revenez ici.
@@ -207,6 +214,18 @@ export default function AdminAvantPremiere() {
         {error && <p className="mb-4 text-sm text-red-700">{error}</p>}
 
         {items && !edit && (
+          <div className="mb-6 flex gap-2">
+            {([['numero', 'Le numéro'], ['biens', 'Les biens et les agences']] as const).map(([v, l]) => (
+              <button key={v} onClick={() => setView(v)} className={`h-10 px-4 text-sm border ${view === v ? 'bg-stone-900 text-white border-stone-900' : 'bg-white border-stone-300 text-stone-700'}`}>
+                {l}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {items && !edit && view === 'numero' && token && <IssueEditor token={token} items={items as unknown as FullItem[]} reload={() => load(token)} />}
+
+        {items && !edit && view === 'biens' && (
           <>
             <p className="text-sm text-stone-600">
               Les biens de la lettre et leur agence : où en est le contact, l&apos;accord pour les photos, la vidéo.
@@ -264,8 +283,10 @@ export default function AdminAvantPremiere() {
               {sel('status', 'Statut', STATUTS)}
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
-              {txt('mesure', 'La mesure', 'text', '6 m')}
-              {txt('mesure_detail', 'Ce qu’elle mesure', 'text', 'sous plafond')}
+              {txt('mesure', 'La caractéristique majeure', 'text', '18 fenêtres')}
+              {txt('mesure_detail', 'Ce qu’elle dit du bien', 'text', 'sur les toits de Paris')}
+              {sel('kind', 'Dessin', KINDS)}
+              {txt('valeur', 'Valeur du dessin (mètres, m² ou étage)', 'number')}
             </div>
             <label className="mt-3 block">
               <span className={lab}>Notre phrase</span>
