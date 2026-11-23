@@ -195,11 +195,11 @@ export default function LettersPreview() {
           <p className="mt-5 text-center text-[10px] leading-relaxed text-stone-400">Curateur de biens atypiques · loftissime.fr · Se désinscrire</p>
         </Mail>
         {/* G — la mesure */}
-        <Mail letter="G" name="La mesure" idea="Pas de photo : un chiffre en très grand. Ce qui rend le bien singulier tient en une mesure." objet="6 mètres" apercu="La hauteur sous verrière d’un atelier du 14e.">
+        <Mail letter="G" name="La mesure" idea="Pas de photo : un chiffre en très grand. Ce qui rend le bien singulier tient en une mesure." objet="6 m de hauteur sous plafond" apercu="Un atelier d’artiste au fond d’une cour du 14e.">
           <div className="flex items-baseline justify-between"><Wordmark className="text-lg text-stone-900" /><span className={CAPS}>N° 1</span></div>
           <p className="mt-8 font-serif text-[5.5rem] leading-none tracking-tight text-stone-900 lining-nums">6 m</p>
           <div className="mt-3 flex items-center gap-1"><span className="h-3 w-px bg-stone-900" /><span className="h-px flex-1 bg-stone-900" /><span className="h-3 w-px bg-stone-900" /></div>
-          <p className={`mt-3 text-xl leading-snug ${SERIF}`}>sous verrière, <span className="italic text-stone-500">au fond d’une cour du 14e.</span></p>
+          <p className={`mt-3 text-xl leading-snug ${SERIF}`}>de hauteur sous plafond, <span className="italic text-stone-500">dans un atelier du 14e.</span></p>
           <p className="mt-4 text-[13px] leading-relaxed text-stone-600">{b1.titre}, {b1.m2} m². <span className="font-serif lining-nums text-stone-900">{b1.prix}</span></p>
           <p className="mt-4"><span className={LINK}>Voir l’annonce ↗</span></p>
           <p className={`mt-6 border-t border-stone-300 pt-4 ${CAPS}`}>Les autres mesures de la semaine</p>
