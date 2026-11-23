@@ -85,6 +85,33 @@ export default async function SelectionPreview() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-24">
+        {/* La vidéo de la semaine : un bien en avant-première, au format du site */}
+        <article className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] rounded-[14px] overflow-hidden bg-white border border-stone-200">
+          <div className="relative flex aspect-[4/5] md:aspect-auto md:min-h-[420px] items-center justify-center bg-[#211C15] border-b md:border-b-0 md:border-r border-stone-900">
+            <span className="absolute left-5 top-5 font-logo font-semibold lowercase tracking-tight text-lg leading-none text-[#FBF5E9]">loftissime.</span>
+            <span className="absolute right-5 top-5 text-xs uppercase tracking-widest text-stone-400">Avant-première</span>
+            <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#FBF5E9]" aria-hidden="true">
+              <span className="ml-1 h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-[#FBF5E9]" />
+            </span>
+            <span className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-[#FBF5E9]">
+              <span className="font-serif text-xl leading-tight">Atelier sous verrière<span className="block italic text-stone-400">Paris 14e</span></span>
+              <span className="text-xs tabular-nums text-stone-400">1:00</span>
+            </span>
+          </div>
+          <div className="p-7 md:p-10 flex flex-col justify-center">
+            <p className="text-xs uppercase tracking-widest text-stone-500">La vidéo de la semaine · Exemple</p>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
+              En ligne jeudi, <span className="italic text-stone-500">vu ici aujourd’hui.</span>
+            </h2>
+            <p className="mt-4 text-stone-600 leading-relaxed">
+              Chaque semaine, un bien en avant-première : une minute de visite, avant sa mise en ligne. Réservé aux abonnés de la lettre.
+            </p>
+            <span className={`mt-6 self-start ${link}`}>Regarder la visite →</span>
+          </div>
+        </article>
+
+        <h2 className="mt-12 md:mt-16 mb-6 font-serif text-3xl md:text-4xl text-stone-900">La sélection de la semaine</h2>
+
         {/* La sélection : une photo, une ligne, un prix, et le lien vers l'agence */}
         <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((it) => (
@@ -100,7 +127,7 @@ export default async function SelectionPreview() {
                 {it.city}
                 <Surface sqm={it.surface_sqm} />
               </p>
-              <h2 className="mt-1.5 font-serif text-xl leading-snug text-stone-900">{typo(it.title)}</h2>
+              <h3 className="mt-1.5 font-serif text-xl leading-snug text-stone-900">{typo(it.title)}</h3>
               <p className="mt-1.5 font-serif text-xl lining-nums text-stone-900">{eur(Number(it.price))}</p>
               <p className="mt-auto pt-4">
                 <span className={link}>Voir l’annonce ↗</span>
@@ -118,7 +145,7 @@ export default async function SelectionPreview() {
               <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
                 La sélection, <span className="italic text-stone-500">chaque jeudi.</span>
               </h2>
-              <p className="mt-4 text-stone-600 leading-relaxed">Les biens repérés dans la semaine, avant qu’ils ne partent.</p>
+              <p className="mt-4 text-stone-600 leading-relaxed">Les biens repérés dans la semaine, et la vidéo d’un bien en avant-première.</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <input type="email" disabled placeholder="Votre e-mail" aria-label="Votre e-mail" className={FIELD} />
