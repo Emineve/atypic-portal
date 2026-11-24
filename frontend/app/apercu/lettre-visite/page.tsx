@@ -75,8 +75,8 @@ export default function LettreVisite() {
         {/* 1. Le bien à la une : la visite */}
         <header className="bg-[#211C15] px-6 pb-8 pt-7 text-[#FBF5E9] sm:px-10">
           <div className="flex items-baseline justify-between gap-4">
-            <span className="font-serif text-[26px] italic leading-none">Béton ciré</span>
-            <span className="text-xs text-[#a59a88]">n° 1, par <span className="font-logo font-semibold tracking-[-0.3px] text-[#FBF5E9]">loftissime.</span></span>
+            <span className="font-serif text-[26px] italic leading-none">Béton ciré <span className="text-[#a59a88]">n° 1</span></span>
+            <span className="text-xs text-[#a59a88]">La newsletter de <span className="font-logo font-semibold tracking-[-0.3px] text-[#FBF5E9]">loftissime.</span></span>
           </div>
           <p className="mt-9 text-[13px] text-[#a59a88]">Le bien à la une, et ce qu’il coûte vraiment.</p>
           <h1 className="mt-2 font-serif text-[44px] leading-[1.02] sm:text-[56px]">
