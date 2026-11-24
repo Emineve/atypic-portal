@@ -84,7 +84,7 @@ export default async function LetterHome() {
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-14 pb-10 md:pb-14">
         {/* Le titre de Loftissime, le même qu'en mode portail : le site ne se réduit pas à sa newsletter */}
-        <h1 className="max-w-4xl text-[2.5rem] md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.04]">
+        <h1 className="text-[2.5rem] md:text-5xl lg:text-[3.2rem] lg:whitespace-nowrap font-serif tracking-tight text-stone-900 leading-[1.04]">
           Tout l’immobilier atypique, <span className="italic text-stone-500">réuni sur un seul site.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg text-stone-600">Lofts, ateliers d’artistes, toits-terrasses, biens de caractère.</p>

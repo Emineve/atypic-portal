@@ -2,7 +2,7 @@ import LetterSignup from './LetterSignup';
 
 // Pied de page du mode lettre : la marque, deux liens, la boîte d'abonnement à la newsletter, les mentions. Rien qui renvoie aux rubriques cachées.
 export default function LetterFooter() {
-  const link = 'text-stone-300 hover:text-[#FBF5E9] underline-offset-4 hover:underline decoration-[#F6CF4E]';
+  const link = 'text-stone-300 hover:text-[#FBF5E9] underline-offset-4 hover:underline decoration-[#FBF5E9]';
   return (
     <footer data-dark-footer className="bg-stone-900 text-[#FBF5E9]">
       <div className="max-w-6xl mx-auto px-6 pt-14 pb-10 md:pt-20">
