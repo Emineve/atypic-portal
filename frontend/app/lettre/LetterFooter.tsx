@@ -12,7 +12,7 @@ export default function LetterFooter() {
               loftissime.
             </a>
             <p className="mt-5 font-serif text-xl md:text-2xl leading-none">
-              Le média de l’immobilier <span className="italic text-stone-400">atypique</span>
+              Curateur de biens <span className="italic text-stone-400">atypiques</span>
             </p>
           </div>
           <LetterSignup variant="footer" source="pied" className="w-full max-w-md" />

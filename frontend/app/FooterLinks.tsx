@@ -22,8 +22,8 @@ export default function FooterLinks({ cities }: { cities: string[] }) {
               loftissime.
             </a>
             <p className="mt-5 font-serif text-xl md:text-2xl leading-none text-[#FBF5E9]">
-              Le média de l’immobilier{' '}
-              <span className="italic text-stone-400">atypique</span>
+              Curateur de biens{' '}
+              <span className="italic text-stone-400">atypiques</span>
             </p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-500">
               Lofts, ateliers d&apos;artistes, toits-terrasses, maisons d&apos;architecte à vendre : un seul site pour les trouver.
