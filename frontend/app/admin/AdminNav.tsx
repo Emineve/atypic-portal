@@ -8,7 +8,7 @@ const ITEMS = [
   { href: '/admin/contacts', label: 'Contacts' },
   { href: '/admin/annonces', label: 'Annonces' },
   { href: '/admin/agences', label: 'Agences' },
-  { href: '/admin/avant-premiere', label: 'La lettre' },
+  { href: '/admin/avant-premiere', label: 'Béton ciré' },
   { href: '/admin/inspiration', label: 'Inspiration' },
 ];
 

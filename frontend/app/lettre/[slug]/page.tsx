@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '../../SiteHeader';
 import LetterView, { dateLettre } from '../LetterView';
-import LetterSignup from '../LetterSignup';
+import NumeroView from '../NumeroView';
 import { getIssue, lettreArticles } from '../../../lib/lettre';
+import { biensDuNumero, estV2, type NumeroContent } from '../../../lib/numero';
 
 // Un numéro de la lettre, lu depuis le back-office : une modification y apparaît ici en une minute au plus.
 export const revalidate = 60;
@@ -35,10 +36,11 @@ export default async function Numero({ params }: { params: { slug: string } }) {
           {!issue.paru && <span className="mt-1 block text-stone-500">Maquette, pas encore envoyée.</span>}
         </p>
         <div className="mt-6">
-          <LetterView issue={issue} items={items} articles={lettreArticles(issue.content)} />
-        </div>
-        <div className="mt-10 px-6 sm:px-0">
-          <LetterSignup variant="band" source="numero" />
+          {estV2(issue.content) ? (
+            <NumeroView numero={issue.numero} c={issue.content as unknown as NumeroContent} items={biensDuNumero(issue.content as unknown as NumeroContent, items)} brouillon={!issue.paru} />
+          ) : (
+            <LetterView issue={issue} items={items} articles={lettreArticles(issue.content)} />
+          )}
         </div>
       </div>
     </div>

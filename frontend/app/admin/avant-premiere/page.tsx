@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getSupabase } from '../../../lib/supabase';
-import IssueEditor, { type FullItem } from './IssueEditor';
+import NumeroEditor, { type FullItem } from './NumeroEditor';
+import Abonnes from './Abonnes';
 import { KINDS } from '../../lettre/Mesure';
 
 // Même clé que la page d'administration : on se connecte d'abord sur /admin
@@ -46,7 +47,7 @@ type Item = {
 };
 
 const RUBRIQUES: [string, string][] = [
-  ['avant_premiere', 'Avant-première (vidéo)'],
+  ['avant_premiere', 'À la une (vidéo)'],
   ['deja_en_ligne', 'Déjà en ligne'],
   ['petit_prix', 'Petit prix'],
 ];
@@ -108,7 +109,7 @@ export default function AdminAvantPremiere() {
   const [parPrix, setParPrix] = useState(false);
   const [saving, setSaving] = useState(false);
   // Deux vues : le numéro tel qu'il paraîtra, ou le suivi des biens et des agences
-  const [view, setView] = useState<'numero' | 'biens'>('numero');
+  const [view, setView] = useState<'numero' | 'biens' | 'abonnes'>('numero');
   // Le visage du site : portail d'annonces ou lettre seule
   const [mode, setMode] = useState<'portail' | 'lettre' | null>(null);
 
@@ -237,7 +238,7 @@ export default function AdminAvantPremiere() {
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <div className="border-b border-stone-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <h1 className="font-serif text-xl">La lettre</h1>
+          <h1 className="font-serif text-xl">Béton ciré</h1>
           {token && items && view === 'biens' && (
             <button onClick={() => setEdit({ ...EMPTY })} className="h-10 px-4 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
               Ajouter un bien
@@ -271,7 +272,7 @@ export default function AdminAvantPremiere() {
 
         {items && !edit && (
           <div className="mb-6 flex gap-2">
-            {([['numero', 'Le numéro'], ['biens', 'Les biens et les agences']] as const).map(([v, l]) => (
+            {([['numero', 'Le numéro'], ['biens', 'Les biens et les agences'], ['abonnes', 'Abonnés et résultats']] as const).map(([v, l]) => (
               <button key={v} onClick={() => setView(v)} className={`h-10 px-4 text-sm border ${view === v ? 'bg-stone-900 text-white border-stone-900' : 'bg-white border-stone-300 text-stone-700'}`}>
                 {l}
               </button>
@@ -279,12 +280,13 @@ export default function AdminAvantPremiere() {
           </div>
         )}
 
-        {items && !edit && view === 'numero' && token && <IssueEditor token={token} items={items as unknown as FullItem[]} reload={() => load(token)} />}
+        {items && !edit && view === 'numero' && token && <NumeroEditor token={token} items={items as unknown as FullItem[]} />}
+        {items && !edit && view === 'abonnes' && token && <Abonnes token={token} />}
 
         {items && !edit && view === 'biens' && (
           <>
             <p className="text-sm text-stone-600">
-              Les biens de la lettre et leur agence : où en est le contact, l&apos;accord pour les photos, la vidéo.
+              Le vivier de biens de Béton ciré : chaque numéro y choisit son bien à la une et ses trois autres biens. Ici, le lien de l&apos;annonce, le contact avec l&apos;agence ou le propriétaire, la vidéo.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {chips.map(([v, l]) => (
@@ -407,7 +409,7 @@ export default function AdminAvantPremiere() {
               </label>
             </div>
 
-            <h2 className="mt-8 font-serif text-lg">La vidéo (avant-première)</h2>
+            <h2 className="mt-8 font-serif text-lg">La vidéo (bien à la une)</h2>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {sel('video', 'État de la vidéo', VIDEO)}
               {txt('shoot_date', 'Tournage le', 'date')}
