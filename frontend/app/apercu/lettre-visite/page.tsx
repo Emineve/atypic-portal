@@ -74,9 +74,9 @@ export default function LettreVisite() {
       >
         {/* 1. Le bien à la une : la visite */}
         <header className="bg-[#211C15] px-6 pb-8 pt-7 text-[#FBF5E9] sm:px-10">
-          <div className="flex items-baseline justify-between gap-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
             <span className="font-serif text-[26px] italic leading-none">Béton ciré <span className="text-[#a59a88]">n° 1</span></span>
-            <span className="text-xs text-[#a59a88]">La newsletter de <span className="font-logo font-semibold tracking-[-0.3px] text-[#FBF5E9]">loftissime.</span></span>
+            <span className="text-xs text-[#a59a88]">La newsletter de ceux qui aiment les biens atypiques, by <span className="font-logo font-semibold tracking-[-0.3px] text-[#FBF5E9]">loftissime.</span></span>
           </div>
           <p className="mt-9 text-[13px] text-[#a59a88]">Le bien à la une, et ce qu’il coûte vraiment.</p>
           <h1 className="mt-2 font-serif text-[44px] leading-[1.02] sm:text-[56px]">
@@ -231,7 +231,7 @@ export default function LettreVisite() {
         {/* Le bloc final */}
         <footer className="mt-10 bg-[#211C15] px-6 pb-8 pt-8 text-[#FBF5E9] sm:px-10">
           <p className="font-serif text-[40px] italic leading-none">Béton ciré</p>
-          <p className="mt-2 text-sm text-[#cfc5b4]">La newsletter de ceux qui aiment les lieux atypiques, par <span className="font-logo font-semibold tracking-[-0.3px] text-[#FBF5E9]">loftissime.</span></p>
+          <p className="mt-2 text-sm text-[#cfc5b4]">La newsletter de ceux qui aiment les biens atypiques, by <span className="font-logo font-semibold tracking-[-0.3px] text-[#FBF5E9]">loftissime.</span></p>
           <p className="mt-6 text-[13px] leading-relaxed text-[#a59a88]">
             Ont collaboré à ce numéro : <Blank>l’architecte</Blank>, <Blank>l’entrepreneur</Blank>, <Blank>le courtier</Blank>, <Blank>l’artiste</Blank>.
           </p>
