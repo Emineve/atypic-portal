@@ -16,7 +16,7 @@ const LETTER_LINKS = [
   { href: '/guide', label: 'Avant de signer' },
 ];
 const LETTER_LINK =
-  'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
+  'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
 
 const FAVORITES_KEY = 'singulier:favorites';
 
@@ -87,7 +87,7 @@ export default function SiteHeaderClient({
                 ))}
               </div>
             </div>
-            <a href="/#recevoir" className="text-sm font-medium text-stone-900 whitespace-nowrap bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] bg-no-repeat bg-[length:100%_2px] pb-[3px]">
+            <a href="/#recevoir" className="text-sm font-medium text-stone-900 whitespace-nowrap bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] bg-no-repeat bg-[length:100%_2px] pb-[3px]">
               Recevoir Béton ciré
             </a>
           </div>

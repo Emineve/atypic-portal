@@ -1,7 +1,6 @@
 import SiteHeader from '../SiteHeader';
 import LetterSignup from './LetterSignup';
 import Mesure from './Mesure';
-import { BETON_BG, Poutre } from './Beton';
 import { BIENS_EXEMPLE, EXEMPLES_ACTIFS } from '../../lib/lettreExemples';
 import type { LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
@@ -9,6 +8,16 @@ import { getIssue, getIssues } from '../../lib/lettre';
 // L'accueil du mode lettre, de haut en bas : le titre de Loftissime et l'abonnement à sa newsletter « Béton ciré »,
 // puis les biens parus dans la newsletter. Rien d'autre pour le moment.
 // Tant qu'aucun numéro n'est paru, les numéros et les biens affichés sont ceux de lib/lettreExemples.ts.
+
+// Les questions de l'accueil : ce qu'est le site, ce qu'est sa newsletter, ce qu'on fait de l'adresse e-mail
+const QUESTIONS: [string, string][] = [
+  ['Loftissime, c’est quoi ?', 'Un site consacré à l’immobilier atypique : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Il commence par sa newsletter, Béton ciré. Le reste arrive ensuite.'],
+  ['Et Béton ciré ?', 'C’est la newsletter de Loftissime. Chaque numéro s’arrête sur un bien atypique à Paris : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. Il se termine par trois autres adresses.'],
+  ['Qui sont vos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun parle de son métier, et les chiffres qu’il donne sont signés de son nom.'],
+  ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est présenté par son agence ou par son propriétaire, et c’est vers eux que mène le lien de l’annonce.'],
+  ['L’abonnement est-il payant ?', 'Non, Béton ciré est gratuite.'],
+  ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer Béton ciré, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
+];
 
 const euros = (n: number | null) => (n == null ? '' : n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' €');
 
@@ -77,20 +86,7 @@ export default async function LetterHome() {
         </h1>
         <p className="mt-5 max-w-xl text-lg text-stone-600">Lofts, ateliers d’artistes, toits-terrasses, biens de caractère.</p>
 
-        {/* la boîte d'abonnement, dans les matières de la newsletter : béton et poutre d'acier */}
-        <div className="mt-10 md:mt-12" style={BETON_BG}>
-          <Poutre />
-          <div className="grid items-center gap-x-12 gap-y-6 p-6 md:p-9 lg:grid-cols-[1.1fr_1fr]">
-            <div>
-              <h2 className="font-serif text-5xl italic leading-none text-[#211C15] md:text-6xl">Béton ciré</h2>
-              <p className="mt-3 font-serif text-xl leading-snug text-[#211C15]">La newsletter de Loftissime.</p>
-              <p className="mt-3 max-w-lg text-[#4a4238]">
-                Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.
-              </p>
-            </div>
-            <LetterSignup source="accueil" className="w-full max-w-md lg:justify-self-end" />
-          </div>
-        </div>
+        <LetterSignup variant="band" source="accueil" className="mt-10 md:mt-12" />
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
@@ -109,6 +105,41 @@ export default async function LetterHome() {
             </ul>
           </section>
         )}
+
+        <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
+          <h2 className="text-xs uppercase tracking-widest text-stone-500">Béton ciré, le principe</h2>
+          <div className="mt-5 grid gap-x-12 gap-y-5 md:grid-cols-[1fr_1.4fr]">
+            <p className="font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
+              Vivre autrement, <span className="italic text-stone-500">ça se calcule.</span>
+            </p>
+            <div className="space-y-4 text-lg leading-relaxed text-stone-700">
+              <p>
+                Un loft, un atelier, une ancienne boutique : beaucoup en rêvent, peu osent. Parce qu’on ne sait pas ce que le lieu peut devenir, ni ce qu’il coûtera au bout du compte.
+              </p>
+              <p>
+                Béton ciré est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
+              </p>
+              <p>
+                Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
+          <h2 className="text-xs uppercase tracking-widest text-stone-500">Vos questions</h2>
+          <div className="mt-2 max-w-3xl">
+            {QUESTIONS.map(([q, r]) => (
+              <details key={q} className="group border-b border-stone-200">
+                <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6 py-5 font-serif text-xl md:text-2xl leading-snug text-stone-900 [&::-webkit-details-marker]:hidden">
+                  {q}
+                  <span aria-hidden className="font-sans text-xl text-stone-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="pb-6 text-lg leading-relaxed text-stone-700">{r}</p>
+              </details>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
