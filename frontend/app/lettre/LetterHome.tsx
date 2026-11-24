@@ -6,7 +6,7 @@ import Mesure from './Mesure';
 import { dateLettre, type LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
 
-// L'accueil du mode lettre, de haut en bas : la promesse et l'inscription, la lettre de la quinzaine,
+// L'accueil du mode lettre, de haut en bas : le titre de Loftissime et l'abonnement à sa newsletter « Béton ciré »,
 // les biens déjà parus, qui nous sommes, puis État des lieux.
 // `drafts` : l'aperçu montre aussi le numéro en préparation ; le site public ne montre que les numéros parus.
 
@@ -36,7 +36,7 @@ function BienCard({ b, numero }: { b: LetterItem; numero: number }) {
         </p>
         <p className="mt-auto pt-4 font-serif text-xl lining-nums text-stone-900">{euros(b.prix)}</p>
         <p className="mt-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs text-stone-500">
-          <span>Béton ciré n° {numero}</span>
+          <span>Paru dans Béton ciré n° {numero}</span>
           {b.agency_url ? (
             <a href={b.agency_url} target="_blank" rel="noreferrer" className="font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">
               {b.seller === 'particulier' ? 'Voir l’annonce du propriétaire' : `Voir l’annonce chez ${b.agency_name}`}
@@ -72,13 +72,21 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
         <div className="grid items-center gap-x-12 gap-y-8 lg:grid-cols-[1.15fr_1fr]">
           <div>
+            {/* Le titre de Loftissime, le même qu'en mode portail : le site ne se réduit pas à sa newsletter */}
             <h1 className="text-[2.5rem] md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.04]">
-              Béton ciré, <span className="italic text-stone-500">la newsletter de ceux qui aiment les lieux atypiques.</span>
+              Tout l’immobilier atypique, <span className="italic text-stone-500">réuni sur un seul site.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-stone-600">
-              Parce qu’habiter un lieu atypique peut passer du rêve à la réalité. Un jeudi sur deux : une visite, un projet, son coût complet.
-            </p>
-            <LetterSignup source="accueil" className="mt-8 max-w-md" />
+            <p className="mt-5 max-w-xl text-lg text-stone-600">Lofts, ateliers d’artistes, toits-terrasses, biens de caractère.</p>
+
+            <div className="mt-9 border-t border-stone-900 pt-5">
+              <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
+                Abonnez-vous à Béton ciré, <span className="italic text-stone-500">la newsletter de Loftissime.</span>
+              </h2>
+              <p className="mt-2 max-w-xl text-stone-600">
+                Parce qu’habiter un lieu atypique peut passer du rêve à la réalité. Un jeudi sur deux : une visite, un projet, son coût complet.
+              </p>
+              <LetterSignup source="accueil" className="mt-5 max-w-md" />
+            </div>
           </div>
           <div className="overflow-hidden rounded-[14px] border border-stone-900 bg-[#F6CF4E]">
             <GuideArt art="loft" className="block aspect-[4/3] w-full" />
@@ -90,7 +98,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
         {biens.length > 0 && (
           <section>
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-              <h2 className="text-xs uppercase tracking-widest text-stone-500">Déjà présentés dans Béton ciré</h2>
+              <h2 className="text-xs uppercase tracking-widest text-stone-500">Les biens parus dans Béton ciré, la newsletter de Loftissime</h2>
               <p className="text-sm text-stone-500">{biens.length} bien{biens.length > 1 ? 's' : ''}</p>
             </div>
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -137,7 +145,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
         </section>
 
         <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
-          <h2 className="text-xs uppercase tracking-widest text-stone-500">Le principe</h2>
+          <h2 className="text-xs uppercase tracking-widest text-stone-500">Béton ciré, le principe</h2>
           <div className="mt-5 grid gap-x-12 gap-y-5 md:grid-cols-[1fr_1.4fr]">
             <p className="font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
               Vivre autrement, <span className="italic text-stone-500">ça se calcule.</span>

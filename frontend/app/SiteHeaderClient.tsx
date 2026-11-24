@@ -12,7 +12,7 @@ import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
 
 const LETTER_LINKS = [
-  { href: '/lettre', label: 'Tous les numéros de Béton ciré' },
+  { href: '/lettre', label: 'Béton ciré, tous les numéros' },
   { href: '/guide', label: 'Avant de signer' },
 ];
 const LETTER_LINK =
