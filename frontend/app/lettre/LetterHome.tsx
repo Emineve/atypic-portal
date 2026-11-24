@@ -1,10 +1,9 @@
-import Link from 'next/link';
 import SiteHeader from '../SiteHeader';
 import LetterSignup from './LetterSignup';
 import Mesure from './Mesure';
 import { BETON_BG, Poutre, Verriere } from './Beton';
-import { BIENS_EXEMPLE, EXEMPLES_ACTIFS, NUMEROS_EXEMPLE, PROCHAIN_NUMERO } from '../../lib/lettreExemples';
-import { dateLettre, type LetterItem } from './LetterView';
+import { BIENS_EXEMPLE, EXEMPLES_ACTIFS, PROCHAIN_NUMERO } from '../../lib/lettreExemples';
+import type { LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
 
 // L'accueil du mode lettre, de haut en bas : le titre de Loftissime et l'abonnement à sa newsletter « Béton ciré »,
@@ -59,9 +58,6 @@ export default async function LetterHome() {
   const biens: { b: LetterItem; numero: number; une: boolean }[] = exemples
     ? BIENS_EXEMPLE
     : full.flatMap((d) => (d ? d.items.filter((i) => i.rubrique !== 'avant_premiere').map((b, k) => ({ b, numero: d.issue.numero, une: k === 0 })) : []));
-  const numeros = exemples
-    ? NUMEROS_EXEMPLE.map((n) => ({ ...n, href: null as string | null, date: '' }))
-    : parus.slice(0, 3).map((l) => ({ numero: l.numero, titre: l.titre || '', resume: l.resume || '', href: `/lettre/numero-${l.numero}` as string | null, date: dateLettre(l.date_parution, false) }));
   const prochain = exemples ? PROCHAIN_NUMERO : (parus[0]?.numero || 0) + 1;
 
   return (
@@ -110,34 +106,8 @@ export default async function LetterHome() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
-        <section>
-          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-            <h2 className="text-xs uppercase tracking-widest text-stone-500">Les numéros de Béton ciré</h2>
-            {!exemples && parus.length > 3 && <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">Tous les numéros</Link>}
-          </div>
-          <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <li>
-              <div className="flex aspect-[640/400] items-center justify-center border border-dashed border-stone-900 px-6 text-center">
-                <span className="font-serif text-2xl italic leading-tight text-stone-500">Le n° {prochain} arrive bientôt</span>
-              </div>
-              <p className="mt-4 text-sm text-stone-500">N° {prochain}, à paraître</p>
-            </li>
-            {numeros.map((n) => {
-              const inner = (
-                <>
-                  <Verriere label={`La visite du numéro ${n.numero}`} />
-                  <span className="mt-4 block text-sm text-stone-500">N° {n.numero}{n.date && `, ${n.date}`}</span>
-                  <span className="mt-1 block font-serif text-2xl leading-tight text-stone-900">{n.titre}</span>
-                  {n.resume && <span className="mt-1.5 block text-stone-600">{n.resume}</span>}
-                </>
-              );
-              return <li key={n.numero}>{n.href ? <Link href={n.href} className="block">{inner}</Link> : <div>{inner}</div>}</li>;
-            })}
-          </ul>
-        </section>
-
         {biens.length > 0 && (
-          <section className="mt-16 md:mt-20">
+          <section>
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
               <h2 className="text-xs uppercase tracking-widest text-stone-500">Les biens parus dans Béton ciré</h2>
               <p className="text-sm text-stone-500">{biens.length} biens dans les deux derniers numéros</p>
