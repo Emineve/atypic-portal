@@ -5,7 +5,7 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-// Maquette de travail, non publiée : la lettre recentrée sur un seul bien à moins de 500 000 €, visité à plusieurs.
+// Maquette de travail, non publiée : la lettre recentrée sur un seul bien à potentiel, sans limite de prix, visité à plusieurs.
 // Le bien est réel (repéré le 24 novembre 2026) ; tout ce qui est entre crochets attend les mots et les chiffres
 // de l'architecte, de l'entrepreneur et du courtier. Aucun chiffre de travaux ni de mensualité n'est inventé ici.
 
@@ -49,7 +49,7 @@ export default function LettreVisite() {
             <span className="font-logo text-[19px] font-semibold tracking-[-0.6px]">loftissime.</span>
             <span className="text-xs text-[#a59a88]">n° 1, un jeudi sur deux</span>
           </div>
-          <p className="mt-9 text-[13px] text-[#a59a88]">Un bien atypique à moins de 500 000 €, et ce qu’il coûte vraiment.</p>
+          <p className="mt-9 text-[13px] text-[#a59a88]">Un bien à potentiel, et ce qu’il coûte vraiment.</p>
           <h1 className="mt-2 font-serif text-[44px] leading-[1.02] sm:text-[56px]">
             L’atelier <span className="italic text-[#a59a88]">du Panthéon</span>
           </h1>
@@ -172,7 +172,7 @@ export default function LettreVisite() {
 
         {/* Trois autres adresses */}
         <section className="px-6 pt-9 sm:px-10">
-          <h2 className="font-serif text-[27px] leading-tight">Trois autres adresses, <span className="italic text-[#74695A]">sous 500 000 €.</span></h2>
+          <h2 className="font-serif text-[27px] leading-tight">Trois autres adresses, <span className="italic text-[#74695A]">à transformer.</span></h2>
           <ul className="mt-4 border-t border-[#211C15]">
             {AUTRES.map((a) => (
               <li key={a.lieu} className="flex items-center gap-4 border-b border-[#D9CFBC] py-4">
