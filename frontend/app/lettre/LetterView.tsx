@@ -61,6 +61,16 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
   const grands = biens.filter((i) => i.rubrique !== 'petit_prix');
   const petits = biens.filter((i) => i.rubrique === 'petit_prix');
   const horsParis = biens.some((i) => i.lieu && !/^paris\b/i.test(i.lieu.trim()));
+  // Ce que l'architecte ferait du bien : ses mots, sa signature
+  const architecte = c.carte?.on ? (
+            <div className="border-b border-[#D9CFBC] py-5">
+              <h2 className="font-serif text-[22px] leading-tight">L’œil de l’architecte, <span className="italic text-[#74695A]"><Blank v={c.carte!.nom} ph="le nom de l’architecte" draft={draft} />.</span></h2>
+              <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed"><Blank v={c.carte!.texte} ph="Ce qu’il ou elle ferait de ce bien, en cinq lignes écrites de sa main." draft={draft} /></p>
+              <p className="mt-2 text-[13px] text-[#74695A]">
+                {c.carte!.lien && c.carte!.signature ? <a href={c.carte!.lien} target="_blank" rel="noreferrer" className="underline underline-offset-4">{c.carte!.signature}</a> : <Blank v={c.carte!.signature} ph="Son agence, avec un lien vers son site" draft={draft} />}
+              </p>
+            </div>
+  ) : null;
   const bien = (x: LetterItem, i: number) => (
               <li key={x.id || i} className="flex gap-4 border-b border-[#D9CFBC] py-7 sm:gap-5">
                 {x.kind !== 'aucun' && <Mesure kind={x.kind} valeur={x.valeur} className="w-[104px] shrink-0 self-start sm:w-[150px]" />}
@@ -159,23 +169,12 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
         <section className="px-6 pt-9 sm:px-10">
           <h2 className="font-serif text-[27px] leading-tight">Sous 500 000 €, <span className="italic text-[#74695A]">à Paris et autour.</span></h2>
           <ul className="mt-4 border-t border-[#211C15]">{petits.map(bien)}</ul>
+          {architecte}
         </section>
       )}
 
-      {/* L'œil de l'architecte */}
-      {c.carte?.on && (
-        <section className="px-6 pt-2 sm:px-10">
-          {c.carte?.on && (
-            <div className="border-b border-[#D9CFBC] py-5">
-              <h2 className="font-serif text-[22px] leading-tight">L’œil de l’architecte, <span className="italic text-[#74695A]"><Blank v={c.carte.nom} ph="le nom de l’architecte" draft={draft} />.</span></h2>
-              <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed"><Blank v={c.carte.texte} ph="Un lieu, un détail ou un projet choisi, en cinq lignes écrites de sa main." draft={draft} /></p>
-              <p className="mt-2 text-[13px] text-[#74695A]">
-                {c.carte.lien && c.carte.signature ? <a href={c.carte.lien} target="_blank" rel="noreferrer" className="underline underline-offset-4">{c.carte.signature}</a> : <Blank v={c.carte.signature} ph="Son agence, avec un lien vers son site" draft={draft} />}
-              </p>
-            </div>
-          )}
-        </section>
-      )}
+      {/* L'œil de l'architecte, seul, quand le numéro n'a pas de bien sous 500 000 € */}
+      {c.carte?.on && petits.length === 0 && <section className="px-6 pt-2 sm:px-10">{architecte}</section>}
 
       {/* La question */}
       {c.question?.on !== false && (c.question?.choix?.length || 0) > 0 && (

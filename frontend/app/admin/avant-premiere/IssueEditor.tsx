@@ -333,7 +333,7 @@ export default function IssueEditor({ token, items, reload }: { token: string; i
               <Field title="Signature (son agence)" value={c.carte.signature} onChange={(v) => setC({ carte: { ...c.carte, signature: v } })} />
             </div>
             <div className="mt-3">
-              <Field title="Son texte, tel qu’il ou elle l’a écrit" area value={c.carte.texte} onChange={(v) => setC({ carte: { ...c.carte, texte: v } })} />
+              <Field title="Ce qu’il ou elle ferait du bien sous 500 000 €, avec ses mots" area value={c.carte.texte} onChange={(v) => setC({ carte: { ...c.carte, texte: v } })} />
             </div>
             <div className="mt-3">
               <Field title="Lien vers son site" type="url" value={c.carte.lien} onChange={(v) => setC({ carte: { ...c.carte, lien: v } })} />
