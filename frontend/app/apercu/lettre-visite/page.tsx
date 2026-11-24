@@ -184,7 +184,7 @@ export default function LettreVisite() {
         {/* 2. Avant de signer */}
         <section className="px-6 pt-10 sm:px-10">
           <Poutre />
-          <h2 className="font-serif text-[27px] leading-tight">Avant de signer, <span className="italic text-[#74695A]">un point de vigilance.</span></h2>
+          <h2 className="font-serif text-[27px] leading-tight">Avant la promesse, <span className="italic text-[#74695A]">un point de vigilance.</span></h2>
           <p className="mt-4 border-l-2 border-[#211C15] pl-4 font-serif text-xl leading-snug">
             Cet ancien atelier en rez-de-chaussée est-il un logement, ou encore un local ?
           </p>
