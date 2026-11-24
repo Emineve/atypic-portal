@@ -1,7 +1,8 @@
 import SiteHeader from '../SiteHeader';
 import LetterSignup from './LetterSignup';
 import Mesure from './Mesure';
-import { BIENS_EXEMPLE, EXEMPLES_ACTIFS } from '../../lib/lettreExemples';
+import { BIENS_EXEMPLE, EXEMPLES_ACTIFS, NUMEROS_EXEMPLE } from '../../lib/lettreExemples';
+import { Verriere } from './Beton';
 import type { LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
 
@@ -66,6 +67,8 @@ export default async function LetterHome() {
   const parus = (await getIssues()).filter((i) => i.paru);
   // Tant qu'aucun numéro n'est paru, l'accueil montre des numéros d'exemple, sans lien
   const exemples = parus.length === 0 && EXEMPLES_ACTIFS;
+  // le dernier numéro paru : c'est de lui que vient l'extrait vidéo à droite de l'inscription
+  const dernier = exemples ? NUMEROS_EXEMPLE[0].numero : parus[0]?.numero;
   const full = exemples ? [] : await Promise.all(parus.slice(0, 2).map((i) => getIssue(i.numero)));
   const biens: { b: LetterItem; numero: number; une: boolean }[] = exemples
     ? BIENS_EXEMPLE
@@ -89,7 +92,21 @@ export default async function LetterHome() {
         </h1>
         <p className="mt-5 max-w-xl text-lg text-stone-600">Lofts, ateliers d’artistes, toits-terrasses, biens de caractère.</p>
 
-        <LetterSignup variant="band" source="accueil" className="mt-10 md:mt-12" />
+        <LetterSignup
+          variant="band"
+          source="accueil"
+          className="mt-10 md:mt-12"
+          aside={
+            <figure>
+              <div className="overflow-hidden rounded-[10px]">
+                <Verriere label={`La visite filmée de Béton ciré n° ${dernier}`} />
+              </div>
+              <figcaption className="mt-3 text-sm text-stone-500">
+                Extrait de <em>Béton ciré</em> n° {dernier}
+              </figcaption>
+            </figure>
+          }
+        />
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">

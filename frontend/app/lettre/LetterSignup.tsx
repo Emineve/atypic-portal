@@ -36,7 +36,8 @@ const SURFACES: [string, string][] = [
 const chip = (on: boolean) =>
   `rounded-full border px-3.5 py-2 text-sm transition ${on ? 'border-stone-900 bg-stone-900 text-[#FBF5E9]' : 'border-stone-300 bg-white text-stone-800 hover:border-stone-900'}`;
 
-export default function LetterSignup({ variant = 'hero', source = 'accueil', className = '' }: { variant?: 'hero' | 'band' | 'footer'; source?: string; className?: string }) {
+// `aside` : ce qui s'affiche à droite du formulaire dans la boîte (l'extrait vidéo du dernier numéro, sur l'accueil)
+export default function LetterSignup({ variant = 'hero', source = 'accueil', className = '', aside }: { variant?: 'hero' | 'band' | 'footer'; source?: string; className?: string; aside?: React.ReactNode }) {
   const [email, setEmail] = useState('');
   const [step, setStep] = useState<'email' | 'criteres' | 'fini'>('email');
   const [busy, setBusy] = useState(false);
@@ -194,6 +195,8 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
         send(false);
       }}
     >
+     <div className={aside ? 'grid items-center gap-x-12 gap-y-8 lg:grid-cols-[1.25fr_1fr]' : undefined}>
+      <div>
       {band && (
         <>
           <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
@@ -225,6 +228,9 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
         C’est gratuit. En vous inscrivant, vous acceptez de recevoir <em>Béton ciré</em>, la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
         <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
       </p>
+      </div>
+      {aside}
+     </div>
     </form>
   );
 }
