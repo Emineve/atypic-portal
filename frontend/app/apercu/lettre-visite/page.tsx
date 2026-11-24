@@ -144,6 +144,21 @@ export default function LettreVisite() {
           </div>
         </section>
 
+        {/* Y vivre, au quotidien : ce que le bien coûte chaque mois, une fois acheté */}
+        <section className="px-6 pt-9 sm:px-10">
+          <h2 className="font-serif text-[27px] leading-tight">Y vivre, <span className="italic text-[#74695A]">au quotidien.</span></h2>
+          <p className="mt-1 text-[13px] text-[#74695A]">Ce que le bien coûte chaque mois, une fois acheté. Les montants sont ceux de l’annonce et du diagnostic.</p>
+          <div className="mt-4 border-t border-[#211C15]">
+            <Ligne label="Charges de copropriété" note="Données par l’annonce" montant={<Blank>par mois</Blank>} />
+            <Ligne label="Énergie" note="La fourchette du diagnostic de performance énergétique" montant={<Blank>par mois</Blank>} />
+            <Ligne label="Taxe foncière" note="Ramenée au mois" montant={<Blank>par mois</Blank>} />
+            <div className="mt-2 border-t border-[#211C15]">
+              <Ligne fort label="Le vrai mois" montant={<Blank>mensualité + quotidien</Blank>} />
+            </div>
+          </div>
+          <p className="mt-3 text-xs leading-snug text-[#74695A]">Le vrai mois additionne la mensualité du crédit et ces trois postes. C’est le chiffre à comparer à un loyer.</p>
+        </section>
+
         {/* Le point à vérifier */}
         <section className="px-6 pt-9 sm:px-10">
           <h2 className="font-serif text-[22px] leading-tight">À vérifier avant de signer, <span className="italic text-[#74695A]">une seule chose.</span></h2>
