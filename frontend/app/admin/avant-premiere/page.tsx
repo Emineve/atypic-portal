@@ -42,6 +42,7 @@ type Item = {
   kind: string;
   valeur: number | null;
   ordre: number | null;
+  seller: string;
 };
 
 const RUBRIQUES: [string, string][] = [
@@ -65,6 +66,18 @@ const PHOTOS: [string, string][] = [
   ['accorde', 'Accordées'],
   ['refuse', 'Refusées'],
 ];
+const VENDEURS: [string, string][] = [
+  ['agence', 'Agence'],
+  ['particulier', 'Particulier'],
+];
+// Tranches de prix, pour classer les biens d'un coup d'œil
+const TRANCHES: [string, string, number, number][] = [
+  ['p0', 'Moins de 300 000 €', 0, 299999],
+  ['p1', '300 000 à 500 000 €', 300000, 500000],
+  ['p2', '500 000 à 750 000 €', 500001, 750000],
+  ['p3', '750 000 € à 1 M€', 750001, 1000000],
+  ['p4', 'Plus de 1 M€', 1000001, Infinity],
+];
 const VIDEO: [string, string][] = [
   ['', 'Sans objet'],
   ['a_tourner', 'À tourner'],
@@ -77,7 +90,7 @@ const EMPTY: Item = {
   rubrique: 'deja_en_ligne', issue_no: null, status: 'repere', mesure: '', mesure_detail: '', phrase: '', bien: '', lieu: '',
   surface: '', prix: null, usage_note: '', agency_name: '', agency_url: '', agency_site: '', agency_email: '', agency_phone: '',
   contact_name: '', source: '', exclusive: null, seen_on: null, checked_on: null, contacted_on: null, answered_on: null,
-  photos: 'non_demande', online_date: null, shoot_date: null, video: null, video_url: '', notes: '', kind: 'hauteur', valeur: null, ordre: null,
+  photos: 'non_demande', online_date: null, shoot_date: null, video: null, video_url: '', notes: '', kind: 'hauteur', valeur: null, ordre: null, seller: 'agence',
 };
 
 const label = (list: [string, string][], v: string | null) => list.find((x) => x[0] === (v || ''))?.[1] || '';
@@ -89,6 +102,10 @@ export default function AdminAvantPremiere() {
   const [error, setError] = useState('');
   const [edit, setEdit] = useState<Item | null>(null);
   const [filter, setFilter] = useState('tous');
+  // Deux tris qui se combinent avec la vue : le vendeur et la tranche de prix
+  const [vendeur, setVendeur] = useState('');
+  const [tranche, setTranche] = useState('');
+  const [parPrix, setParPrix] = useState(false);
   const [saving, setSaving] = useState(false);
   // Deux vues : le numéro tel qu'il paraîtra, ou le suivi des biens et des agences
   const [view, setView] = useState<'numero' | 'biens'>('numero');
@@ -144,13 +161,16 @@ export default function AdminAvantPremiere() {
   }, [items]);
 
   const shown = useMemo(() => {
-    const list = items || [];
-    if (filter === 'tous') return list;
-    if (filter === 'reserve') return list.filter((i) => i.issue_no == null && !['ecarte', 'vendu', 'refus'].includes(i.status));
-    if (filter === 'relance') return list.filter((i) => i.status === 'agence_contactee' || i.photos === 'demande');
-    if (filter.startsWith('n')) return list.filter((i) => i.issue_no === Number(filter.slice(1)));
+    let list = items || [];
+    if (filter === 'reserve') list = list.filter((i) => i.issue_no == null && !['ecarte', 'vendu', 'refus'].includes(i.status));
+    else if (filter === 'relance') list = list.filter((i) => i.status === 'agence_contactee' || i.photos === 'demande');
+    else if (filter.startsWith('n')) list = list.filter((i) => i.issue_no === Number(filter.slice(1)));
+    if (vendeur) list = list.filter((i) => (i.seller || 'agence') === vendeur);
+    const t = TRANCHES.find((x) => x[0] === tranche);
+    if (t) list = list.filter((i) => i.prix != null && i.prix >= t[2] && i.prix <= t[3]);
+    if (parPrix) list = [...list].sort((a, b) => (a.prix ?? Infinity) - (b.prix ?? Infinity));
     return list;
-  }, [items, filter]);
+  }, [items, filter, vendeur, tranche, parPrix]);
 
   async function save() {
     if (!token || !edit) return;
@@ -277,6 +297,25 @@ export default function AdminAvantPremiere() {
                 </button>
               ))}
             </div>
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+              <select aria-label="Vendeur" value={vendeur} onChange={(e) => setVendeur(e.target.value)} className="h-9 border border-stone-300 bg-white px-2">
+                <option value="">Agences et particuliers</option>
+                {VENDEURS.map(([v, l]) => (
+                  <option key={v} value={v}>{l === 'Agence' ? 'Agences seulement' : 'Particuliers seulement'}</option>
+                ))}
+              </select>
+              <select aria-label="Tranche de prix" value={tranche} onChange={(e) => setTranche(e.target.value)} className="h-9 border border-stone-300 bg-white px-2">
+                <option value="">Tous les prix</option>
+                {TRANCHES.map(([v, l]) => (
+                  <option key={v} value={v}>{l}</option>
+                ))}
+              </select>
+              <label className="flex h-9 items-center gap-2 px-1">
+                <input type="checkbox" className="h-4 w-4 accent-stone-900" checked={parPrix} onChange={(e) => setParPrix(e.target.checked)} />
+                Du moins cher au plus cher
+              </label>
+              <span className="text-stone-500">{shown.length} bien{shown.length > 1 ? 's' : ''}</span>
+            </div>
 
             <ul className="mt-5 border border-stone-200 bg-white divide-y divide-stone-200">
               {shown.map((i) => (
@@ -296,8 +335,9 @@ export default function AdminAvantPremiere() {
                       <span className="px-2 py-0.5 border border-stone-300">{label(RUBRIQUES, i.rubrique)}</span>
                       {i.issue_no != null && <span className="px-2 py-0.5 border border-stone-300">N° {i.issue_no}</span>}
                       <span className="px-2 py-0.5 border border-stone-300">Photos : {label(PHOTOS, i.photos).toLowerCase()}</span>
-                      {!i.agency_url && <span className="px-2 py-0.5 bg-[#F6CF4E]">Lien agence manquant</span>}
-                      {!i.agency_email && <span className="px-2 py-0.5 bg-[#F6CF4E]">E-mail manquant</span>}
+                      {i.seller === 'particulier' && <span className="px-2 py-0.5 bg-stone-200">Particulier</span>}
+                      {!i.agency_url && <span className="px-2 py-0.5 bg-[#F6CF4E]">{i.seller === 'particulier' ? 'Lien de l’annonce manquant' : 'Lien agence manquant'}</span>}
+                      {!i.agency_email && i.seller !== 'particulier' && <span className="px-2 py-0.5 bg-[#F6CF4E]">E-mail manquant</span>}
                       {i.usage_note && <span className="px-2 py-0.5 border border-stone-300">{i.usage_note}</span>}
                     </span>
                   </button>
@@ -341,11 +381,12 @@ export default function AdminAvantPremiere() {
               {txt('checked_on', 'Disponibilité vérifiée le', 'date')}
             </div>
 
-            <h2 className="mt-8 font-serif text-lg">L’agence</h2>
+            <h2 className="mt-8 font-serif text-lg">Le vendeur</h2>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
-              {txt('agency_name', 'Nom de l’agence')}
+              {sel('seller', 'Vendu par', VENDEURS)}
+              {txt('agency_name', 'Nom de l’agence (ou « Particulier »)')}
               {txt('contact_name', 'Interlocuteur')}
-              {txt('agency_url', 'Lien de l’annonce chez l’agence', 'url')}
+              {txt('agency_url', 'Lien de l’annonce', 'url')}
               {txt('agency_site', 'Site de l’agence', 'url')}
               {txt('agency_email', 'E-mail', 'email')}
               {txt('agency_phone', 'Téléphone', 'tel')}

@@ -18,6 +18,7 @@ export type LetterItem = {
   kind: string;
   valeur: number | null;
   ordre?: number | null;
+  seller?: string | null;
 };
 
 export type LetterContent = {
@@ -86,10 +87,12 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
                   <p className="mt-3 font-serif text-[21px] leading-tight lining-nums">{euros(x.prix)}</p>
                   <p className="mt-1.5 text-sm font-medium">
                     {x.agency_url ? (
-                      <a href={x.agency_url} target="_blank" rel="noreferrer" className="underline underline-offset-4">Voir l’annonce chez {x.agency_name}</a>
+                      <a href={x.agency_url} target="_blank" rel="noreferrer" className="underline underline-offset-4">
+                        {x.seller === 'particulier' ? 'Voir l’annonce, vendu par un particulier' : `Voir l’annonce chez ${x.agency_name}`}
+                      </a>
                     ) : (
                       <span>
-                        {x.agency_name}
+                        {x.seller === 'particulier' ? 'Vendu par un particulier' : x.agency_name}
                         {draft && <span className="ml-2 bg-[#F6CF4E] px-1.5 py-0.5 text-xs font-normal">lien à trouver</span>}
                       </span>
                     )}
@@ -208,7 +211,7 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
           </div>
         </div>
         <p className="mt-3.5 text-[11px] leading-relaxed text-[#74695A]">
-          Les biens « déjà en ligne » sont présentés par leur agence, vers laquelle chaque lien renvoie. Loftissime n’est pas une agence.
+          Chaque bien est présenté par son agence ou par son propriétaire, vers l’annonce duquel le lien renvoie. Loftissime n’est pas une agence et n’intervient pas dans la vente.
         </p>
       </footer>
     </article>
