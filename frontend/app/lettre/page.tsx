@@ -8,7 +8,7 @@ export const revalidate = 60;
 
 export const metadata = {
   title: 'La lettre · loftissime.',
-  description: 'Tous les numéros de la lettre de Loftissime : chaque jeudi, quelques biens atypiques repérés à Paris.',
+  description: 'Tous les numéros de la lettre de Loftissime : un jeudi sur deux, un bien atypique à Paris et ce qu’il coûte vraiment.',
 };
 
 // La rubrique de la lettre : tous les numéros, du plus récent au plus ancien, puis l'inscription.
@@ -22,7 +22,7 @@ export default async function LettreIndex() {
         <h1 className="max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
           La lettre, <span className="italic text-stone-500">tous les numéros.</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-lg text-stone-600">Chaque jeudi, quelques biens atypiques repérés à Paris.</p>
+        <p className="mt-5 max-w-2xl text-lg text-stone-600">Un jeudi sur deux, un bien atypique à Paris et ce qu’il coûte vraiment.</p>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">

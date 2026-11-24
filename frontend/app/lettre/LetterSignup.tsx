@@ -74,14 +74,14 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   if (step === 'fini')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">La lettre arrive le jeudi{email ? `, à ${email}` : ''}.</Done>
+        <Done title="Inscription enregistrée.">La lettre arrive un jeudi sur deux{email ? `, à ${email}` : ''}.</Done>
       </div>
     );
 
   if (step === 'criteres')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">La lettre arrive le jeudi, à {email}.</Done>
+        <Done title="Inscription enregistrée.">La lettre arrive un jeudi sur deux, à {email}.</Done>
         <form
           className="mt-8"
           onSubmit={(e) => {
@@ -159,9 +159,9 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       {band && (
         <>
           <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
-            Recevez la lettre, <span className="italic">chaque jeudi.</span>
+            Recevez la lettre, <span className="italic">un jeudi sur deux.</span>
           </h2>
-          <p className="mt-2 text-stone-800">Quelques biens atypiques repérés à Paris, chacun résumé par ce qu’il a de plus singulier.</p>
+          <p className="mt-2 text-stone-800">Un bien atypique à Paris, ce qu’on peut en faire et ce qu’il coûte vraiment.</p>
         </>
       )}
       <label className={`${LABEL} ${band ? 'mt-5' : ''}`}>

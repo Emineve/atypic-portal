@@ -30,7 +30,7 @@ const SHARE_DESCRIPTION =
 
 // En mode lettre, le site se présente comme la lettre, pas comme un site d'annonces
 const LETTER_TITLE = 'loftissime. · La lettre de l’immobilier atypique parisien';
-const LETTER_DESCRIPTION = 'Chaque jeudi, quelques biens atypiques repérés à Paris, chacun résumé par ce qu’il a de plus singulier : une verrière, une terrasse, une hauteur sous plafond.';
+const LETTER_DESCRIPTION = 'Un jeudi sur deux, la lettre pousse la porte d’un bien atypique à Paris : ce qu’on peut en faire, les travaux, la mensualité.';
 
 export async function generateMetadata(): Promise<Metadata> {
   if ((await getSiteMode()) !== 'lettre') return BASE_METADATA;

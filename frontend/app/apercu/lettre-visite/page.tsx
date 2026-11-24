@@ -140,16 +140,16 @@ export default function LettreVisite() {
           </div>
         </section>
 
-        {/* Qui peut l'acheter : le courtier part d'un acheteur précis, celui que ce bien peut séduire */}
+        {/* L'acheteur qu'on imagine, puis ce que le courtier négocierait pour lui */}
         <section className="px-6 pt-9 sm:px-10">
-          <h2 className="font-serif text-[27px] leading-tight">Qui peut l’acheter, <span className="italic text-[#74695A]">selon <Blank>le nom du courtier</Blank>.</span></h2>
-          <p className="mt-1 text-[13px] text-[#74695A]">Un acheteur que ce bien peut séduire, et son dossier tel que le courtier le monterait.</p>
+          <h2 className="font-serif text-[27px] leading-tight">Qui peut l’acheter ? <span className="italic text-[#74695A]">On a imaginé quelqu’un.</span></h2>
+          <p className="mt-1 text-[13px] text-[#74695A]">Un acheteur inventé pour l’exemple, à qui ce bien irait bien.</p>
           <div className="mt-4 grid grid-cols-2 border-l border-t border-[#211C15]">
             {[
-              ['Qui', 'un âge, seul ou à deux'],
+              ['Qui', 'un prénom, un âge, seul ou à deux'],
               ['Métier', 'la profession, le type de contrat'],
               ['Revenus', 'par mois, nets'],
-              ['Apport', 'ce qu’il faut avoir de côté'],
+              ['Apport', 'ce qu’il a de côté'],
             ].map(([k, v]) => (
               <div key={k} className="border-b border-r border-[#211C15] px-3 py-2.5">
                 <div className="text-[10px] leading-tight text-[#74695A]">{k}</div>
@@ -157,38 +157,47 @@ export default function LettreVisite() {
               </div>
             ))}
           </div>
+          <h3 className="mt-6 font-serif text-xl leading-tight">Ce que <Blank>le nom du courtier</Blank> <span className="italic text-[#74695A]">négocierait pour lui.</span></h3>
+          <p className="mt-2 text-[15px] leading-relaxed"><Blank>Ses mots, en trois lignes : la durée qu’il viserait, ce qu’il irait chercher auprès des banques, ce qui ferait passer ou bloquer ce dossier</Blank></p>
           <div className="mt-4 rounded-md bg-[#F6CF4E] px-4 py-3.5">
-            <p className="text-[13px]">Pour ce dossier, par mois</p>
+            <p className="text-[13px]">Soit, pour ce dossier, par mois</p>
             <p className="font-serif text-[30px] leading-none lining-nums"><Blank>la mensualité</Blank></p>
             <p className="mt-1.5 text-xs leading-snug">Travaux compris, sur <Blank>durée</Blank>, au taux de <Blank>taux</Blank>.</p>
           </div>
-          <p className="mt-3 text-[15px] leading-relaxed"><span className="font-serif italic">Son conseil pour ce dossier :</span> <Blank>ce qui le fait passer ou bloquer en banque, en deux lignes</Blank></p>
           <p className="mt-2 text-[11px] leading-relaxed text-[#74695A]"><Blank>Les mentions légales du crédit, telles que le courtier les fournit</Blank></p>
         </section>
 
-        {/* Y vivre, au quotidien : ce que le bien coûte chaque mois, une fois acheté */}
-        <section className="px-6 pt-9 sm:px-10">
-          <h2 className="font-serif text-[27px] leading-tight">Y vivre, <span className="italic text-[#74695A]">au quotidien.</span></h2>
-          <p className="mt-1 text-[13px] text-[#74695A]">Ce que le bien coûte chaque mois, une fois acheté. Les montants sont ceux de l’annonce et du diagnostic.</p>
-          <div className="mt-4 border-t border-[#211C15]">
-            <Ligne label="Charges de copropriété" note="Données par l’annonce" montant={<Blank>par mois</Blank>} />
-            <Ligne label="Énergie" note="La fourchette du diagnostic de performance énergétique" montant={<Blank>par mois</Blank>} />
-            <Ligne label="Taxe foncière" note="Ramenée au mois" montant={<Blank>par mois</Blank>} />
-            <div className="mt-2 border-t border-[#211C15]">
-              <Ligne fort label="Le vrai mois" montant={<Blank>mensualité + quotidien</Blank>} />
+        {/* Y vivre : un encart discret, par mois */}
+        <section className="px-6 pt-7 sm:px-10">
+          <div className="rounded-lg border border-[#D9CFBC] px-4 py-3.5">
+            <div className="flex items-baseline justify-between gap-4">
+              <h2 className="font-serif text-lg leading-tight">Y vivre, <span className="italic text-[#74695A]">par mois</span></h2>
+              <p className="font-serif text-lg lining-nums"><Blank>total</Blank></p>
             </div>
+            <dl className="mt-2 grid grid-cols-3 gap-3 text-[13px]">
+              {['Charges de copropriété', 'Énergie', 'Taxe foncière'].map((k) => (
+                <div key={k}>
+                  <dt className="text-[11px] leading-tight text-[#74695A]">{k}</dt>
+                  <dd className="mt-0.5 font-serif text-[15px] lining-nums"><Blank>par mois</Blank></dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-2 text-[11px] leading-snug text-[#74695A]">D’après l’annonce et le diagnostic énergétique. À ajouter à la mensualité du crédit.</p>
           </div>
-          <p className="mt-3 text-xs leading-snug text-[#74695A]">Le vrai mois additionne la mensualité du crédit et ces trois postes. C’est le chiffre à comparer à un loyer.</p>
         </section>
 
-        {/* La question au notaire : une seule, et elle porte sur ce bien */}
+        {/* Le point de vigilance : un seul, propre à ce bien, avec l'article du site qui l'explique */}
         <section className="px-6 pt-9 sm:px-10">
-          <h2 className="font-serif text-[27px] leading-tight">La question au notaire, <span className="italic text-[#74695A]">sur ce bien.</span></h2>
+          <h2 className="font-serif text-[27px] leading-tight">Avant de signer, <span className="italic text-[#74695A]">un point de vigilance.</span></h2>
           <p className="mt-4 border-l-2 border-[#211C15] pl-4 font-serif text-xl leading-snug">
             Cet ancien atelier en rez-de-chaussée est-il un logement, ou encore un local ?
           </p>
-          <p className="mt-3 text-[15px] leading-relaxed"><Blank>Sa réponse en trois lignes : ce qu’il faut lire dans le règlement de copropriété, ce qu’il faut demander à la mairie, ce que ça change pour le prêt</Blank></p>
-          <p className="mt-2 text-[13px] text-[#74695A]"><Blank>Sa signature, telle qu’elle la valide</Blank></p>
+          <p className="mt-3 text-[15px] leading-relaxed">
+            C’est la première chose à vérifier pour ce bien, avant toute offre : elle se lit dans le règlement de copropriété et se confirme auprès de la mairie.
+          </p>
+          <p className="mt-2 text-sm">
+            <a href="/guide" className="font-medium underline underline-offset-4"><Blank>Lire l’article d’État des lieux sur ce point</Blank></a>
+          </p>
         </section>
 
         {/* Trois autres adresses */}
@@ -238,7 +247,7 @@ export default function LettreVisite() {
             <div className="col-span-2 border-b border-r border-[#211C15] p-2.5 sm:col-span-4">
               <span className="text-[10px] leading-tight text-[#74695A]">Ont regardé ce bien</span>
               <div className="font-serif text-[15px] leading-tight">
-                <Blank>l’architecte</Blank>, <Blank>l’entrepreneur</Blank>, <Blank>le courtier</Blank>, <Blank>la notaire</Blank>, <Blank>l’artiste</Blank>
+                <Blank>l’architecte</Blank>, <Blank>l’entrepreneur</Blank>, <Blank>le courtier</Blank>, <Blank>l’artiste</Blank>
               </div>
             </div>
           </div>
