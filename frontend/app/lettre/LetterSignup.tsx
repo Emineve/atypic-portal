@@ -89,9 +89,10 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
         }}
       >
         <p className="font-serif text-2xl italic leading-none text-[#FBF5E9]">Béton ciré</p>
-        <label className="mt-2 block text-sm text-stone-400">
-          La newsletter de Loftissime, dans votre boîte. Votre e-mail <span aria-hidden="true">*</span>
-          <span className="mt-3 flex flex-row gap-3">
+        <p className="mt-2 text-sm text-stone-400">La newsletter de Loftissime.</p>
+        <label className="mt-5 block text-sm font-medium text-[#FBF5E9]">
+          Votre e-mail <span aria-hidden="true">*</span>
+          <span className="mt-1.5 flex flex-row gap-3">
             <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 min-w-0 flex-1`} />
             <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#F6CF4E] text-stone-900 transition hover:bg-[#FBF5E9] disabled:opacity-50">
               <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />

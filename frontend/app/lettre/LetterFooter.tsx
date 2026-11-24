@@ -6,7 +6,7 @@ export default function LetterFooter() {
   return (
     <footer data-dark-footer className="bg-stone-900 text-[#FBF5E9]">
       <div className="max-w-6xl mx-auto px-6 pt-14 pb-10 md:pt-20">
-        <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-10">
+        <div className="flex flex-wrap items-center justify-between gap-x-16 gap-y-10">
           <div>
             <a href="/" aria-label="Loftissime, retour à l'accueil" className="block font-logo text-4xl md:text-5xl font-semibold tracking-tight leading-none text-[#FBF5E9]">
               loftissime.
