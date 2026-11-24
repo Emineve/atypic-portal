@@ -87,7 +87,7 @@ export default function SiteHeaderClient({
                 ))}
               </div>
             </div>
-            <a href="/#recevoir" className="text-sm font-medium text-stone-900 whitespace-nowrap bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] bg-no-repeat bg-[length:100%_2px] pb-[3px]">
+            <a href="/#recevoir" className="whitespace-nowrap rounded-full border border-stone-900 px-4 py-2 text-sm font-medium text-stone-900 transition-colors hover:bg-stone-900 hover:text-[#FBF5E9]">
               Recevoir Béton ciré
             </a>
           </div>
