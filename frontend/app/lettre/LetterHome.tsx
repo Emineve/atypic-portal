@@ -94,7 +94,6 @@ export default async function LetterHome() {
           <section>
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
               <h2 className="text-xs uppercase tracking-widest text-stone-500">Les biens parus dans Béton ciré</h2>
-              <p className="text-sm text-stone-500">{biens.length} biens dans les deux derniers numéros</p>
             </div>
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {biens.map(({ b, numero, une }) => (
