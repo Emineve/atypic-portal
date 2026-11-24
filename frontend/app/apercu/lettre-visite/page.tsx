@@ -143,7 +143,7 @@ export default function LettreVisite() {
             </div>
           </div>
 
-          <h3 className="mt-8 font-serif text-[22px] leading-tight">Qui peut l’acheter ? <span className="italic text-[#74695A]">On a imaginé quelqu’un.</span></h3>
+          <h3 className="mt-8 font-serif text-[22px] leading-tight">Qui pourrait l’acheter ? <span className="italic text-[#74695A]">On a imaginé quelqu’un.</span></h3>
           <div className="mt-3 grid grid-cols-2 border-l border-t border-[#211C15]">
             {[
               ['Qui', 'un prénom, un âge, seul ou à deux'],
@@ -172,7 +172,7 @@ export default function LettreVisite() {
               <Ligne label="Taxe foncière" note="Ramenée au mois" montant={<Blank>par mois</Blank>} />
             </div>
             <div className="mt-3 flex items-baseline justify-between gap-4 rounded-md bg-[#F6CF4E] px-4 py-3.5">
-              <span className="font-serif text-xl">Le vrai mois</span>
+              <span className="font-serif text-xl">Total par mois</span>
               <span className="font-serif text-[30px] leading-none lining-nums"><Blank>total par mois</Blank></span>
             </div>
             <p className="mt-2 text-[11px] leading-relaxed text-[#74695A]">
