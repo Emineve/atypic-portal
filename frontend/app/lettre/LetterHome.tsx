@@ -12,8 +12,8 @@ import { getIssue, getIssues } from '../../lib/lettre';
 
 // Les questions de l'accueil : ce qu'est le site, ce qu'est sa newsletter, ce qu'on fait de l'adresse e-mail
 const QUESTIONS: [string, string][] = [
-  ['Loftissime, c’est quoi ?', 'Le média de l’immobilier atypique : des conseils, des témoignages, des solutions de financement et une sélection de lofts, d’ateliers d’artistes, de toits-terrasses et de biens de caractère à vendre. Il commence par sa newsletter, Béton ciré. Le reste arrive ensuite.'],
-  ['Et Béton ciré ?', 'C’est la newsletter de Loftissime. Dans chaque numéro, nous poussons la porte d’un bien atypique à Paris : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques que nous avons repérés.'],
+  ['Qu’est-ce que Loftissime ?', 'Loftissime est le média de l’immobilier atypique. On y trouve des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Sa newsletter s’appelle Béton ciré.'],
+  ['Et Béton ciré ?', 'Béton ciré est la newsletter de Loftissime. Dans chaque numéro, nous poussons la porte d’un bien atypique à Paris : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques que nous avons repérés.'],
   ['Qui sont vos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun parle de son métier, et les chiffres qu’il donne sont signés de son nom.'],
   ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. C’est vers eux que mène le lien de l’annonce.'],
   ['L’abonnement est-il payant ?', 'Non, Béton ciré est gratuite.'],
