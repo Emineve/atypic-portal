@@ -27,7 +27,7 @@ const euros = (n: number | null) => (n == null ? '' : n.toLocaleString('fr-FR').
 
 // La vignette d'un bien paru dans la lettre : même gabarit que les vignettes d'annonces du site, avec le dessin à la
 // place de la photo. On n'entre pas dans une fiche : le seul lien mène à l'annonce de l'agence ou du propriétaire.
-function BienCard({ b, numero, une = false }: { b: LetterItem; numero: number; une?: boolean }) {
+function BienCard({ b }: { b: LetterItem }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-[14px] border border-stone-200 bg-white">
       <div className="flex aspect-[3/2] items-center justify-center border-b border-stone-900 bg-white sm:aspect-[4/3]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent 0 23px, rgba(33,28,21,.06) 23px 24px), repeating-linear-gradient(90deg, transparent 0 23px, rgba(33,28,21,.06) 23px 24px)' }}>
@@ -48,16 +48,13 @@ function BienCard({ b, numero, une = false }: { b: LetterItem; numero: number; u
           {b.surface && <span className="text-stone-500">, {b.surface}</span>}
         </p>
         <p className="mt-auto pt-4 font-serif text-xl lining-nums text-stone-900">{euros(b.prix)}</p>
-        <p className="mt-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs text-stone-500">
-          <span>{une ? 'À la une de' : 'Paru dans'} <em>Béton ciré</em> n° {numero}</span>
-          {b.agency_url ? (
-            <a href={b.agency_url} target="_blank" rel="noreferrer" className="font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">
-              {b.seller === 'particulier' ? 'Voir l’annonce du propriétaire' : `Voir l’annonce chez ${b.agency_name}`}
+        {b.agency_url && (
+          <p className="mt-2 text-sm">
+            <a href={b.agency_url} target="_blank" rel="noreferrer" className="text-stone-900 underline underline-offset-4 decoration-stone-400 hover:decoration-stone-900">
+              Voir l’annonce
             </a>
-          ) : (
-            <span>{b.seller === 'particulier' ? 'Vendu par un particulier' : b.agency_name}</span>
-          )}
-        </p>
+          </p>
+        )}
       </div>
     </article>
   );
@@ -72,7 +69,7 @@ export default async function LetterHome() {
   const full = exemples ? [] : await Promise.all(parus.slice(0, 2).map((i) => getIssue(i.numero)));
   const biens: { b: LetterItem; numero: number; une: boolean }[] = exemples
     ? BIENS_EXEMPLE
-    : full.flatMap((d) => (d ? d.items.filter((i) => i.rubrique !== 'avant_premiere').map((b, k) => ({ b, numero: d.issue.numero, une: k === 0 })) : []));
+    : full.flatMap((d) => (d ? [...d.items].sort((x, y) => Number(y.id === (d.issue.content as { une_id?: string }).une_id) - Number(x.id === (d.issue.content as { une_id?: string }).une_id)).map((b, k) => ({ b, numero: d.issue.numero, une: k === 0 })) : []));
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -116,9 +113,9 @@ export default async function LetterHome() {
               <h2 className="text-xs uppercase tracking-widest text-stone-500">Les biens parus dans Béton ciré</h2>
             </div>
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {biens.map(({ b, numero, une }) => (
+              {biens.map(({ b }) => (
                 <li key={b.id}>
-                  <BienCard b={b} numero={numero} une={une} />
+                  <BienCard b={b} />
                 </li>
               ))}
             </ul>
