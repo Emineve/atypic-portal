@@ -107,7 +107,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       </form>
     );
   }
-  const box = band ? `border border-stone-900 bg-white p-6 md:p-8 ${className}` : className;
+  const box = band ? `rounded-[14px] border border-stone-200 bg-white p-6 md:p-8 ${className}` : className;
 
   if (step === 'fini')
     return (
