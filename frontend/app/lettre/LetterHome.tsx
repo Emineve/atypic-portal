@@ -17,9 +17,10 @@ const euros = (n: number | null) => (n == null ? '' : n.toLocaleString('fr-FR').
 function BienCard({ b, numero }: { b: LetterItem; numero: number }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-[14px] border border-stone-200 bg-white">
-      <div className="flex aspect-[3/2] items-center justify-center border-b border-stone-900 bg-[#F6CF4E] sm:aspect-[4/3]">
+      <div className="flex aspect-[3/2] items-center justify-center border-b border-stone-900 bg-white sm:aspect-[4/3]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent 0 23px, rgba(33,28,21,.06) 23px 24px), repeating-linear-gradient(90deg, transparent 0 23px, rgba(33,28,21,.06) 23px 24px)' }}>
         {b.kind !== 'aucun' ? (
-          <span className="block h-[78%] rounded-md bg-[#FBF5E9] p-2">
+          // le trait tremble un peu et le jaune devient gris : un croquis fait à la main, sur papier quadrillé
+          <span className="block h-[82%]" style={{ filter: 'url(#main-levee) grayscale(1) contrast(1.2)' }}>
             <Mesure kind={b.kind} valeur={b.valeur} className="block h-full w-auto" />
           </span>
         ) : (
@@ -35,7 +36,7 @@ function BienCard({ b, numero }: { b: LetterItem; numero: number }) {
         </p>
         <p className="mt-auto pt-4 font-serif text-xl lining-nums text-stone-900">{euros(b.prix)}</p>
         <p className="mt-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs text-stone-500">
-          <span>Lettre n° {numero}</span>
+          <span>Béton ciré n° {numero}</span>
           {b.agency_url ? (
             <a href={b.agency_url} target="_blank" rel="noreferrer" className="font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">
               {b.seller === 'particulier' ? 'Voir l’annonce du propriétaire' : `Voir l’annonce chez ${b.agency_name}`}
@@ -60,15 +61,22 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
+      {/* le filtre qui donne aux croquis des vignettes leur trait à main levée */}
+      <svg aria-hidden width="0" height="0" className="absolute">
+        <filter id="main-levee" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="bruit" />
+          <feDisplacementMap in="SourceGraphic" in2="bruit" scale="3.4" />
+        </filter>
+      </svg>
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
         <div className="grid items-center gap-x-12 gap-y-8 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <h1 className="text-[2.5rem] md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.04]">
-              La lettre de ceux qui aiment les lieux atypiques, <span className="italic text-stone-500">du rêve à la réalité.</span>
+              Béton ciré, <span className="italic text-stone-500">la newsletter de ceux qui aiment les lieux atypiques.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-stone-600">
-              Un jeudi sur deux, nous visitons un bien à Paris : ce qu’on peut en faire, et ce qu’il coûte vraiment.
+              Parce qu’habiter un lieu atypique peut passer du rêve à la réalité. Un jeudi sur deux : une visite, un projet, son coût complet.
             </p>
             <LetterSignup source="accueil" className="mt-8 max-w-md" />
           </div>
@@ -82,7 +90,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
         {biens.length > 0 && (
           <section>
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-              <h2 className="text-xs uppercase tracking-widest text-stone-500">Déjà présentés dans la lettre</h2>
+              <h2 className="text-xs uppercase tracking-widest text-stone-500">Déjà présentés dans Béton ciré</h2>
               <p className="text-sm text-stone-500">{biens.length} bien{biens.length > 1 ? 's' : ''}</p>
             </div>
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -97,8 +105,8 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
 
         <section className={biens.length > 0 ? 'mt-16 md:mt-20' : ''}>
           <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-            <h2 className="text-xs uppercase tracking-widest text-stone-500">Les visites</h2>
-            {shown.length > 3 && <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">Toutes les lettres</Link>}
+            <h2 className="text-xs uppercase tracking-widest text-stone-500">Les numéros de Béton ciré</h2>
+            {shown.length > 3 && <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">Tous les numéros</Link>}
           </div>
           {shown.length > 0 ? (
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -107,7 +115,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
                   <Link href={`/lettre/numero-${l.numero}`} className="group block">
                     {/* la vidéo de la visite sert de vignette ; tant qu'elle n'est pas tournée, son cadre l'annonce */}
                     <span className="relative block overflow-hidden rounded-[14px] bg-[#211C15]">
-                      <svg viewBox="0 0 640 400" className="block w-full" role="img" aria-label={`La visite de la lettre n° ${l.numero}`}>
+                      <svg viewBox="0 0 640 400" className="block w-full" role="img" aria-label={`La visite du numéro ${l.numero}`}>
                         <g stroke="#6b6154" strokeWidth={2} fill="none">
                           <path d="M50 340H590M130 340V110H510V340M130 110L320 50L510 110M320 50V340" />
                         </g>
@@ -139,7 +147,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
                 Un loft, un atelier, une ancienne boutique : beaucoup en rêvent, peu osent. Parce qu’on ne sait pas ce que le lieu peut devenir, ni ce qu’il coûtera au bout du compte.
               </p>
               <p>
-                Cette lettre est faite pour ça. Un jeudi sur deux, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
+                Béton ciré est fait pour ça. Un jeudi sur deux, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
               </p>
               <p>
                 Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.

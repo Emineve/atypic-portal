@@ -205,7 +205,7 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
       <footer className="px-6 pb-8 pt-7 sm:px-10">
         <div className="grid grid-cols-2 border-l border-t border-[#211C15] sm:grid-cols-[34%_14%_26%_26%]">
           {[
-            ['Lettre', 'loftissime.'],
+            ['Newsletter', 'Béton ciré'],
             ['Numéro', String(issue.numero)],
             ['Date', dateLettre(issue.date_parution, false)],
             ['Périmètre', horsParis ? 'Paris et petite couronne' : 'Paris'],

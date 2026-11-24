@@ -14,9 +14,9 @@ export default function LetterFooter() {
             </p>
           </div>
           <nav aria-label="Loftissime" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-            <a href="/lettre" className={link}>Les visites</a>
+            <a href="/lettre" className={link}>Tous les numéros de Béton ciré</a>
             <a href="/guide" className={link}>Avant de signer</a>
-            <a href="/#recevoir" className={link}>Recevoir la lettre</a>
+            <a href="/#recevoir" className={link}>Recevoir Béton ciré</a>
           </nav>
         </div>
         <nav className="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-stone-700 pt-6 text-xs text-stone-500" aria-label="Informations légales">

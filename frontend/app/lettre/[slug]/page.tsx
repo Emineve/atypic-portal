@@ -13,7 +13,7 @@ const numero = (slug: string) => Number((slug.match(/^numero-(\d+)$/) || [])[1])
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const d = await getIssue(numero(params.slug));
   return {
-    title: d ? `La lettre n° ${d.issue.numero}${d.issue.titre ? ` : ${d.issue.titre}` : ''} · loftissime.` : 'La lettre · loftissime.',
+    title: d ? `Béton ciré n° ${d.issue.numero}${d.issue.titre ? ` : ${d.issue.titre}` : ''} · loftissime.` : 'Béton ciré · loftissime.',
     description: d?.issue.resume || undefined,
     // Un numéro pas encore paru n'est qu'une maquette : il ne doit pas être repris ailleurs
     robots: d && !d.issue.paru ? { index: false, follow: false } : undefined,

@@ -12,7 +12,7 @@ import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
 
 const LETTER_LINKS = [
-  { href: '/lettre', label: 'Les visites' },
+  { href: '/lettre', label: 'Tous les numéros de Béton ciré' },
   { href: '/guide', label: 'Avant de signer' },
 ];
 const LETTER_LINK =
@@ -88,7 +88,7 @@ export default function SiteHeaderClient({
               </div>
             </div>
             <a href="/#recevoir" className="text-sm font-medium text-stone-900 whitespace-nowrap bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] bg-no-repeat bg-[length:100%_2px] pb-[3px]">
-              Recevoir la lettre
+              Recevoir Béton ciré
             </a>
           </div>
           <div className="sm:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-7">

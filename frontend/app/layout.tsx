@@ -29,7 +29,7 @@ const SHARE_DESCRIPTION =
   'Lofts, ateliers d’artistes, toits-terrasses, biens de caractère à vendre : un seul site pour les trouver.';
 
 // En mode lettre, le site se présente comme la lettre, pas comme un site d'annonces
-const LETTER_TITLE = 'loftissime. · La lettre de l’immobilier atypique parisien';
+const LETTER_TITLE = 'Béton ciré · La newsletter des lieux atypiques, par loftissime.';
 const LETTER_DESCRIPTION = 'Un jeudi sur deux, la lettre pousse la porte d’un bien atypique à Paris : ce qu’on peut en faire, les travaux, la mensualité.';
 
 export async function generateMetadata(): Promise<Metadata> {

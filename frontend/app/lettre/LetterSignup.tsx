@@ -75,14 +75,14 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   if (step === 'fini')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">La lettre arrive un jeudi sur deux{email ? `, à ${email}` : ''}.</Done>
+        <Done title="Inscription enregistrée.">Béton ciré arrive un jeudi sur deux{email ? `, à ${email}` : ''}.</Done>
       </div>
     );
 
   if (step === 'criteres')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">La lettre arrive un jeudi sur deux, à {email}.</Done>
+        <Done title="Inscription enregistrée.">Béton ciré arrive un jeudi sur deux, à {email}.</Done>
         <form
           className="mt-8"
           onSubmit={(e) => {
@@ -160,7 +160,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       {band && (
         <>
           <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
-            Recevez la lettre, <span className="italic">un jeudi sur deux.</span>
+            Recevez Béton ciré, <span className="italic">un jeudi sur deux.</span>
           </h2>
           <p className="mt-2 text-stone-800">Un bien atypique à Paris, ce qu’on peut en faire et ce qu’il coûte vraiment.</p>
         </>
@@ -178,14 +178,14 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
             onChange={(e) => setEmail(e.target.value)}
             className={`${FIELD} !mt-0 min-w-0 flex-1`}
           />
-          <button type="submit" disabled={busy} aria-label="Recevoir la lettre" className="flex h-[50px] w-[50px] shrink-0 items-center justify-center self-end rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50 sm:self-auto">
+          <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="flex h-[50px] w-[50px] shrink-0 items-center justify-center self-end rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50 sm:self-auto">
             <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />
           </button>
         </span>
       </label>
       {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
       <p className={`mt-3 text-xs leading-relaxed ${band ? 'text-stone-700' : 'text-stone-500'}`}>
-        En vous inscrivant, vous acceptez de recevoir la lettre de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
+        En vous inscrivant, vous acceptez de recevoir Béton ciré, la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
         <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
       </p>
     </form>
