@@ -9,6 +9,10 @@ import Done from '../Done';
 // Inscription à la lettre, en deux temps : l'e-mail d'abord, puis ce que la personne cherche.
 // Les critères sont enregistrés avec l'inscription ; ils serviront d'alerte le jour où les annonces ouvriront.
 
+// L'étape « Que cherchez-vous ? » est prête mais éteinte pour le lancement : l'inscription s'arrête à l'e-mail.
+// Passer à true pour la rallumer.
+const ASK_CRITERIA = false;
+
 const ARRONDISSEMENTS = Array.from({ length: 20 }, (_, i) => `Paris ${i + 1}${i === 0 ? 'er' : 'e'}`);
 const BUDGETS: [string, string][] = [
   ['', 'Sans plafond'],
@@ -57,7 +61,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
         p_source: `lettre-${source}`.slice(0, 40),
       });
       if (e || data !== true) throw new Error('refus');
-      setStep(withCriteria ? 'fini' : 'criteres');
+      setStep(withCriteria || !ASK_CRITERIA ? 'fini' : 'criteres');
     } catch {
       setError('L’inscription n’a pas abouti. Vérifiez votre adresse et réessayez.');
     }
@@ -70,7 +74,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   if (step === 'fini')
     return (
       <div id="recevoir" className={box}>
-        <Done title="C’est noté.">Vous recevrez la lettre le jeudi, et nous tiendrons compte de ce que vous cherchez.</Done>
+        <Done title="Inscription enregistrée.">La lettre arrive le jeudi{email ? `, à ${email}` : ''}.</Done>
       </div>
     );
 
