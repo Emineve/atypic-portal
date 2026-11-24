@@ -1,4 +1,6 @@
-// Pied de page du mode lettre : la marque, trois liens, les mentions. Rien qui renvoie aux rubriques cachées.
+import LetterSignup from './LetterSignup';
+
+// Pied de page du mode lettre : la marque, deux liens, la boîte d'abonnement à la newsletter, les mentions. Rien qui renvoie aux rubriques cachées.
 export default function LetterFooter() {
   const link = 'text-stone-300 hover:text-[#FBF5E9] underline-offset-4 hover:underline decoration-[#F6CF4E]';
   return (
@@ -13,13 +15,13 @@ export default function LetterFooter() {
               Curateur de biens <span className="italic text-stone-400">atypiques</span>
             </p>
           </div>
-          <nav aria-label="Loftissime" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-            <a href="/lettre" className={link}>Béton ciré, tous les numéros</a>
-            <a href="/guide" className={link}>Avant de signer</a>
-            <a href="/#recevoir" className={link}>Recevoir Béton ciré</a>
-          </nav>
+          <LetterSignup variant="footer" source="pied" className="w-full max-w-md" />
         </div>
-        <nav className="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-stone-700 pt-6 text-xs text-stone-500" aria-label="Informations légales">
+        <nav aria-label="Loftissime" className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <a href="/lettre" className={link}>Béton ciré, tous les numéros</a>
+          <a href="/guide" className={link}>Avant de signer</a>
+        </nav>
+        <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-stone-700 pt-6 text-xs text-stone-500" aria-label="Informations légales">
           <span>© Loftissime</span>
           <a href="/mentions-legales" className="hover:text-[#FBF5E9]">Mentions légales</a>
           <a href="/confidentialite" className="hover:text-[#FBF5E9]">Confidentialité</a>

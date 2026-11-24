@@ -36,7 +36,7 @@ const SURFACES: [string, string][] = [
 const chip = (on: boolean) =>
   `rounded-full border px-3.5 py-2 text-sm transition ${on ? 'border-stone-900 bg-stone-900 text-[#FBF5E9]' : 'border-stone-300 bg-white text-stone-800 hover:border-stone-900'}`;
 
-export default function LetterSignup({ variant = 'hero', source = 'accueil', className = '' }: { variant?: 'hero' | 'band'; source?: string; className?: string }) {
+export default function LetterSignup({ variant = 'hero', source = 'accueil', className = '' }: { variant?: 'hero' | 'band' | 'footer'; source?: string; className?: string }) {
   const [email, setEmail] = useState('');
   const [step, setStep] = useState<'email' | 'criteres' | 'fini'>('email');
   const [busy, setBusy] = useState(false);
@@ -70,6 +70,42 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   }
 
   const band = variant === 'band';
+
+  // La petite boîte du pied de page, sur fond noir : un titre, le champ, la flèche. Pas d'ancre #recevoir ici,
+  // elle appartient au formulaire du haut de page.
+  if (variant === 'footer') {
+    if (step !== 'email')
+      return (
+        <p role="status" className={`border border-stone-700 p-5 font-serif text-xl leading-snug text-[#FBF5E9] ${className}`}>
+          Inscription enregistrée. <span className="italic text-stone-400">Vous recevrez le prochain numéro.</span>
+        </p>
+      );
+    return (
+      <form
+        className={`border border-stone-700 p-5 ${className}`}
+        onSubmit={(e) => {
+          e.preventDefault();
+          send(false);
+        }}
+      >
+        <p className="font-serif text-2xl italic leading-none text-[#FBF5E9]">Béton ciré</p>
+        <label className="mt-2 block text-sm text-stone-400">
+          La newsletter de Loftissime, dans votre boîte. Votre e-mail <span aria-hidden="true">*</span>
+          <span className="mt-3 flex flex-row gap-3">
+            <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 min-w-0 flex-1`} />
+            <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#F6CF4E] text-stone-900 transition hover:bg-[#FBF5E9] disabled:opacity-50">
+              <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />
+            </button>
+          </span>
+        </label>
+        {error && <p role="alert" className="mt-3 text-sm text-red-300">{error}</p>}
+        <p className="mt-3 text-xs leading-relaxed text-stone-500">
+          En vous inscrivant, vous acceptez de recevoir Béton ciré. Désinscription en un clic dans chaque numéro.{' '}
+          <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
+        </p>
+      </form>
+    );
+  }
   const box = band ? `border border-stone-900 bg-white p-6 md:p-8 ${className}` : className;
 
   if (step === 'fini')

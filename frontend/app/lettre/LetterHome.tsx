@@ -1,13 +1,13 @@
 import SiteHeader from '../SiteHeader';
 import LetterSignup from './LetterSignup';
 import Mesure from './Mesure';
-import { BETON_BG, Poutre, Verriere } from './Beton';
-import { BIENS_EXEMPLE, EXEMPLES_ACTIFS, PROCHAIN_NUMERO } from '../../lib/lettreExemples';
+import { BETON_BG, Poutre } from './Beton';
+import { BIENS_EXEMPLE, EXEMPLES_ACTIFS } from '../../lib/lettreExemples';
 import type { LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
 
 // L'accueil du mode lettre, de haut en bas : le titre de Loftissime et l'abonnement à sa newsletter « Béton ciré »,
-// les biens déjà parus, qui nous sommes, puis État des lieux.
+// puis les biens parus dans la newsletter. Rien d'autre pour le moment.
 // Tant qu'aucun numéro n'est paru, les numéros et les biens affichés sont ceux de lib/lettreExemples.ts.
 
 const euros = (n: number | null) => (n == null ? '' : n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' €');
@@ -58,7 +58,6 @@ export default async function LetterHome() {
   const biens: { b: LetterItem; numero: number; une: boolean }[] = exemples
     ? BIENS_EXEMPLE
     : full.flatMap((d) => (d ? d.items.filter((i) => i.rubrique !== 'avant_premiere').map((b, k) => ({ b, numero: d.issue.numero, une: k === 0 })) : []));
-  const prochain = exemples ? PROCHAIN_NUMERO : (parus[0]?.numero || 0) + 1;
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -71,36 +70,25 @@ export default async function LetterHome() {
         </filter>
       </svg>
 
-      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">
-        <div className="grid items-center gap-x-12 gap-y-8 lg:grid-cols-[1.15fr_1fr]">
-          <div>
-            {/* Le titre de Loftissime, le même qu'en mode portail : le site ne se réduit pas à sa newsletter */}
-            <h1 className="text-[2.5rem] md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.04]">
-              Tout l’immobilier atypique, <span className="italic text-stone-500">réuni sur un seul site.</span>
-            </h1>
-            <p className="mt-5 max-w-xl text-lg text-stone-600">Lofts, ateliers d’artistes, toits-terrasses, biens de caractère.</p>
+      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-14 pb-10 md:pb-14">
+        {/* Le titre de Loftissime, le même qu'en mode portail : le site ne se réduit pas à sa newsletter */}
+        <h1 className="max-w-4xl text-[2.5rem] md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.04]">
+          Tout l’immobilier atypique, <span className="italic text-stone-500">réuni sur un seul site.</span>
+        </h1>
+        <p className="mt-5 max-w-xl text-lg text-stone-600">Lofts, ateliers d’artistes, toits-terrasses, biens de caractère.</p>
 
-            <div className="mt-9 border-t border-stone-900 pt-5">
-              <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
-                Abonnez-vous à Béton ciré, <span className="italic text-stone-500">la newsletter de Loftissime.</span>
-              </h2>
-              <p className="mt-2 max-w-xl text-stone-600">
+        {/* la boîte d'abonnement, dans les matières de la newsletter : béton et poutre d'acier */}
+        <div className="mt-10 md:mt-12" style={BETON_BG}>
+          <Poutre />
+          <div className="grid items-center gap-x-12 gap-y-6 p-6 md:p-9 lg:grid-cols-[1.1fr_1fr]">
+            <div>
+              <h2 className="font-serif text-5xl italic leading-none text-[#211C15] md:text-6xl">Béton ciré</h2>
+              <p className="mt-3 font-serif text-xl leading-snug text-[#211C15]">La newsletter de Loftissime.</p>
+              <p className="mt-3 max-w-lg text-[#4a4238]">
                 Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.
               </p>
-              <LetterSignup source="accueil" className="mt-5 max-w-md" />
             </div>
-          </div>
-          {/* la une de la newsletter, dans son propre décor : béton, poutre d'acier, verrière d'atelier */}
-          <div className="hidden lg:block" style={BETON_BG}>
-            <Poutre />
-            <div className="p-7">
-              <p className="flex items-baseline justify-between gap-4">
-                <span className="font-serif text-4xl italic leading-none text-[#211C15]">Béton ciré</span>
-                <span className="text-sm text-[#74695A]">n° {prochain}, à paraître</span>
-              </p>
-              <Verriere label="La visite filmée du prochain numéro" className="mt-6" />
-              <p className="mt-5 font-serif text-xl leading-snug text-[#211C15]">La visite, le projet, l’addition, <span className="italic text-[#74695A]">et ce qu’il faut vérifier avant de signer.</span></p>
-            </div>
+            <LetterSignup source="accueil" className="w-full max-w-md lg:justify-self-end" />
           </div>
         </div>
       </header>
@@ -121,26 +109,6 @@ export default async function LetterHome() {
             </ul>
           </section>
         )}
-
-        <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
-          <h2 className="text-xs uppercase tracking-widest text-stone-500">Béton ciré, le principe</h2>
-          <div className="mt-5 grid gap-x-12 gap-y-5 md:grid-cols-[1fr_1.4fr]">
-            <p className="font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
-              Vivre autrement, <span className="italic text-stone-500">ça se calcule.</span>
-            </p>
-            <div className="space-y-4 text-lg leading-relaxed text-stone-700">
-              <p>
-                Un loft, un atelier, une ancienne boutique : beaucoup en rêvent, peu osent. Parce qu’on ne sait pas ce que le lieu peut devenir, ni ce qu’il coûtera au bout du compte.
-              </p>
-              <p>
-                Béton ciré est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
-              </p>
-              <p>
-                Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );

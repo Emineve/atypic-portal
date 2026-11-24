@@ -27,13 +27,37 @@ export default async function LettreIndex() {
       <header className="bg-[#211C15] text-[#FBF5E9]">
         <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
           <h1 className="font-serif text-6xl italic leading-none md:text-8xl">Béton ciré</h1>
-          <p className="mt-5 max-w-2xl text-lg text-[#cfc5b4]">
-            La newsletter de <span className="font-logo font-semibold tracking-[-0.4px] text-[#FBF5E9]">loftissime.</span> Dans chaque numéro, un bien atypique à Paris passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.
+          <p className="mt-5 text-lg text-[#cfc5b4]">
+            La newsletter de <span className="font-logo font-semibold tracking-[-0.4px] text-[#FBF5E9]">loftissime.</span>
           </p>
         </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20 pt-10 md:pt-14">
+        {/* l'abonnement à gauche, la une du prochain numéro à droite */}
+        <section className="grid items-center gap-x-12 gap-y-8 pb-14 md:pb-20 lg:grid-cols-[1.15fr_1fr]">
+          <div>
+            <h2 className="font-serif text-3xl leading-tight md:text-4xl">
+              Abonnez-vous à Béton ciré, <span className="italic text-[#74695A]">la newsletter de Loftissime.</span>
+            </h2>
+            <p className="mt-3 max-w-xl text-lg text-[#4a4238]">
+              Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.
+            </p>
+            <LetterSignup source="numeros" className="mt-6 max-w-md" />
+          </div>
+          <div className="border border-[#211C15] bg-[#FBF5E9]">
+            <Poutre />
+            <div className="p-6 md:p-7">
+              <p className="flex items-baseline justify-between gap-4">
+                <span className="font-serif text-4xl italic leading-none">Béton ciré</span>
+                <span className="text-sm text-[#74695A]">n° {prochain}, à paraître</span>
+              </p>
+              <Verriere label="La visite filmée du prochain numéro" className="mt-6" />
+              <p className="mt-5 font-serif text-xl leading-snug">La visite, le projet, l’addition, <span className="italic text-[#74695A]">et ce qu’il faut vérifier avant de signer.</span></p>
+            </div>
+          </div>
+        </section>
+
         <Poutre />
         <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">Tous les numéros</h2>
 
@@ -65,10 +89,25 @@ export default async function LettreIndex() {
               ))}
         </ul>
 
-        <div className="mt-16 md:mt-20">
+        <section className="mt-16 md:mt-24">
           <Poutre />
-          <LetterSignup variant="band" source="numeros" className="mt-6" />
-        </div>
+          <div className="mt-5 grid gap-x-12 gap-y-5 md:grid-cols-[1fr_1.4fr]">
+            <h2 className="font-serif text-3xl leading-[1.1] md:text-4xl">
+              Vivre autrement, <span className="italic text-[#74695A]">ça se calcule.</span>
+            </h2>
+            <div className="space-y-4 text-lg leading-relaxed text-[#4a4238]">
+              <p>
+                Un loft, un atelier, une ancienne boutique : beaucoup en rêvent, peu osent. Parce qu’on ne sait pas ce que le lieu peut devenir, ni ce qu’il coûtera au bout du compte.
+              </p>
+              <p>
+                Béton ciré est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
+              </p>
+              <p>
+                Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
