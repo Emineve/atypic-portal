@@ -3,6 +3,7 @@ import SiteHeader from '../SiteHeader';
 import GuideArt from '../guide/GuideArt';
 import LetterSignup from './LetterSignup';
 import Mesure from './Mesure';
+import { Verriere } from './Beton';
 import { dateLettre, type LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
 
@@ -122,15 +123,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
                 <li key={l.numero}>
                   <Link href={`/lettre/numero-${l.numero}`} className="group block">
                     {/* la vidéo de la visite sert de vignette ; tant qu'elle n'est pas tournée, son cadre l'annonce */}
-                    <span className="relative block overflow-hidden rounded-[14px] bg-[#211C15]">
-                      <svg viewBox="0 0 640 400" className="block w-full" role="img" aria-label={`La visite du numéro ${l.numero}`}>
-                        <g stroke="#6b6154" strokeWidth={2} fill="none">
-                          <path d="M50 340H590M130 340V110H510V340M130 110L320 50L510 110M320 50V340" />
-                        </g>
-                        <circle cx={320} cy={205} r={40} fill="none" stroke="#FBF5E9" strokeWidth={2.5} className="transition-transform duration-300 group-hover:scale-110" style={{ transformOrigin: '320px 205px' }} />
-                        <path d="M308 186L342 205L308 224Z" fill="#FBF5E9" />
-                      </svg>
-                    </span>
+                    <Verriere label={`La visite du numéro ${l.numero}`} />
                     <span className="mt-4 block text-sm text-stone-500">N° {l.numero}, {dateLettre(l.date_parution, false)}{!l.paru && ', en préparation'}</span>
                     <span className="mt-1 block font-serif text-2xl leading-tight text-stone-900 group-hover:underline underline-offset-4 decoration-[#F6CF4E] decoration-2">{l.titre}</span>
                   </Link>

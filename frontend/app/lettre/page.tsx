@@ -2,58 +2,62 @@ import Link from 'next/link';
 import SiteHeader from '../SiteHeader';
 import LetterSignup from './LetterSignup';
 import { dateLettre } from './LetterView';
+import { BETON_BG, Poutre, Verriere } from './Beton';
 import { getIssues } from '../../lib/lettre';
 
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'Béton ciré, tous les numéros · loftissime.',
-  description: 'Tous les numéros de Béton ciré, la newsletter de Loftissime : un jeudi sur deux, un bien atypique à Paris et ce qu’il coûte vraiment.',
+  title: 'Béton ciré, la newsletter de Loftissime',
+  description: 'Béton ciré, la newsletter de Loftissime : un jeudi sur deux, un bien atypique à Paris, ce qu’on peut en faire et ce qu’il coûte vraiment.',
 };
 
-// La rubrique de la lettre : tous les numéros, du plus récent au plus ancien, puis l'inscription.
+// La page de « Béton ciré » : la newsletter se présente dans ses propres matières (béton, acier, verrière),
+// puis tous les numéros, du plus récent au plus ancien, et l'abonnement.
 export default async function LettreIndex() {
   const lettres = await getIssues();
+  const parus = lettres.filter((l) => l.paru);
+  const aVenir = lettres.filter((l) => !l.paru);
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen font-sans text-[#211C15]" style={BETON_BG}>
       <SiteHeader />
 
-      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">
-        <h1 className="max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-          Béton ciré, <span className="italic text-stone-500">tous les numéros.</span>
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg text-stone-600">Un jeudi sur deux, un bien atypique à Paris et ce qu’il coûte vraiment.</p>
+      <header className="bg-[#211C15] text-[#FBF5E9]">
+        <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
+          <h1 className="font-serif text-6xl italic leading-none md:text-8xl">Béton ciré</h1>
+          <p className="mt-5 max-w-2xl text-lg text-[#cfc5b4]">
+            La newsletter de <span className="font-logo font-semibold tracking-[-0.4px] text-[#FBF5E9]">loftissime.</span> Un jeudi sur deux, un bien atypique à Paris : la visite, le projet, et ce qu’il coûte vraiment.
+          </p>
+        </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 pb-20">
-        <ul className="border-t border-stone-900">
-          {lettres.map((l) => {
-            const row = (
-              <>
-                <span className="text-sm text-stone-500">
-                  N° {l.numero}
-                  <span className="block">{dateLettre(l.date_parution)}</span>
-                </span>
-                <span>
-                  <span className={`font-serif text-2xl md:text-3xl text-stone-900 ${l.paru ? 'bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-no-repeat bg-[position:0_100%] pb-[3px] bg-[length:0%_2px] group-hover:bg-[length:100%_2px] transition-[background-size]' : ''}`}>
-                    {l.titre}
-                  </span>
-                  <span className="mt-2 block max-w-2xl text-stone-600">{l.resume}</span>
-                </span>
-                <span className="text-sm text-stone-500">{l.paru ? 'Lire' : 'À paraître'}</span>
-              </>
-            );
-            const cls = 'group grid gap-x-8 gap-y-2 py-6 md:grid-cols-[9rem_1fr_auto] md:items-baseline';
-            return (
-              <li key={l.numero} className="border-b border-stone-200">
-                {l.paru ? <Link href={`/lettre/numero-${l.numero}`} className={cls}>{row}</Link> : <div className={cls}>{row}</div>}
-              </li>
-            );
-          })}
-          {lettres.length === 0 && <li className="border-b border-stone-200 py-8 text-stone-600">Le premier numéro arrive bientôt.</li>}
-        </ul>
+      <main className="max-w-6xl mx-auto px-6 pb-20 pt-10 md:pt-14">
+        <Poutre />
+        <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">Tous les numéros</h2>
 
-        <LetterSignup variant="band" source="numeros" className="mt-14 md:mt-20" />
+        {parus.length > 0 ? (
+          <ul className="mt-7 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {parus.map((l) => (
+              <li key={l.numero}>
+                <Link href={`/lettre/numero-${l.numero}`} className="group block">
+                  <Verriere label={`La visite du numéro ${l.numero}`} />
+                  <span className="mt-4 block text-sm text-[#74695A]">N° {l.numero}, {dateLettre(l.date_parution, false)}</span>
+                  <span className="mt-1 block font-serif text-2xl leading-tight group-hover:underline underline-offset-4 decoration-[#F6CF4E] decoration-2">{l.titre}</span>
+                  {l.resume && <span className="mt-2 block text-[15px] leading-relaxed text-[#4a4238]">{l.resume}</span>}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-5 max-w-2xl font-serif text-2xl leading-snug md:text-3xl">
+            {aVenir[0]?.date_parution ? <>Le premier numéro paraît le {dateLettre(aVenir[0].date_parution)}.</> : <>Le premier numéro arrive bientôt.</>}
+          </p>
+        )}
+
+        <div className="mt-16 md:mt-20">
+          <Poutre />
+          <LetterSignup variant="band" source="numeros" className="mt-6" />
+        </div>
       </main>
     </div>
   );
