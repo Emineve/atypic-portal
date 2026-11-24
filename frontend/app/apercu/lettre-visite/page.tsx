@@ -122,11 +122,11 @@ export default function LettreVisite() {
         {/* 1 bis. Les comptes : acheter, puis payer chaque mois */}
         <section className="px-6 pt-10 sm:px-10">
           <Poutre />
-          <h2 className="font-serif text-[27px] leading-tight">Les comptes, <span className="italic text-[#74695A]">sans rien oublier.</span></h2>
+          <h2 className="font-serif text-[27px] leading-tight">L’addition, <span className="italic text-[#74695A]">sans rien oublier.</span></h2>
 
           <div className="relative mt-7 bg-white px-5 pb-5 pt-6 sm:px-7">
             <Dents />
-            <h3 className="font-serif text-[22px] leading-tight">L’addition</h3>
+            <h3 className="font-serif text-[22px] leading-tight">L’atelier du Panthéon</h3>
             <p className="mt-0.5 text-[13px] text-[#74695A]">Ce que coûte ce bien une fois habitable.</p>
             <div className="mt-4 flex h-3 w-full overflow-hidden rounded-sm border" style={{ borderColor: INK }} aria-hidden>
               <span className="bg-[#211C15]" style={{ width: '68%' }} />
@@ -134,7 +134,7 @@ export default function LettreVisite() {
               <span className="flex-1" style={{ background: 'repeating-linear-gradient(135deg,#fff 0 4px,#211C15 4px 5px)' }} />
             </div>
             <div className="mt-3">
-              <Ligne label="Prix affiché" montant={eur(PRIX)} />
+              <Ligne label="Prix de vente affiché" note="Honoraires d’agence inclus, si le bien est vendu par une agence" montant={eur(PRIX)} />
               <Ligne label="Frais de notaire" note="Estimés, environ 8 % dans l’ancien" montant={eur(NOTAIRE)} />
               <Ligne label="Travaux" note="L’ordre de grandeur de l’entrepreneur, signé de son nom" montant={<Blank>à chiffrer</Blank>} />
               <div className="mt-2 border-t" style={{ borderColor: INK }}>
@@ -233,7 +233,7 @@ export default function LettreVisite() {
           <p className="font-serif text-[40px] italic leading-none">Béton ciré</p>
           <p className="mt-2 text-sm text-[#cfc5b4]">La newsletter de ceux qui aiment les lieux atypiques, par <span className="font-logo font-semibold tracking-[-0.3px] text-[#FBF5E9]">loftissime.</span></p>
           <p className="mt-6 text-[13px] leading-relaxed text-[#a59a88]">
-            Ont regardé ce bien : <Blank>l’architecte</Blank>, <Blank>l’entrepreneur</Blank>, <Blank>le courtier</Blank>, <Blank>l’artiste</Blank>.
+            Ont collaboré à ce numéro : <Blank>l’architecte</Blank>, <Blank>l’entrepreneur</Blank>, <Blank>le courtier</Blank>, <Blank>l’artiste</Blank>.
           </p>
           <p className="mt-4 text-sm">
             <span className="underline underline-offset-4">Faire suivre à quelqu’un qui cherche</span>
