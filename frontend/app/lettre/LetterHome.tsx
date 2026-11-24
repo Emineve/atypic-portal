@@ -132,26 +132,6 @@ export default async function LetterHome() {
         )}
 
         <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
-          <h2 className="text-xs uppercase tracking-widest text-stone-500">Béton ciré, le principe</h2>
-          <div className="mt-5 grid gap-x-12 gap-y-5 md:grid-cols-[1fr_1.4fr]">
-            <p className="font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
-              Vivre autrement, <span className="italic text-stone-500">ça se calcule.</span>
-            </p>
-            <div className="space-y-4 text-lg leading-relaxed text-stone-700">
-              <p>
-                Un loft, un atelier, une ancienne boutique : beaucoup en rêvent, peu osent. Parce qu’on ne sait pas ce que le lieu peut devenir, ni ce qu’il coûtera au bout du compte.
-              </p>
-              <p>
-                <em>Béton ciré</em> est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
-              </p>
-              <p>
-                Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
           <h2 className="text-xs uppercase tracking-widest text-stone-500">Vos questions</h2>
           <div className="mt-2 max-w-3xl">
             {QUESTIONS.map(([q, r]) => (
