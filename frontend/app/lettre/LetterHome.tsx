@@ -54,7 +54,6 @@ function BienCard({ b, numero }: { b: LetterItem; numero: number }) {
 export default async function LetterHome({ drafts = false }: { drafts?: boolean }) {
   const all = await getIssues();
   const shown = drafts ? all : all.filter((i) => i.paru);
-  const next = all.find((i) => !i.paru); // le prochain numéro, pour annoncer sa date
   // Les biens parus : ceux des derniers numéros montrés, du plus récent au plus ancien
   const full = await Promise.all(shown.slice(0, 4).map((i) => getIssue(i.numero)));
   const biens = full.flatMap((d) => (d ? d.items.filter((i) => i.rubrique !== 'avant_premiere').map((b) => ({ b, numero: d.issue.numero })) : []));
@@ -132,7 +131,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
             </ul>
           ) : (
             <p className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-stone-900">
-              {next?.date_parution ? <>La première visite paraît le {dateLettre(next.date_parution)}.</> : <>La première visite arrive bientôt.</>}
+              Le premier numéro arrive bientôt.
             </p>
           )}
         </section>

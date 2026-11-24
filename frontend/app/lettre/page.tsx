@@ -17,7 +17,6 @@ export const metadata = {
 export default async function LettreIndex() {
   const lettres = await getIssues();
   const parus = lettres.filter((l) => l.paru);
-  const aVenir = lettres.filter((l) => !l.paru);
   return (
     <div className="min-h-screen font-sans text-[#211C15]" style={BETON_BG}>
       <SiteHeader />
@@ -50,7 +49,8 @@ export default async function LettreIndex() {
           </ul>
         ) : (
           <p className="mt-5 max-w-2xl font-serif text-2xl leading-snug md:text-3xl">
-            {aVenir[0]?.date_parution ? <>Le premier numéro paraît le {dateLettre(aVenir[0].date_parution)}.</> : <>Le premier numéro arrive bientôt.</>}
+            {/* pas de date tant que le numéro n'est pas paru : une date prévue dans le back-office n'est pas une promesse */}
+            Le premier numéro arrive bientôt.
           </p>
         )}
 
