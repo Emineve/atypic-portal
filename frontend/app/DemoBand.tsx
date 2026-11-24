@@ -12,7 +12,7 @@ export default function DemoBand() {
   if (mode === 'lettre')
     return (
       <div className="overflow-hidden whitespace-nowrap bg-stone-900 px-4 py-2.5 text-center text-xs leading-none tracking-[0.1em] text-stone-100 md:text-[13px] md:tracking-[0.14em] print:hidden">
-        Site en préparation <span aria-hidden="true">|</span> Premier numéro bientôt
+        Site en préparation <span aria-hidden="true">|</span> Numéros et biens d’exemple
       </div>
     );
   return (

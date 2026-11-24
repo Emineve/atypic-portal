@@ -1,21 +1,21 @@
 import Link from 'next/link';
 import SiteHeader from '../SiteHeader';
-import GuideArt from '../guide/GuideArt';
 import LetterSignup from './LetterSignup';
 import Mesure from './Mesure';
-import { Verriere } from './Beton';
+import { BETON_BG, Poutre, Verriere } from './Beton';
+import { BIENS_EXEMPLE, EXEMPLES_ACTIFS, NUMEROS_EXEMPLE, PROCHAIN_NUMERO } from '../../lib/lettreExemples';
 import { dateLettre, type LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
 
 // L'accueil du mode lettre, de haut en bas : le titre de Loftissime et l'abonnement à sa newsletter « Béton ciré »,
 // les biens déjà parus, qui nous sommes, puis État des lieux.
-// `drafts` : l'aperçu montre aussi le numéro en préparation ; le site public ne montre que les numéros parus.
+// Tant qu'aucun numéro n'est paru, les numéros et les biens affichés sont ceux de lib/lettreExemples.ts.
 
 const euros = (n: number | null) => (n == null ? '' : n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' €');
 
 // La vignette d'un bien paru dans la lettre : même gabarit que les vignettes d'annonces du site, avec le dessin à la
 // place de la photo. On n'entre pas dans une fiche : le seul lien mène à l'annonce de l'agence ou du propriétaire.
-function BienCard({ b, numero }: { b: LetterItem; numero: number }) {
+function BienCard({ b, numero, une = false }: { b: LetterItem; numero: number; une?: boolean }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-[14px] border border-stone-200 bg-white">
       <div className="flex aspect-[3/2] items-center justify-center border-b border-stone-900 bg-white sm:aspect-[4/3]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent 0 23px, rgba(33,28,21,.06) 23px 24px), repeating-linear-gradient(90deg, transparent 0 23px, rgba(33,28,21,.06) 23px 24px)' }}>
@@ -37,7 +37,7 @@ function BienCard({ b, numero }: { b: LetterItem; numero: number }) {
         </p>
         <p className="mt-auto pt-4 font-serif text-xl lining-nums text-stone-900">{euros(b.prix)}</p>
         <p className="mt-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs text-stone-500">
-          <span>Paru dans Béton ciré n° {numero}</span>
+          <span>{une ? 'À la une de' : 'Paru dans'} Béton ciré n° {numero}</span>
           {b.agency_url ? (
             <a href={b.agency_url} target="_blank" rel="noreferrer" className="font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">
               {b.seller === 'particulier' ? 'Voir l’annonce du propriétaire' : `Voir l’annonce chez ${b.agency_name}`}
@@ -51,12 +51,18 @@ function BienCard({ b, numero }: { b: LetterItem; numero: number }) {
   );
 }
 
-export default async function LetterHome({ drafts = false }: { drafts?: boolean }) {
-  const all = await getIssues();
-  const shown = drafts ? all : all.filter((i) => i.paru);
-  // Les biens parus : ceux des derniers numéros montrés, du plus récent au plus ancien
-  const full = await Promise.all(shown.slice(0, 4).map((i) => getIssue(i.numero)));
-  const biens = full.flatMap((d) => (d ? d.items.filter((i) => i.rubrique !== 'avant_premiere').map((b) => ({ b, numero: d.issue.numero })) : []));
+export default async function LetterHome() {
+  const parus = (await getIssues()).filter((i) => i.paru);
+  // Tant qu'aucun numéro n'est paru, l'accueil montre des numéros d'exemple, sans lien
+  const exemples = parus.length === 0 && EXEMPLES_ACTIFS;
+  const full = exemples ? [] : await Promise.all(parus.slice(0, 2).map((i) => getIssue(i.numero)));
+  const biens: { b: LetterItem; numero: number; une: boolean }[] = exemples
+    ? BIENS_EXEMPLE
+    : full.flatMap((d) => (d ? d.items.filter((i) => i.rubrique !== 'avant_premiere').map((b, k) => ({ b, numero: d.issue.numero, une: k === 0 })) : []));
+  const numeros = exemples
+    ? NUMEROS_EXEMPLE.map((n) => ({ ...n, href: null as string | null, date: '' }))
+    : parus.slice(0, 3).map((l) => ({ numero: l.numero, titre: l.titre || '', resume: l.resume || '', href: `/lettre/numero-${l.numero}` as string | null, date: dateLettre(l.date_parution, false) }));
+  const prochain = exemples ? PROCHAIN_NUMERO : (parus[0]?.numero || 0) + 1;
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
@@ -83,58 +89,68 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
                 Abonnez-vous à Béton ciré, <span className="italic text-stone-500">la newsletter de Loftissime.</span>
               </h2>
               <p className="mt-2 max-w-xl text-stone-600">
-                Parce qu’habiter un lieu atypique peut passer du rêve à la réalité. Un jeudi sur deux : une visite, un projet, son coût complet.
+                Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.
               </p>
               <LetterSignup source="accueil" className="mt-5 max-w-md" />
             </div>
           </div>
-          <div className="overflow-hidden rounded-[14px] border border-stone-900 bg-[#F6CF4E]">
-            <GuideArt art="loft" className="block aspect-[4/3] w-full" />
+          {/* la une de la newsletter, dans son propre décor : béton, poutre d'acier, verrière d'atelier */}
+          <div className="hidden lg:block" style={BETON_BG}>
+            <Poutre />
+            <div className="p-7">
+              <p className="flex items-baseline justify-between gap-4">
+                <span className="font-serif text-4xl italic leading-none text-[#211C15]">Béton ciré</span>
+                <span className="text-sm text-[#74695A]">n° {prochain}, à paraître</span>
+              </p>
+              <Verriere label="La visite filmée du prochain numéro" className="mt-6" />
+              <p className="mt-5 font-serif text-xl leading-snug text-[#211C15]">La visite, le projet, l’addition, <span className="italic text-[#74695A]">et ce qu’il faut vérifier avant de signer.</span></p>
+            </div>
           </div>
         </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
+        <section>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
+            <h2 className="text-xs uppercase tracking-widest text-stone-500">Les numéros de Béton ciré</h2>
+            {!exemples && parus.length > 3 && <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">Tous les numéros</Link>}
+          </div>
+          <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <li>
+              <div className="flex aspect-[640/400] items-center justify-center border border-dashed border-stone-900 px-6 text-center">
+                <span className="font-serif text-2xl italic leading-tight text-stone-500">Le n° {prochain} arrive bientôt</span>
+              </div>
+              <p className="mt-4 text-sm text-stone-500">N° {prochain}, à paraître</p>
+            </li>
+            {numeros.map((n) => {
+              const inner = (
+                <>
+                  <Verriere label={`La visite du numéro ${n.numero}`} />
+                  <span className="mt-4 block text-sm text-stone-500">N° {n.numero}{n.date && `, ${n.date}`}</span>
+                  <span className="mt-1 block font-serif text-2xl leading-tight text-stone-900">{n.titre}</span>
+                  {n.resume && <span className="mt-1.5 block text-stone-600">{n.resume}</span>}
+                </>
+              );
+              return <li key={n.numero}>{n.href ? <Link href={n.href} className="block">{inner}</Link> : <div>{inner}</div>}</li>;
+            })}
+          </ul>
+        </section>
+
         {biens.length > 0 && (
-          <section>
+          <section className="mt-16 md:mt-20">
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-              <h2 className="text-xs uppercase tracking-widest text-stone-500">Les biens parus dans Béton ciré, la newsletter de Loftissime</h2>
-              <p className="text-sm text-stone-500">{biens.length} bien{biens.length > 1 ? 's' : ''}</p>
+              <h2 className="text-xs uppercase tracking-widest text-stone-500">Les biens parus dans Béton ciré</h2>
+              <p className="text-sm text-stone-500">{biens.length} biens dans les deux derniers numéros</p>
             </div>
-            <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {biens.map(({ b, numero }) => (
+            <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {biens.map(({ b, numero, une }) => (
                 <li key={b.id}>
-                  <BienCard b={b} numero={numero} />
+                  <BienCard b={b} numero={numero} une={une} />
                 </li>
               ))}
             </ul>
           </section>
         )}
-
-        <section className={biens.length > 0 ? 'mt-16 md:mt-20' : ''}>
-          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-            <h2 className="text-xs uppercase tracking-widest text-stone-500">Les numéros de Béton ciré</h2>
-            {shown.length > 3 && <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">Tous les numéros</Link>}
-          </div>
-          {shown.length > 0 ? (
-            <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {shown.slice(0, 3).map((l) => (
-                <li key={l.numero}>
-                  <Link href={`/lettre/numero-${l.numero}`} className="group block">
-                    {/* la vidéo de la visite sert de vignette ; tant qu'elle n'est pas tournée, son cadre l'annonce */}
-                    <Verriere label={`La visite du numéro ${l.numero}`} />
-                    <span className="mt-4 block text-sm text-stone-500">N° {l.numero}, {dateLettre(l.date_parution, false)}{!l.paru && ', en préparation'}</span>
-                    <span className="mt-1 block font-serif text-2xl leading-tight text-stone-900 group-hover:underline underline-offset-4 decoration-[#F6CF4E] decoration-2">{l.titre}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-stone-900">
-              Le premier numéro arrive bientôt.
-            </p>
-          )}
-        </section>
 
         <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
           <h2 className="text-xs uppercase tracking-widest text-stone-500">Béton ciré, le principe</h2>
@@ -147,7 +163,7 @@ export default async function LetterHome({ drafts = false }: { drafts?: boolean 
                 Un loft, un atelier, une ancienne boutique : beaucoup en rêvent, peu osent. Parce qu’on ne sait pas ce que le lieu peut devenir, ni ce qu’il coûtera au bout du compte.
               </p>
               <p>
-                Béton ciré est fait pour ça. Un jeudi sur deux, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
+                Béton ciré est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
               </p>
               <p>
                 Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.

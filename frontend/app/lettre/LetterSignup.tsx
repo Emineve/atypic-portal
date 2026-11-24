@@ -70,19 +70,19 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   }
 
   const band = variant === 'band';
-  const box = band ? `rounded-[14px] border border-stone-900 bg-[#F6CF4E] p-6 md:p-8 ${className}` : className;
+  const box = band ? `border border-stone-900 bg-white p-6 md:p-8 ${className}` : className;
 
   if (step === 'fini')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">Béton ciré arrive un jeudi sur deux{email ? `, à ${email}` : ''}.</Done>
+        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de Béton ciré{email ? `, à ${email}` : ''}.</Done>
       </div>
     );
 
   if (step === 'criteres')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">Béton ciré arrive un jeudi sur deux, à {email}.</Done>
+        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de Béton ciré, à {email}.</Done>
         <form
           className="mt-8"
           onSubmit={(e) => {
@@ -160,12 +160,12 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       {band && (
         <>
           <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
-            Recevez Béton ciré, <span className="italic">un jeudi sur deux.</span>
+            Recevez Béton ciré, <span className="italic text-stone-500">la newsletter de Loftissime.</span>
           </h2>
-          <p className="mt-2 text-stone-800">Un bien atypique à Paris, ce qu’on peut en faire et ce qu’il coûte vraiment.</p>
+          <p className="mt-2 max-w-2xl text-stone-600">Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.</p>
         </>
       )}
-      <label className={`${LABEL} ${band ? 'mt-5' : ''}`}>
+      <label className={`${LABEL} ${band ? 'mt-5 max-w-md' : ''}`}>
         Votre e-mail <span aria-hidden="true">*</span>
         <span className="mt-1.5 flex flex-row gap-3">
           <input
@@ -184,7 +184,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
         </span>
       </label>
       {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
-      <p className={`mt-3 text-xs leading-relaxed ${band ? 'text-stone-700' : 'text-stone-500'}`}>
+      <p className={`mt-3 text-xs leading-relaxed ${band ? 'text-stone-500' : 'text-stone-500'}`}>
         En vous inscrivant, vous acceptez de recevoir Béton ciré, la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
         <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
       </p>

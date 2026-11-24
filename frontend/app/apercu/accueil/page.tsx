@@ -10,5 +10,5 @@ export const metadata = {
 };
 
 export default function ApercuAccueil() {
-  return <LetterHome drafts />;
+  return <LetterHome />;
 }
