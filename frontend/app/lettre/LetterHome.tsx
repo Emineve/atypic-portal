@@ -12,7 +12,7 @@ import { getIssue, getIssues } from '../../lib/lettre';
 
 // Les questions de l'accueil : ce qu'est le site, ce qu'est sa newsletter, ce qu'on fait de l'adresse e-mail
 const QUESTIONS: [string, string][] = [
-  ['Loftissime, c’est quoi ?', 'Un site consacré à l’immobilier atypique : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Il commence par sa newsletter, Béton ciré. Le reste arrive ensuite.'],
+  ['Loftissime, c’est quoi ?', 'Un média sur l’immobilier atypique : conseils, témoignages, financement et annonces de lofts, d’ateliers d’artistes, de toits-terrasses, de biens de caractère. Il commence par sa newsletter, Béton ciré. Le reste arrive ensuite.'],
   ['Et Béton ciré ?', 'C’est la newsletter de Loftissime. Dans chaque numéro, nous poussons la porte d’un bien atypique à Paris : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques que nous avons repérés.'],
   ['Qui sont vos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun parle de son métier, et les chiffres qu’il donne sont signés de son nom.'],
   ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. C’est vers eux que mène le lien de l’annonce.'],
@@ -87,7 +87,7 @@ export default async function LetterHome() {
         <h1 className="text-[2.5rem] md:text-5xl lg:text-[3.2rem] lg:whitespace-nowrap font-serif tracking-tight text-stone-900 leading-[1.04]">
           Tout l’immobilier atypique, <span className="italic text-stone-500">réuni sur un seul site.</span>
         </h1>
-        <p className="mt-5 max-w-xl text-lg text-stone-600">Lofts, ateliers d’artistes, toits-terrasses, biens de caractère.</p>
+        <p className="mt-5 max-w-xl text-lg text-stone-600">Conseils, témoignages, financement, annonces de biens atypiques.</p>
 
         <LetterSignup
           variant="band"
