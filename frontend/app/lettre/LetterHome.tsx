@@ -83,21 +83,13 @@ export default async function LetterHome() {
         </filter>
       </svg>
 
-      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-14 pb-10 md:pb-14">
-        {/* Le titre de Loftissime, le même qu'en mode portail : le site ne se réduit pas à sa newsletter */}
-        <h1 className="text-[2.5rem] md:text-5xl lg:text-[3.2rem] lg:whitespace-nowrap font-serif tracking-tight text-stone-900 leading-[1.04]">
-          Tout l’immobilier atypique, <span className="italic text-stone-500">réuni sur un seul site.</span>
-        </h1>
-        <p className="mt-5 max-w-xl text-lg text-stone-600">Des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre.</p>
-
-      </header>
-
-      <main className="max-w-6xl mx-auto px-6 pb-20">
+      <main className="max-w-6xl mx-auto px-6 pt-8 md:pt-14 pb-20">
         <section className="mb-16 md:mb-20">
-          <div className="grid gap-x-12 gap-y-3 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
-            <h2 className="font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
+          {/* le titre de la page : les newsletters, par lesquelles Loftissime commence */}
+          <div className="grid items-end gap-x-12 gap-y-4 md:grid-cols-[1.1fr_1fr]">
+            <h1 className="font-serif text-[2.5rem] md:text-5xl lg:text-[3.2rem] tracking-tight leading-[1.04] text-stone-900">
               Les newsletters de Loftissime, <span className="italic text-stone-500">choisissez les vôtres.</span>
-            </h2>
+            </h1>
             <p className="text-lg leading-relaxed text-stone-700">
               Chacune a son sujet, toutes ont le même format : un bien à la une, ce qu’il coûte vraiment, ce qu’il faut vérifier avant la promesse. <em>Béton ciré</em> ouvre la série. Les suivantes s’ouvriront dans l’ordre de vos choix.
             </p>
