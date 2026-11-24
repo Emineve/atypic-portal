@@ -5,7 +5,7 @@ export default function Logo({ className = 'text-2xl', tagline = false }: { clas
   return (
     <Link href="/" aria-label="Loftissime, curateur de biens atypiques : retour à l'accueil" className="inline-flex flex-col">
       <span className={`font-logo font-semibold lowercase tracking-tight leading-none text-stone-900 whitespace-nowrap ${className}`}>loftissime.</span>
-      {tagline && <span className="mt-1 text-xs leading-none text-stone-500 whitespace-nowrap">Curateur de biens atypiques</span>}
+      {tagline && <span className="mt-1 text-xs leading-none text-stone-500 whitespace-nowrap">Le média de l’immobilier atypique</span>}
     </Link>
   );
 }
