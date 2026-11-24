@@ -12,7 +12,6 @@ import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
 
 const LETTER_LINKS = [
-  { href: '/lettre', label: 'Béton ciré, tous les numéros' },
   { href: '/guide', label: 'Avant la promesse' },
 ];
 const LETTER_LINK =
@@ -88,7 +87,7 @@ export default function SiteHeaderClient({
               </div>
             </div>
             <a href="/#recevoir" className="whitespace-nowrap rounded-full border border-stone-900 px-4 py-2 text-sm font-medium text-stone-900 transition-colors hover:bg-stone-900 hover:text-[#FBF5E9]">
-              Recevoir Béton ciré
+              Recevoir les newsletters
             </a>
           </div>
           <div className="sm:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-7">
