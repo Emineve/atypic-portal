@@ -152,6 +152,16 @@ export default function IssueEditor({ token, items, reload }: { token: string; i
         setMessage('Un bien n’a pas pu être enregistré : ' + e.message);
         return;
       }
+      // La photo de travail s'enregistre à part : elle ne sort jamais du back-office
+      if (it.id && 'photo_url' in it) {
+        const url = typeof it.photo_url === 'string' && it.photo_url.trim() ? it.photo_url.trim() : null;
+        const { error: pe } = await sb.rpc('admin_set_letter_item_photo', { p_token: token, p_id: it.id, p_url: url });
+        if (pe) {
+          setState('error');
+          setMessage('La photo de travail n’a pas pu être enregistrée : son adresse doit commencer par https://');
+          return;
+        }
+      }
     }
     setDrafts({});
     setState('saved');
@@ -277,6 +287,9 @@ export default function IssueEditor({ token, items, reload }: { token: string; i
                 <Field title="Notre phrase" area value={it.phrase} onChange={(v) => setItem(it, { phrase: v })} />
               </div>
               <div className="mt-3">
+                <Field title="Photo de travail (adresse de l’image) : visible ici seulement, jamais publiée" type="url" value={it.photo_url as string | null | undefined} ph="https://…" onChange={(v) => setItem(it, { photo_url: v })} />
+              </div>
+              <div className="mt-3">
                 <Field title="À signaler au lecteur" value={it.usage_note} ph="usage mixte, à transformer…" onChange={(v) => setItem(it, { usage_note: v })} />
               </div>
             </li>
@@ -373,7 +386,7 @@ export default function IssueEditor({ token, items, reload }: { token: string; i
           <p className={lab}>Aperçu en direct</p>
           <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border border-stone-300 bg-[#EFE7D6]">
             <div className="lg:w-[600px] lg:[zoom:0.8]">
-              <LetterView issue={issue} items={preview} articles={lettreArticles(c)} />
+              <LetterView issue={issue} items={preview} articles={lettreArticles(c)} photosInternes />
             </div>
           </div>
           {hidden.length > 0 && <p className="mt-2 text-xs text-stone-500">{hidden.length} bien(s) du numéro n’apparaissent pas : leur statut n’est pas « retenu », « agence contactée », « accord » ou « publié ».</p>}

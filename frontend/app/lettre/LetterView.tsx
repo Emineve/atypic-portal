@@ -19,6 +19,7 @@ export type LetterItem = {
   valeur: number | null;
   ordre?: number | null;
   seller?: string | null;
+  photo_url?: string | null; // photo de travail : aperçu du back-office seulement
 };
 
 export type LetterContent = {
@@ -53,7 +54,8 @@ function Blank({ v, ph, draft }: { v?: string | null; ph: string; draft: boolean
   return draft ? <span className="opacity-60">[{ph}]</span> : null;
 }
 
-export default function LetterView({ issue, items, articles }: { issue: LetterIssue; items: LetterItem[]; articles: LetterArticle[] }) {
+// `photosInternes` : réservé à l'aperçu du back-office. Les pages publiques et le mail ne montrent jamais de photo d'annonce.
+export default function LetterView({ issue, items, articles, photosInternes = false }: { issue: LetterIssue; items: LetterItem[]; articles: LetterArticle[]; photosInternes?: boolean }) {
   const c = issue.content || {};
   const o = c.ouverture || {};
   const draft = !issue.paru;
@@ -74,7 +76,15 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
   ) : null;
   const bien = (x: LetterItem, i: number) => (
               <li key={x.id || i} className="flex gap-4 border-b border-[#D9CFBC] py-7 sm:gap-5">
-                {x.kind !== 'aucun' && <Mesure kind={x.kind} valeur={x.valeur} className="w-[104px] shrink-0 self-start sm:w-[150px]" />}
+                {photosInternes && x.photo_url ? (
+                  <span className="w-[104px] shrink-0 self-start sm:w-[150px]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={x.photo_url} alt="" referrerPolicy="no-referrer" className="block aspect-[4/3] w-full rounded-md object-cover" />
+                    <span className="mt-1 block text-[10px] leading-tight text-[#74695A]">Photo de travail, non publiée</span>
+                  </span>
+                ) : (
+                  x.kind !== 'aucun' && <Mesure kind={x.kind} valeur={x.valeur} className="w-[104px] shrink-0 self-start sm:w-[150px]" />
+                )}
                 <div className="min-w-0">
                   <p className="font-serif text-[34px] leading-none sm:text-[40px]">{x.mesure}</p>
                   {x.mesure_detail && <p className="mt-1 font-serif text-[22px] italic leading-tight text-[#74695A]">{x.mesure_detail}</p>}
