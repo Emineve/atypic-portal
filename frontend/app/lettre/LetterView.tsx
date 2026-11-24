@@ -57,6 +57,36 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
   const o = c.ouverture || {};
   const draft = !issue.paru;
   const biens = items.filter((i) => i.rubrique !== 'avant_premiere');
+  // Deux sélections : les biens de la semaine, puis ceux sous 500 000 €, ouverts à la petite couronne
+  const grands = biens.filter((i) => i.rubrique !== 'petit_prix');
+  const petits = biens.filter((i) => i.rubrique === 'petit_prix');
+  const horsParis = biens.some((i) => i.lieu && !/^paris\b/i.test(i.lieu.trim()));
+  const bien = (x: LetterItem, i: number) => (
+              <li key={x.id || i} className="flex gap-4 border-b border-[#D9CFBC] py-7 sm:gap-5">
+                {x.kind !== 'aucun' && <Mesure kind={x.kind} valeur={x.valeur} className="w-[104px] shrink-0 self-start sm:w-[150px]" />}
+                <div className="min-w-0">
+                  <p className="font-serif text-[34px] leading-none sm:text-[40px]">{x.mesure}</p>
+                  {x.mesure_detail && <p className="mt-1 font-serif text-[22px] italic leading-tight text-[#74695A]">{x.mesure_detail}</p>}
+                  <p className="mt-3 text-[13px] leading-normal">
+                    {x.lieu}
+                    {x.surface && <span className="text-[#74695A]">, {x.surface}</span>}
+                  </p>
+                  {x.phrase && <p className="mt-1.5 text-[15px] leading-relaxed text-[#4a4238]">{x.phrase}</p>}
+                  {x.usage_note && <p className="mt-1.5 text-[13px] leading-normal text-[#74695A]">{x.usage_note}.</p>}
+                  <p className="mt-3 font-serif text-[21px] leading-tight lining-nums">{euros(x.prix)}</p>
+                  <p className="mt-1.5 text-sm font-medium">
+                    {x.agency_url ? (
+                      <a href={x.agency_url} target="_blank" rel="noreferrer" className="underline underline-offset-4">Voir l’annonce chez {x.agency_name}</a>
+                    ) : (
+                      <span>
+                        {x.agency_name}
+                        {draft && <span className="ml-2 bg-[#F6CF4E] px-1.5 py-0.5 text-xs font-normal">lien à trouver</span>}
+                      </span>
+                    )}
+                  </p>
+                </div>
+              </li>
+  );
   return (
     <article className="mx-auto w-full max-w-[600px] bg-[#FBF5E9] text-[#211C15]">
       {/* Ouverture : le bien en avant-première */}
@@ -101,38 +131,12 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
       </section>
 
       {/* Déjà en ligne */}
-      {biens.length > 0 && (
+      {(grands.length > 0 || articles.length > 0) && (
         <section className="px-6 pt-9 sm:px-10">
           <h2 className="font-serif text-[27px] leading-tight">Déjà en ligne, <span className="italic text-[#74695A]">repérés cette semaine à Paris.</span></h2>
           {c.sous_titre && <p className="mt-2 text-[13px] leading-normal text-[#74695A]">{c.sous_titre}</p>}
           <ul className="mt-4 border-t border-[#211C15]">
-            {biens.map((x, i) => (
-              <li key={x.id || i} className="flex gap-4 border-b border-[#D9CFBC] py-7 sm:gap-5">
-                {x.kind !== 'aucun' && <Mesure kind={x.kind} valeur={x.valeur} className="w-[104px] shrink-0 self-start sm:w-[150px]" />}
-                <div className="min-w-0">
-                  {x.rubrique === 'petit_prix' && <p className="mb-1.5 text-[13px] text-[#74695A]">Sous 500 000 €</p>}
-                  <p className="font-serif text-[34px] leading-none sm:text-[40px]">{x.mesure}</p>
-                  {x.mesure_detail && <p className="mt-1 font-serif text-[22px] italic leading-tight text-[#74695A]">{x.mesure_detail}</p>}
-                  <p className="mt-3 text-[13px] leading-normal">
-                    {x.lieu}
-                    {x.surface && <span className="text-[#74695A]">, {x.surface}</span>}
-                  </p>
-                  {x.phrase && <p className="mt-1.5 text-[15px] leading-relaxed text-[#4a4238]">{x.phrase}</p>}
-                  {x.usage_note && <p className="mt-1.5 text-[13px] leading-normal text-[#74695A]">{x.usage_note}.</p>}
-                  <p className="mt-3 font-serif text-[21px] leading-tight lining-nums">{euros(x.prix)}</p>
-                  <p className="mt-1.5 text-sm font-medium">
-                    {x.agency_url ? (
-                      <a href={x.agency_url} target="_blank" rel="noreferrer" className="underline underline-offset-4">Voir l’annonce chez {x.agency_name}</a>
-                    ) : (
-                      <span>
-                        {x.agency_name}
-                        {draft && <span className="ml-2 bg-[#F6CF4E] px-1.5 py-0.5 text-xs font-normal">lien à trouver</span>}
-                      </span>
-                    )}
-                  </p>
-                </div>
-              </li>
-            ))}
+            {grands.map(bien)}
             {articles.map((a) => (
               <li key={a.slug} className="border-b border-[#D9CFBC] py-6">
                 <a href={`/guide/${a.slug}`} className="flex items-center gap-5 no-underline">
@@ -147,6 +151,14 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {/* Sous 500 000 € */}
+      {petits.length > 0 && (
+        <section className="px-6 pt-9 sm:px-10">
+          <h2 className="font-serif text-[27px] leading-tight">Sous 500 000 €, <span className="italic text-[#74695A]">à Paris et autour.</span></h2>
+          <ul className="mt-4 border-t border-[#211C15]">{petits.map(bien)}</ul>
         </section>
       )}
 
@@ -184,7 +196,7 @@ export default function LetterView({ issue, items, articles }: { issue: LetterIs
             ['Lettre', 'loftissime.'],
             ['Numéro', String(issue.numero)],
             ['Date', dateLettre(issue.date_parution, false)],
-            ['Périmètre', 'Paris'],
+            ['Périmètre', horsParis ? 'Paris et petite couronne' : 'Paris'],
           ].map(([k, v]) => (
             <div key={k} className="border-b border-r border-[#211C15] px-2.5 py-2">
               <div className="text-[10px] leading-tight text-[#74695A]">{k}</div>
