@@ -14,7 +14,7 @@ const QUESTIONS: [string, string][] = [
   ['Loftissime, c’est quoi ?', 'Un site consacré à l’immobilier atypique : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Il commence par sa newsletter, Béton ciré. Le reste arrive ensuite.'],
   ['Et Béton ciré ?', 'C’est la newsletter de Loftissime. Dans chaque numéro, nous poussons la porte d’un bien atypique à Paris : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques que nous avons repérés.'],
   ['Qui sont vos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun parle de son métier, et les chiffres qu’il donne sont signés de son nom.'],
-  ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est présenté par son agence ou par son propriétaire, et c’est vers eux que mène le lien de l’annonce.'],
+  ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. C’est vers eux que mène le lien de l’annonce.'],
   ['L’abonnement est-il payant ?', 'Non, Béton ciré est gratuite.'],
   ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer Béton ciré, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
 ];
@@ -131,7 +131,7 @@ export default async function LetterHome() {
           <div className="mt-2 max-w-3xl">
             {QUESTIONS.map(([q, r]) => (
               <details key={q} className="group border-b border-stone-200">
-                <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6 py-5 font-serif text-xl md:text-2xl leading-snug text-stone-900 [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer outline-none focus-visible:underline decoration-stone-900 underline-offset-4 list-none items-baseline justify-between gap-6 py-5 font-serif text-xl md:text-2xl leading-snug text-stone-900 [&::-webkit-details-marker]:hidden">
                   {q}
                   <span aria-hidden className="font-sans text-xl text-stone-500 transition-transform group-open:rotate-45">+</span>
                 </summary>

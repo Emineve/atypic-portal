@@ -92,9 +92,9 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
         <p className="mt-2 text-sm text-stone-400">La newsletter de Loftissime.</p>
         <label className="mt-5 block text-sm font-medium text-[#FBF5E9]">
           Votre e-mail <span aria-hidden="true">*</span>
-          <span className="mt-1.5 flex flex-row gap-3">
-            <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 min-w-0 flex-1`} />
-            <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#F6CF4E] text-stone-900 transition hover:bg-[#FBF5E9] disabled:opacity-50">
+          <span className="relative mt-1.5 block">
+            <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 !pr-14`} />
+            <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="absolute right-1.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
               <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />
             </button>
           </span>
@@ -204,7 +204,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       )}
       <label className={`${LABEL} ${band ? 'mt-5 max-w-md' : ''}`}>
         Votre e-mail <span aria-hidden="true">*</span>
-        <span className="mt-1.5 flex flex-row gap-3">
+        <span className="relative mt-1.5 block">
           <input
             type="email"
             required
@@ -213,9 +213,9 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
             placeholder="vous@exemple.fr"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`${FIELD} !mt-0 min-w-0 flex-1`}
+            className={`${FIELD} !mt-0 !pr-14`}
           />
-          <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="flex h-[50px] w-[50px] shrink-0 items-center justify-center self-end rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50 sm:self-auto">
+          <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="absolute right-1.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
             <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />
           </button>
         </span>
