@@ -1,5 +1,5 @@
 import SiteHeader from '../SiteHeader';
-import LetterSignup from './LetterSignup';
+import Famille from './Famille';
 import Mesure from './Mesure';
 import { BIENS_EXEMPLE, EXEMPLES_ACTIFS, NUMEROS_EXEMPLE } from '../../lib/lettreExemples';
 import { Verriere } from './Beton';
@@ -12,12 +12,13 @@ import { getIssue, getIssues } from '../../lib/lettre';
 
 // Les questions de l'accueil : ce qu'est le site, ce qu'est sa newsletter, ce qu'on fait de l'adresse e-mail
 const QUESTIONS: [string, string][] = [
-  ['Qu’est-ce que Loftissime ?', 'Loftissime est le média de l’immobilier atypique. On y trouve des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Sa newsletter s’appelle Béton ciré.'],
-  ['Et Béton ciré ?', 'Béton ciré est la newsletter de Loftissime. Dans chaque numéro, nous poussons la porte d’un bien atypique à Paris : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques que nous avons repérés.'],
+  ['Qu’est-ce que Loftissime ?', 'Loftissime est le média de l’immobilier atypique. On y trouve des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Ses newsletters, dont Béton ciré, arrivent par e-mail.'],
+  ['Et Béton ciré ?', 'Béton ciré est la première newsletter de Loftissime, consacrée aux biens atypiques à rénover. Dans chaque numéro, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques que nous avons repérés.'],
   ['Qui sont vos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun parle de son métier, et les chiffres qu’il donne sont signés de son nom.'],
+  ['Quand sortiront les autres newsletters ?', 'Une par une. Les cases que vous cochez nous disent laquelle ouvrir ensuite : vous serez prévenu par e-mail à l’ouverture de chacune de celles que vous avez choisies.'],
   ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. C’est vers eux que mène le lien de l’annonce.'],
-  ['L’abonnement est-il payant ?', 'Non, Béton ciré est gratuite.'],
-  ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer Béton ciré, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
+  ['L’abonnement est-il payant ?', 'Non, toutes les newsletters de Loftissime sont gratuites.'],
+  ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer les newsletters que vous avez cochées, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
 ];
 
 // Le titre de la newsletter s'écrit en italique dans le texte courant, comme tout titre de publication
@@ -89,24 +90,32 @@ export default async function LetterHome() {
         </h1>
         <p className="mt-5 max-w-xl text-lg text-stone-600">Des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre.</p>
 
-        <LetterSignup
-          variant="band"
-          source="accueil"
-          className="mt-10 md:mt-12"
-          aside={
-            <figure>
-              <div className="overflow-hidden rounded-[10px]">
-                <Verriere label={`La visite filmée de Béton ciré n° ${dernier}`} />
-              </div>
-              <figcaption className="mt-3 text-sm text-stone-500">
-                Extrait de <em>Béton ciré</em> n° {dernier}
-              </figcaption>
-            </figure>
-          }
-        />
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-20">
+        <section className="mb-16 md:mb-20">
+          <div className="grid gap-x-12 gap-y-3 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
+            <h2 className="font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">
+              Les newsletters de Loftissime, <span className="italic text-stone-500">choisissez les vôtres.</span>
+            </h2>
+            <p className="text-lg leading-relaxed text-stone-700">
+              Chacune a son sujet, toutes ont le même format : un bien à la une, ce qu’il coûte vraiment, ce qu’il faut vérifier avant la promesse. <em>Béton ciré</em> ouvre la série. Les suivantes s’ouvriront dans l’ordre de vos choix.
+            </p>
+          </div>
+          <div className="mt-8">
+            <Famille
+              extrait={
+                <span className="block">
+                  <span className="block overflow-hidden rounded-[10px]">
+                    <Verriere label={`La visite filmée de Béton ciré n° ${dernier}`} />
+                  </span>
+                  <span className="mt-2 block text-sm text-stone-500">Extrait de <em>Béton ciré</em> n° {dernier}</span>
+                </span>
+              }
+            />
+          </div>
+        </section>
+
         {biens.length > 0 && (
           <section>
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
