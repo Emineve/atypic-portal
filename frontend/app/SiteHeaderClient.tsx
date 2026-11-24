@@ -12,8 +12,8 @@ import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
 
 const LETTER_LINKS = [
-  { href: '/lettre', label: 'La lettre' },
-  { href: '/guide', label: 'État des lieux' },
+  { href: '/lettre', label: 'Les visites' },
+  { href: '/guide', label: 'Avant de signer' },
 ];
 const LETTER_LINK =
   'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#F6CF4E,#F6CF4E)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';

@@ -32,6 +32,16 @@ function Ligne({ label, note, montant, fort = false }: { label: string; note?: s
   );
 }
 
+// Une poutre d'acier en tête de section : un trait épais, deux rivets
+function Poutre() {
+  return (
+    <div aria-hidden className="mb-4 flex h-[9px] items-center justify-between bg-[#211C15] px-1.5">
+      <span className="h-[3px] w-[3px] rounded-full bg-[#E3DFD8]" />
+      <span className="h-[3px] w-[3px] rounded-full bg-[#E3DFD8]" />
+    </div>
+  );
+}
+
 const AUTRES = [
   { kind: 'hauteur', valeur: 5.1, mesure: '5,10 m', detail: 'sous un volume cathédrale', lieu: 'Vincennes', surface: '32 m² (47 au sol)', prix: 349000 },
   { kind: 'surface', valeur: 16, mesure: '16 m²', detail: 'de terrasse', lieu: 'Pantin', surface: '51 m²', prix: 435000 },
@@ -42,12 +52,12 @@ export default function LettreVisite() {
   return (
     <div className="min-h-screen bg-[#EFE7D6] py-8 font-sans text-[#211C15]">
       <p className="mx-auto mb-4 max-w-[600px] px-6 text-xs text-[#74695A] sm:px-0">Maquette de travail, non publiée. Entre crochets : ce qui attend les mots et les chiffres des cinq intervenants.</p>
-      <article className="mx-auto w-full max-w-[600px] bg-[#FBF5E9]">
+      <article className="mx-auto w-full max-w-[600px] bg-[#E3DFD8]" style={{ backgroundImage: 'radial-gradient(rgba(33,28,21,.07) 1px, transparent 1.2px), radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.2px)', backgroundSize: '7px 7px, 11px 11px', backgroundPosition: '0 0, 3px 5px' }}>
         {/* Ouverture : un seul bien, son surnom, sa promesse */}
         <header className="bg-[#211C15] px-6 pb-8 pt-8 text-[#FBF5E9] sm:px-10">
           <div className="flex items-baseline justify-between gap-4">
             <span className="font-logo text-[19px] font-semibold tracking-[-0.6px]">loftissime.</span>
-            <span className="text-xs text-[#a59a88]">n° 1, un jeudi sur deux</span>
+            <span className="text-xs text-[#a59a88]">Béton ciré, n° 1</span>
           </div>
           <p className="mt-9 text-[13px] text-[#a59a88]">Un bien à potentiel, et ce qu’il coûte vraiment.</p>
           <h1 className="mt-2 font-serif text-[44px] leading-[1.02] sm:text-[56px]">
@@ -61,11 +71,13 @@ export default function LettreVisite() {
           <p className="mt-3 text-[15px] leading-relaxed text-[#cfc5b4]">
             Paris 5e. Un ancien atelier de 55 m² au sol, au pied d’un immeuble de 1880. Affiché <span className="font-serif text-lg lining-nums text-[#FBF5E9]">{eur(PRIX)}</span>.
           </p>
-          <div className="mt-6 overflow-hidden rounded-[10px] bg-[#3a332a]">
+          <div className="mt-6 overflow-hidden">
             <svg viewBox="0 0 1104 560" className="block w-full" role="img" aria-label="La visite en vidéo">
-              <g stroke="#6b6154" strokeWidth={2} fill="none">
-                <path d="M90 470H1014M210 470V130H894V470M210 130L552 60L894 130M552 60V470" />
+              <rect width={1104} height={560} fill="#4a4238" />
+              <g stroke="#211C15" strokeWidth={10}>
+                <path d="M5 5H1099V555H5ZM279 5V555M552 5V555M825 5V555M5 190H1099M5 372H1099" fill="none" />
               </g>
+              <circle cx={552} cy={280} r={62} fill="#211C15" />
               <circle cx={552} cy={280} r={58} fill="none" stroke="#FBF5E9" strokeWidth={3} />
               <path d="M535 252L583 280L535 308Z" fill="#FBF5E9" />
             </svg>
@@ -77,10 +89,11 @@ export default function LettreVisite() {
 
         {/* Aujourd'hui, demain : le même lieu, à la même échelle */}
         <section className="px-6 pt-9 sm:px-10">
+          <Poutre />
           <h2 className="font-serif text-[27px] leading-tight">Aujourd’hui, <span className="italic text-[#74695A]">demain.</span></h2>
           <div className="mt-5 grid grid-cols-2 gap-4">
             <figure>
-              <div className="rounded-lg border border-[#D9CFBC] bg-white p-3">
+              <div className="rounded-lg border border-[#211C15] bg-white p-3">
                 <Mesure kind="surface" valeur={55} className="block w-full" />
               </div>
               <figcaption className="mt-2 text-[13px] leading-snug">Une seule pièce de plain-pied. <span className="text-[#74695A]">La silhouette fait 1,75 m.</span></figcaption>
@@ -96,6 +109,7 @@ export default function LettreVisite() {
 
         {/* Ce qu'il en ferait : trois gestes, trois verbes */}
         <section className="px-6 pt-9 sm:px-10">
+          <Poutre />
           <h2 className="font-serif text-[27px] leading-tight">Ce qu’il en ferait, <span className="italic text-[#74695A]"><Blank>le nom de l’architecte</Blank>.</span></h2>
           <dl className="mt-4 border-t border-[#211C15]">
             {[
@@ -103,7 +117,7 @@ export default function LettreVisite() {
               ['J’ajoute', 'ce qu’il construit : une mezzanine, une verrière, un rangement'],
               ['Je garde', 'le détail qui fait le caractère du lieu'],
             ].map(([verbe, quoi]) => (
-              <div key={verbe} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-[#D9CFBC] py-4">
+              <div key={verbe} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-[#211C15]/25 py-4">
                 <dt className="font-serif text-2xl italic leading-none">{verbe}</dt>
                 <dd className="text-[15px] leading-relaxed"><Blank>{quoi}</Blank></dd>
               </div>
@@ -142,6 +156,7 @@ export default function LettreVisite() {
 
         {/* L'acheteur qu'on imagine, puis ce que le courtier négocierait pour lui */}
         <section className="px-6 pt-9 sm:px-10">
+          <Poutre />
           <h2 className="font-serif text-[27px] leading-tight">Qui peut l’acheter ? <span className="italic text-[#74695A]">On a imaginé quelqu’un.</span></h2>
           <p className="mt-1 text-[13px] text-[#74695A]">Un acheteur inventé pour l’exemple, à qui ce bien irait bien.</p>
           <div className="mt-4 grid grid-cols-2 border-l border-t border-[#211C15]">
@@ -169,7 +184,7 @@ export default function LettreVisite() {
 
         {/* Y vivre : un encart discret, par mois */}
         <section className="px-6 pt-7 sm:px-10">
-          <div className="rounded-lg border border-[#D9CFBC] px-4 py-3.5">
+          <div className="rounded-lg border border-[#211C15]/40 bg-[#EFEBE5] px-4 py-3.5">
             <div className="flex items-baseline justify-between gap-4">
               <h2 className="font-serif text-lg leading-tight">Y vivre, <span className="italic text-[#74695A]">par mois</span></h2>
               <p className="font-serif text-lg lining-nums"><Blank>total</Blank></p>
@@ -188,6 +203,7 @@ export default function LettreVisite() {
 
         {/* Le point de vigilance : un seul, propre à ce bien, avec l'article du site qui l'explique */}
         <section className="px-6 pt-9 sm:px-10">
+          <Poutre />
           <h2 className="font-serif text-[27px] leading-tight">Avant de signer, <span className="italic text-[#74695A]">un point de vigilance.</span></h2>
           <p className="mt-4 border-l-2 border-[#211C15] pl-4 font-serif text-xl leading-snug">
             Cet ancien atelier en rez-de-chaussée est-il un logement, ou encore un local ?
@@ -202,10 +218,11 @@ export default function LettreVisite() {
 
         {/* Trois autres adresses */}
         <section className="px-6 pt-9 sm:px-10">
-          <h2 className="font-serif text-[27px] leading-tight">Trois autres adresses, <span className="italic text-[#74695A]">à transformer.</span></h2>
+          <Poutre />
+          <h2 className="font-serif text-[27px] leading-tight">Trois autres adresses, <span className="italic text-[#74695A]">repérées pour vous.</span></h2>
           <ul className="mt-4 border-t border-[#211C15]">
             {AUTRES.map((a) => (
-              <li key={a.lieu} className="flex items-center gap-4 border-b border-[#D9CFBC] py-4">
+              <li key={a.lieu} className="flex items-center gap-4 border-b border-[#211C15]/25 py-4">
                 <Mesure kind={a.kind} valeur={a.valeur} className="w-[72px] shrink-0" />
                 <div className="min-w-0 flex-1">
                   <p className="font-serif text-[22px] leading-tight">
@@ -222,9 +239,9 @@ export default function LettreVisite() {
         {/* La question : on n'y juge pas le bien, on s'y projette */}
         <section className="px-6 pt-8 sm:px-10">
           <h2 className="font-serif text-[22px] leading-tight">Et vous, dans cet atelier, <span className="italic text-[#74695A]">vous feriez quoi ?</span></h2>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 grid grid-cols-3 border-l border-t border-[#211C15]">
             {['Y vivre', 'Y travailler', 'Les deux'].map((t) => (
-              <span key={t} className="rounded-full border border-[#211C15] px-4 py-2 text-[13px] font-medium">{t}</span>
+              <span key={t} className="border-b border-r border-[#211C15] px-3 py-4 text-center font-serif text-lg italic leading-tight">{t}</span>
             ))}
           </div>
           <p className="mt-3 text-xs text-[#74695A]">Un clic suffit. La réponse des lecteurs ouvre le numéro suivant.</p>
@@ -234,7 +251,7 @@ export default function LettreVisite() {
         <footer className="px-6 pb-8 pt-8 sm:px-10">
           <div className="grid grid-cols-2 border-l border-t border-[#211C15] sm:grid-cols-4">
             {[
-              ['Lettre', 'loftissime.'],
+              ['Lettre', 'Béton ciré'],
               ['Numéro', '1'],
               ['Rythme', 'Un jeudi sur deux'],
               ['Périmètre', 'Paris et autour'],

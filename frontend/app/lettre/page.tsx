@@ -7,7 +7,7 @@ import { getIssues } from '../../lib/lettre';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'La lettre · loftissime.',
+  title: 'Les visites · loftissime.',
   description: 'Tous les numéros de la lettre de Loftissime : un jeudi sur deux, un bien atypique à Paris et ce qu’il coûte vraiment.',
 };
 
@@ -20,7 +20,7 @@ export default async function LettreIndex() {
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">
         <h1 className="max-w-4xl text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-          La lettre, <span className="italic text-stone-500">tous les numéros.</span>
+          Les visites, <span className="italic text-stone-500">toutes les lettres.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-stone-600">Un jeudi sur deux, un bien atypique à Paris et ce qu’il coûte vraiment.</p>
       </header>

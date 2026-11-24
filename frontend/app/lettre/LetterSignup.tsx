@@ -5,6 +5,7 @@ import { getSupabase } from '../../lib/supabase';
 import { FIELD, LABEL } from '../../lib/form';
 import { CATEGORY_LIST } from '../../lib/catalog';
 import Done from '../Done';
+import { ArrowRight } from 'lucide-react';
 
 // Inscription à la lettre, en deux temps : l'e-mail d'abord, puis ce que la personne cherche.
 // Les critères sont enregistrés avec l'inscription ; ils serviront d'alerte le jour où les annonces ouvriront.
@@ -166,7 +167,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       )}
       <label className={`${LABEL} ${band ? 'mt-5' : ''}`}>
         Votre e-mail <span aria-hidden="true">*</span>
-        <span className="mt-1.5 flex flex-col gap-3 sm:flex-row">
+        <span className="mt-1.5 flex flex-row gap-3">
           <input
             type="email"
             required
@@ -175,10 +176,10 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
             placeholder="vous@exemple.fr"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`${FIELD} !mt-0 sm:flex-1`}
+            className={`${FIELD} !mt-0 min-w-0 flex-1`}
           />
-          <button type="submit" disabled={busy} className="h-[50px] shrink-0 rounded-full bg-stone-900 px-6 text-sm font-medium text-[#FBF5E9] disabled:opacity-50">
-            {busy ? 'Inscription…' : 'Recevoir la lettre'}
+          <button type="submit" disabled={busy} aria-label="Recevoir la lettre" className="flex h-[50px] w-[50px] shrink-0 items-center justify-center self-end rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50 sm:self-auto">
+            <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />
           </button>
         </span>
       </label>
