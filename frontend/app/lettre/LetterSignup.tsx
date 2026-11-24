@@ -101,7 +101,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
         </label>
         {error && <p role="alert" className="mt-3 text-sm text-red-300">{error}</p>}
         <p className="mt-3 text-xs leading-relaxed text-stone-500">
-          C’est gratuit. En vous inscrivant, vous acceptez de recevoir Béton ciré. Désinscription en un clic dans chaque numéro.{' '}
+          C’est gratuit. En vous inscrivant, vous acceptez de recevoir <em>Béton ciré</em>. Désinscription en un clic dans chaque numéro.{' '}
           <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
         </p>
       </form>
@@ -112,14 +112,14 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   if (step === 'fini')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de Béton ciré{email ? `, à ${email}` : ''}.</Done>
+        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de <em>Béton ciré</em>{email ? `, à ${email}` : ''}.</Done>
       </div>
     );
 
   if (step === 'criteres')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de Béton ciré, à {email}.</Done>
+        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de <em>Béton ciré</em>, à {email}.</Done>
         <form
           className="mt-8"
           onSubmit={(e) => {
@@ -222,7 +222,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       </label>
       {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
       <p className={`mt-3 text-xs leading-relaxed ${band ? 'text-stone-500' : 'text-stone-500'}`}>
-        C’est gratuit. En vous inscrivant, vous acceptez de recevoir Béton ciré, la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
+        C’est gratuit. En vous inscrivant, vous acceptez de recevoir <em>Béton ciré</em>, la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
         <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
       </p>
     </form>

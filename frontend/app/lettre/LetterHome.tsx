@@ -19,6 +19,9 @@ const QUESTIONS: [string, string][] = [
   ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer Béton ciré, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
 ];
 
+// Le titre de la newsletter s'écrit en italique dans le texte courant, comme tout titre de publication
+const titreEnItalique = (t: string) => t.split('Béton ciré').flatMap((part, i) => (i === 0 ? [part] : [<em key={i}>Béton ciré</em>, part]));
+
 const euros = (n: number | null) => (n == null ? '' : n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' €');
 
 // La vignette d'un bien paru dans la lettre : même gabarit que les vignettes d'annonces du site, avec le dessin à la
@@ -45,7 +48,7 @@ function BienCard({ b, numero, une = false }: { b: LetterItem; numero: number; u
         </p>
         <p className="mt-auto pt-4 font-serif text-xl lining-nums text-stone-900">{euros(b.prix)}</p>
         <p className="mt-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs text-stone-500">
-          <span>{une ? 'À la une de' : 'Paru dans'} Béton ciré n° {numero}</span>
+          <span>{une ? 'À la une de' : 'Paru dans'} <em>Béton ciré</em> n° {numero}</span>
           {b.agency_url ? (
             <a href={b.agency_url} target="_blank" rel="noreferrer" className="font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">
               {b.seller === 'particulier' ? 'Voir l’annonce du propriétaire' : `Voir l’annonce chez ${b.agency_name}`}
@@ -116,7 +119,7 @@ export default async function LetterHome() {
                 Un loft, un atelier, une ancienne boutique : beaucoup en rêvent, peu osent. Parce qu’on ne sait pas ce que le lieu peut devenir, ni ce qu’il coûtera au bout du compte.
               </p>
               <p>
-                Béton ciré est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
+                <em>Béton ciré</em> est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à Paris avec ceux dont c’est le métier. Un architecte dit ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
               </p>
               <p>
                 Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.
@@ -131,10 +134,10 @@ export default async function LetterHome() {
             {QUESTIONS.map(([q, r]) => (
               <details key={q} className="group border-b border-stone-200">
                 <summary className="flex cursor-pointer outline-none focus-visible:underline decoration-stone-900 underline-offset-4 list-none items-baseline justify-between gap-6 py-5 font-serif text-xl md:text-2xl leading-snug text-stone-900 [&::-webkit-details-marker]:hidden">
-                  {q}
+                  <span>{titreEnItalique(q)}</span>
                   <span aria-hidden className="font-sans text-xl text-stone-500 transition-transform group-open:rotate-45">+</span>
                 </summary>
-                <p className="pb-6 text-lg leading-relaxed text-stone-700">{r}</p>
+                <p className="pb-6 text-lg leading-relaxed text-stone-700">{titreEnItalique(r)}</p>
               </details>
             ))}
           </div>
