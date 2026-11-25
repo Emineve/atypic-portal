@@ -180,7 +180,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
           <div className="flex flex-col justify-center p-7 md:p-12">
             <h2 id="nl-premiere" className="font-serif text-6xl italic leading-none text-stone-900 md:text-7xl"><a href="/lettre">{premiere.nom}</a></h2>
             <p className="mt-5 text-xl text-stone-900">{premiere.sujet}</p>
-            <p className="mt-2 text-lg leading-relaxed text-stone-600">Dans chaque numéro, un bien visité avec un architecte, un entrepreneur et un courtier : ce qu’on peut en faire, puis l’addition complète.</p>
+            <p className="mt-2 text-lg leading-relaxed text-stone-600">Pour ceux qui voient un loft là où d’autres voient un chantier, et qui veulent savoir ce que cela coûtera avant de se lancer.</p>
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
               {bouton(premiere)}
               <a href="/lettre" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir Béton ciré</a>
