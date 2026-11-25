@@ -5,10 +5,10 @@ import { usePathname } from 'next/navigation';
 
 const ITEMS = [
   { href: '/admin', label: 'Tableau de bord' },
+  { href: '/admin/avant-premiere', label: 'La newsletter' },
   { href: '/admin/contacts', label: 'Contacts' },
   { href: '/admin/annonces', label: 'Annonces' },
   { href: '/admin/agences', label: 'Agences' },
-  { href: '/admin/avant-premiere', label: 'La newsletter' },
   { href: '/admin/inspiration', label: 'Inspiration' },
 ];
 

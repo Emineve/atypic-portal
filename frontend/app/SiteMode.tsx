@@ -8,7 +8,7 @@ const Ctx = createContext<SiteMode>('portail');
 
 // Rubriques cachées en mode lettre : elles restent dans le site, mais renvoient à l'accueil.
 // « /alerte/stop » (désinscription) et les pages légales restent ouvertes.
-const HIDDEN = ['/biens', '/agence', '/categorie', '/ville', '/charte', '/classement', '/dressing', '/mode-d-emploi', '/partenaires', '/pro', '/contre-visite', '/inspiration', '/architectes'];
+const HIDDEN = ['/biens', '/agence', '/categorie', '/ville', '/charte', '/classement', '/dressing', '/mode-d-emploi', '/partenaires/contre-visite', '/pro', '/contre-visite', '/inspiration', '/architectes'];
 
 export function hiddenInLetterMode(pathname: string): boolean {
   if (pathname === '/alerte') return true;

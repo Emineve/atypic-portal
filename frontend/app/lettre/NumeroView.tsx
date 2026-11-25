@@ -293,7 +293,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
         <p className="font-logo text-[34px] font-semibold leading-none tracking-[-1px]">loftissime<span className="text-[#F6CF4E]">.</span></p>
         <p className="mt-3 text-sm text-[#cfc5b4]">La newsletter de ceux qui aiment les biens atypiques. Douze numéros par an, un thème par mois.</p>
         {(a(c.collaborateurs) || brouillon) && (
-          <p className="mt-6 text-[13px] leading-relaxed text-[#a59a88]">Ont collaboré à ce numéro : <T v={c.collaborateurs} ph="l’architecte, l’entrepreneur, le courtier, l’artiste" /></p>
+          <p className="mt-6 text-[13px] leading-relaxed text-[#a59a88]">Ont collaboré à ce numéro : <T v={c.collaborateurs} ph="l’architecte, l’entrepreneur, le courtier, le notaire, le négociateur" /></p>
         )}
         <p className="mt-6 border-t border-[#4a4238] pt-4 text-[11px] leading-relaxed text-[#8c8273]">
           Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. Les chiffres de travaux et de financement sont des ordres de grandeur donnés par ceux qui les signent. Loftissime n’est pas une agence et n’intervient pas dans la vente.

@@ -286,7 +286,7 @@ export default function AdminAvantPremiere() {
         {items && !edit && view === 'biens' && (
           <>
             <p className="text-sm text-stone-600">
-              Le vivier de biens de la newsletter : chaque numéro y choisit son bien à la une et ses trois autres biens. Ici, le lien de l&apos;annonce, le contact avec l&apos;agence ou le propriétaire, la vidéo.
+              Le vivier de biens de la newsletter : chaque numéro y choisit son bien à la une et, si vous le souhaitez, d’autres biens. Ici, le lien de l&apos;annonce, le contact avec l&apos;agence ou le propriétaire, la vidéo.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {chips.map(([v, l]) => (
@@ -354,7 +354,7 @@ export default function AdminAvantPremiere() {
           <div className="max-w-3xl">
             <button onClick={() => setEdit(null)} className="text-sm underline underline-offset-4 text-stone-600">Retour à la liste</button>
 
-            <h2 className="mt-6 font-serif text-lg">Dans la lettre</h2>
+            <h2 className="mt-6 font-serif text-lg">Dans la newsletter</h2>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               {sel('rubrique', 'Rubrique', RUBRIQUES)}
               {txt('issue_no', 'Numéro prévu', 'number', 'vide = en réserve')}
