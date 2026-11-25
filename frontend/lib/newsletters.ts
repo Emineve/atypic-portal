@@ -39,7 +39,7 @@ export const NEWSLETTERS: Newsletter[] = [
   {
     slug: 'verriere',
     nom: 'Verrière',
-    sujet: 'Les ateliers d’artistes.',
+    sujet: 'Les ateliers d’artistes, pour leur hauteur et leur lumière.',
     addition: 'Le prix du volume, et ce qu’il coûte à chauffer.',
     ouverte: false,
     matiere: { backgroundColor: '#cfe3df', backgroundImage: joints('#211C15', 52, 36) },
@@ -47,7 +47,7 @@ export const NEWSLETTERS: Newsletter[] = [
   {
     slug: 'brique',
     nom: 'Brique',
-    sujet: 'Les lofts.',
+    sujet: 'Les lofts : usines, entrepôts et imprimeries devenus logements.',
     addition: 'Le prix du plateau, puis celui de l’aménagement.',
     ouverte: false,
     matiere: { backgroundColor: '#b0492f', backgroundImage: joints('#ead9c6', 40, 14) },
@@ -87,7 +87,7 @@ export const NEWSLETTERS: Newsletter[] = [
   {
     slug: 'pilotis',
     nom: 'Pilotis',
-    sujet: 'Les maisons d’architecte.',
+    sujet: 'Les maisons d’architecte, celles qui portent une signature.',
     addition: 'L’entretien d’une architecture signée.',
     ouverte: false,
     matiere: { backgroundColor: '#f6f2e9', backgroundImage: 'linear-gradient(#211C15, #211C15), repeating-linear-gradient(90deg, transparent 0 58px, #211C15 58px 62px)', backgroundSize: '100% 38%, 100% 100%', backgroundRepeat: 'no-repeat, repeat', backgroundPosition: 'top, 0 0' },
