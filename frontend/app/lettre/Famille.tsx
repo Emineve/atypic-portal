@@ -126,7 +126,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
             </div>
           ) : (
             <form onSubmit={envoyer}>
-              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Vous êtes à un e-mail de votre premier bien atypique, gratuitement.</p>
+              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Vous êtes à un e-mail de tout savoir sur l’immobilier atypique, gratuitement.</p>
               <p className="mt-3 leading-relaxed text-stone-700">
                 Une newsletter par type d’acheteur. <em>Béton ciré</em> ouvre la série. En prime, notre guide : dix questions à poser avant d’acheter un bien atypique.
               </p>
