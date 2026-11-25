@@ -20,6 +20,7 @@ export default function LetterFooter() {
           <a href="/qui-sommes-nous" className={link}>Pourquoi Loftissime</a>
           <a href="/equipe" className={link}>L’équipe</a>
           <a href="/financement" className={link}>Financement</a>
+          <a href="/partenaires" className={link}>Partenaires</a>
         </nav>
         <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-stone-700 pt-6 text-xs text-stone-500" aria-label="Informations légales">
           <span>© Loftissime</span>

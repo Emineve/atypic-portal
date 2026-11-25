@@ -46,7 +46,7 @@ export const FICHES: Record<Role, Fiche> = {
   courtier: {
     metier: 'courtier',
     matiere: 'zinc',
-    titre: 'Par mois, tout compris :',
+    titre: 'Par mois, tout compris :',
     titreItalique: 'c’est vous qui comptez.',
     accroche: 'Dans chaque numéro de notre newsletter, nous disons ce qu’un bien atypique coûte vraiment, chaque mois. Ce calcul, nous aimerions qu’il soit le vôtre.',
     rubrique: 'Qui pourrait l’acheter ?',
@@ -195,7 +195,9 @@ export default function Presentation({ role }: { role: Role }) {
       <div style={matiere}>
         <section className="mx-auto max-w-6xl px-6 py-10 md:py-16">
           <div className="max-w-3xl rounded-[18px] border-2 border-stone-900 bg-[#FDFBF7] p-7 shadow-[6px_6px_0_#211C15] md:p-12">
-            <p className="text-sm text-stone-500">Présentation, pour vous qui êtes {f.metier}</p>
+            <p className="text-sm text-stone-500">
+              <a href="/partenaires" className="underline underline-offset-4 decoration-stone-400">Partenaires</a>, pour vous qui êtes {f.metier}
+            </p>
             <h1 className="mt-4 font-serif text-5xl leading-[1.02] tracking-tight md:text-7xl">
               {f.titre} <span className="italic text-stone-500">{f.titreItalique}</span>
             </h1>
@@ -217,7 +219,7 @@ export default function Presentation({ role }: { role: Role }) {
         <section className="mt-16 md:mt-24">
           <div className="grid gap-x-12 gap-y-8 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
             <div>
-              <h2 className={h2}>Votre place dans le numéro, <span className="italic text-stone-500">« {f.rubrique} ».</span></h2>
+              <h2 className={h2}>Votre place dans le numéro, <span className="italic text-stone-500">« {f.rubrique.replace(/ \?$/, ' ?')} ».</span></h2>
               <p className="mt-5 text-lg leading-relaxed text-stone-700">{f.rubriqueTexte}</p>
               <p className="mt-4 text-sm text-stone-500">À droite, la rubrique telle qu’elle apparaît dans le numéro. C’est une maquette, sur le bien du premier numéro.</p>
             </div>
