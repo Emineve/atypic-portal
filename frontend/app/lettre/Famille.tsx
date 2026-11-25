@@ -159,14 +159,16 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
         </div>
       </div>
 
-      {/* Les faits, en bandeau pleine largeur. Rien que du vrai : pas de chiffre d'audience tant qu'il n'y en a pas. */}
+      {/* La méthode, en bandeau pleine largeur : quatre temps, le dernier revient au lecteur. Pas de chiffre d'audience tant qu'il n'y en a pas. */}
       <div className="relative left-1/2 mt-14 w-screen -translate-x-1/2 bg-[#211C15] text-[#FBF5E9] md:mt-20">
         <ul className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-x-10 gap-y-2 px-6 py-7 text-center font-serif text-2xl md:flex-row md:py-9 md:text-3xl">
-          <li>{NEWSLETTERS.length} newsletters</li>
-          <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
-          <li>1 bien visité par numéro</li>
-          <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
-          <li>5 métiers autour de chaque bien</li>
+          {['On visite', 'On dessine', 'On chiffre'].map((t) => (
+            <li key={t} className="contents">
+              <span>{t}</span>
+              <span aria-hidden className="hidden text-[#F6CF4E] md:block">✦</span>
+            </li>
+          ))}
+          <li className="italic text-[#F6CF4E]">Vous décidez</li>
         </ul>
       </div>
 
