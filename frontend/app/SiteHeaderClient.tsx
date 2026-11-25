@@ -11,9 +11,8 @@ import MenuPanel from './MenuPanel';
 import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
 
-const LETTER_LINKS = [
-  { href: '/guide', label: 'Avant la promesse' },
-];
+// « Avant la promesse » (/guide) est caché du menu pour le moment : la rubrique reste en ligne, liée depuis le pied de page.
+const LETTER_LINKS: { href: string; label: string }[] = [];
 const LETTER_LINK =
   'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
 
@@ -90,11 +89,13 @@ export default function SiteHeaderClient({
               Recevoir les newsletters
             </a>
           </div>
-          <div className="sm:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-7">
-            {LETTER_LINKS.map((l) => (
-              <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
-            ))}
-          </div>
+          {LETTER_LINKS.length > 0 && (
+            <div className="sm:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-7">
+              {LETTER_LINKS.map((l) => (
+                <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
+              ))}
+            </div>
+          )}
         </nav>
       </>
     );
