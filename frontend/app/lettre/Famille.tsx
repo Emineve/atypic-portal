@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useFocusRecevoir } from '../../lib/useFocusRecevoir';
 import { ArrowRight, Check, Plus } from 'lucide-react';
 import { getSupabase } from '../../lib/supabase';
 import { FIELD, LABEL } from '../../lib/form';
@@ -19,6 +20,8 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
   const [email, setEmail] = useState('');
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState('');
+  const champ = useRef<HTMLInputElement>(null);
+  useFocusRecevoir(champ);
 
   const inscrire = async (slugs: string[]) => {
     const { data, error: err } = await getSupabase().rpc('subscribe_letters', { p_email: email, p_consent: true, p_letters: slugs, p_source: 'lettre-accueil' });
@@ -104,7 +107,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
               </p>
               <label className={`${LABEL} mt-5`}>
                 Votre e-mail <span aria-hidden="true">*</span>
-                <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !h-14`} />
+                <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} ref={champ} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !h-14`} />
               </label>
               <button type="submit" disabled={busy === 'form'} className="mt-4 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-6 text-[15px] font-medium text-white transition hover:bg-stone-700 disabled:opacity-50 sm:w-auto">
                 {busy === 'form' ? 'Inscription…' : 'S’abonner gratuitement'}
