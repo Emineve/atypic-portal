@@ -1,6 +1,6 @@
-// Les newsletters de Loftissime. Même format pour toutes (un bien à la une, l'addition, avant la promesse, trois autres biens,
-// la question) ; chacune a son sujet et porte un nom de matière. « Béton ciré » est la première ; les autres sont annoncées
-// et s'ouvriront selon les choix des abonnés. Les identifiants sont ceux qu'accepte la fonction subscribe_letters de la base.
+// La newsletter de Loftissime : douze numéros par an, un thème par mois. Même format pour tous (un bien à la une, l'addition,
+// avant la promesse, trois autres biens, la question) ; chaque thème porte un nom de matière et s'adresse à un type d'acheteur.
+// Le calendrier est fixé ici. Les identifiants sont ceux qu'accepte la fonction subscribe_letters de la base (thèmes préférés).
 
 export type Newsletter = {
   slug: string;
@@ -8,13 +8,14 @@ export type Newsletter = {
   sujet: string; // ce qu'on y trouve, en une ligne
   addition: string; // ce que « L'addition » y compte
   ouverte: boolean;
+  mois: number; // le mois de son numéro, de 1 (janvier) à 12 (décembre)
   matiere: React.CSSProperties; // l'échantillon de matière en tête de carte
 };
 
 const joints = (c: string, w: number, h: number) =>
   `repeating-linear-gradient(0deg, transparent 0 ${h}px, ${c} ${h}px ${h + 2}px), repeating-linear-gradient(90deg, transparent 0 ${w}px, ${c} ${w}px ${w + 2}px)`;
 
-export const NEWSLETTERS: Newsletter[] = [
+const LISTE: Omit<Newsletter, 'mois'>[] = [
   {
     slug: 'beton-cire',
     nom: 'Béton ciré',
@@ -118,3 +119,13 @@ export const NEWSLETTERS: Newsletter[] = [
     matiere: { backgroundColor: '#c99a5b', backgroundImage: 'repeating-linear-gradient(90deg, transparent 0 58px, #8a6332 58px 60px), repeating-linear-gradient(90deg, rgba(138,99,50,.28) 0 2px, transparent 2px 9px)' },
   },
 ];
+
+// Le calendrier de l'année : un thème par mois
+const MOIS_DU_THEME: Record<string, number> = {
+  'beton-cire': 1, brique: 2, verriere: 3, 'cour-pavee': 4, zinc: 5, 'a-flot': 6,
+  'pierre-seche': 7, 'seconde-vie': 8, etabli: 9, pilotis: 10, parpaing: 11, laiton: 12,
+};
+export const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+
+export const NEWSLETTERS: Newsletter[] = LISTE.map((n) => ({ ...n, mois: MOIS_DU_THEME[n.slug] || 12 })).sort((a, b) => a.mois - b.mois);
+export const themeDe = (slug?: string | null): Newsletter => NEWSLETTERS.find((n) => n.slug === slug) || NEWSLETTERS[0];

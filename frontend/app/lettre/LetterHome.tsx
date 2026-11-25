@@ -1,24 +1,24 @@
 import SiteHeader from '../SiteHeader';
 import Famille from './Famille';
 import Mesure from './Mesure';
-import { BIENS_EXEMPLE, EXEMPLES_ACTIFS, NUMEROS_EXEMPLE } from '../../lib/lettreExemples';
+import { BIENS_EXEMPLE, EXEMPLES_ACTIFS } from '../../lib/lettreExemples';
 import { Verriere } from './Beton';
 import type { LetterItem } from './LetterView';
 import { getIssue, getIssues } from '../../lib/lettre';
 
-// L'accueil du mode lettre, de haut en bas : le titre de Loftissime et l'abonnement à sa newsletter « Béton ciré »,
+// L'accueil du mode lettre, de haut en bas : la promesse et l'abonnement à la newsletter, le premier numéro, le calendrier des douze thèmes,
 // puis les biens parus dans la newsletter. Rien d'autre pour le moment.
 // Tant qu'aucun numéro n'est paru, les numéros et les biens affichés sont ceux de lib/lettreExemples.ts.
 
 // Les questions de l'accueil : ce qu'est le site, ce qu'est sa newsletter, ce qu'on fait de l'adresse e-mail
 const QUESTIONS: [string, string][] = [
-  ['Qu’est-ce que Loftissime ?', 'Loftissime est un curateur de biens atypiques. On y trouve des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Ses newsletters, dont Béton ciré, arrivent par e-mail.'],
-  ['Et Béton ciré ?', 'Béton ciré est la première newsletter de Loftissime, consacrée aux biens atypiques à rénover. Dans chaque numéro, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques sélectionnés pour vous.'],
+  ['Qu’est-ce que Loftissime ?', 'Loftissime est un curateur de biens atypiques. On y trouve des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Sa newsletter paraît une fois par mois, sur un thème différent à chaque numéro.'],
+  ['Que trouve-t-on dans un numéro ?', 'Chaque numéro a son thème : Béton ciré, le premier, est consacré aux biens atypiques à rénover. À chaque fois, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques sélectionnés pour vous.'],
   ['Qui sont nos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun intervient dans son domaine et s’engage sur les chiffres qu’il avance.'],
-  ['Quand sortiront les autres newsletters ?', 'Une par une. Les cases que vous cochez nous disent laquelle ouvrir ensuite : vous serez prévenu par e-mail à l’ouverture de chacune de celles que vous avez choisies.'],
+  ['Quand paraît la newsletter ?', 'Une fois par mois, douze fois par an. Chaque mois a son thème : les biens à rénover, les lofts, les ateliers d’artistes, les derniers étages, les péniches… Le calendrier complet est sur cette page.'],
   ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. C’est vers eux que mène le lien de l’annonce.'],
-  ['L’abonnement est-il payant ?', 'Non, toutes les newsletters de Loftissime sont gratuites.'],
-  ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer les newsletters que vous avez cochées, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
+  ['L’abonnement est-il payant ?', 'Non, la newsletter de Loftissime est gratuite.'],
+  ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer la newsletter, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
 ];
 
 // Le titre de la newsletter s'écrit en italique dans le texte courant, comme tout titre de publication
@@ -65,8 +65,6 @@ export default async function LetterHome() {
   const parus = (await getIssues()).filter((i) => i.paru);
   // Tant qu'aucun numéro n'est paru, l'accueil montre des numéros d'exemple, sans lien
   const exemples = parus.length === 0 && EXEMPLES_ACTIFS;
-  // le dernier numéro paru : c'est de lui que vient l'extrait vidéo à droite de l'inscription
-  const dernier = exemples ? NUMEROS_EXEMPLE[0].numero : parus[0]?.numero;
   const full = exemples ? [] : await Promise.all(parus.slice(0, 2).map((i) => getIssue(i.numero)));
   const biens: { b: LetterItem; numero: number; une: boolean }[] = exemples
     ? BIENS_EXEMPLE
@@ -99,9 +97,9 @@ export default async function LetterHome() {
               extrait={
                 <span className="block">
                   <span className="block overflow-hidden rounded-[10px]">
-                    <Verriere label={`La visite filmée de Béton ciré n° ${dernier}`} />
+                    <Verriere label="La visite filmée du premier numéro" />
                   </span>
-                  <span className="mt-2 block text-sm text-stone-500">Extrait de <em>Béton ciré</em> n° {dernier}</span>
+                  <span className="mt-2 block text-sm text-stone-500">Dans chaque numéro, la visite en vidéo</span>
                 </span>
               }
           />
@@ -111,7 +109,7 @@ export default async function LetterHome() {
           <section>
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
               <h2 className="font-serif text-3xl leading-tight text-stone-900 md:text-4xl">Nos biens à la une</h2>
-              <p className="text-sm text-stone-500">Parus dans <em>Béton ciré</em></p>
+              <p className="text-sm text-stone-500">Parus dans la newsletter</p>
             </div>
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {biens.map(({ b }) => (

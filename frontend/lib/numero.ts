@@ -8,6 +8,7 @@ export const SITE = 'https://loftissime.fr';
 
 export type NumeroContent = {
   v?: number;
+  theme?: string; // le thème du numéro (lib/newsletters.ts) ; par défaut celui de janvier
   objet?: string; // l'objet du mail
   une_id?: string; // le bien à la une
   autres_ids?: string[]; // les trois autres biens

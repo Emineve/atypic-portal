@@ -86,7 +86,7 @@ export default function SiteHeaderClient({
               </div>
             </div>
             <a href="/#recevoir" className="whitespace-nowrap rounded-full border border-stone-900 px-4 py-2 text-sm font-medium text-stone-900 transition-colors [@media(hover:hover)]:hover:bg-stone-900 [@media(hover:hover)]:hover:text-[#FBF5E9] active:bg-stone-100">
-              Recevoir les newsletters
+              Recevoir la newsletter
             </a>
           </div>
           {LETTER_LINKS.length > 0 && (

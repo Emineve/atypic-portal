@@ -8,8 +8,9 @@ import type { LetterItem } from '../../lettre/LetterView';
 import { KINDS } from '../../lettre/Mesure';
 import { NUMERO_VIDE, biensDuNumero, comptes, estV2, eur, manques, type NumeroContent } from '../../../lib/numero';
 import { numeroEmailHtml } from '../../../lib/numeroEmail';
+import { MOIS, NEWSLETTERS, themeDe } from '../../../lib/newsletters';
 
-// Un numéro de Béton ciré : on le compose à gauche, il se lit à droite tel qu'il paraîtra. En bas, l'envoi.
+// Un numéro de la newsletter : on le compose à gauche, il se lit à droite tel qu'il paraîtra. En bas, l'envoi.
 
 export type FullItem = LetterItem & { id?: string; issue_no: number | null; status: string; [k: string]: unknown };
 type Issue = { numero: number; date_parution: string | null; titre: string | null; resume: string | null; paru: boolean; content: NumeroContent };
@@ -123,7 +124,7 @@ export default function NumeroEditor({ token, items }: { token: string; items: F
     if (!test) {
       const m = manques(c, biens.une, biens.autres);
       const texte =
-        `Envoyer Béton ciré n° ${issue.numero} à ${stats.actifs} abonné${stats.actifs > 1 ? 's' : ''} ?\n\n` +
+        `Envoyer le n° ${issue.numero} (${themeDe(c.theme).nom}) à ${stats.actifs} abonné${stats.actifs > 1 ? 's' : ''} ?\n\n` +
         (stats.retenue ? `Le blocage des mails est actif : tout arrivera sur ${stats.admin || 'votre adresse'}, rien ne partira vers les abonnés.\n\n` : 'Les mails partiront vraiment vers les abonnés. Un numéro ne s’envoie qu’une fois.\n\n') +
         (m.length ? `Il manque encore : ${m.join(', ')}. Ces rubriques n’apparaîtront pas dans le mail.\n\n` : '') +
         'Le numéro passera en « paru » et s’affichera sur le site.';
@@ -200,6 +201,17 @@ export default function NumeroEditor({ token, items }: { token: string; items: F
         </div>
         {state === 'idle' && <p className="mt-2 text-xs text-stone-600">Modifications non enregistrées.</p>}
         {message && <p className="mt-2 text-sm text-red-700">{message}</p>}
+
+        <Bloc title="Le thème" hint="Douze thèmes, un par mois. Le nom du thème s’affiche en tête du numéro.">
+          <label className="block">
+            <span className={lab}>Thème du numéro</span>
+            <select className={input} value={c.theme || NEWSLETTERS[0].slug} onChange={(e) => setC({ theme: e.target.value })}>
+              {NEWSLETTERS.map((n) => (
+                <option key={n.slug} value={n.slug}>{n.nom} ({MOIS[n.mois - 1]}) : {n.sujet}</option>
+              ))}
+            </select>
+          </label>
+        </Bloc>
 
         <Bloc title="Le mail" hint="L’objet est ce que l’abonné lit dans sa boîte avant d’ouvrir. Le résumé s’affiche dans la liste des numéros, sur le site.">
           <Field title="Objet du mail" value={c.objet} onChange={(v) => setC({ objet: v })} ph="L’atelier du Panthéon : 440 000 €, et après ?" />

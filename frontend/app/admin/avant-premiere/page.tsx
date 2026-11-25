@@ -238,7 +238,7 @@ export default function AdminAvantPremiere() {
     <main className="min-h-screen bg-stone-50 text-stone-900">
       <div className="border-b border-stone-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <h1 className="font-serif text-xl">Béton ciré</h1>
+          <h1 className="font-serif text-xl">La newsletter</h1>
           {token && items && view === 'biens' && (
             <button onClick={() => setEdit({ ...EMPTY })} className="h-10 px-4 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider">
               Ajouter un bien
@@ -286,7 +286,7 @@ export default function AdminAvantPremiere() {
         {items && !edit && view === 'biens' && (
           <>
             <p className="text-sm text-stone-600">
-              Le vivier de biens de Béton ciré : chaque numéro y choisit son bien à la une et ses trois autres biens. Ici, le lien de l&apos;annonce, le contact avec l&apos;agence ou le propriétaire, la vidéo.
+              Le vivier de biens de la newsletter : chaque numéro y choisit son bien à la une et ses trois autres biens. Ici, le lien de l&apos;annonce, le contact avec l&apos;agence ou le propriétaire, la vidéo.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {chips.map(([v, l]) => (

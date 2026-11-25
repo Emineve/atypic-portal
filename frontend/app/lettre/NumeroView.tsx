@@ -1,8 +1,9 @@
 import Mesure from './Mesure';
 import type { LetterItem } from './LetterView';
 import { CHOIX, comptes, eur, liensDuNumero, type NumeroContent } from '../../lib/numero';
+import { themeDe } from '../../lib/newsletters';
 
-// Un numéro de « Béton ciré » tel qu'il se lit : la même vue sert à l'aperçu du back-office et à la page du numéro sur le site.
+// Un numéro de la newsletter de Loftissime tel qu'il se lit : la même vue sert à l'aperçu du back-office et à la page du numéro sur le site.
 // `brouillon` : les champs vides s'affichent entre crochets, pour voir ce qui manque. Sans lui, une ligne vide n'apparaît pas.
 
 const INK = '#211C15';
@@ -83,7 +84,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
       {/* 1. Le bien à la une : la visite */}
       <header className="bg-[#211C15] px-6 pb-8 pt-7 text-[#FBF5E9] sm:px-10">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-          <span className="font-serif text-[26px] italic leading-none">Béton ciré <span className="text-[#a59a88]">n° {numero}</span></span>
+          <span className="font-serif text-[26px] italic leading-none">{themeDe(c.theme).nom} <span className="text-[#a59a88]">n° {numero}</span></span>
           <span className="text-xs text-[#a59a88]">La newsletter de ceux qui aiment les biens atypiques, by <Marque /></span>
         </div>
         <p className="mt-9 text-[13px] text-[#a59a88]">Le bien à la une, et ce qu’il coûte vraiment.</p>
@@ -258,8 +259,8 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
 
       {/* Le bloc final */}
       <footer className="mt-10 bg-[#211C15] px-6 pb-8 pt-8 text-[#FBF5E9] sm:px-10">
-        <p className="font-serif text-[40px] italic leading-none">Béton ciré</p>
-        <p className="mt-2 text-sm text-[#cfc5b4]">La newsletter de ceux qui aiment les biens atypiques, by <Marque /></p>
+        <p className="font-logo text-[34px] font-semibold leading-none tracking-[-1px]">loftissime.</p>
+        <p className="mt-3 text-sm text-[#cfc5b4]">La newsletter de ceux qui aiment les biens atypiques. Douze numéros par an, un thème par mois.</p>
         {(a(c.collaborateurs) || brouillon) && (
           <p className="mt-6 text-[13px] leading-relaxed text-[#a59a88]">Ont collaboré à ce numéro : <T v={c.collaborateurs} ph="l’architecte, l’entrepreneur, le courtier, l’artiste" /></p>
         )}

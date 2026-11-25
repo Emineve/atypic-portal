@@ -1,7 +1,7 @@
 import SiteHeader from '../SiteHeader';
 import { NEWSLETTERS } from '../../lib/newsletters';
 
-// « Pourquoi Loftissime ? », version du site tant qu'il vit par ses newsletters. Même voix que « Pourquoi Béton ciré ? » :
+// « Pourquoi Loftissime ? », version du site tant qu'il vit par sa newsletter. Même voix que « Pourquoi Béton ciré ? » :
 // le constat, ce que nous faisons, le nom, ce que nous ne faisons pas. Aucun nom propre : l'équipe se présentera quand elle l'aura décidé.
 
 export default function QuiSommesNous() {
@@ -18,7 +18,7 @@ export default function QuiSommesNous() {
               Un atelier sous verrière, une ancienne imprimerie, une péniche, un dernier étage ouvert sur les toits : ces lieux existent, mais ils sont éparpillés, et l’on passe à côté. Quand on en trouve un, on hésite. On ne sait pas ce qu’il vaut vraiment, ni ce qu’il coûtera d’y vivre.
             </p>
             <p>
-              Loftissime est fait pour ça. Nous cherchons ces biens, nous les visitons avec ceux dont c’est le métier, un architecte, un entrepreneur, un courtier, et nous faisons les comptes jusqu’au bout. Puis nous vous le racontons dans nos newsletters, chacune pensée pour un acheteur différent.
+              Loftissime est fait pour ça. Nous cherchons ces biens, nous les visitons avec ceux dont c’est le métier, un architecte, un entrepreneur, un courtier, et nous faisons les comptes jusqu’au bout. Puis nous vous le racontons dans notre newsletter : douze numéros par an, chacun pensé pour un acheteur différent.
             </p>
             <p>
               Et le nom ? Loftissime, comme un superlatif : le loft, et tout ce qui lui ressemble, en plus haut, en plus lumineux, en plus rare.
@@ -31,7 +31,7 @@ export default function QuiSommesNous() {
             </p>
             <p className="pt-3">
               <a href="/#recevoir" className="inline-flex h-12 items-center rounded-full bg-stone-900 px-6 text-sm font-medium text-white">
-                Choisir mes newsletters
+                Recevoir la newsletter
               </a>
             </p>
           </div>

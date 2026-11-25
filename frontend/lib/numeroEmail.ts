@@ -1,7 +1,8 @@
 import type { LetterItem } from '../app/lettre/LetterView';
 import { CHOIX, SITE, comptes, eur, liensDuNumero, type NumeroContent } from './numero';
+import { themeDe } from './newsletters';
 
-// Le mail d'un numéro de « Béton ciré » : même contenu que la page, en tableaux et styles en ligne pour les messageries.
+// Le mail d'un numéro de la newsletter de Loftissime : même contenu que la page, en tableaux et styles en ligne pour les messageries.
 // {{TOKEN}} est remplacé à l'envoi par le jeton de chaque abonné (désinscription, réponse à la question).
 // Une rubrique dont le contenu manque n'apparaît pas : rien n'est jamais envoyé entre crochets.
 
@@ -22,6 +23,7 @@ export function numeroEmailHtml(numero: number, c: NumeroContent, items: { une: 
   const va = (cle: string) => `${SITE}/lettre/va?n=${numero}&k=${cle}`;
   const page = `${SITE}/lettre/numero-${numero}`;
   const nom = [c.surnom, c.surnom_italique].filter(a).join(' ');
+  const theme = themeDe(c.theme).nom;
 
   const poutre = `<tr><td style="padding:36px 32px 0;"><div style="height:9px;background:${INK};font-size:0;line-height:0;">&nbsp;</div></td></tr>`;
   const h2 = (t: string, i: string) => `<tr><td style="padding:16px 32px 0;font-family:${SERIF};font-size:26px;line-height:1.2;color:${INK};">${t} <span style="font-style:italic;color:${GRIS};">${i}</span></td></tr>`;
@@ -35,7 +37,7 @@ export function numeroEmailHtml(numero: number, c: NumeroContent, items: { une: 
   // 1. Le bien à la une
   rows.push(`<tr><td style="background:${INK};padding:28px 32px 30px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-<td style="font-family:${SERIF};font-size:26px;font-style:italic;color:#FBF5E9;">Béton ciré <span style="color:#a59a88;">n° ${numero}</span></td>
+<td style="font-family:${SERIF};font-size:26px;font-style:italic;color:#FBF5E9;">${esc(theme)} <span style="color:#a59a88;">n° ${numero}</span></td>
 </tr><tr><td style="padding-top:6px;font-family:${SANS};font-size:12px;color:#a59a88;">La newsletter de ceux qui aiment les biens atypiques, by <strong style="color:#FBF5E9;">loftissime.</strong></td></tr></table>
 <p style="margin:34px 0 0;font-family:${SANS};font-size:13px;color:#a59a88;">Le bien à la une, et ce qu’il coûte vraiment.</p>
 <h1 style="margin:8px 0 0;font-family:${SERIF};font-weight:normal;font-size:44px;line-height:1.04;color:#FBF5E9;">${esc(c.surnom)}${a(c.surnom_italique) ? ` <span style="font-style:italic;color:#a59a88;">${esc(c.surnom_italique)}</span>` : ''}</h1>
@@ -116,14 +118,14 @@ ${liens.vigilance ? `<p style="margin:8px 0 0;font-family:${SANS};font-size:14px
 
   // Le bloc final
   rows.push(`<tr><td style="padding-top:40px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${INK};"><tr><td style="padding:32px;">
-<p style="margin:0;font-family:${SERIF};font-size:38px;font-style:italic;color:#FBF5E9;">Béton ciré</p>
-<p style="margin:8px 0 0;font-family:${SANS};font-size:14px;color:#cfc5b4;">La newsletter de ceux qui aiment les biens atypiques, by <strong style="color:#FBF5E9;">loftissime.</strong></p>
+<p style="margin:0;font-family:${SANS};font-size:32px;font-weight:bold;letter-spacing:-1px;color:#FBF5E9;">loftissime.</p>
+<p style="margin:10px 0 0;font-family:${SANS};font-size:14px;color:#cfc5b4;">La newsletter de ceux qui aiment les biens atypiques. Douze numéros par an, un thème par mois.</p>
 ${a(c.collaborateurs) ? `<p style="margin:22px 0 0;font-family:${SANS};font-size:13px;line-height:1.6;color:#a59a88;">Ont collaboré à ce numéro : ${esc(c.collaborateurs)}</p>` : ''}
-<p style="margin:16px 0 0;font-family:${SANS};font-size:14px;">${lien(`mailto:?subject=${encodeURIComponent(`Béton ciré n° ${numero}`)}&body=${encodeURIComponent(page)}`, 'Faire suivre à quelqu’un qui cherche', '#FBF5E9')} &nbsp; ${lien(`${SITE}/lettre/va?n=${numero}&k=site`, 'Lire ce numéro sur le site', '#FBF5E9')}</p>
-<p style="margin:24px 0 0;border-top:1px solid #4a4238;padding-top:16px;font-family:${SANS};font-size:11px;line-height:1.6;color:#8c8273;">Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. Les chiffres de travaux et de financement sont des ordres de grandeur donnés par ceux qui les signent. Loftissime n’est pas une agence et n’intervient pas dans la vente.<br>Vous recevez ce mail parce que vous êtes abonné à Béton ciré. ${lien(`${SITE}/lettre/stop?t={{TOKEN}}`, 'Se désinscrire', '#8c8273')}</p>
+<p style="margin:16px 0 0;font-family:${SANS};font-size:14px;">${lien(`mailto:?subject=${encodeURIComponent(`Loftissime, ${theme} n° ${numero}`)}&body=${encodeURIComponent(page)}`, 'Faire suivre à quelqu’un qui cherche', '#FBF5E9')} &nbsp; ${lien(`${SITE}/lettre/va?n=${numero}&k=site`, 'Lire ce numéro sur le site', '#FBF5E9')}</p>
+<p style="margin:24px 0 0;border-top:1px solid #4a4238;padding-top:16px;font-family:${SANS};font-size:11px;line-height:1.6;color:#8c8273;">Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. Les chiffres de travaux et de financement sont des ordres de grandeur donnés par ceux qui les signent. Loftissime n’est pas une agence et n’intervient pas dans la vente.<br>Vous recevez ce mail parce que vous êtes abonné à la newsletter de Loftissime. ${lien(`${SITE}/lettre/stop?t={{TOKEN}}`, 'Se désinscrire', '#8c8273')}</p>
 </td></tr></table></td></tr>`);
 
-  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Béton ciré n° ${numero}</title></head>
+  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(theme)} n° ${numero}</title></head>
 <body style="margin:0;padding:0;background:#EFE7D6;">
 <div style="display:none;max-height:0;overflow:hidden;font-size:1px;line-height:1px;color:#EFE7D6;">${esc(c.chapo)}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EFE7D6;"><tr><td align="center" style="padding:24px 0;">

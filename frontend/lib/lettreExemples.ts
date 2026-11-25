@@ -3,8 +3,8 @@ import type { LetterItem } from '../app/lettre/LetterView';
 // Numéros d'exemple de « Béton ciré », affichés tant qu'aucun numéro n'est réellement paru, pour que l'accueil et la
 // page de la newsletter montrent à quoi elle ressemblera. Ils ne mènent nulle part (aucun clic) et le bandeau du site
 // prévient qu'il s'agit d'exemples. Les biens sont de vraies annonces repérées les 23 et 24 novembre 2026.
-// À retirer dès le premier vrai numéro : passer EXEMPLES_ACTIFS à false.
-export const EXEMPLES_ACTIFS = true;
+// Éteints le 25 novembre 2026 : la newsletter annonce son premier numéro pour janvier, des numéros « déjà parus » la contrediraient.
+export const EXEMPLES_ACTIFS = false;
 
 export type NumeroExemple = { numero: number; titre: string; resume: string };
 

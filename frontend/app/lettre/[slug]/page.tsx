@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import SiteHeader from '../../SiteHeader';
 import LetterView, { dateLettre } from '../LetterView';
 import NumeroView from '../NumeroView';
+import { themeDe } from '../../../lib/newsletters';
 import { getIssue, lettreArticles } from '../../../lib/lettre';
 import { biensDuNumero, estV2, type NumeroContent } from '../../../lib/numero';
 
@@ -14,7 +15,7 @@ const numero = (slug: string) => Number((slug.match(/^numero-(\d+)$/) || [])[1])
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const d = await getIssue(numero(params.slug));
   return {
-    title: d ? `Béton ciré n° ${d.issue.numero}${d.issue.titre ? ` : ${d.issue.titre}` : ''} · loftissime.` : 'Béton ciré · loftissime.',
+    title: d ? `${themeDe((d.issue.content as { theme?: string }).theme).nom} n° ${d.issue.numero}${d.issue.titre ? ` : ${d.issue.titre}` : ''} · loftissime.` : 'La newsletter · loftissime.',
     description: d?.issue.resume || undefined,
     // Un numéro pas encore paru n'est qu'une maquette : il ne doit pas être repris ailleurs
     robots: d && !d.issue.paru ? { index: false, follow: false } : undefined,

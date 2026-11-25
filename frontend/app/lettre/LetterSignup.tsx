@@ -89,20 +89,20 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
           send(false);
         }}
       >
-        <p className="font-serif text-2xl italic leading-none text-[#FBF5E9]">Béton ciré</p>
+        <p className="font-serif text-2xl leading-none text-[#FBF5E9]">La newsletter</p>
         <p className="mt-2 text-sm text-stone-400">La newsletter de Loftissime.</p>
         <label className="mt-5 block text-sm font-medium text-[#FBF5E9]">
           Votre e-mail <span aria-hidden="true">*</span>
           <span className="relative mt-1.5 block">
             <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 !pr-14`} />
-            <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="absolute right-1.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
+            <button type="submit" disabled={busy} aria-label="Recevoir la newsletter" className="absolute right-1.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
               <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />
             </button>
           </span>
         </label>
         {error && <p role="alert" className="mt-3 text-sm text-red-300">{error}</p>}
         <p className="mt-3 text-xs leading-relaxed text-stone-500">
-          C’est gratuit. En vous inscrivant, vous acceptez de recevoir <em>Béton ciré</em>. Désinscription en un clic dans chaque numéro.{' '}
+          C’est gratuit. En vous inscrivant, vous acceptez de recevoir la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
           <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
         </p>
       </form>
@@ -113,14 +113,14 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   if (step === 'fini')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de <em>Béton ciré</em>{email ? `, à ${email}` : ''}.</Done>
+        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro{email ? `, à ${email}` : ''}.</Done>
       </div>
     );
 
   if (step === 'criteres')
     return (
       <div id="recevoir" className={box}>
-        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro de <em>Béton ciré</em>, à {email}.</Done>
+        <Done title="Inscription enregistrée.">Vous recevrez le prochain numéro, à {email}.</Done>
         <form
           className="mt-8"
           onSubmit={(e) => {
@@ -200,7 +200,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
       {band && (
         <>
           <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
-            Recevez Béton ciré, <span className="italic text-stone-500">la newsletter de Loftissime.</span>
+            Recevez la newsletter de Loftissime, <span className="italic text-stone-500">un thème par mois.</span>
           </h2>
           <p className="mt-2 max-w-2xl text-stone-600">Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.</p>
         </>
@@ -218,14 +218,14 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
             onChange={(e) => setEmail(e.target.value)}
             className={`${FIELD} !mt-0 !pr-14`}
           />
-          <button type="submit" disabled={busy} aria-label="Recevoir Béton ciré" className="absolute right-1.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
+          <button type="submit" disabled={busy} aria-label="Recevoir la newsletter" className="absolute right-1.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
             <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy ? 'animate-pulse' : ''}`} strokeWidth={2} />
           </button>
         </span>
       </label>
       {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
       <p className={`mt-3 text-xs leading-relaxed ${band ? 'text-stone-500' : 'text-stone-500'}`}>
-        C’est gratuit. En vous inscrivant, vous acceptez de recevoir <em>Béton ciré</em>, la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
+        C’est gratuit. En vous inscrivant, vous acceptez de recevoir la newsletter de Loftissime. Désinscription en un clic dans chaque numéro.{' '}
         <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
       </p>
       </div>

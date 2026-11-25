@@ -5,34 +5,35 @@ import { dateLettre } from './LetterView';
 import { BETON_BG, Poutre, Verriere } from './Beton';
 import { getIssues } from '../../lib/lettre';
 import { EXEMPLES_ACTIFS, NUMEROS_EXEMPLE, PROCHAIN_NUMERO } from '../../lib/lettreExemples';
+import { MOIS, NEWSLETTERS } from '../../lib/newsletters';
 
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'Béton ciré, la newsletter de Loftissime',
-  description: 'Béton ciré, la newsletter de Loftissime : dans chaque numéro, un bien atypique à rénover, ce qu’on peut en faire et ce qu’il coûte vraiment.',
+  title: 'La newsletter de Loftissime',
+  description: 'La newsletter de Loftissime : douze numéros par an, un thème par mois. À chaque fois un bien atypique visité, ce qu’on peut en faire et ce qu’il coûte vraiment.',
 };
 
-// La page de « Béton ciré » : la newsletter se présente dans ses propres matières (béton, acier, verrière),
+// La page de la newsletter : elle se présente dans ses propres matières (béton, acier, verrière),
 // puis tous les numéros, du plus récent au plus ancien, et l'abonnement.
 export default async function LettreIndex() {
   const lettres = await getIssues();
   const parus = lettres.filter((l) => l.paru);
   const exemples = parus.length === 0 && EXEMPLES_ACTIFS;
   const prochain = exemples ? PROCHAIN_NUMERO : (parus[0]?.numero || 0) + 1;
+  // le numéro 1 est celui de janvier, le 2 celui de février, et ainsi de suite
+  const theme = NEWSLETTERS[(prochain - 1) % NEWSLETTERS.length];
   return (
     <div className="min-h-screen font-sans text-[#211C15]" style={BETON_BG}>
       <SiteHeader />
 
       <header className="bg-[#211C15] text-[#FBF5E9]">
         <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
-          <h1 className="font-serif text-6xl italic leading-none md:text-8xl">Béton ciré</h1>
-          {/* le sous-titre dit pourquoi Béton ciré existe ; le détail est plus bas, dans « Pourquoi Béton ciré ? » */}
+          <h1 className="font-serif text-5xl leading-[1.02] md:text-7xl">
+            La newsletter <span className="italic text-[#a59a88]">de Loftissime.</span>
+          </h1>
           <p className="mt-6 max-w-2xl font-serif text-2xl leading-snug text-[#FBF5E9] md:text-3xl">
-            La newsletter des biens atypiques à rénover : <span className="italic text-[#a59a88]">ce qu’on peut en faire, et ce qu’ils coûtent vraiment.</span>
-          </p>
-          <p className="mt-4 text-sm text-[#a59a88]">
-            Par <span className="font-logo font-semibold tracking-[-0.4px] text-[#FBF5E9]">loftissime.</span>
+            Douze numéros par an, un thème par mois. <span className="italic text-[#a59a88]">À chaque fois, un bien visité, son projet et son prix tout compris.</span>
           </p>
         </div>
       </header>
@@ -50,8 +51,8 @@ export default async function LettreIndex() {
             <Poutre />
             <div className="p-6 md:p-7">
               <p className="flex items-baseline justify-between gap-4">
-                <span className="font-serif text-4xl italic leading-none">Béton ciré</span>
-                <span className="text-sm text-[#74695A]">n° {prochain}, à paraître</span>
+                <span className="font-serif text-4xl italic leading-none">{theme.nom}</span>
+                <span className="text-sm text-[#74695A]">n° {prochain}, {MOIS[theme.mois - 1]}</span>
               </p>
               <Verriere label="La visite filmée du prochain numéro" className="mt-6" />
               <p className="mt-5 font-serif text-xl leading-snug">La visite, le projet, l’addition, <span className="italic text-[#74695A]">et ce qu’il faut vérifier avant de signer.</span></p>
@@ -65,7 +66,7 @@ export default async function LettreIndex() {
         <ul className="mt-7 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           <li>
             <div className="flex aspect-[640/400] items-center justify-center border border-dashed border-[#211C15] px-6 text-center">
-              <span className="font-serif text-2xl italic leading-tight text-[#74695A]">Le n° {prochain} arrive bientôt</span>
+              <span className="font-serif text-2xl italic leading-tight text-[#74695A]">{theme.nom}, en {MOIS[theme.mois - 1]}</span>
             </div>
             <p className="mt-4 text-sm text-[#74695A]">N° {prochain}, à paraître</p>
           </li>
@@ -94,14 +95,14 @@ export default async function LettreIndex() {
           <Poutre />
           <div className="mt-5 grid gap-x-12 gap-y-5 md:grid-cols-[1fr_1.4fr]">
             <h2 className="font-serif text-3xl leading-[1.1] md:text-4xl">
-              Pourquoi <span className="italic text-[#74695A]">Béton ciré ?</span>
+              Le thème de janvier : <span className="italic text-[#74695A]">pourquoi Béton ciré ?</span>
             </h2>
             <div className="space-y-4 text-lg leading-relaxed text-[#4a4238]">
               <p>
                 Un atelier fatigué, une ancienne boutique, un plateau resté brut : ce sont souvent les plus beaux lieux, et ceux qui font le plus hésiter. On ne sait pas ce qu’ils peuvent devenir, ni ce qu’ils coûteront une fois les travaux finis.
               </p>
               <p>
-                <em>Béton ciré</em> est fait pour ça. Dans chaque numéro, nous visitons un bien atypique à rénover avec ceux dont c’est le métier. Un architecte dessine ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
+                Ce numéro est fait pour ça. Nous y visitons un bien atypique à rénover avec ceux dont c’est le métier. Un architecte dessine ce qu’il en ferait. Un entrepreneur chiffre les travaux. Un courtier calcule la mensualité. Vous voyez le projet, puis l’addition complète.
               </p>
               <p>
                 Et le nom ? Le béton ciré, c’est le sol que l’on coule quand tout est à refaire : brut au départ, superbe à l’arrivée. C’est exactement l’histoire des biens que nous allons voir.

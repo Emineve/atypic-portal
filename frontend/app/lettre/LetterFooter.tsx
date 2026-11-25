@@ -13,17 +13,17 @@ export default function LetterFooter() {
               Curateur de biens <span className="italic text-stone-400">atypiques</span>
             </p>
           </div>
-          {/* toutes les newsletters, pas seulement la première : le choix se fait sur l'accueil */}
+          {/* l'inscription se fait sur l'accueil, avec le calendrier des thèmes */}
           <div className="w-full max-w-md border border-stone-700 p-5">
-            <p className="font-serif text-2xl leading-tight text-[#FBF5E9]">Les newsletters de Loftissime</p>
-            <p className="mt-2 text-sm leading-relaxed text-stone-400">Douze newsletters sur l’immobilier atypique, gratuites. <em>Béton ciré</em> ouvre la série.</p>
+            <p className="font-serif text-2xl leading-tight text-[#FBF5E9]">La newsletter de Loftissime</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-400">Douze numéros par an, un thème par mois, un bien atypique à chaque fois. Gratuite.</p>
             <a href="/#recevoir" className="mt-4 inline-flex h-11 items-center rounded-full bg-[#FBF5E9] px-5 text-sm font-medium text-stone-900 transition-colors hover:bg-white">
-              Choisir les miennes
+              La recevoir
             </a>
           </div>
         </div>
         <nav aria-label="Loftissime" className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm">
-          <a href="/lettre" className={link}>Béton ciré, tous les numéros</a>
+          <a href="/lettre" className={link}>La newsletter, tous les numéros</a>
           <a href="/guide" className={link}>Avant la promesse</a>
           <a href="/qui-sommes-nous" className={link}>Pourquoi Loftissime</a>
         </nav>
