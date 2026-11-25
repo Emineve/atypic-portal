@@ -15,8 +15,8 @@ export default function LetterFooter() {
           </div>
           {/* l'inscription se fait sur l'accueil, avec le calendrier des thèmes */}
           <div className="w-full max-w-md border border-stone-700 p-5">
-            <p className="font-serif text-2xl leading-tight text-[#FBF5E9]">La newsletter de Loftissime</p>
-            <p className="mt-2 text-sm leading-relaxed text-stone-400">Douze numéros par an, un thème par mois autour de l’immobilier atypique. Gratuite.</p>
+            <p className="font-serif text-2xl leading-tight text-[#FBF5E9]">Loftissime, la newsletter de l’immobilier atypique</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-400">Douze numéros par an, un thème par mois. Gratuite.</p>
             <a href="/#recevoir" className="mt-4 inline-flex h-11 items-center rounded-full bg-[#FBF5E9] px-5 text-sm font-medium text-stone-900 transition-colors hover:bg-white">
               La recevoir
             </a>

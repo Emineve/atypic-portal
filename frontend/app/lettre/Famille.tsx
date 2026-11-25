@@ -158,16 +158,13 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
 
       {/* 3. L'année : douze thèmes, un par mois */}
       <section className="mt-16 md:mt-24" aria-labelledby="nl-annee">
-        <div className="grid gap-x-12 gap-y-3 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
+        <div className="border-t border-stone-900 pt-4">
           <h2 id="nl-annee" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
-            L’année en douze thèmes, <span className="italic text-stone-500">un par mois.</span>
+            Douze mois, <span className="italic text-stone-500">douze façons d’habiter autrement.</span>
           </h2>
-          <p className="text-lg leading-relaxed text-stone-700">
-            Douze mois, douze façons d’habiter autrement.
-            {abonne && ' Dites-nous ceux qui vous intéressent le plus.'}
-          </p>
+          {abonne && <p className="mt-3 text-lg leading-relaxed text-stone-700">Dites-nous les thèmes qui vous intéressent le plus.</p>}
         </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">{NEWSLETTERS.map(tuile)}</div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-12">{NEWSLETTERS.map(tuile)}</div>
       </section>
     </div>
   );
