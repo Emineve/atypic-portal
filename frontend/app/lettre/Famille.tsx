@@ -101,7 +101,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
             </div>
           ) : (
             <form onSubmit={envoyer}>
-              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Vous êtes à un e-mail de tout savoir sur l’immobilier atypique, gratuitement.</p>
+              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Un bien atypique décrypté chaque mois, dans votre boîte mail.</p>
               <p className="mt-3 leading-relaxed text-stone-700">
                 En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique.
               </p>
