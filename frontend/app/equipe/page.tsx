@@ -1,4 +1,5 @@
 import SiteHeader from '../SiteHeader';
+import Fusain, { type FusainKind } from './Fusain';
 
 // L'équipe : ceux qui font chaque numéro, chacun dans son métier. Les présentations viendront une à une ;
 // en attendant, la page dit qui fait quoi. Personne n'y est nommé sans son accord.
@@ -9,13 +10,13 @@ export const metadata = {
   alternates: { canonical: '/equipe' },
 };
 
-const EQUIPE: [string, string, string][] = [
-  ['Kate', 'La visite', 'C’est elle qui pousse la porte et filme le bien, pièce après pièce.'],
-  ['L’architecte', 'Le projet', 'Il dessine ce que le lieu peut devenir.'],
-  ['L’entrepreneur du bâtiment', 'Les travaux', 'Il chiffre le chantier, poste par poste.'],
-  ['Damien', 'Le financement', 'Courtier en crédit, il calcule la mensualité et dit ce qu’une banque peut suivre.'],
-  ['Le notaire', 'Avant la promesse', 'Il signale le point à vérifier avant de s’engager.'],
-  ['Christophe', 'La négociation', 'Négociateur immobilier, il présente le bien à la une du numéro de janvier. Chaque mois, un négociateur différent prend la suite : douze numéros, douze agences.'],
+const EQUIPE: [string, string, string, FusainKind][] = [
+  ['Kate', 'La visite', 'C’est elle qui pousse la porte et filme le bien, pièce après pièce.', 'visite'],
+  ['L’architecte', 'Le projet', 'Il dessine ce que le lieu peut devenir.', 'architecte'],
+  ['L’entrepreneur du bâtiment', 'Les travaux', 'Il chiffre le chantier, poste par poste.', 'entrepreneur'],
+  ['Damien', 'Le financement', 'Courtier en crédit, il calcule la mensualité et dit ce qu’une banque peut suivre.', 'courtier'],
+  ['Le notaire', 'Avant la promesse', 'Il signale le point à vérifier avant de s’engager.', 'notaire'],
+  ['Christophe', 'La négociation', 'Négociateur immobilier, il présente le bien à la une du numéro de janvier. Chaque mois, un négociateur différent prend la suite : douze numéros, douze agences.', 'negociateur'],
 ];
 
 export default function Equipe() {
@@ -32,17 +33,20 @@ export default function Equipe() {
           </p>
         </div>
 
-        <ul className="mt-12 border-t border-stone-900 md:mt-16">
-          {EQUIPE.map(([qui, role, texte]) => (
-            <li key={qui} className="grid gap-x-12 gap-y-2 border-b border-stone-200 py-7 md:grid-cols-[1fr_1.4fr] md:py-9">
-              <h2 className="font-serif text-3xl leading-[1.1] tracking-tight md:text-4xl">{qui}</h2>
-              <div>
-                <p className="font-serif text-xl italic text-stone-500">{role}</p>
-                <p className="mt-1 text-lg leading-relaxed text-stone-700">{texte}</p>
+        <ul className="mt-12 grid gap-x-6 gap-y-10 border-t border-stone-900 pt-8 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+          {EQUIPE.map(([qui, role, texte, kind]) => (
+            <li key={qui}>
+              <div className="overflow-hidden rounded-[14px] border-2 border-stone-900 shadow-[5px_5px_0_#211C15]">
+                <Fusain kind={kind} className="block w-full" />
               </div>
+              <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight">{qui}</h2>
+              <p className="mt-1 font-serif text-xl italic text-stone-500">{role}</p>
+              <p className="mt-2 text-lg leading-relaxed text-stone-700">{texte}</p>
             </li>
           ))}
         </ul>
+
+        <p className="mt-8 text-sm text-stone-500">Portraits provisoires, dessinés en attendant les vrais.</p>
 
         <p className="mt-10">
           <a href="/#recevoir" className="text-lg font-medium underline underline-offset-4 decoration-stone-400">Recevoir la newsletter</a>
