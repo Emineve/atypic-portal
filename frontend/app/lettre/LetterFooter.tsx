@@ -13,16 +13,9 @@ export default function LetterFooter() {
               100&nbsp;% immobilier <span className="italic text-stone-400">atypique</span>
             </p>
           </div>
-          {/* l'inscription se fait sur l'accueil, avec le calendrier des thèmes */}
-          <div className="w-full max-w-md border border-stone-700 p-5">
-            <p className="font-serif text-2xl leading-tight text-[#FBF5E9]">Loftissime, la newsletter de l’immobilier atypique</p>
-            <p className="mt-2 text-sm leading-relaxed text-stone-400">Douze numéros par an, un thème par mois. Gratuite.</p>
-            <a href="/#recevoir" className="mt-4 inline-flex h-11 items-center rounded-full bg-[#FBF5E9] px-5 text-sm font-medium text-stone-900 transition-colors hover:bg-white">
-              La recevoir
-            </a>
-          </div>
         </div>
         <nav aria-label="Loftissime" className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <a href="/#recevoir" className={link}>Recevoir la newsletter</a>
           <a href="/guide" className={link}>Articles</a>
           <a href="/qui-sommes-nous" className={link}>Pourquoi Loftissime</a>
           <a href="/equipe" className={link}>L’équipe</a>
