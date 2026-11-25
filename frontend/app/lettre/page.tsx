@@ -52,7 +52,7 @@ export default async function LettreIndex() {
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-16">
         <section className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-[1.1fr_1fr]">
           <div>
-            <p className="text-sm text-stone-500">La newsletter de Loftissime, numéro {prochain === 1 ? 'un' : prochain}, {mois}</p>
+            <p className="text-sm text-stone-500">Le numéro de {mois}</p>
             <h1 className="mt-3 font-serif text-7xl italic leading-[0.95] tracking-tight md:text-8xl lg:text-[7rem]">{theme.nom}</h1>
             <p className="mt-6 font-serif text-3xl leading-tight md:text-4xl">{theme.sujet}</p>
             {propos && <p className="mt-4 max-w-xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">{propos.pour}</p>}
