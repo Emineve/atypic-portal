@@ -123,16 +123,16 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         </div>
       </div>
 
-      {/* La séparation : la frise des douze matières, une par thème de l'année */}
-      <div aria-hidden className="mt-14 flex h-12 overflow-hidden rounded-[12px] md:mt-20 md:h-16">
-        {NEWSLETTERS.map((n) => (
-          <span key={n.slug} className="block flex-1" style={n.matiere} />
-        ))}
+      {/* La séparation : un filet, une petite étoile jaune au milieu */}
+      <div aria-hidden className="mt-16 flex items-center gap-5 md:mt-24">
+        <span className="h-px flex-1 bg-stone-900" />
+        <span className="text-2xl leading-none text-[#F6CF4E]">✦</span>
+        <span className="h-px flex-1 bg-stone-900" />
       </div>
 
       {/* 2. Le premier numéro, seul sur sa ligne */}
-      <section className="mt-14 md:mt-20" aria-labelledby="nl-premier">
-        <h2 id="nl-premier" className="border-t border-stone-900 pt-4 font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
+      <section className="mt-10 md:mt-14" aria-labelledby="nl-premier">
+        <h2 id="nl-premier" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
           Le premier numéro, <span className="italic text-stone-500">en {MOIS[premier.mois - 1]}.</span>
         </h2>
         <article className="mt-6 grid overflow-hidden rounded-[14px] bg-white shadow-[0_0_0_2px_#211C15] md:grid-cols-2">
