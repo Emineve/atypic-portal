@@ -1,6 +1,4 @@
-import LetterSignup from './LetterSignup';
-
-// Pied de page du mode lettre : la marque, deux liens, la boîte d'abonnement à la newsletter, les mentions. Rien qui renvoie aux rubriques cachées.
+// Pied de page du mode lettre : la marque, deux liens, l'invitation à choisir ses newsletters, les mentions. Rien qui renvoie aux rubriques cachées.
 export default function LetterFooter() {
   const link = 'text-stone-300 hover:text-[#FBF5E9] underline-offset-4 hover:underline decoration-[#FBF5E9]';
   return (
@@ -15,7 +13,14 @@ export default function LetterFooter() {
               Curateur de biens <span className="italic text-stone-400">atypiques</span>
             </p>
           </div>
-          <LetterSignup variant="footer" source="pied" className="w-full max-w-md" />
+          {/* toutes les newsletters, pas seulement la première : le choix se fait sur l'accueil */}
+          <div className="w-full max-w-md border border-stone-700 p-5">
+            <p className="font-serif text-2xl leading-tight text-[#FBF5E9]">Les newsletters de Loftissime</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-400">Onze newsletters sur l’immobilier atypique, gratuites. <em>Béton ciré</em> ouvre la série.</p>
+            <a href="/#recevoir" className="mt-4 inline-flex h-11 items-center rounded-full bg-[#FBF5E9] px-5 text-sm font-medium text-stone-900 transition-colors hover:bg-white">
+              Choisir les miennes
+            </a>
+          </div>
         </div>
         <nav aria-label="Loftissime" className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm">
           <a href="/lettre" className={link}>Béton ciré, tous les numéros</a>

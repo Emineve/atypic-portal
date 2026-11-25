@@ -14,7 +14,7 @@ import { getIssue, getIssues } from '../../lib/lettre';
 const QUESTIONS: [string, string][] = [
   ['Qu’est-ce que Loftissime ?', 'Loftissime est un curateur de biens atypiques. On y trouve des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Ses newsletters, dont Béton ciré, arrivent par e-mail.'],
   ['Et Béton ciré ?', 'Béton ciré est la première newsletter de Loftissime, consacrée aux biens atypiques à rénover. Dans chaque numéro, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques que nous avons repérés.'],
-  ['Qui sont vos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun parle de son métier, et les chiffres qu’il donne sont signés de son nom.'],
+  ['Qui sont nos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun intervient dans son domaine et s’engage sur les chiffres qu’il avance.'],
   ['Quand sortiront les autres newsletters ?', 'Une par une. Les cases que vous cochez nous disent laquelle ouvrir ensuite : vous serez prévenu par e-mail à l’ouverture de chacune de celles que vous avez choisies.'],
   ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. C’est vers eux que mène le lien de l’annonce.'],
   ['L’abonnement est-il payant ?', 'Non, toutes les newsletters de Loftissime sont gratuites.'],
