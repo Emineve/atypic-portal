@@ -161,13 +161,16 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
 
       {/* Ce que contient chaque numéro, en trois mots. Pas de chiffre d'audience tant qu'il n'y en a pas. */}
       <div className="relative left-1/2 mt-14 w-screen -translate-x-1/2 bg-[#211C15] text-[#FBF5E9] md:mt-20">
-        <ul className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-x-10 gap-y-2 px-6 py-7 text-center font-serif text-2xl md:flex-row md:py-9 md:text-3xl">
-          <li>Le bien</li>
-          <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
-          <li>Le projet</li>
-          <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
-          <li>L’addition</li>
-        </ul>
+        <div className="mx-auto max-w-6xl px-6 py-7 text-center md:py-9">
+          <p className="text-sm text-stone-400">Dans chaque numéro</p>
+          <ul className="mt-2 flex flex-col items-center justify-center gap-x-8 gap-y-1 font-serif text-2xl lg:flex-row lg:text-3xl">
+            <li className="lg:whitespace-nowrap">La visite en vidéo</li>
+            <li aria-hidden className="hidden text-[#F6CF4E] lg:block">✦</li>
+            <li className="lg:whitespace-nowrap">Le projet de l’architecte</li>
+            <li aria-hidden className="hidden text-[#F6CF4E] lg:block">✦</li>
+            <li className="lg:whitespace-nowrap">Le prix tout compris</li>
+          </ul>
+        </div>
       </div>
 
       {/* 2. La première newsletter, seule sur sa ligne */}
