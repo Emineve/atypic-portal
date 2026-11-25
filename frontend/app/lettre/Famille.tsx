@@ -133,7 +133,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
       {/* 2. Le premier numéro, seul sur sa ligne */}
       <section className="mt-10 md:mt-14" aria-labelledby="nl-premier">
         <h2 id="nl-premier" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
-          Le premier numéro, <span className="italic text-stone-500">en {MOIS[premier.mois - 1]}.</span>
+          Le premier numéro, <span className="italic text-stone-500">dès {MOIS[premier.mois - 1]}.</span>
         </h2>
         <article className="mt-6 grid overflow-hidden rounded-[14px] bg-white shadow-[0_0_0_2px_#211C15] md:grid-cols-2">
           <div className="flex flex-col justify-center p-7 md:p-12">
