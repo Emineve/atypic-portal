@@ -10,9 +10,9 @@ import { getSiteMode } from '../../lib/siteMode';
 export async function generateMetadata() {
   const lettre = (await getSiteMode()) === 'lettre';
   return {
-    title: lettre ? 'Qui sommes-nous' : 'Pourquoi Loftissime',
+    title: 'Pourquoi Loftissime',
     description: lettre
-      ? 'Loftissime, curateur de biens atypiques : ce que nous cherchons, comment nous travaillons, et ce que nous ne faisons pas.'
+      ? 'Pourquoi Loftissime : des biens atypiques cherchés, visités avec des gens de métier et chiffrés jusqu’au bout, racontés dans nos newsletters.'
       : 'Pourquoi Loftissime réunit les biens atypiques à vendre, toutes agences confondues, et accompagne ceux qui les cherchent.',
     alternates: { canonical: '/qui-sommes-nous' },
   };
