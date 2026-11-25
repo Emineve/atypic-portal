@@ -14,7 +14,8 @@ import { NEWSLETTERS, type Newsletter } from '../../lib/newsletters';
 const nomDe = (slug: string) => NEWSLETTERS.find((n) => n.slug === slug)?.nom || slug;
 const liste = (noms: string[]) => (noms.length <= 1 ? noms.join('') : `${noms.slice(0, -1).join(', ')} et ${noms[noms.length - 1]}`);
 
-export default function Famille({ extrait }: { extrait?: React.ReactNode }) {
+// `intro` : le titre et la phrase de mission, écrits côté serveur, placés à gauche de la carte d'inscription.
+export default function Famille({ extrait, intro }: { extrait?: React.ReactNode; intro?: React.ReactNode }) {
   const [choix, setChoix] = useState<string[]>(['beton-cire']); // avant l'inscription
   const [touche, setTouche] = useState(false); // l'abonné a-t-il choisi lui-même dans les cartes ?
   const [abonne, setAbonne] = useState<string[] | null>(null); // après l'inscription : ce qui est enregistré
@@ -106,53 +107,75 @@ export default function Famille({ extrait }: { extrait?: React.ReactNode }) {
 
   return (
     <div>
-      {/* 1. L'inscription, sous le titre : un champ, sans cadre. Une seule adresse à laisser. */}
-      <div ref={boite} id="recevoir" className="mt-9 max-w-xl scroll-mt-28 md:mt-11">
-        {abonne ? (
-          <div role="status">
-            <p className="font-serif text-2xl leading-snug text-stone-900 md:text-3xl">
-              C’est noté. {abonne.includes('beton-cire') && <>Vous recevrez le prochain numéro de <em>Béton ciré</em>.</>}
-            </p>
-            {abonne.filter((s) => s !== 'beton-cire').length > 0 && (
-              <p className="mt-2 text-lg text-stone-700">Nous vous écrirons à l’ouverture de {liste(abonne.filter((s) => s !== 'beton-cire').map(nomDe))}.</p>
-            )}
-            {restantes > 0 && <p className="mt-3 text-stone-500">D’autres vous tentent ? Ajoutez-les d’un geste, plus bas.</p>}
-          </div>
-        ) : (
-          <form onSubmit={envoyer}>
-            <label className={LABEL}>
-              {choix.length === 0 ? 'Choisissez une newsletter plus bas, puis laissez votre e-mail' : choix.length === 1 && choix[0] === 'beton-cire' ? 'Commencez par Béton ciré : votre e-mail' : `Pour recevoir ${liste(choix.map(nomDe))} : votre e-mail`} <span aria-hidden="true">*</span>
-              <span className="relative mt-2 block">
-                <input ref={champ} type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 !h-14 !pr-16 !text-lg`} />
-                <button type="submit" disabled={busy === 'form'} aria-label="Recevoir les newsletters choisies" className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
-                  <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy === 'form' ? 'animate-pulse' : ''}`} strokeWidth={2} />
-                </button>
-              </span>
-            </label>
-            {choix.length > 1 && (
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {choix.map((s) => (
-                  <li key={s}>
-                    <button type="button" onClick={() => surCarte(s)} aria-label={`Retirer ${nomDe(s)}`} className="inline-flex h-8 items-center gap-1.5 rounded-full border border-stone-300 bg-white pl-3 pr-2 text-sm text-stone-900">
-                      <span className="font-serif italic">{nomDe(s)}</span>
-                      <X aria-hidden className="h-3.5 w-3.5 text-stone-500" />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <p className="mt-3 text-sm leading-relaxed text-stone-500">
-              C’est gratuit, et vous pourrez ajouter les autres newsletters juste après. Désinscription en un clic.{' '}
-              <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
-            </p>
-          </form>
-        )}
-        {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
+      {/* 1. La promesse à gauche, la carte d'inscription à droite : une seule action dès l'ouverture */}
+      <div className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-[1.25fr_1fr]">
+        <div>{intro}</div>
+        <div ref={boite} id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
+          {abonne ? (
+            <div role="status">
+              <p className="font-serif text-2xl leading-snug text-stone-900">
+                C’est noté. {abonne.includes('beton-cire') && <>Vous recevrez le prochain numéro de <em>Béton ciré</em>.</>}
+              </p>
+              {abonne.filter((s) => s !== 'beton-cire').length > 0 && (
+                <p className="mt-2 text-stone-700">Nous vous écrirons à l’ouverture de {liste(abonne.filter((s) => s !== 'beton-cire').map(nomDe))}.</p>
+              )}
+              <p className="mt-4">
+                <a href="/dix-questions" className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Votre guide : dix questions à poser avant d’acheter un bien atypique</a>
+              </p>
+              {restantes > 0 && <p className="mt-4 text-sm text-stone-500">D’autres newsletters vous tentent ? Ajoutez-les d’un geste, plus bas.</p>}
+            </div>
+          ) : (
+            <form onSubmit={envoyer}>
+              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Vous êtes à un e-mail de votre premier bien atypique, gratuitement.</p>
+              <p className="mt-3 leading-relaxed text-stone-700">
+                Une newsletter par type d’acheteur. <em>Béton ciré</em> ouvre la série. En prime, notre guide : dix questions à poser avant d’acheter un bien atypique.
+              </p>
+              <label className={`${LABEL} mt-5`}>
+                {choix.length === 0 ? 'Choisissez une newsletter plus bas, puis votre e-mail' : choix.length === 1 && choix[0] === 'beton-cire' ? 'Votre e-mail' : `Votre e-mail, pour ${liste(choix.map(nomDe))}`} <span aria-hidden="true">*</span>
+                <input ref={champ} type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !h-14`} />
+              </label>
+              {choix.length > 1 && (
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {choix.map((s) => (
+                    <li key={s}>
+                      <button type="button" onClick={() => surCarte(s)} aria-label={`Retirer ${nomDe(s)}`} className="inline-flex h-8 items-center gap-1.5 rounded-full border border-stone-300 bg-white pl-3 pr-2 text-sm text-stone-900">
+                        <span className="font-serif italic">{nomDe(s)}</span>
+                        <X aria-hidden className="h-3.5 w-3.5 text-stone-500" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <button type="submit" disabled={busy === 'form'} className="mt-4 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-6 text-[15px] font-medium text-white transition hover:bg-stone-700 disabled:opacity-50 sm:w-auto">
+                {busy === 'form' ? 'Inscription…' : 'S’abonner gratuitement'}
+                <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
+              </button>
+              <p className="mt-4 text-sm leading-relaxed text-stone-500">
+                <a href="/confidentialite" className="underline underline-offset-2">Votre adresse reste privée</a>. Nous ne la vendrons jamais. Désinscription en un clic.
+              </p>
+            </form>
+          )}
+          {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
+        </div>
+      </div>
+
+      {/* Les faits, en bandeau pleine largeur. Rien que du vrai : pas de chiffre d'audience tant qu'il n'y en a pas. */}
+      <div className="relative left-1/2 mt-14 w-screen -translate-x-1/2 bg-[#211C15] text-[#FBF5E9] md:mt-20">
+        <ul className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-x-10 gap-y-2 px-6 py-7 text-center font-serif text-2xl md:flex-row md:py-9 md:text-3xl">
+          <li>{NEWSLETTERS.length} newsletters</li>
+          <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
+          <li>1 bien visité par numéro</li>
+          <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
+          <li>3 experts qui s’engagent sur leurs chiffres</li>
+        </ul>
       </div>
 
       {/* 2. La première newsletter, seule sur sa ligne */}
-      <section className="mt-16 md:mt-24" aria-labelledby="nl-premiere">
-        <p className="border-t border-stone-900 pt-4 text-sm text-stone-500">La première, premier numéro bientôt</p>
+      <section className="mt-14 md:mt-20" aria-labelledby="nl-premiere">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-1 border-t border-stone-900 pt-4">
+          <h2 className="font-serif text-3xl leading-tight text-stone-900 md:text-4xl">Nos newsletters</h2>
+          <p className="text-sm text-stone-500">La première, premier numéro bientôt</p>
+        </div>
         <article className={`${cadre(estOn(premiere.slug))} mt-6 grid md:grid-cols-2`}>
           <div className="flex flex-col justify-center p-7 md:p-12">
             <h2 id="nl-premiere" className="font-serif text-6xl italic leading-none text-stone-900 md:text-7xl"><a href="/lettre">{premiere.nom}</a></h2>

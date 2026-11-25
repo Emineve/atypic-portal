@@ -73,7 +73,7 @@ export default async function LetterHome() {
     : full.flatMap((d) => (d ? [...d.items].sort((x, y) => Number(y.id === (d.issue.content as { une_id?: string }).une_id) - Number(x.id === (d.issue.content as { une_id?: string }).une_id)).map((b, k) => ({ b, numero: d.issue.numero, une: k === 0 })) : []));
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen overflow-x-clip bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
       {/* le filtre qui donne aux croquis des vignettes leur trait à main levée */}
       <svg aria-hidden width="0" height="0" className="absolute">
@@ -85,15 +85,17 @@ export default async function LetterHome() {
 
       <main className="max-w-6xl mx-auto px-6 pt-10 md:pt-20 pb-24">
         <section className="mb-16 md:mb-24">
-          {/* le titre de la page, seul et large ; l'inscription vient juste dessous, sans cadre */}
-          <h1 className="max-w-4xl font-serif text-[2.6rem] md:text-6xl lg:text-[4.2rem] tracking-tight leading-[1.02] text-stone-900">
-            L’immobilier atypique, <span className="italic text-stone-500">à chacun sa newsletter.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-xl leading-relaxed text-stone-700 md:mt-8">
-            Toutes parlent d’immobilier atypique. Chacune s’adresse à un acheteur différent : celui qui veut rénover, celui qui cherche un atelier, celui qui rêve d’une péniche.
-          </p>
-          <div>
-            <Famille
+          <Famille
+            intro={
+              <>
+                <h1 className="font-serif text-[2.5rem] md:text-6xl lg:text-[3.9rem] tracking-tight leading-[1.03] text-stone-900">
+                  Le média qui vous aide à acheter <span className="italic text-stone-500">un lieu qui ne ressemble à aucun autre.</span>
+                </h1>
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-700 md:mt-8 md:text-xl md:leading-relaxed">
+                  Loftissime cherche, visite et chiffre les biens atypiques : lofts, ateliers, péniches, derniers étages. Sans jargon, sans rien cacher. Pour passer du rêve au projet, quel que soit votre budget.
+                </p>
+              </>
+            }
               extrait={
                 <span className="block">
                   <span className="block overflow-hidden rounded-[10px]">
@@ -102,14 +104,14 @@ export default async function LetterHome() {
                   <span className="mt-2 block text-sm text-stone-500">Extrait de <em>Béton ciré</em> n° {dernier}</span>
                 </span>
               }
-            />
-          </div>
+          />
         </section>
 
         {biens.length > 0 && (
           <section>
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-              <h2 className="text-xs uppercase tracking-widest text-stone-500">Les biens parus dans Béton ciré</h2>
+              <h2 className="font-serif text-3xl leading-tight text-stone-900 md:text-4xl">Nos biens à la une</h2>
+              <p className="text-sm text-stone-500">Parus dans <em>Béton ciré</em></p>
             </div>
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {biens.map(({ b }) => (
