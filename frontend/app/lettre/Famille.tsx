@@ -166,7 +166,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
           <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
           <li>1 bien visité par numéro</li>
           <li aria-hidden className="hidden text-[#F6CF4E] md:block">✦</li>
-          <li>3 experts qui s’engagent sur leurs chiffres</li>
+          <li>5 métiers autour de chaque bien</li>
         </ul>
       </div>
 

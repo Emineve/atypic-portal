@@ -92,7 +92,7 @@ export default async function LetterHome() {
                   Le média qui vous aide à acheter <span className="italic text-stone-500">un lieu qui ne ressemble à aucun autre.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-700 md:mt-8 md:text-xl md:leading-relaxed">
-                  Loftissime cherche, visite et chiffre les biens atypiques : lofts, ateliers, péniches, derniers étages. Sans jargon, sans rien cacher. Pour passer du rêve au projet, quel que soit votre budget.
+                  Un bien atypique, et tous les experts qu’il faut pour passer du rêve à la réalité : le notaire alerte, le courtier finance, l’architecte dessine, l’entrepreneur chiffre, le négociateur discute le prix.
                 </p>
               </>
             }
