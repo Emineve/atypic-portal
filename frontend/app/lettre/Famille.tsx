@@ -123,16 +123,14 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         </div>
       </div>
 
-      {/* Le rythme, en bandeau pleine largeur. Pas de chiffre d'audience tant qu'il n'y en a pas. */}
-      <div className="relative left-1/2 mt-14 w-screen -translate-x-1/2 bg-[#211C15] text-[#FBF5E9] md:mt-20">
-        <ul className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-x-6 gap-y-1 px-6 py-7 text-center font-serif text-2xl md:py-9 lg:flex-row xl:gap-x-8 xl:text-3xl">
-          <li className="lg:whitespace-nowrap">1 newsletter</li>
-          <li aria-hidden className="hidden text-[#F6CF4E] lg:block">✦</li>
-          <li className="lg:whitespace-nowrap">1 thème par mois</li>
-          <li aria-hidden className="hidden text-[#F6CF4E] lg:block">✦</li>
-          <li className="lg:whitespace-nowrap">12 numéros par an</li>
-        </ul>
-      </div>
+      {/* Le rythme, en une ligne entre deux filets, dans la police du logo. Pas de chiffre d'audience tant qu'il n'y en a pas. */}
+      <ul className="mt-14 flex flex-col items-center justify-center gap-x-5 gap-y-1 border-y border-stone-900 py-6 text-center font-logo text-2xl font-semibold tracking-tight text-stone-900 md:mt-20 md:py-8 lg:flex-row xl:gap-x-7 xl:text-[2rem]">
+        <li className="lg:whitespace-nowrap">1 newsletter</li>
+        <li aria-hidden className="hidden text-stone-400 lg:block">+</li>
+        <li className="lg:whitespace-nowrap">1 thème par mois</li>
+        <li aria-hidden className="hidden text-stone-400 lg:block">+</li>
+        <li className="lg:whitespace-nowrap">12 numéros par an</li>
+      </ul>
 
       {/* 2. Le premier numéro, seul sur sa ligne */}
       <section className="mt-14 md:mt-20" aria-labelledby="nl-premier">
