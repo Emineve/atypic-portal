@@ -80,6 +80,19 @@ export function comptes(c: NumeroContent, une: LetterItem | null) {
   return { prix, pct, notaire, travaux, total, mois };
 }
 
+// La vidéo se regarde sur la page du numéro, pas ailleurs : selon l'adresse fournie, un lecteur YouTube ou Vimeo
+// intégré, ou le fichier lui-même. Une autre adresse reste un simple lien.
+export function lecteurVideo(url?: string | null): { type: 'cadre' | 'fichier'; src: string } | null {
+  const u = (url || '').trim();
+  if (!/^https?:\/\//i.test(u)) return null;
+  const yt = u.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  if (yt) return { type: 'cadre', src: `https://www.youtube-nocookie.com/embed/${yt[1]}?rel=0` };
+  const vm = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vm) return { type: 'cadre', src: `https://player.vimeo.com/video/${vm[1]}` };
+  if (/\.(mp4|webm|mov)(\?.*)?$/i.test(u)) return { type: 'fichier', src: u };
+  return null;
+}
+
 // Les liens d'un numéro, par rubrique. Dans le mail ils passent par /lettre/va, qui compte le clic puis redirige.
 export function liensDuNumero(c: NumeroContent, une: LetterItem | null, autres: LetterItem[]): Record<string, string> {
   const out: Record<string, string> = {};

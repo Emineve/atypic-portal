@@ -14,7 +14,9 @@ export async function GET(req: Request) {
   if (!d) return NextResponse.redirect(`${SITE}/lettre`, 302);
   const c = d.issue.content as unknown as NumeroContent;
   const { une, autres } = biensDuNumero(c, d.items);
-  const cible = k === 'site' ? `${SITE}/lettre/numero-${n}` : liensDuNumero(c, une, autres)[k];
+  const liens = liensDuNumero(c, une, autres);
+  // la vidéo se regarde sur la page du numéro : le clic du mail y mène, à la hauteur du lecteur
+  const cible = k === 'site' ? `${SITE}/lettre/numero-${n}` : k === 'video' && liens.video ? `${SITE}/lettre/numero-${n}#video` : liens[k];
   if (!cible) return NextResponse.redirect(`${SITE}/lettre/numero-${n}`, 302);
   try {
     const { getSupabase } = await import('../../../lib/supabase');

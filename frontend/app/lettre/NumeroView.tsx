@@ -1,6 +1,6 @@
 import Mesure from './Mesure';
 import type { LetterItem } from './LetterView';
-import { CHOIX, comptes, eur, liensDuNumero, type NumeroContent } from '../../lib/numero';
+import { CHOIX, comptes, eur, lecteurVideo, liensDuNumero, type NumeroContent } from '../../lib/numero';
 import { MOIS, NEWSLETTERS, themeDe } from '../../lib/newsletters';
 
 // Un numéro de la newsletter de Loftissime tel qu'il se lit : la même vue sert à l'aperçu du back-office et à la page du numéro sur le site.
@@ -97,7 +97,14 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
           <T v={c.chapo} ph="où il est, ce que c’est, en deux phrases" />
           {k.prix != null && <> Affiché <span className="font-serif text-lg lining-nums text-[#FBF5E9]">{eur(k.prix)}</span>.</>}
         </p>
-        <div className="mt-6 overflow-hidden">{liens.video ? <a href={liens.video} target="_blank" rel="noreferrer" aria-label="Voir la visite en vidéo">{video}</a> : video}</div>
+        <div id="video" className="mt-6 scroll-mt-24 overflow-hidden">
+          {(() => {
+            const lecteur = lecteurVideo(c.video_url);
+            if (lecteur?.type === 'cadre') return <iframe src={lecteur.src} title="La visite en vidéo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullScreen className="block aspect-video w-full rounded-[10px] border-0" />;
+            if (lecteur?.type === 'fichier') return <video src={lecteur.src} controls playsInline preload="metadata" className="block aspect-video w-full rounded-[10px] bg-black" />;
+            return liens.video ? <a href={liens.video} target="_blank" rel="noreferrer" aria-label="Voir la visite en vidéo">{video}</a> : video;
+          })()}
+        </div>
         {(a(c.video_legende) || brouillon) && (
           <p className="mt-3 text-[13px] text-[#a59a88]"><T v={c.video_legende} ph="qui fait la visite, en une phrase" /></p>
         )}
