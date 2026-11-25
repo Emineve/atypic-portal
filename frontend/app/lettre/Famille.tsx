@@ -56,7 +56,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
   const tuile = (n: Newsletter) => {
     const on = prefs.includes(n.slug);
     return (
-      <article key={n.slug} className={`flex overflow-hidden rounded-[14px] bg-white sm:flex-col ${on ? 'shadow-[0_0_0_2px_#3F4344]' : 'shadow-[0_0_0_1px_#e7e0d3]'}`}>
+      <article key={n.slug} className={`flex overflow-hidden rounded-[14px] bg-white sm:flex-col ${on ? 'shadow-[0_0_0_2px_#211C15]' : 'shadow-[0_0_0_1px_#e7e0d3]'}`}>
         {/* sur téléphone la matière est une bande à gauche : le calendrier reste court */}
         <span aria-hidden className="block w-20 shrink-0 self-stretch sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
         <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-6">
@@ -87,7 +87,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
       {/* 1. La promesse à gauche, la carte d'inscription à droite : une seule action dès l'ouverture */}
       <div className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-[1.25fr_1fr]">
         <div>{intro}</div>
-        <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#3F4344] md:p-8">
+        <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
           {abonne ? (
             <div role="status">
               <p className="font-serif text-2xl leading-snug text-stone-900">C’est noté. Vous recevrez le prochain numéro.</p>
@@ -120,12 +120,12 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
       </div>
 
       {/* Le rythme, en bandeau pleine largeur. Pas de chiffre d'audience tant qu'il n'y en a pas. */}
-      <div className="relative left-1/2 mt-14 w-screen -translate-x-1/2 bg-[#3F4344] text-[#FBF5E9] md:mt-20">
+      <div className="relative left-1/2 mt-14 w-screen -translate-x-1/2 bg-[#211C15] text-[#FBF5E9] md:mt-20">
         <ul className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-x-8 gap-y-1 px-6 py-7 text-center font-serif text-2xl md:py-9 lg:flex-row lg:text-3xl">
           <li className="lg:whitespace-nowrap">12 numéros par an</li>
-          <li aria-hidden className="hidden text-[#A56C68] lg:block">✦</li>
+          <li aria-hidden className="hidden text-[#F6CF4E] lg:block">✦</li>
           <li className="lg:whitespace-nowrap">1 thème par mois</li>
-          <li aria-hidden className="hidden text-[#A56C68] lg:block">✦</li>
+          <li aria-hidden className="hidden text-[#F6CF4E] lg:block">✦</li>
           <li className="lg:whitespace-nowrap">Des conseils d’experts</li>
         </ul>
       </div>
@@ -135,7 +135,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
         <h2 id="nl-premier" className="border-t border-stone-900 pt-4 font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
           Le premier numéro, <span className="italic text-stone-500">en {MOIS[premier.mois - 1]}.</span>
         </h2>
-        <article className="mt-6 grid overflow-hidden rounded-[14px] bg-white shadow-[0_0_0_2px_#3F4344] md:grid-cols-2">
+        <article className="mt-6 grid overflow-hidden rounded-[14px] bg-white shadow-[0_0_0_2px_#211C15] md:grid-cols-2">
           <div className="flex flex-col justify-center p-7 md:p-12">
             <h3 className="font-serif text-6xl italic leading-none text-stone-900 md:text-7xl"><a href="/lettre">{premier.nom}</a></h3>
             <p className="mt-5 text-xl text-stone-900">{premier.sujet}</p>

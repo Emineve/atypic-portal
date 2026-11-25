@@ -77,7 +77,7 @@ export default async function LettreIndex() {
             <ol>
               {TEMPS.map(([titre, texte], i) => (
                 <li key={titre} className="flex gap-5 border-b border-stone-200 py-5 first:pt-1">
-                  <span className="w-7 shrink-0 font-serif text-2xl italic text-[#A56C68]">{i + 1}.</span>
+                  <span className="w-7 shrink-0 font-serif text-2xl italic text-stone-500">{i + 1}.</span>
                   <span>
                     <span className="block font-serif text-2xl leading-tight">{titre}</span>
                     <span className="mt-1 block text-lg leading-relaxed text-stone-700">{texte}</span>

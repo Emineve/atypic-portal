@@ -14,7 +14,7 @@ import { useSiteMode } from './SiteMode';
 // « Avant la promesse » (/guide) est caché du menu pour le moment : la rubrique reste en ligne, liée depuis le pied de page.
 const LETTER_LINKS: { href: string; label: string }[] = [];
 const LETTER_LINK =
-  'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#3F4344,#3F4344)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
+  'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
 
 const FAVORITES_KEY = 'singulier:favorites';
 
