@@ -27,8 +27,12 @@ export default async function LettreIndex() {
       <header className="bg-[#211C15] text-[#FBF5E9]">
         <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
           <h1 className="font-serif text-6xl italic leading-none md:text-8xl">Béton ciré</h1>
-          <p className="mt-5 text-lg text-[#cfc5b4]">
-            La newsletter de <span className="font-logo font-semibold tracking-[-0.4px] text-[#FBF5E9]">loftissime.</span>
+          {/* le sous-titre dit pourquoi Béton ciré existe ; le détail est plus bas, dans « Pourquoi Béton ciré ? » */}
+          <p className="mt-6 max-w-2xl font-serif text-2xl leading-snug text-[#FBF5E9] md:text-3xl">
+            La newsletter des biens atypiques à rénover : <span className="italic text-[#a59a88]">ce qu’on peut en faire, et ce qu’ils coûtent vraiment.</span>
+          </p>
+          <p className="mt-4 text-sm text-[#a59a88]">
+            Par <span className="font-logo font-semibold tracking-[-0.4px] text-[#FBF5E9]">loftissime.</span>
           </p>
         </div>
       </header>
@@ -38,12 +42,9 @@ export default async function LettreIndex() {
         <section className="grid items-center gap-x-12 gap-y-8 pb-14 md:pb-20 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <h2 className="font-serif text-3xl leading-tight md:text-4xl">
-              Abonnez-vous à Béton ciré, <span className="italic text-[#74695A]">la newsletter de Loftissime.</span>
+              Recevez <span className="italic text-[#74695A]">le prochain numéro.</span>
             </h2>
-            <p className="mt-3 max-w-xl text-lg text-[#4a4238]">
-              Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.
-            </p>
-            <LetterSignup source="numeros" className="mt-6 max-w-md" />
+            <LetterSignup source="numeros" className="mt-5 max-w-md" />
           </div>
           <div className="border border-[#211C15] bg-[#FBF5E9]">
             <Poutre />
