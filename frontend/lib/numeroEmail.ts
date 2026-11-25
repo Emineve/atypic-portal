@@ -98,7 +98,7 @@ ${liens.vigilance ? `<p style="margin:8px 0 0;font-family:${SANS};font-size:14px
 
   // 3. Les autres biens
   if (autres.length) {
-    rows.push(poutre, h2(autres.length === 3 ? 'Trois autres biens,' : autres.length === 2 ? 'Deux autres biens,' : 'Un autre bien,', autres.length === 1 ? 'repéré pour vous.' : 'repérés pour vous.'));
+    rows.push(poutre, h2(autres.length === 3 ? 'Trois autres biens,' : autres.length === 2 ? 'Deux autres biens,' : 'Un autre bien,', autres.length === 1 ? 'sélectionné pour vous.' : 'sélectionnés pour vous.'));
     rows.push(`<tr><td style="padding:16px 32px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${INK};">${autres
       .map(
         (b, i) => `<tr><td style="padding:14px 0;border-bottom:1px solid #bfb8ac;font-family:${SANS};font-size:13px;color:${INK};"><span style="font-family:${SERIF};font-size:21px;">${esc(b.mesure)}${a(b.mesure_detail) ? ` <span style="font-style:italic;color:${GRIS};">${esc(b.mesure_detail)}</span>` : ''}</span><br>${esc(b.lieu)}${a(b.surface) ? `<span style="color:${GRIS};">, ${esc(b.surface)}</span>` : ''}${liens[`autre${i + 1}`] ? `<br>${lien(va(`autre${i + 1}`), 'Voir l’annonce')}` : ''}</td><td align="right" valign="top" style="padding:14px 0;border-bottom:1px solid #bfb8ac;font-family:${SERIF};font-size:18px;color:${INK};white-space:nowrap;">${eur(b.prix)}</td></tr>`,

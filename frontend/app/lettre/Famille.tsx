@@ -194,7 +194,7 @@ export default function Famille({ extrait }: { extrait?: React.ReactNode }) {
           <div className="hidden rounded-[14px] border border-dashed border-stone-400 p-8 lg:col-span-2 lg:flex lg:flex-col lg:justify-center">
             <p className="font-serif text-2xl leading-tight text-stone-900">Dans chaque numéro, <span className="italic text-stone-500">les mêmes cinq temps.</span></p>
             <ol className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-[15px] text-stone-700">
-              {['Un bien à la une, en vidéo', 'L’addition, sans rien oublier', 'Avant la promesse, un point de vigilance', 'Trois autres biens repérés', 'La question posée aux abonnés'].map((t, i) => (
+              {['Un bien à la une, en vidéo', 'L’addition, sans rien oublier', 'Avant la promesse, un point de vigilance', 'Trois autres biens sélectionnés pour vous', 'La question posée aux abonnés'].map((t, i) => (
                 <li key={t} className="flex gap-2">
                   <span className="font-serif italic text-stone-500">{i + 1}.</span>
                   {t}

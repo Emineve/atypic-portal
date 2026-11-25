@@ -220,7 +220,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
       {(autres.length > 0 || brouillon) && (
         <section className="px-6 pt-10 sm:px-10">
           <Poutre />
-          <h2 className="font-serif text-[27px] leading-tight">{autres.length === 3 || autres.length === 0 ? 'Trois autres biens,' : autres.length === 1 ? 'Un autre bien,' : 'Deux autres biens,'} <span className="italic text-[#74695A]">{autres.length === 1 ? 'repéré pour vous.' : 'repérés pour vous.'}</span></h2>
+          <h2 className="font-serif text-[27px] leading-tight">{autres.length === 3 || autres.length === 0 ? 'Trois autres biens,' : autres.length === 1 ? 'Un autre bien,' : 'Deux autres biens,'} <span className="italic text-[#74695A]">{autres.length === 1 ? 'sélectionné pour vous.' : 'sélectionnés pour vous.'}</span></h2>
           <ul className="mt-4 border-t border-[#211C15]">
             {autres.map((b, i) => (
               <li key={b.id || i} className="flex items-center gap-4 border-b border-[#211C15]/25 py-4">
