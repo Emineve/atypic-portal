@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import SiteHeader from '../SiteHeader';
-import LetterSignup from './LetterSignup';
+import Recevoir from './Recevoir';
 import { Verriere } from './Beton';
 import { dateLettre } from './LetterView';
 import { getIssues } from '../../lib/lettre';
@@ -56,24 +56,23 @@ export default async function LettreIndex() {
             <h1 className="mt-3 font-serif text-7xl italic leading-[0.95] tracking-tight md:text-8xl lg:text-[7rem]">{theme.nom}</h1>
             <p className="mt-6 font-serif text-3xl leading-tight md:text-4xl">{theme.sujet}</p>
             {propos && <p className="mt-4 max-w-xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">{propos.pour}</p>}
-            <div className="mt-8 max-w-md">
-              <p className="font-medium">Recevez ce numéro en {mois}, gratuitement.</p>
-              <LetterSignup source="numeros" className="mt-3" />
-            </div>
           </div>
-          <figure>
-            <div className="overflow-hidden rounded-[14px]">
-              <Verriere label={`La visite filmée du numéro ${theme.nom}`} />
-            </div>
-            <figcaption className="mt-3 text-sm text-stone-500">Dans chaque numéro, la visite en vidéo.</figcaption>
-          </figure>
+          <Recevoir source="numeros" titre={`Recevez ${theme.nom} en ${mois}, gratuitement.`} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
         </section>
 
         <section className="mt-20 md:mt-28" aria-labelledby="dans-ce-numero">
           <div className="grid gap-x-12 gap-y-3 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
-            <h2 id="dans-ce-numero" className="font-serif text-3xl leading-[1.1] md:text-4xl">
-              Dans ce numéro, <span className="italic text-stone-500">quatre temps.</span>
-            </h2>
+            <div>
+              <h2 id="dans-ce-numero" className="font-serif text-3xl leading-[1.1] md:text-4xl">
+                Dans ce numéro, <span className="italic text-stone-500">quatre temps.</span>
+              </h2>
+              <figure className="mt-6 max-w-sm md:mt-8">
+                <div className="overflow-hidden rounded-[14px]">
+                  <Verriere label={`La visite filmée du numéro ${theme.nom}`} />
+                </div>
+                <figcaption className="mt-3 text-sm text-stone-500">Dans chaque numéro, la visite en vidéo.</figcaption>
+              </figure>
+            </div>
             <ol>
               {TEMPS.map(([titre, texte], i) => (
                 <li key={titre} className="flex gap-5 border-b border-stone-200 py-5 first:pt-1">

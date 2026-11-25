@@ -75,7 +75,7 @@ function ArticlesUne() {
     <section className="mt-16 md:mt-24" aria-labelledby="articles-une">
       <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
         <h2 id="articles-une" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
-          Nos articles à la une, <span className="italic text-stone-500">avant de rénover.</span>
+          Nos articles à la une
         </h2>
         <a href="/guide" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir tous les articles</a>
       </div>
