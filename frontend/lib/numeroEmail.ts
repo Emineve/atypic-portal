@@ -169,7 +169,7 @@ ${a(c.collaborateurs) ? `<p style="margin:22px 0 0;font-family:${SANS};font-size
 <div style="display:none;max-height:0;overflow:hidden;font-size:1px;line-height:1px;color:${FOND};">${esc(c.chapo)}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${FOND};"><tr><td align="center" style="padding:24px 0;">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:${PAPIER};">
-<tr><td style="height:10px;background:${JAUNE};font-size:0;line-height:0;">&nbsp;</td></tr>
+<tr><td><img src="${SITE}/lettre/bande-${themeDe(c.theme).slug}.png" width="600" alt="" style="display:block;width:100%;max-width:600px;height:auto;border:0;"></td></tr>
 ${rows.join('\n')}
 </table></td></tr></table></body></html>`;
 }

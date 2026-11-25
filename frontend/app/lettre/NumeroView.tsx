@@ -82,6 +82,8 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
   return (
     <article className="mx-auto w-full max-w-[600px] font-sans text-[#211C15]" style={BETON}>
       {/* 1. Le bien à la une : la visite */}
+      {/* la matière du thème, en bandeau de tête */}
+      <div aria-hidden className="h-12" style={themeDe(c.theme).matiere} />
       <header className="bg-[#211C15] px-6 pb-8 pt-7 text-[#FBF5E9] sm:px-10">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
           <span className="font-serif text-[26px] italic leading-none">{themeDe(c.theme).nom} <span className="text-[#a59a88]">n° {numero}</span></span>

@@ -61,11 +61,11 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
     return (
       <article key={n.slug} className={`flex overflow-hidden rounded-[14px] bg-white sm:flex-col ${on ? 'shadow-[0_0_0_2px_#211C15]' : 'shadow-[0_0_0_1px_#e7e0d3]'}`}>
         {/* sur téléphone la matière est une bande à gauche : le calendrier reste court */}
-        <span aria-hidden className="block w-20 shrink-0 self-stretch sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
+        <a href={`/theme/${n.slug}`} aria-hidden tabIndex={-1} className="block w-20 shrink-0 self-stretch sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
         <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-6">
           {/* le mois en étiquette noire, comme l'onglet d'un calendrier */}
           <p className="self-start rounded-full bg-stone-900 px-3 py-1 text-sm font-medium text-white">{Maj(MOIS[n.mois - 1])}</p>
-          <h3 className="mt-3 font-serif text-[1.75rem] italic leading-none text-stone-900">{n.nom}</h3>
+          <h3 className="mt-3 font-serif text-[1.75rem] italic leading-none text-stone-900"><a href={`/theme/${n.slug}`} className="underline-offset-4 [@media(hover:hover)]:hover:underline">{n.nom}</a></h3>
           <p className="mt-2.5 text-[15px] leading-snug text-stone-700">{n.sujet}</p>
           {abonne && (
             <div className="mt-3 sm:mt-auto sm:pt-5">
