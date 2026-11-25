@@ -10,7 +10,7 @@ export default function LetterFooter() {
               loftissime.
             </a>
             <p className="mt-5 font-serif text-xl md:text-2xl leading-none">
-              100&nbsp;% immobilier <span className="italic text-stone-400">atypique</span>
+              Le média de l’immobilier <span className="italic text-stone-400">atypique</span>
             </p>
           </div>
         </div>
