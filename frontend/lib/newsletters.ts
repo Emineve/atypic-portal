@@ -19,7 +19,7 @@ const LISTE: Omit<Newsletter, 'mois'>[] = [
   {
     slug: 'beton-cire',
     nom: 'Béton ciré',
-    sujet: 'Les biens atypiques à rénover.',
+    sujet: 'Rénover un bien atypique.',
     addition: 'Le prix, les frais, les travaux, puis ce que ça coûte par mois.',
     ouverte: true,
     matiere: {
