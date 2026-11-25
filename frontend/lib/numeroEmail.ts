@@ -13,6 +13,7 @@ const FOND = '#F1E9D8';
 const JAUNE = '#F6CF4E';
 const GRIS = '#74695A';
 const FILET = '#E3D9C6';
+const BANDE = '#E6DFD0';
 const SERIF = "Georgia,'Times New Roman',serif";
 const SANS = 'Arial,Helvetica,sans-serif';
 
@@ -35,8 +36,24 @@ export function numeroEmailHtml(numero: number, c: NumeroContent, items: { une: 
   // Une carte : fond blanc, bord noir plus épais en bas et à droite, comme une ombre portée
   const carte = (inner: string, fond = '#ffffff') =>
     `<tr><td style="padding:18px 24px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${fond};border:2px solid ${INK};border-right-width:6px;border-bottom-width:6px;border-radius:14px;border-collapse:separate;"><tr><td style="padding:24px 22px;">${inner}</td></tr></table></td></tr>`;
+  // Un ticket de caisse : papier blanc à bords dentelés, posé sur une bande plus sombre
+  const ticket = (inner: string) =>
+    `<tr><td style="padding:20px 0 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BANDE};table-layout:fixed;width:100%;"><tr><td style="padding:26px 24px;">
+<img src="${SITE}/lettre/dents-haut.png" width="552" height="10" alt="" style="display:block;width:100%;height:10px;border:0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;"><tr><td style="padding:18px 22px 22px;">${inner}</td></tr></table>
+<img src="${SITE}/lettre/dents-bas.png" width="552" height="10" alt="" style="display:block;width:100%;height:10px;border:0;">
+</td></tr></table></td></tr>`;
+  // La barre de répartition : le prix en noir, les frais en jaune, les travaux en hachures
+  const pct = (n: number | null, defaut: number) => (k.total && n ? Math.max(2, Math.round((n / k.total) * 100)) : defaut);
+  const pPrix = pct(k.prix, 68);
+  const pFrais = pct(k.notaire, 6);
+  const barre = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:14px 0 6px;border:1px solid ${INK};"><tr>
+<td width="${pPrix}%" height="12" style="background:${INK};font-size:0;line-height:0;">&nbsp;</td>
+<td width="${pFrais}%" height="12" style="background:${JAUNE};font-size:0;line-height:0;">&nbsp;</td>
+<td height="12" background="${SITE}/lettre/hachures.png" style="background:#ffffff url(${SITE}/lettre/hachures.png);font-size:0;line-height:0;">&nbsp;</td>
+</tr></table>`;
   const ligne = (label: string, note: string, montant: string) =>
-    `<tr><td style="padding:11px 0;border-bottom:1px solid ${FILET};font-family:${SANS};font-size:16px;color:${INK};">${label}${note ? `<br><span style="font-size:13px;color:${GRIS};">${note}</span>` : ''}</td><td align="right" valign="top" style="padding:11px 0;border-bottom:1px solid ${FILET};font-family:${SERIF};font-size:20px;color:${INK};white-space:nowrap;">${montant}</td></tr>`;
+    `<tr><td style="padding:11px 0;border-bottom:1px dotted #a89d8b;font-family:${SANS};font-size:16px;color:${INK};">${label}${note ? `<br><span style="font-size:13px;color:${GRIS};">${note}</span>` : ''}</td><td align="right" valign="top" style="padding:11px 0;border-bottom:1px dotted #a89d8b;font-family:${SERIF};font-size:20px;color:${INK};white-space:nowrap;">${montant}</td></tr>`;
   const total = (label: string, montant: string) =>
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:14px;background:${JAUNE};border-radius:8px;"><tr><td style="padding:14px 16px;font-family:${SERIF};font-size:20px;color:${INK};">${label}</td><td align="right" style="padding:14px 16px;font-family:${SERIF};font-size:30px;color:${INK};white-space:nowrap;">${montant}</td></tr></table>`;
   const lien = (href: string, texte: string, couleur = INK) => `<a href="${esc(href)}" style="color:${couleur};text-decoration:underline;">${texte}</a>`;
@@ -71,8 +88,9 @@ ${a(c.demain) ? `<p style="margin:12px 0 0;"><span style="font-family:${SERIF};f
 
   // L'addition
   rows.push(titre('L’addition,', 'sans rien oublier.'));
-  rows.push(carte(`<p style="margin:0;font-family:${SERIF};font-size:24px;color:${INK};">${esc(nom || 'Le bien à la une')}</p>
+  rows.push(ticket(`<p style="margin:0;font-family:${SERIF};font-size:24px;color:${INK};">${esc(nom || 'Le bien à la une')}</p>
 <p style="margin:4px 0 8px;font-family:${SANS};font-size:14px;color:${GRIS};">Ce que coûte ce bien une fois habitable.</p>
+${barre}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
 ${k.prix != null ? ligne('Prix de vente affiché', une?.seller === 'particulier' ? 'Vendu en direct par son propriétaire' : 'Honoraires d’agence inclus', eur(k.prix)) : ''}
 ${k.notaire != null ? ligne('Frais de notaire', `Estimés, environ ${String(k.pct).replace('.', ',')} % dans l’ancien`, eur(k.notaire)) : ''}
@@ -90,7 +108,7 @@ ${k.total != null ? total('Le vrai prix', eur(k.total)) : ''}`));
     rows.push(`<tr><td style="padding:14px 24px 0;${texte}"><span style="font-family:${SERIF};font-style:italic;color:${GRIS};">Ce que ${a(c.courtier_nom) ? esc(c.courtier_nom) : 'le courtier'} négocierait pour lui :</span> ${esc(c.courtier_mots)}</td></tr>`);
   }
   if (k.mois != null) {
-    rows.push(carte(`<p style="margin:0;font-family:${SERIF};font-size:24px;color:${INK};">Par mois, tout compris</p>
+    rows.push(ticket(`<p style="margin:0;font-family:${SERIF};font-size:24px;color:${INK};">Par mois, tout compris</p>
 <p style="margin:4px 0 8px;font-family:${SANS};font-size:14px;color:${GRIS};">Ce que cet acheteur paierait chaque mois pour y vivre.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
 ${ligne('Mensualité du crédit', 'Travaux compris, calculée par le courtier', eur(c.mensualite))}
