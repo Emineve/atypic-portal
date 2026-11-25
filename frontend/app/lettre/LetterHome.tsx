@@ -82,14 +82,15 @@ function ArticlesUne() {
       <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {liste.map((a) => (
           <li key={a.slug}>
-            <a href={`/guide/${a.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[14px] border-2 border-stone-900 bg-white shadow-[5px_5px_0_#211C15]">
-              <span className="block overflow-hidden border-b-2 border-stone-900">
-                <GuideArt art={a.art} className="block aspect-[12/7] w-full" />
+            {/* sur téléphone : une ligne serrée, le dessin en vignette à gauche ; à partir de la tablette : la carte illustrée */}
+            <a href={`/guide/${a.slug}`} className="group flex h-full overflow-hidden rounded-[14px] border-2 border-stone-900 bg-white shadow-[5px_5px_0_#211C15] sm:flex-col">
+              <span className="block w-24 shrink-0 overflow-hidden border-r-2 border-stone-900 sm:w-full sm:border-b-2 sm:border-r-0">
+                <GuideArt art={a.art} className="block h-full w-full sm:aspect-[12/7] sm:h-auto" />
               </span>
-              <span className="flex flex-1 flex-col p-5">
+              <span className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
                 <span className="font-serif text-xl leading-snug text-stone-900 underline-offset-4 group-hover:underline">{typo(a.title)}</span>
-                <span className="mt-2 text-[15px] leading-relaxed text-stone-700">{typo(a.description)}</span>
-                <span className="mt-auto flex items-baseline justify-between pt-4 text-sm">
+                <span className="mt-2 hidden text-[15px] leading-relaxed text-stone-700 sm:block">{typo(a.description)}</span>
+                <span className="mt-auto flex items-baseline justify-between pt-3 text-sm sm:pt-4">
                   <span className="text-stone-500">{a.readMinutes} min de lecture</span>
                   <span className="font-medium text-stone-900">Lire</span>
                 </span>
@@ -164,7 +165,7 @@ export default async function LetterHome() {
         )}
 
         <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
-          <h2 className="text-xs uppercase tracking-widest text-stone-500">Vos questions</h2>
+          <h2 className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">Vos questions, <span className="italic text-stone-500">nos réponses.</span></h2>
           <div className="mt-2 max-w-3xl">
             {QUESTIONS.map(([q, r]) => (
               <details key={q} className="group border-b border-stone-200">

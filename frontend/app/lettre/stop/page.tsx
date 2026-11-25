@@ -38,7 +38,7 @@ export default function LetterStopPage() {
       </nav>
       <main className="max-w-md mx-auto px-6 py-20">
         {status === 'done' ? (
-          <Done title="Vous êtes désinscrit de la lettre.">Vous ne recevrez plus de numéro. Vous pouvez vous réinscrire à tout moment depuis l’accueil.</Done>
+          <Done title="Vous êtes désinscrit de la newsletter.">Vous ne recevrez plus de numéro. Vous pouvez vous réinscrire à tout moment depuis l’accueil.</Done>
         ) : token === '' ? (
           <>
             <h1 className="font-serif text-3xl text-stone-900 leading-tight">Ce lien n’est pas valide.</h1>
@@ -46,7 +46,7 @@ export default function LetterStopPage() {
           </>
         ) : (
           <>
-            <h1 className="font-serif text-3xl text-stone-900 leading-tight">Ne plus recevoir la lettre ?</h1>
+            <h1 className="font-serif text-3xl text-stone-900 leading-tight">Ne plus recevoir la newsletter ?</h1>
             <p className="mt-4 text-stone-600 leading-relaxed">Un clic suffit. Votre adresse ne sera plus utilisée.</p>
             <button onClick={stop} disabled={status === 'sending' || token === null} className="mt-8 h-12 rounded-full bg-stone-900 px-7 text-sm font-medium text-[#FBF5E9] disabled:opacity-50">
               {status === 'sending' ? 'Désinscription…' : 'Me désinscrire'}

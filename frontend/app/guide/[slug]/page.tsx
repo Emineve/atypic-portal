@@ -1,4 +1,5 @@
 import SmartAlert from '../../SmartAlert';
+import PortailSeulement from '../../PortailSeulement';
 import { STAY_PAID, stayUrl } from '../../../lib/stay';
 import SiteHeader from '../../SiteHeader';
 import Link from 'next/link';
@@ -94,7 +95,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
           {' › '}
           <Link href="/guide" className="hover:text-stone-900">Articles</Link>
         </nav>
-        <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">{a.category}</p>
+        <p className="mt-8 text-sm text-stone-500">{a.category}</p>
         <h1 className="mt-3 max-w-4xl font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-stone-900">{typo(a.title)}</h1>
         <p className="mt-5 text-sm text-stone-500">
           Mis à jour le <time dateTime={a.updated}>{formatGuideDate(a.updated)}</time> · {a.readMinutes} min de lecture
@@ -111,7 +112,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{typo(a.intro)}</p>
 
         <section className="mt-8 rounded-[14px] bg-[#F6CF4E]/15 p-6" aria-label="À retenir">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-900">À retenir</h2>
+          <h2 className="font-serif text-xl text-stone-900">À retenir</h2>
           <ul className="mt-4 space-y-3">
             {a.takeaways.map((t) => (
               <li key={t} className="flex items-start gap-3 text-stone-900 leading-relaxed">
@@ -218,11 +219,13 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         )}
 
         {a.listingsLink && !a.listingsLink.href.includes('alerte') && (
+          <PortailSeulement>
           <p className="mt-12">
             <Link href={a.listingsLink.href} className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition">
               {a.listingsLink.label}
             </Link>
           </p>
+          </PortailSeulement>
         )}
         {a.stayLink && (
           <p className="mt-4 text-sm text-stone-600">
@@ -243,7 +246,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         </section>
 
         <section className="mt-12">
-          <h2 className="text-xs uppercase tracking-widest text-stone-500">Sources</h2>
+          <h2 className="text-sm font-medium text-stone-900">Sources</h2>
           <ul className="mt-3 space-y-2 text-sm">
             {a.sources.map((s) => (
               <li key={s.url}>

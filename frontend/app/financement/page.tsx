@@ -26,7 +26,7 @@ export default function FinancementPage() {
           <BackLink className="mb-8 flex sm:hidden" />
           <Crumbs items={[{ label: 'Financement' }]} />
           <h1 className="mt-5 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-            Votre coup de cœur, <span className="italic text-stone-500">financé.</span>
+            Financer un bien atypique, <span className="italic text-stone-500">les bons repères.</span>
           </h1>
           <p className="mt-4 max-w-2xl text-base md:text-lg font-light leading-relaxed text-stone-600">
             Estimez votre mensualité, puis faites étudier votre projet par un courtier.
@@ -42,12 +42,13 @@ export default function FinancementPage() {
         </div>
         <div className="space-y-10">
 
+        {RATES.publies && (
         <section>
           <h2 className="font-serif text-2xl text-stone-900">Les taux du mois</h2>
           <div className="mt-5 overflow-hidden rounded-[14px] border border-stone-200 bg-white">
             <table className="w-full table-fixed text-center">
               <thead>
-                <tr className="text-xs uppercase tracking-widest text-stone-500">
+                <tr className="text-sm text-stone-500">
                   <th className="px-4 py-3 text-left font-normal md:px-6">Dossier</th>
                   {RATES.byYears.map((r) => (
                     <th key={r.years} className="px-1 py-3 font-normal">{r.years} ans</th>
@@ -70,8 +71,9 @@ export default function FinancementPage() {
             Taux relevés en {RATES.asOf} par notre courtier partenaire, hors assurance. Votre taux réel dépend de votre apport, de vos revenus et de la banque.
           </p>
         </section>
+        )}
 
-        <section className="border-t border-stone-200 pt-6">
+        <section className={RATES.publies ? 'border-t border-stone-200 pt-6' : ''}>
           <details>
             <summary className="cursor-pointer list-none text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 [&::-webkit-details-marker]:hidden">
               À garder en tête
@@ -80,7 +82,7 @@ export default function FinancementPage() {
               <li>La mensualité comprend une estimation de l&apos;assurance emprunteur. Elle ne comprend ni les frais de notaire, ni les frais de dossier.</li>
               <li>Les banques limitent en général l&apos;endettement à 35 % des revenus, assurance comprise, sur 25 ans au plus.</li>
               <li>Un apport d&apos;au moins 10 % du prix est le plus souvent attendu.</li>
-              <li>Le taux d&apos;usure, plafond légal assurance et frais compris, est de {pct(RATES.usury.rate)} % pour les {RATES.usury.label}.</li>
+              {RATES.publies && <li>Le taux d&apos;usure, plafond légal assurance et frais compris, est de {pct(RATES.usury.rate)} % pour les {RATES.usury.label}.</li>}
             </ul>
           </details>
           <p className="mt-5 text-sm text-stone-600 leading-relaxed">

@@ -26,7 +26,7 @@ export default function Page() {
       <h2>3. Les mots employés</h2>
       <ul>
         <li>« Le site » : loftissime.fr et ses pages.</li>
-        <li>« La newsletter » : la lettre envoyée par e-mail aux abonnés, une fois par mois.</li>
+        <li>« La newsletter » : le numéro envoyé par e-mail aux abonnés, une fois par mois.</li>
         <li>« Les contenus » : les articles, les numéros de la newsletter, les dessins, les vidéos et le guide offert à l’inscription.</li>
       </ul>
 

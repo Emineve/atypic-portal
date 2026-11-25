@@ -18,7 +18,7 @@ export default function QuiSommesNous() {
               Un atelier sous verrière, une ancienne imprimerie, une péniche, un dernier étage ouvert sur les toits : ces lieux existent, mais ils sont éparpillés, et l’on passe à côté. Quand on en trouve un, on hésite. On ne sait pas ce qu’il vaut vraiment, ni ce qu’il coûtera d’y vivre.
             </p>
             <p>
-              Loftissime est fait pour ça. Nous cherchons ces biens, nous les visitons avec ceux dont c’est le métier, un architecte, un entrepreneur, un courtier, et nous faisons les comptes jusqu’au bout. Puis nous vous le racontons dans notre newsletter : douze numéros par an, chacun pensé pour un acheteur différent.
+              Loftissime est fait pour ça. Nous cherchons ces biens, nous les visitons avec ceux dont c’est le métier, un architecte, un entrepreneur, un courtier, un notaire, un négociateur, et nous faisons les comptes jusqu’au bout. Puis nous vous le racontons dans notre newsletter : douze numéros par an, un thème par mois.
             </p>
             <p>
               Et le nom ? Loftissime, comme un superlatif : le loft, et tout ce qui lui ressemble, en plus haut, en plus lumineux, en plus rare.

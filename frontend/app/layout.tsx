@@ -15,18 +15,18 @@ const sansFont = DM_Sans({ subsets: ['latin'], variable: '--font-sans', display:
 const serifFont = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-serif', display: 'swap' });
 
 // Texte repris par Google, par les assistants IA et par les aperçus de partage
-const TITLE = 'Loftissime · Lofts, ateliers et biens atypiques à vendre';
+const TITLE = 'Loftissime · Le média de l’immobilier atypique';
 const DESCRIPTION =
-  'Loftissime, curateur de biens atypiques, vous accompagne dans la recherche du bien de vos rêves : lofts, ateliers d’artistes, rooftops et maisons d’architecte à vendre, réunis sur un seul site.';
+  'Loftissime est le média de l’immobilier atypique : chaque mois, une newsletter passe un bien atypique au crible, la visite, le projet, le prix tout compris. Douze numéros par an, un thème par mois.';
 
 // Présentation plus complète, pour la carte d'identité lue par les moteurs et les assistants IA
 const ORG_DESCRIPTION =
-  'Loftissime, curateur de biens atypiques, est le premier hub d’annonces immobilières atypiques en France : lofts, ateliers d’artistes, rooftops, maisons d’architecte et biens de caractère à vendre, proposés par les agences immobilières et réunis sur un seul site. Loftissime accompagne l’acheteur dans la recherche du bien de ses rêves, de la première idée à la visite : recherche, alertes, guide de l’acheteur, simulation de financement et mise en relation avec l’agent chargé de la vente.';
+  'Loftissime est un média consacré à l’immobilier atypique : lofts, ateliers d’artistes, derniers étages, péniches, biens à rénover. Il édite une newsletter mensuelle, douze numéros par an et un thème par mois, où un bien atypique est visité avec des professionnels (architecte, entrepreneur, courtier, notaire, négociateur), et des articles pour acheter en connaissance de cause. Loftissime n’est pas une agence et ne vend pas les biens.';
 
 // Aperçu de partage (WhatsApp, SMS, réseaux) : la signature et la promesse du site
 const SHARE_TITLE = 'Loftissime · Le média de l’immobilier atypique';
 const SHARE_DESCRIPTION =
-  'Tout l’immobilier atypique, réuni sur un seul site : des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre.';
+  'Chaque mois, un bien atypique passé au crible par nos experts : la visite, le projet, le prix tout compris.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

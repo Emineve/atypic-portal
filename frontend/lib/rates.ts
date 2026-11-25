@@ -1,6 +1,8 @@
 // Repères de taux de crédit immobilier affichés sur la page Financement.
 // À mettre à jour chaque mois : relevés communiqués par notre courtier partenaire, hors assurance.
 export const RATES = {
+  // Le tableau « Les taux du mois » ne s'affiche que lorsque le courtier a fourni et validé ses relevés.
+  publies: false,
   asOf: 'novembre 2026', // période du relevé
   updated: '20 novembre 2026', // date de mise à jour sur le site
   // Taux repris par défaut dans le simulateur : ceux d'un bon dossier (hypothèse prudente)
