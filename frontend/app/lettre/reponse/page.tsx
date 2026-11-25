@@ -8,12 +8,12 @@ import { getSupabase } from '../../../lib/supabase';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const CHOICES: Record<string, string> = {
-  loft: 'un loft',
-  atelier: 'un atelier d’artiste',
-  terrasse: 'un dernier étage avec terrasse',
-  maison: 'une maison en ville',
-  peniche: 'une péniche',
-  surprise: 'la surprise',
+  loft: 'Vous aimez les lofts : nous leur ferons de la place dans les prochains numéros.',
+  atelier: 'Vous aimez les ateliers d’artistes : nous leur ferons de la place dans les prochains numéros.',
+  terrasse: 'Vous aimez les derniers étages : nous leur ferons de la place dans les prochains numéros.',
+  maison: 'Vous aimez les maisons en ville : nous leur ferons de la place dans les prochains numéros.',
+  peniche: 'Vous aimez les péniches : nous leur ferons de la place dans les prochains numéros.',
+  surprise: 'Vous aimez être surpris : comptez sur nous.',
 };
 
 // Page ouverte depuis le mail de bienvenue : le clic sur « votre atypique idéal » est enregistré ici, dans le navigateur
@@ -44,16 +44,16 @@ export default function LetterAnswerPage() {
         </div>
       </nav>
       <main className="max-w-md mx-auto px-6 py-20">
-        {status === 'done' && <Done title="C’est noté.">Vous rêvez plutôt de {CHOICES[choice]} : la lettre en tiendra compte.</Done>}
+        {status === 'done' && <Done title="Merci, c’est noté.">{CHOICES[choice]}</Done>}
         {status === 'error' && (
           <>
             <h1 className="font-serif text-3xl text-stone-900 leading-tight">Ce lien n’est pas valide.</h1>
-            <p className="mt-4 text-stone-600 leading-relaxed">Ouvrez-le depuis le mail de bienvenue de la lettre.</p>
+            <p className="mt-4 text-stone-600 leading-relaxed">Ouvrez-le depuis le mail de bienvenue ou depuis un numéro de la newsletter.</p>
           </>
         )}
         {status !== 'wait' && (
           <p className="mt-9">
-            <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">Voir la lettre</Link>
+            <Link href="/guide" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Lire nos articles en attendant</Link>
           </p>
         )}
       </main>
