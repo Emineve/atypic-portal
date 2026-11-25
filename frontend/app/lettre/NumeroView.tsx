@@ -1,7 +1,7 @@
 import Mesure from './Mesure';
 import type { LetterItem } from './LetterView';
 import { CHOIX, comptes, eur, liensDuNumero, type NumeroContent } from '../../lib/numero';
-import { themeDe } from '../../lib/newsletters';
+import { MOIS, NEWSLETTERS, themeDe } from '../../lib/newsletters';
 
 // Un numéro de la newsletter de Loftissime tel qu'il se lit : la même vue sert à l'aperçu du back-office et à la page du numéro sur le site.
 // `brouillon` : les champs vides s'affichent entre crochets, pour voir ce qui manque. Sans lui, une ligne vide n'apparaît pas.
@@ -256,6 +256,22 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
           <p className="mt-3 text-xs text-[#74695A]">On répond d’un clic depuis le mail. Vos réponses décident des prochaines visites.</p>
         </section>
       )}
+
+      {/* Le mois prochain : la barre des douze matières, celle du prochain thème mise en avant */}
+      {(() => {
+        const rang = NEWSLETTERS.findIndex((n) => n.slug === themeDe(c.theme).slug);
+        const suivant = NEWSLETTERS[(rang + 1) % NEWSLETTERS.length];
+        return (
+          <section className="px-6 pt-10 sm:px-10">
+            <Poutre />
+            <h2 className="font-serif text-[27px] leading-tight">Et le mois prochain, <span className="italic text-[#74695A]">en {MOIS[suivant.mois - 1]}.</span></h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/lettre/barre-${suivant.slug}.png`} alt="" className="mt-4 block w-full mix-blend-multiply" />
+            <p className="mt-4 font-serif text-[40px] italic leading-none">{suivant.nom}</p>
+            <p className="mt-2.5 text-[15px] leading-relaxed">{suivant.sujet}</p>
+          </section>
+        );
+      })()}
 
       {/* Le bloc final */}
       <footer className="mt-10 bg-[#211C15] px-6 pb-8 pt-8 text-[#FBF5E9] sm:px-10">

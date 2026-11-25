@@ -1,6 +1,6 @@
 import type { LetterItem } from '../app/lettre/LetterView';
 import { CHOIX, SITE, comptes, eur, liensDuNumero, type NumeroContent } from './numero';
-import { themeDe } from './newsletters';
+import { MOIS, NEWSLETTERS, themeDe } from './newsletters';
 
 // Le mail d'un numéro de la newsletter de Loftissime : même contenu que la page, en tableaux et styles en ligne pour les messageries.
 // {{TOKEN}} est remplacé à l'envoi par le jeton de chaque abonné (désinscription, réponse à la question).
@@ -127,6 +127,15 @@ ${liens.vigilance ? `<p style="margin:14px 0 0;font-family:${SANS};font-size:15p
     rows.push(`<tr><td style="padding:10px 16px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="8" style="border-collapse:separate;"><tr>${CHOIX.slice(0, 3).map(cell).join('')}</tr><tr>${CHOIX.slice(3).map(cell).join('')}</tr></table>
 <p style="margin:6px 8px 0;font-family:${SANS};font-size:14px;color:${GRIS};">Un clic suffit. Vos réponses décident des prochaines visites.</p></td></tr>`);
   }
+
+  // Le mois prochain : la barre des douze matières, celle du prochain thème mise en avant
+  const rang = NEWSLETTERS.findIndex((n) => n.slug === themeDe(c.theme).slug);
+  const suivant = NEWSLETTERS[(rang + 1) % NEWSLETTERS.length];
+  rows.push(titre('Et le mois prochain,', `en ${MOIS[suivant.mois - 1]}.`));
+  rows.push(`<tr><td style="padding:16px 24px 0;">
+<img src="${SITE}/lettre/barre-${suivant.slug}.png" width="552" alt="" style="display:block;width:100%;max-width:552px;height:auto;border:0;">
+<p style="margin:16px 0 0;font-family:${SERIF};font-size:40px;line-height:1;font-style:italic;color:${INK};">${esc(suivant.nom)}</p>
+<p style="margin:10px 0 0;${texte}">${esc(suivant.sujet)}</p></td></tr>`);
 
   // Le bloc final
   rows.push(`<tr><td style="padding-top:48px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${INK};"><tr><td style="padding:34px 24px;">
