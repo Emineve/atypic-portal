@@ -129,10 +129,10 @@ export default async function LetterHome() {
             intro={
               <>
                 <h1 className="font-serif text-[2.5rem] md:text-6xl lg:text-[3.9rem] tracking-tight leading-[1.03] text-stone-900">
-                  Le média qui vous aide à acheter <span className="italic text-stone-500">un bien qui ne ressemble à aucun autre.</span>
+                  Acheter un bien <span className="italic text-stone-500">qui ne ressemble à aucun autre.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-700 md:mt-8 md:text-xl md:leading-relaxed">
-                  Un bien atypique par numéro. Sans jargon et sans rien cacher, nos experts vous accompagnent pour passer du rêve au projet, quel que soit votre budget.
+                  Chaque mois, un thème et un bien atypique pour l’illustrer : la visite en vidéo, le projet, le prix tout compris. Nos experts vous accompagnent pour passer du rêve au projet.
                 </p>
               </>
             }

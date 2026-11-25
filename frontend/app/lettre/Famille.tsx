@@ -160,7 +160,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
             L’année en douze thèmes, <span className="italic text-stone-500">un par mois.</span>
           </h2>
           <p className="text-lg leading-relaxed text-stone-700">
-            Chaque mois, un thème, et un bien visité pour l’illustrer. Le format ne change pas : la visite en vidéo, le projet, le prix tout compris.
+            Douze mois, douze façons d’habiter autrement.
             {abonne && ' Dites-nous ceux qui vous intéressent le plus.'}
           </p>
         </div>
