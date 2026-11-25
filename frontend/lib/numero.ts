@@ -111,7 +111,6 @@ export function manques(c: NumeroContent, une: LetterItem | null, autres: Letter
   if (c.mensualite == null) m.push('la mensualité');
   else if (vide(c.credit_mentions)) m.push('les mentions du crédit (durée, taux, mentions légales)');
   if (vide(c.vigilance_question)) m.push('le point de vigilance');
-  if (autres.length < 3) m.push(`les autres biens (${autres.length} sur 3)`);
   autres.forEach((a) => {
     if (vide(a.agency_url)) m.push(`le lien de l’annonce de ${a.lieu || 'un des autres biens'}`);
   });

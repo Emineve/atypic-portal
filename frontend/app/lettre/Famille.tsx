@@ -126,7 +126,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
           <li aria-hidden className="hidden text-[#A56C68] lg:block">✦</li>
           <li className="lg:whitespace-nowrap">1 thème par mois</li>
           <li aria-hidden className="hidden text-[#A56C68] lg:block">✦</li>
-          <li className="lg:whitespace-nowrap">1 bien visité à chaque fois</li>
+          <li className="lg:whitespace-nowrap">Des conseils d’experts</li>
         </ul>
       </div>
 

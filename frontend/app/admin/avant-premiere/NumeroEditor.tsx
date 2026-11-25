@@ -298,7 +298,7 @@ export default function NumeroEditor({ token, items }: { token: string; items: F
           </label>
         </Bloc>
 
-        <Bloc title="3. Trois autres biens">
+        <Bloc title="3. D’autres biens, si vous le souhaitez">
           {[0, 1, 2].map((i) => (
             <label key={i} className="block">
               <span className={lab}>Bien {i + 1}</span>

@@ -12,11 +12,11 @@ import { getIssue, getIssues } from '../../lib/lettre';
 
 // Les questions de l'accueil : ce qu'est le site, ce qu'est sa newsletter, ce qu'on fait de l'adresse e-mail
 const QUESTIONS: [string, string][] = [
-  ['Qu’est-ce que Loftissime ?', 'Loftissime est un curateur de biens atypiques. On y trouve des conseils, des témoignages, des solutions de financement et une sélection de biens à vendre : lofts, ateliers d’artistes, toits-terrasses, biens de caractère. Sa newsletter paraît une fois par mois, sur un thème différent à chaque numéro.'],
-  ['Que trouve-t-on dans un numéro ?', 'Chaque numéro a son thème : Béton ciré, le premier, est consacré aux biens atypiques à rénover. À chaque fois, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer. En prime, trois autres biens atypiques sélectionnés pour vous.'],
-  ['Qui sont nos experts ?', 'Un architecte, un entrepreneur du bâtiment et un courtier en crédit. Chacun intervient dans son domaine et s’engage sur les chiffres qu’il avance.'],
+  ['Qu’est-ce que Loftissime ?', 'Loftissime est un média consacré à l’immobilier atypique. Il édite une fois par mois une newsletter, sur un thème différent à chaque numéro : les biens à rénover, les lofts, les ateliers d’artistes, les péniches…'],
+  ['Que trouve-t-on dans un numéro ?', 'Chaque numéro a son thème : Béton ciré, le premier, est consacré aux biens atypiques à rénover. À chaque fois, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer.'],
+  ['Qui sont nos experts ?', 'Un architecte, un entrepreneur du bâtiment, un courtier en crédit, un notaire et un négociateur immobilier. Chacun intervient dans son domaine et s’engage sur ce qu’il avance.'],
   ['Quand paraît la newsletter ?', 'Une fois par mois, douze fois par an. Chaque mois a son thème : les biens à rénover, les lofts, les ateliers d’artistes, les derniers étages, les péniches… Le calendrier complet est sur cette page.'],
-  ['Est-ce que Loftissime vend les biens ?', 'Non. Chaque bien est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence. C’est vers eux que mène le lien de l’annonce.'],
+  ['Est-ce que Loftissime vend les biens ?', 'Non. Loftissime est un média. Chaque bien présenté est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence.'],
   ['L’abonnement est-il payant ?', 'Non, la newsletter de Loftissime est gratuite.'],
   ['Que faites-vous de mon adresse e-mail ?', 'Elle sert à vous envoyer la newsletter, rien d’autre. Elle n’est ni vendue ni transmise, et chaque numéro contient un lien pour se désinscrire en un clic.'],
 ];
@@ -87,7 +87,7 @@ export default async function LetterHome() {
             intro={
               <>
                 <h1 className="font-serif text-[2.5rem] md:text-6xl lg:text-[3.9rem] tracking-tight leading-[1.03] text-stone-900">
-                  Le média qui vous aide à acheter <span className="italic text-[#A56C68]">un lieu qui ne ressemble à aucun autre.</span>
+                  Le média qui vous aide à acheter <span className="italic text-[#A56C68]">un bien qui ne ressemble à aucun autre.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-700 md:mt-8 md:text-xl md:leading-relaxed">
                   Un bien atypique par numéro. Sans jargon et sans rien cacher, nos experts vous accompagnent pour passer du rêve au projet, quel que soit votre budget.

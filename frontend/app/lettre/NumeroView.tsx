@@ -218,7 +218,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
       )}
 
       {/* 3. Trois autres biens */}
-      {(autres.length > 0 || brouillon) && (
+      {autres.length > 0 && (
         <section className="px-6 pt-10 sm:px-10">
           <Poutre />
           <h2 className="font-serif text-[27px] leading-tight">{autres.length === 3 || autres.length === 0 ? 'Trois autres biens,' : autres.length === 1 ? 'Un autre bien,' : 'Deux autres biens,'} <span className="italic text-[#74695A]">{autres.length === 1 ? 'sélectionné pour vous.' : 'sélectionnés pour vous.'}</span></h2>
