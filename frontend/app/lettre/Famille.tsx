@@ -11,6 +11,7 @@ import { NEWSLETTERS, type Newsletter } from '../../lib/newsletters';
 // 2. une fois inscrit, chaque autre carte propose « Ajouter » : un geste, sans rien ressaisir.
 // `extrait` : le cadre vidéo du dernier numéro de Béton ciré, affiché dans sa carte.
 
+const NOMBRES: Record<number, string> = { 9: 'neuf', 10: 'dix', 11: 'onze', 12: 'douze', 13: 'treize', 14: 'quatorze' };
 const nomDe = (slug: string) => NEWSLETTERS.find((n) => n.slug === slug)?.nom || slug;
 const liste = (noms: string[]) => (noms.length <= 1 ? noms.join('') : `${noms.slice(0, -1).join(', ')} et ${noms[noms.length - 1]}`);
 
@@ -175,13 +176,13 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
 
       {/* 2. La première newsletter, seule sur sa ligne */}
       <section className="mt-14 md:mt-20" aria-labelledby="nl-premiere">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-1 border-t border-stone-900 pt-4">
-          <h2 className="font-serif text-3xl leading-tight text-stone-900 md:text-4xl">Nos newsletters</h2>
-          <p className="text-sm text-stone-500">La première, premier numéro bientôt</p>
-        </div>
+        {/* deux titres qui se répondent : la première, puis les suivantes */}
+        <h2 className="border-t border-stone-900 pt-4 font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
+          La première newsletter, <span className="italic text-stone-500">premier numéro bientôt.</span>
+        </h2>
         <article className={`${cadre(estOn(premiere.slug))} mt-6 grid md:grid-cols-2`}>
           <div className="flex flex-col justify-center p-7 md:p-12">
-            <h2 id="nl-premiere" className="font-serif text-6xl italic leading-none text-stone-900 md:text-7xl"><a href="/lettre">{premiere.nom}</a></h2>
+            <h3 id="nl-premiere" className="font-serif text-6xl italic leading-none text-stone-900 md:text-7xl"><a href="/lettre">{premiere.nom}</a></h3>
             <p className="mt-5 text-xl text-stone-900">{premiere.sujet}</p>
             <p className="mt-2 text-lg leading-relaxed text-stone-600">Pour ceux qui voient un loft là où d’autres voient un chantier, et qui veulent savoir ce que cela coûtera avant de se lancer.</p>
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -199,7 +200,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
       <section className="mt-16 md:mt-24" aria-labelledby="nl-suivantes">
         <div className="grid gap-x-12 gap-y-3 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
           <h2 id="nl-suivantes" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
-            Les suivantes, <span className="italic text-stone-500">à vous de choisir.</span>
+            Les {NOMBRES[autres.length] || autres.length} suivantes, <span className="italic text-stone-500">à vous de choisir.</span>
           </h2>
           <p className="text-lg leading-relaxed text-stone-700">Elles ne sont pas encore ouvertes. Choisissez celles qui vous ressemblent : elles s’ouvriront une par une, les plus demandées d’abord, et vous serez prévenu.</p>
         </div>
