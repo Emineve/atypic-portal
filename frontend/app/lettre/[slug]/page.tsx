@@ -27,7 +27,7 @@ export default async function Numero({ params }: { params: { slug: string } }) {
   if (!d) notFound();
   const { issue, items } = d;
   return (
-    <div className="min-h-screen bg-[#EFE7D6] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#F1E9D8] text-[#191919] font-sans">
       <SiteHeader />
       <div className="mx-auto max-w-[600px] pb-16 pt-8">
         <p className="px-6 text-sm text-stone-600 sm:px-0">
