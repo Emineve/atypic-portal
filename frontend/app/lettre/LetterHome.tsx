@@ -132,7 +132,7 @@ export default async function LetterHome() {
                   Acheter un bien <span className="italic text-stone-500">qui ne ressemble à aucun autre.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-700 md:mt-8 md:text-xl md:leading-relaxed">
-                  Chaque mois, un thème et un bien atypique pour l’illustrer : la visite en vidéo, le projet, le prix tout compris. Nos experts vous accompagnent pour passer du rêve au projet.
+                  Chaque mois, un thème et un bien atypique pour l’illustrer : la visite en vidéo, le projet, le prix tout compris. Nos experts vous accompagnent pour passer du rêve au projet, quel que soit votre budget.
                 </p>
               </>
             }
