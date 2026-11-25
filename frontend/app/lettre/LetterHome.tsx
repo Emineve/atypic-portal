@@ -88,10 +88,10 @@ export default async function LetterHome() {
           {/* le titre de la page : les newsletters, par lesquelles Loftissime commence */}
           <div className="grid items-end gap-x-12 gap-y-4 md:grid-cols-[1.1fr_1fr]">
             <h1 className="font-serif text-[2.5rem] md:text-5xl lg:text-[3.2rem] tracking-tight leading-[1.04] text-stone-900">
-              Les newsletters de Loftissime, <span className="italic text-stone-500">choisissez les vôtres.</span>
+              Les newsletters de Loftissime, <span className="italic text-stone-500">à chacun la sienne.</span>
             </h1>
             <p className="text-lg leading-relaxed text-stone-700">
-              Chacune a son sujet, toutes ont le même format : un bien à la une, ce qu’il coûte vraiment, ce qu’il faut vérifier avant la promesse. <em>Béton ciré</em> ouvre la série. Les suivantes s’ouvriront dans l’ordre de vos choix.
+              Toutes parlent d’immobilier atypique. Chacune s’adresse à un acheteur différent : celui qui veut rénover, celui qui cherche un atelier, celui qui rêve d’une péniche. <em>Béton ciré</em> ouvre la série, les suivantes s’ouvriront dans l’ordre de vos choix.
             </p>
           </div>
           <div className="mt-8">
