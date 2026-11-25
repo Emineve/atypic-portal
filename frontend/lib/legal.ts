@@ -10,4 +10,4 @@ export const EDITOR = {
   director: '[À COMPLÉTER : directeur de la publication]',
 };
 
-export const UPDATED = '19 novembre 2026';
+export const UPDATED = '25 novembre 2026';
