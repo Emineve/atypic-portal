@@ -164,11 +164,14 @@ export default function Famille({ extrait }: { extrait?: React.ReactNode }) {
           <span aria-hidden className="block h-24 w-full lg:h-32" style={premiere.matiere} />
           <div className="flex flex-1 flex-col p-5 md:p-6">
             <p className="text-xs text-stone-500">Premier numéro bientôt</p>
-            <h2 className="mt-1 font-serif text-5xl italic leading-none text-stone-900">{premiere.nom}</h2>
+            <h2 className="mt-1 font-serif text-5xl italic leading-none text-stone-900"><a href="/lettre">{premiere.nom}</a></h2>
             <p className="mt-3 text-lg text-stone-900">{premiere.sujet}</p>
             <p className="mt-1.5 text-[15px] text-stone-500">L’addition : {premiere.addition.charAt(0).toLowerCase() + premiere.addition.slice(1)}</p>
-            <div className="mt-4">{bouton(premiere)}</div>
-            {extrait && <div className="mt-5">{extrait}</div>}
+            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+              {bouton(premiere)}
+              <a href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir Béton ciré</a>
+            </div>
+            {extrait && <a href="/lettre" aria-label="Découvrir Béton ciré" className="mt-5 block">{extrait}</a>}
           </div>
         </article>
 
