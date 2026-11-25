@@ -83,18 +83,16 @@ export default async function LetterHome() {
         </filter>
       </svg>
 
-      <main className="max-w-6xl mx-auto px-6 pt-8 md:pt-14 pb-20">
-        <section className="mb-16 md:mb-20">
-          {/* le titre de la page : les newsletters, par lesquelles Loftissime commence */}
-          <div className="grid items-end gap-x-12 gap-y-4 md:grid-cols-[1.1fr_1fr]">
-            <h1 className="font-serif text-[2.5rem] md:text-5xl lg:text-[3.2rem] tracking-tight leading-[1.04] text-stone-900">
-              Les newsletters de Loftissime, <span className="italic text-stone-500">à chacun la sienne.</span>
-            </h1>
-            <p className="text-lg leading-relaxed text-stone-700">
-              Toutes parlent d’immobilier atypique. Chacune s’adresse à un acheteur différent : celui qui veut rénover, celui qui cherche un atelier, celui qui rêve d’une péniche. <em>Béton ciré</em> ouvre la série, les suivantes s’ouvriront dans l’ordre de vos choix.
-            </p>
-          </div>
-          <div className="mt-8">
+      <main className="max-w-6xl mx-auto px-6 pt-10 md:pt-20 pb-24">
+        <section className="mb-16 md:mb-24">
+          {/* le titre de la page, seul et large ; l'inscription vient juste dessous, sans cadre */}
+          <h1 className="max-w-4xl font-serif text-[2.6rem] md:text-6xl lg:text-[4.2rem] tracking-tight leading-[1.02] text-stone-900">
+            L’immobilier atypique, <span className="italic text-stone-500">à chacun sa newsletter.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-xl leading-relaxed text-stone-700 md:mt-8">
+            Toutes parlent d’immobilier atypique. Chacune s’adresse à un acheteur différent : celui qui veut rénover, celui qui cherche un atelier, celui qui rêve d’une péniche.
+          </p>
+          <div>
             <Famille
               extrait={
                 <span className="block">

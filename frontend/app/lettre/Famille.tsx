@@ -106,102 +106,104 @@ export default function Famille({ extrait }: { extrait?: React.ReactNode }) {
 
   return (
     <div>
-      {/* 1. L'inscription : une seule adresse à laisser, en haut de page */}
-      <div ref={boite} id="recevoir" className="scroll-mt-28 rounded-[14px] bg-[#211C15] p-6 text-[#FBF5E9] md:p-8">
+      {/* 1. L'inscription, sous le titre : un champ, sans cadre. Une seule adresse à laisser. */}
+      <div ref={boite} id="recevoir" className="mt-9 max-w-xl scroll-mt-28 md:mt-11">
         {abonne ? (
           <div role="status">
-            <p className="font-serif text-2xl leading-snug md:text-3xl">
+            <p className="font-serif text-2xl leading-snug text-stone-900 md:text-3xl">
               C’est noté. {abonne.includes('beton-cire') && <>Vous recevrez le prochain numéro de <em>Béton ciré</em>.</>}
             </p>
             {abonne.filter((s) => s !== 'beton-cire').length > 0 && (
-              <p className="mt-2 text-stone-300">Nous vous écrirons à l’ouverture de {liste(abonne.filter((s) => s !== 'beton-cire').map(nomDe))}.</p>
+              <p className="mt-2 text-lg text-stone-700">Nous vous écrirons à l’ouverture de {liste(abonne.filter((s) => s !== 'beton-cire').map(nomDe))}.</p>
             )}
-            {restantes > 0 && <p className="mt-4 font-serif text-xl italic text-stone-400">D’autres vous tentent ? Ajoutez-les d’un geste, juste en dessous.</p>}
+            {restantes > 0 && <p className="mt-3 text-stone-500">D’autres vous tentent ? Ajoutez-les d’un geste, plus bas.</p>}
           </div>
         ) : (
-          <form onSubmit={envoyer} className="grid items-end gap-x-12 gap-y-5 lg:grid-cols-[1fr_minmax(0,26rem)]">
-            <div>
-              <p className="font-serif text-2xl leading-tight md:text-3xl">
-                {choix.length === 0 ? 'Choisissez vos newsletters,' : `Recevez ${liste(choix.map(nomDe))},`} <span className="italic text-stone-400">{choix.length > 1 ? 'un seul e-mail à laisser.' : 'laissez votre e-mail.'}</span>
-              </p>
-              {choix.length > 1 && (
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {choix.map((s) => (
-                    <li key={s}>
-                      <button type="button" onClick={() => surCarte(s)} aria-label={`Retirer ${nomDe(s)}`} className="inline-flex h-8 items-center gap-1.5 rounded-full border border-stone-500 pl-3 pr-2 text-sm text-[#FBF5E9] hover:border-[#FBF5E9]">
-                        <span className="font-serif italic">{nomDe(s)}</span>
-                        <X aria-hidden className="h-3.5 w-3.5" />
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <p className="mt-3 text-sm leading-relaxed text-stone-400">Vous pourrez en ajouter d’autres juste après, d’un geste.</p>
-            </div>
-            <div>
-              <label className={`${LABEL} !text-[#FBF5E9]`}>
-                Votre e-mail <span aria-hidden="true">*</span>
-                <span className="relative mt-1.5 block">
-                  <input ref={champ} type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 !pr-14`} />
-                  <button type="submit" disabled={busy === 'form'} aria-label="Recevoir les newsletters choisies" className="absolute right-1.5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
-                    <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy === 'form' ? 'animate-pulse' : ''}`} strokeWidth={2} />
-                  </button>
-                </span>
-              </label>
-              <p className="mt-3 text-xs leading-relaxed text-stone-400">
-                C’est gratuit. En vous inscrivant, vous acceptez de recevoir les newsletters choisies. Désinscription en un clic dans chaque numéro.{' '}
-                <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
-              </p>
-            </div>
+          <form onSubmit={envoyer}>
+            <label className={LABEL}>
+              {choix.length === 0 ? 'Choisissez une newsletter plus bas, puis laissez votre e-mail' : choix.length === 1 && choix[0] === 'beton-cire' ? 'Commencez par Béton ciré : votre e-mail' : `Pour recevoir ${liste(choix.map(nomDe))} : votre e-mail`} <span aria-hidden="true">*</span>
+              <span className="relative mt-2 block">
+                <input ref={champ} type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 !h-14 !pr-16 !text-lg`} />
+                <button type="submit" disabled={busy === 'form'} aria-label="Recevoir les newsletters choisies" className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-stone-900 text-white transition hover:bg-stone-700 disabled:opacity-50">
+                  <ArrowRight aria-hidden="true" className={`h-5 w-5 ${busy === 'form' ? 'animate-pulse' : ''}`} strokeWidth={2} />
+                </button>
+              </span>
+            </label>
+            {choix.length > 1 && (
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {choix.map((s) => (
+                  <li key={s}>
+                    <button type="button" onClick={() => surCarte(s)} aria-label={`Retirer ${nomDe(s)}`} className="inline-flex h-8 items-center gap-1.5 rounded-full border border-stone-300 bg-white pl-3 pr-2 text-sm text-stone-900">
+                      <span className="font-serif italic">{nomDe(s)}</span>
+                      <X aria-hidden className="h-3.5 w-3.5 text-stone-500" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-3 text-sm leading-relaxed text-stone-500">
+              C’est gratuit, et vous pourrez ajouter les autres newsletters juste après. Désinscription en un clic.{' '}
+              <a href="/confidentialite" className="underline underline-offset-2">Confidentialité</a>
+            </p>
           </form>
         )}
-        {error && <p role="alert" className="mt-3 text-sm text-red-300">{error}</p>}
+        {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
       </div>
 
-      {/* 2. Les newsletters : la première en grand, les autres à ajouter */}
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <article className={`${cadre(estOn(premiere.slug))} flex flex-col sm:col-span-2 lg:row-span-2`}>
-          <span aria-hidden className="block h-24 w-full lg:h-32" style={premiere.matiere} />
-          <div className="flex flex-1 flex-col p-5 md:p-6">
-            <p className="text-xs text-stone-500">Premier numéro bientôt</p>
-            <h2 className="mt-1 font-serif text-5xl italic leading-none text-stone-900"><a href="/lettre">{premiere.nom}</a></h2>
-            <p className="mt-3 text-lg text-stone-900">{premiere.sujet}</p>
-            <p className="mt-1.5 text-[15px] text-stone-500">L’addition : {premiere.addition.charAt(0).toLowerCase() + premiere.addition.slice(1)}</p>
-            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+      {/* 2. La première newsletter, seule sur sa ligne */}
+      <section className="mt-16 md:mt-24" aria-labelledby="nl-premiere">
+        <p className="border-t border-stone-900 pt-4 text-sm text-stone-500">La première, premier numéro bientôt</p>
+        <article className={`${cadre(estOn(premiere.slug))} mt-6 grid md:grid-cols-2`}>
+          <div className="flex flex-col justify-center p-7 md:p-12">
+            <h2 id="nl-premiere" className="font-serif text-6xl italic leading-none text-stone-900 md:text-7xl"><a href="/lettre">{premiere.nom}</a></h2>
+            <p className="mt-5 text-xl text-stone-900">{premiere.sujet}</p>
+            <p className="mt-2 text-lg leading-relaxed text-stone-600">Dans chaque numéro, un bien visité avec un architecte, un entrepreneur et un courtier : ce qu’on peut en faire, puis l’addition complète.</p>
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
               {bouton(premiere)}
-              <a href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir Béton ciré</a>
+              <a href="/lettre" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir Béton ciré</a>
             </div>
-            {extrait && <a href="/lettre" aria-label="Découvrir Béton ciré" className="mt-5 block">{extrait}</a>}
           </div>
+          <a href="/lettre" aria-label="Découvrir Béton ciré" className="flex flex-col justify-center p-7 md:p-12" style={premiere.matiere}>
+            {extrait}
+          </a>
         </article>
+      </section>
 
-        {autres.map((n) => (
-          <article key={n.slug} className={`${cadre(estOn(n.slug))} flex sm:flex-col`}>
-            {/* sur téléphone la matière est une bande à gauche : la liste reste courte */}
-            <span aria-hidden className="block w-20 shrink-0 self-stretch sm:h-20 sm:w-full sm:self-auto" style={n.matiere} />
-            <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
-              <p className="text-xs text-stone-500">À venir</p>
-              <h2 className="mt-0.5 font-serif text-[1.6rem] italic leading-none text-stone-900">{n.nom}</h2>
-              <p className="mt-2 text-[15px] leading-snug text-stone-900">{n.sujet}</p>
-              <p className="mt-1.5 hidden text-[13px] leading-snug text-stone-500 sm:block">L’addition : {n.addition.charAt(0).toLowerCase() + n.addition.slice(1)}</p>
-              <div className="mt-3 sm:mt-auto sm:pt-4">{bouton(n)}</div>
-            </div>
-          </article>
-        ))}
-
-        {/* les deux dernières cases, sur grand écran : ce que toutes les newsletters ont en commun */}
-        <div className="hidden rounded-[14px] border border-dashed border-stone-400 p-6 lg:col-span-2 lg:flex lg:flex-col lg:justify-center">
-          <p className="font-serif text-2xl leading-tight text-stone-900">Dans chaque numéro, <span className="italic text-stone-500">les mêmes cinq temps.</span></p>
-          <ol className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-[15px] text-stone-700">
-            {['Un bien à la une, en vidéo', 'L’addition, sans rien oublier', 'Avant la promesse, un point de vigilance', 'Trois autres biens repérés', 'La question posée aux abonnés'].map((t, i) => (
-              <li key={t} className="flex gap-2">
-                <span className="font-serif italic text-stone-500">{i + 1}.</span>
-                {t}
-              </li>
-            ))}
-          </ol>
+      {/* 3. Les suivantes : à choisir, elles s'ouvriront dans l'ordre des choix */}
+      <section className="mt-16 md:mt-24" aria-labelledby="nl-suivantes">
+        <div className="grid gap-x-12 gap-y-3 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
+          <h2 id="nl-suivantes" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
+            Les suivantes, <span className="italic text-stone-500">à vous de choisir.</span>
+          </h2>
+          <p className="text-lg leading-relaxed text-stone-700">Elles ne sont pas encore ouvertes. Choisissez celles qui vous ressemblent : elles s’ouvriront une par une, les plus demandées d’abord, et vous serez prévenu.</p>
         </div>
-      </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          {autres.map((n) => (
+            <article key={n.slug} className={`${cadre(estOn(n.slug))} flex sm:flex-col`}>
+              {/* sur téléphone la matière est une bande à gauche : la liste reste courte */}
+              <span aria-hidden className="block w-20 shrink-0 self-stretch sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
+              <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-6">
+                <h3 className="font-serif text-[1.75rem] italic leading-none text-stone-900">{n.nom}</h3>
+                <p className="mt-2.5 text-[15px] leading-snug text-stone-700">{n.sujet}</p>
+                <div className="mt-3 sm:mt-auto sm:pt-6">{bouton(n)}</div>
+              </div>
+            </article>
+          ))}
+
+          {/* les deux dernières cases, sur grand écran : ce que toutes les newsletters ont en commun */}
+          <div className="hidden rounded-[14px] border border-dashed border-stone-400 p-8 lg:col-span-2 lg:flex lg:flex-col lg:justify-center">
+            <p className="font-serif text-2xl leading-tight text-stone-900">Dans chaque numéro, <span className="italic text-stone-500">les mêmes cinq temps.</span></p>
+            <ol className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-[15px] text-stone-700">
+              {['Un bien à la une, en vidéo', 'L’addition, sans rien oublier', 'Avant la promesse, un point de vigilance', 'Trois autres biens repérés', 'La question posée aux abonnés'].map((t, i) => (
+                <li key={t} className="flex gap-2">
+                  <span className="font-serif italic text-stone-500">{i + 1}.</span>
+                  {t}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
 
       {/* Avant l'inscription, quand on a choisi dans les cartes : un rappel fixe ramène à l'e-mail */}
       {!abonne && touche && !boiteVisible && choix.length > 0 && (
