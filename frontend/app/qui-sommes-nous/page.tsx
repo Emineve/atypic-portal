@@ -3,13 +3,20 @@ import SiteHeader from '../SiteHeader';
 import { typo } from '../../lib/typo';
 import Link from 'next/link';
 import GuideArt from '../guide/GuideArt';
+import QuiSommesNous from '../lettre/QuiSommesNous';
+import { getSiteMode } from '../../lib/siteMode';
 
-export const metadata = {
-  title: 'Pourquoi Loftissime',
-  description:
-    'Pourquoi Loftissime réunit les biens atypiques à vendre, toutes agences confondues, et accompagne ceux qui les cherchent.',
-  alternates: { canonical: '/qui-sommes-nous' },
-};
+// En mode lettre, la page présente Loftissime et ses newsletters ; en mode portail, le manifeste en six convictions.
+export async function generateMetadata() {
+  const lettre = (await getSiteMode()) === 'lettre';
+  return {
+    title: lettre ? 'Qui sommes-nous' : 'Pourquoi Loftissime',
+    description: lettre
+      ? 'Loftissime, curateur de biens atypiques : ce que nous cherchons, comment nous travaillons, et ce que nous ne faisons pas.'
+      : 'Pourquoi Loftissime réunit les biens atypiques à vendre, toutes agences confondues, et accompagne ceux qui les cherchent.',
+    alternates: { canonical: '/qui-sommes-nous' },
+  };
+}
 
 // Le manifeste : une conviction par ligne, quelques mots pour la tenir, un lien pour agir.
 const ARTICLES: { title: string; text: string; href: string; link: string }[] = [
@@ -51,7 +58,8 @@ const ARTICLES: { title: string; text: string; href: string; link: string }[] = 
   },
 ];
 
-export default function ManifestoPage() {
+export default async function ManifestoPage() {
+  if ((await getSiteMode()) === 'lettre') return <QuiSommesNous />;
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
       <SiteHeader />
