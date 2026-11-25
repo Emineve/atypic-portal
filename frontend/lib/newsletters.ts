@@ -108,4 +108,13 @@ export const NEWSLETTERS: Newsletter[] = [
     ouverte: false,
     matiere: { backgroundColor: '#d9c69c', backgroundImage: joints('#a8946c', 34, 13) },
   },
+  {
+    slug: 'etabli',
+    nom: 'Établi',
+    sujet: 'Les lieux atypiques où travailler : ateliers, bureaux, boutiques.',
+    addition: 'Le loyer ou la mensualité, charges et aménagement compris.',
+    ouverte: false,
+    // le bois d'un plan de travail : des lames, et leurs veines
+    matiere: { backgroundColor: '#c99a5b', backgroundImage: 'repeating-linear-gradient(90deg, transparent 0 58px, #8a6332 58px 60px), repeating-linear-gradient(90deg, rgba(138,99,50,.28) 0 2px, transparent 2px 9px)' },
+  },
 ];

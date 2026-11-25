@@ -16,7 +16,7 @@ export default function LetterFooter() {
           {/* toutes les newsletters, pas seulement la première : le choix se fait sur l'accueil */}
           <div className="w-full max-w-md border border-stone-700 p-5">
             <p className="font-serif text-2xl leading-tight text-[#FBF5E9]">Les newsletters de Loftissime</p>
-            <p className="mt-2 text-sm leading-relaxed text-stone-400">Onze newsletters sur l’immobilier atypique, gratuites. <em>Béton ciré</em> ouvre la série.</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-400">Douze newsletters sur l’immobilier atypique, gratuites. <em>Béton ciré</em> ouvre la série.</p>
             <a href="/#recevoir" className="mt-4 inline-flex h-11 items-center rounded-full bg-[#FBF5E9] px-5 text-sm font-medium text-stone-900 transition-colors hover:bg-white">
               Choisir les miennes
             </a>
