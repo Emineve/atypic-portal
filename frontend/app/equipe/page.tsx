@@ -15,7 +15,7 @@ const EQUIPE: [string, string, string, FusainKind][] = [
   ['L’architecte', 'Le projet', 'Il dessine ce que le lieu peut devenir.', 'architecte'],
   ['L’entrepreneur du bâtiment', 'Les travaux', 'Il chiffre le chantier, poste par poste.', 'entrepreneur'],
   ['Damien', 'Le financement', 'Courtier en crédit, il calcule la mensualité et dit ce qu’une banque peut suivre.', 'courtier'],
-  ['Le notaire', 'Avant la promesse', 'Il signale le point à vérifier avant de s’engager.', 'notaire'],
+  ['Kim', 'Avant la promesse', 'Notaire, elle signale le point à vérifier avant de s’engager.', 'notaire'],
   ['Christophe', 'La négociation', 'Négociateur immobilier, il présente le bien à la une du numéro de janvier. Chaque mois, un négociateur différent prend la suite : douze numéros, douze agences.', 'negociateur'],
 ];
 
