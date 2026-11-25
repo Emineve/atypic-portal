@@ -24,10 +24,10 @@ export default async function LettreIndex() {
   // le numéro 1 est celui de janvier, le 2 celui de février, et ainsi de suite
   const theme = NEWSLETTERS[(prochain - 1) % NEWSLETTERS.length];
   return (
-    <div className="min-h-screen font-sans text-[#211C15]" style={BETON_BG}>
+    <div className="min-h-screen font-sans text-[#3F4344]" style={BETON_BG}>
       <SiteHeader />
 
-      <header className="bg-[#211C15] text-[#FBF5E9]">
+      <header className="bg-[#3F4344] text-[#FBF5E9]">
         <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
           <h1 className="font-serif text-5xl leading-[1.02] md:text-7xl">
             La newsletter <span className="italic text-[#a59a88]">de Loftissime.</span>
@@ -47,7 +47,7 @@ export default async function LettreIndex() {
             </h2>
             <LetterSignup source="numeros" className="mt-5 max-w-md" />
           </div>
-          <div className="border border-[#211C15] bg-[#FBF5E9]">
+          <div className="border border-[#3F4344] bg-[#FBF5E9]">
             <Poutre />
             <div className="p-6 md:p-7">
               <p className="flex items-baseline justify-between gap-4">
@@ -65,7 +65,7 @@ export default async function LettreIndex() {
 
         <ul className="mt-7 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           <li>
-            <div className="flex aspect-[640/400] items-center justify-center border border-dashed border-[#211C15] px-6 text-center">
+            <div className="flex aspect-[640/400] items-center justify-center border border-dashed border-[#3F4344] px-6 text-center">
               <span className="font-serif text-2xl italic leading-tight text-[#74695A]">{theme.nom}, en {MOIS[theme.mois - 1]}</span>
             </div>
             <p className="mt-4 text-sm text-[#74695A]">N° {prochain}, à paraître</p>
@@ -84,7 +84,7 @@ export default async function LettreIndex() {
                   <Link href={`/lettre/numero-${l.numero}`} className="group block">
                     <Verriere label={`La visite du numéro ${l.numero}`} />
                     <span className="mt-4 block text-sm text-[#74695A]">N° {l.numero}, {dateLettre(l.date_parution, false)}</span>
-                    <span className="mt-1 block font-serif text-2xl leading-tight group-hover:underline underline-offset-4 decoration-[#F6CF4E] decoration-2">{l.titre}</span>
+                    <span className="mt-1 block font-serif text-2xl leading-tight group-hover:underline underline-offset-4 decoration-[#A56C68] decoration-2">{l.titre}</span>
                     {l.resume && <span className="mt-2 block text-[15px] leading-relaxed text-[#4a4238]">{l.resume}</span>}
                   </Link>
                 </li>

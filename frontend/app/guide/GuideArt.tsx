@@ -4,7 +4,7 @@
 export type GuideArtKey = 'souplex' | 'loft' | 'plans' | 'peniche' | 'mezzanine' | 'visite' | 'terrasse' | 'dpe' | 'credit' | 'duplex' | 'charges' | 'marche' | 'negociation' | 'ventes' | 'offre' | 'annonce' | 'horsmarche' | 'temps' | 'revendre' | 'atypique' | 'mur' | 'monument' | 'architecte' | 'clim' | 'verriere' | 'eglise' | 'atelier' | 'meuble' | 'amiante' | 'bureau' | 'cheminee' | 'assurance' | 'conditions' | 'hotel' | 'dernieretage' | 'chauffage' | 'surelever' | 'plateforme' | 'balance' | 'vue' | 'hauteur' | 'garage' | 'veranda' | 'voieprivee' | 'ascenseur' | 'expertise' | 'rdc' | 'chambres' | 'bruit' | 'division' | 'moulin' | 'loge' | 'spa' | 'plusieurs' | 'cave' | 'avion' | 'souterrain' | 'train' | 'phare' | 'arbre' | 'silo' | 'ile' | 'cabane' | 'paquebot' | 'dome' | 'troglo' | 'chateaudeau' | 'conteneur' | 'yourte' | 'van' | 'bunker' | 'prison' | 'tiny' | 'bulle' | 'wagon' | 'flottant' | 'ecole' | 'hameau' | 'chateau' | 'etroite';
 
 const INK = '#1c1917';
-const SUN = '#F6CF4E';
+const SUN = '#A56C68';
 const PAPER = '#ffffff';
 const SHADE = '#E9D892';
 

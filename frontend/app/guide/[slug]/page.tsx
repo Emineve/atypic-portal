@@ -110,7 +110,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
       <article className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-20 [&>*]:max-w-3xl">
         <p className="font-serif text-xl md:text-2xl text-stone-800 leading-relaxed">{typo(a.intro)}</p>
 
-        <section className="mt-8 rounded-[14px] bg-[#F6CF4E] p-6" aria-label="À retenir">
+        <section className="mt-8 rounded-[14px] bg-[#A56C68]/15 p-6" aria-label="À retenir">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-900">À retenir</h2>
           <ul className="mt-4 space-y-3">
             {a.takeaways.map((t) => (

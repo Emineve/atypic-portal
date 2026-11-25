@@ -37,7 +37,7 @@ function Marked({ text, query }: { text: string; query: string }) {
     <>
       {text.split(/(\s+)/).map((part, i) =>
         roots.some((r) => plain(part).replace(/^[^a-z0-9]+/, '').startsWith(r)) ? (
-          <mark key={i} className="bg-[#F6CF4E] text-inherit">{part}</mark>
+          <mark key={i} className="bg-[#A56C68]/25 text-inherit">{part}</mark>
         ) : (
           part
         ),

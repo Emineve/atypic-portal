@@ -87,7 +87,7 @@ export default async function LetterHome() {
             intro={
               <>
                 <h1 className="font-serif text-[2.5rem] md:text-6xl lg:text-[3.9rem] tracking-tight leading-[1.03] text-stone-900">
-                  Le média qui vous aide à acheter <span className="italic text-stone-500">un lieu qui ne ressemble à aucun autre.</span>
+                  Le média qui vous aide à acheter <span className="italic text-[#A56C68]">un lieu qui ne ressemble à aucun autre.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-700 md:mt-8 md:text-xl md:leading-relaxed">
                   Un bien atypique par numéro. Sans jargon et sans rien cacher, nos experts vous accompagnent pour passer du rêve au projet, quel que soit votre budget.

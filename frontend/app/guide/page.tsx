@@ -70,7 +70,7 @@ export default async function GuideIndex() {
               {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
                 <li key={r.anchor} className="border-b border-stone-200">
                   <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group flex items-baseline justify-between gap-4 py-3.5 focus:outline-none">
-                    <span className="font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_2px] group-hover:bg-[length:100%_2px] group-active:bg-[length:100%_2px] group-focus-visible:bg-[length:100%_2px]">{r.name}</span>
+                    <span className="font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(#3F4344,#3F4344)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_2px] group-hover:bg-[length:100%_2px] group-active:bg-[length:100%_2px] group-focus-visible:bg-[length:100%_2px]">{r.name}</span>
                     <span className="font-sans text-sm tabular-nums text-stone-500 group-hover:text-stone-900 transition">{articles.filter((x) => x.category === r.name).length}</span>
                   </a>
                 </li>
@@ -81,7 +81,7 @@ export default async function GuideIndex() {
 
         {first && (
           <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 rounded-[14px] overflow-hidden bg-white border border-stone-200 hover:border-stone-900 transition-colors">
-            <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F6CF4E] flex items-center">
+            <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#A56C68] flex items-center">
               <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
             </div>
             <div className="p-7 md:p-10 flex flex-col justify-center">

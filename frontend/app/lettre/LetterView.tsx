@@ -103,7 +103,7 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
                     ) : (
                       <span>
                         {x.seller === 'particulier' ? 'Vendu par un particulier' : x.agency_name}
-                        {draft && <span className="ml-2 bg-[#F6CF4E] px-1.5 py-0.5 text-xs font-normal">lien à trouver</span>}
+                        {draft && <span className="ml-2 bg-[#A56C68]/20 px-1.5 py-0.5 text-xs font-normal">lien à trouver</span>}
                       </span>
                     )}
                   </p>
@@ -111,9 +111,9 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
               </li>
   );
   return (
-    <article className="mx-auto w-full max-w-[600px] bg-[#FBF5E9] text-[#211C15]">
+    <article className="mx-auto w-full max-w-[600px] bg-[#FBF5E9] text-[#3F4344]">
       {/* Ouverture : le bien en avant-première */}
-      <section className="bg-[#211C15] px-6 pb-9 pt-8 sm:px-10">
+      <section className="bg-[#3F4344] px-6 pb-9 pt-8 sm:px-10">
         <div className="flex items-baseline justify-between gap-4">
           <span className="font-[Poppins,Helvetica,Arial,sans-serif] text-[19px] font-semibold tracking-[-0.6px] text-[#FBF5E9]">loftissime.</span>
           <span className="text-xs text-[#a59a88]">n° {issue.numero}{issue.date_parution ? `, ${dateLettre(issue.date_parution)}` : ''}</span>
@@ -146,7 +146,7 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
             <p className="mt-1 font-serif text-[22px] italic leading-tight text-[#a59a88]"><Blank v={o.detail} ph="ce qu’elle dit du bien" draft={draft} /></p>
             <p className="mt-3 text-[15px] leading-relaxed text-[#cfc5b4]"><Blank v={o.texte} ph="Ville, surface. Deux lignes sur le bien, et la date de sa mise en ligne." draft={draft} /></p>
             <div className="mt-5 flex flex-wrap items-center gap-5">
-              <a href={o.video_url || o.lien || undefined} className="inline-block rounded-full bg-[#FBF5E9] px-6 py-3 text-sm font-medium text-[#211C15] no-underline">Regarder la visite</a>
+              <a href={o.video_url || o.lien || undefined} className="inline-block rounded-full bg-[#FBF5E9] px-6 py-3 text-sm font-medium text-[#3F4344] no-underline">Regarder la visite</a>
               <span className="font-serif text-2xl text-[#FBF5E9] lining-nums"><Blank v={o.prix} ph="Prix" draft={draft} /></span>
             </div>
           </>
@@ -158,17 +158,17 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
         <section className="px-6 pt-9 sm:px-10">
           <h2 className="font-serif text-[27px] leading-tight">Déjà en ligne, <span className="italic text-[#74695A]">repérés cette semaine à Paris.</span></h2>
           {c.sous_titre && <p className="mt-2 text-[13px] leading-normal text-[#74695A]">{c.sous_titre}</p>}
-          <ul className="mt-4 border-t border-[#211C15]">
+          <ul className="mt-4 border-t border-[#3F4344]">
             {grands.map(bien)}
             {articles.map((a) => (
               <li key={a.slug} className="border-b border-[#D9CFBC] py-6">
                 <a href={`/guide/${a.slug}`} className="flex items-center gap-5 no-underline">
-                  <span className="block h-[88px] w-[88px] shrink-0 overflow-hidden rounded-lg border border-[#211C15] bg-[#F6CF4E]">
+                  <span className="block h-[88px] w-[88px] shrink-0 overflow-hidden rounded-lg border border-[#3F4344] bg-[#A56C68]">
                     <GuideArt art={a.art as never} fit="slice" className="block h-full w-full" />
                   </span>
                   <span>
                     <span className="block text-[13px] text-[#74695A]">{a.rubrique}</span>
-                    <span className="mt-1 block font-serif text-xl leading-tight text-[#211C15]">{a.title}</span>
+                    <span className="mt-1 block font-serif text-xl leading-tight text-[#3F4344]">{a.title}</span>
                   </span>
                 </a>
               </li>
@@ -181,7 +181,7 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
       {petits.length > 0 && (
         <section className="px-6 pt-9 sm:px-10">
           <h2 className="font-serif text-[27px] leading-tight">Sous 500 000 €, <span className="italic text-[#74695A]">à Paris et autour.</span></h2>
-          <ul className="mt-4 border-t border-[#211C15]">{petits.map(bien)}</ul>
+          <ul className="mt-4 border-t border-[#3F4344]">{petits.map(bien)}</ul>
           {architecte}
         </section>
       )}
@@ -195,7 +195,7 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
           <h2 className="font-serif text-[22px] leading-tight">{c.question?.titre} <span className="italic text-[#74695A]">{c.question?.titre_italique}</span></h2>
           <div className="mt-4 flex flex-wrap gap-x-1.5 gap-y-2">
             {(c.question?.choix || []).map((t) => (
-              <a key={t} href="/?alerte=1" className="rounded-full border border-[#211C15] px-4 py-2 text-[13px] font-medium text-[#211C15] no-underline">{t}</a>
+              <a key={t} href="/?alerte=1" className="rounded-full border border-[#3F4344] px-4 py-2 text-[13px] font-medium text-[#3F4344] no-underline">{t}</a>
             ))}
           </div>
         </section>
@@ -203,19 +203,19 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
 
       {/* Le cartouche, comme au bas d'un plan */}
       <footer className="px-6 pb-8 pt-7 sm:px-10">
-        <div className="grid grid-cols-2 border-l border-t border-[#211C15] sm:grid-cols-[34%_14%_26%_26%]">
+        <div className="grid grid-cols-2 border-l border-t border-[#3F4344] sm:grid-cols-[34%_14%_26%_26%]">
           {[
             ['Newsletter', 'Béton ciré'],
             ['Numéro', String(issue.numero)],
             ['Date', dateLettre(issue.date_parution, false)],
             ['Périmètre', horsParis ? 'Paris et petite couronne' : 'Paris'],
           ].map(([k, v]) => (
-            <div key={k} className="border-b border-r border-[#211C15] px-2.5 py-2">
+            <div key={k} className="border-b border-r border-[#3F4344] px-2.5 py-2">
               <div className="text-[10px] leading-tight text-[#74695A]">{k}</div>
               <div className="font-serif text-[15px] leading-tight lining-nums">{v}</div>
             </div>
           ))}
-          <div className="col-span-2 border-b border-r border-[#211C15] p-2.5 sm:col-span-4">
+          <div className="col-span-2 border-b border-r border-[#3F4344] p-2.5 sm:col-span-4">
             <span className="font-[Poppins,Helvetica,Arial,sans-serif] text-[15px] font-semibold tracking-[-0.4px]">loftissime.</span>{' '}
             <span className="font-serif text-[15px] italic text-[#74695A]">Curateur de biens atypiques</span>
           </div>

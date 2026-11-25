@@ -53,7 +53,7 @@ export default function LetterAnswerPage() {
         )}
         {status !== 'wait' && (
           <p className="mt-9">
-            <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#F6CF4E] decoration-2">Voir la lettre</Link>
+            <Link href="/lettre" className="text-sm font-medium text-stone-900 underline underline-offset-4 decoration-[#A56C68] decoration-2">Voir la lettre</Link>
           </p>
         )}
       </main>

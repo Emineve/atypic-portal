@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <style>
-    .f { fill: #211C15 } .t { fill: #FBF5E9 }
-    @media (prefers-color-scheme: dark) { .f { fill: #FBF5E9 } .t { fill: #211C15 } }
+    .f { fill: #3F4344 } .t { fill: #FBF5E9 }
+    @media (prefers-color-scheme: dark) { .f { fill: #FBF5E9 } .t { fill: #3F4344 } }
   </style>
   <rect class="f" width="64" height="64" rx="14"/>
   <rect class="t" x="21" y="13" width="9" height="38"/>

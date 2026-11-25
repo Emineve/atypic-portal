@@ -6,7 +6,7 @@ import { themeDe } from './newsletters';
 // {{TOKEN}} est remplacé à l'envoi par le jeton de chaque abonné (désinscription, réponse à la question).
 // Une rubrique dont le contenu manque n'apparaît pas : rien n'est jamais envoyé entre crochets.
 
-const INK = '#211C15';
+const INK = '#3F4344';
 const BETON = '#E3DFD8';
 const GRIS = '#74695A';
 const SERIF = "Georgia,'Times New Roman',serif";
@@ -86,7 +86,7 @@ ${c.charges != null ? ligne('Charges de copropriété', 'Données par l’annonc
 ${c.energie != null ? ligne('Énergie', 'D’après le diagnostic énergétique', eur(c.energie)) : ''}
 ${c.taxe != null ? ligne('Taxe foncière', 'Ramenée au mois', eur(c.taxe)) : ''}
 </table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;background:#F6CF4E;"><tr><td style="padding:14px 16px;font-family:${SERIF};font-size:20px;color:${INK};">Total par mois</td><td align="right" style="padding:14px 16px;font-family:${SERIF};font-size:30px;color:${INK};white-space:nowrap;">${eur(k.mois)}</td></tr></table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;background:#A56C68;"><tr><td style="padding:14px 16px;font-family:${SERIF};font-size:20px;color:#ffffff;">Total par mois</td><td align="right" style="padding:14px 16px;font-family:${SERIF};font-size:30px;color:#ffffff;white-space:nowrap;">${eur(k.mois)}</td></tr></table>
 ${a(c.credit_mentions) ? `<p style="margin:8px 0 0;font-family:${SANS};font-size:11px;line-height:1.5;color:${GRIS};">${esc(c.credit_mentions)}</p>` : ''}`));
   }
 
