@@ -57,7 +57,7 @@ export default async function LettreIndex() {
             <p className="mt-6 font-serif text-3xl leading-tight md:text-4xl">{theme.sujet}</p>
             {propos && <p className="mt-4 max-w-xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">{propos.pour}</p>}
           </div>
-          <Recevoir source="numeros" titre={`Recevez ${theme.nom} en ${mois}, gratuitement.`} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
+          <Recevoir source="numeros" titre={<>Recevez <em>{theme.nom}</em> en {mois}, gratuitement.</>} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
         </section>
 
         <section className="mt-20 md:mt-28" aria-labelledby="dans-ce-numero">

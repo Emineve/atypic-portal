@@ -7,7 +7,7 @@ import { getSupabase } from '../../lib/supabase';
 import { FIELD, LABEL } from '../../lib/form';
 
 // La carte d'inscription, la même que sur l'accueil : une phrase, un e-mail, un bouton.
-export default function Recevoir({ titre, texte, source }: { titre: string; texte?: string; source: string }) {
+export default function Recevoir({ titre, texte, source }: { titre: React.ReactNode; texte?: string; source: string }) {
   const [email, setEmail] = useState('');
   const [etat, setEtat] = useState<'idle' | 'busy' | 'done' | 'error'>('idle');
   const champ = useRef<HTMLInputElement>(null);
