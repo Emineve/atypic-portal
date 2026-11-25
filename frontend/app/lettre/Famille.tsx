@@ -123,14 +123,12 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         </div>
       </div>
 
-      {/* Le rythme, en une ligne entre deux filets, dans la police du logo. Pas de chiffre d'audience tant qu'il n'y en a pas. */}
-      <ul className="mt-14 flex flex-col items-center justify-center gap-x-5 gap-y-1 border-y border-stone-900 py-6 text-center font-logo text-2xl font-semibold tracking-tight text-stone-900 md:mt-20 md:py-8 lg:flex-row xl:gap-x-7 xl:text-[2rem]">
-        <li className="lg:whitespace-nowrap">1 newsletter</li>
-        <li aria-hidden className="hidden text-stone-400 lg:block">+</li>
-        <li className="lg:whitespace-nowrap">1 thème par mois</li>
-        <li aria-hidden className="hidden text-stone-400 lg:block">+</li>
-        <li className="lg:whitespace-nowrap">12 numéros par an</li>
-      </ul>
+      {/* La séparation : la frise des douze matières, une par thème de l'année */}
+      <div aria-hidden className="mt-14 flex h-12 overflow-hidden rounded-[12px] md:mt-20 md:h-16">
+        {NEWSLETTERS.map((n) => (
+          <span key={n.slug} className="block flex-1" style={n.matiere} />
+        ))}
+      </div>
 
       {/* 2. Le premier numéro, seul sur sa ligne */}
       <section className="mt-14 md:mt-20" aria-labelledby="nl-premier">
