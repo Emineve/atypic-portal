@@ -93,7 +93,7 @@ export default function Famille({ extrait }: { extrait?: React.ReactNode }) {
         aria-pressed={on}
         aria-label={`${texte} : ${n.nom}`}
         disabled={!!abonne && on}
-        className={`inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-900 bg-white text-stone-900 hover:bg-stone-900 hover:text-white'}`}
+        className={`inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-900 bg-white text-stone-900 [@media(hover:hover)]:hover:bg-stone-900 [@media(hover:hover)]:hover:text-white active:bg-stone-100'}`}
       >
         {on ? <Check aria-hidden className="h-4 w-4" strokeWidth={2.5} /> : <Plus aria-hidden className="h-4 w-4" strokeWidth={2.5} />}
         {texte}
