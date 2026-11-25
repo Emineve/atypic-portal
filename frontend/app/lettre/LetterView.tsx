@@ -217,7 +217,7 @@ export default function LetterView({ issue, items, articles, photosInternes = fa
           ))}
           <div className="col-span-2 border-b border-r border-[#211C15] p-2.5 sm:col-span-4">
             <span className="font-[Poppins,Helvetica,Arial,sans-serif] text-[15px] font-semibold tracking-[-0.4px]">loftissime.</span>{' '}
-            <span className="font-serif text-[15px] italic text-[#74695A]">Curateur de biens atypiques</span>
+            <span className="font-serif text-[15px] italic text-[#74695A]">100 % immobilier atypique</span>
           </div>
         </div>
         <p className="mt-3.5 text-[11px] leading-relaxed text-[#74695A]">

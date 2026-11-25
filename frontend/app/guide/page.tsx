@@ -1,14 +1,5 @@
-import { EXAMPLES } from '../../lib/guide-examples';
-import { searchGuide } from '../../lib/guide-search';
-import SmartAlert from '../SmartAlert';
-import Crumbs from '../Crumbs';
-import GuideSearch from './GuideSearch';
-import { typo } from '../../lib/typo';
 import SiteHeader from '../SiteHeader';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import GuideArt from './GuideArt';
-import { getSupabase } from '../../lib/supabase';
+import Articles from './Articles';
 import SpecialistVideoCard from './SpecialistVideoCard';
 import { publishedVideos } from '../../lib/specialists';
 import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/guide';
@@ -17,91 +8,37 @@ import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/gui
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'État des lieux : tout savoir avant d’acheter un bien atypique · Loftissime',
+  title: 'Articles : tout savoir avant d’acheter un bien atypique · Loftissime',
   description:
-    'Souplex, loft, péniche, atelier d’artiste : les vérifications à faire avant d’acheter un bien atypique, et les conseils pour bien y vivre. Un nouvel article chaque semaine.',
+    'Souplex, loft, péniche, atelier d’artiste : les vérifications à faire avant d’acheter un bien atypique, et les conseils pour bien y vivre.',
   alternates: { canonical: '/guide' },
 };
 
-// L'article mis en avant est le plus lu du jour, à défaut de la semaine ; sans assez de lectures, le plus récent.
-async function topArticle(): Promise<{ slug: string; period: 'today' | 'week' } | null> {
-  try {
-    const { data } = await getSupabase().rpc('top_guide_article');
-    const t = data as { slug?: string; period?: string } | null;
-    return t && t.slug && (t.period === 'today' || t.period === 'week') ? { slug: t.slug, period: t.period } : null;
-  } catch {
-    return null;
-  }
-}
-
-export default async function GuideIndex() {
+// Tous les articles sur une page : les rubriques en pastilles, une recherche, puis la liste, du plus récent au plus ancien.
+export default function GuideIndex() {
   const articles = publishedArticles();
-  const top = await topArticle();
-  const topped = top ? articles.find((a) => a.slug === top.slug) : undefined;
-  const first = topped || articles[0];
-  const rest = articles.filter((a) => a !== first);
-  // Pour chaque question d'exemple : la rubrique et le temps de lecture de l'article qui y répond
-  const exampleMeta: Record<string, string> = {};
-  for (const ex of EXAMPLES) {
-    const hit = searchGuide(ex, 1)[0];
-    const art = hit ? articles.find((a) => a.slug === hit.slug) : undefined;
-    if (art) exampleMeta[ex] = `${art.category} · ${art.readMinutes} min`;
-  }
-  const firstLabel = topped ? (top!.period === 'today' ? 'Le plus lu aujourd’hui' : 'Le plus lu cette semaine') : 'À la une';
   const videos = publishedVideos();
+  const rubriques = GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => ({ name: r.name as string, anchor: r.anchor as string }));
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FDFBF7] font-sans text-stone-900">
       <SiteHeader />
+      <main className="mx-auto max-w-5xl px-6 pb-24 pt-10 md:pt-16">
+        <h1 className="font-serif text-6xl leading-none tracking-tight md:text-7xl">Articles</h1>
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">
+          Tout ce qu’il faut savoir avant d’acheter un bien atypique, expliqué simplement.
+        </p>
 
-      <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">
-        <Crumbs items={[{ label: 'État des lieux' }]} />
-        <h1 className="max-w-4xl mt-6 text-4xl md:text-6xl font-serif tracking-tight text-stone-900 leading-[1.05]">
-          Acheter un bien atypique, <span className="italic text-stone-500">en connaissance de cause</span>.
-        </h1>
-        <GuideSearch meta={exampleMeta} />
-      </header>
-
-      <main className="max-w-6xl mx-auto px-6 pb-20">
-        {rest.length > 0 && (
-          <nav className="mb-10 md:mb-14" aria-label="Rubriques">
-            <p className="text-xs uppercase tracking-widest text-stone-500">Les rubriques</p>
-            {/* Un sommaire : chaque rubrique sur sa ligne, son nombre d'articles au bout */}
-            <ul className="mt-4 grid grid-cols-1 gap-x-10 border-t border-stone-900 sm:grid-cols-2 lg:grid-cols-4">
-              {GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => (
-                <li key={r.anchor} className="border-b border-stone-200">
-                  <a href={rest.some((a) => a.category === r.name) ? `#${r.anchor}` : '#a-la-une'} className="group flex items-baseline justify-between gap-4 py-3.5 focus:outline-none">
-                    <span className="font-serif text-xl leading-tight text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size] duration-300 bg-[length:0%_2px] group-hover:bg-[length:100%_2px] group-active:bg-[length:100%_2px] group-focus-visible:bg-[length:100%_2px]">{r.name}</span>
-                    <span className="font-sans text-sm tabular-nums text-stone-500 group-hover:text-stone-900 transition">{articles.filter((x) => x.category === r.name).length}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
-
-        {first && (
-          <Link id="a-la-une" href={`/guide/${first.slug}`} className="scroll-mt-24 group grid md:grid-cols-2 rounded-[14px] overflow-hidden bg-white border border-stone-200 hover:border-stone-900 transition-colors">
-            <div className="overflow-hidden border-b md:border-b-0 md:border-r border-stone-900 bg-[#F6CF4E] flex items-center">
-              <GuideArt art={first.art} fit="meet" className="block w-full aspect-[12/5] group-hover:scale-[1.03] transition-transform duration-700" />
-            </div>
-            <div className="p-7 md:p-10 flex flex-col justify-center">
-              <p className="text-xs uppercase tracking-widest text-stone-500">
-                {firstLabel} · {first.category} · {first.readMinutes} min de lecture
-              </p>
-              <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-[1.1] text-stone-900">{typo(first.title)}</h2>
-              <p className="mt-4 text-stone-600 leading-relaxed">{typo(first.description)}</p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-stone-900">
-                Lire l&apos;article
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </span>
-            </div>
-          </Link>
-        )}
+        <div className="mt-10">
+          <Articles
+            rubriques={rubriques}
+            articles={articles.map((a) => ({ slug: a.slug, art: a.art, title: a.title, description: a.description, category: a.category, date: formatGuideDate(a.published), minutes: a.readMinutes }))}
+          />
+        </div>
 
         {videos.length > 0 && (
-          <section id="specialistes" className="mt-14 md:mt-20 scroll-mt-24">
-            <h2 className="font-serif text-3xl md:text-4xl text-stone-900">Contre-visite</h2>
-            <p className="mt-3 max-w-2xl text-stone-600 font-light leading-relaxed">Une question, un spécialiste, une minute.</p>
+          <section id="specialistes" className="mt-16 scroll-mt-24 md:mt-24">
+            <h2 className="border-t border-stone-900 pt-4 font-serif text-3xl md:text-4xl">Contre-visite</h2>
+            <p className="mt-3 max-w-2xl text-lg text-stone-700">Une question, un spécialiste, une minute.</p>
             <div className="mt-6 grid gap-4 lg:grid-cols-2">
               {videos.map((v) => (
                 <SpecialistVideoCard key={v.id} v={v} />
@@ -110,63 +47,9 @@ export default async function GuideIndex() {
           </section>
         )}
 
-        {GUIDE_RUBRICS.map((r) => {
-          const items = rest.filter((a) => a.category === r.name);
-          if (items.length === 0) return null;
-          return (
-            <section key={r.anchor} id={r.anchor} className="mt-12 md:mt-16 scroll-mt-24">
-              <div>
-                <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-stone-900">{r.name}</h2>
-                <p className="mt-2 text-stone-600">{r.intro}</p>
-              </div>
-              {/* Sur téléphone : une liste serrée (vignette, titre, durée) pour parcourir une rubrique d'un coup d'œil.
-                  À partir de la tablette : les cartes illustrées. */}
-              {/* Sur téléphone : une liste serrée (vignette, titre, durée) pour parcourir une rubrique d'un coup d'œil */}
-              <ul className="mt-6 divide-y divide-stone-200 border-y border-stone-200 sm:hidden">
-                {items.map((a) => (
-                  <li key={a.slug}>
-                    <Link href={`/guide/${a.slug}`} className="flex items-center gap-4 py-4">
-                      <div className="w-24 flex-none overflow-hidden rounded-[8px] border border-stone-900">
-                        <GuideArt art={a.art} className="block w-full aspect-[12/7]" />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="font-serif text-lg leading-snug text-stone-900">{typo(a.title)}</h3>
-                        <p className="mt-1 text-xs uppercase tracking-widest text-stone-500">{a.readMinutes} min de lecture</p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              {/* À partir de la tablette : les cartes illustrées */}
-              <ul className="mt-8 hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {items.map((a) => (
-                  <li key={a.slug}>
-                    <Link href={`/guide/${a.slug}`} className="group flex h-full flex-col rounded-[14px] overflow-hidden bg-white border border-stone-200 hover:border-stone-900 transition-colors">
-                      <div className="overflow-hidden border-b border-stone-900">
-                        <GuideArt art={a.art} className="block w-full aspect-[12/5] group-hover:scale-[1.04] transition-transform duration-700" />
-                      </div>
-                      <div className="p-6 md:p-7">
-                        <p className="text-xs uppercase tracking-widest text-stone-500">{a.readMinutes} min de lecture</p>
-                        <h3 className="mt-2 font-serif text-2xl leading-snug text-stone-900 group-hover:underline underline-offset-4 decoration-stone-300">
-                          {typo(a.title)}
-                        </h3>
-                        <p className="mt-2 text-stone-600 leading-relaxed">{typo(a.description)}</p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          );
-        })}
-        {articles.length === 0 && <p className="py-10 text-stone-500">Les premiers articles arrivent très bientôt.</p>}
-
-        {/* La mention sur les articles vient juste après eux, avant l'invitation à l'alerte : l'une ne doit pas se lire comme la suite de l'autre */}
-        <p className="mt-10 text-sm text-stone-500 leading-relaxed max-w-3xl">
+        <p className="mt-14 max-w-3xl text-sm leading-relaxed text-stone-500">
           Ces articles donnent une information générale. Ils ne remplacent ni le conseil d&apos;un notaire, ni l&apos;avis d&apos;un professionnel du bâtiment sur un bien donné.
         </p>
-
-        <SmartAlert className="mt-14 md:mt-20" />
       </main>
     </div>
   );

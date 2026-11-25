@@ -13,7 +13,7 @@ import { MOIS, NEWSLETTERS, type Newsletter } from '../../lib/newsletters';
 
 const Maj = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-export default function Famille({ extrait, intro }: { extrait?: React.ReactNode; intro?: React.ReactNode }) {
+export default function Famille({ extrait, intro, articles }: { extrait?: React.ReactNode; intro?: React.ReactNode; articles?: React.ReactNode }) {
   const [abonne, setAbonne] = useState(false);
   const [prefs, setPrefs] = useState<string[]>([]);
   const [email, setEmail] = useState('');
@@ -100,7 +100,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
             <form onSubmit={envoyer}>
               <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Vous êtes à un e-mail de tout savoir sur l’immobilier atypique, gratuitement.</p>
               <p className="mt-3 leading-relaxed text-stone-700">
-                Douze numéros par an, un thème par mois. En prime, notre guide : dix questions à poser avant d’acheter un bien atypique.
+                En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique.
               </p>
               <label className={`${LABEL} mt-5`}>
                 Votre e-mail <span aria-hidden="true">*</span>
@@ -111,7 +111,7 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
                 <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
               </button>
               <p className="mt-4 text-sm leading-relaxed text-stone-500">
-                <a href="/confidentialite" className="underline underline-offset-2">Votre adresse reste privée</a>. Nous ne la vendrons jamais. Désinscription en un clic.
+                <a href="/confidentialite" className="underline underline-offset-2">Votre adresse reste privée</a>. Pas de spam, désinscription en un clic.
               </p>
             </form>
           )}
@@ -149,6 +149,9 @@ export default function Famille({ extrait, intro }: { extrait?: React.ReactNode;
           </a>
         </article>
       </section>
+
+      {/* Entre le premier numéro et le calendrier : quatre articles, écrits côté serveur */}
+      {articles}
 
       {/* 3. L'année : douze thèmes, un par mois */}
       <section className="mt-16 md:mt-24" aria-labelledby="nl-annee">

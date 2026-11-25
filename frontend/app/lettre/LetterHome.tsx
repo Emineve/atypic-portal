@@ -1,4 +1,7 @@
 import SiteHeader from '../SiteHeader';
+import GuideArt from '../guide/GuideArt';
+import { publishedArticles } from '../../lib/guide';
+import { typo } from '../../lib/typo';
 import Famille from './Famille';
 import Mesure from './Mesure';
 import { BIENS_EXEMPLE, EXEMPLES_ACTIFS } from '../../lib/lettreExemples';
@@ -14,7 +17,7 @@ import { getIssue, getIssues } from '../../lib/lettre';
 const QUESTIONS: [string, string][] = [
   ['Qu’est-ce que Loftissime ?', 'Loftissime est un média consacré à l’immobilier atypique. Il édite une fois par mois une newsletter, sur un thème différent à chaque numéro : les biens à rénover, les lofts, les ateliers d’artistes, les péniches…'],
   ['Que trouve-t-on dans un numéro ?', 'Chaque numéro a son thème : Béton ciré, le premier, est consacré aux biens atypiques à rénover. À chaque fois, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer.'],
-  ['Qui sont nos experts ?', 'Un architecte, un entrepreneur du bâtiment, un courtier en crédit, un notaire et un négociateur immobilier. Chacun intervient dans son domaine et s’engage sur ce qu’il avance.'],
+  ['Qui sont nos experts ?', 'Un architecte, un entrepreneur du bâtiment, un courtier en crédit, un notaire et un négociateur immobilier, différent à chaque numéro. Chacun intervient dans son domaine et s’engage sur ce qu’il avance.'],
   ['Quand paraît la newsletter ?', 'Une fois par mois, douze fois par an. Chaque mois a son thème : les biens à rénover, les lofts, les ateliers d’artistes, les derniers étages, les péniches… Le calendrier complet est sur cette page.'],
   ['Est-ce que Loftissime vend les biens ?', 'Non. Loftissime est un média. Chaque bien présenté est vendu en direct par son propriétaire ou par l’intermédiaire d’une agence.'],
   ['L’abonnement est-il payant ?', 'Non, la newsletter de Loftissime est gratuite.'],
@@ -61,6 +64,44 @@ function BienCard({ b }: { b: LetterItem }) {
   );
 }
 
+// Quatre articles à la une sur l'accueil : ceux du guide « Dix questions » qui touchent à la rénovation
+const UNE = ['loft-ancien-local-commercial', 'travaux-non-declares', 'verriere-ce-qu-il-faut-verifier', 'dpe-loft-atelier-dernier-etage'];
+
+function ArticlesUne() {
+  const tous = publishedArticles();
+  const liste = UNE.map((s) => tous.find((a) => a.slug === s)).filter((a): a is NonNullable<typeof a> => !!a);
+  if (liste.length === 0) return null;
+  return (
+    <section className="mt-16 md:mt-24" aria-labelledby="articles-une">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
+        <h2 id="articles-une" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
+          Nos articles à la une, <span className="italic text-stone-500">avant de rénover.</span>
+        </h2>
+        <a href="/guide" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir tous les articles</a>
+      </div>
+      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {liste.map((a) => (
+          <li key={a.slug}>
+            <a href={`/guide/${a.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[14px] border-2 border-stone-900 bg-white shadow-[5px_5px_0_#211C15]">
+              <span className="block overflow-hidden border-b-2 border-stone-900">
+                <GuideArt art={a.art} className="block aspect-[12/7] w-full" />
+              </span>
+              <span className="flex flex-1 flex-col p-5">
+                <span className="font-serif text-xl leading-snug text-stone-900 underline-offset-4 group-hover:underline">{typo(a.title)}</span>
+                <span className="mt-2 text-[15px] leading-relaxed text-stone-700">{typo(a.description)}</span>
+                <span className="mt-auto flex items-baseline justify-between pt-4 text-sm">
+                  <span className="text-stone-500">{a.readMinutes} min de lecture</span>
+                  <span className="font-medium text-stone-900">Lire</span>
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export default async function LetterHome() {
   const parus = (await getIssues()).filter((i) => i.paru);
   // Tant qu'aucun numéro n'est paru, l'accueil montre des numéros d'exemple, sans lien
@@ -84,6 +125,7 @@ export default async function LetterHome() {
       <main className="max-w-6xl mx-auto px-6 pt-10 md:pt-20 pb-24">
         <section className="mb-16 md:mb-24">
           <Famille
+            articles={<ArticlesUne />}
             intro={
               <>
                 <h1 className="font-serif text-[2.5rem] md:text-6xl lg:text-[3.9rem] tracking-tight leading-[1.03] text-stone-900">

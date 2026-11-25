@@ -76,7 +76,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'État des lieux', item: `${SITE_URL}/guide` },
+      { '@type': 'ListItem', position: 2, name: 'Articles', item: `${SITE_URL}/guide` },
       { '@type': 'ListItem', position: 3, name: a.title, item: url },
     ],
   };
@@ -92,7 +92,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
         <nav aria-label="Fil d'Ariane" className="text-xs text-stone-500">
           <Link href="/" className="hover:text-stone-900">Accueil</Link>
           {' › '}
-          <Link href="/guide" className="hover:text-stone-900">État des lieux</Link>
+          <Link href="/guide" className="hover:text-stone-900">Articles</Link>
         </nav>
         <p className="mt-8 text-xs uppercase tracking-widest text-stone-500">{a.category}</p>
         <h1 className="mt-3 max-w-4xl font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-stone-900">{typo(a.title)}</h1>
