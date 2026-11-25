@@ -63,8 +63,9 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         {/* sur téléphone la matière est une bande à gauche : le calendrier reste court */}
         <span aria-hidden className="block w-20 shrink-0 self-stretch sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
         <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-6">
-          <p className="text-sm text-stone-500">{Maj(MOIS[n.mois - 1])}</p>
-          <h3 className="mt-1 font-serif text-[1.75rem] italic leading-none text-stone-900">{n.nom}</h3>
+          {/* le mois en étiquette noire, comme l'onglet d'un calendrier */}
+          <p className="self-start rounded-full bg-stone-900 px-3 py-1 text-sm font-medium text-white">{Maj(MOIS[n.mois - 1])}</p>
+          <h3 className="mt-3 font-serif text-[1.75rem] italic leading-none text-stone-900">{n.nom}</h3>
           <p className="mt-2.5 text-[15px] leading-snug text-stone-700">{n.sujet}</p>
           {abonne && (
             <div className="mt-3 sm:mt-auto sm:pt-5">
@@ -160,7 +161,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
       <section className="mt-16 md:mt-24" aria-labelledby="nl-annee">
         <div className="border-t border-stone-900 pt-4">
           <h2 id="nl-annee" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
-            Douze mois, <span className="italic text-stone-500">douze façons d’habiter autrement.</span>
+            Le calendrier : <span className="italic text-stone-500">douze mois, douze façons d’habiter autrement.</span>
           </h2>
           {abonne && <p className="mt-3 text-lg leading-relaxed text-stone-700">Dites-nous les thèmes qui vous intéressent le plus.</p>}
         </div>
