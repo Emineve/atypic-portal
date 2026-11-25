@@ -31,7 +31,7 @@ export const NEWSLETTERS: Newsletter[] = [
   {
     slug: 'laiton',
     nom: 'Laiton',
-    sujet: 'Les biens atypiques de luxe.',
+    sujet: 'L’immobilier atypique haut de gamme.',
     addition: 'Ce que le bien coûte à l’année, une fois acheté.',
     ouverte: false,
     matiere: { backgroundImage: 'linear-gradient(115deg, #a8802c 0%, #e6c873 38%, #c79f45 55%, #f0d98f 72%, #a8802c 100%)' },
