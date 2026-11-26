@@ -48,7 +48,7 @@ export default function ThemeVue({ theme, parus = [], source }: { theme: Newslet
             {propos && <p className="mt-4 max-w-xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">{propos.pour}</p>}
           </div>
           <div className="self-center">
-            <Recevoir source={source} titre={<>Recevez <em>{theme.nom}</em> en {mois}, gratuitement.</>} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
+            <Recevoir source={source} titre={<>Abonnez-vous gratuitement pour recevoir <em>{theme.nom}</em> et {theme.mois === 1 ? 'les numéros suivants' : 'tous les autres numéros'}.</>} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
           </div>
         </section>
       </div>
