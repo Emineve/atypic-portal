@@ -104,7 +104,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
             </div>
           ) : (
             <form onSubmit={envoyer}>
-              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Abonnez-vous gratuitement aux douze prochains numéros.</p>
+              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Abonnez-vous gratuitement aux 12 prochains numéros.</p>
               <p className="mt-3 leading-relaxed text-stone-700">
                 En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique.
               </p>
