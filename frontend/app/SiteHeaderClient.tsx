@@ -105,13 +105,13 @@ export default function SiteHeaderClient({
             </a>
             </div>
           </div>
-          {/* sur téléphone, la frise des douze matières tient lieu de seconde ligne ; les liens sont dans le pied de page */}
-          <div aria-hidden className="flex h-2.5 lg:hidden">
-            {NEWSLETTERS.map((n) => (
-              <span key={n.slug} className="block flex-1" style={n.matiere} />
-            ))}
-          </div>
         </nav>
+        {/* sur téléphone, la frise des douze matières sous l'en-tête : elle ouvre la page et s'en va quand on fait défiler */}
+        <div aria-hidden className="flex h-2.5 lg:hidden">
+          {NEWSLETTERS.map((n) => (
+            <span key={n.slug} className="block flex-1" style={n.matiere} />
+          ))}
+        </div>
       </>
     );
 
