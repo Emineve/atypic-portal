@@ -102,7 +102,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
             </div>
           ) : (
             <form onSubmit={envoyer}>
-              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Un bien atypique décrypté chaque mois, dans votre boîte mail.</p>
+              <p className="font-serif text-2xl leading-tight text-stone-900 md:text-[1.7rem]">Abonnez-vous gratuitement aux douze prochains numéros.</p>
               <p className="mt-3 leading-relaxed text-stone-700">
                 En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique.
               </p>
@@ -110,8 +110,8 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
                 Votre e-mail <span aria-hidden="true">*</span>
                 <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} ref={champ} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !h-14`} />
               </label>
-              <button type="submit" disabled={busy === 'form'} className="mt-4 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-6 text-[15px] font-medium text-white transition hover:bg-stone-700 disabled:opacity-50 sm:w-auto">
-                {busy === 'form' ? 'Inscription…' : 'S’abonner gratuitement'}
+              <button type="submit" disabled={busy === 'form'} className="mt-4 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-stone-900 bg-[#F6CF4E] px-6 text-[15px] font-semibold text-stone-900 transition [@media(hover:hover)]:hover:bg-[#EFC22F] active:bg-[#EFC22F] disabled:opacity-50 sm:w-auto">
+                {busy === 'form' ? 'Inscription…' : 'Je m’abonne'}
                 <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
               </button>
               <p className="mt-4 text-sm leading-relaxed text-stone-500">

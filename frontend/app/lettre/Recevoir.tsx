@@ -41,8 +41,8 @@ export default function Recevoir({ titre, texte, source }: { titre: React.ReactN
             Votre e-mail <span aria-hidden="true">*</span>
             <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} ref={champ} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !h-14`} />
           </label>
-          <button type="submit" disabled={etat === 'busy'} className="mt-4 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-6 text-[15px] font-medium text-white transition hover:bg-stone-700 disabled:opacity-50 sm:w-auto">
-            {etat === 'busy' ? 'Inscription…' : 'S’abonner gratuitement'}
+          <button type="submit" disabled={etat === 'busy'} className="mt-4 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-stone-900 bg-[#F6CF4E] px-6 text-[15px] font-semibold text-stone-900 transition [@media(hover:hover)]:hover:bg-[#EFC22F] active:bg-[#EFC22F] disabled:opacity-50 sm:w-auto">
+            {etat === 'busy' ? 'Inscription…' : 'Je m’abonne'}
             <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
           </button>
           <p className="mt-4 text-sm leading-relaxed text-stone-500">
