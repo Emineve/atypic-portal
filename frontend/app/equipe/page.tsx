@@ -21,7 +21,7 @@ const GROUPES: { titre: string; italique: string; membres: Membre[] }[] = [
       ['Prosper', 'La coordination', 'Il coordonne tout le monde et déborde d’idées.', 'chef'],
       ['Kate', 'La visite', 'C’est elle qui pousse la porte et filme le bien, pièce après pièce.', 'visite'],
       ['Julien', 'Le montage', 'Vous vous demandez comment une vidéo d’immobilier peut être aussi chouette ? C’est lui.', 'monteur'],
-      ['Nico', 'La technique', 'Le geek de la bande. Si la newsletter arrive bien dans votre boîte mail, c’est grâce à lui.', 'geek'],
+      ['Charles', 'La technique', 'Le geek de la bande. Si la newsletter arrive bien dans votre boîte mail, c’est grâce à lui.', 'geek'],
       ['Cédric', 'Les réseaux', 'Il parle à tous ceux qui ne vont plus que sur Instagram ou sur X. Heureusement qu’il est là !', 'reseaux'],
     ],
   },
