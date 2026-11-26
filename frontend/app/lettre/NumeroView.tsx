@@ -265,7 +265,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
           <h2 className="font-serif text-[27px] leading-tight">La question, <span className="italic text-[#74695A]">et vous, vous rêvez de quoi ?</span></h2>
           <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
             {CHOIX.map(([code, t]) => (
-              <span key={code} className="rounded-full border-2 border-[#211C15] bg-white px-3 py-3 text-center font-serif text-[16px] italic leading-tight">{t}</span>
+              <span key={code} className="flex min-h-[52px] items-center justify-center rounded-full border-2 border-[#211C15] bg-white px-3 py-2 text-center font-serif text-[16px] italic leading-tight">{t}</span>
             ))}
           </div>
           <p className="mt-3 text-sm text-[#74695A]">On répond d’un clic depuis le mail. Vos réponses décident des prochaines visites.</p>
