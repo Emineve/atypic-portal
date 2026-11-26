@@ -167,8 +167,8 @@ export default async function LetterHome() {
         <section className="mt-16 md:mt-24 border-t border-stone-900 pt-4">
           <h2 className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">Vos questions, <span className="italic text-stone-500">nos réponses.</span></h2>
           <div className="mt-2 max-w-3xl">
-            {QUESTIONS.map(([q, r]) => (
-              <details key={q} className="group border-b border-stone-200">
+            {QUESTIONS.map(([q, r], i) => (
+              <details key={q} open={i === 0} className="group border-b border-stone-200">
                 <summary className="flex cursor-pointer outline-none focus-visible:underline decoration-stone-900 underline-offset-4 list-none items-baseline justify-between gap-6 py-5 font-serif text-xl md:text-2xl leading-snug text-stone-900 [&::-webkit-details-marker]:hidden">
                   <span>{titreEnItalique(q)}</span>
                   <span aria-hidden className="font-sans text-xl text-stone-500 transition-transform group-open:rotate-45">+</span>
