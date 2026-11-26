@@ -202,7 +202,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
           <h2 className="font-serif text-2xl md:text-3xl leading-tight text-stone-900">
             Recevez la newsletter de Loftissime, <span className="italic text-stone-500">un thème par mois.</span>
           </h2>
-          <p className="mt-2 max-w-2xl text-stone-600">Dans chaque numéro, un bien atypique passé au crible : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.</p>
+          <p className="mt-2 max-w-2xl text-stone-600">Dans chaque numéro, nos experts vous ouvrent les portes d’un bien atypique : ce qu’on peut en faire, ce qu’il coûte vraiment et les points de vigilance, avec les conseils de nos experts.</p>
         </>
       )}
       <label className={`${LABEL} ${band ? 'mt-5 max-w-md' : ''}`}>

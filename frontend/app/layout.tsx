@@ -17,7 +17,7 @@ const serifFont = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], 
 // Texte repris par Google, par les assistants IA et par les aperçus de partage
 const TITLE = 'Loftissime · Le média de l’immobilier atypique';
 const DESCRIPTION =
-  'Loftissime est le média de l’immobilier atypique : chaque mois, une newsletter passe un bien atypique au crible, la visite, le projet, le prix tout compris. Douze numéros par an, un thème par mois.';
+  'Loftissime est le média de l’immobilier atypique : chaque mois, dans sa newsletter, des experts vous ouvrent les portes d’un bien atypique : la visite, le projet, le prix tout compris. Douze numéros par an, un thème par mois.';
 
 // Présentation plus complète, pour la carte d'identité lue par les moteurs et les assistants IA
 const ORG_DESCRIPTION =
@@ -26,7 +26,7 @@ const ORG_DESCRIPTION =
 // Aperçu de partage (WhatsApp, SMS, réseaux) : la signature et la promesse du site
 const SHARE_TITLE = 'Loftissime · Le média de l’immobilier atypique';
 const SHARE_DESCRIPTION =
-  'Chaque mois, un bien atypique passé au crible par nos experts : la visite, le projet, le prix tout compris.';
+  'Chaque mois dans votre boîte mail, nos experts vous ouvrent les portes d’un bien atypique.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

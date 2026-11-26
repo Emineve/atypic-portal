@@ -211,7 +211,7 @@ export default function Presentation({ role }: { role: Role }) {
           <h2 className={h2}>Loftissime, <span className="italic text-stone-500">en trois lignes.</span></h2>
           <div className="space-y-4 text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">
             <p>Loftissime est le média de l’immobilier atypique : lofts, ateliers d’artistes, derniers étages, péniches, biens à rénover.</p>
-            <p>Une newsletter, un thème par mois, douze numéros par an. Dans chacun, un bien atypique passé au crible par des professionnels : la visite, le projet, le prix tout compris.</p>
+            <p>Une newsletter, un thème par mois, douze numéros par an. Dans chacun, des professionnels ouvrent les portes d’un bien atypique : la visite, le projet, le prix tout compris.</p>
             <p>Le premier numéro, <em>{premier.nom}</em>, paraît en {MOIS[premier.mois - 1]}. Il est consacré aux biens à rénover. Le site est en préparation.</p>
           </div>
         </section>

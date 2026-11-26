@@ -22,7 +22,7 @@ export default function Partenaires() {
             Partenaires, <span className="italic text-stone-500">chaque numéro se fait à plusieurs.</span>
           </h1>
           <p className="self-end text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">
-            Chaque mois, nous passons un bien atypique au crible avec ceux dont c’est le métier. Voici la place que chacun tient dans le numéro, ce que nous lui demandons et ce qu’il y gagne.
+            Chaque mois, nous ouvrons les portes d’un bien atypique avec ceux dont c’est le métier. Voici la place que chacun tient dans le numéro, ce que nous lui demandons et ce qu’il y gagne.
           </p>
         </div>
 
