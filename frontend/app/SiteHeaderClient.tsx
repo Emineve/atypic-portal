@@ -3,14 +3,14 @@
 import HeaderLinks from './HeaderLinks';
 import DemoBand from './DemoBand';
 import { blackButtonOnScreen } from '../lib/blackButton';
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { ArrowLeft, Plus, Menu } from 'lucide-react';
 import Logo from './Logo';
 import MenuPanel from './MenuPanel';
 import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
+import { NEWSLETTERS } from '../lib/newsletters';
 
 // Le menu du mode lettre : trois entrées, à droite du logo sur ordinateur, sur une seconde ligne sur téléphone.
 const LETTER_LINKS: { href: string; label: string }[] = [
@@ -84,8 +84,6 @@ export default function SiteHeaderClient({
   }, [open]);
 
   const mode = useSiteMode();
-  const chemin = usePathname() || '';
-  const enLecture = /^\/guide\/.+/.test(chemin);
   // Mode lettre : trois entrées, pas de menu, pas d'alerte
   if (mode === 'lettre')
     return (
@@ -107,17 +105,12 @@ export default function SiteHeaderClient({
             </a>
             </div>
           </div>
-          {/* sur un article, le téléphone garde toute sa hauteur pour la lecture : pas de seconde ligne */}
-          {LETTER_LINKS.length > 0 && !enLecture && (
-            <div className="lg:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-3 overflow-x-auto whitespace-nowrap [&_a]:text-sm">
-              {LETTER_LINKS.map((l, i) => (
-                <Fragment key={l.href}>
-                  {i > 0 && <span aria-hidden className="text-stone-500">·</span>}
-                  <Link href={l.href} className={LETTER_LINK}>{l.label}</Link>
-                </Fragment>
-              ))}
-            </div>
-          )}
+          {/* sur téléphone, la frise des douze matières tient lieu de seconde ligne ; les liens sont dans le pied de page */}
+          <div aria-hidden className="flex h-2.5 lg:hidden">
+            {NEWSLETTERS.map((n) => (
+              <span key={n.slug} className="block flex-1" style={n.matiere} />
+            ))}
+          </div>
         </nav>
       </>
     );

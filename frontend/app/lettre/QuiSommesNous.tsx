@@ -18,11 +18,11 @@ export default function QuiSommesNous() {
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-20">
         <h1 className="font-serif text-[2.6rem] leading-[1.02] tracking-tight text-stone-900 md:text-7xl">
-          Pourquoi <span className="italic text-stone-500">Loftissime ?</span>
+          Pourquoi <span className="italic text-stone-500">Loftissime ?</span>
         </h1>
 
         {/* les matières des newsletters, en frise : c'est le nuancier de la maison */}
-        <div aria-hidden className="mt-8 flex h-14 overflow-hidden rounded-[14px] md:mt-12 md:h-20">
+        <div aria-hidden className="mt-8 hidden h-14 overflow-hidden rounded-[14px] md:mt-12 md:h-20 lg:flex">
           {NEWSLETTERS.map((n) => (
             <span key={n.slug} className="block flex-1" style={n.matiere} />
           ))}
