@@ -56,7 +56,7 @@ const LISTE: Omit<Newsletter, 'mois'>[] = [
   {
     slug: 'parpaing',
     nom: 'Parpaing',
-    sujet: 'Les biens atypiques à moins de 250 000 €, dans le Grand Paris.',
+    sujet: 'Les biens atypiques à moins de 250 000 €, dans le Grand Paris.',
     addition: 'La mensualité, comparée à un loyer du même quartier.',
     ouverte: false,
     matiere: { backgroundColor: '#c6c4bf', backgroundImage: joints('#9e9b95', 64, 26) },

@@ -281,15 +281,21 @@ export default function Presentation({ role }: { role: Role }) {
 
         <section className="mt-16 md:mt-24">
           <h2 className={`${h2} border-t border-stone-900 pt-4`}>L’année, <span className="italic text-stone-500">douze thèmes, un par mois.</span></h2>
-          <div className="mt-8 flex h-14 overflow-hidden rounded-[12px] md:h-20" aria-hidden>
+          {/* le calendrier en petit : la matière, le mois, le nom du thème et son sujet */}
+          <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
             {NEWSLETTERS.map((n) => (
-              <span key={n.slug} className="block flex-1" style={n.matiere} />
+              <li key={n.slug}>
+                <a href={`/theme/${n.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_0_0_1px_#e7e0d3]">
+                  <span aria-hidden className="block h-10" style={n.matiere} />
+                  <span className="flex flex-1 flex-col px-4 pb-4 pt-3">
+                    <span className="text-sm font-semibold capitalize">{MOIS[n.mois - 1]}</span>
+                    <span className="mt-0.5 font-serif text-2xl italic leading-tight underline-offset-4 [@media(hover:hover)]:group-hover:underline">{n.nom}</span>
+                    <span className="mt-1.5 text-sm leading-snug text-stone-600">{n.sujet}</span>
+                  </span>
+                </a>
+              </li>
             ))}
-          </div>
-          <p className="mt-4 text-lg leading-relaxed text-stone-700">
-            {NEWSLETTERS.map((n) => n.nom).join(', ')}. Le calendrier complet est sur{' '}
-            <a href="/#nl-annee" className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">l’accueil du site</a>.
-          </p>
+          </ul>
         </section>
 
         <section className="mt-16 md:mt-24">
