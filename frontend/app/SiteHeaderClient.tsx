@@ -3,7 +3,7 @@
 import HeaderLinks from './HeaderLinks';
 import DemoBand from './DemoBand';
 import { blackButtonOnScreen } from '../lib/blackButton';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Plus, Menu } from 'lucide-react';
 import Logo from './Logo';
@@ -97,17 +97,20 @@ export default function SiteHeaderClient({
                   <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
                 ))}
               </div>
-            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 inline-flex items-center gap-2 ${LETTER_LINK}`}>
-              <span aria-hidden className="text-lg leading-none text-[#F6CF4E]">✦</span>
+            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 inline-flex items-center gap-2 whitespace-nowrap max-sm:text-sm ${LETTER_LINK}`}>
+              <span aria-hidden className="hidden text-lg leading-none text-[#F6CF4E] sm:inline">✦</span>
               Recevoir la newsletter
-              <span aria-hidden className="text-lg leading-none text-[#F6CF4E]">✦</span>
+              <span aria-hidden className="hidden text-lg leading-none text-[#F6CF4E] sm:inline">✦</span>
             </a>
             </div>
           </div>
           {LETTER_LINKS.length > 0 && (
-            <div className="lg:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-5 overflow-x-auto [&_a]:text-sm">
-              {LETTER_LINKS.map((l) => (
-                <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
+            <div className="lg:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-3 overflow-x-auto whitespace-nowrap [&_a]:text-sm">
+              {LETTER_LINKS.map((l, i) => (
+                <Fragment key={l.href}>
+                  {i > 0 && <span aria-hidden className="text-stone-500">·</span>}
+                  <Link href={l.href} className={LETTER_LINK}>{l.label}</Link>
+                </Fragment>
               ))}
             </div>
           )}

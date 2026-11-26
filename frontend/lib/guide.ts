@@ -5,6 +5,7 @@
 // Les rubriques d'État des lieux, dans l'ordre où elles s'affichent
 export const GUIDE_RUBRICS = [
   { name: 'Marché', anchor: 'marche', intro: 'Les prix, les taux, les délais : où en est le marché.' },
+  { name: 'Actu réseau', anchor: 'reseau', intro: 'Agences et réseaux : ce qui bouge chez les professionnels de l’atypique et du caractère.' },
   { name: 'Visite et négociation', anchor: 'visite', intro: 'Les bonnes questions, au bon moment.' },
   { name: 'Types de biens', anchor: 'types', intro: 'Souplex, loft, péniche, duplex : ce que chacun a de particulier.' },
   { name: 'Surfaces et travaux', anchor: 'technique', intro: 'Ce qui est compté, ce qui a été transformé, ce que le bien consomme.' },
@@ -40,6 +41,252 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'laforet-collection-biens-de-caractere',
+    art: 'hotel',
+    title: 'Laforêt Collection : un grand réseau généraliste s’installe sur les biens de caractère',
+    description:
+      'Laforêt a lancé en octobre 2026 une enseigne à part pour les maisons de famille et les biens de caractère. Ce qu’elle vise, où elle ouvre, et ce que cela change pour un acheteur.',
+    category: 'Actu réseau',
+    published: '2026-11-26',
+    updated: '2026-11-26',
+    readMinutes: 4,
+    intro:
+      'Le 22 octobre 2026, le réseau Laforêt a présenté à Paris une nouvelle enseigne, Laforêt Collection, consacrée aux maisons de famille et aux biens de caractère. Un réseau généraliste qui crée une marque distincte pour ces biens : c’est un signe de plus que le segment attire. Voici ce que l’on sait, d’après la presse professionnelle.',
+    takeaways: [
+      'Laforêt Collection est une enseigne séparée, lancée officiellement le 22 octobre 2026, après une agence pilote au Touquet.',
+      'Les biens sont choisis pour leur architecture, leur cadre ou leur histoire, pas seulement pour leur prix : mas, manoir, loft industriel, duplex haussmannien.',
+      'Le réseau vise 20 à 25 implantations en deux ans, dont plusieurs à Paris.',
+    ],
+    sections: [
+      {
+        title: 'De quoi s’agit-il ?',
+        paragraphs: [
+          'D’une marque à part, avec ses propres agences, qui s’adresse aux vendeurs et aux acheteurs de biens « de famille et de caractère ». Le réseau la situe entre l’immobilier courant et le grand luxe : des biens placés dans le haut de leur marché local, qui sortent de l’ordinaire, sans exiger une adresse prestigieuse ni un prix de plusieurs millions.',
+          'Les exemples donnés au lancement parlent d’eux-mêmes : un mas provençal, un manoir, un loft industriel, un duplex haussmannien, un chalet, une villa en bord de mer.',
+        ],
+      },
+      {
+        title: 'Où les agences ouvrent-elles ?',
+        paragraphs: [
+          'Deux adresses existent déjà : Le Touquet, qui a servi de pilote, et la rue de Vaugirard, dans le 6e arrondissement de Paris. Le réseau a annoncé quatre autres ouvertures parisiennes (1er, 4e, 5e et 9e arrondissements), puis Saint-Cloud et Biarritz.',
+          'L’objectif affiché est d’une vingtaine d’implantations en deux ans, voire vingt-cinq. Le réseau dit avoir retenu 74 villes en France où l’enseigne aurait sa place.',
+        ],
+      },
+      {
+        title: 'Qui peut ouvrir une agence ?',
+        paragraphs: [
+          'En priorité des agences indépendantes déjà installées dans leur ville, mais aussi des franchisés Laforêt qui veulent se spécialiser. D’après la presse professionnelle, le droit d’entrée est de 14 000 euros hors taxes pour un professionnel déjà en place, et l’aménagement de l’agence coûte de 30 000 à 50 000 euros.',
+        ],
+      },
+      {
+        title: 'Notre lecture pour un acheteur',
+        paragraphs: [
+          'Ce qui suit est notre lecture, pas une information du réseau.',
+          'Plus il y a d’enseignes sur les biens de caractère, plus ces biens sont montrés, photographiés et décrits avec soin. C’est une bonne nouvelle pour qui cherche. Mais une belle présentation ne répond pas aux questions qui comptent : la surface réellement comptée, les travaux déclarés ou non, le règlement de copropriété, les charges.',
+          'Le mot « caractère » n’a pas de définition légale. Deux agences peuvent l’employer pour des biens très différents. Les vérifications, elles, restent les mêmes quelle que soit l’enseigne.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Laforêt Collection remplace-t-elle les agences Laforêt ?',
+        a: 'Non. C’est une enseigne distincte, qui s’ajoute au réseau existant.',
+      },
+      {
+        q: 'Faut-il un budget de plusieurs millions pour s’y adresser ?',
+        a: 'Non, d’après le réseau : l’enseigne vise des biens situés dans le haut de leur marché local, pas le grand luxe.',
+      },
+    ],
+    sources: [
+      { label: 'MySweetImmo, 22 octobre 2026, « Immobilier : Laforêt lance une marque dédiée aux biens de famille et de caractère »', url: 'https://www.mysweetimmo.com/2026/10/22/immobilier-laforet-lance-une-marque-dediee-aux-biens-de-famille-et-de-caractere/' },
+      { label: 'MySweetImmo, 29 octobre 2026, entretien avec le président de Laforêt sur les implantations prévues', url: 'https://www.mysweetimmo.com/2026/10/29/agence-immobiliere-on-vise-20-a-25-implantations-laforet-collection-dici-deux-ans-yann-jehanno/' },
+    ],
+  },
+  {
+    slug: 'reseau-biens-atypiques-suisse-2027',
+    art: 'atypique',
+    title: 'Biens atypiques : un réseau de 85 agences prépare son arrivée en Suisse',
+    description:
+      'Le réseau Espaces Atypiques annonce une première franchise hors de France en 2027, autour de Genève et de Lausanne, et vise 120 agences en 2030. Les chiffres publiés par la presse professionnelle.',
+    category: 'Actu réseau',
+    published: '2026-11-26',
+    updated: '2026-11-26',
+    readMinutes: 4,
+    intro:
+      'Espaces Atypiques, réseau d’agences spécialisé dans les lofts, les maisons d’architecte et les biens hors normes, a présenté à l’automne 2026 ses chiffres de l’année et ses projets. Le plus marquant : une première ouverture hors de France, en Suisse, prévue pour 2027. Tous les chiffres ci-dessous sont ceux que le réseau a communiqués à la presse professionnelle.',
+    takeaways: [
+      'Une première franchise à l’étranger est annoncée pour 2027, dans le secteur de Genève et de Lausanne.',
+      'Le réseau compte 85 agences et en vise 120 en 2030, dans 80 départements.',
+      'Pour 2026, il annonce environ 2 200 ventes, à un prix moyen de 520 000 euros, en baisse de 5 %.',
+    ],
+    sections: [
+      {
+        title: 'Pourquoi la Suisse ?',
+        paragraphs: [
+          'Le réseau s’appuie sur la fréquentation de son site : 1,5 million de visites venues de l’étranger en 2026, soit moitié plus qu’il y a deux ans. La première franchise internationale est prévue en 2027, autour de Genève et de Lausanne.',
+        ],
+      },
+      {
+        title: 'Que disent les chiffres de 2026 ?',
+        paragraphs: [
+          'Le réseau, créé en 2008, prévoit pour 2026 un chiffre d’affaires de plus de 48 millions d’euros, en hausse de 2 %, pour environ 2 200 ventes, soit 5 % de plus qu’en 2025.',
+        ],
+        list: [
+          'Prix moyen d’un bien vendu : 520 000 euros, en baisse de 5 %.',
+          'Biens à vendre en portefeuille : 6 500, soit 14 % de plus qu’un an plus tôt.',
+          'Environ la moitié des acheteurs paient sans crédit.',
+        ],
+      },
+      {
+        title: 'Quels objectifs pour 2030 ?',
+        paragraphs: [
+          'Le réseau vise 120 agences dans 80 départements, 1 000 collaborateurs et 100 millions d’euros de chiffre d’affaires.',
+        ],
+      },
+      {
+        title: 'Notre lecture pour un acheteur',
+        paragraphs: [
+          'Ce qui suit est notre lecture, pas une information du réseau.',
+          'Deux chiffres parlent à qui cherche un bien. Le portefeuille grossit plus vite que les ventes : il y a donc davantage de biens atypiques à voir qu’il y a un an. Et le prix moyen recule. Les deux vont dans le même sens que le reste du marché : l’acheteur a plus de choix et plus de temps.',
+          'Ces chiffres sont ceux d’un seul réseau. Ils ne décrivent pas tout le marché des biens atypiques, que personne ne mesure à part.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Combien d’agences compte ce réseau ?',
+        a: '85 à l’automne 2026, d’après la presse professionnelle, avec un objectif de 120 en 2030.',
+      },
+      {
+        q: 'Le prix des biens atypiques baisse-t-il ?',
+        a: 'Le prix moyen des biens vendus par ce réseau recule de 5 % en 2026, à 520 000 euros. C’est une moyenne sur un seul réseau, pas un indice du marché.',
+      },
+    ],
+    sources: [
+      { label: 'Immo Matin, 15 octobre 2026, « Espaces Atypiques vise plus de 48 M€ de chiffre d’affaires en 2026 »', url: 'https://www.immomatin.com/agences-reseaux/reseaux-franchises/espaces-atypiques-vise-plus-de-48-millions-d-euros-de-chiffre-d-affaires-en-2026.html' },
+      { label: 'MySweetImmo, 8 octobre 2026, « Immobilier : Espaces Atypiques vise un chiffre d’affaires de plus de 48 millions d’euros »', url: 'https://www.mysweetimmo.com/2026/10/08/immobilier-espaces-atypiques-vise-un-chiffre-daffaires-de-plus-de-48-millions-deuros/' },
+    ],
+  },
+  {
+    slug: 'haut-de-gamme-enseignes-qui-s-etendent-2026',
+    art: 'monument',
+    title: 'Haut de gamme : trois enseignes qui se sont étendues en 2026',
+    description:
+      'Engel & Völkers passe à la franchise en France, Kretz ouvre à Bruxelles et à l’île Maurice, Junot rachète une agence en Provence. Le point sur une année d’ouvertures, sources à l’appui.',
+    category: 'Actu réseau',
+    published: '2026-11-26',
+    updated: '2026-11-26',
+    readMinutes: 4,
+    intro:
+      'Les biens de caractère ne sont pas le seul segment où les enseignes se multiplient. Dans le haut de gamme, trois d’entre elles ont annoncé des ouvertures en 2026, chacune à sa manière : la franchise, l’étranger, le rachat. Tour d’horizon, d’après la presse professionnelle.',
+    takeaways: [
+      'Engel & Völkers se développe désormais en franchise en France : Deauville, Chamonix, Samoëns.',
+      'Kretz a lancé sa franchise à l’étranger, avec Bruxelles et l’île Maurice, et vise cinq implantations en 2026.',
+      'Junot a racheté une agence des Alpilles et du Luberon et compte trente agences en France et en Belgique.',
+    ],
+    sections: [
+      {
+        title: 'Engel & Völkers : la franchise, dans quelques marchés choisis',
+        paragraphs: [
+          'Le réseau a changé de méthode en France : il s’étend maintenant par la franchise. Trois agences ont été annoncées en février 2026 : Deauville, ouverte fin 2025, puis Chamonix et Samoëns, en Haute-Savoie. Le choix se porte sur des marchés où les biens sont rares et les acheteurs fortunés, français ou étrangers.',
+        ],
+      },
+      {
+        title: 'Kretz : d’abord l’étranger',
+        paragraphs: [
+          'L’agence parisienne a lancé son modèle de franchise hors de France en mars 2026, avec une première adresse à Bruxelles et une deuxième à l’île Maurice. En Belgique, l’objectif est de trois agences en cinq ans, sur des biens à partir de 600 000 euros. Trois autres implantations étaient annoncées pour l’année.',
+        ],
+      },
+      {
+        title: 'Junot : le rachat',
+        paragraphs: [
+          'Junot a ouvert une troisième agence à Bruxelles et racheté une agence des Alpilles et du Luberon, qui lui apporte quatre adresses en Provence. Le réseau annonce trente agences en France et en Belgique.',
+          'Il publie aussi un chiffre utile pour mesurer l’humeur du marché : ses ventes se sont conclues en 9,3 semaines en moyenne en 2026, contre 10,3 un an plus tôt.',
+        ],
+      },
+      {
+        title: 'Notre lecture pour un acheteur',
+        paragraphs: [
+          'Ce qui suit est notre lecture, pas une information des réseaux.',
+          'Ces enseignes s’installent là où les biens sont rares : stations, littoral, Provence, beaux quartiers. Un bien atypique y croise souvent leur chemin, parce qu’un grand atelier ou une maison d’architecte se vend aussi par ces agences. Pour un acheteur, cela veut dire regarder au-delà des agences spécialisées : le même bien peut être confié à une enseigne de prestige.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Une agence de prestige vend-elle des biens atypiques ?',
+        a: 'Souvent, oui. Un loft, un hôtel particulier ou une maison d’architecte peuvent être confiés à une enseigne haut de gamme aussi bien qu’à une agence spécialisée.',
+      },
+    ],
+    sources: [
+      { label: 'MySweetImmo, 27 février 2026, « Réseau immobilier : Engel & Völkers se lance en franchise en France »', url: 'https://www.mysweetimmo.com/2026/02/27/reseau-immobilier-engel-volkers-se-lance-en-franchise-en-france/' },
+      { label: 'MySweetImmo, 16 mars 2026, « Réseau immobilier : Kretz Real Estate lance son modèle de franchise à l’international »', url: 'https://www.mysweetimmo.com/2026/03/16/reseau-immobilier-kretz-real-estate-lance-son-modele-de-franchise-a-linternational/' },
+      { label: 'MySweetImmo, 11 juillet 2026, « Immobilier de luxe : le marché repart, Junot ouvre de nouvelles agences »', url: 'https://www.mysweetimmo.com/2026/07/11/immobilier-de-luxe-le-marche-repart-junot-ouvre-de-nouvelles-agences/' },
+    ],
+  },
+  {
+    slug: 'taux-credit-fin-novembre-2026',
+    art: 'credit',
+    title: 'Crédit immobilier : les taux approchent 4 % sur vingt ans fin novembre 2026',
+    description:
+      'Les taux montent encore en novembre 2026, mais moins vite qu’en octobre : autour de 3,8 % sur vingt ans selon deux courtiers. Les chiffres, les raisons, et ce que cela change pour un achat atypique.',
+    category: 'Marché',
+    published: '2026-11-26',
+    updated: '2026-11-26',
+    readMinutes: 4,
+    intro:
+      'Les taux des crédits immobiliers ont continué de monter en novembre 2026, dans toutes les régions. La hausse ralentit pourtant par rapport à octobre. Voici les relevés de deux courtiers, publiés entre le 18 et le 22 novembre, et ce qu’un acheteur peut en faire. Ce sont des moyennes constatées, pas des offres : le taux d’un dossier dépend de l’emprunteur et de la banque.',
+    takeaways: [
+      'Sur vingt ans, les moyennes relevées vont de 3,76 % (Pretto) à 3,79 % – 3,95 % selon les régions (Empruntis).',
+      'La hausse sur un mois est d’environ 0,1 point, contre 0,15 à 0,28 point en octobre.',
+      'Les meilleurs dossiers obtiennent encore autour de 3,20 %, selon Empruntis.',
+    ],
+    sections: [
+      {
+        title: 'Où en sont les taux ?',
+        paragraphs: [
+          'Le courtier Pretto relève en novembre, tous profils confondus, 3,56 % sur quinze ans, 3,76 % sur vingt ans et 3,85 % sur vingt-cinq ans. Au premier trimestre, le taux sur vingt ans était de 3,17 %.',
+          'Le courtier Empruntis donne des moyennes par région, sur vingt ans : de 3,79 % en Bourgogne-Franche-Comté à 3,95 % en Île-de-France.',
+        ],
+      },
+      {
+        title: 'La hausse ralentit-elle ?',
+        paragraphs: [
+          'Oui. Selon Empruntis, les taux ont monté dans les treize régions, mais le plus souvent de 0,06 à 0,10 point, contre 0,15 à 0,28 point en octobre. Le meilleur taux relevé reste à 3,20 % dans quatre régions.',
+        ],
+      },
+      {
+        title: 'Pourquoi les taux montent-ils ?',
+        paragraphs: [
+          'Parce que l’argent coûte plus cher aux banques. Le taux auquel l’État français emprunte à dix ans a dépassé 5 % en octobre, un niveau qu’il n’avait pas connu depuis 2002. La Banque centrale européenne a laissé ses taux inchangés le 29 octobre, après deux hausses en juin et en septembre. Les banques répercutent ce surcoût peu à peu.',
+        ],
+      },
+      {
+        title: 'Notre lecture pour un bien atypique',
+        paragraphs: [
+          'Ce qui suit est notre lecture, pas une statistique.',
+          'Un bien atypique s’achète rarement en quelques jours : il faut vérifier la surface, les autorisations, parfois chiffrer des travaux. Entre la première visite et l’offre de prêt, plusieurs semaines passent, et le taux peut bouger. Faites vos comptes avec une marge, et demandez à votre banque ou à votre courtier combien de temps sa proposition reste valable.',
+          'Si le bien demande des travaux, le budget se joue sur le total, achat et chantier réunis. Quelques dixièmes de point pèsent d’autant plus que la somme empruntée est grande.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Quel est le taux moyen sur vingt ans fin novembre 2026 ?',
+        a: 'Autour de 3,8 % : 3,76 % selon Pretto, de 3,79 % à 3,95 % selon les régions pour Empruntis. Ce sont des moyennes, pas des offres.',
+      },
+      {
+        q: 'Les taux vont-ils dépasser 4 % ?',
+        a: 'Personne ne peut le dire. La hausse a ralenti en novembre, mais les causes qui l’ont provoquée sont toujours là.',
+      },
+    ],
+    sources: [
+      { label: 'Empruntis, 18 novembre 2026, relevé des taux par région', url: 'https://www.empruntis.com/financement/actualites/2026/taux-hausse-ralentit-novembre-mais-poursuit-toutes-regions-21435/' },
+      { label: 'Pretto, analyse des taux de novembre 2026, mise à jour le 22 novembre', url: 'https://www.pretto.fr/taux-immobilier/historique-taux-immobilier/2026/analyse-taux-immobilier-novembre-2026/' },
+    ],
+    listingsLink: { label: 'Estimer ma mensualité', href: '/financement' },
+  },
   {
     slug: 'faux-rib-notaire-fraude-au-virement',
     art: 'credit',
