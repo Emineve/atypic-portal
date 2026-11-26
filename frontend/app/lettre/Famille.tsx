@@ -137,7 +137,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         <h2 id="nl-premier" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
           Le premier numéro, <span className="italic text-stone-500">dès {MOIS[premier.mois - 1]}.</span>
         </h2>
-        <article className="mt-6 grid overflow-hidden rounded-[14px] bg-white shadow-[0_0_0_2px_#211C15] md:grid-cols-2">
+        <article className="mt-6 grid overflow-hidden rounded-[14px] bg-white shadow-[0_1px_2px_rgba(33,28,21,0.05),0_10px_30px_-12px_rgba(33,28,21,0.14)] md:grid-cols-2">
           <div className="flex flex-col justify-center p-7 md:p-12">
             <h3 className="font-serif text-6xl italic leading-none text-stone-900 md:text-7xl"><a href="/lettre">{premier.nom}</a></h3>
             <p className="mt-5 text-xl text-stone-900">{premier.sujet}</p>
