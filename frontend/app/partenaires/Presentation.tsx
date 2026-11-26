@@ -25,7 +25,7 @@ export const FICHES: Record<Role, Fiche> = {
   notaire: {
     metier: 'notaire',
     matiere: 'laiton',
-    titre: 'Avant la promesse,',
+    titre: 'Avant la signature du compromis,',
     titreItalique: 'il y a vous.',
     accroche: 'Dans chaque numéro de notre newsletter, une rubrique dit à l’acheteur ce qu’il doit vérifier avant de s’engager. Nous aimerions qu’elle porte votre regard.',
     rubrique: 'Avant la promesse',
