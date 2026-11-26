@@ -51,10 +51,10 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
 
   const field = FIELD;
   const label = LABEL;
-  const btn = 'inline-flex h-12 items-center px-8 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition rounded-full disabled:opacity-60';
+  const btn = 'inline-flex h-12 items-center px-8 border-2 border-stone-900 bg-[#F6CF4E] text-stone-900 text-[15px] font-semibold [@media(hover:hover)]:hover:bg-[#EFC22F] transition rounded-full disabled:opacity-60';
 
   return (
-    <section id="courtier" aria-live="polite" className={`scroll-mt-24 mt-6 rounded-[14px] border bg-white p-6 md:p-8 ${status === 'done' ? 'border-stone-900' : 'border-stone-200'}`}>
+    <section id="courtier" aria-live="polite" className="scroll-mt-24 mt-10 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
       <div className="flex items-start justify-between gap-6">
         <div className="max-w-xl">
           {status === 'done' ? (
@@ -115,7 +115,7 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
 
       {status !== 'done' && open && (
         <form onSubmit={onSubmit} className="mt-8">
-          <div className="grid sm:grid-cols-3 gap-x-4 gap-y-4">
+          <div className="grid max-w-md gap-4">
             <label className={label}>
               Prénom et nom *
               <input required minLength={2} maxLength={120} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className={field} autoFocus />

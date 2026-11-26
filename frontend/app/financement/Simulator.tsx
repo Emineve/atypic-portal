@@ -64,7 +64,7 @@ export default function Simulator() {
 
   return (
     <div>
-    <div className="rounded-[14px] border border-stone-200 bg-white p-5 md:p-8">
+    <div className="rounded-[18px] border-2 border-stone-900 bg-white p-5 shadow-[6px_6px_0_#211C15] md:p-8">
       <div className="grid grid-cols-2 gap-3 md:gap-5">
         <label className={label}>
           Prix du bien
@@ -91,10 +91,8 @@ export default function Simulator() {
               type="button"
               onClick={() => pickYears(o.years)}
               aria-pressed={years === o.years}
-              className={`h-12 rounded-full border text-base transition ${
-                years === o.years
-                  ? 'border-[#F6CF4E] bg-[#F6CF4E] font-medium text-stone-900'
-                  : 'border-stone-300 bg-white text-stone-700 hover:border-stone-900'
+              className={`h-12 rounded-full border-2 border-stone-900 text-base transition ${
+                years === o.years ? 'bg-[#F6CF4E] font-semibold text-stone-900' : 'bg-white text-stone-900 [@media(hover:hover)]:hover:bg-stone-100'
               }`}
             >
               {o.years} ans
@@ -103,7 +101,7 @@ export default function Simulator() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-[14px] bg-stone-100 px-5 py-5 md:px-7 md:py-6" aria-live="polite">
+      <div className="mt-6 rounded-[14px] bg-[#FCF1C9] px-5 py-5 md:px-7 md:py-6" aria-live="polite">
         {principal <= 0 ? (
           <p className="text-stone-600">Indiquez le prix du bien et votre apport : votre mensualité s&apos;affiche ici.</p>
         ) : (
