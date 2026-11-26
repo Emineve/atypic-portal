@@ -1,7 +1,7 @@
 // Les portraits de l'équipe, façon caricature au fusain. Ce sont des dessins inventés, en attendant les vrais :
 // ils ne représentent personne, seul l'accessoire dit le métier.
 
-export type FusainKind = 'visite' | 'architecte' | 'entrepreneur' | 'courtier' | 'notaire' | 'negociateur';
+export type FusainKind = 'visite' | 'architecte' | 'entrepreneur' | 'courtier' | 'notaire' | 'negociateur' | 'chef' | 'geek' | 'monteur' | 'reseaux';
 
 const INK = '#2b2622';
 const trait = { fill: 'none', stroke: INK, strokeWidth: 4.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
@@ -118,6 +118,58 @@ const DESSINS: Record<FusainKind, () => JSX.Element> = {
       <Visage yeux="ronds" bouche="grand" />
       <circle cx={42} cy={168} r={11} {...trait} />
       <path d="M42 179 v34 M42 196 h10 M42 206 h8 M50 174 l12 30 M58 196 l8 -3" {...trait} />
+    </g>
+  ),
+  // celui qui coordonne : cheveux en pétard, et une idée qui s'allume
+  chef: () => (
+    <g>
+      <Buste col={<path d="M82 166 l18 16 l18 -16" {...trait} />} />
+      <path d="M50 76 l-8 -22 l16 8 l-2 -26 l18 14 l6 -26 l16 20 l14 -22 l8 24 l18 -14 l0 26 l16 -6 l-10 24 c-12 -18 -30 -28 -50 -28 s-38 10 -50 28 z" {...plein} />
+      <Visage yeux="ronds" bouche="grand" />
+      <circle cx={168} cy={150} r={15} {...trait} fill="#fbf7ef" />
+      <path d="M161 166 h14 v10 h-14 z M163 150 q5 -8 10 0" {...fin} />
+      <path d="M168 124 v-8 M146 134 l-7 -6 M190 134 l7 -6 M142 152 h-8" {...trait} />
+    </g>
+  ),
+  // le geek : casque sur les oreilles, lunettes carrées, l'ordinateur ouvert devant lui
+  geek: () => (
+    <g>
+      <Buste />
+      <path d="M56 72 c2 -32 20 -50 44 -50 s42 18 44 50 c-12 -16 -28 -24 -44 -24 s-32 8 -44 24 z" {...plein} />
+      <Visage yeux="ronds" bouche="coin" />
+      <rect x={68} y={78} width={26} height={20} rx={4} {...trait} />
+      <rect x={106} y={78} width={26} height={20} rx={4} {...trait} />
+      <path d="M94 86 h12" {...fin} />
+      <path d="M44 92 c-8 -54 20 -84 56 -84 s64 30 56 84" {...trait} />
+      <rect x={34} y={84} width={16} height={32} rx={7} {...plein} />
+      <rect x={150} y={84} width={16} height={32} rx={7} {...plein} />
+      <path d="M56 222 l6 -42 h76 l6 42 z" {...trait} fill="#fbf7ef" />
+      <circle cx={100} cy={202} r={6} {...fin} />
+    </g>
+  ),
+  // le monteur : casquette, et le clap de cinéma
+  monteur: () => (
+    <g>
+      <Buste />
+      <Visage yeux="plisses" bouche="grand" />
+      <path d="M50 66 c2 -32 22 -50 50 -50 s48 18 50 50 z" {...plein} />
+      <path d="M50 66 h100 q26 2 34 14 q-40 -6 -84 -4 z" {...plein} />
+      <rect x={124} y={170} width={56} height={40} rx={4} {...trait} fill="#fbf7ef" />
+      <path d="M122 166 l56 -16 l3 10 l-56 16 z" {...trait} fill="#fbf7ef" />
+      <path d="M134 163 l6 9 M148 159 l6 9 M162 155 l6 9 M132 184 h40 M132 196 h26" {...fin} />
+    </g>
+  ),
+  // celui des réseaux : la banane, le téléphone, et un cœur qui s'en échappe
+  reseaux: () => (
+    <g>
+      <Buste col={<path d="M82 166 q18 12 36 0" {...trait} />} />
+      <path d="M52 80 c-6 -30 4 -52 22 -60 c18 -12 52 -10 66 8 c10 12 12 30 8 50 c-8 -20 -20 -30 -34 -32 c-24 -2 -46 6 -62 34 z" {...plein} />
+      <Visage yeux="ronds" bouche="sourire" />
+      <rect x={28} y={154} width={32} height={56} rx={6} {...trait} fill="#fbf7ef" />
+      <path d="M38 164 h12" {...fin} />
+      <path d="M62 194 q10 -6 12 -20" {...trait} />
+      <path d="M30 122 c-8 -10 -20 0 -10 10 l10 9 l10 -9 c10 -10 -2 -20 -10 -10 z" {...plein} />
+      <path d="M16 96 l-4 -8 M30 92 v-9 M44 96 l4 -8" {...fin} />
     </g>
   ),
 };
