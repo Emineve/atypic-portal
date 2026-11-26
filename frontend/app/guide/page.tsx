@@ -8,7 +8,7 @@ import { publishedArticles, formatGuideDate, GUIDE_RUBRICS } from '../../lib/gui
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Articles : tout savoir avant d’acheter un bien atypique · Loftissime',
+  title: 'Ressources : tout savoir avant d’acheter un bien atypique · Loftissime',
   description:
     'Souplex, loft, péniche, atelier d’artiste : les vérifications à faire avant d’acheter un bien atypique, et les conseils pour bien y vivre.',
   alternates: { canonical: '/guide' },
@@ -23,7 +23,7 @@ export default function GuideIndex() {
     <div className="min-h-screen bg-[#FDFBF7] font-sans text-stone-900">
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 pb-24 pt-10 md:pt-16">
-        <h1 className="font-serif text-6xl leading-none tracking-tight md:text-7xl">Articles</h1>
+        <h1 className="font-serif text-6xl leading-none tracking-tight md:text-7xl">Ressources</h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">
           Tout ce qu’il faut savoir avant d’acheter un bien atypique, expliqué simplement.
         </p>

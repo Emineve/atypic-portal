@@ -97,7 +97,8 @@ export default function SiteHeaderClient({
                   <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
                 ))}
               </div>
-            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 whitespace-nowrap rounded-full border-2 border-stone-900 bg-white px-3.5 py-2 text-[13px] sm:px-4 sm:text-sm font-medium text-stone-900 transition-colors [@media(hover:hover)]:hover:bg-stone-900 [@media(hover:hover)]:hover:text-[#FBF5E9] active:bg-stone-100`}>
+            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 inline-flex items-center gap-2 ${LETTER_LINK}`}>
+              <span aria-hidden className="text-lg leading-none text-[#F6CF4E]">✦</span>
               Recevoir la newsletter
             </a>
             </div>
