@@ -299,13 +299,14 @@ export default function Presentation({ role }: { role: Role }) {
         </section>
 
         <section className="mt-16 md:mt-24">
-          <div className="rounded-[18px] border-2 border-stone-900 bg-white p-7 shadow-[6px_6px_0_#211C15] md:p-12">
-            <p className="font-serif text-3xl leading-snug md:text-5xl md:leading-[1.1]">
-              Partant ? <span className="italic text-stone-500">Répondez simplement au message qui vous a mené ici.</span>
-            </p>
-            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-stone-500">
-              Cette page est une présentation. Le site est en préparation et n’est pas encore ouvert au public ; les rubriques montrées sont des maquettes.
-            </p>
+          <div className="grid gap-x-12 gap-y-4 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
+            <h2 className={h2}>Partant ?</h2>
+            <div>
+              <p className="text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">Répondez simplement au message qui vous a mené ici.</p>
+              <p className="mt-4 text-sm leading-relaxed text-stone-500">
+                Cette page est une présentation. Le site est en préparation et n’est pas encore ouvert au public ; les rubriques montrées sont des maquettes.
+              </p>
+            </div>
           </div>
         </section>
       </main>
