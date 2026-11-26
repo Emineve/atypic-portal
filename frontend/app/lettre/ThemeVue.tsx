@@ -38,19 +38,17 @@ export default function ThemeVue({ theme, parus = [], source }: { theme: Newslet
   return (
     <div className="min-h-screen overflow-x-clip bg-[#FDFBF7] font-sans text-stone-900">
       <SiteHeader />
-      {/* le haut de page est posé sur la matière du thème : une seule grande carte, le titre à gauche, l'inscription à droite */}
+      {/* le haut de page est posé sur la matière du thème : le titre sur une carte de papier, l'inscription à côté */}
       <div style={theme.matiere}>
-        <section className="mx-auto max-w-6xl px-6 py-10 md:py-16">
-          <div className="grid overflow-hidden rounded-[18px] border-2 border-stone-900 bg-[#FDFBF7] shadow-[6px_6px_0_#211C15] lg:grid-cols-[1.15fr_1fr]">
-          <div className="p-7 md:p-12">
+        <section className="mx-auto grid max-w-6xl items-stretch gap-x-10 gap-y-8 px-6 py-10 md:py-16 lg:grid-cols-[1.1fr_1fr]">
+          <div className="rounded-[18px] border-2 border-stone-900 bg-[#FDFBF7] p-7 shadow-[6px_6px_0_#211C15] md:p-10">
             <p className="text-sm text-stone-500">Le numéro de {mois}</p>
             <h1 className="mt-3 font-serif text-6xl italic leading-[0.95] tracking-tight md:text-7xl lg:text-[5.5rem]">{theme.nom}</h1>
             <p className="mt-6 font-serif text-3xl leading-tight md:text-4xl">{theme.sujet}</p>
             {propos && <p className="mt-4 max-w-xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">{propos.pour}</p>}
           </div>
-          <div className="flex flex-col justify-center border-t-2 border-stone-900 bg-white p-7 md:p-12 lg:border-l-2 lg:border-t-0">
-            <Recevoir cadre={false} source={source} titre={<>Recevez <em>{theme.nom}</em> en {mois}, gratuitement.</>} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
-          </div>
+          <div className="self-center">
+            <Recevoir source={source} titre={<>Recevez <em>{theme.nom}</em> en {mois}, gratuitement.</>} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
           </div>
         </section>
       </div>
