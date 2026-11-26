@@ -16,7 +16,7 @@ export default function LetterFooter() {
         </div>
         <nav aria-label="Loftissime" className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm">
           <a href="/#recevoir" className={link}>Recevoir la newsletter</a>
-          <a href="/guide" className={link}>Articles</a>
+          <a href="/guide" className={link}>Ressources</a>
           <a href="/qui-sommes-nous" className={link}>Pourquoi Loftissime</a>
           <a href="/equipe" className={link}>L’équipe</a>
           <a href="/financement" className={link}>Financement</a>

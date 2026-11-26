@@ -11,10 +11,14 @@ import MenuPanel from './MenuPanel';
 import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
 
-// « Avant la promesse » (/guide) est caché du menu pour le moment : la rubrique reste en ligne, liée depuis le pied de page.
-const LETTER_LINKS: { href: string; label: string }[] = [];
+// Le menu du mode lettre : trois entrées, à droite du logo sur ordinateur, sur une seconde ligne sur téléphone.
+const LETTER_LINKS: { href: string; label: string }[] = [
+  { href: '/guide', label: 'Ressources' },
+  { href: '/financement', label: 'Financement' },
+  { href: '/qui-sommes-nous', label: 'Pourquoi Loftissime' },
+];
 const LETTER_LINK =
-  'text-sm font-medium text-stone-700 hover:text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
+  'whitespace-nowrap text-[15px] font-medium text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
 
 const FAVORITES_KEY = 'singulier:favorites';
 
@@ -84,21 +88,21 @@ export default function SiteHeaderClient({
       <>
         <DemoBand />
         <nav aria-label="Navigation principale" className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-10">
-              <Logo />
-              <div className="hidden sm:flex items-center gap-7">
+          <div className="max-w-6xl mx-auto px-6 h-[68px] md:h-20 flex items-center justify-between gap-6">
+            <Logo className="text-[1.9rem] md:text-[2.25rem]" />
+            <div className="flex items-center gap-8">
+              <div className="hidden lg:flex items-center gap-9">
                 {LETTER_LINKS.map((l) => (
                   <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
                 ))}
               </div>
-            </div>
-            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 whitespace-nowrap rounded-full border border-stone-900 px-4 py-2 text-sm font-medium text-stone-900 transition-colors [@media(hover:hover)]:hover:bg-stone-900 [@media(hover:hover)]:hover:text-[#FBF5E9] active:bg-stone-100`}>
+            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 whitespace-nowrap rounded-full border border-stone-900 px-3.5 py-2 text-[13px] sm:px-4 sm:text-sm font-medium text-stone-900 transition-colors [@media(hover:hover)]:hover:bg-stone-900 [@media(hover:hover)]:hover:text-[#FBF5E9] active:bg-stone-100`}>
               Recevoir la newsletter
             </a>
+            </div>
           </div>
           {LETTER_LINKS.length > 0 && (
-            <div className="sm:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-7">
+            <div className="lg:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-5 overflow-x-auto [&_a]:text-sm">
               {LETTER_LINKS.map((l) => (
                 <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
               ))}
