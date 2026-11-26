@@ -125,12 +125,8 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         </div>
       </div>
 
-      {/* La séparation : un filet, une petite étoile jaune au milieu */}
-      <div aria-hidden className="mt-16 flex items-center gap-5 md:mt-24">
-        <span className="h-px flex-1 bg-stone-900" />
-        <span className="text-2xl leading-none text-[#F6CF4E]">✦</span>
-        <span className="h-px flex-1 bg-stone-900" />
-      </div>
+      {/* La séparation : une petite étoile jaune, seule */}
+      <div aria-hidden className="mt-16 text-center text-3xl leading-none text-[#F6CF4E] md:mt-24">✦</div>
 
       {/* 2. Le premier numéro, seul sur sa ligne */}
       <section className="mt-10 md:mt-14" aria-labelledby="nl-premier">
