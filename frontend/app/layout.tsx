@@ -26,7 +26,7 @@ const ORG_DESCRIPTION =
 // Aperçu de partage (WhatsApp, SMS, réseaux) : la signature et la promesse du site
 const SHARE_TITLE = 'Loftissime · Le média de l’immobilier atypique';
 const SHARE_DESCRIPTION =
-  'Chaque mois dans votre boîte mail, nos experts vous ouvrent les portes d’un bien atypique.';
+  'Chaque mois, nos experts vous ouvrent les portes d’un bien atypique. Nous cherchons, nous visitons, nous faisons les comptes.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
