@@ -7,7 +7,8 @@ import { getSupabase } from '../../lib/supabase';
 import { FIELD, LABEL } from '../../lib/form';
 
 // La carte d'inscription, la même que sur l'accueil : une phrase, un e-mail, un bouton.
-export default function Recevoir({ titre, texte, source }: { titre: React.ReactNode; texte?: string; source: string }) {
+// `cadre` : faux quand la carte est déjà fournie par la page (la grande carte d'un thème).
+export default function Recevoir({ titre, texte, source, cadre = true }: { titre: React.ReactNode; texte?: string; source: string; cadre?: boolean }) {
   const [email, setEmail] = useState('');
   const [etat, setEtat] = useState<'idle' | 'busy' | 'done' | 'error'>('idle');
   const champ = useRef<HTMLInputElement>(null);
@@ -25,7 +26,7 @@ export default function Recevoir({ titre, texte, source }: { titre: React.ReactN
   }
 
   return (
-    <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
+    <div id="recevoir" className={`scroll-mt-28 ${cadre ? 'rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8' : ''}`}>
       {etat === 'done' ? (
         <div role="status">
           <p className="font-serif text-4xl italic leading-none text-stone-900 md:text-5xl">Bienvenue à bord !</p>
