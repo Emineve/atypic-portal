@@ -130,10 +130,10 @@ export default async function LetterHome() {
             intro={
               <>
                 <h1 className="font-serif text-[2.5rem] md:text-6xl lg:text-[3.9rem] tracking-tight leading-[1.03] text-stone-900">
-                  Acheter sereinement <span className="italic text-stone-500">un bien qui ne ressemble à aucun autre.</span>
+                  Chaque mois dans votre boîte mail, <span className="italic text-stone-500">un bien atypique passé au crible par nos experts.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone-700 md:mt-8 md:text-xl md:leading-relaxed">
-                  Chaque mois, un bien atypique passé au crible par nos experts.
+                  Acheter sereinement un bien qui ne ressemble à aucun autre.
                 </p>
               </>
             }
