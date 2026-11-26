@@ -35,7 +35,7 @@ export default function Articles({ articles, rubriques }: { articles: ArticleCar
     setMax(PAS);
   };
   const pastille = (on: boolean) =>
-    `inline-flex h-10 items-center rounded-full border px-4 text-[15px] transition-colors ${on ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-300 bg-white text-stone-900 [@media(hover:hover)]:hover:border-stone-900'}`;
+    `inline-flex h-10 items-center rounded-full border px-4 text-[15px] transition-colors ${on ? 'border-stone-900 bg-[#F6CF4E] font-medium text-stone-900' : 'border-stone-300 bg-white text-stone-900 [@media(hover:hover)]:hover:border-stone-900'}`;
 
   return (
     <div>

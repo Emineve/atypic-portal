@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Presentation, { FICHES, type Role } from '../Presentation';
+import { partage } from '../../../lib/partage';
 
 // Une présentation par métier : /partenaires/notaire, /partenaires/courtier, /partenaires/entrepreneur.
 export function generateStaticParams() {
@@ -12,6 +13,7 @@ export function generateMetadata({ params }: { params: { role: string } }) {
     title: f ? `Présentation aux partenaires, ${f.metier} · Loftissime` : 'Présentation aux partenaires · Loftissime',
     description: 'Loftissime, le média de l’immobilier atypique : votre place dans la newsletter.',
     robots: { index: false, follow: false },
+    ...(f ? partage(`Loftissime · Présentation aux partenaires, ${f.metier}`, 'Loftissime, le média de l’immobilier atypique : votre place dans la newsletter.', `/og/partenaire-${params.role}.png`) : {}),
   };
 }
 

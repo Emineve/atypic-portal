@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import ThemeVue from '../../lettre/ThemeVue';
 import { MOIS, NEWSLETTERS } from '../../../lib/newsletters';
+import { partage } from '../../../lib/partage';
 
 // La page d'un thème de l'année, ouverte depuis le calendrier de l'accueil.
 export function generateStaticParams() {
@@ -14,6 +15,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
     title: `${theme.nom}, le numéro de ${MOIS[theme.mois - 1]} · Loftissime`,
     description: `${theme.nom}, le thème de ${MOIS[theme.mois - 1]} de la newsletter de Loftissime. ${theme.sujet}`,
     alternates: { canonical: `/theme/${theme.slug}` },
+    ...partage(`${theme.nom}, le numéro de ${MOIS[theme.mois - 1]} · Loftissime`, theme.sujet, `/og/theme-${theme.slug}.png`),
   };
 }
 

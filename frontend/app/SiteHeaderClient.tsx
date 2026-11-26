@@ -100,6 +100,7 @@ export default function SiteHeaderClient({
             <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 inline-flex items-center gap-2 ${LETTER_LINK}`}>
               <span aria-hidden className="text-lg leading-none text-[#F6CF4E]">✦</span>
               Recevoir la newsletter
+              <span aria-hidden className="text-lg leading-none text-[#F6CF4E]">✦</span>
             </a>
             </div>
           </div>
