@@ -28,9 +28,11 @@ export default function Recevoir({ titre, texte, source }: { titre: React.ReactN
     <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
       {etat === 'done' ? (
         <div role="status">
-          <p className="font-serif text-2xl leading-snug text-stone-900">C’est noté. Vous recevrez ce numéro.</p>
-          <p className="mt-4">
-            <a href="/dix-questions" className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Votre guide : dix questions à poser avant d’acheter un bien atypique</a>
+          <p className="font-serif text-4xl italic leading-none text-stone-900 md:text-5xl">Bienvenue à bord !</p>
+          <p className="mt-4 font-serif text-2xl leading-snug text-stone-900">Vous êtes des nôtres. Ce numéro arrivera dans votre boîte mail.</p>
+          <p className="mt-5 leading-relaxed text-stone-700">
+            En attendant, voici votre cadeau :{' '}
+            <a href="/dix-questions" className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">dix questions à poser avant d’acheter un bien atypique</a>.
           </p>
         </div>
       ) : (
