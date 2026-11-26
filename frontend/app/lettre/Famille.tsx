@@ -60,8 +60,8 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
     const on = prefs.includes(n.slug);
     return (
       <article key={n.slug} className={`flex overflow-hidden rounded-[14px] bg-white sm:flex-col ${on ? 'shadow-[0_0_0_2px_#211C15]' : 'shadow-[0_0_0_1px_#e7e0d3]'}`}>
-        {/* sur téléphone la matière est une bande à gauche : le calendrier reste court */}
-        <a href={`/theme/${n.slug}`} aria-hidden tabIndex={-1} className="block w-20 shrink-0 self-stretch sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
+        {/* sur téléphone la matière est une bande à droite : le texte se lit d’abord, le calendrier reste court */}
+        <a href={`/theme/${n.slug}`} aria-hidden tabIndex={-1} className="order-last block w-16 shrink-0 self-stretch sm:order-none sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
         <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-6">
           {/* le mois, en tête de carte : c'est lui qui fait lire la grille comme un calendrier */}
           <p className="text-[15px] font-semibold text-stone-900">{Maj(MOIS[n.mois - 1])}</p>
