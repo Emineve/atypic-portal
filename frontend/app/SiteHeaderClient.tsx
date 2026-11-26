@@ -5,6 +5,7 @@ import DemoBand from './DemoBand';
 import { blackButtonOnScreen } from '../lib/blackButton';
 import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ArrowLeft, Plus, Menu } from 'lucide-react';
 import Logo from './Logo';
 import MenuPanel from './MenuPanel';
@@ -83,6 +84,8 @@ export default function SiteHeaderClient({
   }, [open]);
 
   const mode = useSiteMode();
+  const chemin = usePathname() || '';
+  const enLecture = /^\/guide\/.+/.test(chemin);
   // Mode lettre : trois entrées, pas de menu, pas d'alerte
   if (mode === 'lettre')
     return (
@@ -104,7 +107,8 @@ export default function SiteHeaderClient({
             </a>
             </div>
           </div>
-          {LETTER_LINKS.length > 0 && (
+          {/* sur un article, le téléphone garde toute sa hauteur pour la lecture : pas de seconde ligne */}
+          {LETTER_LINKS.length > 0 && !enLecture && (
             <div className="lg:hidden border-t border-stone-200 px-6 h-11 flex items-center gap-3 overflow-x-auto whitespace-nowrap [&_a]:text-sm">
               {LETTER_LINKS.map((l, i) => (
                 <Fragment key={l.href}>

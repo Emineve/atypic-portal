@@ -10,13 +10,30 @@ export const metadata = {
   alternates: { canonical: '/equipe' },
 };
 
-const EQUIPE: [string, string, string, FusainKind][] = [
-  ['Kate', 'La visite', 'C’est elle qui pousse la porte et filme le bien, pièce après pièce.', 'visite'],
-  ['L’architecte', 'Le projet', 'Il dessine ce que le lieu peut devenir.', 'architecte'],
-  ['L’entrepreneur du bâtiment', 'Les travaux', 'Il chiffre le chantier, poste par poste.', 'entrepreneur'],
-  ['Damien', 'Le financement', 'Courtier en crédit, il calcule la mensualité et dit ce qu’une banque peut suivre.', 'courtier'],
-  ['Kim', 'Avant la promesse', 'Notaire, elle signale le point à vérifier avant de s’engager.', 'notaire'],
-  ['Christophe', 'La négociation', 'Négociateur immobilier, il présente le bien à la une du numéro de janvier. Chaque mois, un négociateur différent prend la suite : douze numéros, douze agences.', 'negociateur'],
+type Membre = [string, string, string, FusainKind];
+
+// Trois cercles : ceux qui y travaillent au quotidien, les experts de chaque numéro, les contributeurs invités
+const GROUPES: { titre: string; italique: string; membres: Membre[] }[] = [
+  {
+    titre: 'Au quotidien,',
+    italique: 'ceux qui font tourner Loftissime.',
+    membres: [['Kate', 'La visite', 'C’est elle qui pousse la porte et filme le bien, pièce après pièce.', 'visite']],
+  },
+  {
+    titre: 'Les experts,',
+    italique: 'un métier par question.',
+    membres: [
+      ['L’architecte', 'Le projet', 'Il dessine ce que le lieu peut devenir.', 'architecte'],
+      ['L’entrepreneur du bâtiment', 'Les travaux', 'Il chiffre le chantier, poste par poste.', 'entrepreneur'],
+      ['Damien', 'Le financement', 'Courtier en crédit, il calcule la mensualité et dit ce qu’une banque peut suivre.', 'courtier'],
+      ['Kim', 'Avant la promesse', 'Notaire, elle signale le point à vérifier avant de s’engager.', 'notaire'],
+    ],
+  },
+  {
+    titre: 'Les contributeurs,',
+    italique: 'un invité par numéro.',
+    membres: [['Christophe', 'La négociation', 'Négociateur immobilier, il présente le bien à la une du numéro de janvier. Chaque mois, un négociateur différent prend la suite : douze numéros, douze agences.', 'negociateur']],
+  },
 ];
 
 export default function Equipe() {
@@ -33,18 +50,25 @@ export default function Equipe() {
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-x-6 gap-y-10 border-t border-stone-900 pt-8 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
-          {EQUIPE.map(([qui, role, texte, kind]) => (
-            <li key={qui}>
-              <div className="overflow-hidden rounded-[14px] border-2 border-stone-900 shadow-[5px_5px_0_#211C15]">
-                <Fusain kind={kind} className="block w-full" />
-              </div>
-              <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight">{qui}</h2>
-              <p className="mt-1 font-serif text-xl italic text-stone-500">{role}</p>
-              <p className="mt-2 text-lg leading-relaxed text-stone-700">{texte}</p>
-            </li>
-          ))}
-        </ul>
+        {GROUPES.map((g) => (
+          <section key={g.titre} className="mt-12 border-t border-stone-900 pt-4 md:mt-16">
+            <h2 className="font-serif text-3xl leading-[1.1] md:text-4xl">
+              {g.titre} <span className="italic text-stone-500">{g.italique}</span>
+            </h2>
+            <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              {g.membres.map(([qui, role, texte, kind]) => (
+                <li key={qui}>
+                  <div className="overflow-hidden rounded-[14px] border-2 border-stone-900 shadow-[5px_5px_0_#211C15]">
+                    <Fusain kind={kind} className="block w-full" />
+                  </div>
+                  <h3 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight">{qui}</h3>
+                  <p className="mt-1 font-serif text-xl italic text-stone-500">{role}</p>
+                  <p className="mt-2 text-lg leading-relaxed text-stone-700">{texte}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
 
         <p className="mt-8 text-sm text-stone-500">Portraits provisoires, dessinés en attendant les vrais.</p>
 
