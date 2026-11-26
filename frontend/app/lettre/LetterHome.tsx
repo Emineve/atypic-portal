@@ -15,7 +15,7 @@ import { getIssue, getIssues } from '../../lib/lettre';
 
 // Les questions de l'accueil : ce qu'est le site, ce qu'est sa newsletter, ce qu'on fait de l'adresse e-mail
 const QUESTIONS: [string, string][] = [
-  ['Qu’est-ce que Loftissime ?', 'Loftissime est un média consacré à l’immobilier atypique. Il édite une fois par mois une newsletter, sur un thème différent à chaque numéro : les biens à rénover, les lofts, les ateliers d’artistes, les péniches…'],
+  ['Qu’est-ce que Loftissime ?', 'Loftissime est un média consacré à l’immobilier atypique. Il édite une fois par mois une newsletter, sur un thème différent à chaque numéro : les biens à rénover, les lofts, les ateliers d’artistes, les péniches… Avec toujours le même objectif : vous accompagner, vous rassurer et vous aider à vous poser les bonnes questions, pour oser acheter un bien qui ne ressemble à aucun autre.'],
   ['Que trouve-t-on dans un numéro ?', 'Chaque numéro a son thème : Béton ciré, le premier, est consacré aux biens atypiques à rénover. À chaque fois, nous poussons la porte d’un bien : la visite en vidéo, ce qu’on peut en faire, ce qu’il coûte vraiment, travaux et mensualité compris, et le point à vérifier avant de signer.'],
   ['Qui sont nos experts ?', 'Un architecte, un entrepreneur du bâtiment, un courtier en crédit et un notaire, les mêmes d’un numéro à l’autre. Seul le négociateur immobilier change chaque mois. Chacun intervient dans son domaine et s’engage sur ce qu’il avance.'],
   ['Quand paraît la newsletter ?', 'Une fois par mois, douze fois par an. Chaque mois a son thème : les biens à rénover, les lofts, les ateliers d’artistes, les derniers étages, les péniches… Le calendrier complet est sur cette page.'],
