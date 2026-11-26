@@ -48,9 +48,6 @@ export default function Equipe() {
 
         <p className="mt-8 text-sm text-stone-500">Portraits provisoires, dessinés en attendant les vrais.</p>
 
-        <p className="mt-10">
-          <a href="/#recevoir" className="text-lg font-medium underline underline-offset-4 decoration-stone-400">Recevoir la newsletter</a>
-        </p>
       </main>
     </div>
   );

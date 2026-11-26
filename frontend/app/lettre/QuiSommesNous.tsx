@@ -29,11 +29,6 @@ export default function QuiSommesNous() {
             <p>
               Notre conviction : habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.
             </p>
-            <p className="pt-3">
-              <a href="/#recevoir" className="inline-flex h-12 items-center rounded-full bg-stone-900 px-6 text-sm font-medium text-white">
-                Recevoir la newsletter
-              </a>
-            </p>
           </div>
         </div>
 

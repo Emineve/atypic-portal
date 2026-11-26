@@ -42,10 +42,11 @@ export default function SiteHeaderClient({
   alert?: boolean; // bouton « Créer mon alerte » (masqué sur les pages destinées aux agences)
 }) {
   const [open, setOpen] = useState(false);
-  // « Recevoir la newsletter » n'apparaît qu'une fois la page défilée : en haut, la carte d'inscription est déjà sous les yeux
+  // « Recevoir la newsletter » est toujours dans l'en-tête, sauf en haut des pages qui ouvrent sur la carte d'inscription :
+  // là, il n'apparaît qu'une fois la page défilée, pour ne pas proposer deux fois la même chose.
   const [defile, setDefile] = useState(false);
   useEffect(() => {
-    const voir = () => setDefile(window.scrollY > 480);
+    const voir = () => setDefile(!document.getElementById('recevoir') || window.scrollY > 480);
     voir();
     window.addEventListener('scroll', voir, { passive: true });
     return () => window.removeEventListener('scroll', voir);
@@ -96,7 +97,7 @@ export default function SiteHeaderClient({
                   <Link key={l.href} href={l.href} className={LETTER_LINK}>{l.label}</Link>
                 ))}
               </div>
-            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 whitespace-nowrap rounded-full border border-stone-900 px-3.5 py-2 text-[13px] sm:px-4 sm:text-sm font-medium text-stone-900 transition-colors [@media(hover:hover)]:hover:bg-stone-900 [@media(hover:hover)]:hover:text-[#FBF5E9] active:bg-stone-100`}>
+            <a href="/#recevoir" aria-hidden={!defile} tabIndex={defile ? 0 : -1} className={`${defile ? 'opacity-100' : 'pointer-events-none opacity-0'} transition-opacity duration-300 whitespace-nowrap rounded-full border-2 border-stone-900 bg-[#F6CF4E] px-3.5 py-2 text-[13px] sm:px-4 sm:text-sm font-semibold text-stone-900 transition-colors [@media(hover:hover)]:hover:bg-[#EFC22F] active:bg-[#EFC22F]`}>
               Recevoir la newsletter
             </a>
             </div>
