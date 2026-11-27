@@ -151,7 +151,7 @@ ${liens.vigilance ? `<p style="margin:14px 0 0;font-family:${SANS};font-size:15p
   const suivant = NEWSLETTERS[(rang + 1) % NEWSLETTERS.length];
   rows.push(titre('Et le mois prochain,', `en ${MOIS[suivant.mois - 1]}.`));
   rows.push(`<tr><td style="padding:16px 24px 0;">
-<img src="${SITE}/lettre/barre-${suivant.slug}.png" width="552" alt="" style="display:block;width:100%;max-width:552px;height:auto;border:0;">
+<img src="${SITE}/lettre/barre-${suivant.slug}.png?v=2" width="552" alt="" style="display:block;width:100%;max-width:552px;height:auto;border:0;">
 <p style="margin:16px 0 0;font-family:${SERIF};font-size:40px;line-height:1;font-style:italic;color:${INK};">${esc(suivant.nom)}</p>
 <p style="margin:10px 0 0;${texte}">${esc(suivant.sujet)}</p></td></tr>`);
 
