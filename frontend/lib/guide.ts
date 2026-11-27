@@ -12,6 +12,9 @@ export const GUIDE_RUBRICS = [
   { name: 'Copropriété', anchor: 'copropriete', intro: 'Les règles de l’immeuble et ce qu’il coûte à vivre.' },
   { name: 'Financement', anchor: 'financement', intro: 'Le crédit, l’assurance, le dossier.' },
   { name: 'Insolite', anchor: 'insolite', intro: 'Avion, phare, château d’eau : ils ont choisi d’habiter ailleurs.' },
+  // « Hors norme » : les ventes dont on parle (biens extravagants, biens liés à une personnalité). Synthèses de la presse, sources citées,
+  // prix demandé donné comme un fait, sans avis. Pas d'adresse précise pour la résidence actuelle d'une personne vivante.
+  { name: 'Hors norme', anchor: 'hors-norme', intro: 'Ateliers de peintres, maisons de célébrités, biens extravagants : les ventes dont on parle.' },
 ] as const;
 export type GuideRubric = (typeof GUIDE_RUBRICS)[number]['name'];
 
@@ -41,6 +44,87 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'atelier-pollock-krasner-new-york-a-vendre',
+    art: 'atelier',
+    title: 'À New York, l’ancien atelier de Jackson Pollock et Lee Krasner est à vendre',
+    description:
+      'Une ancienne remise à calèches de Greenwich Village, où Jackson Pollock et Lee Krasner ont travaillé vers 1950, est en vente pour près de 8 millions de dollars. Ce que l’on sait du bien.',
+    category: 'Hors norme',
+    published: '2026-11-27',
+    updated: '2026-11-27',
+    readMinutes: 4,
+    intro:
+      'Une impasse fermée derrière Washington Square, dix maisons, et parmi elles une ancienne remise à calèches coiffée d’une verrière. Jackson Pollock et Lee Krasner y ont eu leur atelier au tournant des années 1950. Le bien est en vente depuis l’automne 2026. Il réunit à peu près tout ce qui fait un bien atypique : une autre vie avant, un volume, une voie privée, et un nom.',
+    takeaways: [
+      'Le bien se trouve au 9 MacDougal Alley, une impasse fermée de Greenwich Village, à Manhattan.',
+      'C’est une maison de trois niveaux d’environ 139 m², construite en 1879 comme remise à calèches.',
+      'Jackson Pollock et Lee Krasner y ont travaillé en 1949 et 1950, d’après la presse new-yorkaise.',
+      'Prix demandé : 7 995 000 dollars.',
+    ],
+    sections: [
+      {
+        title: 'De quel bien s’agit-il ?',
+        paragraphs: [
+          'D’une maison de ville de trois niveaux, l’une des dix maisons privées de MacDougal Alley. La rue date de 1833 ; la maison a été construite en 1879 pour abriter des calèches, d’après le magazine The Spaces. Elle mesure environ 1 500 pieds carrés, soit près de 139 m².',
+          'À l’étage, un grand atelier à double hauteur est éclairé par une verrière. On trouve aussi une cheminée à bois, des plafonds à poutres, un balcon au sud, une terrasse sur le toit, un petit jardin et une place de stationnement.',
+        ],
+      },
+      {
+        title: 'Quel est son lien avec Pollock et Krasner ?',
+        paragraphs: [
+          'Le couple de peintres y a travaillé en 1949 et 1950, selon le site new-yorkais 6sqft. D’après un autre média que ce site reprend, la maison leur était prêtée par un ami et mécène de Pollock, Alfonso Ossorio, et ils y ont aussi vécu.',
+          'Les articles consultés ne disent pas quelles œuvres ont été faites dans cette maison.',
+        ],
+      },
+      {
+        title: 'À quel prix, et par qui est-il vendu ?',
+        paragraphs: [
+          'Le prix demandé est de 7 995 000 dollars. La vente est confiée à l’agence Sotheby’s International Realty. D’après la presse new-yorkaise, la maison n’a pas changé de propriétaire depuis décembre 1988.',
+          'Un prix demandé n’est pas un prix de vente : celui-ci ne sera connu qu’une fois la vente conclue.',
+        ],
+      },
+      {
+        title: 'Un autre atelier de Pollock est-il en vente ?',
+        paragraphs: [
+          'Oui, d’après 6sqft. Un loft d’environ 60 m², au dernier étage d’une maison de 1827 du West Village, a été remis en vente début octobre 2026 pour 1 990 000 dollars. Pollock y aurait logé en 1932 avec son frère.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que ce bien a d’atypique, nom mis à part ?',
+        list: [
+          'Une autre vie avant : une remise à calèches devenue atelier, puis maison.',
+          'Un volume : une pièce à double hauteur sous verrière, ce que l’on cherche dans un atelier d’artiste.',
+          'Une situation rare : une impasse fermée, à l’écart de la circulation, en plein centre.',
+          'Un dehors en ville : jardin, balcon et toit-terrasse.',
+        ],
+      },
+      {
+        title: 'Et en France ?',
+        paragraphs: [
+          'Les mêmes ingrédients existent à Paris, sans la signature : anciennes remises et écuries au fond des cours, ateliers à verrière des cités d’artistes, maisons sur des voies privées. Les questions à poser sont les mêmes qu’ailleurs : qui entretient la voie, ce que le règlement autorise, et ce que la verrière coûte à chauffer.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Où se trouve l’ancien atelier de Pollock à New York ?',
+        a: 'Au 9 MacDougal Alley, une impasse fermée de Greenwich Village, derrière Washington Square Park.',
+      },
+      {
+        q: 'Combien coûte-t-il ?',
+        a: 'Le prix demandé est de 7 995 000 dollars, pour environ 139 m² sur trois niveaux.',
+      },
+      {
+        q: 'Pollock y a-t-il habité longtemps ?',
+        a: 'Non. D’après la presse new-yorkaise, il y a travaillé avec Lee Krasner en 1949 et 1950.',
+      },
+    ],
+    sources: [
+      { label: '6sqft, 26 octobre 2026, « Jackson Pollock and Lee Krasner’s former Greenwich Village studio lists for $8M »', url: 'https://www.6sqft.com/jackson-pollock-and-lee-krasners-former-greenwich-village-studio-lists-for-8m/' },
+      { label: 'The Spaces, 2 novembre 2026, « Jackson Pollock and Lee Krasner’s former Greenwich Village studio is for sale »', url: 'https://thespaces.com/jackson-pollock-and-lee-krasner-s-former-greenwich-village-studio-is-for-sale/' },
+    ],
+  },
   {
     slug: 'locaux-transformes-en-logements-les-chiffres',
     art: 'bureau',
