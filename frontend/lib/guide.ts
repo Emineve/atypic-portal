@@ -42,6 +42,118 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'locaux-transformes-en-logements-les-chiffres',
+    art: 'bureau',
+    title: 'Bureaux, granges, commerces devenus logements : 22 000 par an, et ce que cela dit du marché',
+    description:
+      'Une étude publiée par la Banque des Territoires compte les logements nés d’un local transformé : 241 800 entre 2013 et 2023, dont 40 % créés par des particuliers. Les chiffres, et les limites.',
+    category: 'Marché',
+    published: '2026-11-27',
+    updated: '2026-11-27',
+    readMinutes: 5,
+    intro:
+      'Un loft dans d’anciens bureaux, une grange habitée, une boutique devenue maison de ville : ces biens ont longtemps passé pour des curiosités. Une étude publiée en juin 2026 par la Banque des Territoires les compte de 2013 à 2023, à partir des autorisations d’urbanisme. Le résultat surprend par son ampleur, et il éclaire ce qu’un acheteur doit regarder dans un bien transformé.',
+    takeaways: [
+      'Entre 2013 et 2023, 241 800 logements ont été créés en France par la transformation d’un local d’activité : environ 22 000 par an.',
+      'Cela représente 5,4 % des logements produits sur la période.',
+      'Les bureaux arrivent en tête (24 %), juste devant les bâtiments agricoles (22 %).',
+      'Quatre logements sur dix ont été créés par des particuliers, et l’opération moyenne ne compte que 2,4 logements.',
+    ],
+    sections: [
+      {
+        title: 'Que compte l’étude ?',
+        paragraphs: [
+          'Elle porte sur tous les locaux d’activité qui ont changé de destination pour devenir des logements, entre 2013 et 2023. Elle a été réalisée par une chaire de recherche de deux écoles d’architecture parisiennes, à partir de la base nationale des permis de construire et des déclarations préalables.',
+          'Sur la période, elle recense 99 200 opérations et 17,4 millions de mètres carrés transformés. Le rythme annuel est passé d’environ 18 000 à 25 000 logements, soit une hausse moyenne de 3 % par an.',
+        ],
+      },
+      {
+        title: 'D’où viennent ces logements ?',
+        paragraphs: [
+          'Pas seulement des tours de bureaux. La répartition par bâtiment d’origine montre un phénomène très dispersé.',
+        ],
+        list: [
+          'Bureaux : 24 %.',
+          'Bâtiments agricoles : 22 %.',
+          'Bâtiments de services publics : 14 %.',
+          'Commerces : 12 %.',
+          'Entrepôts : 10 %.',
+          'Hôtels et hébergements : 9 %.',
+          'Usines et ateliers d’artisans : une part marginale.',
+        ],
+      },
+      {
+        title: 'Qui transforme ?',
+        paragraphs: [
+          'D’abord des particuliers : ils sont à l’origine de 40 % des logements créés, contre un tiers pour les promoteurs et les investisseurs. Près de la moitié de ces logements (42 %) sont des maisons individuelles.',
+          'Ces transformations se trouvent partout, dans les centres des grandes villes comme à la campagne. Les grandes opérations, elles, se concentrent dans les métropoles. Quand on ne regarde que les immeubles tertiaires transformés en plusieurs logements, les promoteurs dominent et l’opération moyenne approche dix logements.',
+        ],
+      },
+      {
+        title: 'Un exemple : à quoi ressemble une grande opération ?',
+        paragraphs: [
+          'À Hayange, en Moselle, les anciens bureaux d’une dynastie de maîtres de forges, construits entre 1892 et 1906 et abandonnés à la fin des années 1970, sont en cours de transformation en 125 logements. Le bâtiment est classé monument historique depuis 2013.',
+          'D’après le site spécialisé Batiweb, le chantier a commencé en juillet 2026 pour une livraison annoncée fin 2027. Selon l’opérateur, 120 logements avaient déjà trouvé preneur à cette date.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui rend une transformation difficile ?',
+        paragraphs: [
+          'L’étude liste les obstacles que rencontrent ces projets. Ce sont aussi les points à regarder quand on achète un bien déjà transformé.',
+        ],
+        list: [
+          'La profondeur du bâtiment : au-delà de quinze mètres, il devient difficile d’éclairer et de ventiler naturellement le cœur du logement.',
+          'La surface perdue : une transformation restitue 70 à 75 % de la surface en surface habitable, contre environ 90 % dans le neuf.',
+          'Les grandes baies vitrées, qui peuvent peser sur la performance énergétique.',
+          'L’acoustique et la sécurité incendie, plus exigeantes pour un logement que pour un local.',
+          'L’urbanisme et la copropriété : le plan local d’urbanisme doit permettre le changement de destination, et le règlement de copropriété peut exiger l’accord des autres copropriétaires.',
+        ],
+      },
+      {
+        title: 'Une transformation coûte-t-elle moins cher que du neuf ?',
+        paragraphs: [
+          'Pas forcément. L’étude rapporte que certains professionnels avancent un surcoût de 15 à 20 % par rapport à une construction neuve. Les économies faites sur la structure sont en partie absorbées par les renforcements, l’isolation acoustique, le désamiantage et les imprévus.',
+          'Les auteurs soulignent surtout que les coûts réels sont rarement publiés et varient beaucoup d’un projet à l’autre.',
+        ],
+      },
+      {
+        title: 'Quelles sont les limites de ces chiffres ?',
+        paragraphs: [
+          'Ils comptent des autorisations, pas des logements livrés ni des biens à vendre. Ils ne disent rien de la qualité des logements obtenus. Et les projections de l’étude pour les années à venir prolongent une tendance : ce ne sont pas des observations.',
+          'Ils montrent en revanche une chose : le bien « qui a eu une autre vie » n’est plus une exception. Les vérifications à faire avant d’acheter, elles, ne changent pas.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Devant un bien issu d’une transformation',
+      items: [
+        'J’ai l’autorisation d’urbanisme du changement de destination.',
+        'J’ai vérifié ce que dit le règlement de copropriété sur l’usage du lot.',
+        'Je sais quelles pièces reçoivent la lumière du jour, et lesquelles sont en second jour.',
+        'J’ai comparé la surface annoncée et la surface réellement habitable.',
+        'J’ai lu le DPE en regardant la part des vitrages.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Combien de logements naissent chaque année d’un local transformé ?',
+        a: 'Environ 22 000 par an en moyenne entre 2013 et 2023, d’après l’étude publiée par la Banque des Territoires, soit 5,4 % des logements produits.',
+      },
+      {
+        q: 'Les usines transformées en lofts pèsent-elles lourd dans ces chiffres ?',
+        a: 'Non. Les bâtiments industriels et artisanaux ne représentent qu’une part marginale des logements créés. Les bureaux et les bâtiments agricoles en fournissent près de la moitié à eux deux.',
+      },
+      {
+        q: 'Un particulier peut-il transformer lui-même un local en logement ?',
+        a: 'Oui, et c’est fréquent : 40 % des logements créés l’ont été par des particuliers. Il faut une autorisation d’urbanisme et, en copropriété, respecter le règlement.',
+      },
+    ],
+    sources: [
+      { label: 'Banque des Territoires, Éclairages n° 36, juin 2026, « Transformer des bâtiments non résidentiels en logements : un bilan rétrospectif, une analyse du potentiel »', url: 'https://www.banquedesterritoires.fr/sites/default/files/2026-09/Eclairages_36_TRANSFORMER_BATIMENTS_NON_RESIDENTIELS_EN_LOGEMENTS_Juin_26.pdf' },
+      { label: 'Batiweb, 16 juillet 2026, « De monument industriel à projet résidentiel, la transformation du domaine de Wendel »', url: 'https://www.batiweb.com/actualites/patrimoine/domaine-wendel-hayange-rehabilitation-125-logements-49099' },
+    ],
+  },
+  {
     slug: 'dpe-et-aides-ce-qui-change-au-1er-janvier-2027',
     art: 'dpe',
     title: 'DPE et aides à la rénovation : ce qui change au 1er janvier 2027 pour un bien à rénover',
