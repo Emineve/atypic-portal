@@ -42,6 +42,106 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'dpe-et-aides-ce-qui-change-au-1er-janvier-2027',
+    art: 'dpe',
+    title: 'DPE et aides à la rénovation : ce qui change au 1er janvier 2027 pour un bien à rénover',
+    description:
+      'Au 1er janvier 2027, l’électricité pèse moins dans le calcul du DPE. Ce que deviennent les diagnostics déjà faits, ce qui a changé pour MaPrimeRénov’, et ce qu’un acheteur doit vérifier.',
+    category: 'Surfaces et travaux',
+    published: '2026-11-27',
+    updated: '2026-11-27',
+    readMinutes: 5,
+    intro:
+      'Un ancien atelier chauffé par des convecteurs, un loft sous verrière, une grange à isoler : quand on achète un bien à rénover, l’étiquette énergie et les aides comptent dans le budget. Or les deux bougent. Le calcul du DPE change au 1er janvier 2027, et les règles de MaPrimeRénov’ ont été resserrées à l’été 2026. Voici ce qui est acté, d’après le ministère et la presse spécialisée, et ce qui ne l’est pas encore.',
+    takeaways: [
+      'Au 1er janvier 2027, le coefficient appliqué à l’électricité dans le DPE passe de 1,9 à 1,7. Un bien chauffé à l’électricité peut y gagner une classe, sans travaux.',
+      'Les DPE déjà réalisés restent valables. À partir du 1er janvier 2027, leur mise à jour est gratuite, en ligne, sans nouvelle visite.',
+      'Depuis le 1er septembre 2026, MaPrimeRénov’ ne finance plus plusieurs travaux réalisés seuls, dont l’isolation et la ventilation.',
+      'Le barème des aides pour 2027 dépend du budget de l’État, qui n’était pas adopté fin novembre 2026.',
+    ],
+    sections: [
+      {
+        title: 'Qu’est-ce qui change dans le calcul du DPE ?',
+        paragraphs: [
+          'Le DPE convertit l’électricité consommée en « énergie primaire » à l’aide d’un coefficient. Ce coefficient était de 2,3 ; il est passé à 1,9 au 1er janvier 2026 ; il passera à 1,7 au 1er janvier 2027. Le ministère chargé de l’écologie l’a annoncé le 31 août 2026, à la parution de l’arrêté, daté du 19 août.',
+          'Plus le coefficient est bas, moins l’électricité pèse dans le résultat. Selon le ministère, aucun logement ne verra son étiquette se dégrader. D’après les diagnostiqueurs, les biens chauffés au gaz, au fioul ou au bois ne sont pas concernés.',
+        ],
+      },
+      {
+        title: 'Quels biens atypiques sont concernés ?',
+        paragraphs: [
+          'Ceux qui sont chauffés à l’électricité. C’est fréquent dans les anciens locaux d’activité transformés en logements, où l’on a posé des convecteurs faute de raccordement au gaz ou au chauffage de l’immeuble.',
+          'Le changement ne rend pas le bien plus facile à chauffer. Un grand volume sous verrière consommera autant le 2 janvier que le 31 décembre : seule la façon de compter évolue.',
+        ],
+      },
+      {
+        title: 'Que devient un DPE déjà réalisé ?',
+        paragraphs: [
+          'Il reste valable jusqu’à sa date d’expiration. À partir du 1er janvier 2027, son propriétaire pourra obtenir gratuitement une attestation avec la nouvelle étiquette, sur le site de l’Observatoire DPE-Audit de l’Ademe, sans faire revenir le diagnostiqueur.',
+          'Sans cette attestation, c’est l’étiquette d’origine qui continue de s’appliquer. Si vous signez début 2027 pour un bien chauffé à l’électricité, demandez au vendeur l’attestation à jour.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui a changé pour MaPrimeRénov’ ?',
+        paragraphs: [
+          'Un décret et deux arrêtés du 25 août 2026 s’appliquent aux demandes déposées depuis le 1er septembre 2026. D’après la Banque des Territoires, plusieurs travaux ne sont plus aidés lorsqu’ils sont réalisés seuls.',
+        ],
+        list: [
+          'L’isolation et la ventilation.',
+          'Le chauffage et l’eau chaude au bois.',
+          'Les chauffe-eau thermodynamiques et le solaire thermique.',
+          'Pour la rénovation complète d’une maison : aucune aide si un chauffage au gaz ou au fioul est installé ou conservé.',
+        ],
+      },
+      {
+        title: 'Une meilleure étiquette peut-elle faire perdre une aide ?',
+        paragraphs: [
+          'C’est le revers du nouveau calcul. La rénovation complète aidée par MaPrimeRénov’ vise les logements classés E, F ou G avant travaux, avec un gain d’au moins deux classes. D’après le comparateur Selectra, un bien qui passerait de E à D par le seul effet du nouveau coefficient sortirait de ce cadre.',
+          'Si vous comptez sur cette aide pour un bien chauffé à l’électricité et classé E, posez la question à un conseiller France Rénov’ avant de signer, pas après.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui n’est pas encore décidé ?',
+        paragraphs: [
+          'Les montants et les plafonds de 2027. Ils dépendent de la loi de finances, qui n’était pas adoptée fin novembre 2026. Les sites spécialisés évoquent d’autres évolutions, notamment pour les pompes à chaleur, mais aucun texte n’était publié à cette date.',
+          'Un devis d’aides établi aujourd’hui vaut donc pour une demande déposée aujourd’hui. Ne bâtissez pas un budget de travaux sur une aide dont le barème n’est pas connu.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant de signer pour un bien à rénover',
+      items: [
+        'Je connais l’énergie de chauffage du bien et la date de son DPE.',
+        'Pour un bien chauffé à l’électricité, j’ai demandé si l’étiquette changera en 2027.',
+        'J’ai vérifié auprès de France Rénov’ si le bien et mes travaux ouvrent droit à une aide, à la date où je déposerai la demande.',
+        'Mon budget de travaux tient sans les aides ; elles viennent en plus.',
+        'Pour un ancien local devenu logement, j’ai demandé si son ancienneté et son statut sont reconnus pour les aides.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Faut-il refaire son DPE en 2027 ?',
+        a: 'Non. Le DPE reste valable, et sa mise à jour avec le nouveau coefficient est gratuite et se fait en ligne à partir du 1er janvier 2027.',
+      },
+      {
+        q: 'Un bien chauffé au gaz change-t-il d’étiquette ?',
+        a: 'Non, d’après les diagnostiqueurs : le changement ne porte que sur l’électricité.',
+      },
+      {
+        q: 'L’isolation d’une toiture ou d’une verrière est-elle encore aidée ?',
+        a: 'Plus par MaPrimeRénov’ lorsqu’elle est réalisée seule, depuis le 1er septembre 2026. Elle peut l’être dans le cadre d’une rénovation complète, sous conditions. D’autres dispositifs existent : renseignez-vous auprès de France Rénov’.',
+      },
+    ],
+    sources: [
+      { label: 'Ministère chargé de l’écologie, communiqué du 31 août 2026 sur l’arrêté abaissant à 1,7 le coefficient de l’électricité au 1er janvier 2027', url: 'https://www.ecologie.gouv.fr/presse/dpe-audits-energetiques-publication-larrete-abaissant-facteur-conversion-lelectricite-17-1er' },
+      { label: 'Banque des Territoires, 1er septembre 2026, « Rénovation énergétique : les grands changements du DPE et de MaPrimeRénov’ parus cet été »', url: 'https://www.banquedesterritoires.fr/renovation-energetique-les-grands-changements-du-dpe-et-de-maprimerenov-parus-cet-ete' },
+      { label: 'Dimo Diagnostic, 16 septembre 2026, « Nouveau DPE : ce qui change en 2026 et 2027 »', url: 'https://www.dimo-diagnostic.net/actualite-diagnostic-immobilier/nouveau-dpe' },
+      { label: 'Selectra, 26 août 2026, « Votre DPE gagne une lettre en 2027, votre MaPrimeRénov’ peut perdre 8 000 € »', url: 'https://selectra.info/energie/actualites/renovation-energetique/dpe-1-7-2027-maprimerenov-ampleur-saut-classes-aide-perdue' },
+      { label: 'LogementInfo, mis à jour le 10 novembre 2026, « MaPrimeRénov’ 2027 : montants actuels, projet en discussion »', url: 'https://logementinfo.fr/guides/maprimerenov-2027-guide-complet-proprietaire' },
+      { label: 'Clic Travaux, 11 novembre 2026, « Aides à la rénovation 2027 : ce qui change au 1er janvier, et ce qui dépend encore du budget »', url: 'https://www.clictravaux.com/aides-renovation-2027/' },
+    ],
+  },
+  {
     slug: 'laforet-collection-biens-de-caractere',
     art: 'hotel',
     title: 'Laforêt Collection : un grand réseau généraliste s’installe sur les biens de caractère',
