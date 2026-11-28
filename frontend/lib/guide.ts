@@ -45,6 +45,91 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'appartement-dora-maar-dessins-picasso-a-vendre',
+    art: 'cheminee',
+    title: 'À Paris, l’appartement de Dora Maar est à vendre, avec des dessins de Picasso sur le mur du salon',
+    description:
+      'À Saint-Germain-des-Prés, l’appartement où Dora Maar a vécu de 1946 à 1997 est en vente pour 2,85 millions d’euros. Sur un mur du salon, une quinzaine de dessins attribués à Picasso.',
+    category: 'Hors norme',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 4,
+    intro:
+      'Il y a des biens que l’on achète pour leur volume, d’autres pour leur vue. Celui-ci se distingue par un mur. Dans le salon de l’appartement parisien où la photographe et peintre Dora Maar a vécu un demi-siècle, une quinzaine de petits dessins d’insectes sont restés en place, attribués à Picasso. L’appartement est en vente depuis la fin novembre 2026.',
+    takeaways: [
+      'L’appartement se trouve à Saint-Germain-des-Prés, dans le 6e arrondissement de Paris.',
+      'Il mesure 148 m², au premier étage sans ascenseur, avec 3,75 m sous plafond.',
+      'Dora Maar y a vécu de 1946 à sa mort, en 1997.',
+      'Prix demandé : 2,85 millions d’euros.',
+    ],
+    sections: [
+      {
+        title: 'De quel bien s’agit-il ?',
+        paragraphs: [
+          'D’un appartement de 148 m² derrière une porte cochère, au premier étage d’un immeuble du XVIIe siècle. D’après la presse, l’immeuble aurait été élevé en 1675 sur les restes d’un ancien hôtel particulier, dont subsisteraient des poutres bien plus anciennes, mises au jour pendant des travaux.',
+          'Le salon mesure 48 m², avec une cheminée en état de marche. On compte deux chambres et un bureau, un parquet en point de Hongrie et 3,75 m de hauteur sous plafond.',
+        ],
+      },
+      {
+        title: 'Que sont ces dessins ?',
+        paragraphs: [
+          'Une quinzaine de petits dessins faits à la main, à même le mur du salon, près de la cheminée. Ils représentent des insectes : araignées, fourmis, cafards. Ils sont aujourd’hui protégés par des plaques de verre.',
+          'D’après les articles consultés, ils ont été reconnus par l’organisme qui gère l’œuvre de Picasso. Aucun de ces articles ne dit s’ils font l’objet d’une protection au titre des monuments historiques.',
+        ],
+      },
+      {
+        title: 'Quel est le lien avec Dora Maar et Picasso ?',
+        paragraphs: [
+          'Dora Maar, photographe et peintre, a rencontré Picasso au milieu des années 1930 et a été sa compagne pendant plusieurs années. Elle s’est installée dans cet appartement en 1946 et y est restée jusqu’à sa mort, en 1997.',
+        ],
+      },
+      {
+        title: 'À quel prix est-il vendu ?',
+        paragraphs: [
+          'Le prix demandé est de 2,85 millions d’euros. La presse indique 5 600 euros de charges annuelles et 2 250 euros de taxe foncière. La vente est confiée à une agence parisienne, Philippe Menager - Nicolas Hug, d’après le site Purepeople.',
+          'Un prix demandé n’est pas un prix de vente : celui-ci ne sera connu qu’une fois la vente conclue.',
+        ],
+      },
+      {
+        title: 'Qu’achète-t-on quand on achète un mur dessiné ?',
+        paragraphs: [
+          'Les articles ne le disent pas, et c’est la première chose qu’un acheteur voudrait savoir. Un bien qui porte une œuvre sur ses murs pose des questions qu’un appartement ordinaire ne pose pas.',
+        ],
+        list: [
+          'Les dessins sont-ils compris dans la vente, et l’acte le précise-t-il ?',
+          'Le propriétaire a-t-il des obligations de conservation, ou le droit de les déplacer ?',
+          'Comment sont-ils assurés, et qui paie leur entretien ?',
+          'Quels travaux restent possibles dans la pièce ?',
+        ],
+      },
+      {
+        title: 'Et pour un bien atypique plus ordinaire ?',
+        paragraphs: [
+          'Peu de biens portent une signature pareille, mais beaucoup ont « une histoire » : un atelier d’artiste, une fresque, une verrière d’origine, un décor ancien. Ce qui fait leur charme peut aussi limiter ce que l’on a le droit d’y faire. Mieux vaut le demander au notaire avant de signer.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Où se trouve l’appartement de Dora Maar ?',
+        a: 'À Saint-Germain-des-Prés, dans le 6e arrondissement de Paris. Elle y a vécu de 1946 à 1997.',
+      },
+      {
+        q: 'Combien coûte-t-il ?',
+        a: 'Le prix demandé est de 2,85 millions d’euros, pour 148 m² au premier étage.',
+      },
+      {
+        q: 'Les dessins de Picasso sont-ils vendus avec l’appartement ?',
+        a: 'Les articles consultés ne le précisent pas. Ils indiquent seulement que les dessins sont toujours en place sur le mur du salon, sous verre.',
+      },
+    ],
+    sources: [
+      { label: 'Purepeople, 23 novembre 2026, « A Saint-Germain-des-Prés, l’appartement de 148m² de Dora Maar, muse de Picasso, mis en vente pour plusieurs millions d’euros »', url: 'https://www.purepeople.com/article/a-saint-germain-des-pres-lappartement-de-148m-de-dora-maar-muse-de-picasso-mise-en-vente-pour-plusieurs-millions-deuros_a556359/1' },
+      { label: 'USA Art News, 24 novembre 2026, article sur la mise en vente de l’appartement parisien de Dora Maar', url: 'https://usaartnews.com/art-market/dora-maars-paris-apartment-with-picasso-wall-art-lists-for-285-million/' },
+      { label: 'Beloud, 26 novembre 2026, « Un appartement orné de dessins de Picasso proposé à la vente pour près de trois millions d’euros »', url: 'https://www.beloud.com/news/149376639' },
+    ],
+  },
+  {
     slug: 'atelier-pollock-krasner-new-york-a-vendre',
     art: 'atelier',
     title: 'À New York, l’ancien atelier de Jackson Pollock et Lee Krasner est à vendre',
