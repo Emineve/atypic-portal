@@ -15,6 +15,8 @@ export const GUIDE_RUBRICS = [
   // « Hors norme » : les ventes dont on parle (biens extravagants, biens liés à une personnalité). Synthèses de la presse, sources citées,
   // prix demandé donné comme un fait, sans avis. Pas d'adresse précise pour la résidence actuelle d'une personne vivante.
   { name: 'Hors norme', anchor: 'hors-norme', intro: 'Ateliers de peintres, maisons de célébrités, biens extravagants : les ventes dont on parle.' },
+  // « À l’étranger » : ce qui se fait hors de France. Synthèses, sources citées, chiffres dans leur unité et leur monnaie d'origine.
+  { name: 'À l’étranger', anchor: 'etranger', intro: 'Reconversions, habitat sur l’eau, ventes publiques : ce qui se fait ailleurs, sources à l’appui.' },
 ] as const;
 export type GuideRubric = (typeof GUIDE_RUBRICS)[number]['name'];
 
@@ -44,6 +46,436 @@ export interface GuideArticle {
 }
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
+  {
+    slug: 'pays-bas-bureaux-transformes-en-logements-quatrieme-baisse',
+    art: 'bureau',
+    title: 'Aux Pays-Bas, les bureaux transformés en logements reculent pour la quatrième année',
+    description: 'En 2025, environ 6 400 logements sont nés de la transformation de bureaux, commerces ou ateliers aux Pays-Bas, 19 % de moins qu’en 2024. Les chiffres de l’office statistique.',
+    category: 'À l’étranger',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 4,
+    intro: 'Les Pays-Bas comptent chaque année les logements créés dans des bâtiments qui n’en étaient pas : bureaux, commerces, écoles, ateliers. Le dernier relevé de l’office statistique néerlandais, le CBS, publié le 3 novembre 2026, montre un recul pour la quatrième année de suite.',
+    takeaways: [
+      'Environ 6 400 logements issus de transformations en 2025, contre 7 900 en 2024 : 19 % de moins.',
+      'Les anciens bureaux reculent le plus : 1 690 logements, contre 2 765 un an plus tôt.',
+      'Les anciens commerces sont la seule catégorie en hausse.',
+      'Première estimation pour le premier semestre 2026 : près de 3 000 logements.',
+    ],
+    sections: [
+      {
+        title: 'Que disent les chiffres ?',
+        paragraphs: [
+          'Selon le CBS, environ 6 400 logements ont été créés en 2025 par transformation de bâtiments existants, contre 7 900 en 2024. Le point haut date de 2019, avec 12 500 logements. Depuis 2022, chaque année est inférieure à la précédente.',
+          'Ces transformations représentent 7 % des logements ajoutés au parc néerlandais en 2025, contre 9 % en 2024. La construction neuve, elle, est restée stable, autour de 69 000 logements.',
+        ],
+        list: [
+          '2019 : 12 500 logements issus de transformations.',
+          '2022 : 9 600.',
+          '2023 : 8 800.',
+          '2024 : 7 900.',
+          '2025 : 6 400.',
+        ],
+      },
+      {
+        title: 'D’où viennent ces logements ?',
+        paragraphs: [
+          'Le CBS classe les logements selon l’usage d’origine du bâtiment. Les anciens bureaux pèsent un peu plus d’un quart du total en 2025, contre 35 % en 2024.',
+        ],
+        list: [
+          'Bureaux : 1 690 logements en 2025, contre 2 765 en 2024.',
+          'Commerces : 1 253, contre 1 155.',
+          'Bâtiments à fonction sociale ou institutionnelle : 1 185, contre 1 450.',
+          'Bâtiments industriels : 380, contre 510.',
+          'Autres usages : 1 900, contre 1 995.',
+        ],
+      },
+      {
+        title: 'Qui occupe ces logements ?',
+        paragraphs: [
+          'Le recul vient surtout du locatif privé : 3 700 logements en 2025, contre 5 700 en 2024. Les logements occupés par leur propriétaire progressent (1 700, contre 1 400), comme ceux des bailleurs sociaux (1 010, contre 635).',
+          'Le CBS évoque un lien possible avec la loi néerlandaise sur les loyers abordables, en vigueur depuis juillet 2024. Il le présente comme une hypothèse, pas comme une cause établie.',
+        ],
+      },
+      {
+        title: 'Et en 2026 ?',
+        paragraphs: [
+          'La première estimation du CBS pour le premier semestre 2026 fait état de près de 3 000 logements issus de transformations. Le chiffre est provisoire.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Ces chiffres sont-ils comparables aux chiffres français ?', a: 'Non. Chaque pays compte à sa façon. Le CBS suit les logements créés dans des bâtiments existants qui n’étaient pas des logements ; les statistiques françaises reposent sur d’autres définitions.' },
+      { q: 'D’où viennent ces données ?', a: 'De l’office statistique néerlandais, le CBS, dans une publication du 3 novembre 2026. La presse néerlandaise des collectivités les a reprises le même jour.' },
+    ],
+    sources: [
+      { label: 'CBS, office statistique néerlandais, publication du 3 novembre 2026', url: 'https://www.cbs.nl/nl-nl/nieuws/2026/45/opnieuw-minder-woningen-ontstaan-uit-transformatie' },
+      { label: 'Binnenlands Bestuur, 3 novembre 2026', url: 'https://www.binnenlandsbestuur.nl/ruimte-en-milieu/opnieuw-minder-panden-getransformeerd-tot-woning' },
+    ],
+  },
+  {
+    slug: 'new-york-bureaux-transformes-en-logements-record-et-controles',
+    art: 'hauteur',
+    title: 'À New York, les bureaux deviennent des logements à un rythme record, sous l’œil des inspecteurs',
+    description: 'New York est la première ville américaine pour les logements prévus dans d’anciens bureaux. Après un incident de chantier en juillet 2026, la ville a inspecté 180 sites.',
+    category: 'À l’étranger',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 5,
+    intro: 'Des tours de bureaux vides, une ville qui manque de logements : New York a changé ses règles pour que les premières deviennent les seconds. Les projets se sont multipliés. Un incident de chantier, à l’été 2026, a conduit la ville à inspecter 180 sites.',
+    takeaways: [
+      'Début 2026, 16 358 logements étaient en projet dans d’anciens bureaux à New York, selon une étude RentCafe reprise par la presse professionnelle.',
+      'Depuis décembre 2024, les immeubles construits avant 1991 peuvent être convertis, dans toute la ville.',
+      'Un avantage fiscal est accordé en échange de 25 % de logements à loyer encadré.',
+      'Après un effondrement partiel sur un chantier en juillet 2026, 19 chantiers ont été arrêtés, dont un seul de conversion.',
+    ],
+    sections: [
+      {
+        title: 'Combien de logements sont en projet ?',
+        paragraphs: [
+          'D’après une étude RentCafe citée par Multifamily Executive et GlobeSt, 90 300 logements étaient en projet dans d’anciens bureaux aux États-Unis au début de 2026, soit 28 % de plus qu’un an plus tôt. New York arrive en tête avec 16 358 logements, presque le double de l’année précédente, devant Washington (8 479).',
+          'Les comptages varient selon les sources, parce qu’ils ne couvrent pas le même périmètre. Le contrôleur de la Ville de New York recensait, sur des données du début de 2025, 44 projets et 17 432 logements.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui a changé dans les règles ?',
+        paragraphs: [
+          'Deux choses, d’après le rapport du contrôleur de la Ville et la revue de l’Association américaine d’urbanisme.',
+        ],
+        list: [
+          'Le zonage : la réforme adoptée en décembre 2024 autorise les conversions dans toute la ville et les ouvre aux immeubles construits avant 1991. La limite était auparavant fixée à 1961, ou 1977 selon les secteurs.',
+          'La fiscalité : un avantage voté en mai 2024 est accordé si 25 % des logements sont à loyer encadré. Sa durée diminue avec le temps : 30 ans pour les chantiers lancés avant la fin de juin 2026, 25 ans jusqu’en juin 2028, 20 ans jusqu’en juin 2031.',
+        ],
+      },
+      {
+        title: 'À quoi ressemblent ces opérations ?',
+        paragraphs: [
+          'Elles sont de grande taille. Au 25 Water Street, dans le sud de Manhattan, environ 1 300 logements ont été créés et mis en location à partir de janvier 2025. Au 5 Times Square, une tour de 38 étages doit accueillir 1 250 logements locatifs, dont 313 abordables, avec une première phase prévue en 2027.',
+          'La revue de l’Association américaine d’urbanisme indique un taux de vacance des bureaux de 22,3 % à Manhattan en 2025.',
+        ],
+      },
+      {
+        title: 'Que s’est-il passé à l’été 2026 ?',
+        paragraphs: [
+          'Le 7 juillet 2026, des poteaux de structure ont cédé sur le chantier de l’ancien siège de Pfizer, à Manhattan, en cours de conversion. Une partie du bâtiment s’est effondrée, des immeubles ont été évacués et des rues fermées, rapporte Construction Dive.',
+          'Le service des bâtiments de la ville a ensuite inspecté 180 chantiers liés à l’équipe du projet, dont 24 conversions de bureaux en logements. Résultat annoncé début août : 19 arrêts de chantier, dont un seul sur une conversion. Selon la même source, l’inspection n’a relevé ni danger immédiat pour le public, ni élément montrant que le problème serait propre aux conversions. L’enquête sur le chantier lui-même se poursuivait.',
+        ],
+      },
+      {
+        title: 'Combien cela coûte-t-il à la ville ?',
+        paragraphs: [
+          'Le contrôleur de la Ville estime la dépense fiscale liée à l’avantage à 5,6 milliards de dollars sur 37 ans, en valeur actualisée, pour environ 3 600 logements à loyer encadré. Ce calcul porte sur les projets connus au début de 2025.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Tous les immeubles de bureaux peuvent-ils être convertis ?', a: 'Non. À New York, la règle vise les immeubles construits avant 1991. Chaque opération dépend ensuite de la forme du bâtiment et de son coût.' },
+      { q: 'Les conversions sont-elles plus risquées que d’autres chantiers ?', a: 'L’inspection menée par la ville après l’incident de juillet 2026 n’a pas relevé d’élément en ce sens, selon Construction Dive. L’enquête sur le chantier concerné n’était pas terminée.' },
+    ],
+    sources: [
+      { label: 'Contrôleur de la Ville de New York, rapport sur les conversions de bureaux en logements', url: 'https://comptroller.nyc.gov/reports/office-to-residential-conversions/' },
+      { label: 'Planning Magazine, Association américaine d’urbanisme, 16 novembre 2026', url: 'https://planning.org/planning/2026/nov/the-city-of-yes-had-great-expectations-was-it-worth-it/' },
+      { label: 'Construction Dive, août 2026', url: 'https://constructiondive.com/news/nyc-dob-wraps-safety-sweep-buildings-collapse-office-residential/827062' },
+      { label: 'Multifamily Executive, 27 mars 2026', url: 'https://www.multifamilyexecutive.com/data-trends/office-apartment-conversions-surge-pipeline-nears-100000-units' },
+      { label: 'GlobeSt, 27 mars 2026', url: 'https://www.globest.com/amp/2026/03/27/office-to-apartment-conversions-hit-record-levels/' },
+    ],
+  },
+  {
+    slug: 'calgary-21-immeubles-de-bureaux-convertis-en-logements',
+    art: 'division',
+    title: 'À Calgary, la Ville paie pour que 21 immeubles de bureaux deviennent des logements',
+    description: 'Calgary, au Canada, subventionne la conversion de bureaux du centre-ville : 21 projets, 2 667 logements, jusqu’à 75 dollars par pied carré. Ce que dit la Ville.',
+    category: 'À l’étranger',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 4,
+    intro: 'Calgary, dans l’ouest du Canada, a un centre-ville riche en tours de bureaux peu occupées. La Ville a choisi de subventionner leur transformation. Son programme, relancé en 2026, soutient aujourd’hui 21 projets.',
+    takeaways: [
+      '21 projets soutenus, pour 2 667 logements, un hôtel et une auberge de jeunesse, selon la Ville (novembre 2026).',
+      'Aide : jusqu’à 75 dollars canadiens par pied carré de bureau converti.',
+      'Objectif : retirer 6 millions de pieds carrés de bureaux sous-utilisés d’ici 2031.',
+      'Un volet réservé au logement hors marché a versé ses premières subventions en février 2026.',
+    ],
+    sections: [
+      {
+        title: 'Comment fonctionne le programme ?',
+        paragraphs: [
+          'La Ville verse une aide au propriétaire qui transforme un immeuble de bureaux du centre-ville : jusqu’à 75 dollars canadiens par pied carré converti, soit un peu plus de 800 dollars par mètre carré. Elle estime que chaque dollar public s’accompagne d’environ quatre dollars privés.',
+          'D’après ses pages mises à jour en novembre 2026, les 21 projets soutenus représentent 2,68 millions de pieds carrés de bureaux, environ 249 000 m². Ils doivent donner 2 667 logements, un hôtel de 226 chambres et une auberge de jeunesse.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce qui a changé en 2026 ?',
+        paragraphs: [
+          'Le programme a été relancé avec de nouvelles règles : un critère d’impact, qui favorise le logement abordable et les grands projets, et une ouverture à d’autres usages, comme les résidences pour personnes âgées, la colocation ou le logement étudiant. La dernière période de candidature s’est tenue de la mi-juin à la fin de juillet 2026. Les décisions étaient attendues pour la fin de l’année.',
+        ],
+      },
+      {
+        title: 'Où en sont les chantiers ?',
+        paragraphs: [
+          'Le 6 mars 2026, la Ville a annoncé la livraison d’un ancien immeuble de bureaux de 1966, devenu 108 logements locatifs, avec 8,3 millions de dollars d’aide municipale. C’était la septième conversion achevée du programme.',
+          'En février 2026, un volet distinct, financé par un fonds fédéral, a attribué ses premières subventions : 10,3 millions de dollars pour 128 logements hors marché dans deux immeubles, portés par des organismes à but non lucratif, rapportent LiveWire Calgary et Global News.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'L’aide couvre-t-elle tout le coût d’une conversion ?', a: 'Non. Pour les deux projets hors marché de février 2026, Global News rapporte des subventions de 6,2 et 4,1 millions de dollars, pour des coûts d’environ 27,8 et 27,5 millions.' },
+      { q: 'Peut-on encore candidater ?', a: 'D’après la page de la Ville consultée fin novembre 2026, le programme est fermé aux nouvelles candidatures.' },
+    ],
+    sources: [
+      { label: 'Ville de Calgary, programmes d’incitation du centre-ville', url: 'https://www.calgary.ca/development/downtown-incentive.html' },
+      { label: 'Ville de Calgary, programme de conversion de bureaux', url: 'https://www.calgary.ca/development/downtown-office-conversion-program.html' },
+      { label: 'Ville de Calgary, communiqué du 6 mars 2026', url: 'https://newsroom.calgary.ca/the-hat--ninth-brings-creativity-and-culture-home-with-108-new-downtown-homes/' },
+      { label: 'LiveWire Calgary, 9 février 2026', url: 'https://livewirecalgary.com/2026/02/09/first-grants-doled-out-for-downtown-non-market-office-conversion-program/' },
+      { label: 'Global News, 9 février 2026', url: 'https://globalnews.ca/news/11660113/downtown-calgary-office-towers-conversion-affordable-housing-grant' },
+    ],
+  },
+  {
+    slug: 'angleterre-vivre-sur-un-bateau-regle-des-14-jours-reforme',
+    art: 'peniche',
+    title: 'En Angleterre, vivre sur un bateau sans amarrage fixe : la règle des 14 jours remise à plat',
+    description: 'Le gestionnaire des canaux anglais et gallois augmente ses licences et prépare une réforme des règles pour les bateaux habités sans amarrage attitré. Le calendrier.',
+    category: 'À l’étranger',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 5,
+    intro: 'Sur les canaux d’Angleterre et du pays de Galles, des milliers de personnes vivent sur un bateau sans place attitrée, en se déplaçant sans cesse. Le Canal & River Trust, qui gère ce réseau, a relevé ses tarifs en 2026 et prépare une réforme des règles. Les habitants concernés la contestent.',
+    takeaways: [
+      'Les licences de bateau ont augmenté de 4,85 % au 1er avril 2026.',
+      'La règle actuelle : pas plus de 14 jours au même endroit pour un bateau sans amarrage attitré.',
+      'Une commission a rendu 36 recommandations ; le Trust dit en accepter les conclusions.',
+      'Une consultation publique est prévue de décembre 2026 à février 2027. Les règles actuelles restent en vigueur d’ici là.',
+    ],
+    sections: [
+      {
+        title: 'Quelle est la règle aujourd’hui ?',
+        paragraphs: [
+          'Un bateau peut obtenir une licence sans disposer d’un amarrage attitré, à condition de naviguer. Le Canal & River Trust interprète la loi de 1995 ainsi : pas plus de 14 jours au même endroit, et un déplacement continu pendant toute la durée de la licence.',
+          'Devant la commission, le Trust a indiqué que vivre à bord à Londres sans amarrage attitré coûte moins de la moitié d’un loyer londonien courant. C’est l’une des raisons de la saturation de certains secteurs.',
+        ],
+      },
+      {
+        title: 'Que propose la commission ?',
+        paragraphs: [
+          'Le Trust a confié l’examen des licences à une commission, dont le rapport contient 36 recommandations. Pour les déplacements, elle propose notamment :',
+        ],
+        list: [
+          'de garder le principe des 14 jours ;',
+          'de remplacer la notion juridique actuelle de navigation par une règle de déplacement plus claire ;',
+          'd’ouvrir un débat sur les zones saturées, avec la possibilité de tarifs différenciés ou d’un nombre limité de licences, ce qui demanderait une nouvelle loi ;',
+          'de supprimer en trois ans la remise de 40 % accordée aux bateaux qui ne circulent que sur les rivières, soit un peu plus de 4 000 titulaires.',
+        ],
+      },
+      {
+        title: 'Quel est le calendrier ?',
+        paragraphs: [
+          'Le Trust a annoncé trois phases. La première, immédiate, porte sur l’information, l’aide sociale et le retrait des épaves. La deuxième, jusqu’à la fin de 2027, passe par une consultation sur les obligations de déplacement, la sécurité et l’assurance. La troisième, à partir de 2028, concerne les mesures qui exigent une nouvelle loi.',
+          'D’après la page de concertation du Trust, la consultation publique doit durer 14 semaines, de décembre 2026 à février 2027, avec une analyse indépendante au printemps 2027.',
+        ],
+      },
+      {
+        title: 'Et les tarifs ?',
+        paragraphs: [
+          'Les licences ont augmenté de 4,85 % au 1er avril 2026. Le Trust invoque l’inflation et la baisse de ses subventions publiques. Depuis 2024, des suppléments s’appliquent aussi aux bateaux sans amarrage attitré et aux bateaux larges. Le Trust évalue le non-paiement des licences à plus de 5 millions de livres par an.',
+        ],
+      },
+      {
+        title: 'Qu’en disent les habitants ?',
+        paragraphs: [
+          'L’association qui représente les bateliers itinérants, la NBTA, rejette le rapport comme base de réforme. Elle relève que la commission ne comptait aucun représentant des bateaux sans amarrage et que sa présidence a été nommée par le Trust, et elle juge l’approche punitive.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Les règles ont-elles déjà changé ?', a: 'Non. D’après le Trust, les règles actuelles restent en vigueur pendant la concertation.' },
+      { q: 'Cela concerne-t-il les bateaux amarrés à l’année ?', a: 'La règle des 14 jours vise les bateaux sans amarrage attitré. La hausse des licences, elle, concerne tous les bateaux.' },
+    ],
+    sources: [
+      { label: 'Canal & River Trust, tarifs des licences 2026-2027', url: 'https://canalrivertrust.org.uk/news-and-views/news/boat-licence-fees-for-2026-27' },
+      { label: 'Canal & River Trust, suites données aux recommandations', url: 'https://canalrivertrust.org.uk/news-and-views/news/were-moving-forward-with-commission-recommendations' },
+      { label: 'Rapport de la commission, obligations de déplacement et saturation', url: 'https://canalrivertrust.org.uk/boating/boating-news-and-views/boating-news/commission-to-review-future-framework-for-boat-licensing/section-3-movement-requirements-and-congestion' },
+      { label: 'Canal & River Trust, page de concertation', url: 'https://canalrivertrust.org.uk/boaterconsultation' },
+      { label: 'Towpath Talk, 27 février 2026', url: 'https://www.towpathtalk.co.uk/?p=54451' },
+      { label: 'NBTA, réponse au rapport, 2 février 2026', url: 'https://bargee-traveller.org.uk/nbta-publishes-full-response-to-crts-future-of-licensing-report/' },
+    ],
+  },
+  {
+    slug: 'etats-unis-phares-donnes-puis-vendus-aux-encheres',
+    art: 'phare',
+    title: 'Aux États-Unis, l’État donne ses phares, et vend aux enchères ceux dont personne ne veut',
+    description: 'Une loi américaine de 2000 organise la cession gratuite des phares à des organismes publics ou associatifs, puis leur vente aux enchères. Deux exemples en 2026.',
+    category: 'À l’étranger',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 5,
+    intro: 'Les États-Unis n’ont plus besoin de gardiens dans leurs phares, mais les bâtiments sont toujours là. Une loi de 2000 organise leur sort en deux temps : l’État les propose d’abord gratuitement à un organisme qui s’engage à les préserver, puis, faute de candidat, les vend aux enchères. Deux phares ont suivi ce chemin en 2026.',
+    takeaways: [
+      'La loi américaine de 2000 sur la préservation des phares prévoit une cession gratuite, réservée aux organismes publics, associatifs ou éducatifs.',
+      'Sans repreneur, le phare est vendu aux enchères publiques.',
+      'À Cleveland, un phare de 1910 a été de nouveau proposé gratuitement en avril 2026, après une enchère restée sans suite en 2023.',
+      'Dans le Rhode Island, un phare de 1827 avec maison de gardien a été annoncé aux enchères pour l’été 2026.',
+    ],
+    sections: [
+      {
+        title: 'Comment se passe une cession ?',
+        paragraphs: [
+          'La procédure est décrite par le Service des parcs nationaux. L’administration fédérale des biens, la GSA, publie un avis de disponibilité. Les organismes intéressés ont 60 jours pour se manifester, visitent le site, puis déposent un dossier dans les 90 jours qui suivent la visite. Un comité examine les candidatures et la GSA exécute le transfert.',
+          'Peuvent candidater les administrations, les associations à but non lucratif, les établissements d’enseignement et les organismes de développement local, pour un usage éducatif, culturel, de loisirs ou de préservation. S’il n’y a pas de candidat retenu, le phare est vendu au plus offrant.',
+        ],
+      },
+      {
+        title: 'Que s’est-il passé à Cleveland ?',
+        paragraphs: [
+          'Le 16 avril 2026, la GSA a annoncé chercher un repreneur pour le phare de l’entrée ouest du port de Cleveland, sur le lac Érié : une tour de quatre niveaux de 1910, avec une cuisine et d’anciens logements, inscrite au registre national des lieux historiques.',
+          'Ce n’était pas la première tentative. En 2023, le phare avait été mis aux enchères avec une mise à prix de 25 000 dollars. Selon la radio publique de l’Ohio, une offre de 425 000 dollars avait été faite, mais la vente n’a jamais été conclue. La même source précise que le phare n’est accessible qu’en bateau, qu’il est cédé en l’état et que les garde-côtes gardent l’accès à leurs équipements. Nous n’avons pas trouvé le résultat de l’appel de 2026.',
+        ],
+      },
+      {
+        title: 'Et dans le Rhode Island ?',
+        paragraphs: [
+          'Le phare de Warwick Neck, construit en 1827, a suivi le chemin inverse. Proposé gratuitement en mai 2023, avec sa maison de gardien de 1932, il n’a pas été transféré. La presse locale a annoncé en juin 2026 une vente aux enchères publiques pour l’été, sans mise à prix connue à cette date.',
+          'Le bien comprend une tour d’une quinzaine de mètres, une maison de quatre chambres et un garage, en bord de mer. Le feu reste en service et les garde-côtes continuent de l’exploiter. Nous n’avons pas trouvé le résultat de la vente.',
+        ],
+      },
+      {
+        title: 'Comment se déroulent les enchères ?',
+        paragraphs: [
+          'En ligne. Pour un autre phare, dans le Connecticut, la GSA demandait en 2025 un dépôt de 10 000 dollars pour s’inscrire, avec des paliers de 10 000 dollars et une clôture glissante : toute offre déposée dans les dernières 24 heures prolonge la vente de 24 heures. La visite était réservée aux enchérisseurs inscrits.',
+          'Les sommes en jeu restent modestes à l’échelle des ventes de l’État. Un rapport de la Cour des comptes américaine, le GAO, publié en avril 2026, cite un phare vendu récemment moins de 100 000 dollars.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Un particulier peut-il obtenir un phare gratuitement ?', a: 'Non. La cession gratuite est réservée aux organismes publics, associatifs ou éducatifs. Un particulier ne peut acheter qu’au stade des enchères.' },
+      { q: 'Le phare cesse-t-il de fonctionner après la vente ?', a: 'Pas forcément. Dans les deux exemples, le feu reste une aide à la navigation et les garde-côtes conservent un accès.' },
+    ],
+    sources: [
+      { label: 'GSA, communiqué du 16 avril 2026 sur le phare de Cleveland', url: 'https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-seeks-to-transfer-cleveland-harbor-lighthouse-to-eligible-community-organiza-04162026' },
+      { label: 'WYSU, radio publique de l’Ohio, 22 avril 2026', url: 'https://wysu.org/ohio-news/2026-04-22/cleveland-waterfront-property-available-spectacular-views-unbeatable-price-but-are-you-worthy' },
+      { label: 'GSA, annonce de l’enchère de 2023 à Cleveland', url: 'https://www.gsa.gov/about-gsa/newsroom/former-gsa-regional-news-archive/region-5-newsroom/great-lakes-feature-stories-and-news-releases/gsa-announces-public-sale-of-the-cleveland-pierhead-light-08012023' },
+      { label: 'Service des parcs nationaux, procédure de cession des phares', url: 'https://www.nps.gov/orgs/1220/nhlpaprocess.htm' },
+      { label: 'GSA, communiqué du 31 mai 2023 sur le phare de Warwick Neck', url: 'https://www.gsa.gov/about-gsa/newsroom/former-gsa-regional-news-archive/region-1-newsroom/press-releases/gsa-seeks-to-transfer-warwick-neck-lighthouse-in-w-05312023' },
+      { label: 'What’s Up Newp, 18 juin 2026', url: 'https://whatsupnewp.com/2026/06/historic-warwick-neck-lighthouse-headed-to-public-auction-this-summer/' },
+      { label: 'GSA, communiqué du 13 août 2025 sur le phare de Penfield Reef', url: 'https://www.gsa.gov/about-us/gsa-regions/region-1-new-england/region-1-newsroom/press-releases/iconic-lighthouse-up-for-auction-open-to-competitive-bidders-08132025' },
+      { label: 'GAO, rapport GAO-26-107760, avril 2026', url: 'https://files.gao.gov/reports/GAO-26-107760/index.html' },
+    ],
+  },
+  {
+    slug: 'angleterre-comment-l-eglise-anglicane-vend-ses-eglises-fermees',
+    art: 'eglise',
+    title: 'En Angleterre, comment l’Église anglicane vend une église fermée',
+    description: 'L’Église d’Angleterre ferme 20 à 25 églises par an. Chaque cession passe par une consultation publique. La procédure, et un exemple à Sheffield à l’été 2026.',
+    category: 'À l’étranger',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 4,
+    intro: 'L’Église d’Angleterre compte plus de 15 800 églises consacrées. Elle en ferme une vingtaine chaque année, et doit leur trouver un nouvel usage. La procédure est publique : chaque projet de cession est soumis à consultation, et chacun peut donner son avis.',
+    takeaways: [
+      'Environ 20 à 25 églises ferment chaque année, un rythme stable depuis les années 1990 selon l’Église d’Angleterre.',
+      'Un texte de 2011 encadre la fermeture et la cession pour un nouvel usage.',
+      'Chaque projet fait l’objet d’une consultation publique.',
+      'Le logement n’est qu’un des usages possibles, avec le culte d’une autre confession, l’éducation ou la culture.',
+    ],
+    sections: [
+      {
+        title: 'Que dit la règle ?',
+        paragraphs: [
+          'Un texte de 2011, le Mission and Pastoral Measure, permet de fermer une église consacrée qui n’est plus nécessaire au culte régulier, puis de la céder pour un nouvel usage adapté. La décision passe par une consultation locale et nationale. Pour un édifice classé, l’organisme public chargé du patrimoine est consulté.',
+          'D’après la page officielle de l’Église d’Angleterre, mise à jour en octobre 2026, les usages les plus courants sont la reprise par une autre confession chrétienne, un usage éducatif ou associatif, la culture et le patrimoine, la conservation comme monument, les bureaux et le logement.',
+        ],
+      },
+      {
+        title: 'Comment se déroule la consultation ?',
+        paragraphs: [
+          'Le projet est publié. Chacun peut écrire aux Church Commissioners, l’organe qui gère les biens de l’Église. Sans objection, le projet suit son cours. En cas d’objection, le dossier passe devant un comité, et les contributions sont rendues publiques.',
+          'Fin novembre 2026, le site de l’Église d’Angleterre affichait plusieurs consultations ouvertes sur des églises fermées ou à fermer, dans les diocèses de Hereford, Leeds, Sheffield et Londres.',
+        ],
+      },
+      {
+        title: 'Un exemple récent ?',
+        paragraphs: [
+          'À Sheffield, dans le quartier de Frecheville, une église construite de 1950 à 1952 en béton habillé de brique, non classée, a connu ses derniers offices en juillet 2024. Un avis légal paru le 24 juillet 2026 propose de la vendre, avec son terrain, pour qu’une autre communauté chrétienne y célèbre son culte. Les observations étaient reçues jusqu’au 24 août 2026.',
+          'Selon le quotidien local The Star, des offres autour de 300 000 livres étaient attendues. Nous n’avons pas trouvé l’issue de la consultation.',
+        ],
+      },
+      {
+        title: 'Une église peut-elle devenir une maison ?',
+        paragraphs: [
+          'Oui, c’est l’un des usages prévus. En 2024, dans le diocèse de Salisbury, un projet soumis à consultation portait sur la vente d’une église et de son cimetière pour en faire une seule habitation.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Qui décide de la vente ?', a: 'Les Church Commissioners, après consultation. En cas d’objection, un comité examine le dossier.' },
+      { q: 'Ces règles valent-elles en France ?', a: 'Non. En France, la plupart des églises construites avant 1905 appartiennent aux communes, et leur vente suit d’autres règles.' },
+    ],
+    sources: [
+      { label: 'Église d’Angleterre, page sur les églises fermées', url: 'https://www.churchofengland.org/resources/parish-reorganisation-and-church-property/closed-churches' },
+      { label: 'Église d’Angleterre, consultations en cours', url: 'https://www.churchofengland.org/consultation' },
+      { label: 'Public Notice Portal, avis légal du 24 juillet 2026', url: 'https://publicnoticeportal.uk/notice/other/6a62ac39718c4a8db87d5b8d' },
+      { label: 'The Star, Sheffield', url: 'https://www.thestar.co.uk/news/sheffields-church-on-sale-8810067' },
+      { label: 'Église d’Angleterre, consultation de Holt St James', url: 'https://www.churchofengland.org/consultation/holt-st-james' },
+    ],
+  },
+  {
+    slug: 'irlande-jusqu-a-70-000-euros-pour-renover-un-logement-vacant',
+    art: 'hameau',
+    title: 'En Irlande, jusqu’à 70 000 euros d’aide pour remettre en état un logement vacant',
+    description: 'L’Irlande subventionne la remise en état des logements vides depuis 2022 : 3 066 aides versées en 2025, deux fois plus qu’en 2024. Les conditions et le débat.',
+    category: 'À l’étranger',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 4,
+    intro: 'Plutôt que de vendre des maisons pour un euro, l’Irlande paie une partie des travaux. Depuis juillet 2022, une subvention publique aide à remettre en état les logements vacants ou en ruine. Le nombre d’aides versées a plus que doublé en 2025.',
+    takeaways: [
+      'Jusqu’à 50 000 euros pour un logement vacant, et 20 000 euros de plus s’il est en ruine.',
+      '3 066 subventions versées en 2025, contre 1 349 en 2024, selon le gouvernement irlandais.',
+      'L’aide n’est versée qu’une fois les travaux terminés.',
+      'Le dispositif est prolongé jusqu’en 2030.',
+    ],
+    sections: [
+      {
+        title: 'Quelles sont les conditions ?',
+        paragraphs: [
+          'D’après la presse irlandaise, le logement doit être vacant depuis au moins deux ans et avoir été construit avant 2008. Le demandeur doit en être propriétaire ou être en train de l’acheter. Après travaux, le logement doit devenir sa résidence principale ou être mis en location.',
+          'L’aide atteint 50 000 euros pour un bien vacant, avec un complément pouvant aller jusqu’à 20 000 euros si le bien est en ruine. Elle n’est versée qu’après la fin des travaux, sur justificatifs.',
+        ],
+      },
+      {
+        title: 'Combien de logements sont concernés ?',
+        paragraphs: [
+          'Le ministère irlandais du Logement donne le bilan suivant, de juillet 2022 à décembre 2025 :',
+        ],
+        list: [
+          '16 607 demandes reçues ;',
+          '12 096 demandes approuvées ;',
+          '4 514 subventions versées après travaux ;',
+          'près de 247 millions d’euros payés.',
+        ],
+      },
+      {
+        title: 'Et en 2026 ?',
+        paragraphs: [
+          'Selon le site d’information agricole Agriland, 816 subventions ont été versées au premier trimestre 2026, pour environ 45 millions d’euros. Le gouvernement a prolongé le dispositif jusqu’en 2030. Il a aussi annoncé une aide renforcée, jusqu’à 140 000 euros, pour transformer en logements les étages vides au-dessus des commerces.',
+        ],
+      },
+      {
+        title: 'Pourquoi le dispositif fait-il débat ?',
+        paragraphs: [
+          'Depuis mai 2023, l’aide est ouverte aux biens destinés à la location. D’après The Irish Times, les sommes versées à des bailleurs sont passées de 7,46 millions d’euros en 2024 à près de 25 millions sur les neuf premiers mois de 2025, sans plafond de loyer en contrepartie. L’opposition conteste aussi que ces logements soient comptés parmi les logements abordables.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'L’aide est-elle versée avant les travaux ?', a: 'Non. Elle est versée une fois les travaux terminés et justifiés. Il faut donc pouvoir les avancer.' },
+      { q: 'Existe-t-il la même aide en France ?', a: 'Non, pas sous cette forme. Les aides françaises à la rénovation suivent d’autres règles.' },
+    ],
+    sources: [
+      { label: 'Gouvernement irlandais, ministère du Logement, bilan 2025', url: 'https://www.gov.ie/en/department-of-housing-local-government-and-heritage/press-releases/over-3000-vacant-or-derelict-homes-brought-back-into-use-in-2025-through-vacant-property-refurbishment-grant' },
+      { label: 'The Irish Times, 26 janvier 2026', url: 'https://www.irishtimes.com/ireland/housing-planning/2026/01/26/approval-of-25m-in-vacant-property-grants-for-landlords-shocking/' },
+      { label: 'Agriland, bilan du premier trimestre 2026', url: 'https://www.agriland.ie/farming-news/over-e45m-vacant-property-refurbishment-grants-paid-in-q1-2026/' },
+    ],
+  },
   {
     slug: 'chateau-de-bellefontaine-mis-a-prix-450-000-euros',
     art: 'chateau',
