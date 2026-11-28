@@ -4,7 +4,7 @@ import { LEGAL_READY, UPDATED } from '../lib/legal';
 
 export default function LegalPage({ title, children, hideBanner }: { title: string; children: React.ReactNode; hideBanner?: boolean }) {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
       <main className="max-w-6xl mx-auto px-6">
         <div className="max-w-3xl pt-8 md:pt-12 pb-24">

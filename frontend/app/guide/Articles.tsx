@@ -71,7 +71,7 @@ export default function Articles({ articles, rubriques }: { articles: ArticleCar
       <ul className="mt-6 space-y-6">
         {liste.slice(0, max).map((a) => (
           <li key={a.slug}>
-            <Link href={`/guide/${a.slug}`} className="group grid overflow-hidden rounded-[14px] border-2 border-stone-900 bg-white shadow-[5px_5px_0_#211C15] sm:grid-cols-[minmax(0,260px)_1fr]">
+            <Link href={`/guide/${a.slug}`} className="group grid overflow-hidden rounded-[14px] border-2 border-stone-900 bg-white shadow-[5px_5px_0_#3A2E2A] sm:grid-cols-[minmax(0,260px)_1fr]">
               <span className="block overflow-hidden border-b-2 border-stone-900 sm:border-b-0 sm:border-r-2">
                 <GuideArt art={a.art} className="block h-full w-full aspect-[12/5] sm:aspect-auto sm:min-h-[190px]" />
               </span>

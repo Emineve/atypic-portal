@@ -239,7 +239,7 @@ export default async function ListingPage({ params }: { params: { id: string } }
   );
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans pb-20 lg:pb-0">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans pb-20 lg:pb-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(breadcrumb) }} />
       <SiteHeader alert={false} />

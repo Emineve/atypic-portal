@@ -80,7 +80,7 @@ export default function ProPage() {
   const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
   const h2 = 'font-serif text-3xl md:text-4xl tracking-tight leading-[1.1] text-stone-900';
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader alert={false}>
         <a href="#rejoindre" className={`hidden sm:inline ${link}`}>Diffuser mes annonces</a>
       </SiteHeader>

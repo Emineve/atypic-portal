@@ -34,7 +34,7 @@ const SURFACES: [string, string][] = [
 ];
 
 const chip = (on: boolean) =>
-  `rounded-full border px-3.5 py-2 text-sm transition ${on ? 'border-stone-900 bg-stone-900 text-[#FBF5E9]' : 'border-stone-300 bg-white text-stone-800 hover:border-stone-900'}`;
+  `rounded-full border px-3.5 py-2 text-sm transition ${on ? 'border-stone-900 bg-stone-900 text-[#FCFBF8]' : 'border-stone-300 bg-white text-stone-800 hover:border-stone-900'}`;
 
 // `aside` : ce qui s'affiche à droite du formulaire dans la boîte (l'extrait vidéo du dernier numéro, sur l'accueil)
 export default function LetterSignup({ variant = 'hero', source = 'accueil', className = '', aside }: { variant?: 'hero' | 'band' | 'footer'; source?: string; className?: string; aside?: React.ReactNode }) {
@@ -77,7 +77,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
   if (variant === 'footer') {
     if (step !== 'email')
       return (
-        <p role="status" className={`border border-stone-700 p-5 font-serif text-xl leading-snug text-[#FBF5E9] ${className}`}>
+        <p role="status" className={`border border-stone-700 p-5 font-serif text-xl leading-snug text-[#FCFBF8] ${className}`}>
           Inscription enregistrée. <span className="italic text-stone-400">Vous recevrez le prochain numéro.</span>
         </p>
       );
@@ -89,9 +89,9 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
           send(false);
         }}
       >
-        <p className="font-serif text-2xl leading-none text-[#FBF5E9]">La newsletter</p>
+        <p className="font-serif text-2xl leading-none text-[#FCFBF8]">La newsletter</p>
         <p className="mt-2 text-sm text-stone-400">La newsletter de Loftissime.</p>
-        <label className="mt-5 block text-sm font-medium text-[#FBF5E9]">
+        <label className="mt-5 block text-sm font-medium text-[#FCFBF8]">
           Votre e-mail <span aria-hidden="true">*</span>
           <span className="relative mt-1.5 block">
             <input type="email" required autoComplete="email" inputMode="email" placeholder="vous@exemple.fr" value={email} onChange={(e) => setEmail(e.target.value)} className={`${FIELD} !mt-0 !pr-14`} />
@@ -174,7 +174,7 @@ export default function LetterSignup({ variant = 'hero', source = 'accueil', cla
 
           {error && <p role="alert" className="mt-4 text-sm text-red-700">{error}</p>}
           <div className="mt-6 flex flex-wrap items-center gap-5">
-            <button type="submit" disabled={busy} className="h-12 rounded-full bg-stone-900 px-6 text-sm font-medium text-[#FBF5E9] disabled:opacity-50">
+            <button type="submit" disabled={busy} className="h-12 rounded-full bg-stone-900 px-6 text-sm font-medium text-[#FCFBF8] disabled:opacity-50">
               {busy ? 'Enregistrement…' : 'Enregistrer ma recherche'}
             </button>
             <button type="button" onClick={() => setStep('fini')} className="text-sm underline underline-offset-4 text-stone-700">

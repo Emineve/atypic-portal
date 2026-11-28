@@ -418,8 +418,8 @@ export default function AlertDialog({
   return (
     <div className="fixed inset-0 z-[70] flex" role="dialog" aria-modal="true" aria-label={shareWith ? `Partager ma recherche avec ${shareWith}` : 'Créer une alerte'}>
       <div className="absolute inset-0 bg-stone-900/60" onClick={onClose} />
-      <div className="relative w-full h-[100dvh] flex justify-center bg-[#FDFBF7] md:bg-stone-100">
-      <div className="relative w-full md:max-w-2xl h-full flex flex-col bg-[#FDFBF7] md:shadow-[0_0_0_1px_#e7e5e4] overflow-hidden">
+      <div className="relative w-full h-[100dvh] flex justify-center bg-[#FCFBF8] md:bg-stone-100">
+      <div className="relative w-full md:max-w-2xl h-full flex flex-col bg-[#FCFBF8] md:shadow-[0_0_0_1px_#e7e5e4] overflow-hidden">
         <button
           type="button"
           onClick={onClose}
@@ -433,7 +433,7 @@ export default function AlertDialog({
 
         {status === 'done' ? (
           <div className="flex-1 flex flex-col justify-center px-6 md:px-12 py-14 text-center overflow-y-auto">
-            <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-[#FBF5E9] flex items-center justify-center">
+            <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-[#FCFBF8] flex items-center justify-center">
               <Check className="w-8 h-8" />
             </span>
             <h2 className="mt-7 font-serif text-3xl md:text-4xl text-stone-900 leading-tight">
@@ -482,7 +482,7 @@ export default function AlertDialog({
                 if (matches > 0 && onShowMatches) onShowMatches(filters, locations);
                 onClose();
               }}
-              className="mt-9 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
+              className="mt-9 bg-stone-900 text-[#FCFBF8] text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
             >
               {matches > 1
                 ? `Voir les ${matches} biens correspondants`
@@ -681,7 +681,7 @@ export default function AlertDialog({
                                       disabled={full}
                                       className="w-full min-h-[44px] flex items-center gap-3 px-3 py-2 text-left disabled:opacity-40"
                                     >
-                                      <span className={`h-5 w-5 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-[#FBF5E9]' : 'border-stone-400'}`}>
+                                      <span className={`h-5 w-5 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-[#FCFBF8]' : 'border-stone-400'}`}>
                                         {on && <Check className="w-3.5 h-3.5" />}
                                       </span>
                                       <span className="flex-1 text-sm text-stone-900">{a.name}</span>
@@ -750,7 +750,7 @@ export default function AlertDialog({
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="h-12 flex-none px-7 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center rounded-full"
+                  className="h-12 flex-none px-7 bg-stone-900 text-[#FCFBF8] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex items-center justify-center rounded-full"
                 >
                   {status === 'sending' ? (shareWith ? 'Envoi…' : 'Enregistrement…') : shareWith ? 'Partager ma recherche' : 'Créer mon alerte'}
                 </button>

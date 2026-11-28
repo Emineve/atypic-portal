@@ -57,7 +57,7 @@ function Mail({ letter, name, idea, objet, apercu, children, dark = false }: { l
           <p className="text-[12px] text-stone-900">{objet}</p>
           <p className="truncate text-[12px] text-stone-500">{apercu}</p>
         </div>
-        <div className={`px-5 py-6 ${dark ? 'bg-[#211C15] text-[#FBF5E9]' : 'bg-[#FBF5E9]'}`}>{children}</div>
+        <div className={`px-5 py-6 ${dark ? 'bg-[#3A2E2A] text-[#FCFBF8]' : 'bg-[#FCFBF8]'}`}>{children}</div>
       </div>
     </section>
   );
@@ -66,9 +66,9 @@ function Mail({ letter, name, idea, objet, apercu, children, dark = false }: { l
 export default function LettersPreview() {
   const [b1, b2, b3, b4, b5] = BIENS;
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
-      <p className="bg-stone-900 px-6 py-2 text-center text-xs tracking-wide text-[#FBF5E9]">
+      <p className="bg-stone-900 px-6 py-2 text-center text-xs tracking-wide text-[#FCFBF8]">
         Maquette de travail : biens, prix et objets de mail inventés, photos remplacées par des emplacements.
       </p>
 
@@ -91,7 +91,7 @@ export default function LettersPreview() {
           <p className={`mt-1 text-2xl leading-tight ${SERIF}`}>{b1.titre}</p>
           <p className="mt-2 text-[13px] leading-relaxed text-stone-600">{b1.mot}</p>
           <p className={`mt-3 text-xl lining-nums ${SERIF}`}>{b1.prix}</p>
-          <p className="mt-4"><span className="inline-flex h-10 items-center rounded-full bg-stone-900 px-5 text-[13px] font-medium text-[#FBF5E9]">Voir l’annonce</span></p>
+          <p className="mt-4"><span className="inline-flex h-10 items-center rounded-full bg-stone-900 px-5 text-[13px] font-medium text-[#FCFBF8]">Voir l’annonce</span></p>
           <Foot />
         </Mail>
 
@@ -120,8 +120,8 @@ export default function LettersPreview() {
           <p className="text-center"><Wordmark className="text-xl text-stone-900" /></p>
           <p className={`mt-1 text-center ${CAPS}`}>Le journal · n° 1</p>
           <p className="mt-5 text-[13px] leading-relaxed text-stone-700">Cette semaine, un atelier que personne n’a encore vu, et une péniche qui ne restera pas longtemps.</p>
-          <div className="relative mt-5 flex aspect-video items-center justify-center rounded-[8px] bg-[#211C15]">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#FBF5E9]"><span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-[#FBF5E9]" /></span>
+          <div className="relative mt-5 flex aspect-video items-center justify-center rounded-[8px] bg-[#3A2E2A]">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#FCFBF8]"><span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-[#FCFBF8]" /></span>
             <span className="absolute left-3 top-3 text-[9px] uppercase tracking-widest text-stone-400">Avant-première</span>
           </div>
           <p className={`mt-3 text-lg leading-snug ${SERIF}`}>{b1.titre}, <span className="italic text-stone-500">en une minute.</span></p>
@@ -176,11 +176,11 @@ export default function LettersPreview() {
         {/* F — la une */}
         <Mail letter="F" name="La une" idea="Une couverture de magazine : une image plein cadre, le titre dessus, le sommaire dessous. La plus spectaculaire." objet="À la une : l’atelier que personne n’a vu" apercu="Et quatre autres biens à l’intérieur." dark>
           <div className="relative -mx-5 -mt-6 flex aspect-[4/5] flex-col justify-between bg-stone-700 p-5">
-            <div className="flex items-baseline justify-between"><Wordmark className="text-xl text-[#FBF5E9]" /><span className="text-[10px] uppercase tracking-widest text-stone-300">N° 1</span></div>
+            <div className="flex items-baseline justify-between"><Wordmark className="text-xl text-[#FCFBF8]" /><span className="text-[10px] uppercase tracking-widest text-stone-300">N° 1</span></div>
             <span className="self-center text-[10px] uppercase tracking-widest text-stone-400">Photo plein cadre</span>
             <div>
               <p className="text-[10px] uppercase tracking-widest text-stone-300">{b1.ville} · {b1.m2} m²</p>
-              <p className="mt-1 font-serif text-3xl leading-[1.05] text-[#FBF5E9]">Six mètres <span className="italic text-stone-300">sous verrière.</span></p>
+              <p className="mt-1 font-serif text-3xl leading-[1.05] text-[#FCFBF8]">Six mètres <span className="italic text-stone-300">sous verrière.</span></p>
             </div>
           </div>
           <p className="mt-5 text-[10px] uppercase tracking-widest text-stone-400">Dans ce numéro</p>
@@ -250,17 +250,17 @@ export default function LettersPreview() {
 
         {/* J — l'avant-première */}
         <Mail letter="J" name="L’avant-première" idea="Sombre, rare, daté : un bien que personne n’a encore vu, avec l’heure de sa mise en ligne. Le ressort de l’exclusivité." objet="Avant-première : en ligne jeudi à 9 h" apercu="Vous le voyez 48 heures avant tout le monde." dark>
-          <div className="flex items-baseline justify-between"><Wordmark className="text-lg text-[#FBF5E9]" /><span className="text-[10px] uppercase tracking-widest text-stone-400">Réservé aux abonnés</span></div>
+          <div className="flex items-baseline justify-between"><Wordmark className="text-lg text-[#FCFBF8]" /><span className="text-[10px] uppercase tracking-widest text-stone-400">Réservé aux abonnés</span></div>
           <p className="mt-6 text-[10px] uppercase tracking-widest text-stone-400">Avant-première</p>
           <p className="mt-1 font-serif text-3xl leading-[1.05]">En ligne jeudi, <span className="italic text-stone-400">vu ici aujourd’hui.</span></p>
           <div className="relative mt-5 flex aspect-[4/5] items-center justify-center rounded-[8px] bg-stone-700">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#FBF5E9]"><span className="ml-0.5 h-0 w-0 border-y-[7px] border-l-[11px] border-y-transparent border-l-[#FBF5E9]" /></span>
+            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#FCFBF8]"><span className="ml-0.5 h-0 w-0 border-y-[7px] border-l-[11px] border-y-transparent border-l-[#FCFBF8]" /></span>
             <span className="absolute bottom-3 right-3 text-[10px] tabular-nums text-stone-300">1:00</span>
           </div>
           <p className="mt-4 text-[10px] uppercase tracking-widest text-stone-400">{b1.ville} · {b1.m2} m²</p>
           <p className="mt-1 font-serif text-xl leading-snug">{b1.titre}</p>
           <p className="mt-1 font-serif text-lg lining-nums text-stone-300">{b1.prix}</p>
-          <p className="mt-4"><span className="inline-flex h-10 items-center rounded-full bg-[#FBF5E9] px-5 text-[13px] font-medium text-stone-900">Regarder la visite</span></p>
+          <p className="mt-4"><span className="inline-flex h-10 items-center rounded-full bg-[#FCFBF8] px-5 text-[13px] font-medium text-stone-900">Regarder la visite</span></p>
           <p className="mt-6 text-center text-[10px] leading-relaxed text-stone-400">Curateur de biens atypiques · loftissime.fr · Se désinscrire</p>
         </Mail>
 

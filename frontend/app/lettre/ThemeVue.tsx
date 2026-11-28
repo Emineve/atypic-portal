@@ -36,12 +36,12 @@ export default function ThemeVue({ theme, parus = [], source }: { theme: Newslet
   const propos = PROPOS[theme.slug];
 
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#FDFBF7] font-sans text-stone-900">
+    <div className="min-h-screen overflow-x-clip bg-[#FCFBF8] font-sans text-stone-900">
       <SiteHeader />
       {/* le haut de page est posé sur la matière du thème : le titre sur une carte de papier, l'inscription à côté */}
       <div style={theme.matiere}>
         <section className="mx-auto grid max-w-6xl items-stretch gap-x-10 gap-y-8 px-6 py-10 md:py-16 lg:grid-cols-[1.1fr_1fr]">
-          <div className="rounded-[18px] border-2 border-stone-900 bg-[#FDFBF7] p-7 shadow-[6px_6px_0_#211C15] md:p-10">
+          <div className="rounded-[18px] border-2 border-stone-900 bg-[#FCFBF8] p-7 shadow-[6px_6px_0_#3A2E2A] md:p-10">
             <p className="text-sm text-stone-500">Le numéro de {mois}</p>
             <h1 className="mt-3 font-serif text-6xl italic leading-[0.95] tracking-tight md:text-7xl lg:text-[5.5rem]">{theme.nom}</h1>
             <p className="mt-6 font-serif text-3xl leading-tight md:text-4xl">{theme.sujet}</p>

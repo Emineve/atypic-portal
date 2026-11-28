@@ -17,7 +17,7 @@ export default function AdminContacts() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <main className="max-w-7xl mx-auto px-6 py-8">
         {token === null ? null : token ? (
           <Contacts token={token} />

@@ -93,7 +93,7 @@ export default async function BilanPage({ params }: { params: { token: string } 
   ];
 
   return (
-    <main className="min-h-screen bg-[#FDFBF7] font-sans text-stone-900 print:bg-white">
+    <main className="min-h-screen bg-[#FCFBF8] font-sans text-stone-900 print:bg-white">
       <div className="border-b border-stone-200 bg-white">
         <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
           <Logo />

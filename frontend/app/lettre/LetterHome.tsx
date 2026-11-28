@@ -1,5 +1,4 @@
 import SiteHeader from '../SiteHeader';
-import GuideArt from '../guide/GuideArt';
 import { publishedArticles } from '../../lib/guide';
 import { typo } from '../../lib/typo';
 import Famille from './Famille';
@@ -73,32 +72,23 @@ function ArticlesUne() {
   if (liste.length === 0) return null;
   return (
     <section className="mt-16 md:mt-24" aria-labelledby="articles-une">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-stone-900 pt-4">
-        <h2 id="articles-une" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
-          Nos articles à la une
-        </h2>
-        <a href="/guide" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir tous les articles</a>
-      </div>
-      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <h2 id="articles-une" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
+        Nos articles <span className="italic text-stone-500">à la une.</span>
+      </h2>
+      {/* une liste calme : la rubrique en petit, le titre en serif, un filet entre chaque */}
+      <ul className="mt-6 max-w-3xl border-b border-stone-200 md:mt-8">
         {liste.map((a) => (
-          <li key={a.slug}>
-            {/* sur téléphone : une ligne serrée, le dessin en vignette à gauche ; à partir de la tablette : la carte illustrée */}
-            <a href={`/guide/${a.slug}`} className="group flex h-full overflow-hidden rounded-[14px] border-2 border-stone-900 bg-white shadow-[5px_5px_0_#211C15] sm:flex-col">
-              <span className="block w-24 shrink-0 overflow-hidden border-r-2 border-stone-900 sm:w-full sm:border-b-2 sm:border-r-0">
-                <GuideArt art={a.art} className="block h-full w-full sm:aspect-[12/7] sm:h-auto" />
-              </span>
-              <span className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
-                <span className="font-serif text-xl leading-snug text-stone-900 underline-offset-4 group-hover:underline">{typo(a.title)}</span>
-                <span className="mt-2 hidden text-[15px] leading-relaxed text-stone-700 sm:block">{typo(a.description)}</span>
-                <span className="mt-auto flex items-baseline justify-between pt-3 text-sm sm:pt-4">
-                  <span className="text-stone-500">{a.readMinutes} min de lecture</span>
-                  <span className="font-medium text-stone-900">Lire</span>
-                </span>
-              </span>
+          <li key={a.slug} className="border-t border-stone-200">
+            <a href={`/guide/${a.slug}`} className="group block py-5 md:py-6">
+              <span className="block text-[15px] text-stone-500">{a.category} · {a.readMinutes} min de lecture</span>
+              <span className="mt-1 block font-serif text-[1.4rem] leading-snug text-stone-900 underline-offset-4 group-hover:underline md:text-[1.6rem]">{typo(a.title)}</span>
             </a>
           </li>
         ))}
       </ul>
+      <p className="mt-6">
+        <a href="/guide" className="text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-400">Découvrir tous les articles</a>
+      </p>
     </section>
   );
 }
@@ -113,7 +103,7 @@ export default async function LetterHome() {
     : full.flatMap((d) => (d ? [...d.items].sort((x, y) => Number(y.id === (d.issue.content as { une_id?: string }).une_id) - Number(x.id === (d.issue.content as { une_id?: string }).une_id)).map((b, k) => ({ b, numero: d.issue.numero, une: k === 0 })) : []));
 
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen overflow-x-clip bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
       {/* le filtre qui donne aux croquis des vignettes leur trait à main levée */}
       <svg aria-hidden width="0" height="0" className="absolute">

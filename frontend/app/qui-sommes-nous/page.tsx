@@ -61,7 +61,7 @@ const ARTICLES: { title: string; text: string; href: string; link: string }[] = 
 export default async function ManifestoPage() {
   if ((await getSiteMode()) === 'lettre') return <QuiSommesNous />;
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-8 md:pb-10">

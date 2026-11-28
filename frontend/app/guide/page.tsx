@@ -20,7 +20,7 @@ export default function GuideIndex() {
   const videos = publishedVideos();
   const rubriques = GUIDE_RUBRICS.filter((r) => articles.some((a) => a.category === r.name)).map((r) => ({ name: r.name as string, anchor: r.anchor as string }));
   return (
-    <div className="min-h-screen bg-[#FDFBF7] font-sans text-stone-900">
+    <div className="min-h-screen bg-[#FCFBF8] font-sans text-stone-900">
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 pb-24 pt-10 md:pt-16">
         <h1 className="font-serif text-6xl leading-none tracking-tight md:text-7xl">Ressources</h1>

@@ -64,7 +64,7 @@ export default function Simulator() {
 
   return (
     <div>
-    <div className="rounded-[18px] border-2 border-stone-900 bg-white p-5 shadow-[6px_6px_0_#211C15] md:p-8">
+    <div className="rounded-[18px] border-2 border-stone-900 bg-white p-5 shadow-[6px_6px_0_#3A2E2A] md:p-8">
       <div className="grid grid-cols-2 gap-3 md:gap-5">
         <label className={label}>
           Prix du bien

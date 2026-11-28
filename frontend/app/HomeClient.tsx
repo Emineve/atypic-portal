@@ -573,7 +573,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
 
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <Tracker />
       <DemoBand />
 
@@ -977,7 +977,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
               <button
                 type="button"
                 onClick={() => setShowFilters(false)}
-                className="w-full h-12 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
+                className="w-full h-12 bg-stone-900 text-[#FCFBF8] text-[15px] font-medium hover:bg-stone-800 transition flex items-center justify-center sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
               >
                 {visible.length > 1 ? `Voir les ${visible.length} biens` : visible.length === 1 ? 'Voir le bien' : 'Aucun bien ne correspond'}
               </button>
@@ -1171,7 +1171,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
                 <button
                   type="button"
                   onClick={() => setFavContactOpen(true)}
-                  className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-8 text-[15px] font-medium text-[#FBF5E9] transition hover:bg-stone-800 sm:w-auto"
+                  className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-stone-900 px-8 text-[15px] font-medium text-[#FCFBF8] transition hover:bg-stone-800 sm:w-auto"
                 >
                   <ThumbsUp className="w-4 h-4" />
                   <span>{pending.length > 1 ? `Ces ${pending.length} biens m’intéressent` : 'Ce bien m’intéresse'}</span>
@@ -1259,7 +1259,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
           signal={searchActive}
           tick={`${alertOpen}-${favorites.length}-${contacted.length}-${seen.length}`}
           onOpen={() => openAlert('pied')}
-          wrapperClassName="border-b border-stone-200 bg-[#FDFBF7] px-6 py-10 md:py-14"
+          wrapperClassName="border-b border-stone-200 bg-[#FCFBF8] px-6 py-10 md:py-14"
           className="max-w-6xl mx-auto"
         />
         <FooterLinks cities={listings.map((l) => l.city).filter(Boolean)} />
@@ -1271,7 +1271,7 @@ export default function HomeClient({ initialListings, newArticles = 0, stories =
           className="fixed inset-x-0 z-40 flex justify-center px-6 pointer-events-none"
           style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
         >
-          <button type="button" onClick={() => openAlert('flottant')} className="pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-[#FBF5E9] text-sm font-medium shadow-lg hover:bg-stone-800 transition">
+          <button type="button" onClick={() => openAlert('flottant')} className="pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-[#FCFBF8] text-sm font-medium shadow-lg hover:bg-stone-800 transition">
             <Plus className="w-4 h-4" strokeWidth={2} />
             Nouvelle alerte
           </button>

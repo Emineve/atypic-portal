@@ -8,20 +8,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Les gris du site sont des bruns très doux, accordés au fond crème
+      // Les gris du site sont des bruns chauds, et l'encre un brun foncé plutôt qu'un noir
       colors: {
         stone: {
-          50: '#FBF8F1',
-          100: '#F4EEE1',
-          200: '#E9DFCB',
-          300: '#D9CCB3',
-          400: '#A89C88',
-          500: '#74695A',
-          600: '#5A5043',
-          700: '#433B31',
-          800: '#2E2820',
-          900: '#211C15',
-          950: '#15110C',
+          50: '#F8F6F2',
+          100: '#F2EEE8',
+          200: '#E4DDD5',
+          300: '#D5CCC3',
+          400: '#A89C94',
+          500: '#8B7E77',
+          600: '#6F635D',
+          700: '#5A4D47',
+          800: '#463935',
+          900: '#3A2E2A',
+          950: '#2B2320',
         },
       },
       fontFamily: {

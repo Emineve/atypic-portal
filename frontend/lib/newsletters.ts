@@ -43,7 +43,7 @@ const LISTE: Omit<Newsletter, 'mois'>[] = [
     sujet: 'Les ateliers d’artistes, pour leur hauteur et leur lumière.',
     addition: 'Le prix du volume, et ce qu’il coûte à chauffer.',
     ouverte: false,
-    matiere: { backgroundColor: '#cfe3df', backgroundImage: joints('#211C15', 52, 36) },
+    matiere: { backgroundColor: '#cfe3df', backgroundImage: joints('#3A2E2A', 52, 36) },
   },
   {
     slug: 'brique',
@@ -67,7 +67,7 @@ const LISTE: Omit<Newsletter, 'mois'>[] = [
     sujet: 'Les biens qui ont eu un autre usage : école, chapelle, garage, boutique.',
     addition: 'Le coût et le délai du changement d’usage.',
     ouverte: false,
-    matiere: { backgroundImage: 'repeating-conic-gradient(#211C15 0 25%, #f3ead8 0 50%)', backgroundSize: '30px 30px' },
+    matiere: { backgroundImage: 'repeating-conic-gradient(#3A2E2A 0 25%, #f3ead8 0 50%)', backgroundSize: '30px 30px' },
   },
   {
     slug: 'zinc',
@@ -91,7 +91,7 @@ const LISTE: Omit<Newsletter, 'mois'>[] = [
     sujet: 'Les maisons d’architecte, celles qui portent une signature.',
     addition: 'L’entretien d’une architecture signée.',
     ouverte: false,
-    matiere: { backgroundColor: '#f6f2e9', backgroundImage: 'linear-gradient(#211C15, #211C15), repeating-linear-gradient(90deg, transparent 0 58px, #211C15 58px 62px)', backgroundSize: '100% 38%, 100% 100%', backgroundRepeat: 'no-repeat, repeat', backgroundPosition: 'top, 0 0' },
+    matiere: { backgroundColor: '#f6f2e9', backgroundImage: 'linear-gradient(#3A2E2A, #3A2E2A), repeating-linear-gradient(90deg, transparent 0 58px, #3A2E2A 58px 62px)', backgroundSize: '100% 38%, 100% 100%', backgroundRepeat: 'no-repeat, repeat', backgroundPosition: 'top, 0 0' },
   },
   {
     slug: 'cour-pavee',

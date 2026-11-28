@@ -52,10 +52,10 @@ function Card({ kicker, title, text, link, art, photo, locked = false, href }: {
 export default function MediaPreview() {
   const insolite = GUIDE_ARTICLES.filter((a) => a.category === 'Insolite').slice(0, 1)[0];
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
 
-      <p className="bg-stone-900 px-6 py-2 text-center text-xs tracking-wide text-[#FBF5E9]">
+      <p className="bg-stone-900 px-6 py-2 text-center text-xs tracking-wide text-[#FCFBF8]">
         Maquette de travail : les sujets marqués « exemple » sont inventés, rien de ceci n’est en ligne.
       </p>
 
@@ -140,7 +140,7 @@ export default function MediaPreview() {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <input type="email" disabled placeholder="Votre e-mail" aria-label="Votre e-mail" className={FIELD} />
-              <span className="inline-flex h-12 flex-none items-center justify-center rounded-full bg-stone-900 px-7 text-[15px] font-medium text-[#FBF5E9]">Recevoir la lettre</span>
+              <span className="inline-flex h-12 flex-none items-center justify-center rounded-full bg-stone-900 px-7 text-[15px] font-medium text-[#FCFBF8]">Recevoir la lettre</span>
             </div>
           </div>
         </section>

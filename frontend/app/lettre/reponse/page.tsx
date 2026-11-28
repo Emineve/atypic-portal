@@ -41,7 +41,7 @@ export default function LetterAnswerPage() {
   const mois = theme ? MOIS[theme.mois - 1] : '';
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <nav className="border-b border-stone-200 bg-white/90">
         <div className="max-w-6xl mx-auto px-6 h-[68px] md:h-20 flex items-center">
           <Logo className="text-[1.9rem] md:text-[2.25rem]" />
@@ -51,7 +51,7 @@ export default function LetterAnswerPage() {
         <main>
           {/* la matière du thème, et la réponse posée dessus */}
           <div className="px-6 py-12 md:py-24" style={theme.matiere}>
-            <div className="mx-auto max-w-xl rounded-[14px] border-2 border-stone-900 bg-[#FDFBF7] p-7 shadow-[6px_6px_0_#211C15] md:p-12">
+            <div className="mx-auto max-w-xl rounded-[14px] border-2 border-stone-900 bg-[#FCFBF8] p-7 shadow-[6px_6px_0_#3A2E2A] md:p-12">
               <p className="text-[15px] font-medium text-stone-600">Merci, c’est noté.</p>
               <h1 className="mt-3 font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
                 {CHOICES[choice].gout} <span className="italic text-stone-500">Rendez-vous en {mois}.</span>

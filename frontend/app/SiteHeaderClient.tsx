@@ -19,7 +19,7 @@ const LETTER_LINKS: { href: string; label: string }[] = [
   { href: '/qui-sommes-nous', label: 'Pourquoi Loftissime' },
 ];
 const LETTER_LINK =
-  'whitespace-nowrap text-[15px] font-medium text-stone-900 bg-[linear-gradient(#211C15,#211C15)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
+  'whitespace-nowrap text-[15px] font-medium text-stone-900 bg-[linear-gradient(#3A2E2A,#3A2E2A)] bg-[position:0_100%] pb-[3px] bg-no-repeat transition-[background-size,color] duration-300 bg-[length:0%_2px] hover:bg-[length:100%_2px] focus-visible:bg-[length:100%_2px]';
 
 const FAVORITES_KEY = 'singulier:favorites';
 
@@ -89,7 +89,7 @@ export default function SiteHeaderClient({
     return (
       <>
         <DemoBand />
-        <nav aria-label="Navigation principale" className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
+        <nav aria-label="Navigation principale" className="bg-[#F2EEE8]/95 backdrop-blur-md sticky top-0 z-50">
           <div className="max-w-6xl mx-auto px-6 h-[68px] md:h-20 flex items-center justify-between gap-6">
             <Logo className="text-[1.9rem] md:text-[2.25rem]" />
             <div className="flex items-center gap-8">
@@ -111,6 +111,10 @@ export default function SiteHeaderClient({
           {NEWSLETTERS.map((n) => (
             <span key={n.slug} className="block flex-1" style={n.matiere} />
           ))}
+        </div>
+        {/* la page remonte sur l'en-tête, coins arrondis */}
+        <div aria-hidden className="bg-[#F2EEE8]">
+          <div className="h-7 rounded-t-[28px] bg-[#FCFBF8] md:h-9 md:rounded-t-[36px]" />
         </div>
       </>
     );
@@ -152,7 +156,7 @@ export default function SiteHeaderClient({
           <a
             href="/?alerte=1"
             className={`pointer-events-auto inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full text-sm font-medium shadow-lg transition ${
-              fabOnDark ? 'bg-white text-stone-900 hover:bg-stone-100' : 'bg-stone-900 text-[#FBF5E9] hover:bg-stone-800'
+              fabOnDark ? 'bg-white text-stone-900 hover:bg-stone-100' : 'bg-stone-900 text-[#FCFBF8] hover:bg-stone-800'
             }`}
           >
             <Plus className="w-4 h-4" strokeWidth={2} />

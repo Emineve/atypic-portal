@@ -1,8 +1,8 @@
 // Les dessins de la lettre « Avant-première » : un par caractéristique majeure d'un bien.
 // Dessins originaux, au trait, avec une silhouette de 1,75 m pour donner l'échelle.
 
-const INK = '#211C15';
-const PAPER = '#FBF5E9';
+const INK = '#3A2E2A';
+const PAPER = '#FCFBF8';
 const SUN = '#F6CF4E';
 const LINE = '#D9CFBC';
 

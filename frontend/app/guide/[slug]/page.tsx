@@ -83,7 +83,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(crumbLd) }} />
@@ -193,7 +193,7 @@ export default function GuideArticlePage({ params }: { params: { slug: string } 
               placeholder="Posez votre question"
               className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
             />
-            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FBF5E9] transition hover:bg-stone-700">
+            <button type="submit" aria-label="Chercher" className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FCFBF8] transition hover:bg-stone-700">
               <ArrowRight className="h-5 w-5" strokeWidth={1.75} />
             </button>
           </div>

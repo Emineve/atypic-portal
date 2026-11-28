@@ -23,7 +23,7 @@ const lead = 'mt-4 max-w-2xl text-lg font-light leading-relaxed text-stone-600';
 
 export default function ContreVisitePartners() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader alert={false} />
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">

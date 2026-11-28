@@ -17,7 +17,7 @@ function pct(n: number) {
 
 export default function FinancementPage() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       {/* Sur téléphone, le retour à l'annonce passe sous l'en-tête, qui n'a pas la place de l'accueillir */}
       <SiteHeader back={<BackLink className="hidden sm:inline-flex" />} />
 

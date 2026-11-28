@@ -116,7 +116,7 @@ export default function FavoritesContact({
 
         {status === 'done' ? (
           <div className="px-6 pt-2 pb-12 text-center">
-            <span className="mx-auto h-12 w-12 rounded-full bg-stone-900 text-[#FBF5E9] flex items-center justify-center">
+            <span className="mx-auto h-12 w-12 rounded-full bg-stone-900 text-[#FCFBF8] flex items-center justify-center">
               <Check className="w-6 h-6" />
             </span>
             <p className="mt-4 font-serif text-2xl text-stone-900">C&apos;est envoyé.</p>
@@ -138,7 +138,7 @@ export default function FavoritesContact({
                   return (
                     <li key={i.id}>
                       <button type="button" onClick={() => toggle(i.id)} aria-pressed={on} className="w-full flex items-start gap-3 px-3 py-3 text-left">
-                        <span className={`mt-0.5 h-5 w-5 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-[#FBF5E9]' : 'border-stone-400'}`}>
+                        <span className={`mt-0.5 h-5 w-5 flex-none border flex items-center justify-center ${on ? 'border-stone-900 bg-stone-900 text-[#FCFBF8]' : 'border-stone-400'}`}>
                           {on && <Check className="w-3.5 h-3.5" />}
                         </span>
                         <span className="min-w-0">
@@ -172,7 +172,7 @@ export default function FavoritesContact({
               <button
                 type="submit"
                 disabled={status === 'sending' || selected.length === 0}
-                className="w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
+                className="w-full h-12 items-center justify-center gap-2.5 bg-stone-900 text-[#FCFBF8] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-50 flex sm:w-auto sm:min-w-[16rem] sm:px-10 sm:mx-auto rounded-full"
               >
                 {status !== 'sending' && <Send className="w-4 h-4" />}
                 {status === 'sending'

@@ -38,8 +38,8 @@ const THEMES: Theme[] = [
   },
   {
     key: 'a', name: 'A · Réchauffé', pitch: 'Le même site, en plus chaud : fond crème, jaune franc, textes bruns.',
-    page: '#FBF5E9', ink: '#211C15', soft: '#74695A', line: '#E9DFCB', card: '#FFFFFF', mark: '#F6CF4E', accent: '#211C15',
-    band: '#F6CF4E', bandInk: '#211C15', button: '#211C15', buttonInk: '#FFFFFF', badge: '#FFFFFF', badgeInk: '#211C15',
+    page: '#FCFBF8', ink: '#3A2E2A', soft: '#74695A', line: '#E9DFCB', card: '#FFFFFF', mark: '#F6CF4E', accent: '#3A2E2A',
+    band: '#F6CF4E', bandInk: '#3A2E2A', button: '#3A2E2A', buttonInk: '#FFFFFF', badge: '#FFFFFF', badgeInk: '#3A2E2A',
   },
   {
     key: 'b', name: 'B · Une couleur d’accent', pitch: 'Fond crème et une touche terracotta sur les liens, les pastilles et le bouton.',
@@ -49,7 +49,7 @@ const THEMES: Theme[] = [
   {
     key: 'c', name: 'C · Des aplats', pitch: 'Des blocs de couleur entiers : titre sur vert sapin, alerte en terracotta.',
     page: '#F7F1E3', ink: '#17251F', soft: '#5F6B62', line: '#E3DAC4', card: '#FFFFFF', mark: '#F6CF4E', accent: '#1F4A3C',
-    band: '#D9623B', bandInk: '#FFFFFF', button: '#F6CF4E', buttonInk: '#17251F', hero: '#1F4A3C', heroInk: '#FBF5E9', badge: '#F6CF4E', badgeInk: '#17251F',
+    band: '#D9623B', bandInk: '#FFFFFF', button: '#F6CF4E', buttonInk: '#17251F', hero: '#1F4A3C', heroInk: '#FCFBF8', badge: '#F6CF4E', badgeInk: '#17251F',
   },
 ];
 

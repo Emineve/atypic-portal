@@ -87,7 +87,7 @@ export const FICHES: Record<Role, Fiche> = {
   },
 };
 
-const INK = '#211C15';
+const INK = '#3A2E2A';
 
 // Le bord dentelé d'un ticket
 function Dents({ bas = false }: { bas?: boolean }) {
@@ -131,7 +131,7 @@ const h2 = 'font-serif text-3xl leading-[1.1] md:text-4xl';
 function Maquette({ role }: { role: Role }) {
   if (role === 'notaire')
     return (
-      <div className="rounded-[14px] border-2 border-stone-900 bg-[#FCF1C9] p-6 shadow-[5px_5px_0_#211C15]">
+      <div className="rounded-[14px] border-2 border-stone-900 bg-[#FCF1C9] p-6 shadow-[5px_5px_0_#3A2E2A]">
         <p className="font-serif text-2xl leading-snug">Cet ancien atelier en rez-de-chaussée est-il un logement, ou encore un local ?</p>
         <p className="mt-3 text-[17px] leading-relaxed">C’est la première chose à vérifier pour ce bien, avant toute offre : elle se lit dans le règlement de copropriété et se confirme auprès de la mairie.</p>
         <p className="mt-4 text-sm text-stone-600">Relu par <span className="rounded bg-white px-1.5 py-0.5 font-medium text-stone-900">votre nom, notaire</span></p>
@@ -149,9 +149,9 @@ function Maquette({ role }: { role: Role }) {
         <p className="mt-0.5 text-sm text-stone-500">{role === 'courtier' ? 'Ce que cet acheteur paierait chaque mois pour y vivre.' : 'Ce que coûte ce bien une fois habitable.'}</p>
         {role === 'entrepreneur' && (
           <div className="mt-4 flex h-3 w-full overflow-hidden rounded-sm border" style={{ borderColor: INK }} aria-hidden>
-            <span className="w-[68%] bg-[#211C15]" />
+            <span className="w-[68%] bg-[#3A2E2A]" />
             <span className="w-[6%] bg-[#F6CF4E]" />
-            <span className="flex-1" style={{ background: 'repeating-linear-gradient(135deg,#fff 0 4px,#211C15 4px 5px)' }} />
+            <span className="flex-1" style={{ background: 'repeating-linear-gradient(135deg,#fff 0 4px,#3A2E2A 4px 5px)' }} />
           </div>
         )}
         <ul className="mt-3">
@@ -189,12 +189,12 @@ export default function Presentation({ role }: { role: Role }) {
     ['Le numéro part', 'Par e-mail, aux abonnés, et sur le site.'],
   ];
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#FDFBF7] font-sans text-stone-900">
+    <div className="min-h-screen overflow-x-clip bg-[#FCFBF8] font-sans text-stone-900">
       <SiteHeader />
       {/* le haut de page est posé sur une matière : chaque métier a la sienne */}
       <div style={matiere}>
         <section className="mx-auto max-w-6xl px-6 py-10 md:py-16">
-          <div className="max-w-3xl rounded-[18px] border-2 border-stone-900 bg-[#FDFBF7] p-7 shadow-[6px_6px_0_#211C15] md:p-12">
+          <div className="max-w-3xl rounded-[18px] border-2 border-stone-900 bg-[#FCFBF8] p-7 shadow-[6px_6px_0_#3A2E2A] md:p-12">
             <p className="text-sm text-stone-500">
               <a href="/partenaires" className="underline underline-offset-4 decoration-stone-400">Partenaires</a>, pour vous qui êtes {f.metier}
             </p>

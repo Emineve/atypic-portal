@@ -59,7 +59,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
   const tuile = (n: Newsletter) => {
     const on = prefs.includes(n.slug);
     return (
-      <article key={n.slug} className={`flex overflow-hidden rounded-[14px] bg-white sm:flex-col ${on ? 'shadow-[0_0_0_2px_#211C15]' : 'shadow-[0_0_0_1px_#e7e0d3]'}`}>
+      <article key={n.slug} className={`flex overflow-hidden rounded-[14px] bg-white sm:flex-col ${on ? 'shadow-[0_0_0_2px_#3A2E2A]' : 'shadow-[0_0_0_1px_#e7e0d3]'}`}>
         {/* sur téléphone la matière est une bande à droite : le texte se lit d’abord, le calendrier reste court */}
         <a href={`/theme/${n.slug}`} aria-hidden tabIndex={-1} className="order-last block w-16 shrink-0 self-stretch sm:order-none sm:h-28 sm:w-full sm:self-auto" style={n.matiere} />
         <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-6">
@@ -91,7 +91,7 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
       {/* 1. La promesse à gauche, la carte d'inscription à droite : une seule action dès l'ouverture */}
       <div className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-[1.25fr_1fr]">
         <div>{intro}</div>
-        <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
+        <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#3A2E2A] md:p-8">
           {abonne ? (
             <div role="status">
               <p className="font-serif text-4xl italic leading-none text-stone-900 md:text-5xl">Bienvenue à bord !</p>
@@ -125,8 +125,15 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         </div>
       </div>
 
-      {/* 2. Le premier numéro, sur un bandeau plus soutenu, d'un bord à l'autre de l'écran : c'est lui qui fait la séparation */}
-      <section className="mt-16 bg-[#F1E9D8] py-14 [box-shadow:0_0_0_100vmax_#F1E9D8] [clip-path:inset(0_-100vmax)] md:mt-24 md:py-20" aria-labelledby="nl-premier">
+      {/* la frise des douze matières (sur téléphone elle est déjà sous l'en-tête) */}
+      <div aria-hidden className="mt-16 hidden h-[72px] overflow-hidden rounded-[18px] lg:flex">
+        {NEWSLETTERS.map((n) => (
+          <span key={n.slug} className="block flex-1" style={n.matiere} />
+        ))}
+      </div>
+
+      {/* 2. Le premier numéro */}
+      <section className="mt-16 md:mt-20" aria-labelledby="nl-premier">
         <h2 id="nl-premier" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">
           Le premier numéro, <span className="italic text-stone-500">dès {MOIS[premier.mois - 1]}.</span>
         </h2>

@@ -23,7 +23,7 @@ type Alert = {
 };
 
 const eur = (n: number) => `${Number(n).toLocaleString('fr-FR')} €`;
-const btn = 'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-60';
+const btn = 'inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-[#FCFBF8] text-[15px] font-medium hover:bg-stone-800 transition disabled:opacity-60';
 const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
 
 // Les critères d'une alerte, en clair
@@ -134,7 +134,7 @@ export default function MyAlerts() {
           ))}
         </ul>
         <p className="mt-8">
-          <a href="/?alerte=1" className="inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-[#FBF5E9] text-sm font-medium hover:bg-stone-800 transition">
+          <a href="/?alerte=1" className="inline-flex h-12 items-center gap-2 pl-5 pr-6 rounded-full bg-stone-900 text-[#FCFBF8] text-sm font-medium hover:bg-stone-800 transition">
             <Plus className="w-4 h-4" strokeWidth={2} />
             Nouvelle alerte
           </a>
@@ -173,7 +173,7 @@ export default function MyAlerts() {
               type="submit"
               disabled={sent === 'sending'}
               aria-label="Recevoir le lien"
-              className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FBF5E9] transition hover:bg-stone-800 disabled:opacity-50"
+              className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FCFBF8] transition hover:bg-stone-800 disabled:opacity-50"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" />

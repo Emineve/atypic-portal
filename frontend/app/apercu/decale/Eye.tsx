@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 // Le « o » de Loftissime, qui regarde : la pupille suit le curseur (ou le doigt), l'œil cligne quand on le lui demande.
 // Page de travail : rien de ceci n'est encore sur le site.
-export function EyeO({ size = 64, closed = false, blink = 0, ink = '#211C15', iris = '#ffffff', letter = false }: { size?: number; closed?: boolean; blink?: number; ink?: string; iris?: string; letter?: boolean }) {
+export function EyeO({ size = 64, closed = false, blink = 0, ink = '#3A2E2A', iris = '#ffffff', letter = false }: { size?: number; closed?: boolean; blink?: number; ink?: string; iris?: string; letter?: boolean }) {
   const ref = useRef<SVGSVGElement>(null);
   const [p, setP] = useState({ x: 6, y: -4 });
   const [shut, setShut] = useState(false);

@@ -86,10 +86,10 @@ function Cote({ value, small = false }: { value: string; small?: boolean }) {
 function Mur() {
   return (
     <svg viewBox="0 0 1200 70" className="w-full h-10 md:h-12" aria-hidden="true">
-      <path d="M0 60 H420 M520 60 H1200" fill="none" stroke="#211C15" strokeWidth="5" />
-      <path d="M420 60 V10" fill="none" stroke="#211C15" strokeWidth="2" />
-      <path d="M420 10 Q520 10 520 60" fill="none" stroke="#211C15" strokeWidth="2" strokeDasharray="6 6" />
-      <path d="M760 60 V44 M900 60 V44 M760 52 H900" fill="none" stroke="#211C15" strokeWidth="2" />
+      <path d="M0 60 H420 M520 60 H1200" fill="none" stroke="#3A2E2A" strokeWidth="5" />
+      <path d="M420 60 V10" fill="none" stroke="#3A2E2A" strokeWidth="2" />
+      <path d="M420 10 Q520 10 520 60" fill="none" stroke="#3A2E2A" strokeWidth="2" strokeDasharray="6 6" />
+      <path d="M760 60 V44 M900 60 V44 M760 52 H900" fill="none" stroke="#3A2E2A" strokeWidth="2" />
     </svg>
   );
 }
@@ -132,7 +132,7 @@ function Frame({ label, title, what, children }: { label: string; title: string;
       <p className="text-xs uppercase tracking-wider text-stone-500">{label}</p>
       <h2 className="mt-2 font-serif text-3xl md:text-4xl tracking-tight text-stone-900">{title}</h2>
       <p className="mt-3 max-w-2xl text-base text-stone-600">{what}</p>
-      <div className="mt-8 rounded-[14px] border border-stone-300 overflow-hidden bg-[#FBF5E9] shadow-[0_2px_12px_rgba(28,25,23,0.08)]">{children}</div>
+      <div className="mt-8 rounded-[14px] border border-stone-300 overflow-hidden bg-[#FCFBF8] shadow-[0_2px_12px_rgba(28,25,23,0.08)]">{children}</div>
     </section>
   );
 }
@@ -140,7 +140,7 @@ function Frame({ label, title, what, children }: { label: string; title: string;
 export default async function DecalePagesPage() {
   const ls = await getListings();
   return (
-    <div className="min-h-screen bg-[#F3ECDD] text-[#211C15] font-sans">
+    <div className="min-h-screen bg-[#F3ECDD] text-[#3A2E2A] font-sans">
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10">
         <p className="text-xs uppercase tracking-wider text-stone-500">Page de travail · non visible du public</p>
         <h1 className="mt-4 font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
@@ -200,8 +200,8 @@ export default async function DecalePagesPage() {
             </div>
           </article>
           <Card l={ls[2]} wide cote />
-          <article className="rounded-[14px] bg-[#211C15] text-white p-7 flex flex-col justify-between min-h-[240px]">
-            <EyeO size={56} ink="#F6CF4E" iris="#211C15" />
+          <article className="rounded-[14px] bg-[#3A2E2A] text-white p-7 flex flex-col justify-between min-h-[240px]">
+            <EyeO size={56} ink="#F6CF4E" iris="#3A2E2A" />
             <p className="font-serif text-2xl leading-tight">Pour ceux qui ne veulent pas habiter comme tout le monde.</p>
           </article>
           <Card l={ls[3]} cote /><Card l={ls[4]} cote /><Card l={ls[5]} cote />

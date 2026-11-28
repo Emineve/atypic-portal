@@ -24,7 +24,7 @@ const QUESTIONS: [string, string, string][] = [
 
 export default function DixQuestions() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] font-sans text-[#191919]">
+    <div className="min-h-screen bg-[#FCFBF8] font-sans text-[#3A2E2A]">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-20">
         <div className="grid gap-x-12 gap-y-6 md:grid-cols-[1fr_1.4fr]">

@@ -18,7 +18,7 @@ export default async function ArchitectsPage() {
   const { data } = await getSupabase().rpc('get_architects');
   const rows: Row[] = (data as Row[]) || [];
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14">

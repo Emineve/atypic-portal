@@ -8,7 +8,7 @@ export const metadata = { title: 'Page introuvable · Loftissime', robots: { ind
 export default function NotFound() {
   const link = 'text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition';
   return (
-    <div className="min-h-[70vh] bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-[70vh] bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
       <main className="max-w-6xl mx-auto px-6">
         <div className="max-w-4xl pt-8 md:pt-12 pb-24">
@@ -21,7 +21,7 @@ export default function NotFound() {
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-700">Le plus simple est de repartir de l&apos;accueil.</p>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link href="/" className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition">Revenir à l&apos;accueil</Link>
+              <Link href="/" className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-[#FCFBF8] text-[15px] font-medium hover:bg-stone-800 transition">Revenir à l&apos;accueil</Link>
               <Link href="/guide" className={link}>Lire nos articles</Link>
             </div>
           </>
@@ -37,7 +37,7 @@ export default function NotFound() {
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <Link
             href="/"
-            className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition"
+            className="inline-flex h-12 items-center px-8 rounded-full bg-stone-900 text-[#FCFBF8] text-[15px] font-medium hover:bg-stone-800 transition"
           >
             Voir tous les biens
           </Link>

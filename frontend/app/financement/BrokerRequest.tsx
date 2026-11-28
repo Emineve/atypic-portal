@@ -54,12 +54,12 @@ export default function BrokerRequest({ price, down, years, monthly }: Props) {
   const btn = 'inline-flex h-12 items-center px-8 border-2 border-stone-900 bg-[#F6CF4E] text-stone-900 text-[15px] font-semibold [@media(hover:hover)]:hover:bg-[#EFC22F] transition rounded-full disabled:opacity-60';
 
   return (
-    <section id="courtier" aria-live="polite" className="scroll-mt-24 mt-10 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
+    <section id="courtier" aria-live="polite" className="scroll-mt-24 mt-10 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#3A2E2A] md:p-8">
       <div className="flex items-start justify-between gap-6">
         <div className="max-w-xl">
           {status === 'done' ? (
             <div className="flex items-start gap-4">
-              <span className="mt-1 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FBF5E9]">
+              <span className="mt-1 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FCFBF8]">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20 6 9 17l-5-5" />
                 </svg>

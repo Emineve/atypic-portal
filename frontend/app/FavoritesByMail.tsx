@@ -54,7 +54,7 @@ export default function FavoritesByMail({ ids }: { ids: string[] }) {
           placeholder="Votre e-mail *"
           className="h-full w-full min-w-0 border-0 bg-transparent p-0 text-base text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-0"
         />
-        <button type="submit" disabled={status === 'sending'} aria-label="Recevoir mes favoris par e-mail" className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FBF5E9] transition hover:bg-stone-800 disabled:opacity-60">
+        <button type="submit" disabled={status === 'sending'} aria-label="Recevoir mes favoris par e-mail" className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-stone-900 text-[#FCFBF8] transition hover:bg-stone-800 disabled:opacity-60">
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>

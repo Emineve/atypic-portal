@@ -30,7 +30,7 @@ export default function LetterStopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <nav className="border-b border-stone-200 bg-white/90">
         <div className="max-w-3xl mx-auto px-6 h-16 flex items-center">
           <Logo />
@@ -48,7 +48,7 @@ export default function LetterStopPage() {
           <>
             <h1 className="font-serif text-3xl text-stone-900 leading-tight">Ne plus recevoir la newsletter ?</h1>
             <p className="mt-4 text-stone-600 leading-relaxed">Un clic suffit. Votre adresse ne sera plus utilisée.</p>
-            <button onClick={stop} disabled={status === 'sending' || token === null} className="mt-8 h-12 rounded-full bg-stone-900 px-7 text-sm font-medium text-[#FBF5E9] disabled:opacity-50">
+            <button onClick={stop} disabled={status === 'sending' || token === null} className="mt-8 h-12 rounded-full bg-stone-900 px-7 text-sm font-medium text-[#FCFBF8] disabled:opacity-50">
               {status === 'sending' ? 'Désinscription…' : 'Me désinscrire'}
             </button>
             {status === 'error' && <p role="alert" className="mt-4 text-sm text-red-700">La désinscription n’a pas abouti. Réessayez dans un instant.</p>}

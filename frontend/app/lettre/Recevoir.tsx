@@ -25,7 +25,7 @@ export default function Recevoir({ titre, texte, source }: { titre: React.ReactN
   }
 
   return (
-    <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#211C15] md:p-8">
+    <div id="recevoir" className="scroll-mt-28 rounded-[18px] border-2 border-stone-900 bg-white p-6 shadow-[6px_6px_0_#3A2E2A] md:p-8">
       {etat === 'done' ? (
         <div role="status">
           <p className="font-serif text-4xl italic leading-none text-stone-900 md:text-5xl">Bienvenue à bord !</p>

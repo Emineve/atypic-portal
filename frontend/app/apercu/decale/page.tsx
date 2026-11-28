@@ -97,10 +97,10 @@ function Cote({ value, label }: { value: string; label: string }) {
 function Mur() {
   return (
     <svg viewBox="0 0 1200 70" className="w-full h-10 md:h-14" aria-hidden="true">
-      <path d="M0 60 H420 M520 60 H1200" fill="none" stroke="#211C15" strokeWidth="5" />
-      <path d="M420 60 V10" fill="none" stroke="#211C15" strokeWidth="2" />
-      <path d="M420 10 Q520 10 520 60" fill="none" stroke="#211C15" strokeWidth="2" strokeDasharray="6 6" />
-      <path d="M760 60 V44 M900 60 V44 M760 52 H900" fill="none" stroke="#211C15" strokeWidth="2" />
+      <path d="M0 60 H420 M520 60 H1200" fill="none" stroke="#3A2E2A" strokeWidth="5" />
+      <path d="M420 60 V10" fill="none" stroke="#3A2E2A" strokeWidth="2" />
+      <path d="M420 10 Q520 10 520 60" fill="none" stroke="#3A2E2A" strokeWidth="2" strokeDasharray="6 6" />
+      <path d="M760 60 V44 M900 60 V44 M760 52 H900" fill="none" stroke="#3A2E2A" strokeWidth="2" />
     </svg>
   );
 }
@@ -119,7 +119,7 @@ function Piste({ n, title, children, what }: { n: string; title: string; what: s
 export default async function DecalePage() {
   const ls = await getListings();
   return (
-    <div className="min-h-screen bg-[#FBF5E9] text-[#211C15] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10">
         <p className="text-xs uppercase tracking-wider text-stone-500">Page de travail · non visible du public</p>
         <h1 className="mt-4 font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-stone-900">
@@ -150,7 +150,7 @@ export default async function DecalePage() {
               Tous les biens atypiques des meilleures agences,{' '}
               <span className="italic [background:linear-gradient(transparent_62%,#F6CF4E_62%)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">réunis sur un seul site</span>.
             </p>
-            <div className="mt-8 h-14 rounded-full border border-stone-200 bg-[#FBF5E9] px-6 flex items-center text-stone-500">Ville, code postal, quartier…</div>
+            <div className="mt-8 h-14 rounded-full border border-stone-200 bg-[#FCFBF8] px-6 flex items-center text-stone-500">Ville, code postal, quartier…</div>
           </div>
           <div className="bg-[#F6CF4E] flex items-center"><GuideArt art="atelier" fit="meet" className="w-full h-auto" /></div>
         </div>
@@ -191,8 +191,8 @@ export default async function DecalePage() {
           </article>
           <Card l={ls[2]} wide />
           <Card l={ls[3]} />
-          <article className="rounded-[14px] border border-stone-900 bg-[#211C15] text-white p-7 flex flex-col justify-between min-h-[240px]">
-            <EyeO size={56} ink="#F6CF4E" iris="#211C15" />
+          <article className="rounded-[14px] border border-stone-900 bg-[#3A2E2A] text-white p-7 flex flex-col justify-between min-h-[240px]">
+            <EyeO size={56} ink="#F6CF4E" iris="#3A2E2A" />
             <p className="font-serif text-2xl leading-tight">Pour ceux qui ne veulent pas habiter comme tout le monde.</p>
           </article>
           <Card l={ls[4]} />

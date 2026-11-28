@@ -81,7 +81,7 @@ function AlertForm({ city, price, dark = false, idPrefix, onDone }: Props & { da
         <button
           type="submit"
           disabled={status === 'sending'}
-          className={`h-11 px-4 flex-none rounded-full text-[15px] font-medium transition disabled:opacity-60 ${dark ? 'bg-[#F6CF4E] text-stone-900 hover:bg-white' : 'bg-stone-900 text-[#FBF5E9] hover:bg-stone-800'}`}
+          className={`h-11 px-4 flex-none rounded-full text-[15px] font-medium transition disabled:opacity-60 ${dark ? 'bg-[#F6CF4E] text-stone-900 hover:bg-white' : 'bg-stone-900 text-[#FCFBF8] hover:bg-stone-800'}`}
         >
           {status === 'sending' ? 'Un instant…' : 'Créer mon alerte'}
         </button>
@@ -105,7 +105,7 @@ export function AlertLink({ city, price }: Props) {
     <div className="mt-8 border-y border-stone-200 py-4">
       {state === 'done' ? (
         <p className="flex items-center gap-3 text-sm text-stone-900" role="status">
-          <span className="h-6 w-6 flex-none rounded-full bg-stone-900 text-[#FBF5E9] flex items-center justify-center">
+          <span className="h-6 w-6 flex-none rounded-full bg-stone-900 text-[#FCFBF8] flex items-center justify-center">
             <Check className="w-3.5 h-3.5" />
           </span>
           Alerte créée. Vous serez prévenu(e) par e-mail des prochains biens.
@@ -187,7 +187,7 @@ export function FavoriteAlertToast({ city, price }: Props) {
 
   return (
     <div className="fixed inset-x-0 z-30 px-4 pointer-events-none bottom-[5.5rem] lg:bottom-5" role="status">
-      <div className="pointer-events-auto relative mx-auto max-w-md bg-stone-900 text-[#FBF5E9] shadow-xl">
+      <div className="pointer-events-auto relative mx-auto max-w-md bg-stone-900 text-[#FCFBF8] shadow-xl">
         {state === 'line' && (
           <p className="flex items-center gap-2.5 px-4 py-3 text-sm">
             <Heart className="w-4 h-4 flex-none fill-white" aria-hidden="true" />

@@ -204,7 +204,7 @@ export default function AdminPage() {
 
   if (!token) {
     return (
-      <div className="min-h-screen bg-[#FDFBF7] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-[#FCFBF8] flex items-center justify-center px-6">
         <form
           onSubmit={(e) => { e.preventDefault(); setToken(input.trim()); }}
           className="w-full max-w-sm border border-stone-200 bg-white p-6 space-y-4"
@@ -231,7 +231,7 @@ export default function AdminPage() {
     : [];
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <header className="border-b border-stone-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <span className="flex items-baseline gap-2">

@@ -30,7 +30,7 @@ export default function StopAlertPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <nav className="border-b border-stone-200 bg-white/90">
         <div className="max-w-3xl mx-auto px-6 h-16 flex items-center">
           <Logo />
@@ -39,7 +39,7 @@ export default function StopAlertPage() {
       <main className="max-w-md mx-auto px-6 py-20 text-center">
         {status === 'done' ? (
           <>
-            <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-[#FBF5E9] flex items-center justify-center">
+            <span className="mx-auto h-16 w-16 rounded-full bg-stone-900 text-[#FCFBF8] flex items-center justify-center">
               <Check className="w-8 h-8" />
             </span>
             <h1 className="mt-7 font-serif text-3xl text-stone-900 leading-tight">Votre alerte est arrêtée.</h1>
@@ -48,7 +48,7 @@ export default function StopAlertPage() {
             </p>
             <Link
               href="/"
-              className="mt-9 inline-block bg-stone-900 text-[#FBF5E9] text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
+              className="mt-9 inline-block bg-stone-900 text-[#FCFBF8] text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition rounded-full"
             >
               Voir les biens
             </Link>
@@ -70,7 +70,7 @@ export default function StopAlertPage() {
               type="button"
               onClick={stop}
               disabled={!token || status === 'sending'}
-              className="mt-9 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition disabled:opacity-50 rounded-full"
+              className="mt-9 bg-stone-900 text-[#FCFBF8] text-[15px] font-medium px-9 py-4 hover:bg-stone-800 transition disabled:opacity-50 rounded-full"
             >
               {status === 'sending' ? 'Un instant…' : 'Arrêter cette alerte'}
             </button>

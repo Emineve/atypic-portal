@@ -6,7 +6,7 @@ import { MOIS, NEWSLETTERS, themeDe } from '../../lib/newsletters';
 // Un numéro de la newsletter de Loftissime tel qu'il se lit : la même vue sert à l'aperçu du back-office et à la page du numéro sur le site.
 // `brouillon` : les champs vides s'affichent entre crochets, pour voir ce qui manque. Sans lui, une ligne vide n'apparaît pas.
 
-const INK = '#211C15';
+const INK = '#3A2E2A';
 
 function Ligne({ label, note, montant, fort = false }: { label: string; note?: string; montant: React.ReactNode; fort?: boolean }) {
   return (
@@ -15,7 +15,7 @@ function Ligne({ label, note, montant, fort = false }: { label: string; note?: s
         {label}
         {note && <span className="block text-xs text-[#74695A]">{note}</span>}
       </span>
-      <span aria-hidden className="mb-1 flex-1 self-end border-b border-dotted border-[#211C15]/50" />
+      <span aria-hidden className="mb-1 flex-1 self-end border-b border-dotted border-[#3A2E2A]/50" />
       <span className={`font-serif lining-nums whitespace-nowrap ${fort ? 'text-2xl' : 'text-lg'}`}>{montant}</span>
     </div>
   );
@@ -45,7 +45,7 @@ function Ticket({ children }: { children: React.ReactNode }) {
   );
 }
 
-const Marque = () => <span className="font-logo font-semibold tracking-[-0.3px] text-[#211C15]">loftissime.</span>;
+const Marque = () => <span className="font-logo font-semibold tracking-[-0.3px] text-[#3A2E2A]">loftissime.</span>;
 
 export default function NumeroView({ numero, c, items, brouillon = false }: { numero: number; c: NumeroContent; items: { une: LetterItem | null; autres: LetterItem[] }; brouillon?: boolean }) {
   const { une, autres } = items;
@@ -73,23 +73,23 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
         <path d="M5 5H1099V555H5ZM279 5V555M552 5V555M825 5V555M5 190H1099M5 372H1099" fill="none" />
       </g>
       <circle cx={552} cy={280} r={62} fill={INK} />
-      <circle cx={552} cy={280} r={58} fill="none" stroke="#FBF5E9" strokeWidth={3} />
-      <path d="M535 252L583 280L535 308Z" fill="#FBF5E9" />
+      <circle cx={552} cy={280} r={58} fill="none" stroke="#FCFBF8" strokeWidth={3} />
+      <path d="M535 252L583 280L535 308Z" fill="#FCFBF8" />
     </svg>
   );
 
   return (
-    <article className="mx-auto w-full max-w-[600px] bg-[#FBF6EC] font-sans text-[#211C15]">
+    <article className="mx-auto w-full max-w-[600px] bg-[#FBF6EC] font-sans text-[#3A2E2A]">
       {/* 1. Le bien à la une : la visite */}
       {/* la matière du thème, en bandeau de tête */}
       <div aria-hidden className="h-12" style={themeDe(c.theme).matiere} />
       <header className="px-6 pt-8 sm:px-10">
         <p className="font-serif text-[52px] italic leading-none sm:text-[64px]">{themeDe(c.theme).nom}</p>
         <p className="mt-3 text-sm leading-relaxed text-[#74695A]">
-          <span className="mr-2 font-serif text-[17px] italic text-[#211C15]">n° {numero}</span>
+          <span className="mr-2 font-serif text-[17px] italic text-[#3A2E2A]">n° {numero}</span>
           La newsletter de ceux qui aiment les biens atypiques, by <Marque />
         </p>
-        <div className="mt-6 rounded-[14px] border-2 border-[#211C15] bg-white p-5 shadow-[5px_5px_0_#211C15] sm:p-6">
+        <div className="mt-6 rounded-[14px] border-2 border-[#3A2E2A] bg-white p-5 shadow-[5px_5px_0_#3A2E2A] sm:p-6">
         <p className="text-sm text-[#74695A]">Le bien à la une, et ce qu’il coûte vraiment.</p>
         <h1 className="mt-2 font-serif text-[40px] leading-[1.04] sm:text-[48px]">
           <T v={c.surnom} ph="le surnom du bien" /> {a(c.surnom_italique) && <span className="italic text-[#74695A]">{c.surnom_italique}</span>}
@@ -99,7 +99,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
         </p>
         {k.prix != null && (
           <p className="mt-4 text-sm text-[#74695A]">
-            Affiché <span className="whitespace-nowrap rounded-md bg-[#F6CF4E] px-2.5 py-1 font-serif text-2xl lining-nums text-[#211C15]">{eur(k.prix)}</span>
+            Affiché <span className="whitespace-nowrap rounded-md bg-[#F6CF4E] px-2.5 py-1 font-serif text-2xl lining-nums text-[#3A2E2A]">{eur(k.prix)}</span>
           </p>
         )}
         <div id="video" className="mt-6 scroll-mt-24 overflow-hidden">
@@ -128,7 +128,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
           <h2 className="font-serif text-[27px] leading-tight">Aujourd’hui, <span className="italic text-[#74695A]">demain.</span></h2>
           <div className="mt-5 grid grid-cols-2 gap-4">
             <figure>
-              <div className="rounded-[10px] border-2 border-[#211C15] bg-white p-3">
+              <div className="rounded-[10px] border-2 border-[#3A2E2A] bg-white p-3">
                 <Mesure kind={c.dessin_kind || une?.kind || 'surface'} valeur={c.dessin_kind ? c.dessin_valeur : une?.valeur} className="block w-full" />
               </div>
               <figcaption className="mt-2 text-[13px] leading-snug"><T v={c.aujourdhui} ph="le lieu aujourd’hui, en une ligne" /> <span className="text-[#74695A]">La silhouette fait 1,75 m.</span></figcaption>
@@ -136,9 +136,9 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
             <figure>
               {a(c.croquis_url) ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={c.croquis_url} alt="Le croquis de l’architecte" className="block w-full rounded-lg border border-[#211C15] bg-white" />
+                <img src={c.croquis_url} alt="Le croquis de l’architecte" className="block w-full rounded-lg border border-[#3A2E2A] bg-white" />
               ) : (
-                <div className="flex aspect-[200/190] items-center justify-center rounded-lg border border-dashed border-[#211C15] p-3 text-center text-[13px] leading-snug text-[#8a7f70]">
+                <div className="flex aspect-[200/190] items-center justify-center rounded-lg border border-dashed border-[#3A2E2A] p-3 text-center text-[13px] leading-snug text-[#8a7f70]">
                   {brouillon ? '[Le croquis de l’architecte, à la même échelle]' : 'Le projet de l’architecte'}
                 </div>
               )}
@@ -157,9 +157,9 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
           <h3 className="font-serif text-[22px] leading-tight">{nomComplet || (brouillon ? '[le surnom du bien]' : 'Le bien à la une')}</h3>
           <p className="mt-0.5 text-[13px] text-[#74695A]">Ce que coûte ce bien une fois habitable.</p>
           <div className="mt-4 flex h-3 w-full overflow-hidden rounded-sm border" style={{ borderColor: INK }} aria-hidden>
-            <span className="bg-[#211C15]" style={{ width: part(k.prix) || '68%' }} />
+            <span className="bg-[#3A2E2A]" style={{ width: part(k.prix) || '68%' }} />
             <span className="bg-[#F6CF4E]" style={{ width: part(k.notaire) || '6%' }} />
-            <span className="flex-1" style={{ background: 'repeating-linear-gradient(135deg,#fff 0 4px,#211C15 4px 5px)' }} />
+            <span className="flex-1" style={{ background: 'repeating-linear-gradient(135deg,#fff 0 4px,#3A2E2A 4px 5px)' }} />
           </div>
           <div className="mt-3">
             <Ligne label="Prix de vente affiché" note={une?.seller === 'particulier' ? 'Vendu en direct par son propriétaire' : 'Honoraires d’agence inclus'} montant={<M v={k.prix} ph="prix" />} />
@@ -221,7 +221,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
         <section className="px-6 pt-10 sm:px-10">
           <Poutre />
           <h2 className="font-serif text-[27px] leading-tight">Avant la promesse, <span className="italic text-[#74695A]">un point de vigilance.</span></h2>
-          <div className="mt-4 rounded-[14px] border-2 border-[#211C15] bg-[#FCF1C9] p-5 shadow-[5px_5px_0_#211C15]">
+          <div className="mt-4 rounded-[14px] border-2 border-[#3A2E2A] bg-[#FCF1C9] p-5 shadow-[5px_5px_0_#3A2E2A]">
           <p className="font-serif text-[23px] leading-snug"><T v={c.vigilance_question} ph="la question à se poser pour ce bien" /></p>
           {(a(c.vigilance_texte) || brouillon) && <p className="mt-3 text-[15px] leading-relaxed"><T v={c.vigilance_texte} ph="pourquoi, et où cela se vérifie" /></p>}
           {liens.vigilance ? (
@@ -238,7 +238,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
         <section className="px-6 pt-10 sm:px-10">
           <Poutre />
           <h2 className="font-serif text-[27px] leading-tight">{autres.length === 3 || autres.length === 0 ? 'Trois autres biens,' : autres.length === 1 ? 'Un autre bien,' : 'Deux autres biens,'} <span className="italic text-[#74695A]">{autres.length === 1 ? 'sélectionné pour vous.' : 'sélectionnés pour vous.'}</span></h2>
-          <ul className="mt-4 rounded-[14px] border-2 border-[#211C15] bg-white px-5 shadow-[5px_5px_0_#211C15]">
+          <ul className="mt-4 rounded-[14px] border-2 border-[#3A2E2A] bg-white px-5 shadow-[5px_5px_0_#3A2E2A]">
             {autres.map((b, i) => (
               <li key={b.id || i} className="flex items-center gap-4 border-b border-[#E3D9C6] py-4 last:border-b-0">
                 {b.kind !== 'aucun' && <Mesure kind={b.kind} valeur={b.valeur} className="w-[72px] shrink-0" />}
@@ -265,7 +265,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
           <h2 className="font-serif text-[27px] leading-tight">La question, <span className="italic text-[#74695A]">et vous, vous rêvez de quoi ?</span></h2>
           <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
             {CHOIX.map(([code, t]) => (
-              <span key={code} className="flex min-h-[52px] items-center justify-center rounded-full border-2 border-[#211C15] bg-white px-3 py-2 text-center font-serif text-[16px] italic leading-tight">{t}</span>
+              <span key={code} className="flex min-h-[52px] items-center justify-center rounded-full border-2 border-[#3A2E2A] bg-white px-3 py-2 text-center font-serif text-[16px] italic leading-tight">{t}</span>
             ))}
           </div>
           <p className="mt-3 text-sm text-[#74695A]">On répond d’un clic depuis le mail. Vos réponses décident des prochaines visites.</p>
@@ -289,7 +289,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
       })()}
 
       {/* Le bloc final */}
-      <footer className="mt-12 bg-[#211C15] px-6 pb-8 pt-8 text-[#FBF5E9] sm:px-10">
+      <footer className="mt-12 bg-[#3A2E2A] px-6 pb-8 pt-8 text-[#FCFBF8] sm:px-10">
         <p className="font-logo text-[34px] font-semibold leading-none tracking-[-1px]">loftissime<span className="text-[#F6CF4E]">.</span></p>
         <p className="mt-3 text-sm text-[#cfc5b4]">La newsletter de ceux qui aiment les biens atypiques. Douze numéros par an, un thème par mois.</p>
         {(a(c.collaborateurs) || brouillon) && (

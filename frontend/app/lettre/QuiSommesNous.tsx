@@ -14,7 +14,7 @@ const TEMPS: [string, string][] = [
 
 export default function QuiSommesNous() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] font-sans text-[#191919]">
+    <div className="min-h-screen bg-[#FCFBF8] font-sans text-[#3A2E2A]">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-20">
         <h1 className="font-serif text-[2.6rem] leading-[1.02] tracking-tight text-stone-900 md:text-7xl">
@@ -38,7 +38,7 @@ export default function QuiSommesNous() {
         </div>
 
         {/* la conviction, seule et en grand : c'est la phrase qu'on retient */}
-        <section className="rounded-[14px] border-2 border-stone-900 bg-white px-7 py-10 shadow-[6px_6px_0_#211C15] md:px-14 md:py-16">
+        <section className="rounded-[14px] border-2 border-stone-900 bg-white px-7 py-10 shadow-[6px_6px_0_#3A2E2A] md:px-14 md:py-16">
           <p className="text-[15px] font-medium text-stone-600">Notre conviction</p>
           <p className="mt-4 max-w-4xl font-serif text-3xl leading-[1.15] tracking-tight text-stone-900 md:text-5xl md:leading-[1.1]">
             Habiter un lieu qui ne ressemble à aucun autre n’est pas réservé à quelques-uns. <span className="italic text-stone-500">Il faut oser, faire ses comptes et être bien accompagné. Alors on y arrive.</span>

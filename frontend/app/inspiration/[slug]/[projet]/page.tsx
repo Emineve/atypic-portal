@@ -55,7 +55,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
   const facts = [p.place, p.surface, p.year].filter(Boolean).join(' · ');
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
 
       <header className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-10 md:pb-14 [&>*]:max-w-3xl">
@@ -106,7 +106,7 @@ export default async function ProjectPage({ params }: { params: { slug: string; 
         <div className="max-w-2xl mx-auto px-6 py-14 text-center">
           <Link
             href={p.sale ? `/categorie/${slugify(p.sale)}` : '/'}
-            className="inline-flex h-12 items-center px-8 bg-stone-900 text-[#FBF5E9] text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
+            className="inline-flex h-12 items-center px-8 bg-stone-900 text-[#FCFBF8] text-[15px] font-medium hover:bg-stone-800 transition rounded-full"
           >
             {p.sale ? `Découvrez les biens « ${p.sale} » à visiter` : 'Découvrez les biens à visiter'}
           </Link>

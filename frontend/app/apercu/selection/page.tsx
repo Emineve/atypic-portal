@@ -67,10 +67,10 @@ export default async function SelectionPreview() {
   const items = await getListings();
   const link = 'text-[15px] font-medium text-stone-900 underline underline-offset-4 decoration-stone-300';
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#191919] font-sans">
+    <div className="min-h-screen bg-[#FCFBF8] text-[#3A2E2A] font-sans">
       <SiteHeader />
 
-      <p className="bg-stone-900 px-6 py-2 text-center text-xs tracking-wide text-[#FBF5E9]">
+      <p className="bg-stone-900 px-6 py-2 text-center text-xs tracking-wide text-[#FCFBF8]">
         Maquette de travail : biens d’exemple, liens sortants non branchés, rien de ceci n’est en ligne.
       </p>
 
@@ -87,13 +87,13 @@ export default async function SelectionPreview() {
       <main className="max-w-6xl mx-auto px-6 pb-24">
         {/* La vidéo de la semaine : un bien en avant-première, au format du site */}
         <article className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] rounded-[14px] overflow-hidden bg-white border border-stone-200">
-          <div className="relative flex aspect-[4/5] md:aspect-auto md:min-h-[420px] items-center justify-center bg-[#211C15] border-b md:border-b-0 md:border-r border-stone-900">
-            <span className="absolute left-5 top-5 font-logo font-semibold lowercase tracking-tight text-lg leading-none text-[#FBF5E9]">loftissime.</span>
+          <div className="relative flex aspect-[4/5] md:aspect-auto md:min-h-[420px] items-center justify-center bg-[#3A2E2A] border-b md:border-b-0 md:border-r border-stone-900">
+            <span className="absolute left-5 top-5 font-logo font-semibold lowercase tracking-tight text-lg leading-none text-[#FCFBF8]">loftissime.</span>
             <span className="absolute right-5 top-5 text-xs uppercase tracking-widest text-stone-400">Avant-première</span>
-            <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#FBF5E9]" aria-hidden="true">
-              <span className="ml-1 h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-[#FBF5E9]" />
+            <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#FCFBF8]" aria-hidden="true">
+              <span className="ml-1 h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-[#FCFBF8]" />
             </span>
-            <span className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-[#FBF5E9]">
+            <span className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-[#FCFBF8]">
               <span className="font-serif text-xl leading-tight">Atelier sous verrière<span className="block italic text-stone-400">Paris 14e</span></span>
               <span className="text-xs tabular-nums text-stone-400">1:00</span>
             </span>
@@ -149,7 +149,7 @@ export default async function SelectionPreview() {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <input type="email" disabled placeholder="Votre e-mail" aria-label="Votre e-mail" className={FIELD} />
-              <span className="inline-flex h-12 flex-none items-center justify-center rounded-full bg-stone-900 px-7 text-[15px] font-medium text-[#FBF5E9]">Recevoir la sélection</span>
+              <span className="inline-flex h-12 flex-none items-center justify-center rounded-full bg-stone-900 px-7 text-[15px] font-medium text-[#FCFBF8]">Recevoir la sélection</span>
             </div>
           </div>
         </section>

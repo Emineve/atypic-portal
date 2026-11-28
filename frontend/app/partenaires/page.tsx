@@ -14,7 +14,7 @@ const Maj = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 export default function Partenaires() {
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#FDFBF7] font-sans text-stone-900">
+    <div className="min-h-screen overflow-x-clip bg-[#FCFBF8] font-sans text-stone-900">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-20">
         <div className="grid gap-x-12 gap-y-6 md:grid-cols-[1fr_1.4fr]">
@@ -31,7 +31,7 @@ export default function Partenaires() {
             const f = FICHES[role];
             return (
               <li key={role}>
-                <a href={`/partenaires/${role}`} className="group flex h-full flex-col overflow-hidden rounded-[18px] border-2 border-stone-900 bg-white shadow-[6px_6px_0_#211C15]">
+                <a href={`/partenaires/${role}`} className="group flex h-full flex-col overflow-hidden rounded-[18px] border-2 border-stone-900 bg-white shadow-[6px_6px_0_#3A2E2A]">
                   <span aria-hidden className="block h-28 border-b-2 border-stone-900 md:h-36" style={themeDe(f.matiere).matiere} />
                   <span className="flex flex-1 flex-col p-6 md:p-7">
                     <span className="text-sm text-stone-500">{Maj(f.metier)}</span>

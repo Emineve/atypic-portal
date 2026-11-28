@@ -44,7 +44,7 @@ const GROUPES: { titre: string; italique: string; membres: Membre[] }[] = [
 
 export default function Equipe() {
   return (
-    <div className="min-h-screen bg-[#FDFBF7] font-sans text-stone-900">
+    <div className="min-h-screen bg-[#FCFBF8] font-sans text-stone-900">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-20">
         <div className="grid gap-x-12 gap-y-6 md:grid-cols-[1fr_1.4fr]">
@@ -64,7 +64,7 @@ export default function Equipe() {
             <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {g.membres.map(([qui, role, texte, kind]) => (
                 <li key={qui}>
-                  <div className="overflow-hidden rounded-[14px] border-2 border-stone-900 shadow-[5px_5px_0_#211C15]">
+                  <div className="overflow-hidden rounded-[14px] border-2 border-stone-900 shadow-[5px_5px_0_#3A2E2A]">
                     <Fusain kind={kind} className="block w-full" />
                   </div>
                   <h3 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight">{qui}</h3>
