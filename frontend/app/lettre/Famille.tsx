@@ -125,13 +125,6 @@ export default function Famille({ extrait, intro, articles }: { extrait?: React.
         </div>
       </div>
 
-      {/* la frise des douze matières (sur téléphone elle est déjà sous l'en-tête) */}
-      <div aria-hidden className="mt-16 hidden h-[72px] overflow-hidden rounded-[18px] lg:flex">
-        {NEWSLETTERS.map((n) => (
-          <span key={n.slug} className="block flex-1" style={n.matiere} />
-        ))}
-      </div>
-
       {/* 2. Le premier numéro */}
       <section className="mt-16 md:mt-20" aria-labelledby="nl-premier">
         <h2 id="nl-premier" className="font-serif text-3xl leading-[1.1] text-stone-900 md:text-4xl">

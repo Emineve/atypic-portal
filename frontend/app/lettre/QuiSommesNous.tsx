@@ -1,5 +1,4 @@
 import SiteHeader from '../SiteHeader';
-import { NEWSLETTERS } from '../../lib/newsletters';
 
 // « Pourquoi Loftissime ? », version du site tant qu'il vit par sa newsletter. Même voix que « Pourquoi Béton ciré ? » :
 // le constat, ce que nous faisons, le nom, ce que nous ne faisons pas. Aucun nom propre : l'équipe se présentera quand elle l'aura décidé.
@@ -20,13 +19,6 @@ export default function QuiSommesNous() {
         <h1 className="font-serif text-[2.6rem] leading-[1.02] tracking-tight text-stone-900 md:text-7xl">
           Pourquoi <span className="italic text-stone-500">Loftissime ?</span>
         </h1>
-
-        {/* les matières des newsletters, en frise : c'est le nuancier de la maison */}
-        <div aria-hidden className="mt-8 hidden h-14 overflow-hidden rounded-[14px] md:mt-12 md:h-20 lg:flex">
-          {NEWSLETTERS.map((n) => (
-            <span key={n.slug} className="block flex-1" style={n.matiere} />
-          ))}
-        </div>
 
         <div className="mt-12 md:mt-20">
           {TEMPS.map(([titre, texte]) => (

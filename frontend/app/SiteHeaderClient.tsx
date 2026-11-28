@@ -10,7 +10,6 @@ import Logo from './Logo';
 import MenuPanel from './MenuPanel';
 import ModeEmploiBack from './ModeEmploiBack';
 import { useSiteMode } from './SiteMode';
-import { NEWSLETTERS } from '../lib/newsletters';
 
 // Le menu du mode lettre : trois entrées, à droite du logo sur ordinateur, sur une seconde ligne sur téléphone.
 const LETTER_LINKS: { href: string; label: string }[] = [
@@ -106,12 +105,6 @@ export default function SiteHeaderClient({
             </div>
           </div>
         </nav>
-        {/* sur téléphone, la frise des douze matières sous l'en-tête : elle ouvre la page et s'en va quand on fait défiler */}
-        <div aria-hidden className="flex h-2.5 lg:hidden">
-          {NEWSLETTERS.map((n) => (
-            <span key={n.slug} className="block flex-1" style={n.matiere} />
-          ))}
-        </div>
         {/* la page remonte sur l'en-tête, coins arrondis */}
         <div aria-hidden className="bg-[#F2EEE8]">
           <div className="h-7 rounded-t-[28px] bg-[#FCFBF8] md:h-9 md:rounded-t-[36px]" />
