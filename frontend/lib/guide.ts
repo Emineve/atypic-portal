@@ -47,6 +47,100 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'qui-vend-les-biens-atypiques-en-france',
+    art: 'atypique',
+    title: 'Qui vend les biens atypiques en France ? Les spécialistes, ceux qui s’y mettent, et tous les autres',
+    description: 'Réseaux spécialisés, enseignes généralistes qui lancent une marque « caractère », agences de quartier : tour d’horizon de ceux qui vendent les biens atypiques.',
+    category: 'Actu réseau',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 6,
+    intro: 'Un loft, une maison d’architecte ou un ancien atelier peuvent être vendus par trois sortes d’agences : celles qui en ont fait leur métier, les grandes enseignes qui ouvrent une marque dédiée, et l’agence du coin qui en reçoit un de temps en temps. Voici ce que la presse professionnelle en dit. Tous les chiffres sont ceux que les agences déclarent elles-mêmes.',
+    takeaways: [
+      'Quelques réseaux et agences se consacrent aux biens atypiques ou de caractère, chacun avec sa définition.',
+      'Des enseignes généralistes ou de prestige créent des marques et des départements dédiés : c’est le mouvement de 2026.',
+      'Sur les agences classiques qui en vendent à l’occasion, la presse ne dit presque rien.',
+      'Il n’existe aucune statistique indépendante sur le marché de l’atypique : ni part des ventes, ni délais.',
+    ],
+    sections: [
+      {
+        title: 'Qui en a fait sa spécialité ?',
+        paragraphs: [
+          'Plusieurs acteurs, qui ne visent pas les mêmes biens. Nous les citons par ordre alphabétique, avec les chiffres qu’ils ont communiqués à la presse.',
+        ],
+        list: [
+          'Architecture de Collection, créée en 2007, se consacre à l’architecture remarquable des XXe et XXIe siècles. L’estimation y est confiée à une équipe qui mêle historiens de l’art, photographes et négociateurs formés à l’architecture, expliquait l’agence au site ByBeton en 2022.',
+          'Ateliers Lofts & Associés, dont le concept date de 1998, vend lofts, ateliers et maisons contemporaines. L’enseigne s’est ouverte à la franchise et cite Paris, Bordeaux, Arcachon, Biarritz, La Rochelle et Royan, d’après sa fiche sur l’annuaire Toute la Franchise.',
+          'De la cour au jardin, réseau de 25 consultants indépendants né il y a 28 ans, travaille l’immobilier de charme : maisons de famille, de campagne, appartements de caractère (MySweetImmo, mai 2026).',
+          'Espaces Atypiques, créé en 2008, compte 87 agences dans 64 départements, dont une trentaine en franchise, selon L’Express Franchise. Le réseau déclare 2 100 transactions en 2025 et vise 120 agences en 2030.',
+          'Le Groupe Mercure se consacre aux châteaux et aux biens patrimoniaux. Son bilan 2023 faisait état de 260 transactions, dont 40 % de châteaux.',
+          'Le Groupe Patrice Besse vend des biens de caractère, dont une trentaine de châteaux en 2025, pour une transaction moyenne d’environ 950 000 euros (MySweetImmo, janvier 2026).',
+        ],
+      },
+      {
+        title: 'Quelles enseignes s’y mettent ?',
+        paragraphs: [
+          'C’est le mouvement le plus visible de 2026. Des réseaux généralistes ou de prestige créent une marque ou un département pour les biens de caractère.',
+        ],
+        list: [
+          'Laforêt a lancé à l’automne 2026 la marque Laforêt Collection, pour les biens de famille et de caractère : mas, maison de maître, loft industriel, duplex haussmannien. Deux agences sont ouvertes, au Touquet et à Paris, et le réseau en vise 20 à 25 en deux ans.',
+          'Chez Nestenn, une franchisée de Saint-Malo a ouvert en avril 2026 une agence « Maisons de Famille ». C’est une initiative locale, pas une marque nationale.',
+          'Barnes dispose d’un département Propriétés & Châteaux, et Junot d’un département Châteaux & Patrimoine, renforcé d’une dizaine de collaborateurs début 2026.',
+        ],
+      },
+      {
+        title: 'Et les agences classiques ?',
+        paragraphs: [
+          'Elles vendent sans doute une bonne part des biens atypiques, mais nous n’avons trouvé aucun article de presse qui le mesure. Le seul texte lu sur le sujet est un article de conseil publié par Laforêt sur son propre site. Il traite le bien atypique comme un cas d’estimation à part : pas de ventes comparables, une valeur qui ne se résume pas à la surface, et des critères en plus, comme le style, la rareté ou l’histoire du bien.',
+        ],
+      },
+      {
+        title: 'En quoi vendre un bien atypique est-il différent ?',
+        paragraphs: [
+          'Trois points reviennent dans les articles lus.',
+        ],
+        list: [
+          'L’estimation : faute de biens comparables, elle demande d’autres repères que les ventes du quartier.',
+          'La présentation : De la cour au jardin met en avant la rédaction de ses annonces et sa ligne éditoriale ; Architecture de Collection, le travail de ses photographes.',
+          'Le délai : le Groupe Mercure indiquait pour 2023 dix mois de commercialisation en zone rurale, contre quatre en ville. C’est le seul délai chiffré que nous ayons trouvé, et il concerne des biens patrimoniaux.',
+        ],
+      },
+      {
+        title: 'Que sait-on du marché ?',
+        paragraphs: [
+          'Peu de choses de source indépendante. Ni les notaires ni la statistique publique n’isolent les biens atypiques. Les chiffres qui circulent viennent des réseaux eux-mêmes ou d’études qu’ils ont commandées.',
+          'Une enquête OpinionWay réalisée en octobre 2025 pour Espaces Atypiques, auprès de 1 002 Français gagnant plus de 4 000 euros nets par mois, donne une idée de ce que le mot recouvre : une architecture originale pour 58 % d’entre eux, une esthétique exceptionnelle pour 49 %, une histoire ou un patrimoine pour 43 %. Selon la même enquête, 69 % préfèrent un bien sans gros travaux.',
+        ],
+      },
+      {
+        title: 'Ce que ce tour d’horizon ne couvre pas',
+        paragraphs: [
+          'Les agences de péniches, les agences de lofts indépendantes et les agences régionales spécialisées n’apparaissent presque pas dans la presse que nous avons pu lire. Leur absence ici tient aux sources, pas à leur activité. Nous complèterons cet article à mesure que nous trouverons des informations publiées sur elles.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Faut-il passer par un spécialiste pour vendre un bien atypique ?', a: 'Nous ne donnons pas d’avis sur ce point. Les trois types d’agences en vendent ; cet article décrit ce que chacune dit de sa méthode.' },
+      { q: 'D’où viennent les chiffres cités ?', a: 'Des agences et des réseaux eux-mêmes, relayés par la presse professionnelle. Aucun n’a été vérifié par une source indépendante.' },
+    ],
+    sources: [
+      { label: 'L’Express Franchise, 23 avril 2026', url: 'https://lexpress-franchise.com/actualites/le-reseau-immobilier-espaces-atypiques-veut-passer-de-87-a-120-agences-dici-2030/' },
+      { label: 'MySweetImmo, bilan 2025 d’Espaces Atypiques, 4 février 2026', url: 'https://www.mysweetimmo.com/2026/02/04/reseau-mmobilier-espaces-atypiques-affiche-26-de-chiffre-daffaires-en-2025/' },
+      { label: 'MySweetImmo, bilan 2025 du Groupe Patrice Besse, 18 janvier 2026', url: 'https://www.mysweetimmo.com/2026/01/18/immobilier-de-caractere-pourquoi-le-groupe-patrice-besse-voit-le-marche-repartir/' },
+      { label: 'MySweetImmo, bilan 2023 du Groupe Mercure, 31 janvier 2024', url: 'https://www.mysweetimmo.com/2024/01/31/immobilier-bilan-groupe-mercure-en-2023-le-marche-des-biens-patrimoniaux-a-bien-resiste/' },
+      { label: 'MySweetImmo, De la cour au jardin, 12 mai 2026', url: 'https://www.mysweetimmo.com/2026/05/12/reseau-immobilier-de-la-cour-au-jardin-est-devenu-un-label-isabelle-larochette/' },
+      { label: 'Toute la Franchise, fiche Ateliers Lofts & Associés', url: 'https://www.toute-la-franchise.com/franchise/ateliers-lofts-associes' },
+      { label: 'ByBeton, entretien avec Architecture de Collection, 18 janvier 2022', url: 'https://bybeton.fr/?p=15234' },
+      { label: 'MySweetImmo, lancement de Laforêt Collection, 22 octobre 2026', url: 'https://www.mysweetimmo.com/2026/10/22/immobilier-laforet-lance-une-marque-dediee-aux-biens-de-famille-et-de-caractere/' },
+      { label: 'MySweetImmo, objectifs de Laforêt Collection, 29 octobre 2026', url: 'https://www.mysweetimmo.com/2026/10/29/agence-immobiliere-on-vise-20-a-25-implantations-laforet-collection-dici-deux-ans-yann-jehanno/' },
+      { label: 'MySweetImmo, Nestenn à Saint-Malo, 18 mars 2026', url: 'https://www.mysweetimmo.com/2026/03/18/reseau-immobilier-nestenn-lance-une-offre-dediee-aux-maisons-de-famille-a-saint-malo/' },
+      { label: 'MySweetImmo, Barnes et les châteaux, 25 novembre 2024', url: 'https://www.mysweetimmo.com/2024/11/25/chateaux-forets-vignobles-et-domaines-de-chasse-des-projets-pour-lavenir-qui-seduisent-les-investisseurs/' },
+      { label: 'MySweetImmo, Junot, 14 février 2026', url: 'https://www.mysweetimmo.com/2026/02/14/reseau-immobilier-a-paris-la-reprise-profite-a-junot-qui-grimpe-de-56/' },
+      { label: 'Laforêt, « Comment estimer un bien atypique »', url: 'https://www.laforet.com/blog/vente/comment-estimer-un-bien-atypique' },
+      { label: 'Communiqué de l’étude OpinionWay pour Espaces Atypiques, janvier 2026', url: 'https://www.journaldelagence.com/wp-content/uploads/2026/02/14SEPTEMBRE-ESPACES-ATYPIQUES-14Septembre_ESPACES_ATYPIQUES_Etude_OpinionWay_CP-8rndbtooat46n71a7tefmv6f7c.pdf' },
+    ],
+  },
+  {
     slug: 'instagram-tiktok-ou-portails-d-ou-viennent-les-acheteurs',
     art: 'balance',
     title: 'Instagram et TikTok apportent-ils plus d’acheteurs que les portails ? Ce que disent les chiffres',
