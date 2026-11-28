@@ -192,7 +192,7 @@ export default function Presentation({ role }: { role: Role }) {
     <div className="min-h-screen overflow-x-clip bg-[#FCFBF8] font-sans text-stone-900">
       <SiteHeader />
       {/* le haut de page est posé sur une matière : chaque métier a la sienne */}
-      <div style={matiere}>
+      <div className="relative -mt-7 overflow-hidden rounded-t-[28px] md:-mt-9 md:rounded-t-[36px]" style={matiere}>
         <section className="mx-auto max-w-6xl px-6 py-10 md:py-16">
           <div className="max-w-3xl rounded-[18px] border-2 border-stone-900 bg-[#FCFBF8] p-7 shadow-[6px_6px_0_#3A2E2A] md:p-12">
             <p className="text-sm text-stone-500">

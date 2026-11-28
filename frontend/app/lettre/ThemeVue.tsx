@@ -18,15 +18,11 @@ const TEMPS: [string, string][] = [
   ['Avant la promesse', 'Le point à vérifier pour ce bien-là, avant de s’engager.'],
 ];
 
-// Ce qui est propre à chaque thème : à qui il parle, et pourquoi il porte ce nom. Complété thème après thème.
-const PROPOS: Record<string, { pour: string; pourquoi: string[] }> = {
+// Ce qui est propre à chaque thème, en deux phrases : ce qu'on y fait, et pourquoi il porte ce nom. Complété thème après thème.
+const PROPOS: Record<string, { pour: string; nom: string }> = {
   'beton-cire': {
-    pour: 'Pour ceux qui voient un loft là où d’autres voient un chantier, et qui veulent savoir ce que cela coûtera avant de se lancer.',
-    pourquoi: [
-      'Un atelier fatigué, une ancienne boutique, un plateau resté brut : ce sont souvent les plus beaux lieux, et ceux qui font le plus hésiter. On ne sait pas ce qu’ils peuvent devenir, ni ce qu’ils coûteront une fois les travaux finis.',
-      'Ce numéro est fait pour ça. Nous y visitons un bien à rénover avec ceux dont c’est le métier : un architecte dessine ce qu’il en ferait, un entrepreneur chiffre les travaux, un courtier calcule la mensualité.',
-      'Et le nom ? Le béton ciré, c’est le sol que l’on coule quand tout est à refaire : brut au départ, superbe à l’arrivée.',
-    ],
+    pour: 'Un atelier fatigué, une ancienne boutique, un plateau resté brut : les plus beaux lieux sont souvent ceux qui font le plus hésiter. Nous en visitons un avec un architecte, un entrepreneur et un courtier, pour savoir ce qu’il peut devenir et ce qu’il coûtera une fois les travaux finis.',
+    nom: 'Le béton ciré, c’est le sol que l’on coule quand tout est à refaire : brut au départ, superbe à l’arrivée.',
   },
 };
 
@@ -39,13 +35,18 @@ export default function ThemeVue({ theme, parus = [], source }: { theme: Newslet
     <div className="min-h-screen overflow-x-clip bg-[#FCFBF8] font-sans text-stone-900">
       <SiteHeader />
       {/* le haut de page est posé sur la matière du thème : le titre sur une carte de papier, l'inscription à côté */}
-      <div style={theme.matiere}>
+      <div className="relative -mt-7 overflow-hidden rounded-t-[28px] md:-mt-9 md:rounded-t-[36px]" style={theme.matiere}>
         <section className="mx-auto grid max-w-6xl items-stretch gap-x-10 gap-y-8 px-6 py-10 md:py-16 lg:grid-cols-[1.1fr_1fr]">
           <div className="rounded-[18px] border-2 border-stone-900 bg-[#FCFBF8] p-7 shadow-[6px_6px_0_#3A2E2A] md:p-10">
             <p className="text-sm text-stone-500">Le numéro de {mois}</p>
             <h1 className="mt-3 font-serif text-6xl italic leading-[0.95] tracking-tight md:text-7xl lg:text-[5.5rem]">{theme.nom}</h1>
             <p className="mt-6 font-serif text-3xl leading-tight md:text-4xl">{theme.sujet}</p>
-            {propos && <p className="mt-4 max-w-xl text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">{propos.pour}</p>}
+            {propos && (
+              <>
+                <p className="mt-4 max-w-xl text-lg leading-relaxed text-stone-700">{propos.pour}</p>
+                <p className="mt-4 max-w-xl font-serif text-lg italic leading-snug text-stone-500">{propos.nom}</p>
+              </>
+            )}
           </div>
           <div className="self-center">
             <Recevoir source={source} titre={<>Abonnez-vous gratuitement pour recevoir <em>{theme.nom}</em> et {theme.mois === 1 ? 'les numéros suivants' : 'tous les autres numéros'}.</>} texte="En cadeau de bienvenue, notre guide : dix questions à poser avant d’acheter un bien atypique." />
@@ -80,21 +81,6 @@ export default function ThemeVue({ theme, parus = [], source }: { theme: Newslet
             </ol>
           </div>
         </section>
-
-        {propos && (
-          <section className="mt-20 md:mt-28" aria-labelledby="pourquoi">
-            <div className="grid gap-x-12 gap-y-5 border-t border-stone-900 pt-4 md:grid-cols-[1fr_1.4fr]">
-              <h2 id="pourquoi" className="font-serif text-3xl leading-[1.1] md:text-4xl">
-                Pourquoi <span className="italic text-stone-500">{theme.nom} ?</span>
-              </h2>
-              <div className="space-y-4 text-lg leading-relaxed text-stone-700 md:text-xl md:leading-relaxed">
-                {propos.pourquoi.map((t) => (
-                  <p key={t}>{t}</p>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
         {parus.length > 0 && (
           <section className="mt-20 md:mt-28" aria-labelledby="parus">
