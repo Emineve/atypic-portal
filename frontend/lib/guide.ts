@@ -103,6 +103,15 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
           'Un nombre d’abonnés ne dit rien, enfin, du nombre de ventes. Les sources lues ne permettent pas de relier l’un à l’autre.',
         ],
       },
+      {
+        title: 'Une grande audience veut-elle dire beaucoup de ventes ?',
+        paragraphs: [
+          'Pas nécessairement, et deux exemples invitent à la prudence. Nous les donnons avec leurs limites.',
+          'Nick Golev est le plus suivi de notre relevé. Sa fiche sur le portail d’annonces Bayut, consultée le 28 novembre 2026, faisait état de trois ventes et de cinq locations enregistrées. Sa fiche sur le portail Property Finder indique une expérience dans l’immobilier depuis 2024. Ces chiffres ne mesurent que ce que les portails enregistrent : une transaction conclue hors portail, ou par l’agence sous un autre nom, n’y figure pas. Ils ne permettent donc pas de conclure sur son activité réelle.',
+          'Clara Lindblom figure dans le classement de Realting comme agente à Stockholm, avec un contenu tourné vers le style de vie autour du métier. Ce classement est notre seule source : nous n’avons trouvé aucun article de presse qui décrive son activité d’agente, et nous n’avons pas pu la vérifier.',
+          'Dans les deux cas, l’audience a pu se construire en dehors de l’immobilier. C’est une hypothèse, que les sources lues ne confirment pas.',
+        ],
+      },
     ],
     faq: [
       { q: 'Existe-t-il un classement officiel ?', a: 'Non. Les classements sont établis par des portails ou des sociétés de marketing, chacun avec sa méthode.' },
@@ -117,6 +126,8 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'Euro Weekly News, entretien avec Jesse Meester, 24 novembre 2023', url: 'https://euroweeklynews.com/2023/11/24/speaking-european-jesse-meester/' },
       { label: 'Leadersnet, les TikTokeurs de l’immobilier, 13 février 2026', url: 'https://www.leadersnet.at/news/97358,die-top-tiktoker-der-immobilienwelt.html' },
       { label: 'Realty+, l’immobilier devient viral, 11 juin 2025', url: 'https://www.rprealtyplus.com/news-views/real-estate-goes-viral-120345.html' },
+      { label: 'Bayut, fiche de Nick Golev, consultée le 28 novembre 2026', url: 'https://www.bayut.com/brokers/nick-golev-2658597.html' },
+      { label: 'Property Finder, fiche d’agent, consultée le 28 novembre 2026', url: 'https://www.propertyfinder.ae/en/agent/mykyta-goliev-339468' },
     ],
   },
   {
