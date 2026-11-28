@@ -45,6 +45,117 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'acheter-un-bien-vendu-par-l-etat',
+    art: 'phare',
+    title: 'Phare, maison forestière, ancienne caserne : comment l’État vend ses biens, et à qui',
+    description:
+      'L’État vend des biens dont il n’a plus l’usage, parfois très atypiques. Enchères en ligne de 48 heures, visite obligatoire, priorité des communes : le déroulé, d’après la presse.',
+    category: 'Marché',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 5,
+    intro:
+      'Une maison de gardien de phare, une maison éclusière, une ancienne gendarmerie, un logement de fonction au bord de l’eau : l’État possède des biens qu’aucune agence n’a en vitrine, et il en vend régulièrement. Ces ventes sont ouvertes aux particuliers. Elles ne ressemblent pas à un achat classique : voici comment elles se déroulent, d’après la presse qui les a décrites en 2026.',
+    takeaways: [
+      'L’État vend les biens dont il n’a plus l’usage sur un site officiel de cessions et, depuis 2022, par des enchères en ligne confiées à une plateforme privée.',
+      'Les communes et les autres collectivités sont servies les premières : un bien n’arrive sur le marché que si elles n’en veulent pas.',
+      'Une enchère dure 48 heures, et la visite du bien est obligatoire pour s’inscrire.',
+      'Le prix de départ ne dit rien du coût des travaux, souvent lourds sur ces bâtiments.',
+    ],
+    sections: [
+      {
+        title: 'Quels biens l’État vend-il ?',
+        paragraphs: [
+          'Ceux qui ne servent plus au service public. La presse cite d’anciens bureaux et des terrains, mais aussi des biens plus rares.',
+        ],
+        list: [
+          'Des phares automatisés et des maisons de gardiens.',
+          'Des maisons éclusières et des maisons forestières.',
+          'D’anciennes gares, casernes de gendarmerie et maisons d’arrêt.',
+          'Des logements de fonction.',
+        ],
+      },
+      {
+        title: 'Qui vend, et où trouver les annonces ?',
+        paragraphs: [
+          'La direction de l’Immobilier de l’État, et pour les logements les services des finances publiques. Les annonces paraissent sur le site officiel des cessions immobilières de l’État.',
+          'Depuis 2022, une partie des ventes passe par une plateforme d’enchères en ligne, Agorastore. D’après le média spécialisé Acteurs Publics, 300 biens avaient été vendus par ce canal début 2026.',
+        ],
+      },
+      {
+        title: 'Un particulier peut-il vraiment acheter ?',
+        paragraphs: [
+          'Oui. Mais il passe après les collectivités : les biens leur sont d’abord proposés, et elles exercent cette priorité assez régulièrement, selon Acteurs Publics. Un bien mis aux enchères est donc un bien que la commune n’a pas pris.',
+        ],
+      },
+      {
+        title: 'Comment se déroule une enchère ?',
+        list: [
+          'L’annonce précise la forme de la vente et ses dates.',
+          'La visite est obligatoire avant de pouvoir s’inscrire.',
+          'L’enchère est ouverte pendant 48 heures, et les offres sont visibles en temps réel.',
+          'L’État fixe un prix de réserve : en dessous, il peut déclarer la vente infructueuse.',
+          'La meilleure offre n’est pas seulement la plus haute : le sérieux du projet et la capacité à payer sont aussi regardés.',
+        ],
+      },
+      {
+        title: 'À quoi ressemble une vente, concrètement ?',
+        paragraphs: [
+          'À Bonifacio, en Corse, l’État a mis aux enchères au printemps 2026 un ancien logement de fonction près du port : deux petits bâtiments totalisant 117 m², sur un terrain de 1 370 m², pour une mise à prix de 530 000 euros. D’après le média Corse Net Infos, l’enchère était ouverte du 21 au 23 avril. Le prix final n’a pas été trouvé dans les sources consultées.',
+          'À l’autre bout de l’échelle, un article de 2023 citait une maison forestière de 100 m² vendue 98 000 euros à un particulier.',
+        ],
+      },
+      {
+        title: 'Quels sont les pièges ?',
+        paragraphs: [
+          'Ils tiennent au bien plus qu’à la procédure. Ces bâtiments n’ont pas été conçus pour être habités, ou ne le sont plus depuis longtemps.',
+        ],
+        list: [
+          'Les travaux : toiture, isolation, raccordement aux réseaux.',
+          'Les protections : un bien classé ou protégé ne se transforme pas librement.',
+          'L’usage : un phare ne devient pas un gîte par simple décision de son acheteur.',
+          'Le calendrier : une enchère de 48 heures laisse peu de place à l’hésitation, et il faut avoir fait ses comptes avant.',
+        ],
+      },
+      {
+        title: 'Qu’est-ce que les articles ne disent pas ?',
+        paragraphs: [
+          'Le montant de la garantie à verser pour enchérir, les frais à la charge de l’acheteur, et la possibilité ou non d’acheter sous condition d’obtention d’un prêt. Ces points sont à chercher dans les conditions de chaque vente : c’est la première chose à lire, avec votre banque et votre notaire.',
+        ],
+      },
+    ],
+    checklist: {
+      title: 'Avant d’enchérir sur un bien de l’État',
+      items: [
+        'J’ai lu les conditions de la vente en entier.',
+        'J’ai visité le bien, si possible avec un artisan ou un architecte.',
+        'Je sais si le bien est protégé et ce que le plan local d’urbanisme permet d’en faire.',
+        'J’ai un chiffrage des travaux, pas seulement la mise à prix.',
+        'Mon financement est prêt avant l’ouverture de l’enchère.',
+      ],
+    },
+    faq: [
+      {
+        q: 'Où voir les biens que l’État met en vente ?',
+        a: 'Sur le site officiel des cessions immobilières de l’État, et sur la plateforme d’enchères en ligne Agorastore pour une partie d’entre eux.',
+      },
+      {
+        q: 'Peut-on acheter un phare ?',
+        a: 'Oui, quand l’État en vend un. Encore faut-il que les collectivités n’aient pas exercé leur priorité, et que les règles de protection du bien permettent le projet envisagé.',
+      },
+      {
+        q: 'Combien de temps dure une enchère de l’État ?',
+        a: 'Quarante-huit heures, d’après la presse spécialisée. La visite du bien, obligatoire, a lieu avant.',
+      },
+    ],
+    sources: [
+      { label: 'Acteurs Publics, 19 mai 2026, « Comment l’État tire parti de la vente aux enchères en ligne pour céder ses biens immobiliers »', url: 'https://acteurspublics.fr/articles/comment-letat-tire-parti-de-la-vente-aux-encheres-en-ligne-pour-ceder-ses-biens-immobiliers-non-utilises-comment-letat-digitalise-la-cession-de-ses-biens-immobiliers-via-les-ventes-aux-encheres/' },
+      { label: 'Corse Net Infos, 28 mars 2026, « Pourquoi l’État met aux enchères une maison à Bonifacio ? »', url: 'https://www.corsenetinfos.corsica/Pourquoi-l-Etat-met-aux-encheres-une-maison-a-Bonifacio_a89633.html' },
+      { label: 'Le Tribunal du Net, 14 novembre 2026, « Adieu le loyer : phares, gares, maisons éclusières… l’État vend ses biens les plus fous »', url: 'https://www.letribunaldunet.fr/argent/biens-insolites-vendus-par-etat-phare-gare-ecluse.html' },
+      { label: '24matins, 24 novembre 2023, « L’État cède de nombreux biens immobiliers sur son site à des prix parfois intéressants »', url: 'https://www.24matins.fr/letat-cede-de-nombreux-biens-immobiliers-sur-son-site-a-des-prix-parfois-interessants-1367811' },
+    ],
+  },
+  {
     slug: 'appartement-dora-maar-dessins-picasso-a-vendre',
     art: 'cheminee',
     title: 'À Paris, l’appartement de Dora Maar est à vendre, avec des dessins de Picasso sur le mur du salon',
