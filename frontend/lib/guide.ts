@@ -45,6 +45,163 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'chateau-de-bellefontaine-mis-a-prix-450-000-euros',
+    art: 'chateau',
+    title: 'Près de Fontainebleau, un château de 3 000 m² mis à prix 450 000 euros, que Paris tente de vendre depuis quinze ans',
+    description:
+      'Le château de Bellefontaine, 3 117 m² sur neuf hectares en Seine-et-Marne, a été mis aux enchères par la Ville de Paris pour 450 000 euros. Trois ventes ont déjà échoué. Ce que l’on sait.',
+    category: 'Hors norme',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 5,
+    intro:
+      'Un château néo-Louis XIII et neuf hectares près de Fontainebleau, mis à prix 450 000 euros : l’annonce a de quoi arrêter le regard. Elle cache une histoire plus compliquée. Le domaine de Bellefontaine est vide depuis une vingtaine d’années, la Ville de Paris cherche à s’en défaire depuis 2011, et son acquisition, en 1942, fait l’objet de questions.',
+    takeaways: [
+      'Le château se trouve entre Samois-sur-Seine et Avon, en Seine-et-Marne. Il appartient à la Ville de Paris.',
+      'Environ 3 117 m² bâtis sur neuf hectares, reconstruits entre 1902 et 1904, aujourd’hui très dégradés.',
+      'Mise à prix : 450 000 euros, aux enchères en ligne, fin novembre 2026.',
+      'Les travaux sont estimés à au moins 7 millions d’euros par un élu local.',
+    ],
+    sections: [
+      {
+        title: 'De quel bien s’agit-il ?',
+        paragraphs: [
+          'D’un château de style néo-Louis XIII, entièrement reconstruit entre 1902 et 1904, avec une maison de gardien et des annexes. L’ensemble compte environ 3 117 m² bâtis sur neuf hectares, d’après le site d’information La Clé Publique.',
+          'Au XIXe siècle, le domaine a appartenu à des familles de diplomates russes. Plus tard, il a accueilli des colonies de vacances parisiennes jusqu’en 1998, puis des séminaires jusqu’à la fin de 2005. Il est vide depuis.',
+        ],
+      },
+      {
+        title: 'Pourquoi n’a-t-il pas trouvé preneur ?',
+        paragraphs: [
+          'Ce n’est pas faute d’avoir essayé. La Clé Publique recense trois tentatives.',
+        ],
+        list: [
+          '2011 : une vente à 2 millions d’euros est autorisée par le Conseil de Paris.',
+          '2013 : après des pillages, le prix est renégocié à 1,5 million d’euros. La vente n’aboutit pas.',
+          '2018 : une cession à 600 000 euros à l’intercommunalité est décidée dans son principe. Elle ne se fait pas.',
+          '2026 : le domaine est proposé aux enchères en ligne, première offre à 450 000 euros.',
+        ],
+      },
+      {
+        title: 'Que peut-on en faire ?',
+        paragraphs: [
+          'Le plan local d’urbanisme intercommunal, en vigueur depuis janvier 2026, admet une « reconversion mixte », à condition de ne pas augmenter la surface bâtie au sol. Le château n’est pas protégé au titre des monuments historiques : la demande d’inscription, soutenue par les deux communes, n’a pas été retenue en 2024.',
+          'Reste le coût. D’après le site local Fontainebleau Drive, le président de l’intercommunalité estime les travaux à 7 millions d’euros au moins, et les deux communes disent ne pas pouvoir les financer. Le même site signale un accès difficile, par une voie où deux voitures ne se croisent pas.',
+        ],
+      },
+      {
+        title: 'Que sait-on de son acquisition en 1942 ?',
+        paragraphs: [
+          'La Ville de Paris est propriétaire du domaine depuis 1942. D’après Fontainebleau Drive, il appartenait alors à une famille juive, et il a été acquis en juillet 1942 auprès d’un administrateur provisoire, par la préfecture de la Seine pour le compte de la Ville. Le site cite un rapport des services régionaux de la culture qui évoque une dépossession sous l’Occupation.',
+          'Selon un historien local cité par le même site, la Ville aurait reconnu la spoliation après la Libération, et la famille aurait été dédommagée. Ces points reposent sur une seule source et restent à établir précisément : nous les rapportons comme tels.',
+        ],
+      },
+      {
+        title: 'La vente a-t-elle eu lieu ?',
+        paragraphs: [
+          'L’enchère était annoncée pour le 26 novembre 2026. Son résultat ne figure dans aucun des articles consultés.',
+        ],
+      },
+      {
+        title: 'Que retenir, pour un acheteur de biens atypiques ?',
+        list: [
+          'Une mise à prix n’est pas un budget : ici, les travaux annoncés représentent plus de quinze fois le prix de départ.',
+          'Un bien qui ne se vend pas depuis quinze ans a une raison de ne pas se vendre. La trouver avant d’enchérir.',
+          'Le plan local d’urbanisme dit ce que l’on pourra faire du bien ; il se lit avant la visite.',
+          'L’histoire d’un bien fait partie du dossier, au même titre que son état.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Où se trouve le château de Bellefontaine ?',
+        a: 'Entre Samois-sur-Seine et Avon, en Seine-et-Marne, près de Fontainebleau.',
+      },
+      {
+        q: 'Combien coûte-t-il ?',
+        a: 'La mise à prix était de 450 000 euros. Les travaux sont estimés à au moins 7 millions d’euros par un élu local.',
+      },
+      {
+        q: 'Le château est-il classé monument historique ?',
+        a: 'Non. Une demande d’inscription n’a pas été retenue en 2024.',
+      },
+    ],
+    sources: [
+      { label: 'La Clé Publique, 8 septembre 2026, « Bellefontaine : Paris tente de vendre le château depuis 15 ans »', url: 'https://laclepublique.fr/seine-et-marne/articles/2026/2026-09-08-bellefontaine-chateau-en-vente/' },
+      { label: 'Fontainebleau Drive, 21 novembre 2026, « Château abandonné à vendre : l’histoire longtemps cachée d’un bien spolié à une famille juive »', url: 'https://fontainebleau-drive.fr/2026/11/21/chateau-abandonne-a-vendre-lhistoire-longtemps-cachee-dun-bien-spolie-a-une-famille-juive/' },
+      { label: 'Evasion FM, 7 septembre 2026, « Dans le sud de la Seine-et-Marne, la ville de Paris met en vente un domaine »', url: 'https://www.evasionfm.com/dans-le-sud-de-la-seine-et-marne-la-ville-de-paris-met-en-vente-un-domaine' },
+    ],
+  },
+  {
+    slug: 'appartement-brigitte-bardot-paris-enchere-desistement',
+    art: 'souplex',
+    title: 'À Paris, le pied-à-terre de Brigitte Bardot : une enchère, puis un désistement',
+    description:
+      'Un trois-pièces de 70 m² avec jardin dans le 16e arrondissement, mis aux enchères en juin 2026 pour 1,05 million d’euros. La vente a été abandonnée à l’automne. Ce que la presse en dit.',
+    category: 'Hors norme',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 4,
+    intro:
+      'Soixante-dix mètres carrés, un jardin de la même taille, une chambre en souplex et un décor resté celui des années 1970 : le pied-à-terre parisien de Brigitte Bardot, morte le 28 décembre 2025, a été mis en vente au printemps 2026. L’enchère a eu lieu. La vente, elle, ne s’est pas faite. L’histoire intéresse au-delà du nom, parce qu’elle bute sur un point que connaissent bien les acheteurs de biens atypiques.',
+    takeaways: [
+      'Un trois-pièces de 70,88 m² dans le quartier de la Muette, à Paris, avec un jardin privatif de 71 m².',
+      'Vente notariale en ligne en juin 2026, mise à prix 1 050 000 euros.',
+      'Une acheteuse a été retenue, puis s’est désistée avant la signature, à cause de problèmes d’urbanisme à régulariser, d’après Purepeople.',
+      'Fin octobre 2026, la vente était abandonnée.',
+    ],
+    sections: [
+      {
+        title: 'De quel bien s’agit-il ?',
+        paragraphs: [
+          'D’un appartement de trois pièces : une entrée, une cuisine séparée, un séjour exposé au sud-est, une chambre avec salle de bains, et une seconde chambre en souplex qui donne sur le jardin. La surface est de 70,88 m², le jardin de 71 m², d’après le site Ecostylia, qui a lu l’annonce.',
+          'Le décor n’a pas bougé depuis les années 1970, rapporte Le Tribunal du Net : tons orange et moquette au plafond. Le diagnostic énergétique classe le bien G, et des travaux sont à prévoir.',
+        ],
+      },
+      {
+        title: 'Comment a-t-il été mis en vente ?',
+        paragraphs: [
+          'Par une vente notariale interactive, c’est-à-dire une enchère en ligne organisée par un notaire. L’annonce, parue fin mai 2026, ne nommait pas l’actrice : c’est la presse qui a fait le lien. La mise à prix était de 1 050 000 euros, honoraires compris, et les offres devaient être déposées les 11 et 12 juin.',
+        ],
+      },
+      {
+        title: 'Pourquoi la vente ne s’est-elle pas faite ?',
+        paragraphs: [
+          'D’après un article de Purepeople du 19 octobre 2026, une acheteuse a remporté l’enchère sans que le prix de réserve soit atteint, puis un accord a été trouvé avec le vendeur. Alors que la signature du compromis approchait, des problèmes d’urbanisme à régulariser sont apparus, et elle s’est désistée.',
+          'Cet article ne décrit pas le bien et ne précise pas la nature de ces problèmes. Aucune des sources consultées ne dit si l’appartement a été remis en vente.',
+        ],
+      },
+      {
+        title: 'Que retenir, pour un acheteur de biens atypiques ?',
+        list: [
+          'Remporter une enchère n’est pas avoir acheté : entre les deux, il y a les vérifications, et c’est là que cette vente s’est arrêtée.',
+          'Dans un bien ancien, demandez les autorisations des travaux réalisés avant d’enchérir, pas après.',
+          'Une pièce en souplex et un jardin privatif sont deux éléments dont le statut se vérifie dans le règlement de copropriété.',
+          'Un classement G annonce des travaux : ils se chiffrent avant de fixer son prix maximal.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Où se trouve l’appartement parisien de Brigitte Bardot ?',
+        a: 'Dans le quartier de la Muette, dans le 16e arrondissement de Paris.',
+      },
+      {
+        q: 'À quel prix a-t-il été mis en vente ?',
+        a: 'La mise à prix était de 1 050 000 euros, honoraires compris, pour une vente notariale en ligne les 11 et 12 juin 2026.',
+      },
+      {
+        q: 'L’appartement a-t-il été vendu ?',
+        a: 'Pas à la date des articles consultés. La vente engagée après l’enchère a été abandonnée à l’automne 2026.',
+      },
+    ],
+    sources: [
+      { label: 'Ecostylia, 28 mai 2026, « L’appartement parisien attribué à Brigitte Bardot révèle les zones grises d’une succession encore sous tension »', url: 'https://www.ecostylia.com/fr/bardot-appartement-paris/' },
+      { label: 'Le Tribunal du Net, 30 mai 2026, « L’appartement parisien de Brigitte Bardot mis en vente en catimini : mise à prix fixée à 1,05 million d’euros »', url: 'https://www.letribunaldunet.fr/people/appartement-brigitte-bardot-paris-vente-enchere-prix.html' },
+      { label: 'Purepeople, 19 octobre 2026, article sur l’annulation de la vente de l’appartement parisien de Brigitte Bardot', url: 'https://www.purepeople.com/article/nous-avons-du-nous-desister-la-vente-de-lappartement-parisien-de-brigitte-bardot-annulee-lacheteuse-qui-nest-pas-une-inconnue-sexplique_a555329/1' },
+    ],
+  },
+  {
     slug: 'acheter-un-bien-vendu-par-l-etat',
     art: 'phare',
     title: 'Phare, maison forestière, ancienne caserne : comment l’État vend ses biens, et à qui',
