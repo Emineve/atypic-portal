@@ -47,6 +47,215 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'agents-immobiliers-les-plus-suivis-au-monde',
+    art: 'plateforme',
+    title: 'Qui sont les agents immobiliers les plus suivis au monde sur les réseaux ?',
+    description: 'De Dubaï à New York, une poignée d’agents immobiliers comptent plus d’un million d’abonnés. Qui sont-ils, d’où vient leur audience, et ce que ces chiffres valent.',
+    category: 'Actu réseau',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 5,
+    intro: 'Certains agents immobiliers ont plus d’abonnés qu’un grand quotidien n’a de lecteurs. Nous avons recoupé plusieurs classements et articles de presse pour savoir qui ils sont. Le résultat est un ordre de grandeur, pas un palmarès officiel : il n’en existe pas.',
+    takeaways: [
+      'Les plus suivis travaillent à Dubaï, New York, Montréal, Mumbai, Stockholm ou Marbella.',
+      'L’Américain Ryan Serhant comptait environ 2,5 millions d’abonnés sur Instagram en mai 2025, selon The Real Deal.',
+      'En France, le compte de l’agence de la famille Kretz dépasse 521 000 abonnés sur Instagram, selon Luxus Magazine.',
+      'Ces chiffres viennent de sources et de dates différentes : ils ne se comparent pas au millier près.',
+    ],
+    sections: [
+      {
+        title: 'Qui arrive en tête ?',
+        paragraphs: [
+          'Le classement le plus large que nous ayons lu est celui du portail Realting, daté de décembre 2025. Nous l’avons complété par la presse professionnelle. Seuls les agents en exercice sont retenus, pas les investisseurs ni les formateurs.',
+        ],
+        list: [
+          'Nick Golev, Dubaï : environ 4,5 millions d’abonnés sur TikTok (Realting, décembre 2025).',
+          'Tatiana Londono, Montréal et Floride : plus de 2,6 millions sur TikTok (BAM, mai 2022).',
+          'Ryan Serhant, New York : environ 2,5 millions sur Instagram (The Real Deal, mai 2025).',
+          'Clara Lindblom, Stockholm : environ 1,6 million sur Instagram (Realting).',
+          'Jesse Meester, Marbella : environ 1,3 million sur Instagram (Realting, Euro Weekly News).',
+          'Islam Hammad, Dubaï : 1,2 million sur Instagram (Marketing by Magnet, 2026).',
+          'Sagar Visawadia, Mumbai : environ 1 million sur Instagram (Realting).',
+        ],
+      },
+      {
+        title: 'Et en Europe ?',
+        paragraphs: [
+          'Derrière ce premier groupe, plusieurs agents européens dépassent les 400 000 abonnés sur Instagram, d’après Realting : Gianluca Torre à Milan (environ 503 000), le compte de la famille Kretz à Paris (475 000 en décembre 2025, plus de 521 000 en avril 2026 selon Luxus Magazine) et Grant J Bates à Londres (environ 406 000).',
+        ],
+      },
+      {
+        title: 'D’où vient leur audience ?',
+        paragraphs: [
+          'Rarement des biens seuls. Chez la plupart, un personnage a précédé l’immobilier ou l’accompagne.',
+        ],
+        list: [
+          'La télévision : Ryan Serhant, la famille Kretz, Gianluca Torre et Jesse Meester étaient connus du petit écran avant de l’être sur les réseaux.',
+          'Un autre métier : Nick Golev se présente comme un illusionniste devenu agent, selon le site autrichien Leadersnet.',
+          'Le spectacle : Sagar Visawadia se présente aussi comme podcasteur, conférencier et acteur, et mêle humour et visites, selon la revue indienne Realty+.',
+          'La vidéo elle-même : Tatiana Londono et Grant J Bates ont construit leur audience par des vidéos courtes et régulières.',
+        ],
+      },
+      {
+        title: 'Que valent ces chiffres ?',
+        paragraphs: [
+          'Ils sont à prendre avec prudence, pour trois raisons. Ils viennent de classements, d’articles et de fiches d’agence publiés à des dates différentes. Une partie est déclarée par les agents eux-mêmes. Et les classements ne couvrent pas tous les pays : d’autres agents très suivis manquent sans doute.',
+          'Un nombre d’abonnés ne dit rien, enfin, du nombre de ventes. Les sources lues ne permettent pas de relier l’un à l’autre.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Existe-t-il un classement officiel ?', a: 'Non. Les classements sont établis par des portails ou des sociétés de marketing, chacun avec sa méthode.' },
+      { q: 'Pourquoi ne pas compter les investisseurs et les formateurs ?', a: 'Parce qu’ils ne vendent pas de biens pour le compte de clients. Certains sont pourtant plus suivis que tous les agents cités ici.' },
+    ],
+    sources: [
+      { label: 'Realting, classement international des agents sur TikTok et Instagram, 15 décembre 2025', url: 'https://realting.com/news/top-popular-realtors-on-tik-tok-and-instagram' },
+      { label: 'The Real Deal, les agences new-yorkaises les plus suivies sur Instagram, 22 mai 2025', url: 'https://therealdeal.com/data/new-york/2025/these-nyc-brokerages-have-the-most-instagram-followers-in-2025' },
+      { label: 'BAM, la méthode TikTok de Tatiana Londono, 30 mai 2022', url: 'https://nowbam.com/the-secret-to-tatiana-longonos-tiktok-success/' },
+      { label: 'Luxus Magazine, portrait de la famille Kretz, 8 avril 2026', url: 'https://magazine.luxus-plus.com/en/?p=41556' },
+      { label: 'Marketing by Magnet, comptes d’agents de luxe, édition 2026', url: 'https://marketingbymagnet.com/top-20-luxury-real-estate-agent-instagram-accounts-2026' },
+      { label: 'Euro Weekly News, entretien avec Jesse Meester, 24 novembre 2023', url: 'https://euroweeklynews.com/2023/11/24/speaking-european-jesse-meester/' },
+      { label: 'Leadersnet, les TikTokeurs de l’immobilier, 13 février 2026', url: 'https://www.leadersnet.at/news/97358,die-top-tiktoker-der-immobilienwelt.html' },
+      { label: 'Realty+, l’immobilier devient viral, 11 juin 2025', url: 'https://www.rprealtyplus.com/news-views/real-estate-goes-viral-120345.html' },
+    ],
+  },
+  {
+    slug: 'comment-les-agents-stars-filment-une-visite',
+    art: 'visite',
+    title: 'Trente secondes, une accroche, un parcours : comment les agents stars filment une visite',
+    description: 'Durée, accroche, voix off, prix en légende : ce que la presse décrit des vidéos de visite des agents immobiliers les plus suivis, de Milan à Vancouver.',
+    category: 'Actu réseau',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 5,
+    intro: 'Une visite filmée par un agent très suivi ne ressemble pas à une annonce. La presse italienne, britannique et nord-américaine a décrit en détail la façon de faire de quelques-uns d’entre eux. Voici ce qui revient.',
+    takeaways: [
+      'Des vidéos courtes : 30 à 45 secondes chez Tatiana Londono, 30 à 90 secondes chez Grant J Bates.',
+      'Une accroche fixe et une adresse directe au spectateur, comme pour une visite privée.',
+      'Le logement montré dans l’ordre où on le parcourt.',
+      'Un chiffre en appui : le prix du bien ou un montant investi.',
+    ],
+    sections: [
+      {
+        title: 'Combien de temps dure une vidéo ?',
+        paragraphs: [
+          'Peu. La courtière Tatiana Londono, installée à Montréal et en Floride, recommande 30 à 45 secondes au plus, avec des plans stables et lumineux et des coupes rapides, rapporte le média professionnel BAM. À Londres, Grant J Bates publie des vidéos de 30 ou 60 secondes selon l’Evening Standard, d’environ 90 secondes selon Estate Agent Today. Il lui arrive d’y ajouter une version longue.',
+        ],
+      },
+      {
+        title: 'Comment commence-t-elle ?',
+        paragraphs: [
+          'Par une accroche, souvent toujours la même. À Milan, Gianluca Torre, agent chez Engel & Völkers, ouvre ses visites par une phrase récurrente qui invite à le suivre. Il se filme d’abord devant l’immeuble, face à la caméra, parfois en marchant à reculons pour ne pas quitter le spectateur des yeux, décrit le quotidien en ligne Il Post. Il tutoie, comme lors d’une visite privée, et emploie un vocabulaire à lui pour désigner les pièces et les types d’appartements.',
+        ],
+      },
+      {
+        title: 'Que montre-t-on du bien ?',
+        paragraphs: [
+          'Tout, et dans l’ordre. Grant J Bates commente la visite en voix off et montre l’ensemble du logement, pour que l’on comprenne comment on y circule. Estate Agent Today y voit un style plus américain que britannique.',
+          'À Vancouver, le compte tenu par l’agent Max Hasman fait l’inverse du portrait : il porte le nom de la ville et des maisons, pas celui de l’agent. Ses clips courts montrent intérieurs, extérieurs et vues sur la mer, d’après le site canadien Narcity.',
+        ],
+      },
+      {
+        title: 'Donne-t-on le prix ?',
+        paragraphs: [
+          'Pas toujours, et les sources le documentent mal. Chez Max Hasman, la légende nomme le bien et donne souvent son prix de mise en vente, selon Narcity. Tatiana Londono construit plutôt ses accroches sur des montants investis. Pour les autres agents, aucun des articles lus ne dit si le prix figure dans la vidéo.',
+        ],
+      },
+      {
+        title: 'À quel rythme publier ?',
+        paragraphs: [
+          'Soutenu. La chaîne britannique The Luxury Home Show a publié chaque jour à son lancement et s’est fait connaître en huit mois environ, selon l’Evening Standard. Ses fondateurs ont d’abord filmé leurs propres biens, puis proposé gratuitement des tournages à d’autres agents. À Mumbai, l’agent Sagar Visawadia dit tourner environ 150 jours par an, rapporte la revue Realty+.',
+        ],
+      },
+      {
+        title: 'Est-ce que cela vend ?',
+        paragraphs: [
+          'Quelques chiffres circulent, tous déclarés par les intéressés. Environ 20 % de l’activité de Grant J Bates viendrait des réseaux, selon The Negotiator. Chez Max Hasman, ils apporteraient cinq à six mandats par an à l’agence, d’après Business in Vancouver. La revue d’architecture Domus formule une réserve : à force de spectacle, la compétence peut passer derrière le divertissement.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Ces descriptions viennent-elles des vidéos elles-mêmes ?', a: 'Non. Elles viennent d’articles de presse qui décrivent ces vidéos. Certaines datent de 2022 ou 2023 et les formats ont pu changer.' },
+      { q: 'Faut-il se montrer à l’image ?', a: 'Les deux approches existent : Gianluca Torre est au centre de ses vidéos, le compte de Max Hasman met les maisons en avant.' },
+    ],
+    sources: [
+      { label: 'BAM, la méthode TikTok de Tatiana Londono, 30 mai 2022', url: 'https://nowbam.com/the-secret-to-tatiana-longonos-tiktok-success/' },
+      { label: 'Inman, portrait de Tatiana Londono, 15 août 2025', url: 'https://www.inman.com/2025/08/15/hgtv-who-tiktok-not-reality-tv-took-this-brokers-business-to-another-level/' },
+      { label: 'Evening Standard via Yahoo, acheter une maison sur Instagram, 24 novembre 2022', url: 'https://uk.news.yahoo.com/buy-home-instagram-unstoppable-rise-055800394.html' },
+      { label: 'Estate Agent Today, la personnalité dans les annonces', url: 'https://www.estateagenttoday.co.uk/breaking-news/2023/4/hamptons-boss-more-personality-needed-in-property-listings' },
+      { label: 'The Negotiator, lancement de l’agence de Grant J Bates, 23 avril 2025', url: 'https://thenegotiator.co.uk/news/agencies-people-news/insta-estate-agent-and-former-hamptons-senior-launches-brokerage/' },
+      { label: 'Il Post, le succès des émissions immobilières, 2 novembre 2025', url: 'https://www.ilpost.it/2025/11/02/successo-programmi-immobiliare/' },
+      { label: 'Narcity, un compte TikTok de maisons de Vancouver, 12 mai 2022', url: 'https://www.narcity.com/vancouver/this-tiktok-account-shows-off-the-wildest-most-expensive-homes-in-bc-videos' },
+      { label: 'Business in Vancouver, les agents et les réseaux sociaux', url: 'https://biv.com/article/2022/11/vancouver-real-estate-agents-are-harnessing-power-social-media' },
+      { label: 'Evening Standard via Yahoo, les créateurs immobiliers de Londres, 22 mars 2024', url: 'https://ca.finance.yahoo.com/news/luxury-homes-video-tours-vast-060000136.html' },
+      { label: 'Realty+, l’immobilier devient viral, 11 juin 2025', url: 'https://www.rprealtyplus.com/news-views/real-estate-goes-viral-120345.html' },
+      { label: 'Domus, les agents immobiliers nouveaux influenceurs, 26 août 2025', url: 'https://www.domusweb.it/it/notizie/2025/08/26/agenti-immobiliari-nuovi-influencer-architettura.html' },
+    ],
+  },
+  {
+    slug: 'agents-immobiliers-television-et-reseaux-sociaux',
+    art: 'annonce',
+    title: 'Kretz, Serhant, Torre : chez les agents stars, la télévision d’abord, les réseaux ensuite',
+    description: 'La famille Kretz en France, Ryan Serhant à New York, Gianluca Torre à Milan : leur audience en ligne prolonge une émission. Ce que la presse en dit.',
+    category: 'Actu réseau',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 4,
+    intro: 'Les agents immobiliers les plus connus des réseaux sociaux n’y sont pas nés. Pour plusieurs d’entre eux, une émission de télévision a fait le personnage, et Instagram ou TikTok l’ont prolongé. Trois exemples, en France, aux États-Unis et en Italie.',
+    takeaways: [
+      'La famille Kretz doit sa notoriété à la série « L’Agence », diffusée depuis 2020.',
+      'Ryan Serhant, à New York, décrit son agence comme une société de médias autant que d’immobilier.',
+      'Gianluca Torre, à Milan, dit s’être mis aux réseaux après son arrivée à la télévision.',
+      'Certains conseillers de clients très fortunés refusent au contraire toute présence en ligne.',
+    ],
+    sections: [
+      {
+        title: 'En France, la famille Kretz',
+        paragraphs: [
+          'L’agence familiale, fondée à Boulogne-Billancourt, s’est fait connaître par des passages à la télévision, puis par la série « L’Agence », diffusée sur TMC depuis 2020 et reprise sur Netflix. Luxus Magazine évoque 500 000 à 800 000 téléspectateurs par épisode.',
+          'Les réseaux ont suivi : plus de 521 000 abonnés pour le compte Instagram de l’agence en avril 2026, selon le même magazine. L’agence se présente comme une marque familiale, avec les codes du luxe. Elle a ouvert sa première agence physique à Paris le 30 janvier 2026, rapporte Paris Zigzag ; sa visibilité reposait jusque-là sur le numérique. En Espagne, l’un des fils filme lui-même les biens au téléphone et estime qu’environ une vente sur dix passe par Instagram, d’après le portail Idealista.',
+        ],
+      },
+      {
+        title: 'À New York, Ryan Serhant',
+        paragraphs: [
+          'Révélé par une émission de téléréalité immobilière, puis par une série Netflix qu’il produit, Ryan Serhant dirige une agence qui dispose de son propre studio. Il oppose un modèle centré sur la personne de l’agent à un modèle centré sur le bien, rapporte le média professionnel Inman.',
+          'Ses contenus mêlent éducation et divertissement et visent bien plus large que les acheteurs. Selon Commercial Observer, 93 % de ses vues sur TikTok en janvier 2026 venaient de personnes qui ne le suivaient pas. The Real Deal lui attribuait environ 2,5 millions d’abonnés sur Instagram en mai 2025.',
+        ],
+      },
+      {
+        title: 'À Milan, Gianluca Torre',
+        paragraphs: [
+          'Agent chez Engel & Völkers, Gianluca Torre est l’une des figures de l’émission italienne « Casa a prima vista », lancée en 2023. Il dit s’être mis aux réseaux ensuite, rapporte le site Fanpage. Son audience y a triplé en deux ans : près de 180 000 abonnés sur Instagram en octobre 2023, environ 503 000 en décembre 2025.',
+          'Le quotidien en ligne Il Post explique le succès du genre par la place qu’a prise la recherche d’un logement depuis la pandémie, et par la hausse des prix.',
+        ],
+      },
+      {
+        title: 'Tout le monde s’y met-il ?',
+        paragraphs: [
+          'Non. Le magazine britannique Country & Town House rapporte que certains conseillers de clients très fortunés refusent les réseaux, pour des raisons de discrétion et de sécurité. La revue Domus note de son côté que la marque personnelle d’un agent pèse désormais presque autant qu’une vitrine, et s’interroge sur la cadence de production que cela impose.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Faut-il passer à la télévision pour être suivi ?', a: 'Non. D’autres agents ont bâti leur audience par la vidéo courte seule. Mais les plus suivis d’Europe sont, pour beaucoup, passés par une émission.' },
+      { q: 'Ces chiffres d’audience sont-ils vérifiés ?', a: 'Ils viennent d’articles de presse et de classements, à des dates différentes. Ce sont des ordres de grandeur.' },
+    ],
+    sources: [
+      { label: 'Luxus Magazine, portrait de la famille Kretz, 8 avril 2026', url: 'https://magazine.luxus-plus.com/en/?p=41556' },
+      { label: 'Paris Zigzag, l’agence Kretz rue du Bac', url: 'https://www.pariszigzag.fr/?p=251536' },
+      { label: 'Idealista, l’arrivée de Kretz en Espagne', url: 'https://www.idealista.com/en/news/node/819908' },
+      { label: 'Inman, entretien avec Ryan Serhant, 31 mars 2026', url: 'https://www.inman.com/2026/03/31/ryan-serhant-on-how-to-win-at-social-and-on-which-brokerages-will-survive-watch/' },
+      { label: 'Commercial Observer, l’immobilier et les réseaux sociaux en 2026, 30 mars 2026', url: 'https://commercialobserver.com/2026/03/real-estate-social-media-2026/' },
+      { label: 'The Real Deal, les agences new-yorkaises les plus suivies sur Instagram, 22 mai 2025', url: 'https://therealdeal.com/data/new-york/2025/these-nyc-brokerages-have-the-most-instagram-followers-in-2025' },
+      { label: 'Fanpage, portrait de Gianluca Torre', url: 'https://www.fanpage.it/spettacolo/programmi-tv/chi-e-gianluca-torre-lagente-immobiliare-degli-appartamenti-di-lusso-di-casa-a-prima-vista-milano/' },
+      { label: 'Il Post, le succès des émissions immobilières, 2 novembre 2025', url: 'https://www.ilpost.it/2025/11/02/successo-programmi-immobiliare/' },
+      { label: 'Realting, classement international des agents sur TikTok et Instagram, 15 décembre 2025', url: 'https://realting.com/news/top-popular-realtors-on-tik-tok-and-instagram' },
+      { label: 'Country & Town House, l’essor des influenceurs immobiliers', url: 'https://www.countryandtownhouse.com/cth-life/properties/rise-of-property-influencers/' },
+      { label: 'Domus, les agents immobiliers nouveaux influenceurs, 26 août 2025', url: 'https://www.domusweb.it/it/notizie/2025/08/26/agenti-immobiliari-nuovi-influencer-architettura.html' },
+    ],
+  },
+  {
     slug: 'pays-bas-bureaux-transformes-en-logements-quatrieme-baisse',
     art: 'bureau',
     title: 'Aux Pays-Bas, les bureaux transformés en logements reculent pour la quatrième année',
