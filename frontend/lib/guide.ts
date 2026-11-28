@@ -69,6 +69,7 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
           'Plusieurs acteurs, qui ne visent pas les mêmes biens. Nous les citons par ordre alphabétique, avec les chiffres qu’ils ont communiqués à la presse.',
         ],
         list: [
+          'Archik, née à Marseille en 2015, vend des biens à caractère architectural et y ajoute un atelier d’architecture, l’édition d’objets et des expositions dans ses agences. Après Toulouse et Paris, elle a ouvert en 2024 à Arcachon et à Royan, et annonçait Bordeaux en mars 2026, selon ses communiqués.',
           'Architecture de Collection, créée en 2007, se consacre à l’architecture remarquable des XXe et XXIe siècles. L’estimation y est confiée à une équipe qui mêle historiens de l’art, photographes et négociateurs formés à l’architecture, expliquait l’agence au site ByBeton en 2022.',
           'Ateliers Lofts & Associés, dont le concept date de 1998, vend lofts, ateliers et maisons contemporaines. L’enseigne s’est ouverte à la franchise et cite Paris, Bordeaux, Arcachon, Biarritz, La Rochelle et Royan, d’après sa fiche sur l’annuaire Toute la Franchise.',
           'De la cour au jardin, réseau de 25 consultants indépendants né il y a 28 ans, travaille l’immobilier de charme : maisons de famille, de campagne, appartements de caractère (MySweetImmo, mai 2026).',
@@ -129,6 +130,8 @@ export const GUIDE_ARTICLES: GuideArticle[] = [
       { label: 'MySweetImmo, bilan 2025 du Groupe Patrice Besse, 18 janvier 2026', url: 'https://www.mysweetimmo.com/2026/01/18/immobilier-de-caractere-pourquoi-le-groupe-patrice-besse-voit-le-marche-repartir/' },
       { label: 'MySweetImmo, bilan 2023 du Groupe Mercure, 31 janvier 2024', url: 'https://www.mysweetimmo.com/2024/01/31/immobilier-bilan-groupe-mercure-en-2023-le-marche-des-biens-patrimoniaux-a-bien-resiste/' },
       { label: 'MySweetImmo, De la cour au jardin, 12 mai 2026', url: 'https://www.mysweetimmo.com/2026/05/12/reseau-immobilier-de-la-cour-au-jardin-est-devenu-un-label-isabelle-larochette/' },
+      { label: 'Presse Agence, communiqué des dix ans d’Archik, 8 octobre 2025', url: 'https://presseagence.fr/paris-10-ans-dimmobilier-et-darchitecture-pour-archik/' },
+      { label: 'Presse Agence, communiqué d’Archik, 23 mars 2026', url: 'https://presseagence.fr/?p=945768' },
       { label: 'Toute la Franchise, fiche Ateliers Lofts & Associés', url: 'https://www.toute-la-franchise.com/franchise/ateliers-lofts-associes' },
       { label: 'ByBeton, entretien avec Architecture de Collection, 18 janvier 2022', url: 'https://bybeton.fr/?p=15234' },
       { label: 'MySweetImmo, lancement de Laforêt Collection, 22 octobre 2026', url: 'https://www.mysweetimmo.com/2026/10/22/immobilier-laforet-lance-une-marque-dediee-aux-biens-de-famille-et-de-caractere/' },
