@@ -47,6 +47,88 @@ export interface GuideArticle {
 
 export const GUIDE_ARTICLES: GuideArticle[] = [
   {
+    slug: 'instagram-tiktok-ou-portails-d-ou-viennent-les-acheteurs',
+    art: 'balance',
+    title: 'Instagram et TikTok apportent-ils plus d’acheteurs que les portails ? Ce que disent les chiffres',
+    description: 'Les réseaux sociaux ont-ils dépassé les portails d’annonces pour trouver un bien ou un agent ? Les enquêtes françaises et américaines disent plutôt l’inverse.',
+    category: 'Actu réseau',
+    published: '2026-11-28',
+    updated: '2026-11-28',
+    readMinutes: 6,
+    intro: 'On entend que les réseaux sociaux seraient en train de remplacer les portails d’annonces. Les enquêtes disponibles ne le montrent pas. En France comme aux États-Unis, les acheteurs commencent très majoritairement par les portails. Ce sont les agents, et eux seuls, qui placent les réseaux en tête.',
+    takeaways: [
+      'En France, 81 % des particuliers citent les portails parmi leurs premiers réflexes de recherche, contre 8 % qui commencent par les réseaux sociaux.',
+      'Aux États-Unis, environ 1 % des acheteurs ont trouvé leur agent par les réseaux sociaux, selon la fédération des agents.',
+      'Les agents américains, eux, citent les réseaux bien avant les portails pour la qualité des contacts : 39 % contre 9 % en 2025.',
+      'Aucune étude lue ne mesure séparément Instagram ou TikTok, ni ne compte les ventes par canal en France.',
+    ],
+    sections: [
+      {
+        title: 'Par où les acheteurs commencent-ils, en France ?',
+        paragraphs: [
+          'Par les portails. L’Observatoire de l’immobilier digital 2026, présenté à l’automne et rapporté par MySweetImmo, a interrogé 1 174 particuliers ayant cherché un bien dans l’année. 81 % citent les portails parmi leurs premiers réflexes. Aucun autre canal ne dépasse 24 %, et 8 % seulement commencent leur recherche sur les réseaux sociaux.',
+          'Pour chercher un professionnel, 9 % iraient sur les réseaux. La part monte à 38 % chez les 18-24 ans. Une précision : cet observatoire est produit par des acteurs du secteur, dont un portail d’annonces.',
+        ],
+      },
+      {
+        title: 'Les réseaux ne servent-ils donc à rien ?',
+        paragraphs: [
+          'Si, mais plus tard dans le parcours. Parmi les particuliers qui utilisent les réseaux pendant leur recherche, 59 % disent avoir déjà eu envie de contacter un professionnel après avoir vu ses contenus, selon le même observatoire. Côté professionnels, les deux canaux sont presque aussi répandus : 86 % diffusent sur les portails et 82 % utilisent les réseaux sociaux.',
+        ],
+      },
+      {
+        title: 'Et aux États-Unis ?',
+        paragraphs: [
+          'Le constat est le même du côté des acheteurs. La fédération américaine des agents immobiliers, la NAR, interroge chaque année plusieurs milliers d’acheteurs récents. Dans son édition 2026, 52 % ont trouvé sur internet le bien qu’ils ont acheté et 27 % par leur agent.',
+          'Pour trouver cet agent, 43 % ont suivi la recommandation d’un proche et 15 % ont repris un agent déjà connu. Les réseaux sociaux pèsent environ 1 %, y compris chez les plus jeunes acheteurs. Le portail Zillow, dans sa propre enquête de 2025, arrive à 5 %.',
+        ],
+      },
+      {
+        title: 'Pourquoi les agents disent-ils le contraire ?',
+        paragraphs: [
+          'Parce qu’on ne leur pose pas la même question. Dans l’enquête technologie 2025 de la NAR, 39 % des agents citent les réseaux sociaux comme l’outil qui leur a apporté le plus de contacts de qualité, contre 9 % pour les portails. Trois limites sont à connaître.',
+        ],
+        list: [
+          'C’est un ressenti, pas un décompte de contacts ni de ventes, et le taux de réponse à cette enquête est de 2,5 %.',
+          'La question ne porte que sur des outils numériques. Elle laisse de côté les anciens clients et les recommandations, qui représentent environ la moitié de l’activité d’un agent type selon la même fédération.',
+          '« Réseaux sociaux » veut d’abord dire Facebook, utilisé par 87 % des agents en 2024, devant Instagram (62 %) et loin devant TikTok (15 %).',
+        ],
+      },
+      {
+        title: 'La tendance est-elle à la hausse ?',
+        paragraphs: [
+          'Pas dans ces enquêtes. La part des agents américains qui citent les réseaux comme meilleure source de contacts est passée de 52 % en 2024 à 39 % en 2025. Celle des portails a reculé aussi, de 14 % à 9 %. Chez Zillow, la part des acheteurs ayant trouvé leur agent par un réseau social est passée de 8 % en 2023 à 5 % en 2025.',
+        ],
+      },
+      {
+        title: 'Et TikTok chez les plus jeunes ?',
+        paragraphs: [
+          'Les chiffres qui circulent mesurent autre chose. Une enquête de 2024 indique qu’environ 38 % des adultes américains de la génération Z reçoivent de l’information sur l’achat immobilier par TikTok. Il s’agit d’information, pas de la découverte d’un bien ni d’une prise de contact avec un agent. Et cette enquête émane d’une société qui met en relation acheteurs et agents.',
+        ],
+      },
+      {
+        title: 'Que ne sait-on pas ?',
+        paragraphs: [
+          'Beaucoup de choses, surtout en France. Aucune des études lues ne dit quelle part des contacts, des mandats ou des ventes vient de chaque canal. Aucune ne distingue Instagram de TikTok. Aucune ne compare sérieusement le coût d’un contact venu d’un réseau et d’un portail. Selon l’observatoire français, 12 % seulement des professionnels suivent leur coût par contact.',
+          'Reste un constat commun aux deux pays : la recommandation pèse plus lourd que les deux canaux numériques dans le choix d’un agent.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Les réseaux sociaux apportent-ils plus d’acheteurs que les portails ?', a: 'Les enquêtes lues ne le montrent pas. Les acheteurs commencent très majoritairement par les portails ; les réseaux interviennent plutôt dans le choix d’un professionnel.' },
+      { q: 'Ces études sont-elles indépendantes ?', a: 'Pas toutes. L’observatoire français est produit par des acteurs du secteur, dont un portail. Les enquêtes américaines viennent de la fédération des agents et d’un portail. Nous le signalons à chaque fois.' },
+    ],
+    sources: [
+      { label: 'MySweetImmo, Observatoire de l’immobilier digital 2026, 11 novembre 2026', url: 'https://www.mysweetimmo.com/2026/11/11/agents-immobiliers-faut-il-etre-partout-sur-le-web/' },
+      { label: 'NAR, tendances par génération des acheteurs et vendeurs, édition 2026', url: 'https://assets.inman.com/wp-content/uploads/2026/04/2026-Generational-Trends-Report-FINAL.pdf' },
+      { label: 'NAR, enquête technologie 2025', url: 'https://cms.nar.realtor/sites/default/files/2025-09/2025-realtors-technology-survey-report-09-18-2025.pdf' },
+      { label: 'NAR, enquête technologie 2024', url: 'https://cdn.nar.realtor/sites/default/files/documents/2024-technology-survey-report-08-08-2024.pdf' },
+      { label: 'NAR, profil des membres 2026', url: 'https://www.nar.realtor/news/economists-outlook/the-feature-sheet-2026-member-profile' },
+      { label: 'Zillow, rapport sur les acheteurs 2025', url: 'https://www.zillow.com/research/buyers-housing-trends-report-2025-35688' },
+      { label: 'Clever Real Estate, enquête sur la génération Z, 2024', url: 'https://listwithclever.com/research/gen-z-homeownership/' },
+    ],
+  },
+  {
     slug: 'agents-immobiliers-les-plus-suivis-au-monde',
     art: 'plateforme',
     title: 'Qui sont les agents immobiliers les plus suivis au monde sur les réseaux ?',
