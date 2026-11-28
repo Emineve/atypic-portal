@@ -7,13 +7,13 @@ import { MOIS, NEWSLETTERS, themeDe } from './newsletters';
 // Une rubrique dont le contenu manque n'apparaît pas : rien n'est jamais envoyé entre crochets.
 // Le dessin : papier crème, cartes blanches à bord noir comme la boîte d'inscription du site, le jaune en petites touches.
 
-const INK = '#211C15';
-const PAPIER = '#FBF6EC';
-const FOND = '#F1E9D8';
+const INK = '#3A2E2A';
+const PAPIER = '#FCFBF8';
+const FOND = '#F2EEE8';
 const JAUNE = '#F6CF4E';
 const GRIS = '#74695A';
 const FILET = '#E3D9C6';
-const BANDE = '#E6DFD0';
+const BANDE = '#E4DDD5';
 const SERIF = "Georgia,'Times New Roman',serif";
 const SANS = 'Arial,Helvetica,sans-serif';
 
@@ -39,9 +39,9 @@ export function numeroEmailHtml(numero: number, c: NumeroContent, items: { une: 
   // Un ticket de caisse : papier blanc à bords dentelés, posé sur une bande plus sombre
   const ticket = (inner: string) =>
     `<tr><td style="padding:20px 0 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BANDE};table-layout:fixed;width:100%;"><tr><td style="padding:26px 24px;">
-<img src="${SITE}/lettre/dents-haut.png" width="552" height="10" alt="" style="display:block;width:100%;height:10px;border:0;">
+<img src="${SITE}/lettre/dents-haut.png?v=3" width="552" height="10" alt="" style="display:block;width:100%;height:10px;border:0;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;"><tr><td style="padding:18px 22px 22px;">${inner}</td></tr></table>
-<img src="${SITE}/lettre/dents-bas.png" width="552" height="10" alt="" style="display:block;width:100%;height:10px;border:0;">
+<img src="${SITE}/lettre/dents-bas.png?v=3" width="552" height="10" alt="" style="display:block;width:100%;height:10px;border:0;">
 </td></tr></table></td></tr>`;
   // La barre de répartition : le prix en noir, les frais en jaune, les travaux en hachures
   const pct = (n: number | null, defaut: number) => (k.total && n ? Math.max(2, Math.round((n / k.total) * 100)) : defaut);
@@ -50,7 +50,7 @@ export function numeroEmailHtml(numero: number, c: NumeroContent, items: { une: 
   const barre = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:14px 0 6px;border:1px solid ${INK};"><tr>
 <td width="${pPrix}%" height="12" style="background:${INK};font-size:0;line-height:0;">&nbsp;</td>
 <td width="${pFrais}%" height="12" style="background:${JAUNE};font-size:0;line-height:0;">&nbsp;</td>
-<td height="12" background="${SITE}/lettre/hachures.png" style="background:#ffffff url(${SITE}/lettre/hachures.png);font-size:0;line-height:0;">&nbsp;</td>
+<td height="12" background="${SITE}/lettre/hachures.png?v=3" style="background:#ffffff url(${SITE}/lettre/hachures.png?v=3);font-size:0;line-height:0;">&nbsp;</td>
 </tr></table>`;
   const ligne = (label: string, note: string, montant: string) =>
     `<tr><td style="padding:11px 0;border-bottom:1px dotted #a89d8b;font-family:${SANS};font-size:16px;color:${INK};">${label}${note ? `<br><span style="font-size:13px;color:${GRIS};">${note}</span>` : ''}</td><td align="right" valign="top" style="padding:11px 0;border-bottom:1px dotted #a89d8b;font-family:${SERIF};font-size:20px;color:${INK};white-space:nowrap;">${montant}</td></tr>`;
@@ -72,7 +72,7 @@ export function numeroEmailHtml(numero: number, c: NumeroContent, items: { une: 
 <h1 style="margin:10px 0 0;font-family:${SERIF};font-weight:normal;font-size:42px;line-height:1.05;color:${INK};">${esc(c.surnom)}${a(c.surnom_italique) ? ` <span style="font-style:italic;color:${GRIS};">${esc(c.surnom_italique)}</span>` : ''}</h1>
 <p style="margin:16px 0 0;${texte}">${esc(c.chapo)}</p>
 ${k.prix != null ? `<p style="margin:16px 0 0;font-family:${SANS};font-size:14px;color:${GRIS};">Affiché <span style="background:${JAUNE};padding:4px 10px;border-radius:6px;font-family:${SERIF};font-size:24px;color:${INK};white-space:nowrap;">${eur(k.prix)}</span></p>` : ''}
-${liens.video ? `<p style="margin:22px 0 0;"><a href="${va('video')}"><img src="${SITE}/lettre/video.png" width="504" alt="Voir la visite en vidéo" style="display:block;width:100%;max-width:504px;height:auto;border:0;border-radius:10px;"></a></p>` : ''}
+${liens.video ? `<p style="margin:22px 0 0;"><a href="${va('video')}"><img src="${SITE}/lettre/video.png?v=3" width="504" alt="Voir la visite en vidéo" style="display:block;width:100%;max-width:504px;height:auto;border:0;border-radius:10px;"></a></p>` : ''}
 ${a(c.video_legende) ? `<p style="margin:10px 0 0;font-family:${SANS};font-size:14px;color:${GRIS};">${esc(c.video_legende)}</p>` : ''}
 ${liens.une ? `<p style="margin:16px 0 0;font-family:${SANS};font-size:15px;font-weight:bold;">${lien(va('une'), une?.seller === 'particulier' ? 'Voir l’annonce du propriétaire' : 'Voir l’annonce')}</p>` : ''}`));
 
@@ -151,7 +151,7 @@ ${liens.vigilance ? `<p style="margin:14px 0 0;font-family:${SANS};font-size:15p
   const suivant = NEWSLETTERS[(rang + 1) % NEWSLETTERS.length];
   rows.push(titre('Et le mois prochain,', `en ${MOIS[suivant.mois - 1]}.`));
   rows.push(`<tr><td style="padding:16px 24px 0;">
-<img src="${SITE}/lettre/barre-${suivant.slug}.png?v=2" width="552" alt="" style="display:block;width:100%;max-width:552px;height:auto;border:0;">
+<img src="${SITE}/lettre/barre-${suivant.slug}.png?v=3" width="552" alt="" style="display:block;width:100%;max-width:552px;height:auto;border:0;">
 <p style="margin:16px 0 0;font-family:${SERIF};font-size:40px;line-height:1;font-style:italic;color:${INK};">${esc(suivant.nom)}</p>
 <p style="margin:10px 0 0;${texte}">${esc(suivant.sujet)}</p></td></tr>`);
 

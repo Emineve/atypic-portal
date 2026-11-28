@@ -79,7 +79,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
   );
 
   return (
-    <article className="mx-auto w-full max-w-[600px] bg-[#FBF6EC] font-sans text-[#3A2E2A]">
+    <article className="mx-auto w-full max-w-[600px] bg-[#FCFBF8] font-sans text-[#3A2E2A]">
       {/* 1. Le bien à la une : la visite */}
       {/* la matière du thème, en bandeau de tête */}
       <div aria-hidden className="h-12" style={themeDe(c.theme).matiere} />
@@ -281,7 +281,7 @@ export default function NumeroView({ numero, c, items, brouillon = false }: { nu
             <Poutre />
             <h2 className="font-serif text-[27px] leading-tight">Et le mois prochain, <span className="italic text-[#74695A]">en {MOIS[suivant.mois - 1]}.</span></h2>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/lettre/barre-${suivant.slug}.png?v=2`} alt="" className="mt-4 block w-full mix-blend-multiply" />
+            <img src={`/lettre/barre-${suivant.slug}.png?v=3`} alt="" className="mt-4 block w-full mix-blend-multiply" />
             <p className="mt-4 font-serif text-[40px] italic leading-none">{suivant.nom}</p>
             <p className="mt-2.5 text-[15px] leading-relaxed">{suivant.sujet}</p>
           </section>
